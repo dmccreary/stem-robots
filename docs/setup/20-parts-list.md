@@ -4,7 +4,7 @@
 
 [Cytron 2WD Smart Robot Car Chassis](https://www.cytron.io/p-2wd-smart-robot-car-chassis)
 
-[Walmart](https://www.walmart.com/ip/New-Motor-for-Smart-Robot-Kit-Speed-Encoder-Battery-Car-Chassis-Box-For-Arduino/5236937438)
+[Walmart](https://www.walmart.com/ip/New-Motor-for-Smart-Robot-Kit-Speed-Encoder-Battery-Car-Chassis-Box-For-Arduino/5236937438) $13 is a high price
 
 ## Cytron Motor Control Board
 
