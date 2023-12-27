@@ -8,7 +8,7 @@ repo_url: 'https://github.com/dmccreary/stem-robots'
 nav:
   - Home: index.md
   - about.md
-  - Gallery: gallery.md
+  - Gallery: gallery/index.md
   - Getting Started:
     - setup/index.md
     - setup/05-thonny-installation.md
