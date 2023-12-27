@@ -39,3 +39,7 @@ For advanced high-school students, we encourage you to continue your learning by
 ## Resources for Teachers and Mentors
 
 [CoderDojo Mentor Resources](https://www.coderdojotc.org/CoderDojoTC/)
+
+## Instructable
+
+[$25 Robot Platform for Teaching Programming](https://www.instructables.com/Collision-Avoidance-Robot-for-Teaching-Programming/) - March 22nd 2017
