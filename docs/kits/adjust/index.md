@@ -13,7 +13,7 @@ used to customize a robot's program.
 
 ## Parts List
 
-We start with our [Display](../display/) robot and add three potentiometers
+We start with our [Display](../display/index.md) robot and add three potentiometers
 that can be adjusted to change the parameters.
 
 
