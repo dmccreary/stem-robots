@@ -21,11 +21,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/gallery/</loc>
-         <lastmod>2023-12-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://dmccreary.github.io/stem-robots/glossary/</loc>
          <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
@@ -37,6 +32,11 @@
     </url>
     <url>
          <loc>https://dmccreary.github.io/stem-robots/references/</loc>
+         <lastmod>2023-12-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/gallery/</loc>
          <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
