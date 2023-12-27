@@ -16,18 +16,19 @@ nav:
     - setup/20-parts-list.md
   - Lessons:
     - lessons/index.md
-    - lessons/03-robot-parts.md
-    - lessons/05-batteries.md
-    - lessons/10-dc-motors.md
-    - lessons/15-motor-direction.md
-    - lessons/20-motor-speed.md
-    - lessons/25-pwm.md
-    - lessons/30-testing-motor-connections.md
-    - lessons/35-dance.md
-    - lessons/40-i2c-bus.md
-    - lessons/45-sensors.md
-    - lessons/50-tof-sensors.md
-    - lessons/55-ultrasonic-sensors.md
+    - Robot Parts: lessons/03-robot-parts.md
+    - Batteries: lessons/05-batteries.md
+    - DC Motors: lessons/10-dc-motors.md
+    - Motor Direction:  lessons/15-motor-direction.md
+    - Motor Speed: lessons/20-motor-speed.md
+    - Pulse Width Modulation: lessons/25-pwm.md
+    - Motor Connections: lessons/30-testing-motor-connections.md
+    - Robot Dance: lessons/35-dance.md
+    - I2C Bus: lessons/40-i2c-bus.md
+    - Sensors: lessons/45-sensors.md
+    - Time of Flight Sensor: lessons/50-tof-sensors.md
+    - Ultrasonic Sensor: lessons/55-ultrasonic-sensors.md
+    - Infrared Sensors: lessons/60-ir-sensors.md
   - Kits:
     - kits/adjust/index.md
     - kits/base/index.md
