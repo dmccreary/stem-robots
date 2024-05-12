@@ -14,6 +14,7 @@ nav:
     - setup/05-thonny-installation.md
     - setup/10-base-kit-assembly.md
     - setup/20-parts-list.md
+  - Personas: personas.md
   - Lessons:
     - lessons/index.md
     - Robot Parts: lessons/03-robot-parts.md
