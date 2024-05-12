@@ -12,7 +12,7 @@ The base STEM robot has the following descriptive text.  This text is important 
 
 ```linenums="0"
 The STEM Robot is a low-cost but fun robot designed to teach kids
-the principals of computational thinking.  It is built around the
+the principles of computational thinking.  It is built around the
 Raspberry Pi RP2040 microcontrollers and is programed with MicroPython.  It is designed to cost under $19.
 
 The base STEM robot has the following parts:
@@ -24,16 +24,20 @@ The base STEM robot has the following parts:
 includes motor drivers, 14 blue LEDs, 2 NeoPixels,
 a speaker, two customizable buttons, 7 Grove
 connectors, 4 servo drivers, a power on switch,
+a power indicator LED.
 and LEDs and buttons to test the motor connections.
 5. A VL53L0X time-of-flight distance sensor that
 uses the I2C protocol to measure distance.
 6. A USB cable for programming the car.
 
 The robot is programmed with the Thonny Integrated
-Development for Python.
+Development for Python.  Note that the RP2040 is
+a dual-core micro-controller with 264K SRAM and 2MB
+flash memory.
 ```
 
 We will use this description to create task and age-appropriate lesson plans that teach computational thinking using MicroPython.
+In the future, we will refer to this block of text as the ROBOT_DESCRIPTION text.
 
 ## Integration of Generative AI
 
