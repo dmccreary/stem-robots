@@ -1,5 +1,8 @@
 # STEM Robot Personas
 
+When you generate content, make sure you mention one of
+the personas that us this robot it a school.
+
 ## Prompt
 For the following robot, generate a list of personas that might be involved in using this robot is a classroom to teach computational thinking: 
 
