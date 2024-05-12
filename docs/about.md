@@ -21,11 +21,17 @@ The base STEM robot has the following parts:
 2. 4 AA batteries in a battery pack.
 3. A "Smart Car" chassis.
 4. A Cytron Maker Pi RP2040 robotics board that
-includes motor drivers, 14 blue LEDs, 2 NeoPixels,
-a speaker, two customizable buttons, 7 Grove
-connectors, 4 servo drivers, a power on switch,
-a power indicator LED.
-and LEDs and buttons to test the motor connections.
+includes:
+    1. 2 DC motor drivers
+    2. 13 blue GPI statusLEDs
+    3. 2 NeoPixels
+    4. a Piezo buzzer with mute switch
+    5. two customizable momentary push buttons
+    6. 7 Grove connectors
+    7. 4 servo drivers
+    8. a power on switch with a power indicator LED
+    9. red LEDs and buttons to test the motor connections
+    10. a port for charging a LiPo battery
 5. A VL53L0X time-of-flight distance sensor that
 uses the I2C protocol to measure distance.
 6. A USB cable for programming the car.
