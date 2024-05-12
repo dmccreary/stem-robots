@@ -10,7 +10,7 @@ The STEM Robot is a low-cost but fun robot designed to teach kids the principles
 1. 2 6-volt DC hobby motors. 
 2. 4 AA batteries in a battery pack. 
 3. A "Smart Car" chassis. 
-4. A Cytron Maker Pi RP2040 robotics board that includes motor drivers, 14 blue LEDs, 2 NeoPixels, a speaker, two customizable buttons, 7 Grove connectors, 4 servo drivers, a power on switch, a power indicator LED. and LEDs and buttons to test the motor connections. 
+4. A Cytron Maker Pi RP2040 robotics board that includes motor drivers, 13 blue LEDs for GPIO status, 2 NeoPixels, a Piezo buzzer with mute switch, two customizable momentary buttons, 7 Grove connectors, 4 servo drivers, a power on switch, a power indicator LED. and LEDs and buttons to test the motor connections. 
 5. A VL53L0X time-of-flight distance sensor that uses the I2C protocol to measure distance. 
 6. A USB cable for programming the car. The robot is programmed with the Thonny Integrated Development for Python. Note that the RP2040 is a dual-core MicroController with 264K SRAM and 2MB flash memory.
 
