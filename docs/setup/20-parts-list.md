@@ -1,10 +1,13 @@
 # Purchasing Your Own Parts
 
-## 2WD Smart Car Kit
+Many schools have received sample kits from our programs.
+But you can buy your own parts and assemble your own kits.
+
+## 2WD "Smart Car" Kit
 
 ![](../img/smartcar-parts.png)
 
-The are many Smart Car kits available on line retailers such as [eBay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=2WD+robot+smart+car+chasis), [Amazon](https://www.amazon.com/s?k=2WD+Smart+car+robot+chassis) and [Walmart](https://www.walmart.com/search?q=2WD+Smart+Car+Robot+Chassis).
+The are many "Smart Car" kits available online retailers such as [eBay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=2WD+robot+smart+car+chasis), [Amazon](https://www.amazon.com/s?k=2WD+Smart+car+robot+chassis) and [Walmart](https://www.walmart.com/search?q=2WD+Smart+Car+Robot+Chassis).
 Purchasing these kits in quantity 10 or more can help you save on shipping costs.
 
 Our preferred vendor is the [Cytron 2WD Smart Robot Car Chassis](https://www.cytron.io/p-2wd-smart-robot-car-chassis) at $4.80.
@@ -66,10 +69,14 @@ The VL53L0X integrates a group of Single Photon Avalanche Diodes (SPAD) and embe
 
 [Review and 3D Printed Mount](https://dmccreary.medium.com/a-3d-printed-mount-for-time-of-flight-distance-sensor-8acea5480709)
 
-## Screws
+## M3 Bolts and Nuts
+
+![](../img/M3x6-bolts.png)
 
 We use M3 metric screws for mounting the Cytron board to the back of the chassis and
 mounting the time-of-flight sensor to the front of the robot.  We use 4x 10 mm screws
 on the Cytron board and 2x 6mm screws for the time-fight sensor.
 
 [eBay M3 pan head bolts](https://www.ebay.com/sch/i.html?_from=R40&_nkw=M3+Phillips+Pan+%2F+Round+Head+Machine+Screw+Bolts&Head%2520Style=Pan%2520Head&Screw%2520Size=%25233&rt=nc&Material=Stainless%2520Steel&_dcat=26217)
+
+[M3 STAINLESS HEX FULL NUTS QTY 100 PACK $6 US](https://www.ebay.com/itm/220532417069)
