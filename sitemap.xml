@@ -16,11 +16,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/detailed-description/</loc>
-         <lastmod>2024-05-18</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://dmccreary.github.io/stem-robots/faq/</loc>
          <lastmod>2024-05-18</lastmod>
          <changefreq>daily</changefreq>
@@ -151,7 +146,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/lessons/60-ir-senssors/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/lessons/60-ir-sensors/</loc>
          <lastmod>2024-05-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
