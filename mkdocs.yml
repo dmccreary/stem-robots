@@ -17,7 +17,7 @@ nav:
     - setup/20-parts-list.md
   - Personas: personas.md
   - Lessons:
-    - lessons/index.md
+    - Introduvtion: lessons/index.md
     - Robot Parts: lessons/03-robot-parts.md
     - Batteries: lessons/05-batteries.md
     - DC Motors: lessons/10-dc-motors.md
@@ -31,13 +31,14 @@ nav:
     - Time of Flight Sensor: lessons/50-tof-sensors.md
     - Ultrasonic Sensor: lessons/55-ultrasonic-sensors.md
     - Infrared Sensors: lessons/60-ir-sensors.md
+    - Collision Avoidance: lessons/65-collision-avoidance.md
   - Kits:
-    - kits/adjust/index.md
-    - kits/base/index.md
-    - kits/bump-switch/index.md
-    - kits/display/index.md
-    - kits/line-follower/index.md
-    - kits/ultrasonic/index.md
+    - Base Robot: kits/base/index.md
+    - Display Robot: kits/display/index.md
+    - Bump Switches: kits/bump-switch/index.md
+    - Line Follower: kits/line-follower/index.md
+    - Adjustabot: kits/adjust/index.md
+    - Ultrasonic: kits/ultrasonic/index.md
   - FAQ: faq.md
   - Glossary: glossary.md
   - References: references.md
