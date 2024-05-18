@@ -30,29 +30,29 @@ To effectively use the STEM Robot in a classroom setting to teach computational 
 
 ### Students (Learners)
 
--   **Role:** Primary users of the STEM Robot.
--   **Responsibilities:** Engaging with the robot to learn computational thinking, participating actively in problem-solving tasks, and collaborating with peers to design and program the robot.
+- **Role:** Primary users of the STEM Robot.
+- **Responsibilities:** Engaging with the robot to learn computational thinking, participating actively in problem-solving tasks, and collaborating with peers to design and program the robot.
 
 ### Teacher (Computational Thinking/Computer Science)
 
--   **Role:** Facilitates the learning experiences involving the STEM Robot.
--   **Responsibilities:** Planning and delivering lessons that incorporate the robot, guiding students through programming exercises, and assessing students' progress in computational thinking.
+- **Role:** Facilitates the learning experiences involving the STEM Robot.
+- **Responsibilities:** Planning and delivering lessons that incorporate the robot, guiding students through programming exercises, and assessing students' progress in computational thinking.
 
 ### Volunteer/Mentor
 
 - **Role:** Non-school staff that are drawn from the community to help teach computer science concepts
-**Responsibilities:** Subject matter experts on programming and hardware that help
+- **Responsibilities:** Subject matter experts on programming and hardware that help
 students reach their learning objectives.
 
 ### Educational Technology Specialist
 
--   **Role:** Evaluates its educational value, and ensures it aligns with curriculum standards.
--   **Responsibilities:** Selecting suitable technology tools, training teachers, troubleshooting technical issues, and assessing the effectiveness of the robot in teaching computational principles.
+- **Role:** Evaluates its educational value, and ensures it aligns with curriculum standards.
+- **Responsibilities:** Selecting suitable technology tools, training teachers, troubleshooting technical issues, and assessing the effectiveness of the robot in teaching computational principles.
 
 ### Parent/Guardian
 
--   **Role:** Supports learning outside of the classroom.
--   **Responsibilities:** Encouraging practice at home, understanding the educational value of the robot, and possibly assisting in troubleshooting or overseeing projects involving the robot.
+- **Role:** Supports learning outside of the classroom.
+- **Responsibilities:** Encouraging practice at home, understanding the educational value of the robot, and possibly assisting in troubleshooting or overseeing projects involving the robot.
 
 
 ### Curriculum Developer
