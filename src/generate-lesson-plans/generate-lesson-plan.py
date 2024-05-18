@@ -33,8 +33,8 @@ def main(persona, topic, grade_level):
     if grade_level not in grades:
         grade_level = get_user_input("grade level", grades)
 
-    print(f"Persona: {persona}, Topic: {topic}, Grade Level: {grade_level}")
-
+    print(f"Generating lesson plan for Persona: {persona}, Topic: {topic}, Grade Level: {grade_level}")
+    # 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process the persona, topic, and grade level.")
     parser.add_argument("-p", "--persona", type=str, help="Specify the persona (teacher, student, admin)")
