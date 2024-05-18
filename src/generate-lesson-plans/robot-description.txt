@@ -1,20 +1,31 @@
 The STEM Robot is a low-cost but fun robot designed to teach kids
-the principals of computational thinking.  It is built around the
-Raspberry Pi RP2040 microcontrollers and is programed with MicroPython.  It is designed to cost under $19.
+the principles of computational thinking.  It is built around the
+Raspberry Pi RP2040 microcontrollers and is programmed with MicroPython.
+It is designed to cost under $19.
 
 The base STEM robot has the following parts:
 
-1. 2 6-volt DC hobby motors.
-2. 4 AA batteries in a battery pack.
-3. A "Smart Car" chassis.
+1. 2x 6-volt DC hobby motors with wires pre-soldered
+2. 4x AA batteries in a battery pack with wires
+3. A "Smart Car" chassis that parts are mounted to with screws
 4. A Cytron Maker Pi RP2040 robotics board that
-includes motor drivers, 14 blue LEDs, 2 NeoPixels,
-a speaker, two customizable buttons, 7 Grove
-connectors, 4 servo drivers, a power-on switch,
-and LEDs and buttons to test the motor connections.
+includes:
+    1. 2x DC motor drivers
+    2. 13x blue GPI statusLEDs
+    3. 2x RGB LED NeoPixels
+    4. a Piezo buzzer with mute switch
+    5. two customizable momentary push buttons
+    6. 7x Grove connectors with four wires
+    7. 4x servo drivers
+    8. a power on switch with a power indicator LED
+    9. 4x red LEDs and buttons to test the motor connections
+    10. a port for charging a LiPo battery
 5. A VL53L0X time-of-flight distance sensor that
-uses the I2C protocol to measure distance.
-6. A USB cable for programming the car.
+uses the I2C protocol to measure distance
+6. A USB cable for programming the robot from a PC or Mac
 
 The robot is programmed with the Thonny Integrated
-Development for Python.
+Development for MicroPython.  Note that the RP2040 is
+a dual-core micro-controller with 264K SRAM and 2MB
+flash memory.  The RP2040 includes support for both I2C
+and SPI bus.

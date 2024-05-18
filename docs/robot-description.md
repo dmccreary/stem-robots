@@ -12,9 +12,9 @@ It is designed to cost under $19.
 
 The base STEM robot has the following parts:
 
-1. 2x 6-volt DC hobby motors.
-2. 4x AA batteries in a battery pack.
-3. A "Smart Car" chassis.
+1. 2x 6-volt DC hobby motors with wires pre-soldered
+2. 4x AA batteries in a battery pack with wires
+3. A "Smart Car" chassis that parts are mounted to with screws
 4. A Cytron Maker Pi RP2040 robotics board that
 includes:
     1. 2x DC motor drivers
@@ -22,17 +22,22 @@ includes:
     3. 2x RGB LED NeoPixels
     4. a Piezo buzzer with mute switch
     5. two customizable momentary push buttons
-    6. 7x Grove connectors
+    6. 7x Grove connectors with four wires
     7. 4x servo drivers
     8. a power on switch with a power indicator LED
     9. 4x red LEDs and buttons to test the motor connections
     10. a port for charging a LiPo battery
 5. A VL53L0X time-of-flight distance sensor that
-uses the I2C protocol to measure distance.
-6. A USB cable for programming the car.
+uses the I2C protocol to measure distance
+6. A USB cable for programming the robot from a PC or Mac
 
 The robot is programmed with the Thonny Integrated
-Development for Python.  Note that the RP2040 is
+Development for MicroPython.  Note that the RP2040 is
 a dual-core micro-controller with 264K SRAM and 2MB
-flash memory.
+flash memory.  The RP2040 includes support for both I2C
+and SPI bus.
 ```
+
+In the future, we will refer to this block of text as the
+ROBOT_DESCRIPTION text. If you are generating other courses,
+you can call this COURSE_DESCRIPTION.
