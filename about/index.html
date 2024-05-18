@@ -397,6 +397,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#the-cytron-rp2040-board" class="md-nav__link">
+    The Cytron RP2040 Board
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-time-of-flight-sensor" class="md-nav__link">
+    The Time of Flight Sensor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rise-of-generative-ai" class="md-nav__link">
+    The Rise of Generative AI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-microsims" class="md-nav__link">
+    Adding MicroSims
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -857,6 +885,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#the-cytron-rp2040-board" class="md-nav__link">
+    The Cytron RP2040 Board
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-time-of-flight-sensor" class="md-nav__link">
+    The Time of Flight Sensor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rise-of-generative-ai" class="md-nav__link">
+    The Rise of Generative AI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-microsims" class="md-nav__link">
+    Adding MicroSims
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1002,16 +1058,74 @@ for most high schools  The change finally happened
 in <a href="https://www.raspberrypi.com/news/raspberry-pi-silicon-pico-now-on-sale/">January 2021</a>!</p>
 <h2 id="the-switch-to-raspberry-pi-pico-and-micropython">The Switch to Raspberry Pi Pico and MicroPython</h2>
 <p><img alt="" src="./img/pico-bot.png" /></p>
-<p>The announcement of the Raspberry Pi Pico rocked
+<p>The announcement of the <a href="https://dmccreary.medium.com/how-a-small-charity-is-upsetting-the-trillion-dollar-silicon-chip-industry-ad8062e8c627">Raspberry Pi Pico</a> rocked
 our world.  Not only was it only $4, but it also
 fit right on our breadboard!  It ran MicroPython
 and had the massive support of the entire Raspberry
 Pi Foundation behind it.  We knew we had a solid
 partner who would not try to hijack our education
 to line the pockets of their shareholders.</p>
-<p>By <a href="https://dmccreary.medium.com/raspberry-pi-pico-robot-in-micropython-51f956486270">June of 2021</a>
-we had a robot that had over 100 times as much
-RAM and cost 1/8 of the Arduino UNO.</p>
+<p>By <a href="https://dmccreary.medium.com/sustainable-classroom-robots-ea2399bb7abc">May of 2021</a>
+we had started to upgrade old Arduino Nano robots to
+the Raspberry Pi Pico.  We had a robot that had over 100 times as much
+RAM and cost 1/8 of the Arduino UNO!</p>
+<p>By <a href="https://dmccreary.medium.com/raspberry-pi-pico-robot-in-micropython-51f956486270">June of 2021</a> we were sending
+out robot kits to our COVID-era students in their homes.</p>
+<p>The Raspberry Pi Pico was not perfect.  Because the pin
+labels were on the bottom of the board we could not
+read any of them when they were on the breadboard.
+This little "oversight" cause endless hours of headache
+by forcing us to put colored marks on all our breadboards
+and print out pin diagrams.  But wait.  There is more!</p>
+<h2 id="the-cytron-rp2040-board">The Cytron RP2040 Board</h2>
+<p><img alt="" src="../img/maker-pi-rp2040-tof-robot.jpg" /></p>
+<p>The next big advance came from a brilliant engineer from Malaysia
+who worked at Cytron.  He developed the
+<a href="https://dmccreary.medium.com/the-cytron-maker-pi-rp2040-robotics-board-b1dc7f0eab34">Cytron Maker Pi RP2040</a>.
+This $12 board is so complete that is entirely changed
+the ease of use of our robots.  Everything we need
+is included on the board including buttons and LED
+to test motor connections, a speaker and user
+programmable buttons. WOW!  Now students
+had far fewer wires to connect and fewer things
+that could go wrong.  We could spend more time
+learning to code and teach computational thinking.</p>
+<h2 id="the-time-of-flight-sensor">The Time of Flight Sensor</h2>
+<p><img alt="" src="../img/time-of-flight-sensor-mounted.jpg" /></p>
+<p>The last small addition to our robot was to
+upgrade the front distance sensor from the
+old and fragile ultrasonic ping distance
+sensor to the new shiny <a href="https://dmccreary.medium.com/a-3d-printed-mount-for-time-of-flight-distance-sensor-8acea5480709">time-of-flight sensor</a>.
+This sensor uses the I2C bus and has both accuracy
+and response times that are far better then
+the ultrasonic sensors.  They are also about
+the same price - about $3 each.</p>
+<h2 id="the-rise-of-generative-ai">The Rise of Generative AI</h2>
+<p>In December of 2022, ChatGPT rocked the world by
+being able to generate large blocks of high-quality 
+content just by giving it a small prompt.
+Although we had been writing about <a href="https://dmccreary.medium.com/using-al-to-generate-detailed-lesson-plans-29a5af200a6a">generating
+lesson plans since 2020</a>,
+many people ignored us.  But after ChatGPT came out
+everything changed.  We were teaching classes
+on how to <a href="https://dmccreary.medium.com/chatgpt-brings-us-closer-to-the-diamond-age-b1469bee4949">generate highly personalized lesson plans</a>
+for not just STEM robotics classes but for many
+other topics in schools.</p>
+<h2 id="adding-microsims">Adding MicroSims</h2>
+<p><img alt="" src="../img/pwm-microsim.png" /></p>
+<p>We can also use Generative AI to create online simulators
+to help our students visualize what is going on
+within our robot.  For example, many
+students have a difficult time visualizing how
+pulse-width modulation works.  This
+simple <a href="https://editor.p5js.org/dmccreary/sketches/xaNSzbNLS">MicroSim</a> is allowing us to
+<a href="https://dmccreary.medium.com/genai-is-hyper-personalizing-education-e28019027944">hyper-personalize</a> both
+lesson plans as well as interactive simulations that
+are generated by teachers and run in your browser.</p>
+<p>We now have also included sample Python scripts so
+that you can generate high-quality lesson plans
+on many topics in the course to any grade level.</p>
+<p>Good Luck!</p>
 
 
   
