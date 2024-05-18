@@ -60,7 +60,7 @@ students reach their learning objectives.
 -   **Role:** Designs educational content and activities that utilize the robot to teach key concepts in computational thinking.
 -   **Responsibilities:** Creating lesson plans, tutorials, and projects that make effective use of the robot's capabilities, ensuring a progressive learning curve, and aligning activities with educational standards.
 
-### School Administrator:**
+### School Administrator
 
 -   **Role:** Supports and approves the integration of new technology like the STEM Robot into the educational offerings of the school.
 -   **Responsibilities:** Allocating budget for technological tools, facilitating professional development for teachers, and ensuring the technology is used responsibly within the school environment.
