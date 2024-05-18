@@ -36,6 +36,10 @@ Development for MicroPython.  Note that the RP2040 is
 a dual-core micro-controller with 264K SRAM and 2MB
 flash memory.  The RP2040 includes support for both I2C
 and SPI bus.
+
+The STEM Robot works with a website that stores lesson plans,
+sample programs and assessments that can be integrated into
+a school curriculum and the school's learning management system.
 ```
 
 In the future, we will refer to this block of text as the
