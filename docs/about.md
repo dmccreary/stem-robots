@@ -89,3 +89,74 @@ By establishing a rubric based on these categories, your school can systematical
 
 Starting in [September of 2020](https://medium.com/@dmccreary/using-al-to-generate-detailed-lesson-plans-29a5af200a6a) we started our first experiments at integrating generative AI into our curriculum.  These were initially simple experiments to generate lesson plans with GPT-3.  In the [summer of 2023](https://medium.com/@dmccreary/micro-simulations-for-education-6989eae8d85d), we also started to generate [MicroSims](glossary.md#microsims) as companions to our hands-on kits.  We believe that AI is the future
 of education and we hope you take time to try both the physical and virtual labs.
+
+## History of This Website
+
+![](./img/motor-with-cable-tie.jpg)
+
+Our journey to build an awesome STEM robotics website began with a simple
+[blog post](https://datadictionary.blogspot.com/2014/10/motors-for-arduino-labs.html)
+back in 2014 about repairing the motors in our old Arduino kits.  
+Our insight was that by using a simple cable tie and some heat shrink, we prevented the
+kids from breaking the wires to our motors.  This little change
+lowered the frustration of broken kits
+and allowed our labs with motors to be reliable.  Sometimes little changes
+make a big difference.
+
+We started wondering if other schools were also having these problems.  Why
+didn't the people who supplied these kits realize how fragile the parts were?
+
+## Our First Robot
+
+Our next step was to build our first robot.  
+We were frustrated by the closed [Finch Robots](https://datadictionary.blogspot.com/2014/11/robot-kits-for-coderdojo-labs.html) that were unreliable and had no
+way to extend motors and sensors.
+
+We used a four-motor chassis, a $35 Arduino Uno and a motor controller.  The
+total price was almost $70.  But our students loved the way we
+had a breadboard on the top they could add their own lights and sensors.
+It was a hit!
+
+## The Uno Robot: Cutting Costs and Increasing Content
+
+![](./img/uno-robot.jpg)
+
+After talking to several others in the Minnesota Arduino club
+we came across a relatively low-cost Arduino Nano that could
+be mounted directly on the breadboard.  The [Uno Robot](https://datadictionary.blogspot.com/2015/01/30-coderdojo-robot-version-3.html) was only about $30
+and was far more extensible than any of the commercial robots
+schools were buying!  We also started putting our
+[lesson plans](https://dmccreary.github.io/coderdojo-robots/arduino/00-intro/)
+on GitHub to make it easier for other organizations to
+reuse our content.
+
+But the Arduino Uno ecosystem was not kind.  The lower-cost
+Arduino Uno chips used a driver that was not supported
+and each new release of the MacOS would make our drivers
+difficult to install.  It required admin rights to install
+software and it was impossible for our students to
+use some of their home computers.  Despite frequent
+posts to the Arduino community, nothing was done because
+the drivers were not supported and they wanted us to
+pay $35 for the official Arduino hardware.  We were
+looking for options.  We also wanted to use
+Python which had become the de facto first language
+for most high schools  The change finally happened
+in [January 2021](https://www.raspberrypi.com/news/raspberry-pi-silicon-pico-now-on-sale/)!
+
+## The Switch to Raspberry Pi Pico and MicroPython
+
+![](./img/pico-bot.png)
+
+The announcement of the Raspberry Pi Pico rocked
+our world.  Not only was it only $4, but it also
+fit right on our breadboard!  It ran MicroPython
+and had the massive support of the entire Raspberry
+Pi Foundation behind it.  We knew we had a solid
+partner who would not try to hijack our education
+to line the pockets of their shareholders.
+
+By [June of 2021](https://dmccreary.medium.com/raspberry-pi-pico-robot-in-micropython-51f956486270)
+we had a robot that had over 100 times as much
+RAM and cost 1/8 of the Arduino UNO.
+
