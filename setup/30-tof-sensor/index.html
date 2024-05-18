@@ -12,28 +12,28 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/stem-robots/lessons/">
+        <link rel="canonical" href="https://dmccreary.github.io/stem-robots/setup/30-tof-sensor/">
       
       
-        <link rel="prev" href="../personas/">
+        <link rel="prev" href="../20-parts-list/">
       
       
-        <link rel="next" href="03-robot-parts/">
+        <link rel="next" href="../../personas/">
       
       
-      <link rel="icon" href="../img/favicon.ico">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
     
     
       
-        <title>Introduvtion - STEM Robots</title>
+        <title>Time of Flight Distance Sensor - STEM Robots</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.30068a00.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
       
       
 
@@ -52,7 +52,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sample-lessons-for-stem-robots" class="md-skip">
+        <a href="#time-of-flight-distance-sensor" class="md-skip">
           Skip to content
         </a>
       
@@ -103,9 +103,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="STEM Robots" class="md-header__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+    <a href="../.." title="STEM Robots" class="md-header__button md-logo" aria-label="STEM Robots" data-md-component="logo">
       
-  <img src="../img/logo.png" alt="logo">
+  <img src="../../img/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduvtion
+              Time of Flight Distance Sensor
             
           </span>
         </div>
@@ -208,9 +208,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="STEM Robots" class="md-nav__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+    <a href="../.." title="STEM Robots" class="md-nav__button md-logo" aria-label="STEM Robots" data-md-component="logo">
       
-  <img src="../img/logo.png" alt="logo">
+  <img src="../../img/logo.png" alt="logo">
 
     </a>
     STEM Robots
@@ -236,7 +236,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -255,7 +255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -274,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../robot-description/" class="md-nav__link">
+      <a href="../../robot-description/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -293,11 +293,187 @@
   
   
     <li class="md-nav__item">
-      <a href="../gallery/" class="md-nav__link">
+      <a href="../../gallery/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Gallery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_5">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-thonny-installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thonny Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-base-kit-assembly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base Kit Assembly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-parts-list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Purchasing Your Own Parts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Time of Flight Distance Sensor
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personas
   </span>
   
 
@@ -326,6 +502,26 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -336,11 +532,11 @@
         
   
   
-    <a href="../setup/" class="md-nav__link">
+    <a href="../../lessons/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Getting Started
+    Lessons
   </span>
   
 
@@ -360,392 +556,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../personas/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Personas
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
-              
-  
-  <span class="md-ellipsis">
-    Lessons
-  </span>
-  
-
-            </a>
-            
-              <label class="md-nav__link md-nav__link--active" for="__nav_7">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            Lessons
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="03-robot-parts/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Robot Parts
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="05-batteries/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Batteries
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="10-dc-motors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    DC Motors
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="15-motor-direction/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Motor Direction
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="20-motor-speed/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Motor Speed
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="25-pwm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Pulse Width Modulation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="30-testing-motor-connections/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Motor Connections
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="35-dance/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Robot Dance
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="40-i2c-bus/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    I2C Bus
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="45-sensors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Sensors
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="50-tof-sensors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Time of Flight Sensor
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="55-ultrasonic-sensors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ultrasonic Sensor
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="60-ir-sensors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Infrared Sensors
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="65-collision-avoidance/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Collision Avoidance
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
     
     
       
@@ -783,7 +593,7 @@
         
   
   
-    <a href="../kits/base/" class="md-nav__link">
+    <a href="../../kits/base/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -808,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../faq/" class="md-nav__link">
+      <a href="../../faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -827,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../glossary/" class="md-nav__link">
+      <a href="../../glossary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -846,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../references/" class="md-nav__link">
+      <a href="../../references/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -865,7 +675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../license/" class="md-nav__link">
+      <a href="../../license/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -884,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contact/" class="md-nav__link">
+      <a href="../../contact/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -917,28 +727,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#base-lessons" class="md-nav__link">
-    Base Lessons
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-generative-ai-to-customize-lessons" class="md-nav__link">
-    Using Generative AI to Customize Lessons
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -955,18 +743,11 @@
   
 
 
-<h1 id="sample-lessons-for-stem-robots">Sample Lessons for STEM Robots</h1>
-<h2 id="base-lessons">Base Lessons</h2>
-<p>Our base lessons target 9th-grade students.  At the end of lessons, you will find a list of Challenges for more advanced students.
-You will also find links to other lesson plans
-that target older or younger students.  If
-you don't find the grade level you need, you can
-use generative AI programs such as ChatGPT to customize
-the lesson plans to a new grade level.</p>
-<h2 id="using-generative-ai-to-customize-lessons">Using Generative AI to Customize Lessons</h2>
-<div class="highlight"><pre><span></span><code>Given this lesson plan, generate a new lesson 
-plan for a 7th grade robotics class.
-</code></pre></div>
+<h1 id="time-of-flight-distance-sensor">Time of Flight Distance Sensor</h1>
+<p><img alt="" src="../../img/tof-vs-ultrasonic.png" /></p>
+<p><img alt="" src="../../img/time-of-flight-side-by-side.png" /></p>
+<p><img alt="" src="../../img/time-of-flight-sensor-mounted.jpg" /></p>
+<p><img alt="" src="../../img/tof-sensor-side-view-2.png" /></p>
 
 
   
@@ -996,7 +777,7 @@ plan for a 7th grade robotics class.
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../personas/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Personas" rel="prev">
+          <a href="../20-parts-list/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Purchasing Your Own Parts" rel="prev">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1006,20 +787,20 @@ plan for a 7th grade robotics class.
                 Previous
               </span>
               <div class="md-ellipsis">
-                Personas
+                Purchasing Your Own Parts
               </div>
             </div>
           </a>
         
         
           
-          <a href="03-robot-parts/" class="md-footer__link md-footer__link--next" aria-label="Next: Robot Parts" rel="next">
+          <a href="../../personas/" class="md-footer__link md-footer__link--next" aria-label="Next: Personas" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Robot Parts
+                Personas
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1052,10 +833,10 @@ plan for a 7th grade robotics class.
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
       
     
   </body>

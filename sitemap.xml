@@ -176,6 +176,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/stem-robots/setup/25-cytron-maker-pi-rp2040/</loc>
+         <lastmod>2024-05-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/setup/30-tof-sensor/</loc>
+         <lastmod>2024-05-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/stem-robots/sims/</loc>
          <lastmod>2024-05-18</lastmod>
          <changefreq>daily</changefreq>
