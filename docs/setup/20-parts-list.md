@@ -10,4 +10,4 @@
 
 ### Digikey
 
-[Maker Pi RP2040](https://www.digikey.com/en/products/detail/cytron-technologies-sdn-bhd/MAKER-PI-RP2040/14557836) - listed for $11
+[Maker Pi RP2040 Board](https://www.digikey.com/en/products/detail/cytron-technologies-sdn-bhd/MAKER-PI-RP2040/14557836) - listed for $11

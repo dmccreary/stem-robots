@@ -1,4 +1,6 @@
-STEM Robotics Frequently Asked Questions
+# STEM Robotics Frequently Asked Questions (FAQ)
+
+
 
 ## Can we print our own robot chassis using a 3D printer?
 
@@ -9,4 +11,4 @@ Yes!  We have samples here:
 
 ## Can we print our own mounts for sensors?
 
-Yes! We have a sample here: [A 3D-Printed Mount for Time-of-Flight Distance Sensors](https://medium.com/p/8acea5480709)
+Yes! We have a sample here: [A 3D-printed Mount for Time-of-Flight Distance Sensors](https://medium.com/p/8acea5480709)
