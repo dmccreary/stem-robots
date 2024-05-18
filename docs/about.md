@@ -108,8 +108,9 @@ This was the first step on our journey.
 
 ![](./img/4-wheeler.jpg)
 
-Yes, kids love color and motion. 
-We were frustrated by the closed [Finch Robots](https://datadictionary.blogspot.com/2014/11/robot-kits-for-coderdojo-labs.html) that were unreliable and had no
+Yes, kids love color and motion!  Robot classes were usually the first classes to get
+full.
+However, we were frustrated by the closed [Finch Robots](https://datadictionary.blogspot.com/2014/11/robot-kits-for-coderdojo-labs.html) and [here](https://store.birdbraintechnologies.com/collections/finch-robot/products/finch-robot-rohs-compliant) that were unreliable and had no
 way to extend motors and sensors.
 So we thought about building our own robot.
 
@@ -118,7 +119,9 @@ Amazon.  We used a four-motor chassis, a $35 Arduino Uno and a motor controller.
 It turns out that we only needed two motors by the way.
 The total price was almost $70.  But our students loved the way we
 had a breadboard on the top so they could add their own lights and sensors.
-It was a hit!
+It was a hit!  But looking back, all those wires were difficult for the
+kids to get right.  Pulling one wire out would make the robot
+stop working.
 
 ## The Uno Robot: Cutting Costs and Increasing Content
 
@@ -149,7 +152,7 @@ in [January 2021](https://www.raspberrypi.com/news/raspberry-pi-silicon-pico-now
 
 ## The Switch to Raspberry Pi Pico and MicroPython
 
-![](./img/pico-bot.png)
+![](./img/pico-bot.jpg)
 
 The announcement of the [Raspberry Pi Pico](https://dmccreary.medium.com/how-a-small-charity-is-upsetting-the-trillion-dollar-silicon-chip-industry-ad8062e8c627) rocked
 our world.  Not only was it only $4, but it also
