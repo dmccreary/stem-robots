@@ -38,12 +38,12 @@ system.  Here is the prompt:
 ```linenums="0"
 Our school is fed up with vendors trying to sell us $350 STEM
 robots kits that use cheep parts and batteries that are not
-replaceable.   How can we come up with a simple set of objective
+replaceable. How can we come up with a simple set of objective
 measures to rate the quality of STEM robots?  Include the
 quality of instruction manuals and curriculum that can be
 customized to the needs of teachers, volunteers and students.
 
-Return the results as points in markdown level three headers.
+Return the results in markdown level three headers.
 ```
 
 Here is the response:
@@ -85,12 +85,7 @@ Developing objective measures to evaluate the quality of STEM robots, including 
 
 By establishing a rubric based on these categories, your school can systematically evaluate different STEM robots and select those that offer the best learning potential and value for money. This approach not only helps in making informed purchasing decisions but also supports the educational goals of your STEM programs.
 
-## Integration of Generative AI
-
-Starting in [September of 2020](https://medium.com/@dmccreary/using-al-to-generate-detailed-lesson-plans-29a5af200a6a) we started our first experiments at integrating generative AI into our curriculum.  These were initially simple experiments to generate lesson plans with GPT-3.  In the [summer of 2023](https://medium.com/@dmccreary/micro-simulations-for-education-6989eae8d85d), we also started to generate [MicroSims](glossary.md#microsims) as companions to our hands-on kits.  We believe that AI is the future
-of education and we hope you take time to try both the physical and virtual labs.
-
-## History of This Website
+## Why We Built This Website: Our Journey
 
 ![](./img/motor-with-cable-tie.jpg)
 
@@ -105,16 +100,24 @@ make a big difference.
 
 We started wondering if other schools were also having these problems.  Why
 didn't the people who supplied these kits realize how fragile the parts were?
+Why did they skimp on quality and cause their kits to break so easily?
+
+This was the first step on our journey.
 
 ## Our First Robot
 
-Our next step was to build our first robot.  
+![](./img/4-wheeler.jpg)
+
+Yes, kids love color and motion. 
 We were frustrated by the closed [Finch Robots](https://datadictionary.blogspot.com/2014/11/robot-kits-for-coderdojo-labs.html) that were unreliable and had no
 way to extend motors and sensors.
+So we thought about building our own robot.
 
-We used a four-motor chassis, a $35 Arduino Uno and a motor controller.  The
-total price was almost $70.  But our students loved the way we
-had a breadboard on the top they could add their own lights and sensors.
+We did some research and ordered some random parts from
+Amazon.  We used a four-motor chassis, a $35 Arduino Uno and a motor controller. 
+It turns out that we only needed two motors by the way.
+The total price was almost $70.  But our students loved the way we
+had a breadboard on the top so they could add their own lights and sensors.
 It was a hit!
 
 ## The Uno Robot: Cutting Costs and Increasing Content
