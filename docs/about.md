@@ -36,7 +36,12 @@ We use ChatGPT to come up with a way to measure the value of a STEM robotics
 system.  Here is the prompt:
 
 ```linenums="0"
-Our school is fed up with vendors trying to sell us $300 STEM robots that use low-cost parts and batteries that are not replaceable.   How can we come up with a simple set of objective measures to rate the quality of STEM robots?  Include the quality of instruction manuals and curriculum that can be customized to the needs of teachers, volunteers and students.
+Our school is fed up with vendors trying to sell us $350 STEM
+robots kits that use cheep parts and batteries that are not
+replaceable.   How can we come up with a simple set of objective
+measures to rate the quality of STEM robots?  Include the
+quality of instruction manuals and curriculum that can be
+customized to the needs of teachers, volunteers and students.
 
 Return the results as points in markdown level three headers.
 ```
@@ -47,36 +52,36 @@ Developing objective measures to evaluate the quality of STEM robots, including 
 
 ### Hardware Quality
 
-    -   **Durability:** Assess the robustness of the robot's construction. Are the materials used sturdy enough for repeated use by students?
-    -   **Modularity:** Consider whether parts can be easily added or removed, which can aid in teaching different levels of complexity.
-    -   **Battery Life and Replacement:** Check the battery life per charge and ensure that batteries are replaceable and reasonably priced.
-    -   **Sensor and Actuator Quality:** Evaluate the performance and reliability of sensors and actuators, as these are crucial for the functionality of the robot.
+-   **Durability:** Assess the robustness of the robot's construction. Are the materials used sturdy enough for repeated use by students?
+-   **Modularity:** Consider whether parts can be easily added or removed, which can aid in teaching different levels of complexity.
+-   **Battery Life and Replacement:** Check the battery life per charge and ensure that batteries are replaceable and reasonably priced.
+-   **Sensor and Actuator Quality:** Evaluate the performance and reliability of sensors and actuators, as these are crucial for the functionality of the robot.
 
 ### Cost Effectiveness
 
-    -   **Initial Cost vs. Part Quality:** Compare the cost of the robot with the quality and longevity of the components used.
-    -   **Maintenance Costs:** Consider long-term costs related to maintenance, part replacement, and upgrades.
+-   **Initial Cost vs. Part Quality:** Compare the cost of the robot with the quality and longevity of the components used.
+-   **Maintenance Costs:** Consider long-term costs related to maintenance, part replacement, and upgrades.
 ### Ease of Use
 
-    -   **User-Friendly Design:** Is the robot easy to assemble and disassemble? This is important for younger students or those new to robotics.
-    -   **Documentation:** Look for clear, comprehensive, and well-organized instruction manuals that cater to different skill levels.
+-   **User-Friendly Design:** Is the robot easy to assemble and disassemble? This is important for younger students or those new to robotics.
+-   **Documentation:** Look for clear, comprehensive, and well-organized instruction manuals that cater to different skill levels.
 ### Educational Value
 
-    -   **Curriculum Integration:** Evaluate how well the robot's features align with educational standards and curricular goals. Can it be integrated into subjects beyond technology, such as math, science, or arts?
-    -   **Progressive Learning:** Does the robot offer different levels of complexity for varied learning stages? This is essential to cater to both beginners and advanced students.
-    -   **Problem-Solving and Creativity:** Assess if the robot challenges students to solve real problems and encourages creativity.
+-   **Curriculum Integration:** Evaluate how well the robot's features align with educational standards and curricular goals. Can it be integrated into subjects beyond technology, such as math, science, or arts?
+-   **Progressive Learning:** Does the robot offer different levels of complexity for varied learning stages? This is essential to cater to both beginners and advanced students.
+-   **Problem-Solving and Creativity:** Assess if the robot challenges students to solve real problems and encourages creativity.
 ### Customizability
 
-    -   **Software Customization:** Check if the software can be easily modified or programmed by teachers and students. Support for multiple programming languages can be a plus.
-    -   **Hardware Customization:** Determine if it's possible to modify or expand the hardware to meet different teaching needs or student projects.
+-   **Software Customization:** Check if the software can be easily modified or programmed by teachers and students. Support for multiple programming languages can be a plus.
+-   **Hardware Customization:** Determine if it's possible to modify or expand the hardware to meet different teaching needs or student projects.
 ### Support and Community
 
-    -   **Technical Support:** Reliable and accessible customer support is crucial for troubleshooting and guidance.
-    -   **Community Resources:** A strong user community can provide valuable support and resources such as shared lesson plans, tutorials, and project ideas.
+-   **Technical Support:** Reliable and accessible customer support is crucial for troubleshooting and guidance.
+-   **Community Resources:** A strong user community can provide valuable support and resources such as shared lesson plans, tutorials, and project ideas.
 ### Feedback and Reviews
 
-    -   **User Feedback:** Gather feedback from other educators who have used the robots. User reviews can provide insights into reliability, usability, and educational impact.
-    -   **Pilot Testing:** Consider conducting a pilot test with a few robots in your school to see how they perform in real educational settings and gather firsthand feedback.
+-   **User Feedback:** Gather feedback from other educators who have used the robots. User reviews can provide insights into reliability, usability, and educational impact.
+-   **Pilot Testing:** Consider conducting a pilot test with a few robots in your school to see how they perform in real educational settings and gather firsthand feedback.
 
 By establishing a rubric based on these categories, your school can systematically evaluate different STEM robots and select those that offer the best learning potential and value for money. This approach not only helps in making informed purchasing decisions but also supports the educational goals of your STEM programs.
 
