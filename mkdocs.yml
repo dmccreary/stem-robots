@@ -15,6 +15,7 @@ nav:
     - setup/05-thonny-installation.md
     - setup/10-base-kit-assembly.md
     - setup/20-parts-list.md
+    - setup/30-tof-sensor.md
   - Personas: personas.md
   - Lessons:
     - Introduvtion: lessons/index.md
