@@ -26,7 +26,9 @@ You will need to provide 4 AA batteries and a Micro USB connector that works wit
 In this version of the kit, the wires are pre-soldered onto the motors.
 
 Here is the robot kit in all the packaging:
-![](../img/IMG_0146.jpg)
+![](../img/a1-kit-in-pkg.jpg)
+
+![](../img/a2-peel-cover.jpg)
 
 Your first task is to remove the protective backing from the acrylic body.
 ![](../img/IMG_0151.jpg)
