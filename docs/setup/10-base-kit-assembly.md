@@ -141,6 +141,10 @@ Connect the Maker Pi RP2040 board to the top with the USB connector facing the r
 Next, we put the four screws and spacers in the four holes at the 
 bottom rear of the robot directly behind the battery pack.
 
+### Motor and Power Connections
+
+![](../img/power-connections.jpg)
+
 ### Wire Management
 
 ![](../img/a16-wires-under-robot.jpg)
