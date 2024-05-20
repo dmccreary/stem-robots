@@ -10,6 +10,7 @@ nav:
   - About This Website: about.md
   - Robot Description: robot-description.md
   - Gallery: gallery/index.md
+  - Great Ways To Teach: great-ways-to-teach.md
   - Getting Started:
     - setup/index.md
     - setup/05-thonny-installation.md
