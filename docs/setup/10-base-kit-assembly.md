@@ -53,14 +53,26 @@ We mount the motors with the wires on the inside and the heads of the bolts on t
 
 This photo shows cable ties I have added so that the wires don't get pulled out by our students.  These cable ties are optional.
 
+
+
+![](../img/a8-robot-rear.jpg)
+
+### Battery Pack on Bottom
+
+We like to mount the battery pack on the bottom.  This leaves more
+room on the top for customization and a breadboard.
+
 Next, we position the battery pack on the BOTTOM so 
 that we have more room on the top for our circuit board, 
 sensors and add-on displays.
 
-![](../img/a7-pico-bot-underside.jpg)
+The rear of the robot with battery pack mounted.
 
-### Rear of robot with battery pack mounted.
-![](../img/a8-robot-rear.jpg)
+![](../img/a6-drill-battery-pack-hold.jpg)
+
+![](../img/a7-battery-on-bottom.jpg)
+
+![](../img/a8-battery-screw.jpg)
 
 ### Mounting the Drag Wheel
 Next, we put the four screws and spacers in the four holes at the 
