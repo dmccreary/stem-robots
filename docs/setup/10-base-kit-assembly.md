@@ -27,7 +27,7 @@ Robot configured with Time-of-Flight distance sensor:
 
 ![](../img/maker-pi-rp2040-tof-robot.jpg)
 
-Bottom View of robot with the batteries mounted on the bottom.
+Bottom view of the robot with the batteries mounted on the bottom.
 ![](../img/maker-pi-rp2040-robot-bottom.jpg)
 
 In this version of the kit, the wires are pre-soldered onto the motors.
@@ -81,7 +81,6 @@ Next, line up the printed circuit board with the USB connector facing the rear. 
 ![](../img/a9-rear-top-view.jpg)
 
 I used a 1/8th inch drill bit to put holes where the battery pack should be mounted.
-![](../img/IMG_0164.jpg)
 
 Next, I put the flat-head screws in the battery pack.  We want to make sure the top of the screw is all the way in so that it does not get in the way of the battery.
 
