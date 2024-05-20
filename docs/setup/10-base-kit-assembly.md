@@ -103,6 +103,10 @@ not need to be used.
 
 ![](../img/a12-optional-power-switch.jpg)
 
+### Mounting 
+
+![](../img/maker-pi-rp2040-bottom-view.jpeg)
+
 Next, we mount the rubber feet on the bottom of the Maker Pi RP2040 circuit board so that we have some space between the PC board and the main chassis.  I use the space next to the four corners to mount the feet.  Note that we must put the drag wheel on before we put the PC board on top of the chassis.
 
 Now is a good time to check the spacing of the battery pack and the read drag wheel.  The rear drag wheel must be able to spin freely in a full circle without bumping into the battery.  If it bumps you might need to remount the battery pack before you proceed to the next step.
