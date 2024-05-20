@@ -149,6 +149,4 @@ Here is a short video of the assembly of a SmartCar Chassis.  Note that this vid
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lgCERugoVL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-![](../../img/maker-pi-rp2040-robot-bottom.jpg)
 There are many videos online how to assemble to motors to the chassis.  The trick is orienting the motors correctly and making sure the bolts don't get in the way of the wheels.
-
