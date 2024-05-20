@@ -23,11 +23,11 @@ You will need to provide 4 AA batteries and a Micro USB connector that works wit
 
 ## Assemble the SmartCar Chassis
 
-Robot configured with Time-of-Flight distance sensor:
+Robot configured with Time-of-Flight distance sensor.
 
 ![](../img/maker-pi-rp2040-tof-robot.jpg)
 
-Bottom view of the robot with the batteries mounted on the bottom.
+Here is the bottom view of the robot with the batteries mounted on the bottom.
 ![](../img/maker-pi-rp2040-robot-bottom.jpg)
 
 In this version of the kit, the wires are pre-soldered onto the motors.
@@ -99,22 +99,18 @@ This figure has the switch that comes with the battery pack.  For our work, we w
 
 This photo shows the holes drilled with the screws in them.
 
-This is the side-view from the rear of the screws holding on the circuit board.
+This is the side view from the rear of the screws holding on the circuit board.
 ![](../img/a14-rear-side-view.jpg)
 
 Next use two 6 mm M3 screws to mount the ultrasonic distance sensor on top front of the robot.
 
 Some of our students like to mount the ultrasonic sensor under the chassis and point the sensor up a little so the sensor does not reflect off the floor.  You can use a heat gun to soften the plastic mount to change the angle.
 
-Next I added a drop of hot-glue under the front screws that mount the pc board.  I did this because the battery pack and motor mounts get in the way of adding a nut under the board.
+Next, I added a drop of hot glue under the front screws that mount the pc board.  I did this because the battery pack and motor mounts get in the way of adding a nut under the board.
 
+I used a small rubber-coated twist tie to keep the wires under the robot away from the wheels and battery.  We don't want them to drag on the floor.
 
-Next, I used a small rubber coated twist tie to keep the wires under the robot away from the wheels and battery.  We don't want them to drag on the floor.
-
-
-![](../../img/maker-pi-rp2040-robot-bottom.jpg)
-
-Next, we connect the motors up to the screw headers on the printed circuit board.  There is a screwdriver that comes with the Cytron Maker Pi RP2040 that is handy for tightening the screws.
+Next, we connect the motors to the screw headers on the printed circuit board.  There is a screwdriver that comes with the Cytron Maker Pi RP2040 that is handy for tightening the screws.
 
 Don't worry about getting the connections all correct.  They can be adjusted in your software.
 
@@ -135,7 +131,7 @@ bottom rear of the robot directly behind the battery pack.
 
 We then add the four screws to mount the drag wheel.
 
- ![Maker Pi RP2040 Motor Connections](../../img/maker-pi-rp2040-motor-connections.jpg)
+ ![Maker Pi RP2040 Motor Connections](../img/maker-pi-rp2040-motor-connections.jpg)
 
 Here is a short video of the assembly of a SmartCar Chassis.  Note that this video puts the battery on the top, where we put it on the bottom.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lgCERugoVL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
