@@ -38,7 +38,7 @@ nav:
     - Introduction: sims/index.md
     - H-Bridge: sims/h-bridge/index.md
     - Pulse Width Modulation: sims/pwm/index.md
-    - Collision Avoidance: sims/collision-avoidance.md
+    - Collision Avoidance: sims/collision-avoidance/index.md
   - Kits:
     - Base Robot: kits/base/index.md
     - Display Robot: kits/display/index.md
