@@ -14,13 +14,13 @@ function setup() {
   textSize(16);
 
   dutyCycleSlider = createSlider(0, 1, 0.5, 0.01); // Range from 0 to 1, default value 0.5, step size 0.01
-  dutyCycleSlider.position(leftSliderMargin, canvasHeight - 55); // Position slider
+  dutyCycleSlider.position(leftSliderMargin, canvasHeight - 47); // Position slider
   dutyCycleSlider.size(canvasWidth - leftSliderMargin - 20); // Set width of slider
 
   // Create and position the "Fill" checkbox
   fill('white');
   fillCheckbox = createCheckbox('', true);
-  fillCheckbox.position(17, canvasHeight - 35);
+  fillCheckbox.position(23, canvasHeight - 28);
 }
 
 function draw() {
