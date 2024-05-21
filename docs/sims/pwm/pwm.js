@@ -9,8 +9,8 @@ let leftSliderMargin = 155; // at 16 point font
 
 function setup() {
   const canvas = createCanvas(canvasWidth, canvasHeight);
-  // uncomment if you are placing in an HTML page
-  // canvas.parent('canvas-container');
+  var mainElement = document.querySelector('main');
+  canvas.parent(mainElement);
   textSize(16);
 
   dutyCycleSlider = createSlider(0, 1, 0.5, 0.01); // Range from 0 to 1, default value 0.5, step size 0.01
