@@ -143,6 +143,10 @@ bottom rear of the robot directly behind the battery pack.
 
 ### Motor and Power Connections
 
+Connections of the two DC motors and 4AA battery pack:
+![Maker Pi RP2040 Motor Connections](../img/maker-pi-rp2040-motor-connections.jpg)
+
+LiPi battery connection:
 ![](../img/power-connections.jpg)
 
 ### Wire Management
@@ -151,7 +155,7 @@ bottom rear of the robot directly behind the battery pack.
 
 We then add the four screws to mount the drag wheel.
 
- ![Maker Pi RP2040 Motor Connections](../img/maker-pi-rp2040-motor-connections.jpg)
+
 
 Here is a short video of the assembly of a SmartCar Chassis.  Note that this video puts the battery on the top, where we put it on the bottom.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lgCERugoVL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
