@@ -19,7 +19,7 @@ nav:
     - setup/30-tof-sensor.md
   - Personas: personas.md
   - Lessons:
-    - Introduvtion: lessons/index.md
+    - Introduction: lessons/index.md
     - Robot Parts: lessons/03-robot-parts.md
     - Batteries: lessons/05-batteries.md
     - DC Motors: lessons/10-dc-motors.md
