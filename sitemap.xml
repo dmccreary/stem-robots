@@ -196,6 +196,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/collision-avoidence/</loc>
+         <lastmod>2024-05-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/h-bridge/</loc>
+         <lastmod>2024-05-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/stem-robots/sims/pwm/</loc>
          <lastmod>2024-05-21</lastmod>
          <changefreq>daily</changefreq>
