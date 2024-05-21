@@ -7,6 +7,8 @@
 
 [Link to Collision Avoidance Demo](./collision-avoidance-robot.html){ .md-button .md-button--primary }
 
+[Edit MicroSim](https://editor.p5js.org/dmccreary/sketches/OE3jdt40E)
+
 ## Sample Prompt
 
 ```linenums="0"
