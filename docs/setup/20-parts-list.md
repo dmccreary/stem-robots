@@ -7,8 +7,12 @@ But you can buy your own parts and assemble your own kits.
 
 ![](../img/smartcar-parts.png)
 
-The are many "Smart Car" kits available online retailers such as [eBay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=2WD+robot+smart+car+chasis), [Amazon](https://www.amazon.com/s?k=2WD+Smart+car+robot+chassis) and [Walmart](https://www.walmart.com/search?q=2WD+Smart+Car+Robot+Chassis).
+There are many "Smart Car" kits available online retailers such as [eBay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=2WD+robot+smart+car+chasis), [Amazon](https://www.amazon.com/s?k=2WD+Smart+car+robot+chassis) and [Walmart](https://www.walmart.com/search?q=2WD+Smart+Car+Robot+Chassis).
 Purchasing these kits in quantity 10 or more can help you save on shipping costs.
+
+Note that these kits often come with two black circular wheel encoders.  We
+do not use these parts and they can be discarded.  We also do not
+use the power switch since the Cytron board has its own power switch.
 
 Our preferred vendor is the [Cytron 2WD Smart Robot Car Chassis](https://www.cytron.io/p-2wd-smart-robot-car-chassis) at $4.80.
 
