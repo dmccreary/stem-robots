@@ -4,6 +4,8 @@
 
 [Run the Pulse-Width Modulation Demo](./pwm.html){ .md-button .md-button--primary }
 
+[Edit the MicroSim](https://editor.p5js.org/dmccreary/sketches/xaNSzbNLS)
+
 Pulse-width modulation is the way for microcontrollers to send a precise signal to a 
 device such as a motor controller to control motor speed.  PWM signals
 can also be used to change the brightness of an LED.
