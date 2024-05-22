@@ -103,8 +103,9 @@ not need to be used.
 
 ![](../img/a12-optional-power-switch.jpg)
 
-### Mounting 
+### Mounting Cytron Board
 
+![](../img/a10-rubber-feet.jpg)
 ![](../img/maker-pi-rp2040-bottom-view.jpeg)
 
 Next, we mount the rubber feet on the bottom of the Maker Pi RP2040 circuit board so that we have some space between the PC board and the main chassis.  I use the space next to the four corners to mount the feet.  Note that we must put the drag wheel on before we put the PC board on top of the chassis.

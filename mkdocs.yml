@@ -18,6 +18,7 @@ nav:
     - setup/20-parts-list.md
     - setup/30-tof-sensor.md
   - Personas: personas.md
+  - Topics: topics.md
   - Lessons:
     - Introduction: lessons/index.md
     - Robot Parts: lessons/03-robot-parts.md

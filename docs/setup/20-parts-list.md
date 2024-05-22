@@ -23,6 +23,8 @@ Note that the prices for these kits vary widely, so be careful what you purchase
 
 ## Cytron Motor Control Board
 
+![Cytron Motor Control Board](../img/maker-pi-rp2040-top-view.png)
+
 There are many robotics controllers available that can be programmed with MicroPython.
 But the one from Cytron stands out as having all the features we need for our
 STEM Robot, and at $12.00 it is a great value.
