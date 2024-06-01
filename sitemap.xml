@@ -116,6 +116,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/stem-robots/lessons/16-h-bridge/</loc>
+         <lastmod>2024-06-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/stem-robots/lessons/20-motor-speed/</loc>
          <lastmod>2024-06-01</lastmod>
          <changefreq>daily</changefreq>
