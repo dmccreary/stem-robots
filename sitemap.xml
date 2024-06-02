@@ -61,6 +61,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/stem-robots/base/</loc>
+         <lastmod>2024-06-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/stem-robots/gallery/</loc>
          <lastmod>2024-06-02</lastmod>
          <changefreq>daily</changefreq>
