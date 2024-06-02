@@ -8,6 +8,7 @@ repo_url: 'https://github.com/dmccreary/stem-robots'
 nav:
   - Home: index.md
   - About This Website: about.md
+  - Journey Map: journey-map.md
   - Robot Description: robot-description.md
   - Gallery: gallery/index.md
   - Great Ways To Teach: great-ways-to-teach.md
