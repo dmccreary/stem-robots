@@ -37,6 +37,8 @@ nav:
     - Ultrasonic Sensor: lessons/55-ultrasonic-sensors.md
     - Infrared Sensors: lessons/60-ir-sensors.md
     - Collision Avoidance: lessons/65-collision-avoidance.md
+  - Base Bot:
+    - Introduction: base/index.md
   - Sims:
     - Introduction: sims/index.md
     - H-Bridge: sims/h-bridge/index.md
