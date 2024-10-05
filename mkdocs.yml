@@ -22,6 +22,7 @@ nav:
   - Topics: topics.md
   - Lessons:
     - Introduction: lessons/index.md
+    - Lesson Order: lessons/01-lesson-order.md
     - Robot Parts: lessons/03-robot-parts.md
     - Batteries: lessons/05-batteries.md
     - DC Motors: lessons/10-dc-motors.md
