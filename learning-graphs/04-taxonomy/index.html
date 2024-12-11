@@ -539,6 +539,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    A Taxonomy of Concepts for STEM Robots
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -548,6 +559,61 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classified-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classified Responses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1022,6 +1088,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classified-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classified Responses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1039,6 +1149,54 @@
 
 
 <h1 id="a-taxonomy-of-concepts-for-stem-robots">A Taxonomy of Concepts for STEM Robots</h1>
+<h2 id="prompt">Prompt</h2>
+<p>Here is a cleaned up version of this CSV file.  Now please create a taxonomy with 10 classifiers for this list as well as one Miscellaneous classifier.  Return a list of each of the classifiers with a short classifier name (label) and a short description of each classifier.</p>
+<h2 id="response">Response</h2>
+<p><strong>Classifier List with Short Names and Descriptions</strong></p>
+<ol>
+<li><strong>CompThink</strong>: Foundational concepts in computational thinking and problem-solving strategies.</li>
+<li><strong>MicroPyProg</strong>: Core programming skills in MicroPython, including syntax, control structures, and functions.</li>
+<li><strong>BoardHW</strong>: Hardware fundamentals related to the Cytron RP2040 board, pin configurations, and wiring practices.</li>
+<li><strong>Actuators</strong>: Motor and servo control concepts, including setup, calibration, and pattern development.</li>
+<li><strong>Sensors</strong>: Sensor usage and integration, focusing on distance measurement, TOF sensors, and sensor data handling.</li>
+<li><strong>Displays</strong>: Working with OLED and other displays---initialization, drawing text, shapes, charts, and animations.</li>
+<li><strong>CommProto</strong>: Communication protocols such as I2C and SPI, including addressing, reading, and writing data.</li>
+<li><strong>ElecConstruct</strong>: Breadboarding, electronics assembly, power management, and extending hardware capabilities.</li>
+<li><strong>DebugData</strong>: Techniques for debugging, data logging, smoothing, and using tools for refinement and testing.</li>
+<li><strong>ProjMgmt</strong>: Project planning, design, iterative development, version control, and teamwork strategies.</li>
+<li><strong>Misc</strong>: Advanced topics and additional concepts like AI logic, classification, future sensors, and final review.</li>
+</ol>
+<h2 id="classified-responses">Classified Responses</h2>
+<p><a href="../stem-robots.csv">STEM Robots CSV File</a></p>
+<h2 id="workflow">Workflow</h2>
+<p><strong>Categorizing concepts</strong></p>
+<p>I'm mapping Computational Thinking and Algorithm Basics to ground-breaking computational thinking, while conceptual robotics introductions align with these foundational ideas. Physical Computing might blend hardware and computation.</p>
+<p><strong>Breaking down concepts</strong></p>
+<p>Sensors Overview fits into sensors, Motors Overview matches actuators, Display Overview aligns with displays, Controllers Overview ties to boards/hardware, and Cytron RP2040 Board is rooted in hardware fundamentals.</p>
+<p><strong>Deciding on category</strong></p>
+<p>I'm concluding that the 'Blink LED Lab' should be classified under MicroPyProg, as it involves coding to control hardware, specifically the board's LED, making it a coding exercise with a hardware application.</p>
+<p><strong>Mapping concepts</strong></p>
+<p>OK, let me see. 'Change NeoPixel Color' and 'Move LED Pixels' clearly belong to MicroPyProg, as they center on controlling software with hardware. Likewise, 'Play Sound' fits here due to its coding-hardware control emphasis.</p>
+<p><strong>Mapping concepts</strong></p>
+<p>I'm aligning each concept with its classifier: Drive Motor Forward and Drive Motor Reverse fit under actuators, I2C Bus Intro and SPI Bus Intro go to communication protocols, and Collision Avoid spans sensors and logic.</p>
+<p><strong>Piecing together concepts</strong></p>
+<p>Adjusting collision parameters and adding sensors clearly fall under sensors. Projects are classified with project management, while breadboarding is linked to electronics construction and robot assembly to hardware fundamentals.</p>
+<p><strong>Determining categories</strong></p>
+<p>OK, let me see: Robot wiring and power management fit electronics construction. Maker Pi Pins align with board hardware, while the Motor Driver Chip is key to controlling actuators.</p>
+<p><strong>Aligning with classifiers</strong></p>
+<p>I'm noting that wiring Tof and Oled sensors falls under sensors and displays. Coding LED blink, on/off, timing, and controlling NeoPixels and Motor Driver Chips align with MicroPyProg and actuators.</p>
+<p><strong>Categorizing sensor data</strong></p>
+<p>Representing sensor data, especially after a distance reading, logically fits under the Sensors category. This helps us refine our approach to capturing and categorizing data effectively.</p>
+<p><strong>Integrating collision logic</strong></p>
+<p>Collision Avoid Logic and setting collision limits align with sensors. DebugPrint, DebugLED, and DebugSound tie data handling to debug data. Data Types, Lists, and Dictionaries link to programming concepts.</p>
+<p><strong>Organizing concepts</strong></p>
+<p>I'm putting 'Import Modules' and 'Time Module' under MicroPyProg. Pin Config and Pull-Ups go to BoardHW. Motor encoders and gear ratios fit Actuators. Battery life and USB power management align with ElecConstruct.</p>
+<p><strong>Assigning concepts</strong></p>
+<p>Test Cycles relate to project iteration. I'm considering it under ProjMgmt for systematic development progress. Code refinement involves reiteration, fitting into ProjMgmt as part of iterative progress.</p>
+<p><strong>Focusing on project refinement</strong></p>
+<p>OK, let me see: Refine Mechanical and Share Results align with project management. Documenting code and maintaining coding style fit under best practices, streamlining our approach to iterative development.</p>
+<p><strong>Shifting focus</strong></p>
+<p>I'm aligning concepts with project management methods, adjusting our approach to iterative development. This helps guide towards successful outcomes and effective teamwork.</p>
 
 
 
