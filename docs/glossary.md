@@ -203,6 +203,7 @@ Light Emitting Diodes that can emit Red, Green, and Blue light, used in various 
 A custom chip created by the [Raspberry Pi Foundation](raspberry-pi-foundation) to power the [Raspberry Pi Pico](#raspberry-pi-pico).
 
 #### Raspberry Pi Foundation
+
 The company that builds the Raspberry Pi hardware and provides some software.
 
 #### Raspberry Pi Pico
