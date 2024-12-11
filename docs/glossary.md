@@ -214,6 +214,12 @@ The Pico was introduced in 2020 with a retail list price of $4.  It was a key de
 
 A dual-core microcontroller developed by Raspberry Pi, featuring 264K SRAM and 2MB of flash memory.
 
+#### Resolution
+
+The size of our OLED screen as measured in a width x height number.
+
+**Example:** Our 2.44" OLED displays have a resolution of 128x64 pixels.
+
 #### Rhizomatic Learning
 
 An approach to learning that uses a non-linear, organic process, where knowledge is interconnected and grows in multiple directions, much like a rhizome. 

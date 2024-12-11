@@ -15,6 +15,12 @@ nav:
   - Course Descriptions:
     - Introductions: course-descriptions/index.md
     - Two Hour Hands On: course-descriptions/two-hour-hands-on.md
+  - Learning Graphs:
+    - learning-graphs/index.md
+    - learning-graphs/01-course-description.md
+    - learning-graphs/02-enumeration.md
+    - learning-graphs/03-dependency.md
+    - learning-graphs/04-taxonomy.md
   - Getting Started:
     - setup/index.md
     - setup/05-thonny-installation.md
