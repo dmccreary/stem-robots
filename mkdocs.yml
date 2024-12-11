@@ -28,6 +28,7 @@ nav:
     - Lesson Order: lessons/01-lesson-order.md
     - Robot Parts: lessons/03-robot-parts.md
     - Batteries: lessons/05-batteries.md
+    - Config File: lessons/07-config-file.md
     - DC Motors: lessons/10-dc-motors.md
     - Motor Direction:  lessons/15-motor-direction.md
     - H-Bridge: lessons/16-h-bridge.md
@@ -50,7 +51,23 @@ nav:
     - Collision Avoidance: sims/collision-avoidance/index.md
   - Kits:
     - Introduction to Kits: kits/index.md
-    - Base Robot: kits/base/index.md
+    - Base Robot:
+      - Introduction: kits/base/index.md
+      - kits/base/01-testing-motor-connections.md
+      - kits/base/06-up-down-motor-lab.md
+      - kits/base/07-motor-connection-lab.md
+      - kits/base/07b-drive-square-lab.md
+      - kits/base/08-servo-lab.md
+      - kits/base/09-i2c-scanner-test.md
+      - kits/base/10-time-of-flight-lab.md
+      - kits/base/11-ping-lab.md
+      - kits/base/12-time-of-flight-sound-lab.md
+      - kits/base/20-collision-avoidance-robot.md
+      - kits/base/21-collision-avoidance-ping.md
+      - kits/base/23-microswitch-bot.md
+      - kits/base/24-ping-servo-meter.md
+      - kits/base/25-line-follower.md
+
     - Display Robot: kits/display/index.md
     - Bump Switches: kits/bump-switch/index.md
     - Line Follower: kits/line-follower/index.md
