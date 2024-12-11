@@ -12,13 +12,13 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/stem-robots/lessons/07-config-file/">
+        <link rel="canonical" href="https://dmccreary.github.io/stem-robots/sims/learning-graph/">
       
       
-        <link rel="prev" href="../05-batteries/">
+        <link rel="prev" href="../collision-avoidance/">
       
       
-        <link rel="next" href="../10-dc-motors/">
+        <link rel="next" href="../../kits/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Config File - STEM Robots</title>
+        <title>Learning Graph - STEM Robots</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hardware-configuration-file" class="md-skip">
+        <a href="#concept-graph-viewer" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Config File
+              Learning Graph
             
           </span>
         </div>
@@ -547,8 +547,6 @@
       
   
   
-    
-  
   
   
     
@@ -596,459 +594,29 @@
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
+  
+  
+    <a href="../../lessons/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     Lessons
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_12">
-            <span class="md-nav__icon md-icon"></span>
-            Lessons
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-lesson-order/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Lesson Order
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-robot-parts/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Robot Parts
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-batteries/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Batteries
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+        <span class="md-nav__icon md-icon"></span>
       
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Config File
-  </span>
+    </a>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Config File
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#standard-neopixel-blink" class="md-nav__link">
-    <span class="md-ellipsis">
-      Standard NeoPixel Blink
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#blink-using-config-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Blink Using Config File
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10-dc-motors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    DC Motors
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../15-motor-direction/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Motor Direction
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../16-h-bridge/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    H-Bridge
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../20-motor-speed/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Motor Speed
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../25-pwm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Pulse Width Modulation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../30-testing-motor-connections/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Motor Connections
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../35-dance/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Robot Dance
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../40-i2c-bus/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    I2C Bus
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../45-sensors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Sensors
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../50-tof-sensors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Time of Flight Sensor
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../55-ultrasonic-sensors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ultrasonic Sensor
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../60-ir-sensors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Infrared Sensors
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../65-collision-avoidance/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Collision Avoidance
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1103,58 +671,169 @@
       
   
   
+    
   
   
-    
-    
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
-  
-    <a href="../../sims/" class="md-nav__link">
+    
+    
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Sims
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_14" id="__nav_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            Sims
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h-bridge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    H-Bridge
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pwm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pulse Width Modulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collision-avoidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collision Avoidance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1347,32 +1026,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#standard-neopixel-blink" class="md-nav__link">
-    <span class="md-ellipsis">
-      Standard NeoPixel Blink
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#blink-using-config-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Blink Using Config File
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1389,80 +1042,8 @@
   
 
 
-<h1 id="hardware-configuration-file">Hardware Configuration File</h1>
-<p>This file defines all the hardware in a robot and the pin 
-assignments of the motors, sensors, speakers, and displays.</p>
-<p>Because most of our robots use the Cytron board, the
-pins are standardized for most of our kits.</p>
-<p>Using a configuration file has tradeoffs.  The pros
-is that it allows you to change a single file when
-you change the wiring in your robot.  All the
-example programs that use the config file
- will be automatically updated.</p>
-<p>The disadvantage is that it makes your programs
- a little more abstract.  New users will take
- some time to learn how to see how the configuration
- file is used to map a variable to the underlying
- hardware pins.</p>
-<p>## Sample Config File</p>
-<p>All of the hardware pins should be defined in this file.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">NEOPIXEL_PIN</span> <span class="o">=</span> <span class="mi">18</span>
-<span class="n">SPEAKER_PIN</span> <span class="o">=</span> <span class="mi">22</span>
-</code></pre></div></td></tr></table></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Make sure there are no spaces in front of the variable names.</p>
-</div>
-<p>Now in your main code you must do the following:</p>
-<ol>
-<li>Ddd the <code>import config</code> (without the .py)</li>
-<li>place the string <code>config.</code> in front of each variable.</li>
-</ol>
-<p>```python
- import config</p>
-<p># Get the data from the config file
-NUMBER_PIXELS = config.NUMBER_PIXELS
-NEOPIXEL_PIN = config.NEOPIXEL_PIN
-  ```</p>
-<p>By placing the <code>config</code> in front of the variable name, you
-  tell the Python interpreter to read the variable from that file.</p>
-<h3 id="standard-neopixel-blink">Standard NeoPixel Blink</h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>
-
-<span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">NEOPIXEL_PIN</span> <span class="o">=</span> <span class="mi">15</span>
-
-<span class="n">strip</span> <span class="o">=</span> <span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">NUMBER_PIXELS</span><span class="p">)</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">strip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># red=255, green and blue are 0</span>
-    <span class="n">strip</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>        <span class="c1"># send the data from RAM down the wire</span>
-    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>             <span class="c1"># keep on 1/10 of a second</span>
-    <span class="n">strip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># change the RAM back but don&#39;t resend the data</span>
-    <span class="n">strip</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="blink-using-config-file">Blink Using Config  File</h3>
+<h1 id="concept-graph-viewer">Concept Graph Viewer</h1>
+<p><a href="graph-viewer.html">View Graph</a></p>
 
 
 
@@ -1500,7 +1081,7 @@ NEOPIXEL_PIN = config.NEOPIXEL_PIN
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../05-batteries/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Batteries">
+          <a href="../collision-avoidance/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Collision Avoidance">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1510,20 +1091,20 @@ NEOPIXEL_PIN = config.NEOPIXEL_PIN
                 Previous
               </span>
               <div class="md-ellipsis">
-                Batteries
+                Collision Avoidance
               </div>
             </div>
           </a>
         
         
           
-          <a href="../10-dc-motors/" class="md-footer__link md-footer__link--next" aria-label="Next: DC Motors">
+          <a href="../../kits/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction to Kits">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                DC Motors
+                Introduction to Kits
               </div>
             </div>
             <div class="md-footer__button md-icon">
