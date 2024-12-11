@@ -55,6 +55,7 @@ nav:
     - H-Bridge: sims/h-bridge/index.md
     - Pulse Width Modulation: sims/pwm/index.md
     - Collision Avoidance: sims/collision-avoidance/index.md
+    - Learning Graph: sims/learning-graph/index.md
   - Kits:
     - Introduction to Kits: kits/index.md
     - Base Robot:
