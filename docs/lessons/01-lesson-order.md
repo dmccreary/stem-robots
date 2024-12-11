@@ -144,7 +144,8 @@ you have the following equipment:
 7. WS2816 LED strips (neopixels)
 
 List the 100 most important concepts that you would
-teach in your STEM Robots course.  For each concept,
+teach in your STEM Robots course that puts a focus
+on computational thinking.  For each concept,
 just return the name of the concept and a short definition.
 Return the 100 items in the order they should be taught
 in a class, with the simplest first to the most
