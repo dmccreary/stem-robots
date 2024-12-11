@@ -8,17 +8,17 @@ Here is a cleaned up version of this CSV file.  Now please create a taxonomy wit
 
 **Classifier List with Short Names and Descriptions**
 
-1.  **CompThink**: Foundational concepts in computational thinking and problem-solving strategies.
-2.  **MicroPyProg**: Core programming skills in MicroPython, including syntax, control structures, and functions.
-3.  **BoardHW**: Hardware fundamentals related to the Cytron RP2040 board, pin configurations, and wiring practices.
+1.  **Computational Thinking**: Foundational concepts in computational thinking and problem-solving strategies.
+2.  **MicroPython**: Core programming skills in MicroPython, including syntax, control structures, and functions.
+3.  **MicroController Board**: Hardware fundamentals related to the Cytron RP2040 board, pin configurations, and wiring practices.
 4.  **Actuators**: Motor and servo control concepts, including setup, calibration, and pattern development.
 5.  **Sensors**: Sensor usage and integration, focusing on distance measurement, TOF sensors, and sensor data handling.
 6.  **Displays**: Working with OLED and other displays---initialization, drawing text, shapes, charts, and animations.
-7.  **CommProto**: Communication protocols such as I2C and SPI, including addressing, reading, and writing data.
-8.  **ElecConstruct**: Breadboarding, electronics assembly, power management, and extending hardware capabilities.
-9.  **DebugData**: Techniques for debugging, data logging, smoothing, and using tools for refinement and testing.
-10.  **ProjMgmt**: Project planning, design, iterative development, version control, and teamwork strategies.
-11.  **Misc**: Advanced topics and additional concepts like AI logic, classification, future sensors, and final review.
+7.  **Communication Protocols**: Communication protocols such as I2C and SPI, including addressing, reading, and writing data.
+8.  **Beginning Electronics**: Breadboarding, electronics assembly, power management, and extending hardware capabilities.
+9.  **Debugging Tips**: Techniques for debugging, data logging, smoothing, and using tools for refinement and testing.
+10.  **Project Management**: Project planning, design, iterative development, version control, and teamwork strategies.
+11.  **Miscellaneous**: Advanced topics and additional concepts like AI logic, classification, future sensors, and final review.
 
 ## Classified Responses
 
