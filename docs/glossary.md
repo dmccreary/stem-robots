@@ -20,7 +20,7 @@ Every ADC has two parameters, its [resolution](#resolution), measured in digital
 #### BOOTSEL
 A button on the pico that when pressed during power up will allow you to mount the device as a USB drive.  You can then drag-and-drop any uf2 image file to reset or update the runtime libraries.
 
-![](../img/boot-selection.png)
+![](img/boot-selection.png)
 
 * Also known as: Boot Selection
 
@@ -30,7 +30,7 @@ A special form of copy operation; it copies a rectangular area of pixels from on
 #### Castellated Edge
 Plated through holes or vias located in the edges of a printed circuit board that make it easier to solder onto another circuit board.
 
-![](../img/castellated-edge.png)
+![](./img/castellated-edge.png)
 
 The word "Castellated" means having grooves or slots on an edge and is derived from the turrets of a castle.
 
@@ -177,7 +177,7 @@ Typical chips that control the OLED include the SSD1306 driver chips.
 #### PWM
 A type of output signal used to control items with continuous values.  For example, we use PWM to control the brightness of a light or the speed of a motor.  We use pulse-width modulation (PWM) to control the speed of our DC motors.
 
-![](../img/PWM-duty-cycle.png)
+![](./img/PWM-duty-cycle.png)
 
 #### Physical Computing
 
@@ -187,7 +187,7 @@ The process of using computers to read data from sensors about the world around 
 
 The Pico pinout diagram shows you the ways that each Pin can be used.  Different colors are used for GPIO numbers, I2C, and SPI interfaces.
 
-![](../img/pi-pico-pinout.png)
+![](./img/pi-pico-pinout.png)
 
 * [Pinout PDF](https://datasheets.raspberrypi.org/pico/Pico-R3-A4-Pinout.pdf)
 
