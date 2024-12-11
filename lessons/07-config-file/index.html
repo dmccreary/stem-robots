@@ -431,6 +431,59 @@
         
   
   
+    <a href="../../learning-graphs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graphs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
     <a href="../../setup/" class="md-nav__link">
       
   
@@ -548,7 +601,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
         
           
           
@@ -564,14 +617,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_11">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             Lessons
           </label>
@@ -658,6 +711,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Config File
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -667,6 +731,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#standard-neopixel-blink" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard NeoPixel Blink
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blink-using-config-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blink Using Config File
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1242,6 +1343,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#standard-neopixel-blink" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard NeoPixel Blink
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blink-using-config-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blink Using Config File
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1273,6 +1400,65 @@ example programs that use the config file
  some time to learn how to see how the configuration
  file is used to map a variable to the underlying
  hardware pins.</p>
+<p>## Sample Config File</p>
+<p>All of the hardware pins should be defined in this file.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">NEOPIXEL_PIN</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">SPEAKER_PIN</span> <span class="o">=</span> <span class="mi">22</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure there are no spaces in front of the variable names.</p>
+</div>
+<p>Now in your main code you must do the following:</p>
+<ol>
+<li>Ddd the <code>import config</code> (without the .py)</li>
+<li>place the string <code>config.</code> in front of each variable.</li>
+</ol>
+<p>```python
+ import config</p>
+<p># Get the data from the config file
+NUMBER_PIXELS = config.NUMBER_PIXELS
+NEOPIXEL_PIN = config.NEOPIXEL_PIN
+  ```</p>
+<p>By placing the <code>config</code> in front of the variable name, you
+  tell the Python interpreter to read the variable from that file.</p>
+<h3 id="standard-neopixel-blink">Standard NeoPixel Blink</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>
+
+<span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">NEOPIXEL_PIN</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="n">strip</span> <span class="o">=</span> <span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">NUMBER_PIXELS</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">strip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># red=255, green and blue are 0</span>
+    <span class="n">strip</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>        <span class="c1"># send the data from RAM down the wire</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>             <span class="c1"># keep on 1/10 of a second</span>
+    <span class="n">strip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># change the RAM back but don&#39;t resend the data</span>
+    <span class="n">strip</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="blink-using-config-file">Blink Using Config  File</h3>
 
 
 
