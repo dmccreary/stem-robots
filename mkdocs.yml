@@ -15,6 +15,7 @@ nav:
   - Course Descriptions:
     - Introductions: course-descriptions/index.md
     - Two Hour Hands On: course-descriptions/two-hour-hands-on.md
+    - 14 Week Course: course-descriptions/14-week-course.md
   - Learning Graphs:
     - learning-graphs/index.md
     - learning-graphs/01-course-description.md
@@ -26,6 +27,7 @@ nav:
     - setup/05-thonny-installation.md
     - setup/10-base-kit-assembly.md
     - setup/20-parts-list.md
+    - setup/25-cytron-maker-pi-rp2040.md
     - setup/30-tof-sensor.md
   - Personas: personas.md
   - Topics: topics.md
