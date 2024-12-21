@@ -93,8 +93,6 @@ nav:
 edit_uri: 'blob/master/docs'
 theme:
   name: material
-  extra_css:
-    - styles/custom.css
   logo: img/logo.png
   favicon: img/favicon.ico
   palette:
@@ -121,6 +119,8 @@ markdown_extensions:
   - attr_list
   - pymdownx.highlight:
       linenums: true
+extra_css:
+    - css/extra.css
 extra:
   analytics:
     provider: google
