@@ -52,12 +52,12 @@ nav:
     - Collision Avoidance: lessons/65-collision-avoidance.md
   - Base Bot:
     - Introduction: base/index.md
-  - Sims:
+  - MicroSims:
     - Introduction: sims/index.md
+    - Learning Graph: sims/learning-graph/index.md
     - H-Bridge: sims/h-bridge/index.md
     - Pulse Width Modulation: sims/pwm/index.md
     - Collision Avoidance: sims/collision-avoidance/index.md
-    - Learning Graph: sims/learning-graph/index.md
   - Kits:
     - Introduction to Kits: kits/index.md
     - Base Robot:
