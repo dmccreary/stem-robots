@@ -171,10 +171,10 @@ By [June of 2021](https://dmccreary.medium.com/raspberry-pi-pico-robot-in-microp
 out robot kits to our COVID-era students in their homes.
 
 Much of the content for this site has migrated from
-the amazing [MicroPython for Kids](https://www.coderdojotc.org/micropython/)
+the amazing [MicroPython for Kids](https://www.dmccreary.github.io/micropython/)
 website.  Although there is a lot of useful content
 on that site, some of our most popular STEM robot
-content has got buried deep within the [Kits](https://www.coderdojotc.org/micropython/kits/maker-pi-rp2040-robot/) structures.  So we decided that
+content has got buried deep within the [Kits](https://www.dmccreary.github.io/micropython/kits/maker-pi-rp2040-robot/) structures.  So we decided that
 the STEM robot really needed its own separate site.  Our
 site will still link to the relevant pages on that site.
 

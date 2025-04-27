@@ -42,7 +42,7 @@ Computational thinking encompasses skills such as algorithmic thinking, pattern 
 
 The lesson plans on this site put a strong focus on increasing computational thinking skills.  Many lessons start with a difficult problem and then proceed to divide the problem into smaller components.
 
-[CoderDojo Computational Thinking Page](https://www.coderdojotc.org/CoderDojoTC/computational-thinking/)
+[Computational Thinking Page](./instructors-guide/computational-thinking.md)
 
 #### Cytron Maker Pi RP2040
 
@@ -279,5 +279,5 @@ A specific model of a time-of-flight distance sensor that uses the I2C protocol 
 
 ## References
 
-* [MicroPython for Kids Glossary](https://www.coderdojotc.org/micropython/misc/glossary/)#### rshell
+* [MicroPython for Kids Glossary](https://dmccreary.github.io/micropython/misc/glossary/)#### rshell
 * [MicroPython Glossary](https://docs.micropython.org/en/latest/reference/glossary.html)

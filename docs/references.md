@@ -4,7 +4,7 @@
 
 This is the original website that we built for our students.  It has hundreds of step-by-step tutorials on learning how to use MicroPython to write programs that control robots.
 
-[MicroPython for Kids Website](https://www.coderdojotc.org/micropython/)
+[MicroPython for Kids Website](https://www.dmccreary.github.io/micropython/)
 
 ## Introduction to Python with Trinket
 
