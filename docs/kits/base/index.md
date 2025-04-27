@@ -6,7 +6,7 @@ This is our classic low-cost robot that can be purchased for around $19 each and
 [Cytron Maker Pi RP2040] board that is programmed by the same
 software that powers the Raspberry Pi Pico.
 
-[MicroPython for Kids](https://www.dmccreary.github.io/micropython/kits/maker-pi-rp2040-robot/)
+[MicroPython for Kids](https://dmccreary.github.io/micropython/micropython/kits/maker-pi-rp2040-robot/)
 
 # Introduction to the Base STEM Robot
 

@@ -35,16 +35,17 @@ that provides a measurable improvement in STEM engagement and interest in coding
 We use ChatGPT to come up with a way to measure the value of a STEM robotics
 system.  Here is the prompt:
 
-```linenums="0"
-Our school is fed up with vendors trying to sell us $350 STEM
-robots kits that use cheep parts and batteries that are not
-replaceable. How can we come up with a simple set of objective
-measures to rate the quality of STEM robots?  Include the
-quality of instruction manuals and curriculum that can be
-customized to the needs of teachers, volunteers and students.
+!!! prompt
+    Our school is fed up with vendors trying to sell us $350 STEM
+    robots kits that use cheep parts and batteries that are not
+    replaceable. How can we come up with a simple set of objective
+    measures to rate the quality of STEM robots?  Include the
+    quality of instruction manuals and curriculum that can be
+    customized to the needs of teachers, volunteers and students.
 
-Return the results in markdown level three headers.
-```
+    Return the results in markdown level three headers.
+
+## Response
 
 Here is the response:
 
@@ -171,10 +172,10 @@ By [June of 2021](https://dmccreary.medium.com/raspberry-pi-pico-robot-in-microp
 out robot kits to our COVID-era students in their homes.
 
 Much of the content for this site has migrated from
-the amazing [MicroPython for Kids](https://www.dmccreary.github.io/micropython/)
+the amazing [MicroPython for Kids](https://dmccreary.github.io/micropython/)
 website.  Although there is a lot of useful content
 on that site, some of our most popular STEM robot
-content has got buried deep within the [Kits](https://www.dmccreary.github.io/micropython/kits/maker-pi-rp2040-robot/) structures.  So we decided that
+content has got buried deep within the [Kits](https://dmccreary.github.io/micropython/micropython/kits/maker-pi-rp2040-robot/) structures.  So we decided that
 the STEM robot really needed its own separate site.  Our
 site will still link to the relevant pages on that site.
 
@@ -260,5 +261,17 @@ Here is a summary of what we learned:
 
 Good Luck!
 
+## References
 
+- [Sustainable Classroom Robots](https://dmccreary.medium.com/sustainable-classroom-robots-ea2399bb7abc) - Sustainable Classroom Robots - May 21, 2021
+- [Raspberry Pi Pico Robot in Micropython](https://dmccreary.medium.com/raspberry-pi-pico-robot-in-micropython-51f956486270) - Sustainable Classroom Robots - Jun 6, 2021
+- [The Cytron Maker Pi RP2040 Robotics Board](https://dmccreary.medium.com/the-cytron-maker-pi-rp2040-robotics-board-b1dc7f0eab34) - Dan McCeary's Medium Post - Aug 29, 2021
+
+- [A 3D-Printed Mount for Time-of-Flight Distance Sensors](https://dmccreary.medium.com/a-3d-printed-mount-for-time-of-flight-distance-sensor-8acea5480709) - Dan McCeary's Medium Post - Sep 7, 2021
+
+- [Our 2023 STEM Robot Update](https://medium.com/better-programming/our-2023-stem-robot-update-7bcf8a2fad2e) -  Dan McCeary's Medium Post - Apr 16, 2023
+
+- [Raspberry Pi Pico Collision Avoidance Robot Programed with Micropython for Coding Clubs](https://www.youtube.com/watch?v=0d3tF1oXu90) - YouTube Video 
+
+- [Doug Blanding GitHub Side](https://github.com/dblanding/Pico-MicroPython-smart-car?tab=readme-ov-file)
 
