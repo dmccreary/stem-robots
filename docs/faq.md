@@ -1,7 +1,6 @@
 # STEM Robotics Frequently Asked Questions (FAQ)
 
 
-
 ## Can we print our own robot chassis using a 3D printer?
 
 Yes!  We have samples here:
