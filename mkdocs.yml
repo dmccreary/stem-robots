@@ -98,6 +98,9 @@ nav:
     - Line Follower: kits/line-follower/index.md
     - Adjustabot: kits/adjust/index.md
     - Ultrasonic: kits/ultrasonic/index.md
+  - Instructors Guide: 
+    - Intro: instructors-guide/index.md
+    - Computational Thinking: instructors-guide/computational-thinking.md
   - FAQ: faq.md
   - Glossary: glossary.md
   - References: references.md

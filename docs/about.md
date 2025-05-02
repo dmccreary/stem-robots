@@ -105,7 +105,7 @@ Why did they skimp on quality and cause their kits to break so easily?
 
 This was the first step on our journey.
 
-## Our First Robot
+### Our First Robot
 
 ![](./img/4-wheeler.jpg)
 
@@ -124,7 +124,7 @@ It was a hit!  But looking back, all those wires were difficult for the
 kids to get right.  Pulling one wire out would make the robot
 stop working.
 
-## The Uno Robot: Cutting Costs and Increasing Content
+### The Uno Robot: Cutting Costs and Increasing Content
 
 ![](./img/uno-robot.jpg)
 
@@ -151,7 +151,7 @@ Python which had become the de facto first language
 for most high schools  The change finally happened
 in [January 2021](https://www.raspberrypi.com/news/raspberry-pi-silicon-pico-now-on-sale/)!
 
-## The Switch to Raspberry Pi Pico and MicroPython
+### The Switch to Raspberry Pi Pico and MicroPython
 
 ![](./img/pico-bot.jpg)
 
@@ -186,7 +186,7 @@ This little "oversight" cause endless hours of headache
 by forcing us to put colored marks on all our breadboards
 and print out pin diagrams.  But wait.  There is more!
 
-## The Cytron RP2040 Board
+### The Cytron RP2040 Board
 
 ![](./img/maker-pi-rp2040-tof-robot.jpg)
 
@@ -203,7 +203,7 @@ that could go wrong.  We have eliminated
 all the need for soldering.  We could now spend more time
 learning to code and teach computational thinking.
 
-## The Time of Flight Sensor
+### The Time of Flight Sensor
 
 ![](./img/time-of-flight-sensor-mounted.jpg)
 
@@ -216,7 +216,7 @@ and response times that are far better then
 the ultrasonic sensors.  They are also about
 the same price - about $3 each.
 
-## The Rise of Generative AI
+### The Rise of Generative AI
 
 In December of 2022, ChatGPT rocked the world by
 being able to generate large blocks of high-quality 
@@ -229,7 +229,7 @@ on how to [generate highly personalized lesson plans](https://dmccreary.medium.c
 for not just STEM robotics classes but for many
 other topics in schools.
 
-## Adding MicroSims
+### Adding MicroSims
 
 ![](./img/pwm-microsim.png)
 
@@ -255,7 +255,7 @@ Here is a summary of what we learned:
 2. Vendors focus on selling you new robots, not building maintainable STEM robots
 3. Using interchangeable parts will lower your maintenance and repair costs
 4. Teach breadboarding skills early
-5. Python rocks
+5. Python rocks - it is the language that kids want to learn and the language of data science and AI
 6. Generating lesson plans, sample code, and simulations is revolutionizing STEM robots
 7. Invest in your community and support open-source content
 
