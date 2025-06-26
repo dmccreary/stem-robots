@@ -30,7 +30,7 @@ A special form of copy operation; it copies a rectangular area of pixels from on
 #### Castellated Edge
 Plated through holes or vias located in the edges of a printed circuit board that make it easier to solder onto another circuit board.
 
-![](img/castellated-edge.png)
+![](../img/castellated-edge.png)
 
 The word "Castellated" means having grooves or slots on an edge and is derived from the turrets of a castle.
 
@@ -42,7 +42,7 @@ Computational thinking encompasses skills such as algorithmic thinking, pattern 
 
 The lesson plans on this site put a strong focus on increasing computational thinking skills.  Many lessons start with a difficult problem and then proceed to divide the problem into smaller components.
 
-[CoderDojo Computational Thinking Page](https://www.coderdojotc.org/CoderDojoTC/computational-thinking/)
+[Computational Thinking Page](./instructors-guide/computational-thinking.md)
 
 #### Cytron Maker Pi RP2040
 
@@ -177,7 +177,7 @@ Typical chips that control the OLED include the SSD1306 driver chips.
 #### PWM
 A type of output signal used to control items with continuous values.  For example, we use PWM to control the brightness of a light or the speed of a motor.  We use pulse-width modulation (PWM) to control the speed of our DC motors.
 
-![](img/PWM-duty-cycle.png)
+![](../img/PWM-duty-cycle.png)
 
 #### Physical Computing
 
@@ -187,7 +187,7 @@ The process of using computers to read data from sensors about the world around 
 
 The Pico pinout diagram shows you the ways that each Pin can be used.  Different colors are used for GPIO numbers, I2C, and SPI interfaces.
 
-![](img/pi-pico-pinout.png)
+![](../img/pi-pico-pinout.png)
 
 * [Pinout PDF](https://datasheets.raspberrypi.org/pico/Pico-R3-A4-Pinout.pdf)
 
@@ -203,6 +203,7 @@ Light Emitting Diodes that can emit Red, Green, and Blue light, used in various 
 A custom chip created by the [Raspberry Pi Foundation](raspberry-pi-foundation) to power the [Raspberry Pi Pico](#raspberry-pi-pico).
 
 #### Raspberry Pi Foundation
+
 The company that builds the Raspberry Pi hardware and provides some software.
 
 #### Raspberry Pi Pico
@@ -213,6 +214,12 @@ The Pico was introduced in 2020 with a retail list price of $4.  It was a key de
 #### Raspberry Pi RP2040
 
 A dual-core microcontroller developed by Raspberry Pi, featuring 264K SRAM and 2MB of flash memory.
+
+#### Resolution
+
+The size of our OLED screen as measured in a width x height number.
+
+**Example:** Our 2.44" OLED displays have a resolution of 128x64 pixels.
 
 #### Rhizomatic Learning
 
@@ -272,5 +279,5 @@ A specific model of a time-of-flight distance sensor that uses the I2C protocol 
 
 ## References
 
-* [MicroPython for Kids Glossary](https://www.coderdojotc.org/micropython/misc/glossary/)#### rshell
+* [MicroPython for Kids Glossary](https://dmccreary.github.io/micropython/misc/glossary/)#### rshell
 * [MicroPython Glossary](https://docs.micropython.org/en/latest/reference/glossary.html)
