@@ -1,3 +1,3 @@
 # Bump Switch Robot
 
-https://www.coderdojotc.org/micropython/kits/maker-pi-rp2040-robot/23-microswitch-bot/
+https://dmccreary.github.io/micropython/micropython/kits/maker-pi-rp2040-robot/23-microswitch-bot/

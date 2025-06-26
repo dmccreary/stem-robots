@@ -274,7 +274,7 @@ A specific model of a time-of-flight distance sensor that uses the I2C protocol 
 
 ## References
 
-[MicroPython for Kids Glossary](https://www.coderdojotc.org/micropython/misc/glossary/)#### rshell
+[MicroPython for Kids Glossary](https://dmccreary.github.io/micropython/micropython/misc/glossary/)#### rshell
 
 A MicroPython shell that runs on the host and uses MicroPython's raw-REPL to send python snippets to the pyboard in order to get filesystem information, and to copy files to and from MicroPython's filesystem.
 

@@ -13,11 +13,22 @@ nav:
   - Robot Description: robot-description.md
   - Gallery: gallery/index.md
   - Great Ways To Teach: great-ways-to-teach.md
+  - Course Descriptions:
+    - Introductions: course-descriptions/index.md
+    - Two Hour Hands On: course-descriptions/two-hour-hands-on.md
+    - 14 Week Course: course-descriptions/14-week-course.md
+  - Learning Graphs:
+    - learning-graphs/index.md
+    - learning-graphs/01-course-description.md
+    - learning-graphs/02-enumeration.md
+    - learning-graphs/03-dependency.md
+    - learning-graphs/04-taxonomy.md
   - Getting Started:
     - setup/index.md
     - setup/05-thonny-installation.md
     - setup/10-base-kit-assembly.md
     - setup/20-parts-list.md
+    - setup/25-cytron-maker-pi-rp2040.md
     - setup/30-tof-sensor.md
   - Personas: personas.md
   - Topics: topics.md
@@ -26,6 +37,7 @@ nav:
     - Lesson Order: lessons/01-lesson-order.md
     - Robot Parts: lessons/03-robot-parts.md
     - Batteries: lessons/05-batteries.md
+    - Config File: lessons/07-config-file.md
     - DC Motors: lessons/10-dc-motors.md
     - Motor Direction:  lessons/15-motor-direction.md
     - H-Bridge: lessons/16-h-bridge.md
@@ -41,13 +53,31 @@ nav:
     - Collision Avoidance: lessons/65-collision-avoidance.md
   - Base Bot:
     - Introduction: base/index.md
-  - Sims:
+  - MicroSims:
     - Introduction: sims/index.md
+    - Learning Graph: sims/learning-graph/index.md
     - H-Bridge: sims/h-bridge/index.md
     - Pulse Width Modulation: sims/pwm/index.md
     - Collision Avoidance: sims/collision-avoidance/index.md
   - Kits:
-    - Base Robot: kits/base/index.md
+    - Introduction to Kits: kits/index.md
+    - Base Robot:
+      - Introduction: kits/base/index.md
+      - kits/base/01-testing-motor-connections.md
+      - kits/base/06-up-down-motor-lab.md
+      - kits/base/07-motor-connection-lab.md
+      - kits/base/07b-drive-square-lab.md
+      - kits/base/08-servo-lab.md
+      - kits/base/09-i2c-scanner-test.md
+      - kits/base/10-time-of-flight-lab.md
+      - kits/base/11-ping-lab.md
+      - kits/base/12-time-of-flight-sound-lab.md
+      - kits/base/20-collision-avoidance-robot.md
+      - kits/base/21-collision-avoidance-ping.md
+      - kits/base/23-microswitch-bot.md
+      - kits/base/24-ping-servo-meter.md
+      - kits/base/25-line-follower.md
+
     - Display Robot: kits/display/index.md
     - Bump Switches: kits/bump-switch/index.md
     - Line Follower: kits/line-follower/index.md
@@ -60,12 +90,10 @@ nav:
   - Contact: contact.md
 
  
-# CoderDojo Microsite Standards from here down
+# Dan's Microsite Standards from here down
 edit_uri: 'blob/master/docs'
 theme:
   name: material
-  extra_css:
-    - styles/custom.css
   logo: img/logo.png
   favicon: img/favicon.ico
   palette:
@@ -92,6 +120,8 @@ markdown_extensions:
   - attr_list
   - pymdownx.highlight:
       linenums: true
+extra_css:
+    - css/extra.css
 extra:
   analytics:
     provider: google
