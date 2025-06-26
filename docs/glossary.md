@@ -1,4 +1,4 @@
-## STEM Robots Glossary of Terms
+# STEM Robots Glossary of Terms
 
 If you are new to STEM robotics, this glossary is a good place to review your terminology.
 
