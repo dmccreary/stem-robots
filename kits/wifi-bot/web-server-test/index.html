@@ -1,0 +1,2765 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/stem-robots/kits/wifi-bot/web-server-test/">
+      
+      
+        <link rel="prev" href="../05-simple-web-server/">
+      
+      
+        <link rel="next" href="../../display/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Web Server Test - STEM Robots</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-6SSB9XBXM9"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-6SSB9XBXM9",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-6SSB9XBXM9",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#web-server-test" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="STEM Robots" class="md-header__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            STEM Robots
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Web Server Test
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="STEM Robots" class="md-nav__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    STEM Robots
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../journey-map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Journey Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../robot-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robot Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../gallery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gallery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../great-ways-to-teach/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Great Ways To Teach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../course-descriptions/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Course Descriptions
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graphs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graphs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../setup/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../personas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Topics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../lessons/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../base/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Base Bot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Kits
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_16" id="__nav_16_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            Kits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../base/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Base Robot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Wireless Bot
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_16_3" id="__nav_16_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16_3">
+            <span class="md-nav__icon md-icon"></span>
+            Wireless Bot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-ping-test-slow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ping Test Slow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-ping-test-fast/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ping Test Fast
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-simple-web-server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simple Web Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Web Server Test
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Web Server Test
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#thonny-console-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thonny Console Log
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../display/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Display Robot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bump-switch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bump Switches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../line-follower/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Line Follower
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adjust/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adjustabot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ultrasonic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ultrasonic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact.md
+- instructors-guide/index.md - instructors-guide/computational-thinking.md
+- lessons/70-using-perf-boards.md - prompts/index.md - sims/template/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#thonny-console-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thonny Console Log
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="web-server-test">Web Server Test</h1>
+<p>In this lab we will create a web interface to test all your robot's hardware:</p>
+<ol>
+<li>LED control with visual feedback</li>
+<li>NeoPixel colors with real-time status updates</li>
+<li>Speaker tones at different frequencies</li>
+<li>Motor movements with automatic 2-second safety timeouts</li>
+<li>Emergency stop functionality</li>
+</ol>
+<p>The debugging output in the Thonny console should also help you understand exactly what's happening when each command is executed. This makes it a great development and testing tool for your STEM robot project.</p>
+<p><img alt="Web Test Form" src="../web-test-form.png" /></p>
+<h2 id="thonny-console-log">Thonny Console Log</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; %Run -c $EDITOR_CONTENT
+
+MPY: soft reboot
+Robot Web Server Test Interface
+===================================
+NeoPixels set to off
+Connecting to WiFi Network: anndan
+Powering up WiFi chip...
+Connection attempt 1/10
+
+
+==================================================
+WIFI CONNECTION SUCCESSFUL!
+==================================================
+IP Address: 10.0.0.57
+Network: anndan
+==================================================
+
+Web server started!
+Open your browser and go to: http://10.0.0.57
+Robot control interface ready!
+==================================================
+Client connected from (&#39;10.0.0.2&#39;, 58686)
+Full request received (482 bytes)
+Client connected from (&#39;10.0.0.2&#39;, 58687)
+Full request received (420 bytes)
+Unknown request: GET /favicon.ico HTTP/1.1
+Host: 10.0.0.57
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control:...
+Client connected from (&#39;10.0.0.2&#39;, 58688)
+Full request received (422 bytes)
+POST request received, length: 422
+Request body: &#39;cmd=toggle_led&#39;
+Executing command: &#39;toggle_led&#39;
+LED turned ON
+Command &#39;toggle_led&#39; executed successfully
+Client connected from (&#39;10.0.0.2&#39;, 58690)
+Full request received (493 bytes)
+Client connected from (&#39;10.0.0.2&#39;, 58691)
+Full request received (422 bytes)
+POST request received, length: 422
+Request body: &#39;cmd=toggle_led&#39;
+Executing command: &#39;toggle_led&#39;
+LED turned OFF
+Command &#39;toggle_led&#39; executed successfully
+Client connected from (&#39;10.0.0.2&#39;, 58692)
+Full request received (424 bytes)
+POST request received, length: 424
+Request body: &#39;cmd=neopixel_red&#39;
+Executing command: &#39;neopixel_red&#39;
+NeoPixels set to red
+Command &#39;neopixel_red&#39; executed successfully
+Client connected from (&#39;10.0.0.2&#39;, 58693)
+Full request received (493 bytes)
+Client connected from (&#39;10.0.0.2&#39;, 58694)
+Full request received (426 bytes)
+POST request received, length: 426
+Request body: &#39;cmd=neopixel_green&#39;
+Executing command: &#39;neopixel_green&#39;
+NeoPixels set to green
+Command &#39;neopixel_green&#39; executed successfully
+Client connected from (&#39;10.0.0.2&#39;, 58698)
+Full request received (425 bytes)
+POST request received, length: 425
+Request body: &#39;cmd=neopixel_blue&#39;
+Executing command: &#39;neopixel_blue&#39;
+NeoPixels set to blue
+Command &#39;neopixel_blue&#39; executed successfully
+Client connected from (&#39;10.0.0.2&#39;, 58699)
+Full request received (424 bytes)
+POST request received, length: 424
+Request body: &#39;cmd=neopixel_off&#39;
+Executing command: &#39;neopixel_off&#39;
+NeoPixels set to off
+Command &#39;neopixel_off&#39; executed successfully
+Client connected from (&#39;10.0.0.2&#39;, 58700)
+Full request received (421 bytes)
+POST request received, length: 421
+Request body: &#39;cmd=play_tone&#39;
+Executing command: &#39;play_tone&#39;
+Played tone: 1000Hz for 0.5s
+Command &#39;play_tone&#39; executed successfully
+Client connected from (&#39;10.0.0.2&#39;, 58701)
+Full request received (424 bytes)
+POST request received, length: 424
+Request body: &#39;cmd=move_forward&#39;
+Executing command: &#39;move_forward&#39;
+Moving forward
+Command &#39;move_forward&#39; executed successfully
+Client connected from (&#39;10.0.0.2&#39;, 58702)
+Full request received (423 bytes)
+POST request received, length: 423
+Request body: &#39;cmd=stop_motors&#39;
+Executing command: &#39;stop_motors&#39;
+Command &#39;stop_motors&#39; executed successfully
+Client connected from (&#39;10.0.0.2&#39;, 58703)
+Full request received (424 bytes)
+POST request received, length: 424
+Request body: &#39;cmd=move_reverse&#39;
+Executing command: &#39;move_reverse&#39;
+Moving reverse
+Command &#39;move_reverse&#39; executed successfully
+Client connected from (&#39;10.0.0.2&#39;, 58704)
+Full request received (423 bytes)
+POST request received, length: 423
+Request body: &#39;cmd=stop_motors&#39;
+Executing command: &#39;stop_motors&#39;
+Command &#39;stop_motors&#39; executed successfully
+</code></pre></div></td></tr></table></div>
+<h2 id="source-code">Source Code</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">secrets</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span> <span class="nn">neopixel</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="c1"># Hardware setup based on config.py</span>
+<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;LED&quot;</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+
+<span class="c1"># Motor PWM setup</span>
+<span class="n">right_forward</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_FORWARD_PIN</span><span class="p">))</span>
+<span class="n">right_reverse</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_REVERSE_PIN</span><span class="p">))</span>
+<span class="n">left_forward</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">LEFT_FORWARD_PIN</span><span class="p">))</span>
+<span class="n">left_reverse</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">LEFT_REVERSE_PIN</span><span class="p">))</span>
+
+<span class="c1"># Set PWM frequency for motors (1000 Hz is good for motors)</span>
+<span class="n">right_forward</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">right_reverse</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">left_forward</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">left_reverse</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># NeoPixel setup</span>
+<span class="n">np</span> <span class="o">=</span> <span class="n">neopixel</span><span class="o">.</span><span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">config</span><span class="o">.</span><span class="n">NUMBER_NEOPIXELS</span><span class="p">)</span>
+
+<span class="c1"># Speaker setup</span>
+<span class="n">speaker</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SPEAKER_PIN</span><span class="p">))</span>
+
+<span class="c1"># Global variables for state tracking</span>
+<span class="n">led_state</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">current_neopixel_color</span> <span class="o">=</span> <span class="s2">&quot;off&quot;</span>
+
+<span class="k">def</span> <span class="nf">blink_led</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Blink the onboard LED for status indication&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">times</span><span class="p">):</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">connect_wifi</span><span class="p">(</span><span class="n">max_retries</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Connect to WiFi with retry logic&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Connecting to WiFi Network: </span><span class="si">{</span><span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
+    <span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Disable power management for better responsiveness</span>
+    <span class="n">wlan</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">pm</span><span class="o">=</span><span class="mh">0xa11140</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Powering up WiFi chip...&#39;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">retry_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">retry_count</span> <span class="o">&lt;</span> <span class="n">max_retries</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Connection attempt </span><span class="si">{</span><span class="n">retry_count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">max_retries</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">PASSWORD</span><span class="p">)</span>
+
+            <span class="n">timeout</span> <span class="o">=</span> <span class="mi">15</span>
+            <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+            <span class="k">while</span> <span class="ow">not</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">()</span> <span class="ow">and</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">timeout</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+                <span class="k">return</span> <span class="n">wlan</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Timeout on attempt </span><span class="si">{</span><span class="n">retry_count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">retry_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error on attempt </span><span class="si">{</span><span class="n">retry_count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">retry_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">stop_motors</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Stop all motors&quot;&quot;&quot;</span>
+    <span class="n">right_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">right_reverse</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">left_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">left_reverse</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">move_forward</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Move robot forward&quot;&quot;&quot;</span>
+    <span class="n">stop_motors</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">right_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32000</span><span class="p">)</span>  <span class="c1"># About 50% power</span>
+    <span class="n">left_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32000</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moving forward&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">move_reverse</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Move robot in reverse&quot;&quot;&quot;</span>
+    <span class="n">stop_motors</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">right_reverse</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32000</span><span class="p">)</span>
+    <span class="n">left_reverse</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32000</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moving reverse&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">turn_right</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Turn robot right&quot;&quot;&quot;</span>
+    <span class="n">stop_motors</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">left_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32000</span><span class="p">)</span>   <span class="c1"># Left wheel forward</span>
+    <span class="n">right_reverse</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32000</span><span class="p">)</span>  <span class="c1"># Right wheel reverse</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Turning right&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">turn_left</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Turn robot left&quot;&quot;&quot;</span>
+    <span class="n">stop_motors</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">right_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32000</span><span class="p">)</span>  <span class="c1"># Right wheel forward</span>
+    <span class="n">left_reverse</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32000</span><span class="p">)</span>   <span class="c1"># Left wheel reverse</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Turning left&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">set_neopixels</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set NeoPixels to specified color&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">current_neopixel_color</span>
+    <span class="n">current_neopixel_color</span> <span class="o">=</span> <span class="n">color</span>
+
+    <span class="k">if</span> <span class="n">color</span> <span class="o">==</span> <span class="s2">&quot;red&quot;</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">NUMBER_NEOPIXELS</span><span class="p">):</span>
+            <span class="n">np</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">color</span> <span class="o">==</span> <span class="s2">&quot;green&quot;</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">NUMBER_NEOPIXELS</span><span class="p">):</span>
+            <span class="n">np</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">color</span> <span class="o">==</span> <span class="s2">&quot;blue&quot;</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">NUMBER_NEOPIXELS</span><span class="p">):</span>
+            <span class="n">np</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># off</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">NUMBER_NEOPIXELS</span><span class="p">):</span>
+            <span class="n">np</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;NeoPixels set to </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Play a tone on the speaker&quot;&quot;&quot;</span>
+    <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
+    <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>  <span class="c1"># 50% duty cycle</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+    <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Turn off</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Played tone: </span><span class="si">{</span><span class="n">frequency</span><span class="si">}</span><span class="s2">Hz for </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">toggle_led</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Toggle the onboard LED&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">led_state</span>
+    <span class="n">led_state</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">led_state</span>
+    <span class="k">if</span> <span class="n">led_state</span><span class="p">:</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LED turned ON&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LED turned OFF&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">generate_html</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate the HTML page for robot control&quot;&quot;&quot;</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;!DOCTYPE html&gt;</span>
+<span class="s2">&lt;html&gt;</span>
+<span class="s2">&lt;head&gt;</span>
+<span class="s2">    &lt;title&gt;Robot Test Interface&lt;/title&gt;</span>
+<span class="s2">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span>
+<span class="s2">    &lt;style&gt;</span>
+<span class="s2">        body </span><span class="se">{{</span>
+<span class="s2">            font-family: Arial, sans-serif;</span>
+<span class="s2">            max-width: 600px;</span>
+<span class="s2">            margin: 0 auto;</span>
+<span class="s2">            padding: 20px;</span>
+<span class="s2">            background-color: #f0f0f0;</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        .container </span><span class="se">{{</span>
+<span class="s2">            background-color: white;</span>
+<span class="s2">            padding: 20px;</span>
+<span class="s2">            border-radius: 10px;</span>
+<span class="s2">            box-shadow: 0 2px 10px rgba(0,0,0,0.1);</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        h1 </span><span class="se">{{</span>
+<span class="s2">            color: #333;</span>
+<span class="s2">            text-align: center;</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        .section </span><span class="se">{{</span>
+<span class="s2">            margin: 20px 0;</span>
+<span class="s2">            padding: 15px;</span>
+<span class="s2">            border: 1px solid #ddd;</span>
+<span class="s2">            border-radius: 5px;</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        .section h3 </span><span class="se">{{</span>
+<span class="s2">            margin-top: 0;</span>
+<span class="s2">            color: #555;</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        button </span><span class="se">{{</span>
+<span class="s2">            background-color: #4CAF50;</span>
+<span class="s2">            color: white;</span>
+<span class="s2">            padding: 10px 20px;</span>
+<span class="s2">            margin: 5px;</span>
+<span class="s2">            border: none;</span>
+<span class="s2">            border-radius: 5px;</span>
+<span class="s2">            cursor: pointer;</span>
+<span class="s2">            font-size: 16px;</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        button:hover </span><span class="se">{{</span>
+<span class="s2">            background-color: #45a049;</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        .motor-btn </span><span class="se">{{</span>
+<span class="s2">            background-color: #2196F3;</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        .motor-btn:hover </span><span class="se">{{</span>
+<span class="s2">            background-color: #1976D2;</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        .stop-btn </span><span class="se">{{</span>
+<span class="s2">            background-color: #f44336;</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        .stop-btn:hover </span><span class="se">{{</span>
+<span class="s2">            background-color: #d32f2f;</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        .status </span><span class="se">{{</span>
+<span class="s2">            margin-top: 20px;</span>
+<span class="s2">            padding: 10px;</span>
+<span class="s2">            background-color: #e8f5e8;</span>
+<span class="s2">            border-radius: 5px;</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        .color-buttons </span><span class="se">{{</span>
+<span class="s2">            display: flex;</span>
+<span class="s2">            gap: 10px;</span>
+<span class="s2">            flex-wrap: wrap;</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">        .red-btn </span><span class="se">{{</span><span class="s2"> background-color: #f44336; </span><span class="se">}}</span>
+<span class="s2">        .green-btn </span><span class="se">{{</span><span class="s2"> background-color: #4CAF50; </span><span class="se">}}</span>
+<span class="s2">        .blue-btn </span><span class="se">{{</span><span class="s2"> background-color: #2196F3; </span><span class="se">}}</span>
+<span class="s2">        .off-btn </span><span class="se">{{</span><span class="s2"> background-color: #757575; </span><span class="se">}}</span>
+<span class="s2">    &lt;/style&gt;</span>
+<span class="s2">&lt;/head&gt;</span>
+<span class="s2">&lt;body&gt;</span>
+<span class="s2">    &lt;div class=&quot;container&quot;&gt;</span>
+<span class="s2">        &lt;h1&gt;Robot Test Interface v2&lt;/h1&gt;</span>
+
+<span class="s2">        &lt;div class=&quot;section&quot;&gt;</span>
+<span class="s2">            &lt;h3&gt;Onboard LED&lt;/h3&gt;</span>
+<span class="s2">            &lt;button onclick=&quot;sendCommand(&#39;toggle_led&#39;)&quot;&gt;Toggle LED&lt;/button&gt;</span>
+<span class="s2">            &lt;p&gt;Current state: &lt;span id=&quot;led-status&quot;&gt;</span><span class="si">{</span><span class="s1">&#39;ON&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">led_state</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;OFF&#39;</span><span class="si">}</span><span class="s2">&lt;/span&gt;&lt;/p&gt;</span>
+<span class="s2">        &lt;/div&gt;</span>
+
+<span class="s2">        &lt;div class=&quot;section&quot;&gt;</span>
+<span class="s2">            &lt;h3&gt;NeoPixels&lt;/h3&gt;</span>
+<span class="s2">            &lt;div class=&quot;color-buttons&quot;&gt;</span>
+<span class="s2">                &lt;button class=&quot;red-btn&quot; onclick=&quot;sendCommand(&#39;neopixel_red&#39;)&quot;&gt;Red&lt;/button&gt;</span>
+<span class="s2">                &lt;button class=&quot;green-btn&quot; onclick=&quot;sendCommand(&#39;neopixel_green&#39;)&quot;&gt;Green&lt;/button&gt;</span>
+<span class="s2">                &lt;button class=&quot;blue-btn&quot; onclick=&quot;sendCommand(&#39;neopixel_blue&#39;)&quot;&gt;Blue&lt;/button&gt;</span>
+<span class="s2">                &lt;button class=&quot;off-btn&quot; onclick=&quot;sendCommand(&#39;neopixel_off&#39;)&quot;&gt;Off&lt;/button&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">            &lt;p&gt;Current color: &lt;span id=&quot;neopixel-status&quot;&gt;</span><span class="si">{</span><span class="n">current_neopixel_color</span><span class="si">}</span><span class="s2">&lt;/span&gt;&lt;/p&gt;</span>
+<span class="s2">        &lt;/div&gt;</span>
+
+<span class="s2">        &lt;div class=&quot;section&quot;&gt;</span>
+<span class="s2">            &lt;h3&gt;Speaker&lt;/h3&gt;</span>
+<span class="s2">            &lt;button onclick=&quot;sendCommand(&#39;play_tone&#39;)&quot;&gt;Play Tone (1000Hz)&lt;/button&gt;</span>
+<span class="s2">            &lt;button onclick=&quot;sendCommand(&#39;play_tone_low&#39;)&quot;&gt;Low Tone (500Hz)&lt;/button&gt;</span>
+<span class="s2">            &lt;button onclick=&quot;sendCommand(&#39;play_tone_high&#39;)&quot;&gt;High Tone (1500Hz)&lt;/button&gt;</span>
+<span class="s2">        &lt;/div&gt;</span>
+
+<span class="s2">        &lt;div class=&quot;section&quot;&gt;</span>
+<span class="s2">            &lt;h3&gt;Motor Control&lt;/h3&gt;</span>
+<span class="s2">            &lt;div&gt;</span>
+<span class="s2">                &lt;button class=&quot;motor-btn&quot; onclick=&quot;sendCommand(&#39;move_forward&#39;)&quot;&gt;Forward&lt;/button&gt;</span>
+<span class="s2">                &lt;button class=&quot;motor-btn&quot; onclick=&quot;sendCommand(&#39;move_reverse&#39;)&quot;&gt;Reverse&lt;/button&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">            &lt;div&gt;</span>
+<span class="s2">                &lt;button class=&quot;motor-btn&quot; onclick=&quot;sendCommand(&#39;turn_left&#39;)&quot;&gt;Turn Left&lt;/button&gt;</span>
+<span class="s2">                &lt;button class=&quot;motor-btn&quot; onclick=&quot;sendCommand(&#39;turn_right&#39;)&quot;&gt;Turn Right&lt;/button&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">            &lt;div&gt;</span>
+<span class="s2">                &lt;button class=&quot;stop-btn&quot; onclick=&quot;sendCommand(&#39;stop_motors&#39;)&quot;&gt;STOP&lt;/button&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">            &lt;p&gt;&lt;em&gt;Note: Motors will run for 2 seconds then auto-stop&lt;/em&gt;&lt;/p&gt;</span>
+<span class="s2">        &lt;/div&gt;</span>
+
+<span class="s2">        &lt;div class=&quot;status&quot;&gt;</span>
+<span class="s2">            &lt;h3&gt;System Status&lt;/h3&gt;</span>
+<span class="s2">            &lt;p&gt;WiFi: Connected&lt;/p&gt;</span>
+<span class="s2">            &lt;p&gt;Last command: &lt;span id=&quot;last-command&quot;&gt;None&lt;/span&gt;&lt;/p&gt;</span>
+<span class="s2">        &lt;/div&gt;</span>
+<span class="s2">    &lt;/div&gt;</span>
+
+<span class="s2">    &lt;script&gt;</span>
+<span class="s2">        function sendCommand(command) </span><span class="se">{{</span>
+<span class="s2">            console.log(&#39;Sending command:&#39;, command);</span>
+<span class="s2">            document.getElementById(&#39;last-command&#39;).textContent = &#39;Sending: &#39; + command;</span>
+
+<span class="s2">            fetch(&#39;/command&#39;, </span><span class="se">{{</span>
+<span class="s2">                method: &#39;POST&#39;,</span>
+<span class="s2">                headers: </span><span class="se">{{</span>
+<span class="s2">                    &#39;Content-Type&#39;: &#39;application/x-www-form-urlencoded&#39;,</span>
+<span class="s2">                </span><span class="se">}}</span><span class="s2">,</span>
+<span class="s2">                body: &#39;cmd=&#39; + encodeURIComponent(command)</span>
+<span class="s2">            </span><span class="se">}}</span><span class="s2">)</span>
+<span class="s2">            .then(response =&gt; </span><span class="se">{{</span>
+<span class="s2">                console.log(&#39;Response status:&#39;, response.status);</span>
+<span class="s2">                return response.text();</span>
+<span class="s2">            </span><span class="se">}}</span><span class="s2">)</span>
+<span class="s2">            .then(data =&gt; </span><span class="se">{{</span>
+<span class="s2">                console.log(&#39;Response data:&#39;, data);</span>
+<span class="s2">                document.getElementById(&#39;last-command&#39;).textContent = command + &#39; (&#39; + data + &#39;)&#39;;</span>
+
+<span class="s2">                // Update status displays based on command</span>
+<span class="s2">                if (command === &#39;toggle_led&#39;) </span><span class="se">{{</span>
+<span class="s2">                    // Will be updated on next page load or we can toggle the display</span>
+<span class="s2">                    setTimeout(() =&gt; location.reload(), 500);</span>
+<span class="s2">                </span><span class="se">}}</span>
+<span class="s2">                if (command.startsWith(&#39;neopixel_&#39;)) </span><span class="se">{{</span>
+<span class="s2">                    const color = command.replace(&#39;neopixel_&#39;, &#39;&#39;);</span>
+<span class="s2">                    document.getElementById(&#39;neopixel-status&#39;).textContent = color;</span>
+<span class="s2">                </span><span class="se">}}</span>
+<span class="s2">            </span><span class="se">}}</span><span class="s2">)</span>
+<span class="s2">            .catch(error =&gt; </span><span class="se">{{</span>
+<span class="s2">                console.error(&#39;Error:&#39;, error);</span>
+<span class="s2">                document.getElementById(&#39;last-command&#39;).textContent = &#39;Error: &#39; + command + &#39; - &#39; + error.message;</span>
+<span class="s2">            </span><span class="se">}}</span><span class="s2">);</span>
+<span class="s2">        </span><span class="se">}}</span>
+
+<span class="s2">        // Add some debug info</span>
+<span class="s2">        console.log(&#39;Robot control interface loaded&#39;);</span>
+<span class="s2">    &lt;/script&gt;</span>
+<span class="s2">&lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">html</span>
+
+<span class="k">def</span> <span class="nf">handle_command</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handle robot commands from web interface&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;toggle_led&quot;</span><span class="p">:</span>
+            <span class="n">toggle_led</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;neopixel_red&quot;</span><span class="p">:</span>
+            <span class="n">set_neopixels</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;neopixel_green&quot;</span><span class="p">:</span>
+            <span class="n">set_neopixels</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;neopixel_blue&quot;</span><span class="p">:</span>
+            <span class="n">set_neopixels</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;neopixel_off&quot;</span><span class="p">:</span>
+            <span class="n">set_neopixels</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;play_tone&quot;</span><span class="p">:</span>
+            <span class="n">play_tone</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;play_tone_low&quot;</span><span class="p">:</span>
+            <span class="n">play_tone</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;play_tone_high&quot;</span><span class="p">:</span>
+            <span class="n">play_tone</span><span class="p">(</span><span class="mi">1500</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;move_forward&quot;</span><span class="p">:</span>
+            <span class="n">move_forward</span><span class="p">()</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Run for 2 seconds</span>
+            <span class="n">stop_motors</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;move_reverse&quot;</span><span class="p">:</span>
+            <span class="n">move_reverse</span><span class="p">()</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">stop_motors</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;turn_left&quot;</span><span class="p">:</span>
+            <span class="n">turn_left</span><span class="p">()</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">stop_motors</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;turn_right&quot;</span><span class="p">:</span>
+            <span class="n">turn_right</span><span class="p">()</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">stop_motors</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;stop_motors&quot;</span><span class="p">:</span>
+            <span class="n">stop_motors</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown command: </span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error executing command </span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">start_web_server</span><span class="p">(</span><span class="n">wlan</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Start the web server&quot;&quot;&quot;</span>
+    <span class="n">addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">ip</span> <span class="o">=</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Web server started!&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Open your browser and go to: http://</span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Robot control interface ready!&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cl</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Client connected from </span><span class="si">{</span><span class="n">addr</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Set a timeout for receiving data</span>
+            <span class="n">cl</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+
+            <span class="c1"># Read the request in chunks to ensure we get it all</span>
+            <span class="n">request</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                    <span class="n">chunk</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">chunk</span><span class="p">:</span>
+                        <span class="k">break</span>
+                    <span class="n">request</span> <span class="o">+=</span> <span class="n">chunk</span>
+                    <span class="c1"># Check if we have the complete request</span>
+                    <span class="k">if</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
+                        <span class="k">break</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="c1"># Timeout or error reading - proceed with what we have</span>
+                <span class="k">pass</span>
+
+            <span class="n">request</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Full request received (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="si">}</span><span class="s2"> bytes)&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Parse the request</span>
+            <span class="k">if</span> <span class="s1">&#39;GET / &#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
+                <span class="c1"># Serve the main page</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="n">generate_html</span><span class="p">()</span>
+                <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Content-Type: text/html</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Content-Length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">)</span><span class="si">}</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="s1">&#39;POST /command&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
+                <span class="c1"># Handle command - improved parsing with debugging</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;POST request received, length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+                <span class="c1"># Find the body of the request</span>
+                <span class="n">body_start</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">body_start</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">body</span> <span class="o">=</span> <span class="n">request</span><span class="p">[</span><span class="n">body_start</span> <span class="o">+</span> <span class="mi">4</span><span class="p">:]</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Request body: &#39;</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+                    <span class="c1"># Parse URL-encoded data</span>
+                    <span class="k">if</span> <span class="n">body</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;cmd=&#39;</span><span class="p">):</span>
+                        <span class="n">command</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1"># Remove &#39;cmd=&#39; prefix and whitespace</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Executing command: &#39;</span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+                        <span class="n">success</span> <span class="o">=</span> <span class="n">handle_command</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+
+                        <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+                            <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;OK&quot;</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Command &#39;</span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&#39; executed successfully&quot;</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;ERROR&quot;</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Command &#39;</span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&#39; failed&quot;</span><span class="p">)</span>
+
+                        <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                        <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Content-Type: text/plain</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                        <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Access-Control-Allow-Origin: *</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                        <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Content-Length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">)</span><span class="si">}</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                        <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                        <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid body format: &#39;</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+                        <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;HTTP/1.1 400 Bad Request</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No body found in POST request&quot;</span><span class="p">)</span>
+                    <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;HTTP/1.1 400 Bad Request</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># 404 for other requests</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown request: </span><span class="si">{</span><span class="n">request</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+                <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;HTTP/1.1 404 Not Found</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Web server error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">cl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main program function&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Robot Web Server Test Interface&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;===================================&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Initialize hardware</span>
+    <span class="n">stop_motors</span><span class="p">()</span>
+    <span class="n">set_neopixels</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+
+    <span class="c1"># Initial LED indication</span>
+    <span class="n">blink_led</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="c1"># Connect to WiFi</span>
+    <span class="n">wlan</span> <span class="o">=</span> <span class="n">connect_wifi</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">wlan</span><span class="p">:</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;WIFI CONNECTION SUCCESSFUL!&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;IP Address: </span><span class="si">{</span><span class="n">config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Network: </span><span class="si">{</span><span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+
+        <span class="n">blink_led</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>  <span class="c1"># Success indication</span>
+
+        <span class="c1"># Start the web server</span>
+        <span class="n">start_web_server</span><span class="p">(</span><span class="n">wlan</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">FAILED TO CONNECT!&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Check your secrets.py file for correct SSID and PASSWORD&#39;</span><span class="p">)</span>
+        <span class="n">blink_led</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># Error indication</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../05-simple-web-server/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Simple Web Server">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Simple Web Server
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../display/" class="md-footer__link md-footer__link--next" aria-label="Next: Display Robot">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Display Robot
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
