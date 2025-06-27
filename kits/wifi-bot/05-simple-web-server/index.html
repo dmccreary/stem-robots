@@ -1327,6 +1327,426 @@
 
 
 <h1 id="simple-web-server">Simple Web Server</h1>
+<p><img alt="" src="../simple-web-ui.png" /></p>
+<h1 id="simple-led-web-server-code-walkthrough">Simple LED Web Server - Code Walkthrough</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This tutorial explains how to create a web server on a Raspberry Pi Pico W that can control an LED through a web page. Think of it like creating your own mini-website that can control real hardware!</p>
+<h2 id="what-youll-learn">What You'll Learn</h2>
+<ul>
+<li>How to connect your Pico W to WiFi</li>
+<li>How to create a simple web server</li>
+<li>How to control hardware (LED) from a webpage</li>
+<li>Basic Python programming concepts</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>You need a <code>secrets.py</code> file with your WiFi credentials:</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">SSID</span> <span class="o">=</span> <span class="s2">&quot;YourWiFiName&quot;</span>
+<span class="n">PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;YourWiFiPassword&quot;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="section-1-importing-libraries">Section 1: Importing Libraries</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">secrets</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>What's happening here?</strong></p>
+<p><strong><code>import</code></strong> statements tell Python to load special tools (called libraries) that we need:</p>
+<ul>
+<li><strong><code>network</code></strong> - Tools for connecting to WiFi</li>
+<li><strong><code>socket</code></strong> - Tools for creating web servers (like a mailbox for internet messages)</li>
+<li><strong><code>secrets</code></strong> - Your WiFi password file (keeps it separate and safe)</li>
+<li><strong><code>time</code></strong> - Tools for waiting and timing</li>
+<li><strong><code>Pin</code></strong> - From the <code>machine</code> library, this controls the physical pins on your Pico W</li>
+</ul>
+<p>Think of imports like getting tools from a toolbox - you only take out what you need for the job.</p>
+<h2 id="section-2-setting-up-the-led">Section 2: Setting Up the LED</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Setup the onboard LED</span>
+<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;LED&quot;</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="n">led_state</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># Track LED state</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>What's happening here?</strong></p>
+<p><strong><code>led = Pin("LED", Pin.OUT)</code></strong> - This creates a connection to the built-in LED on your Pico W
+- <strong>"LED"</strong> tells it which pin to use (the built-in one)
+- <strong>Pin.OUT</strong> means we want to control it (send signals OUT to it)</p>
+<p><strong><code>led_state = False</code></strong> - This creates a variable to remember if the LED is on or off
+- <strong><code>False</code></strong> means "off" 
+- <strong><code>True</code></strong> would mean "on"
+- This is like a sticky note that says "remember: LED is currently off"</p>
+<h2 id="section-3-connecting-to-wifi">Section 3: Connecting to WiFi</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">connect_wifi</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Connect to WiFi network using credentials from secrets.py&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Connecting to WiFi: </span><span class="si">{</span><span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
+    <span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">PASSWORD</span><span class="p">)</span>
+
+    <span class="c1"># Wait for connection</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Connected! IP: </span><span class="si">{</span><span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wlan</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>What's happening here?</strong></p>
+<p><strong><code>def connect_wifi():</code></strong> - This creates a function (a reusable block of code) called <code>connect_wifi</code>
+- Functions are like recipes - you write them once, then use them whenever needed</p>
+<p><strong><code>print(f'Connecting to WiFi: {secrets.SSID}')</code></strong> - Shows which network we're connecting to
+- <strong><code>f'...'</code></strong> is called an f-string - it lets you put variables inside text
+- <strong><code>secrets.SSID</code></strong> gets your network name from the secrets file</p>
+<p><strong><code>wlan = network.WLAN(network.STA_IF)</code></strong> - Creates a WiFi object
+- Think of this like turning on your phone's WiFi</p>
+<p><strong><code>wlan.active(True)</code></strong> - Turns on the WiFi radio
+<strong><code>wlan.connect(secrets.SSID, secrets.PASSWORD)</code></strong> - Attempts to connect using your credentials</p>
+<p><strong>The while loop:</strong></p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">while</span> <span class="ow">not</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+- <strong><code>while</code></strong> means "keep doing this as long as..."
+- <strong><code>not wlan.isconnected()</code></strong> means "as long as we're NOT connected"
+- <strong><code>print('.', end='')</code></strong> prints a dot without going to a new line
+- <strong><code>time.sleep(1)</code></strong> waits 1 second
+- This creates the "Connecting..." dots you see</p>
+<p><strong><code>return wlan</code></strong> - Gives back the WiFi object so other parts of the code can use it</p>
+<h2 id="section-4-controlling-the-led">Section 4: Controlling the LED</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">toggle_led</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Toggle the LED on/off and return current state&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">led_state</span>
+    <span class="n">led_state</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">led_state</span>
+
+    <span class="k">if</span> <span class="n">led_state</span><span class="p">:</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LED turned ON&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LED turned OFF&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s2">&quot;ON&quot;</span> <span class="k">if</span> <span class="n">led_state</span> <span class="k">else</span> <span class="s2">&quot;OFF&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>What's happening here?</strong></p>
+<p><strong><code>global led_state</code></strong> - This tells Python we want to change the <code>led_state</code> variable we created earlier
+- Without <code>global</code>, Python would create a new, separate variable</p>
+<p><strong><code>led_state = not led_state</code></strong> - This flips the state
+- If <code>led_state</code> was <code>False</code>, <strong><code>not False</code></strong> becomes <code>True</code>
+- If <code>led_state</code> was <code>True</code>, <strong><code>not True</code></strong> becomes <code>False</code>
+- It's like a light switch - if it's off, turn it on; if it's on, turn it off</p>
+<p><strong>The if/else statement:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="n">led_state</span><span class="p">:</span>
+    <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LED turned ON&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LED turned OFF&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+- <strong><code>if led_state:</code></strong> means "if led_state is True"
+- <strong><code>led.on()</code></strong> physically turns the LED on
+- <strong><code>else:</code></strong> means "otherwise" (if led_state is False)
+- <strong><code>led.off()</code></strong> physically turns the LED off</p>
+<p><strong><code>return "ON" if led_state else "OFF"</code></strong> - This is a shortcut way to return text
+- If <code>led_state</code> is <code>True</code>, return <code>"ON"</code>
+- If <code>led_state</code> is <code>False</code>, return <code>"OFF"</code></p>
+<h2 id="section-5-creating-the-web-page">Section 5: Creating the Web Page</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_html</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create simple HTML page with LED toggle button&quot;&quot;&quot;</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;&lt;!DOCTYPE html&gt;</span>
+<span class="s2">&lt;html&gt;</span>
+<span class="s2">&lt;head&gt;</span>
+<span class="s2">    &lt;title&gt;LED Control&lt;/title&gt;</span>
+<span class="s2">&lt;/head&gt;</span>
+<span class="s2">&lt;body&gt;</span>
+<span class="s2">    &lt;h1&gt;Simple LED Control&lt;/h1&gt;</span>
+<span class="s2">    &lt;p&gt;LED Status: &lt;strong&gt;</span><span class="si">{</span><span class="n">toggle_led</span><span class="o">.</span><span class="vm">__globals__</span><span class="p">[</span><span class="s1">&#39;led_state&#39;</span><span class="p">]</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="s2">&quot;ON&quot;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s2">&quot;OFF&quot;</span><span class="si">}</span><span class="s2">&lt;/strong&gt;&lt;/p&gt;</span>
+<span class="s2">    &lt;button onclick=&quot;toggleLED()&quot;&gt;Toggle LED&lt;/button&gt;</span>
+
+<span class="s2">    &lt;script&gt;</span>
+<span class="s2">        function toggleLED() </span><span class="se">{{</span>
+<span class="s2">            fetch(&#39;/toggle&#39;, </span><span class="se">{{</span><span class="s2">method: &#39;POST&#39;</span><span class="se">}}</span><span class="s2">)</span>
+<span class="s2">            .then(() =&gt; location.reload());</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">    &lt;/script&gt;</span>
+<span class="s2">&lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">html</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>What's happening here?</strong></p>
+<p><strong><code>html = f"""..."""</code></strong> - Creates a multi-line string containing HTML code
+- <strong><code>f"""..."""</code></strong> lets us put Python variables inside the HTML
+- HTML is the language used to create web pages</p>
+<p><strong>Key HTML parts:</strong>
+- <strong><code>&lt;title&gt;LED Control&lt;/title&gt;</code></strong> - Sets the browser tab title
+- <strong><code>&lt;h1&gt;Simple LED Control&lt;/h1&gt;</code></strong> - Creates a big heading
+- <strong><code>&lt;p&gt;LED Status: &lt;strong&gt;...&lt;/strong&gt;&lt;/p&gt;</code></strong> - Shows the current LED status
+- <strong><code>&lt;button onclick="toggleLED()"&gt;Toggle LED&lt;/button&gt;</code></strong> - Creates a clickable button</p>
+<p><strong>The JavaScript part:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">toggleLED</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/toggle&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+- This runs when someone clicks the button
+- <strong><code>fetch('/toggle', {method: 'POST'})</code></strong> sends a message to our server
+- <strong><code>.then(() =&gt; location.reload())</code></strong> refreshes the page after the LED toggles</p>
+<h2 id="section-6-the-web-server">Section 6: The Web Server</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">start_server</span><span class="p">(</span><span class="n">wlan</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Start web server and handle requests&quot;&quot;&quot;</span>
+    <span class="c1"># Create socket and bind to port 80</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Web server running at: http://</span><span class="si">{</span><span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Accept incoming connection</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Client connected: </span><span class="si">{</span><span class="n">addr</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Read the request</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s1">&#39;GET / &#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
+            <span class="c1"># Serve main page</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="n">generate_html</span><span class="p">()</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;HTTP/1.1 200 OK</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="s1">&#39;POST /toggle&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
+            <span class="c1"># Toggle LED and send response</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="n">toggle_led</span><span class="p">()</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;HTTP/1.1 200 OK</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LED is </span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>What's happening here?</strong></p>
+<p><strong>Setting up the server:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+<span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+- <strong><code>socket.socket()</code></strong> creates a "mailbox" for internet messages
+- <strong><code>s.bind(('0.0.0.0', 80))</code></strong> says "listen on all network connections, port 80"
+- Port 80 is the standard port for websites
+- <strong><code>s.listen(1)</code></strong> says "allow 1 person to connect at a time"</p>
+<p><strong>The main server loop:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># This runs forever, handling one visitor at a time</span>
+</code></pre></div></td></tr></table></div></p>
+<p><strong>Handling visitors:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">client</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Client connected: </span><span class="si">{</span><span class="n">addr</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+- <strong><code>s.accept()</code></strong> waits for someone to visit our website
+- <strong><code>client.recv(1024)</code></strong> reads their request (what page they want)
+- <strong><code>.decode('utf-8')</code></strong> converts the message to readable text</p>
+<p><strong>Understanding the request:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="s1">&#39;GET / &#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
+    <span class="c1"># Someone wants to see the main page</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="n">generate_html</span><span class="p">()</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;HTTP/1.1 200 OK</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="s1">&#39;POST /toggle&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
+    <span class="c1"># Someone clicked the toggle button</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">toggle_led</span><span class="p">()</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;HTTP/1.1 200 OK</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LED is </span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div></p>
+<ul>
+<li><strong><code>GET /</code></strong> means "show me the main page"</li>
+<li><strong><code>POST /toggle</code></strong> means "toggle the LED"</li>
+<li><strong><code>HTTP/1.1 200 OK</code></strong> is like saying "Everything's fine, here's what you asked for"</li>
+</ul>
+<p><strong><code>client.close()</code></strong> - Ends the conversation with that visitor</p>
+<h2 id="section-7-the-main-program">Section 7: The Main Program</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main program - connect to WiFi and start server&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Simple LED Web Server&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;====================&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Turn off LED initially</span>
+    <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+
+    <span class="c1"># Connect to WiFi</span>
+    <span class="n">wlan</span> <span class="o">=</span> <span class="n">connect_wifi</span><span class="p">()</span>
+
+    <span class="c1"># Start web server</span>
+    <span class="n">start_server</span><span class="p">(</span><span class="n">wlan</span><span class="p">)</span>
+
+<span class="c1"># Run the program</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>What's happening here?</strong></p>
+<p><strong><code>def main():</code></strong> - Creates the main function that runs our program</p>
+<p><strong><code>led.off()</code></strong> - Makes sure the LED starts in the "off" position</p>
+<p><strong><code>wlan = connect_wifi()</code></strong> - Calls our WiFi function and saves the result</p>
+<p><strong><code>start_server(wlan)</code></strong> - Starts the web server (this runs forever)</p>
+<p><strong><code>if __name__ == '__main__':</code></strong> - This is Python's way of saying "if this file is being run directly (not imported), then run the main() function"</p>
+<h2 id="how-everything-works-together">How Everything Works Together</h2>
+<ol>
+<li><strong>Startup:</strong> Program turns off LED and connects to WiFi</li>
+<li><strong>Server starts:</strong> Creates a "mailbox" at your Pico's IP address</li>
+<li><strong>Waiting:</strong> Server waits for someone to visit the website</li>
+<li><strong>Visitor arrives:</strong> Someone types the IP address in their browser</li>
+<li><strong>Send webpage:</strong> Server sends the HTML page with the button</li>
+<li><strong>Button clicked:</strong> Visitor clicks "Toggle LED"</li>
+<li><strong>Message sent:</strong> Browser sends a "toggle" message to the server</li>
+<li><strong>LED changes:</strong> Server runs the toggle function, changing the LED</li>
+<li><strong>Response sent:</strong> Server tells the browser "LED is now ON/OFF"</li>
+<li><strong>Page refreshes:</strong> Browser reloads to show the new status</li>
+<li><strong>Repeat:</strong> Back to step 5, ready for the next click</li>
+</ol>
+<h2 id="key-programming-concepts-you-learned">Key Programming Concepts You Learned</h2>
+<p><strong>Variables:</strong> Storing information (like <code>led_state</code>)</p>
+<p><strong>Functions:</strong> Reusable blocks of code (like <code>toggle_led()</code>)</p>
+<p><strong>Loops:</strong> Repeating actions (<code>while</code> loops)</p>
+<p><strong>Conditionals:</strong> Making decisions (<code>if/else</code> statements)</p>
+<p><strong>Libraries:</strong> Using pre-written code (<code>import</code> statements)</p>
+<p><strong>Global variables:</strong> Sharing data between functions</p>
+<p><strong>Return values:</strong> Functions giving back results</p>
+<p><strong>String formatting:</strong> Putting variables in text (<code>f"..."</code>)</p>
+<h2 id="real-world-applications">Real-World Applications</h2>
+<p>This same pattern is used in:</p>
+<ul>
+<li>Smart home devices (controlling lights, thermostats)</li>
+<li>IoT (Internet of Things) sensors</li>
+<li>Industrial control systems</li>
+<li>Home automation projects</li>
+<li>Remote monitoring systems</li>
+</ul>
+<p>You've just built the foundation for controlling any device over the internet!</p>
+<h2 id="full-source-code">Full Source Code</h2>
+<p>Here is the full source code.  It is about 70 lines.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
