@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wireless-robot" class="md-skip">
+        <a href="#wireless-stem-robot" class="md-skip">
           Skip to content
         </a>
       
@@ -1411,6 +1411,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#simple-web-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple Web Server
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1429,7 +1438,8 @@
   
 
 
-<h1 id="wireless-robot">Wireless Robot</h1>
+<h1 id="wireless-stem-robot">Wireless STEM Robot</h1>
+<p><img alt="" src="wireless-stem-robot.jpg" /></p>
 <p>This robot uses the <a href="https://www.cytron.io/p-robo-pico-simplifying-robotics-with-raspberry-pi-pico">Cytron Robo Pico</a> board that allows us to use a Raspberry Pi Pico W board as our microcontroller.  The "W" has builtin WiFi and Bluetooth hardware
 so we can control our robot wirelessly.</p>
 <h2 id="cytron-robo-pico-pinout">Cytron Robo Pico Pinout</h2>
@@ -1444,7 +1454,57 @@ a starting point for our wireless robot.</p>
 </code></pre></div></td></tr></table></div>
 <p><a href="https://dmccreary.github.io/learning-micropython/basics/06-wireless/">Raspbeery Pi Pico MicroPython Wireless Functions</a></p>
 <h2 id="secrets-file">Secrets File</h2>
+<p>Our WiFi connection stores the local wireless network name and password in a file called <code>secrets.py</code>.  It has the following format:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">SSID</span> <span class="o">=</span> <span class="s2">&quot;MY_WIFI_NETWORK_NAME&quot;</span>
+<span class="n">PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;MY_WIFI_PASSWORD&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>Note that you should take steps to make sure the <code>secrets.py</code> file is not checked into public GitHub repositories.
+The best way to do this is to add the following line to your .gitignore file:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>secrets.py
+</code></pre></div></td></tr></table></div>
+<p>This will work even though the file is at any level of the GitHub repository.</p>
 <h2 id="testing-your-secrets-file">Testing Your Secrets File</h2>
+<p>Once you have your <code>secrets.py</code> file configured you can test it with a simple "ping test" program</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
+<span class="kn">import</span> <span class="nn">secrets</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connecting to WiFi Network Name:&#39;</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">)</span>
+<span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
+<span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># power up the WiFi chip</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Waiting for wifi chip to power up...&#39;</span><span class="p">)</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># wait three seconds for the chip to power up and initialize</span>
+
+<span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">PASSWORD</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Waiting for access point to log us in.&#39;</span><span class="p">)</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Success! We have connected to your access point!&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Try to ping the device at&#39;</span><span class="p">,</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failure! We have not connected to your access point!  Check your secrets.py file for errors.&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Here is the Thonny console log when that prgram is running.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1455,10 +1515,32 @@ Waiting for access point to log us in.
 Success! We have connected to your access point!
 Try to ping the device at 10.0.0.57
 </code></pre></div></td></tr></table></div>
+<p>To test this you must open your Terminal application (or PowerSheel on Windows) and run the ping commend:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ping<span class="w"> </span><span class="m">10</span>.0.0.57
+</code></pre></div></td></tr></table></div>
+<p>Sample result:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>PING 10.0.0.57 (10.0.0.57): 56 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+Request timeout for icmp_seq 2
+64 bytes from 10.0.0.57: icmp_seq=1 ttl=255 time=2741.073 ms
+64 bytes from 10.0.0.57: icmp_seq=2 ttl=255 time=1740.994 ms
+64 bytes from 10.0.0.57: icmp_seq=3 ttl=255 time=740.691 ms
+</code></pre></div></td></tr></table></div>
+<p>Note that your IP address might be different.  In this mode, ping will usually have three timeouts and then repond in about three seconds.  The is slow because the Raspberry Pi Pico is in a power saving mode by default.  It takes time to load the networking code into the WiFi chip.  We will fix this in the next labs.</p>
 <h2 id="ping-test-slow">Ping Test Slow</h2>
-<p><a href="02-ping-test-slow/">Ping Test Slow</a></p>
+<p>In this lab we </p>
+<p><a href="02-ping-test-slow/">Ping Test Slow Lab</a></p>
 <h2 id="ping-test-slow_1">Ping Test Slow</h2>
-<p><a href="03-ping-test-fast/">Ping Test Fast</a></p>
+<p><a href="03-ping-test-fast/">Ping Test Fast Lab</a></p>
+<h2 id="simple-web-server">Simple Web Server</h2>
+<p><a href="05-simple-web-server/">Simple Web Server Lab</a></p>
 
 
 

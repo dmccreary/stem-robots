@@ -1052,6 +1052,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#full-source-code-for-fast-ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Source Code for Fast Ping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sample-thonny-console" class="md-nav__link">
     <span class="md-ellipsis">
       Sample Thonny Console
@@ -1091,6 +1100,15 @@
   <a href="#why-this-worked" class="md-nav__link">
     <span class="md-ellipsis">
       Why This Worked
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -1434,6 +1452,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#full-source-code-for-fast-ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Source Code for Fast Ping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sample-thonny-console" class="md-nav__link">
     <span class="md-ellipsis">
       Sample Thonny Console
@@ -1478,6 +1505,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1497,6 +1533,27 @@
 
 
 <h1 id="ping-test-2">Ping Test 2</h1>
+<p>Although having your device responed in three seconds may not be a problem for some
+applications, for real-time control of a robot the delay is too long.  To get
+a faster response, we need to add a single line of code that will remove the low-power option:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Disable power management for better ping responsiveness</span>
+<span class="n">wlan</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">pm</span><span class="o">=</span><span class="mh">0xa11140</span><span class="p">)</span>  <span class="c1"># Disable WiFi power management</span>
+</code></pre></div></td></tr></table></div>
+<p>By default the wireless chip will active power-saving mode when it is idle, which might lead it to being less responsive. If
+you are running a server or need more responsiveness, you can change this by toggling the power mode.</p>
+<p>This is usually done immediatly after you make the WiFi chip active:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
+
+<span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
+<span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">wlan</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">pm</span> <span class="o">=</span> <span class="mh">0xa11140</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="full-source-code-for-fast-ping">Full Source Code for Fast Ping</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
@@ -1850,7 +1907,9 @@ round-trip min/avg/max/stddev = 7.264/15.036/19.538/3.877 ms
 - Taking seconds to wake up from power-saving modes
 - Causing those massive latency spikes</p>
 <p>Your Pico W is now behaving like a proper network device that's always ready to respond. This makes it suitable for applications that need reliable network connectivity, like IoT sensors, web servers, or remote monitoring systems.</p>
-<p>Perfect for any project where you need dependable network responsiveness! 👍</p>
+<p>Perfect for any project where you need dependable network responsiveness!</p>
+<h2 id="references">References</h2>
+<p><a href="https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf">Connecting to the Internet with Raspberry Pi Pico W-series</a> - documentation by the Raspberry Pi Foundation</p>
 
 
 
