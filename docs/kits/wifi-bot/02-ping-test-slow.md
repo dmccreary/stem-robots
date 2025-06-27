@@ -1,6 +1,6 @@
 # Ping Test
 
-Here is a more detailed program that will give use feedback.
+Here is a more detailed ping test program that will give use feedback.
 
 ## Source Code
 
