@@ -77,7 +77,12 @@ nav:
       - kits/base/23-microswitch-bot.md
       - kits/base/24-ping-servo-meter.md
       - kits/base/25-line-follower.md
-
+      - kits/base/03-neopixel-test.md
+      - kits/base/06-test-sound.md
+    - Wireless Bot:
+- kits/wifi-bot/index.md
+             - kits/wifi-bot/02-ping-test-slow.md
+             - kits/wifi-bot/03-ping-test-fast.md
     - Display Robot: kits/display/index.md
     - Bump Switches: kits/bump-switch/index.md
     - Line Follower: kits/line-follower/index.md
@@ -89,6 +94,12 @@ nav:
   - License: license.md
   - Contact: contact.md
 
+             - instructors-guide/index.md
+             - instructors-guide/computational-thinking.md
+
+             - lessons/70-using-perf-boards.md
+             - prompts/index.md
+             - sims/template/index.md
  
 # Dan's Microsite Standards from here down
 edit_uri: 'blob/master/docs'
