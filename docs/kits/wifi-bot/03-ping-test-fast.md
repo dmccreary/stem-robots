@@ -1,5 +1,29 @@
 # Ping Test 2
 
+Although having your device responed in three seconds may not be a problem for some
+applications, for real-time control of a robot the delay is too long.  To get
+a faster response, we need to add a single line of code that will remove the low-power option:
+
+```python
+# Disable power management for better ping responsiveness
+wlan.config(pm=0xa11140)  # Disable WiFi power management
+```
+
+By default the wireless chip will active power-saving mode when it is idle, which might lead it to being less responsive. If
+you are running a server or need more responsiveness, you can change this by toggling the power mode.
+
+This is usually done immediatly after you make the WiFi chip active:
+
+```python
+import network
+
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+wlan.config(pm = 0xa11140)
+```
+
+## Full Source Code for Fast Ping
+
 ```python
 import network
 import secrets
@@ -207,4 +231,8 @@ The `wlan.config(pm=0xa11140)` command disabled WiFi power management, preventin
 
 Your Pico W is now behaving like a proper network device that's always ready to respond. This makes it suitable for applications that need reliable network connectivity, like IoT sensors, web servers, or remote monitoring systems.
 
-Perfect for any project where you need dependable network responsiveness! 👍
+Perfect for any project where you need dependable network responsiveness!
+
+## References
+
+[Connecting to the Internet with Raspberry Pi Pico W-series](https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf) - documentation by the Raspberry Pi Foundation
