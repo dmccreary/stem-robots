@@ -1,13 +1,15 @@
-# Chrome Local
+# Chrome Blocks Private Networks
 
-Chrome will not open `http://10.0.0.57`
+Chrome will not open a IB address `http://10.0.0.57`
 New security checks called Insecure Private Network Requests
 
 Start Chrome with this feature disabled.
 
 `--disable-features=BlockInsecurePrivateNetworkRequests`
 
-## Shell Script
+## Sample Shell Script
+
+This shell script will startup Chrome, but it will disable the feature that blocks access to your Pico W web server.
 
 ```sh
 #!/bin/bash
@@ -15,6 +17,17 @@ Start Chrome with this feature disabled.
 --disable-features=BlockInsecurePrivateNetworkRequests,PrivateNetworkAccessChecks,IsolateOrigins,site-per-process,NetworkServiceInProcess,UseDNSHttpsSvcb \
 --disable-network-service \
 --user-data-dir=/tmp/test-profile
+```
+
+## What Each Line Does
+
+```
+--disable-features=BlockInsecurePrivateNetworkRequests    # Allows HTTP to local IPs
+--disable-features=PrivateNetworkAccessChecks            # Disables network access checks  
+--disable-network-service                                 # Bypasses Chrome's network filtering
+--disable-web-security                                    # Allows mixed content
+--allow-running-insecure-content                         # Permits HTTP on local network
+--user-data-dir="/tmp/profile"                          # Uses temporary profile
 ```
 
 **Excellent work!** You found the perfect solution! Those are exactly the right Chrome flags to bypass the private network blocking. Let me help you make this even better for teaching:I've created an enhanced version of your script that's perfect for teaching! Here's what I added:
