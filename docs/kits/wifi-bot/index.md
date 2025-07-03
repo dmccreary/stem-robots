@@ -113,3 +113,7 @@ In this lab we
 ## Simple Web Server
 
 [Simple Web Server Lab](./05-simple-web-server.md)
+
+## References
+
+[MicroPython Docs for the RP2 WiFi](https://docs.micropython.org/en/latest/rp2/quickref.html#networking)
