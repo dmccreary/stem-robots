@@ -28,11 +28,12 @@ nav:
   
   - Getting Started:
     - setup/index.md
-    - setup/05-thonny-installation.md
-    - setup/10-base-kit-assembly.md
-    - setup/20-parts-list.md
-    - setup/25-cytron-maker-pi-rp2040.md
-    - setup/30-tof-sensor.md
+    - Thonny: setup/05-thonny-installation.md
+    - Base Kit Assembly: setup/10-base-kit-assembly.md
+    - Parts List: setup/20-parts-list.md
+    - Cytron Maker Pi: setup/25-cytron-maker-pi-rp2040.md
+    - Time of Flight Sensor: setup/30-tof-sensor.md
+    - WiFi Setup: setup/32-private-network-access.md
   
   - Personas: personas.md
   - Topics: topics.md
@@ -87,17 +88,18 @@ nav:
       - kits/base/25-line-follower.md
       - kits/base/03-neopixel-test.md
       - kits/base/06-test-sound.md
-    - Wireless Bot:
+    - Display Robot: kits/display/index.md
+  - Wireless Bot:
       - Introduction: kits/wifi-bot/index.md
       - Ping Test Slow: kits/wifi-bot/02-ping-test-slow.md
       - Ping Test Fast: kits/wifi-bot/03-ping-test-fast.md
       - Simple Web Server: kits/wifi-bot/05-simple-web-server.md
       - Web Server Test: kits/wifi-bot/web-server-test.md
-    - Display Robot: kits/display/index.md
     - Bump Switches: kits/bump-switch/index.md
     - Line Follower: kits/line-follower/index.md
     - Adjustabot: kits/adjust/index.md
     - Ultrasonic: kits/ultrasonic/index.md
+    - WiFi Display Bot: kits/wifi-display-bot/index.md
   - Instructors Guide: 
     - Intro: instructors-guide/index.md
     - Computational Thinking: instructors-guide/computational-thinking.md
