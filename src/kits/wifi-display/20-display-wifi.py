@@ -49,6 +49,8 @@ def display_status(counter):
     oled.text('ip:' + wlan.ifconfig()[0], 0, 30, 1)
     oled.text('c:' + str(counter), 0, 40, 1)
     oled.show()
+
+
 # startup
 led = Pin("LED", Pin.OUT)
 led.on()
