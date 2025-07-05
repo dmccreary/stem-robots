@@ -18,6 +18,7 @@ Every ADC has two parameters, its [resolution](#resolution), measured in digital
 * Also know as: ADC
 
 #### BOOTSEL
+
 A button on the pico that when pressed during power up will allow you to mount the device as a USB drive.  You can then drag-and-drop any uf2 image file to reset or update the runtime libraries.
 
 ![](img/boot-selection.png)
@@ -30,7 +31,7 @@ A special form of copy operation; it copies a rectangular area of pixels from on
 #### Castellated Edge
 Plated through holes or vias located in the edges of a printed circuit board that make it easier to solder onto another circuit board.
 
-![](../img/castellated-edge.png)
+![](img/castellated-edge.png)
 
 The word "Castellated" means having grooves or slots on an edge and is derived from the turrets of a castle.
 
@@ -174,11 +175,6 @@ Typical chips that control the OLED include the SSD1306 driver chips.
 
 * See: [Graph Displays](../displays/graph/01-intro.md)
 
-#### PWM
-A type of output signal used to control items with continuous values.  For example, we use PWM to control the brightness of a light or the speed of a motor.  We use pulse-width modulation (PWM) to control the speed of our DC motors.
-
-![](../img/PWM-duty-cycle.png)
-
 #### Physical Computing
 
 The process of using computers to read data from sensors about the world around us and then taking action on this incoming data stream. These actions are typically doing things like blinking an LED, moving a motor, or updating a display.
@@ -194,6 +190,14 @@ The Pico pinout diagram shows you the ways that each Pin can be used.  Different
 #### Piezo buzzer
 
 An electronic device that produces sound, often used for alerts and notifications in electronic circuits.
+
+#### Pulse Width Modulation (PWM)
+
+A type of output signal used to control items with continuous values.  For example, we use PWM to control the brightness of a light or the speed of a motor.  We use pulse-width modulation (PWM) to control the speed of our DC motors.
+
+![](img/pwm-microsim.png)
+
+See also: [PWM MicroSim](./sims/pwm/index.md)
 
 #### RGB LED
 
@@ -229,15 +233,18 @@ Rhizomatic learning is an educational concept that draws its analogy from the rh
 
 It emphasizes the importance of context, personal interpretation, and the idea that knowledge and learning are not static but are constantly evolving. Rhizomatic learning encourages learners to create their own paths through content, fostering critical thinking, adaptability, and collaboration. This approach contrasts with traditional hierarchical models of education, offering a more fluid and dynamic understanding of knowledge acquisition.
 
-#### SPI
+#### Serial Peripheral Interface
+
 An interface bus commonly used to send data between microcontrollers and small peripherals such as sensors, displays and SD cards. SPI uses separate clock and data lines, along with a select line to choose the device you wish to talk to.
 
-Also known as: Serial Peripheral Interface
-See also: [I2C](#i2c)
+* Also known as: SPI
+* See also: [I2C](#i2c)
 
 #### SPI bus
 
 Serial Peripheral Interface bus, a synchronous serial communication protocol used for short-distance communication.
+
+* See also: [SPI](#serial-peripheral-interface)
 
 #### STEM
 
@@ -248,6 +255,7 @@ An acronym for Science, Technology, Engineering, and Mathematics education.
 The physical frame of the robot to which all other parts are mounted.
 
 #### Thonny
+
 A lightweight Python IDE ideal for writing simple Python programs for first-time users.
 
 Thonny runs on Mac, Windows and Linux.
