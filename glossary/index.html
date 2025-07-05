@@ -1401,15 +1401,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pwm" class="md-nav__link">
-    <span class="md-ellipsis">
-      PWM
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#physical-computing" class="md-nav__link">
     <span class="md-ellipsis">
       Physical Computing
@@ -1431,6 +1422,15 @@
   <a href="#piezo-buzzer" class="md-nav__link">
     <span class="md-ellipsis">
       Piezo buzzer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pulse-width-modulation-pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pulse Width Modulation (PWM)
     </span>
   </a>
   
@@ -1500,9 +1500,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#spi" class="md-nav__link">
+  <a href="#serial-peripheral-interface" class="md-nav__link">
     <span class="md-ellipsis">
-      SPI
+      Serial Peripheral Interface
     </span>
   </a>
   
@@ -1968,15 +1968,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pwm" class="md-nav__link">
-    <span class="md-ellipsis">
-      PWM
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#physical-computing" class="md-nav__link">
     <span class="md-ellipsis">
       Physical Computing
@@ -1998,6 +1989,15 @@
   <a href="#piezo-buzzer" class="md-nav__link">
     <span class="md-ellipsis">
       Piezo buzzer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pulse-width-modulation-pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pulse Width Modulation (PWM)
     </span>
   </a>
   
@@ -2067,9 +2067,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#spi" class="md-nav__link">
+  <a href="#serial-peripheral-interface" class="md-nav__link">
     <span class="md-ellipsis">
-      SPI
+      Serial Peripheral Interface
     </span>
   </a>
   
@@ -2198,7 +2198,7 @@
 </ul>
 <h4 id="bootsel">BOOTSEL</h4>
 <p>A button on the pico that when pressed during power up will allow you to mount the device as a USB drive.  You can then drag-and-drop any uf2 image file to reset or update the runtime libraries.</p>
-<p><img alt="" src="img/boot-selection.png" /></p>
+<p><img alt="" src="../img/boot-selection.png" /></p>
 <ul>
 <li>Also known as: Boot Selection</li>
 </ul>
@@ -2304,9 +2304,6 @@ button is pressed.</p>
 <ul>
 <li>See: <a href="../displays/graph/01-intro.md">Graph Displays</a></li>
 </ul>
-<h4 id="pwm">PWM</h4>
-<p>A type of output signal used to control items with continuous values.  For example, we use PWM to control the brightness of a light or the speed of a motor.  We use pulse-width modulation (PWM) to control the speed of our DC motors.</p>
-<p><img alt="" src="../img/PWM-duty-cycle.png" /></p>
 <h4 id="physical-computing">Physical Computing</h4>
 <p>The process of using computers to read data from sensors about the world around us and then taking action on this incoming data stream. These actions are typically doing things like blinking an LED, moving a motor, or updating a display.</p>
 <h4 id="pico-pinout-diagram">Pico Pinout Diagram</h4>
@@ -2317,6 +2314,10 @@ button is pressed.</p>
 </ul>
 <h4 id="piezo-buzzer">Piezo buzzer</h4>
 <p>An electronic device that produces sound, often used for alerts and notifications in electronic circuits.</p>
+<h4 id="pulse-width-modulation-pwm">Pulse Width Modulation (PWM)</h4>
+<p>A type of output signal used to control items with continuous values.  For example, we use PWM to control the brightness of a light or the speed of a motor.  We use pulse-width modulation (PWM) to control the speed of our DC motors.</p>
+<p><img alt="" src="../img/pwm-microsim.png" /></p>
+<p>See also: <a href="../sims/pwm/">PWM MicroSim</a></p>
 <h4 id="rgb-led">RGB LED</h4>
 <p>Light Emitting Diodes that can emit Red, Green, and Blue light, used in various applications for color display.</p>
 <h4 id="rp2040-chip">RP2040 chip</h4>
@@ -2335,12 +2336,17 @@ button is pressed.</p>
 <p>An approach to learning that uses a non-linear, organic process, where knowledge is interconnected and grows in multiple directions, much like a rhizome. </p>
 <p>Rhizomatic learning is an educational concept that draws its analogy from the rhizome, a type of plant root system.</p>
 <p>It emphasizes the importance of context, personal interpretation, and the idea that knowledge and learning are not static but are constantly evolving. Rhizomatic learning encourages learners to create their own paths through content, fostering critical thinking, adaptability, and collaboration. This approach contrasts with traditional hierarchical models of education, offering a more fluid and dynamic understanding of knowledge acquisition.</p>
-<h4 id="spi">SPI</h4>
+<h4 id="serial-peripheral-interface">Serial Peripheral Interface</h4>
 <p>An interface bus commonly used to send data between microcontrollers and small peripherals such as sensors, displays and SD cards. SPI uses separate clock and data lines, along with a select line to choose the device you wish to talk to.</p>
-<p>Also known as: Serial Peripheral Interface
-See also: <a href="#i2c">I2C</a></p>
+<ul>
+<li>Also known as: SPI</li>
+<li>See also: <a href="#i2c">I2C</a></li>
+</ul>
 <h4 id="spi-bus">SPI bus</h4>
 <p>Serial Peripheral Interface bus, a synchronous serial communication protocol used for short-distance communication.</p>
+<ul>
+<li>See also: <a href="#serial-peripheral-interface">SPI</a></li>
+</ul>
 <h4 id="stem">STEM</h4>
 <p>An acronym for Science, Technology, Engineering, and Mathematics education.</p>
 <h4 id="smart-car-chassis">Smart Car chassis</h4>
