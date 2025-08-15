@@ -14,17 +14,35 @@
 
 ## Overview
 
-STEM Robots is a comprehensive educational curriculum designed to teach computational thinking through hands-on robotics projects using affordable components. At just $19 per robot, this curriculum makes robotics education accessible to schools with any budget while providing engaging, standards-aligned learning experiences.
+STEM Robots is a comprehensive fully customizable educational curriculum designed to teach 
+computational thinking through hands-on robotics projects using affordable components. 
+At just $19 per robot, this curriculum makes robotics education accessible to schools 
+with any budget while providing engaging, standards-aligned learning experiences.
 
-The curriculum progressively introduces students to programming concepts, sensors, actuators, and problem-solving skills using MicroPython and the Raspberry Pi Pico microcontroller platform.
+The curriculum progressively introduces students to programming concepts, sensors, 
+actuators, and problem-solving skills using MicroPython and the Raspberry Pi Pico microcontroller platform
+and the low-cost but powerful $12 [Cytron Maker Pi RP2030](https://www.cytron.io/p-maker-pi-rp2040-simplifying-robotics-with-raspberry-pi-rp2040) robotics board.
+
+## 🌟 Our Mission
+
+We believe that every student deserves access to high-quality STEM education regardless of their school's budget. By combining:
+- **Affordable hardware** (under $19 per robot)
+- **Open-source curriculum** (freely available and customizable)  
+- **Modern tools** (MicroPython, generative AI)
+- **Proven pedagogy** (computational thinking, constructionist learning)
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Prerequisites for Building Robot
 
-- MkDocs with Material theme
-- Thonny IDE (for MicroPython programming)
-- Cytron Maker Pi RP2040 board or compatible
+- [Thonny](http://thonny.com) IDE (for MicroPython programming) installed on PC, Mac or Linux
+- [Cytron Maker Pi RP2030](https://www.cytron.io/p-maker-pi-rp2040-simplifying-robotics-with-raspberry-pi-rp2040) board or compatible
+- SmartCar chassis or similar
+
+### Prerequisites for Teachers Building Their Own Custom Site
+
+- Access to GitHub
+- Access to AI Chatbot (ChatGPT, Anthropic Claude etc.)
 
 ### Local Development
 
@@ -60,11 +78,11 @@ mkdocs gh-deploy
 - **📖 Lessons** (`docs/lessons/`) - Progressive curriculum covering motors, sensors, and programming concepts
 - **🤖 Kits** (`docs/kits/`) - Specific robot configurations with step-by-step laboratories
 - **⚙️ Setup** (`docs/setup/`) - Hardware assembly and software installation guides
-- **🎮 Simulations** (`docs/sims/`) - Interactive web-based learning tools (MicroSims)
-- **📊 Learning Graphs** (`docs/learning-graphs/`) - Curriculum dependency tracking
+- **🎮 Simulations (MicroSims)** (`docs/sims/`) - Interactive web-based learning tools (MicroSims)
 - **👨‍🏫 Instructor's Guide** (`docs/instructors-guide/`) - Teaching resources and computational thinking guides
+- **📊 Learning Graphs** (`docs/learning-graphs/`) - Curriculum dependency tracking using Concept Graph - used by AI to generate custom lesson plans
 
-### Robot Configurations
+### Sample Robot Configurations
 
 - **Base Kit** - Core collision-avoidance robot with time-of-flight sensor ($19)
 - **WiFi Bots** - Network-enabled robots with web server capabilities
@@ -77,14 +95,15 @@ mkdocs gh-deploy
 - **Primary Board**: [Cytron Maker Pi RP2040](https://www.cytron.io/p-maker-pi-rp2040) ($12) - Raspberry Pi Pico-based
 - **Programming Language**: MicroPython
 - **Key Sensors**: VL53L0X Time-of-Flight ($3), HC-SR04 Ultrasonic, IR sensors, bump switches
-- **Actuators**: DC motors, servo motors, NeoPixel LEDs, onboard buzzer
-- **Total Cost**: Under $19 per complete robot kit
+- **Actuators and Displays**: DC motors, servo motors, NeoPixel LEDs, onboard buzzer
+- **Total Cost**: Under $19 per complete robot kit (without OLED display) - the OLED adds $13 to the kit cost
 
 ### Why This Hardware?
 
 - **No Soldering Required** - All connections use Grove connectors or breadboard
+- **Sustainable Design** - No vendor lock-in - all parts are replaceable and upgradable - rechargeable battery options
 - **Durable Design** - Cable ties and heat shrink prevent wire breakage
-- **Replaceable Parts** - Standard components available from multiple suppliers
+- **Low-Cost Parts** - Standard components available from multiple suppliers
 - **Extensible** - Easy to add new sensors and actuators
 - **Open Source** - No vendor lock-in or proprietary components
 
@@ -103,8 +122,9 @@ src/
     └── ssd1306.py      # OLED display driver
 ```
 
-### Configuration Pattern
-Each robot kit uses a standardized `config.py` file:
+### Standardized Hardware Configuration File
+Each robot kit uses a standardized `config.py` file.  You just change this file and all the labs will work!
+
 ```python
 # Motor control pins (H-bridge)
 RIGHT_FORWARD_PIN = 8
@@ -133,13 +153,15 @@ NUMBER_PIXELS = 2
 ## 🎮 Interactive Learning Tools
 
 ### MicroSims
-Web-based simulations that run in any browser:
+
+MicroSims are web-based simulations that run in any browser:
+
 - **PWM Visualization** - Understanding pulse-width modulation
 - **H-Bridge Control** - Motor direction control concepts
 - **Collision Avoidance** - Algorithm visualization
 - **Learning Graphs** - Curriculum dependency visualization
 
-## 📖 Documentation
+## 📖 Fantastic Documentation
 
 The complete curriculum is available at [https://dmccreary.github.io/stem-robots/](https://dmccreary.github.io/stem-robots/)
 
@@ -158,6 +180,7 @@ We welcome contributions! Please consider:
 - Adding new robot configurations and sensor integrations
 - Improving documentation and translations
 - Sharing your classroom experiences and adaptations
+- Use [GitHub Issues](https://github.com/dmccreary/stem-robots/issues) and [GitHub Projects](https://github.com/users/dmccreary/projects/6) to provide feedback: 
 
 ## 📄 License
 
@@ -171,26 +194,21 @@ This project builds upon the excellent work of many open-source projects, educat
 - **[MicroPython](https://micropython.org/)** - Python implementation for microcontrollers, enabling accessible programming
 - **[MkDocs](https://www.mkdocs.org/)** - Static site generator for beautiful documentation
 - **[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)** - Modern, responsive documentation theme
-- **[Python](https://www.python.org/)** - The programming language that makes coding accessible
+- **[Python](https://www.python.org/)** - The base programming language that MicroPython is built around
 
 ### Hardware Platforms and Partners
 - **[Raspberry Pi Foundation](https://www.raspberrypi.org/)** - RP2040 microcontroller and educational mission
 - **[Cytron Technologies](https://www.cytron.io/)** - Maker Pi RP2040 board that revolutionized our robots
-- **[Adafruit Industries](https://www.adafruit.com/)** - Educational electronics and community resources
-- **[SparkFun Electronics](https://www.sparkfun.com/)** - Open-source hardware and learning resources
 
 ### Sensor and Component Libraries
 - **[VL53L0X Library](https://github.com/kevinmcaleer/vl53l0x)** - Time-of-flight sensor driver for MicroPython
 - **[SSD1306 Library](https://github.com/micropython/micropython/tree/master/drivers/display)** - OLED display driver
 - **[NeoPixel Library](https://docs.micropython.org/en/latest/esp8266/tutorial/neopixel.html)** - RGB LED control for visual feedback
-- **[Machine Library](https://docs.micropython.org/en/latest/library/machine.html)** - Hardware abstraction in MicroPython
+- **[MicroPython Builtin Machine Library](https://docs.micropython.org/en/latest/library/machine.html)** - Hardware abstraction in MicroPython
 
 ### Educational Frameworks and Resources
 - **[Computational Thinking](https://www.iste.org/explore/computational-thinking)** concepts from ISTE
 - **[Physical Computing](https://itp.nyu.edu/physcomp/)** curriculum framework from NYU ITP
-- **[CS Unplugged](https://csunplugged.org/)** - Computer science concepts without computers
-- **[Code.org](https://code.org/)** - Computer science education advocacy and resources
-- **[National Science Foundation](https://www.nsf.gov/)** - STEM education research and standards
 
 ### Development and Deployment Tools
 - **[GitHub Pages](https://pages.github.com/)** - Free static site hosting for educational content
@@ -201,32 +219,20 @@ This project builds upon the excellent work of many open-source projects, educat
 ### Generative AI Tools
 - **[OpenAI ChatGPT](https://chat.openai.com/)** - Revolutionizing personalized lesson plan generation
 - **[GitHub Copilot](https://github.com/features/copilot)** - AI-assisted coding for educational examples
-- **[Claude](https://claude.ai/)** - Advanced AI for curriculum content generation
+- **[Claude Code](https://claude.ai/)** - Advanced AI for curriculum content generation and holistic understanding of the website
 
 ### Community and Inspiration
-- **[Arduino Community](https://www.arduino.cc/)** - Pioneer in educational electronics and open hardware
 - **[MicroPython Community](https://micropython.org/community/)** - Supportive community of educators and developers
-- **[CoderDojo](https://coderdojo.com/)** - Global network of free programming clubs for young people
-- **[Minnesota Arduino Meetup](https://www.meetup.com/arduino-twin-cities/)** - Local community that provided early feedback and support
 
 ### Special Recognition
 - **Doug Blanding** - Contributor to Pico MicroPython smart car implementations
-- **Kevin McAleer** - MicroPython educator and VL53L0X library developer
+- **Kevin McAleer** - MicroPython educator and MicroPython promoter
 - **Teachers and Students** - Worldwide educators and students who have tested these materials and provided invaluable feedback
 - **Open Source Hardware Movement** - Community that makes affordable, accessible electronics possible
 
 ### Design Philosophy Influences
 - **[Seymour Papert](https://www.papert.org/)** - Constructionist learning theory that guides our hands-on approach
 - **[Alan Kay](https://www.vpri.org/alan_kay.html)** - Vision of personal computing and learning tools
-- **[Mitchel Resnick](https://www.media.mit.edu/people/mres/overview/)** - Creative computing and Scratch programming language
-
-## 🌟 Our Mission
-
-We believe that every student deserves access to high-quality STEM education regardless of their school's budget. By combining:
-- **Affordable hardware** (under $19 per robot)
-- **Open-source curriculum** (freely available and customizable)  
-- **Modern tools** (MicroPython, generative AI)
-- **Proven pedagogy** (computational thinking, constructionist learning)
 
 We aim to democratize robotics education and inspire the next generation of makers, programmers, and problem-solvers.
 
@@ -234,7 +240,6 @@ We aim to democratize robotics education and inspire the next generation of make
 
 - [MicroPython for Kids](https://dmccreary.github.io/micropython/) - Broader MicroPython educational resources
 - [CircuitPython](https://circuitpython.org/) - Alternative Python for microcontrollers
-- [Adafruit Learning System](https://learn.adafruit.com/) - Electronics tutorials and projects
 - [MicroPython Libraries](https://github.com/micropython/micropython-lib) - Additional libraries and drivers
 
 ## 📞 Contact
