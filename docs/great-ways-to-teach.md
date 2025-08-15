@@ -27,22 +27,22 @@ Here are some good and bad ways to teach.
 
 ## Examples of Bad Pedagogy
 
-### One-Size-Fits-All Approach**:
+### One-Size-Fits-All Approach
 
 -   **Description**: Delivering the same lesson in the same way to all students, regardless of their individual learning needs or abilities.
 -   **Impact**: Can lead to disengagement and poor understanding among students who do not resonate with the general teaching method.
 
-### Lack of Engagement**:
+### Lack of Engagement
 
 -   **Description**: Relying solely on lectures without interaction or practical application.
 -   **Impact**: Students may become passive recipients of information, leading to lower retention rates and lack of interest in the subject matter.
 
-### Overemphasis on Memorization**:
+### Overemphasis on Memorization
 
 -   **Description**: Focusing heavily on rote learning and memorization without understanding the underlying concepts.
 -   **Impact**: Students may perform well on tests but fail to apply knowledge in real-world situations, indicating a shallow level of learning.
 
-### Neglecting Feedback**:
+### Neglecting Feedback
 
 -   **Description**: Failing to provide students with timely or constructive feedback on their work.
 -   **Impact**: Without feedback, students cannot learn from their mistakes or understand how to improve, which can hinder their academic progress.
