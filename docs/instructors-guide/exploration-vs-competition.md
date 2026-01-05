@@ -19,7 +19,7 @@ og:image: instructors-guide/exploration-vs-competition-social.png
 ---
 
 # Exploration vs. Competition in Robotics Education
-
+![Exploration vs. Competition in Robotics](./exploration-vs-competition.png)
 This guide examines the research literature on competitive versus exploration-based approaches to robotics education, with a focus on creating inclusive events that engage students from all backgrounds, including girls, minorities, and disadvantaged youth.
 
 ## Target Audience
