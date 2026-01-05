@@ -11,3 +11,9 @@ Computational thinking is a name we give to describing the underlying patterns t
 concepts using a fun curriculum.
 
 [Read the Section on Computational Thinking](computational-thinking.md)
+
+## Exploration vs. Competition
+
+When designing robotics events and programs, instructors must consider whether to emphasize competitive or exploration-based approaches. Research shows these choices significantly impact student participation, retention, and learning—particularly for girls, minorities, and disadvantaged youth.
+
+[Read the Section on Exploration vs. Competition](exploration-vs-competition.md)
