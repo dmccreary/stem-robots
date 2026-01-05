@@ -1,3 +1,23 @@
+---
+title: Exploration vs. Competition in Robotics Education
+description: Research-based analysis of competitive versus exploration-based approaches to robotics education, with evidence-based strategies for creating inclusive events that engage girls, minorities, and disadvantaged youth.
+authors:
+  - Dan McCreary
+date: 2025-01-05
+tags:
+  - robotics education
+  - STEM competition
+  - maker education
+  - inclusive STEM
+  - diversity in robotics
+  - growth mindset
+  - coopertition
+og:title: "Competition or Exploration? Research-Based Strategies for Inclusive Robotics Education"
+og:description: Should your robotics program emphasize competition or exploration? Research shows these choices significantly impact participation by girls, minorities, and disadvantaged youth. Learn what works.
+image: instructors-guide/exploration-vs-competition-social.png
+og:image: instructors-guide/exploration-vs-competition-social.png
+---
+
 # Exploration vs. Competition in Robotics Education
 
 This guide examines the research literature on competitive versus exploration-based approaches to robotics education, with a focus on creating inclusive events that engage students from all backgrounds, including girls, minorities, and disadvantaged youth.
