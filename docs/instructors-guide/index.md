@@ -1,3 +1,23 @@
+---
+title: Instructor's Guide to STEM Robotics
+description: Guidelines for teaching STEM robotics courses, including computational thinking fundamentals and research-based strategies for creating inclusive robotics events that engage diverse learners.
+authors:
+  - Dan McCreary
+date: 2025-01-05
+tags:
+  - robotics education
+  - STEM teaching
+  - computational thinking
+  - inclusive education
+  - diversity in STEM
+og_title: Instructor's Guide to STEM Robotics Education
+og_description: Research-based guidelines for teaching robotics, from computational thinking to creating inclusive events that attract girls, minorities, and disadvantaged youth.
+og_image: https://dmccreary.github.io/stem-robots/img/instructors-guide-social.png
+twitter_card: summary_large_image
+twitter_title: Instructor's Guide to STEM Robotics Education
+twitter_description: Research-based strategies for inclusive robotics education - computational thinking, competition vs exploration, and engaging diverse learners.
+---
+
 # Instructors Guide
 
 This section describes guidelines for people teaching STEM robotics
