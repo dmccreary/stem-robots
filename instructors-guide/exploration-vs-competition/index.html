@@ -1,0 +1,2516 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/stem-robots/instructors-guide/exploration-vs-competition/">
+      
+      
+        <link rel="prev" href="../computational-thinking/">
+      
+      
+        <link rel="next" href="../../faq/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Exploration vs Competition - STEM Robots</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-6SSB9XBXM9"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-6SSB9XBXM9",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-6SSB9XBXM9",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exploration-vs-competition-in-robotics-education" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="STEM Robots" class="md-header__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            STEM Robots
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Exploration vs Competition
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="STEM Robots" class="md-nav__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    STEM Robots
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../journey-map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Journey Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../robot-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robot Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gallery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gallery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../great-ways-to-teach/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Great Ways To Teach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../course-descriptions/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Course Descriptions
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graphs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graphs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../setup/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Topics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../lessons/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../kits/wifi-bot/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Wireless Bot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/bump-switch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bump Switches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/line-follower/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Line Follower
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/adjust/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adjustabot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/ultrasonic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ultrasonic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../kits/wifi-display-bot/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    WiFi Display Bot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_23" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_23" id="__nav_23_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_23_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_23">
+            <span class="md-nav__icon md-icon"></span>
+            Instructors Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../computational-thinking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Computational Thinking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Exploration vs Competition
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Exploration vs Competition
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-what-the-research-says" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 1: What the Research Says
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: What the Research Says">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overall-effectiveness-of-educational-robotics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overall Effectiveness of Educational Robotics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-case-for-competitive-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Case for Competitive Approaches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-case-for-exploration-based-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Case for Exploration-Based Approaches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stress-and-anxiety-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stress and Anxiety Considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-impact-on-diverse-populations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 2: Impact on Diverse Populations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Impact on Diverse Populations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gender-differences-in-robotics-participation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gender Differences in Robotics Participation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#underrepresented-minorities-and-disadvantaged-youth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Underrepresented Minorities and Disadvantaged Youth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#growth-mindset-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Growth Mindset Considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-balanced-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 3: Balanced Approaches
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Balanced Approaches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-coopertition-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Coopertition Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-event-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternative Event Formats
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-recommendations-for-inclusive-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 4: Recommendations for Inclusive Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Recommendations for Inclusive Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-welcoming-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Welcoming Environments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#financial-accessibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Financial Accessibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Design Principles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mentorship-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mentorship Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supporting-different-learning-styles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supporting Different Learning Styles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-implementation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 5: Implementation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Implementation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assessing-your-population" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessing Your Population
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-approaches-by-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Approaches by Context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-for-success" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics for Success
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#organizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organizations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research" class="md-nav__link">
+    <span class="md-ellipsis">
+      Research
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Guides
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prompts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STEM Robotics Prompts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sims/template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MicroSim Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-what-the-research-says" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 1: What the Research Says
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: What the Research Says">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overall-effectiveness-of-educational-robotics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overall Effectiveness of Educational Robotics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-case-for-competitive-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Case for Competitive Approaches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-case-for-exploration-based-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Case for Exploration-Based Approaches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stress-and-anxiety-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stress and Anxiety Considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-impact-on-diverse-populations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 2: Impact on Diverse Populations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Impact on Diverse Populations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gender-differences-in-robotics-participation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gender Differences in Robotics Participation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#underrepresented-minorities-and-disadvantaged-youth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Underrepresented Minorities and Disadvantaged Youth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#growth-mindset-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Growth Mindset Considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-balanced-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 3: Balanced Approaches
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Balanced Approaches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-coopertition-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Coopertition Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-event-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternative Event Formats
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-recommendations-for-inclusive-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 4: Recommendations for Inclusive Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Recommendations for Inclusive Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-welcoming-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Welcoming Environments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#financial-accessibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Financial Accessibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Design Principles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mentorship-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mentorship Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supporting-different-learning-styles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supporting Different Learning Styles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-implementation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 5: Implementation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Implementation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assessing-your-population" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessing Your Population
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-approaches-by-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Approaches by Context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-for-success" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics for Success
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#organizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organizations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research" class="md-nav__link">
+    <span class="md-ellipsis">
+      Research
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Guides
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="exploration-vs-competition-in-robotics-education">Exploration vs. Competition in Robotics Education</h1>
+<p>This guide examines the research literature on competitive versus exploration-based approaches to robotics education, with a focus on creating inclusive events that engage students from all backgrounds, including girls, minorities, and disadvantaged youth.</p>
+<h2 id="target-audience">Target Audience</h2>
+<p>This document is intended for:</p>
+<ul>
+<li>School administrators planning robotics programs</li>
+<li>Teachers implementing robotics curricula</li>
+<li>Mentors and coaches working with robotics teams</li>
+<li>Volunteers organizing robotics events</li>
+<li>Community organizations supporting STEM education</li>
+</ul>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Research consistently shows that both competitive and exploration-based approaches to robotics education have merit, but they affect different student populations in distinct ways. While competition can motivate some students and build resilience, exploration-based learning tends to be more inclusive and better suited for attracting and retaining underrepresented groups in STEM. The most effective programs often blend elements of both approaches through frameworks like "coopertition" while being mindful of the specific needs of their student populations.</p>
+<hr />
+<h2 id="part-1-what-the-research-says">Part 1: What the Research Says</h2>
+<h3 id="overall-effectiveness-of-educational-robotics">Overall Effectiveness of Educational Robotics</h3>
+<p>Multiple meta-analyses have demonstrated the significant positive impact of educational robotics on student outcomes:</p>
+<ul>
+<li>
+<p>A <a href="https://stemeducationjournal.springeropen.com/articles/10.1186/s40594-024-00469-4">multilevel meta-analysis published in the International Journal of STEM Education</a> found a moderate positive effect (g = 0.57) of educational robotics on students' learning outcomes across K-16 education.</p>
+</li>
+<li>
+<p>Research by <a href="https://stemeducationjournal.springeropen.com/articles/10.1186/s40594-023-00400-3">Sapounidis et al. (2023)</a> found positive effects on students' knowledge (g = 0.528), skills (g = 0.600), and attitudes (g = 0.287).</p>
+</li>
+<li>
+<p>A <a href="https://www.nature.com/articles/s41599-025-05546-9">comprehensive study in Nature/Humanities and Social Sciences Communications</a> found robot-based education associated with moderate-to-large improvements in:</p>
+<ul>
+<li>Academic achievement (g = 0.72)</li>
+<li>Computational knowledge (g = 0.85, large effect)</li>
+<li>Motivation (g = 0.47, medium effect)</li>
+<li>Performance (g = 0.81, large effect)</li>
+</ul>
+</li>
+</ul>
+<h3 id="the-case-for-competitive-approaches">The Case for Competitive Approaches</h3>
+<p>Competition-based learning has documented benefits when implemented thoughtfully:</p>
+<p><strong>Potential Benefits:</strong></p>
+<ol>
+<li>
+<p><strong>Motivation and Engagement</strong>: Competition can provide clear goals and external motivation that drives student engagement.</p>
+</li>
+<li>
+<p><strong>Real-World Preparation</strong>: Competitive environments mirror workplace dynamics where individuals and teams vie for resources and recognition.</p>
+</li>
+<li>
+<p><strong>Resilience Building</strong>: Students learn to handle pressure, cope with setbacks, and persist through challenges.</p>
+</li>
+<li>
+<p><strong>Measurable Outcomes</strong>: Competitions provide clear benchmarks for assessing student progress and program effectiveness.</p>
+</li>
+<li>
+<p><strong>Community Building</strong>: Events like FIRST Robotics create communities where students connect with peers who share their interests.</p>
+</li>
+</ol>
+<p><strong>Research Findings:</strong></p>
+<ul>
+<li>
+<p>The <a href="https://recf.org/">Robotics Education &amp; Competition Foundation (RECF)</a> reports that participants in competitive robotics programs are more likely to consider studying STEM beyond high school.</p>
+</li>
+<li>
+<p>Students in robotics competition programs develop teamwork skills and collaborative problem-solving abilities alongside technical competencies.</p>
+</li>
+</ul>
+<h3 id="the-case-for-exploration-based-approaches">The Case for Exploration-Based Approaches</h3>
+<p>Research on <a href="https://link.springer.com/article/10.1007/s10956-023-10041-4">makerspaces and discovery learning</a> demonstrates powerful benefits from non-competitive approaches:</p>
+<p><strong>Potential Benefits:</strong></p>
+<ol>
+<li>
+<p><strong>Intrinsic Motivation</strong>: Exploration-based learning fosters curiosity-driven engagement rather than external reward-seeking.</p>
+</li>
+<li>
+<p><strong>Risk-Taking and Creativity</strong>: Students feel safer experimenting and failing without the pressure of competition.</p>
+</li>
+<li>
+<p><strong>Deeper Learning</strong>: Without time pressure or ranking, students can pursue deeper understanding.</p>
+</li>
+<li>
+<p><strong>Inclusivity</strong>: Research consistently shows exploration-based approaches attract more diverse participants.</p>
+</li>
+<li>
+<p><strong>Growth Mindset Development</strong>: Exploration emphasizes learning and improvement over fixed performance measures.</p>
+</li>
+</ol>
+<p><strong>Research Findings:</strong></p>
+<ul>
+<li>
+<p>According to <a href="https://1stmakerspace.com/research-behind-maker-education">research on makerspaces</a>, these environments engage students and restore hope by allowing students to make, explore, and connect content to what they are learning in the classroom.</p>
+</li>
+<li>
+<p><a href="https://link.springer.com/article/10.1007/s11165-024-10153-w">Makerspace research</a> shows that pedagogical approaches used in making support students' agency, inquiry with materials, design self-efficacy, and engagement in more equitable forms of STEM learning.</p>
+</li>
+</ul>
+<h3 id="stress-and-anxiety-considerations">Stress and Anxiety Considerations</h3>
+<p>Competition-induced stress is a significant concern documented in the research:</p>
+<ul>
+<li>
+<p><a href="https://teachers.institute/learning-learner-development/competitive-vs-cooperative-learning-effects/">Research on competitive learning</a> shows that in competitive environments, students may view peers as rivals rather than collaborators, fostering negative emotions such as anxiety, stress, and fear of failure.</p>
+</li>
+<li>
+<p>EEG studies have shown lower levels of student attention under competitive conditions, as students must cope with competition-induced emotional responses.</p>
+</li>
+<li>
+<p><a href="https://www.tandfonline.com/doi/full/10.1080/15578771.2025.2512348">Research by Kohn (1992)</a> cautions that poorly designed competitive frameworks can lead to hypercompetitiveness and negative psychological effects, including undermining intrinsic motivation.</p>
+</li>
+</ul>
+<p>In contrast:</p>
+<ul>
+<li>
+<p><a href="https://teachers.institute/learning-learner-development/competitive-vs-cooperative-learning-effects/">Cooperative learning research by Johnson and Johnson (1989)</a> found that cooperative learning promotes higher achievement, better relationships among peers, and improved self-esteem compared to competitive settings.</p>
+</li>
+<li>
+<p>Collaboration develops higher-level thinking abilities, boosts self-confidence, and strengthens essential social-emotional learning skills.</p>
+</li>
+</ul>
+<hr />
+<h2 id="part-2-impact-on-diverse-populations">Part 2: Impact on Diverse Populations</h2>
+<h3 id="gender-differences-in-robotics-participation">Gender Differences in Robotics Participation</h3>
+<p>Research reveals significant gender disparities in competitive robotics:</p>
+<ul>
+<li>
+<p>Among 5,956 participants in the 2015-2019 <a href="https://link.springer.com/article/10.1007/s10798-023-09830-0">World Robot Olympiad finals</a>, girls accounted for only 17.3%.</p>
+</li>
+<li>
+<p>In <a href="https://www.jite.org/documents/Vol18/JITEv18ResearchP097-112Sullivan5121.pdf">VEX Robotics Competitions</a>, female students are estimated to make up only 23% of participants.</p>
+</li>
+<li>
+<p>As age groups move up, the number of girl participants decreases further.</p>
+</li>
+</ul>
+<p><strong>What the Research Tells Us About Girls and Competition:</strong></p>
+<ul>
+<li>
+<p>Research indicates that the competitive nature of robotics programs may be less appealing to adolescent females than males.</p>
+</li>
+<li>
+<p>Even women with high levels of computer self-efficacy are drawn to cooperative learning styles.</p>
+</li>
+<li>
+<p>All-girl teams demonstrate advantages in communication, presentation, and collaboration skills.</p>
+</li>
+<li>
+<p>The <a href="https://blog.isa.org/spotlight-on-stem-diversity-and-inclusion-work-the-national-girls-collaborative-project">National Girls Collaborative Project</a> reports that young girls do not significantly differ from boys in math and science abilities, but they are less confident in their STEM skills and feel less certain they belong in those fields.</p>
+</li>
+</ul>
+<p><strong>What Works for Girls:</strong></p>
+<ul>
+<li>
+<p>At Wellesley College, instead of culminating in competition, students shared their artistic robotic creations in an exhibition format—research supports this non-competitive approach for reaching female roboticists.</p>
+</li>
+<li>
+<p>Open categories that emphasize creativity attract relatively more girl participants.</p>
+</li>
+<li>
+<p><a href="https://rrpubs.com/index.php/ijoess/article/view/2006">STEAM-based interventions</a> have shown statistically significant improvements in both programming and computational thinking self-efficacy scores for female students.</p>
+</li>
+<li>
+<p>Using <a href="https://robohub.org/robots-getting-girls-engaged-in-robotics/">soft robot design</a> can broaden female high school students' perception of engineering and increase their interest in pursuing robotics.</p>
+</li>
+</ul>
+<h3 id="underrepresented-minorities-and-disadvantaged-youth">Underrepresented Minorities and Disadvantaged Youth</h3>
+<p>Research shows both challenges and opportunities for these populations:</p>
+<p><strong>Current Challenges:</strong></p>
+<ul>
+<li>
+<p>Although the gap is decreasing, <a href="https://www.science.org/doi/10.1126/scirobotics.adu7713">Black and Hispanic populations remain underrepresented</a> in the US STEM workforce, earning a smaller percentage of STEM degrees than their percentage of the population.</p>
+</li>
+<li>
+<p>There is an ongoing problem of equitable access to education and hostile environments that push out marginalized groups.</p>
+</li>
+</ul>
+<p><strong>Positive Research Findings:</strong></p>
+<ul>
+<li>
+<p>A <a href="https://citejournal.org/volume-21/issue-4-21/mathematics/the-effects-of-robotics-professional-development-on-science-and-mathematics-teaching-performance-and-student-achievement-in-underserved-middle-schools/">study on underserved middle schools</a> found that robotics groups experienced learning growth at higher percentages than control groups from similarly disadvantaged schools. The sixth-grade robotics group matched the national norm average.</p>
+</li>
+<li>
+<p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10871080/">Research on early robotics education</a> with diverse populations (43% Hispanic/Latinx, 28% African American/Black, 13% White) showed increases in students' understanding of robotics design, improved coding skills, and increased career aspirations toward computing fields.</p>
+</li>
+<li>
+<p><a href="https://www.lifescied.org/doi/10.1187/cbe.12-12-0206">Summer research programs for disadvantaged youth</a> can promote stronger professionals from disadvantaged minority populations and increase diversity in STEM fields.</p>
+</li>
+</ul>
+<h3 id="growth-mindset-considerations">Growth Mindset Considerations</h3>
+<p>Research on mindset has important implications for program design:</p>
+<ul>
+<li>
+<p><a href="https://teachingcommons.stanford.edu/teaching-guides/foundations-course-design/learning-activities/growth-mindset-and-enhanced-learning">Stanford research</a> found that students with a growth mindset are more likely to challenge themselves and become stronger, more resilient problem solvers.</p>
+</li>
+<li>
+<p>A <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8299535/">longitudinal study of 150 STEM professors and 15,000 students</a> found that classrooms led by professors who believed ability is a fixed attribute had racial achievement gaps up to twice as large as courses taught by faculty with a growth mindset. Racial minority students significantly outperformed in growth-mindset classrooms.</p>
+</li>
+<li>
+<p>Competitive environments that emphasize performance goals (outcomes) rather than mastery goals (learning) can shift students toward fixed mindset thinking.</p>
+</li>
+<li>
+<p>Students who persistently struggle in courses tend to shift toward viewing intelligence as a stable trait.</p>
+</li>
+</ul>
+<hr />
+<h2 id="part-3-balanced-approaches">Part 3: Balanced Approaches</h2>
+<h3 id="the-coopertition-model">The Coopertition Model</h3>
+<p><a href="https://www.firstinspires.org/about">FIRST Robotics</a> has pioneered approaches that blend competition with collaboration:</p>
+<p><strong>Gracious Professionalism:</strong>
+Coined by Dr. Woodie Flowers at MIT, <a href="https://www.firstinspires.org/robotics/frc/blog/gracious-professionalism-coopertition">Gracious Professionalism</a> describes an ethos where fierce competition and mutual gain coexist. Participants compete intensely while treating each other with respect and empathy—knowledge, competition, and empathy blend comfortably.</p>
+<p><strong>Coopertition:</strong>
+<a href="https://firstwiki.github.io/wiki/gracious-professionalism">Coopertition</a> fosters innovation by promoting kindness and respect in the face of intense competition. Teams help and cooperate with each other even as they compete, learning from teammates, teaching others, and collaborating with mentors.</p>
+<p><strong>FIRST Core Values:</strong></p>
+<ol>
+<li>Discovery</li>
+<li>Innovation</li>
+<li>Impact</li>
+<li>Inclusion</li>
+<li>Teamwork</li>
+<li>Fun</li>
+</ol>
+<h3 id="alternative-event-formats">Alternative Event Formats</h3>
+<p>Consider these formats as alternatives or supplements to traditional competitions:</p>
+<p><strong>Showcase/Exhibition Events:</strong></p>
+<ul>
+<li>Students present projects to community members, parents, and peers</li>
+<li>Focus on explaining and demonstrating rather than winning</li>
+<li>Judges provide feedback rather than rankings</li>
+<li>Emphasizes communication and creativity skills</li>
+</ul>
+<p><strong>Challenge-Based Events:</strong></p>
+<ul>
+<li>Teams work on real-world problems with multiple valid solutions</li>
+<li>Success measured by meeting challenge criteria rather than defeating others</li>
+<li>Encourages collaboration between teams</li>
+<li>Allows for differentiated challenge levels</li>
+</ul>
+<p><strong>Maker Faires and Demo Days:</strong></p>
+<ul>
+<li>Open-ended format where students share what they've created</li>
+<li>Peer-to-peer learning and inspiration</li>
+<li>Community engagement and celebration</li>
+<li>No winners or losers</li>
+</ul>
+<p><strong>Collaborative Challenges:</strong></p>
+<ul>
+<li>Multiple teams work together toward a common goal</li>
+<li>Success depends on inter-team cooperation</li>
+<li>Builds community and reduces anxiety</li>
+<li>Models real-world engineering collaboration</li>
+</ul>
+<hr />
+<h2 id="part-4-recommendations-for-inclusive-events">Part 4: Recommendations for Inclusive Events</h2>
+<h3 id="creating-welcoming-environments">Creating Welcoming Environments</h3>
+<p>Based on <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10445904/">research on inclusive robotics education</a>:</p>
+<ol>
+<li>
+<p><strong>Diverse Representation</strong>: Ensure presenters, mentors, and judges represent the diversity you want to attract. A diverse team of presenters validates career choices in robotics for students from various backgrounds.</p>
+</li>
+<li>
+<p><strong>Role Models</strong>: Bring in successful professionals from underrepresented groups. <a href="https://www.robotlab.com/blog/promoting-diversity-and-inclusion-in-robotics">Research shows</a> that a young girl connecting with a successful female robotics engineer can be life-changing.</p>
+</li>
+<li>
+<p><strong>Inclusive Language</strong>: Use gender-neutral, skill-based language in all materials. Avoid stereotypical imagery of who "belongs" in robotics.</p>
+</li>
+<li>
+<p><strong>Safe Spaces</strong>: Create environments where mistakes are learning opportunities, not sources of shame.</p>
+</li>
+<li>
+<p><strong>Multiple Entry Points</strong>: Offer various ways to participate—building, programming, documentation, presentation, and project management all have value.</p>
+</li>
+</ol>
+<h3 id="financial-accessibility">Financial Accessibility</h3>
+<p><a href="https://www.science.org/doi/10.1126/scirobotics.adu7713">Financial barriers</a> disproportionately affect underrepresented groups:</p>
+<ol>
+<li>
+<p><strong>Scholarships and Grants</strong>: Provide financial support for registration fees, materials, and transportation.</p>
+</li>
+<li>
+<p><strong>Equipment Lending</strong>: Create programs to loan or share expensive equipment.</p>
+</li>
+<li>
+<p><strong>Low-Cost Alternatives</strong>: Design events that can be completed with inexpensive materials.</p>
+</li>
+<li>
+<p><strong>Transportation Support</strong>: Help teams without means attend events.</p>
+</li>
+<li>
+<p><strong>Sliding Scale Fees</strong>: Adjust costs based on ability to pay.</p>
+</li>
+</ol>
+<h3 id="event-design-principles">Event Design Principles</h3>
+<p><strong>For Maximum Inclusivity:</strong></p>
+<ol>
+<li>
+<p><strong>Emphasize Process Over Product</strong>: Recognize effort, learning, and growth alongside outcomes.</p>
+</li>
+<li>
+<p><strong>Multiple Award Categories</strong>: Include awards for collaboration, creativity, documentation, and improvement—not just "winning."</p>
+</li>
+<li>
+<p><strong>De-emphasize Head-to-Head Competition</strong>: Consider round-robin formats, collaborative challenges, or portfolio-based assessment.</p>
+</li>
+<li>
+<p><strong>Provide Scaffolding</strong>: Offer different difficulty levels and support for teams with varying experience.</p>
+</li>
+<li>
+<p><strong>Build in Collaboration Time</strong>: Schedule time for teams to share techniques and help each other.</p>
+</li>
+<li>
+<p><strong>Celebrate Learning</strong>: Recognize when students overcome obstacles or learn from failure.</p>
+</li>
+</ol>
+<h3 id="mentorship-best-practices">Mentorship Best Practices</h3>
+<p>Effective mentorship is crucial for retaining underrepresented students:</p>
+<ol>
+<li>
+<p><strong>Match mentors with mentees</strong> from similar backgrounds when possible.</p>
+</li>
+<li>
+<p><strong>Train mentors</strong> in inclusive practices and implicit bias awareness.</p>
+</li>
+<li>
+<p><strong>Provide ongoing support</strong> rather than one-time interactions.</p>
+</li>
+<li>
+<p><strong>Create peer mentorship</strong> opportunities between experienced and new students.</p>
+</li>
+<li>
+<p><strong>Involve families</strong> to build support systems beyond the classroom.</p>
+</li>
+</ol>
+<h3 id="supporting-different-learning-styles">Supporting Different Learning Styles</h3>
+<p>Not all students thrive in the same environment:</p>
+<ol>
+<li>
+<p><strong>Provide quiet spaces</strong> for students who are overwhelmed by competition noise.</p>
+</li>
+<li>
+<p><strong>Offer multiple ways to demonstrate knowledge</strong> (written, verbal, hands-on).</p>
+</li>
+<li>
+<p><strong>Allow for different pacing</strong> rather than strict time limits.</p>
+</li>
+<li>
+<p><strong>Create team structures</strong> that value different contributions.</p>
+</li>
+<li>
+<p><strong>Recognize non-technical skills</strong> like project management, documentation, and presentation.</p>
+</li>
+</ol>
+<hr />
+<h2 id="part-5-implementation-guide">Part 5: Implementation Guide</h2>
+<h3 id="assessing-your-population">Assessing Your Population</h3>
+<p>Before designing your event, consider:</p>
+<ol>
+<li>
+<p><strong>Demographics</strong>: What is the current makeup of your student population? What populations are underrepresented?</p>
+</li>
+<li>
+<p><strong>Prior Experience</strong>: How much robotics experience do participants have? Mixed experience levels may favor exploration over competition.</p>
+</li>
+<li>
+<p><strong>Resources</strong>: What equipment, funding, and mentorship is available? Resource disparities can make competition unfair.</p>
+</li>
+<li>
+<p><strong>Goals</strong>: Is your primary goal skill development, community building, or identifying top performers?</p>
+</li>
+<li>
+<p><strong>Sustainability</strong>: Will your approach encourage continued participation or burn students out?</p>
+</li>
+</ol>
+<h3 id="recommended-approaches-by-context">Recommended Approaches by Context</h3>
+<p><strong>For Maximizing Diversity and Inclusion:</strong></p>
+<ul>
+<li>Emphasize exploration-based formats (maker faires, showcases, collaborative challenges)</li>
+<li>Use non-ranking feedback mechanisms</li>
+<li>Create multiple pathways to recognition</li>
+<li>Provide strong mentorship and scaffolding</li>
+</ul>
+<p><strong>For Established Programs with Diverse Participants:</strong></p>
+<ul>
+<li>Blend competitive and collaborative elements (coopertition model)</li>
+<li>Include both individual/team recognition and collaboration awards</li>
+<li>Ensure equitable access to resources and preparation time</li>
+<li>Monitor participation and retention across demographic groups</li>
+</ul>
+<p><strong>For Advanced Students Seeking Challenge:</strong></p>
+<ul>
+<li>Traditional competition formats may be appropriate</li>
+<li>Ensure psychological safety and growth mindset framing</li>
+<li>Emphasize learning alongside winning</li>
+<li>Provide pathways for students to mentor others</li>
+</ul>
+<h3 id="metrics-for-success">Metrics for Success</h3>
+<p>Track these indicators to evaluate your program's inclusivity:</p>
+<ol>
+<li>
+<p><strong>Participation Demographics</strong>: Are underrepresented groups well-represented?</p>
+</li>
+<li>
+<p><strong>Retention Rates</strong>: Do students return year after year? Are there demographic differences?</p>
+</li>
+<li>
+<p><strong>Engagement Quality</strong>: Do all students participate actively, or do some disengage?</p>
+</li>
+<li>
+<p><strong>Student Feedback</strong>: What do students report about their experience?</p>
+</li>
+<li>
+<p><strong>Skill Development</strong>: Are students gaining knowledge and confidence regardless of competitive outcomes?</p>
+</li>
+<li>
+<p><strong>Career Interest</strong>: Are students more interested in STEM careers after participating?</p>
+</li>
+</ol>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>The research is clear: how we structure robotics events significantly impacts who participates, who persists, and what students learn. While competition can motivate and excite some students, it can also create barriers for others—particularly girls, minorities, and disadvantaged youth.</p>
+<p>The most effective approach depends on your goals and population:</p>
+<ul>
+<li>
+<p><strong>If your priority is attracting and retaining diverse students</strong>, emphasize exploration-based formats with collaborative elements.</p>
+</li>
+<li>
+<p><strong>If you're working with experienced, confident students</strong>, blended approaches like coopertition can provide challenge while maintaining inclusivity.</p>
+</li>
+<li>
+<p><strong>Whatever format you choose</strong>, build in supports for different learning styles, ensure equitable access to resources, and prioritize growth mindset messaging.</p>
+</li>
+</ul>
+<p>By thoughtfully designing our robotics programs and events, we can ensure that all students have the opportunity to discover the joy of building, programming, and problem-solving—skills they will carry with them throughout their lives.</p>
+<hr />
+<h2 id="additional-resources">Additional Resources</h2>
+<h3 id="organizations">Organizations</h3>
+<ul>
+<li><a href="https://www.firstinspires.org/">FIRST Robotics</a> - Competition programs with coopertition philosophy</li>
+<li><a href="https://recf.org/">Robotics Education &amp; Competition Foundation</a> - VEX Robotics and other programs</li>
+<li><a href="https://blog.isa.org/spotlight-on-stem-diversity-and-inclusion-work-the-national-girls-collaborative-project">National Girls Collaborative Project</a> - Resources for engaging girls in STEM</li>
+</ul>
+<h3 id="research">Research</h3>
+<ul>
+<li><a href="https://stemeducationjournal.springeropen.com/">International Journal of STEM Education</a> - Peer-reviewed research on STEM education</li>
+<li><a href="https://www.science.org/doi/10.1126/scirobotics.adu7713">Science Robotics: Call for Diversity, Equity, and Inclusion</a> - Comprehensive review of DEI in robotics</li>
+</ul>
+<h3 id="practical-guides">Practical Guides</h3>
+<ul>
+<li><a href="https://www.firstinspires.org/diversityinclusion/initiatives-grants">FIRST Diversity &amp; Inclusion Initiatives</a> - Grants and programs for underrepresented groups</li>
+<li><a href="https://www.roboticscareer.org/news-and-events/news/106961">Robotics Career: Closing the Gap</a> - Strategies for inclusive robotics education</li>
+</ul>
+<hr />
+<h2 id="references">References</h2>
+<ol>
+<li>
+<p><a href="https://stemeducationjournal.springeropen.com/articles/10.1186/s40594-024-00469-4">The effects of educational robotics in STEM education: a multilevel meta-analysis</a> - 2024 - International Journal of STEM Education - Comprehensive meta-analysis examining the overall effect size of educational robotics across K-16 education based on 21 studies, finding moderate positive effects (g = 0.57) on student learning outcomes. Essential reading for understanding the evidence base for robotics education.</p>
+</li>
+<li>
+<p><a href="https://link.springer.com/article/10.1007/s10798-023-09830-0">Gender disparity in STEM education: a survey research on girl participants in World Robot Olympiad</a> - May 2023 - International Journal of Technology and Design Education - Analysis of 5,956 participants in World Robot Olympiad finals (2015-2019) showing girls represent only 17.3% of competitors, with participation declining in older age groups. Critical evidence for understanding gender gaps in competitive robotics.</p>
+</li>
+<li>
+<p><a href="https://www.science.org/doi/10.1126/scirobotics.adu7713">A call for diversity, equity, and inclusion in robotics</a> - 2024 - Science Robotics - Authoritative review examining systemic barriers to diversity in robotics, including equitable access to education and hostile environments. Outlines benefits of diversity for robotics research including improved performance, innovation, and reduced bias in technology.</p>
+</li>
+<li>
+<p><a href="https://citejournal.org/volume-21/issue-4-21/mathematics/the-effects-of-robotics-professional-development-on-science-and-mathematics-teaching-performance-and-student-achievement-in-underserved-middle-schools/">The Effects of Robotics Professional Development on Science and Mathematics Teaching Performance and Student Achievement in Underserved Middle Schools</a> - 2021 - Contemporary Issues in Technology and Teacher Education - Study demonstrating that robotics instruction produces higher learning growth in underserved middle schools compared to control groups, with sixth-grade robotics students matching national norm averages.</p>
+</li>
+<li>
+<p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8299535/">What Can Be Learned from Growth Mindset Controversies?</a> - December 2020 - American Psychologist - Landmark paper by David Yeager and Carol Dweck examining growth mindset research, including finding that STEM classrooms led by fixed-mindset professors had racial achievement gaps twice as large as growth-mindset classrooms. Essential for understanding how competition framing affects diverse learners.</p>
+</li>
+<li>
+<p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10871080/">The Impact of Early Robotics Education on Students' Understanding of Coding, Robotics Design, and Interest in Computing Careers</a> - November 2023 - Sensors - Seven-year longitudinal study of diverse elementary students (43% Hispanic/Latinx, 28% African American/Black) showing robotics education increases understanding, coding skills, and career aspirations in computing fields.</p>
+</li>
+<li>
+<p><a href="https://www.jite.org/documents/Vol18/JITEv18ResearchP097-112Sullivan5121.pdf">VEX Robotics Competitions: Gender Differences in Student Attitudes</a> - 2019 - Journal of Information Technology Education: Research - Research examining gender differences in VEX Robotics Competition participants, finding females make up only 23% of competitors and that women with high computer self-efficacy still prefer cooperative learning styles over competition.</p>
+</li>
+<li>
+<p><a href="https://link.springer.com/article/10.1007/s10956-023-10041-4">Makerspaces Fostering Creativity: A Systematic Literature Review</a> - 2023 - Journal of Science Education and Technology - Systematic review establishing the link between makerspaces, creativity, and STEM learning, demonstrating how exploration-based environments support student agency, design self-efficacy, and equitable forms of STEM engagement.</p>
+</li>
+<li>
+<p><a href="https://teachers.institute/learning-learner-development/competitive-vs-cooperative-learning-effects/">Competitive vs. Cooperative Learning Environments: Effects on Learners</a> - 2023 - Teachers Institute - Practical synthesis of Johnson and Johnson's research showing cooperative learning promotes higher achievement, better peer relationships, and improved self-esteem compared to competitive settings. Includes guidance on balancing competition and collaboration.</p>
+</li>
+<li>
+<p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10445904/">Technologies for an inclusive robotics education</a> - 2023 - Frontiers in Robotics and AI - Research on creating inclusive robotics learning environments, demonstrating that educational robotics promotes integration, systematic thinking, and welcoming spaces that support inclusion of underrepresented groups including BAME students.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../computational-thinking/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Computational Thinking">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Computational Thinking
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../faq/" class="md-footer__link md-footer__link--next" aria-label="Next: FAQ">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                FAQ
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
