@@ -61,6 +61,7 @@ nav:
   - Instructor's Guide:
     - Introduction: instructors-guide/index.md
     - Computational Thinking: instructors-guide/computational-thinking.md
+    - Exploration vs Competition: instructors-guide/exploration-vs-competition.md
 
   - MicroSims:
     - Introduction: sims/index.md
@@ -112,9 +113,10 @@ nav:
     - Intro: kits/wifi-display-bot/index.md
     - Display Status: kits/wifi-display-bot/display-status.md
 
-  - Instructors Guide: 
+  - Instructors Guide:
     - Intro: instructors-guide/index.md
     - Computational Thinking: instructors-guide/computational-thinking.md
+    - Exploration vs Competition: instructors-guide/exploration-vs-competition.md
   - FAQ: faq.md
   - Glossary: glossary.md
   - References: references.md
