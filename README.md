@@ -21,7 +21,8 @@ with any budget while providing engaging, standards-aligned learning experiences
 
 The curriculum progressively introduces students to programming concepts, sensors, 
 actuators, and problem-solving skills using MicroPython and the Raspberry Pi Pico microcontroller platform
-and the low-cost but powerful $12 [Cytron Maker Pi RP2030](https://www.cytron.io/p-maker-pi-rp2040-simplifying-robotics-with-raspberry-pi-rp2040) robotics board.
+and the low-cost but powerful $12 [Cytron Maker Pi RP2030](https://www.cytron.io/p-maker-pi-rp2040-simplifying-robotics-with-raspberry-pi-rp2040) robotics board
+and a $5 [two wheel drive SmartCar chassis](https://www.cytron.io/p-2wd-smart-robot-car-chassis).
 
 ## 🌟 Our Mission
 
