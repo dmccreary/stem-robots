@@ -134,6 +134,9 @@ After completing this course, students will be able to:
 - **Build** a basic web server on the Raspberry Pi Pico W that serves an HTML page and responds to HTTP GET and POST requests.
 - **Program** the OLED display to show text, draw geometric shapes, and display a bar chart of live sensor data.
 - **Implement** the collision avoidance algorithm, including reverse, random turn direction, and forward drive logic.
+- **Configure** a Raspberry Pi Pico W as a BLE peripheral that advertises a custom service and accepts commands from a central device.
+- **Program** a BLE central device to scan for, connect to, and send movement commands to a BLE peripheral robot.
+- **Execute** the Swarm Robots lab: pair two Pico W robots over BLE and demonstrate a leader/follower or coordinated stop behavior.
 
 ---
 
@@ -148,6 +151,8 @@ After completing this course, students will be able to:
 - **Examine** the trade-offs of using a time-of-flight sensor versus an ultrasonic sensor versus an infrared sensor for collision avoidance.
 - **Differentiate** between synchronous communication (I2C, SPI with clock line) and event-driven interrupt-based programming.
 - **Analyze** how the web server handles different HTTP request types (GET vs. POST) and routes each to the appropriate hardware action.
+- **Compare** WiFi and Bluetooth as wireless communication options for robots, examining latency, range, power draw, and complexity of setup.
+- **Break down** a swarm behavior (e.g., collective obstacle avoidance) into its individual robot rules and explain how each rule contributes to the group outcome.
 
 ---
 
@@ -162,6 +167,8 @@ After completing this course, students will be able to:
 - **Evaluate** the trade-offs between exploration-based and competition-based robotics events in terms of engagement, inclusion, and learning outcomes.
 - **Select** the most appropriate sensor type for a given navigation scenario and defend the choice with technical reasoning.
 - **Assess** the security implications of storing WiFi credentials in plain text versus using a secrets file excluded from version control.
+- **Evaluate** the reliability of a BLE robot-to-robot link under varying distances and interference conditions, and propose mitigations for dropped messages.
+- **Judge** which communication technology (WiFi web server vs. BLE peer-to-peer) is better suited for a given multi-robot scenario and justify the choice.
 
 ---
 
@@ -177,6 +184,8 @@ After completing this course, students will be able to:
 - **Create** a capstone project that integrates at least two sensor types, a display, and a novel algorithm — demonstrating end-to-end computational thinking from problem decomposition through testing and iteration.
 - **Compose** a short written reflection that connects the robot project to the four pillars of computational thinking, identifying specific moments of abstraction, decomposition, pattern recognition, and algorithm design.
 - **Extend** an existing robot program with a new feature (servo-mounted sensor sweep, animated face, WiFi control) by following a modular design pattern.
+- **Build** a two-robot Swarm Robots lab in which one Pico W acts as the BLE central (leader) and a second acts as the peripheral (follower), with the follower mirroring the leader's movements in real time.
+- **Design** a custom swarm behavior (e.g., synchronized dance, distributed obstacle mapping, or convoy following) and implement it using BLE messaging between two or more robots.
 
 ---
 
@@ -186,5 +195,6 @@ After completing this course, students will be able to:
 - **Lab Reflections**: Short written responses connecting each lab to computational thinking concepts.
 - **Peer Code Reviews**: Students critique a partner's program for readability, modularity, and correctness.
 - **Midterm Challenge**: Multi-step challenge combining motor control, sensor reading, and display output.
+- **Swarm Robots Lab**: Paired lab where students program two Pico W robots to communicate via BLE and demonstrate a coordinated behavior; evaluated on connection reliability, behavior correctness, and code clarity.
 - **Capstone Project**: Open-ended final project with requirements for sensor integration, original algorithm, display output, and a brief presentation.
 - **Portfolio**: Collected code files, reflections, and project documentation demonstrating growth over the course.
