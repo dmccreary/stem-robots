@@ -1,0 +1,2658 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Discover the four pillars of computational thinking — abstraction, algorithm design, decomposition, and pattern recognition — and explore how they connect to building and programming your first robot.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/stem-robots/chapters/01-intro-computational-thinking/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../02-hardware-platform-assembly/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Introduction to Computational Thinking and Physical Computing - STEM Robots</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-6SSB9XBXM9"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-6SSB9XBXM9",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-6SSB9XBXM9",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-computational-thinking-and-physical-computing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="STEM Robots" class="md-header__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            STEM Robots
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction to Computational Thinking and Physical Computing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="STEM Robots" class="md-nav__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    STEM Robots
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../journey-map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Journey Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../robot-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robot Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gallery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gallery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../great-ways-to-teach/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Great Ways To Teach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../course-descriptions/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Course Descriptions
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1. Computational Thinking
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1. Computational Thinking
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-computational-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is Computational Thinking?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Is Computational Thinking?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decomposition-breaking-problems-apart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decomposition: Breaking Problems Apart
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstraction-hiding-what-doesnt-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstraction: Hiding What Doesn't Matter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-recognition-spotting-what-repeats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern Recognition: Spotting What Repeats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithm-design-writing-the-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm Design: Writing the Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-solving-and-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem Solving and Debugging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problem Solving and Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-strategy-for-hard-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Strategy for Hard Problems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-what-to-do-when-things-break" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging: What to Do When Things Break
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-and-iteration-improve-every-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing and Iteration: Improve Every Time
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#physical-computing-where-code-meets-the-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical Computing: Where Code Meets the World
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Physical Computing: Where Code Meets the World">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputs-the-robots-senses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inputs: The Robot's Senses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outputs-how-the-robot-acts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outputs: How the Robot Acts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Outputs: How the Robot Acts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-physical-computing-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Physical Computing Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-by-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning by Building
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#electronics-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Electronics Basics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Electronics Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voltage-and-current" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voltage and Current
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Circuits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-battery-pack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Your Battery Pack
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meet-your-robot-the-smart-car-chassis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meet Your Robot: The Smart Car Chassis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-engineering-design-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Engineering Design Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Engineering Design Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-test-improve" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build, Test, Improve
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototyping-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prototyping Methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-hardware-platform-assembly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Hardware and Assembly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-micropython-dev-environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. MicroPython and Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-control-flow-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Control Flow and Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-data-structures-modular-code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Data Structures and Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-electronics-motors-protocols/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Motors and Protocols
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-pwm-motor-speed-actuators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. PWM and Actuators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-sensors-data-input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Sensors and Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-display-systems-output/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Displays and Output
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-robot-behaviors-navigation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Robot Behaviors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-wireless-networking-web-servers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. WiFi and Web Servers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-bluetooth-low-energy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Bluetooth Low Energy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Swarm and Advanced
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graphs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graphs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../setup/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Topics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../lessons/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../instructors-guide/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Instructor's Guide
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../kits/wifi-bot/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Wireless Bot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/bump-switch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bump Switches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/line-follower/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Line Follower
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/adjust/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adjustabot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/ultrasonic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ultrasonic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../kits/wifi-display-bot/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    WiFi Display Bot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../instructors-guide/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prompts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STEM Robotics Prompts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sims/template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MicroSim Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-computational-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is Computational Thinking?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Is Computational Thinking?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decomposition-breaking-problems-apart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decomposition: Breaking Problems Apart
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstraction-hiding-what-doesnt-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstraction: Hiding What Doesn't Matter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-recognition-spotting-what-repeats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern Recognition: Spotting What Repeats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithm-design-writing-the-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm Design: Writing the Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-solving-and-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem Solving and Debugging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problem Solving and Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-strategy-for-hard-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Strategy for Hard Problems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-what-to-do-when-things-break" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging: What to Do When Things Break
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-and-iteration-improve-every-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing and Iteration: Improve Every Time
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#physical-computing-where-code-meets-the-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical Computing: Where Code Meets the World
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Physical Computing: Where Code Meets the World">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputs-the-robots-senses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inputs: The Robot's Senses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outputs-how-the-robot-acts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outputs: How the Robot Acts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Outputs: How the Robot Acts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-physical-computing-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Physical Computing Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-by-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning by Building
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#electronics-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Electronics Basics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Electronics Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voltage-and-current" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voltage and Current
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Circuits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-battery-pack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Your Battery Pack
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meet-your-robot-the-smart-car-chassis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meet Your Robot: The Smart Car Chassis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-engineering-design-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Engineering Design Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Engineering Design Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-test-improve" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build, Test, Improve
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototyping-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prototyping Methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="introduction-to-computational-thinking-and-physical-computing">Introduction to Computational Thinking and Physical Computing</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Hi — I'm Sparky, and I'll be with you all the way!</p>
+<p><img alt="Sparky waving hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+I'm <strong>Sparky</strong> — a cartoon version of the actual two-wheeled robot you will build in this course. I run on a Cytron Maker Pi RP2040 microcontroller, I have two big yellow wheels and an OLED display for a face, and I am genuinely excited to help you learn. I will pop into every chapter, but I do not show up randomly. I have exactly <strong>six jobs</strong>, and you will learn to recognize me by which one I am doing:</p>
+<ol>
+<li><strong>Welcome you</strong> at the start of every chapter — that is what I am doing right now.</li>
+<li><strong>Think with you</strong> when a concept is the kind that rewards slowing down and really picturing it.</li>
+<li><strong>Give you a tip</strong> — the practical shortcut a working engineer would use but nobody writes down.</li>
+<li><strong>Warn you</strong> about the exact spots where smart students trip up, so you can dodge the same pitfalls.</li>
+<li><strong>Encourage you</strong> when a section is genuinely hard and it is completely okay to feel confused.</li>
+<li><strong>Celebrate with you</strong> at the end of each chapter when you have earned it.</li>
+</ol>
+<p>That's it. If I'm not doing one of those six things, I'm not in the chapter. Computational thinking is YOUR superpower — let's activate it!</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>This opening chapter establishes the intellectual foundation for the entire course.
+Students learn the four pillars of computational thinking — abstraction, algorithm
+design, decomposition, and pattern recognition — and discover how these ideas connect
+to building and programming physical robots. The chapter also introduces the
+engineering design process and basic electronics concepts (voltage, circuits, batteries)
+that underpin every subsequent hands-on lab.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 17 concepts from the learning graph:</p>
+<ol>
+<li>Computational Thinking</li>
+<li>Abstraction</li>
+<li>Algorithm Design</li>
+<li>Decomposition</li>
+<li>Pattern Recognition</li>
+<li>Problem Solving Strategy</li>
+<li>Debugging Fundamentals</li>
+<li>Testing and Iteration</li>
+<li>Physical Computing</li>
+<li>Experiential Learning</li>
+<li>Voltage and Current</li>
+<li>Basic Circuits</li>
+<li>Smart Car Chassis</li>
+<li>AA Batteries</li>
+<li>Engineering Design Process</li>
+<li>Build-Test-Improve Cycle</li>
+<li>Prototyping Methods</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This is the first chapter of the textbook. It assumes only the prerequisites listed
+in the <a href="../../course-description/">course description</a>: basic familiarity with a
+keyboard and web browser.</p>
+<hr />
+<h2 id="what-is-computational-thinking">What Is Computational Thinking?</h2>
+<p>Imagine you need to get a robot from one side of a room to the other without hitting any walls. You can't just wave your hands and hope for the best. You need a plan. You need to think step by step. You need to predict what could go wrong.</p>
+<p>That kind of careful, structured thinking has a name: <strong>computational thinking</strong>. Computational thinking is a way of solving problems that works everywhere — not just in robotics. Doctors use it to diagnose illness. Architects use it to design buildings. Scientists use it to study the natural world. And you are going to use it to make a robot move, sense its surroundings, and make decisions.</p>
+<p>Computational thinking has four key pillars. Think of them as four mental tools you carry in your engineering toolbox. Let's look at each one using a simple challenge: <em>How do we make a robot drive forward, stop before hitting a wall, and try again in a different direction?</em></p>
+<h3 id="decomposition-breaking-problems-apart">Decomposition: Breaking Problems Apart</h3>
+<p><strong>Decomposition</strong> means taking a big problem and cutting it into smaller, manageable pieces. Big problems feel overwhelming. Small problems feel solvable.</p>
+<p>Our robot challenge seems huge at first: <em>drive, detect walls, avoid them, keep going</em>. But decomposition helps us split it into just three tasks:</p>
+<ol>
+<li>Make the motors spin forward.</li>
+<li>Read the distance sensor every tenth of a second.</li>
+<li>If the distance is too small, stop and turn.</li>
+</ol>
+<p>Now each piece is something we can actually code. That is the power of decomposition.</p>
+<h3 id="abstraction-hiding-what-doesnt-matter">Abstraction: Hiding What Doesn't Matter</h3>
+<p><strong>Abstraction</strong> means focusing on what matters and ignoring details that don't. When you drive a car, you press the gas pedal — you do not think about how the fuel injectors work. The pedal is an <em>abstraction</em> that hides the engine's complexity from you.</p>
+<p>In robot programming, we use abstraction constantly. Instead of thinking about exactly which electrical signals flow through which pins, we write <code>motor_forward(speed=75)</code>. That one line hides dozens of low-level details. We focus on <em>what</em> the robot should do, not <em>how</em> the electricity makes it happen.</p>
+<h3 id="pattern-recognition-spotting-what-repeats">Pattern Recognition: Spotting What Repeats</h3>
+<p><strong>Pattern recognition</strong> means finding structure that repeats — and using it so you don't reinvent the wheel. Once you know how to read one sensor, you can probably read any sensor. Once you know how to write one loop, you can write any loop.</p>
+<p>Patterns show up everywhere in robotics. The sequence "read a sensor, make a decision, move a motor" appears in collision avoidance, line following, and light tracking. Spot the pattern once and you understand all three behaviors.</p>
+<h3 id="algorithm-design-writing-the-steps">Algorithm Design: Writing the Steps</h3>
+<p>An <strong>algorithm</strong> is a precise set of steps that solves a problem. The word sounds intimidating, but you already know algorithms. A recipe is an algorithm. Directions to a friend's house are an algorithm. The steps to tie a shoelace are an algorithm.</p>
+<p>In robotics, we write algorithms in MicroPython code. The collision avoidance algorithm might be: <em>Check distance. If it's less than 20 centimeters, stop the motors, wait half a second, reverse for one second, turn randomly left or right, then drive forward again.</em> Writing it precisely — so a computer can follow it without guessing — is algorithm design.</p>
+<p>Before we continue, let's see how all four pillars work together as a team.</p>
+<table>
+<thead>
+<tr>
+<th>Pillar</th>
+<th>What It Means</th>
+<th>Robot Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Decomposition</strong></td>
+<td>Split big problems into small ones</td>
+<td>Break "avoid walls" into: sense, decide, move</td>
+</tr>
+<tr>
+<td><strong>Abstraction</strong></td>
+<td>Hide details you don't need right now</td>
+<td>Use <code>motor_forward(speed)</code> instead of pin-level code</td>
+</tr>
+<tr>
+<td><strong>Pattern Recognition</strong></td>
+<td>Find and reuse what repeats</td>
+<td>The sense → decide → act loop appears in every behavior</td>
+</tr>
+<tr>
+<td><strong>Algorithm Design</strong></td>
+<td>Write the exact steps to solve the problem</td>
+<td>Write the stop-reverse-turn sequence as runnable code</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Hmm, think about this for a second…</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Next time you do something in daily life — making breakfast, finding your way around school, packing a bag — try to catch yourself using one of the four pillars. You will be surprised how often your brain already thinks computationally. We're just giving those habits names so we can use them on purpose.</p>
+</div>
+<h2 id="problem-solving-and-debugging">Problem Solving and Debugging</h2>
+<p>Knowing the four pillars is great. Applying them to a real problem is where learning actually happens. In this course, you will run into problems every single day. Wires will be loose. Code will have typos. The robot will spin when you told it to go straight. That is not failure — that is engineering.</p>
+<h3 id="a-strategy-for-hard-problems">A Strategy for Hard Problems</h3>
+<p><strong>Problem solving</strong> is the skill of working through a challenge systematically, even when you don't know the answer yet. When you get stuck, it helps to have a plan. Here is a simple strategy used by engineers at every level:</p>
+<ol>
+<li><strong>Understand the problem.</strong> What exactly is supposed to happen? What is actually happening instead?</li>
+<li><strong>Break it into pieces.</strong> Which part is failing — the hardware, the code, or a specific line?</li>
+<li><strong>Form a hypothesis.</strong> Make a guess: "I think the problem is the motor speed value."</li>
+<li><strong>Test one thing at a time.</strong> Change only one thing, then check whether it fixed the problem.</li>
+<li><strong>Learn from the result.</strong> Whether it worked or not, you now know something you didn't before.</li>
+</ol>
+<p>This strategy is a form of the scientific method. It works just as well in a robotics lab as it does in a chemistry lab.</p>
+<h3 id="debugging-what-to-do-when-things-break">Debugging: What to Do When Things Break</h3>
+<p><strong>Debugging</strong> is the process of finding and fixing errors in code. The word "bug" has been part of programming since the 1940s, when an actual moth got stuck in a computer relay and caused it to malfunction. Today, a "bug" is any error that causes code to behave unexpectedly.</p>
+<p>Bugs fall into two main categories. A <strong>syntax error</strong> is a typo or grammar mistake — like a missing colon or a misspelled keyword. Python catches these before your code even runs. A <strong>logic error</strong> is harder to spot: your code runs without crashing, but it does the wrong thing. Logic errors are exactly what the problem-solving strategy above is designed to find.</p>
+<p>Before you use the debugging checklist below, here is one mindset shift that will save you hours: every error message is useful information. It is the computer telling you where to look. Never delete your code in frustration. Read the error, narrow it down, and change one thing at a time.</p>
+<table>
+<thead>
+<tr>
+<th>Debugging Step</th>
+<th>Question to Ask</th>
+<th>What to Do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Read the error</strong></td>
+<td>What does the error say, exactly?</td>
+<td>Read it word by word — don't just skim</td>
+</tr>
+<tr>
+<td><strong>Find the line</strong></td>
+<td>Which line caused the error?</td>
+<td>Go to that line in Thonny</td>
+</tr>
+<tr>
+<td><strong>Check the obvious</strong></td>
+<td>Any typos, wrong indentation, missing colons?</td>
+<td>Compare to a working example</td>
+</tr>
+<tr>
+<td><strong>Add a print statement</strong></td>
+<td>What is the value of each variable?</td>
+<td>Print variables at key points to trace the problem</td>
+</tr>
+<tr>
+<td><strong>Undo the last change</strong></td>
+<td>Did the code work before your last edit?</td>
+<td>Revert that one change and test again</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testing-and-iteration-improve-every-time">Testing and Iteration: Improve Every Time</h3>
+<p><strong>Testing</strong> means deliberately checking whether your code does what you intended. <strong>Iteration</strong> means taking what you learned from testing and improving the code. Together, testing and iteration form a loop: build → test → improve → repeat.</p>
+<p>The best engineers do not write perfect code on the first try. Nobody does. They write code, test it, find something to improve, fix it, and test again. Each pass through the loop makes the robot a little better.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Here's a trick that saves me a lot of trouble…</p>
+<p><img alt="Sparky giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+When testing your robot, change only <strong>one thing at a time</strong>. Under pressure it's tempting to fix three things at once. But if you do that and the robot suddenly works, you won't know which fix actually helped — or which of the other changes might cause problems later.</p>
+</div>
+<h2 id="physical-computing-where-code-meets-the-world">Physical Computing: Where Code Meets the World</h2>
+<p>Most computer programs live entirely inside a machine. You type text, click buttons, and see results on a screen. Everything stays digital. <strong>Physical computing</strong> is different — it connects a program to the real, physical world through sensors and motors.</p>
+<p>Your robot is a physical computing device. When it reads a distance measurement from its sensor, it converts a physical gap into a number your code can use. When it spins its motors based on that number, it turns a digital decision into a physical action. Code becomes movement.</p>
+<h3 id="inputs-the-robots-senses">Inputs: The Robot's Senses</h3>
+<p>An <strong>input</strong> is any information flowing from the real world into the robot's computer. Your robot has several inputs:</p>
+<ul>
+<li>The <strong>time-of-flight distance sensor</strong> measures how far away the nearest object is.</li>
+<li><strong>Infrared line sensors</strong> detect a dark line on a light surface.</li>
+<li>A <strong>bump sensor</strong> detects physical contact with an obstacle.</li>
+</ul>
+<p>Every input converts something physical — light, distance, touch — into a number the microcontroller can read.</p>
+<h3 id="outputs-how-the-robot-acts">Outputs: How the Robot Acts</h3>
+<p>An <strong>output</strong> is any action the robot takes in the physical world. Your robot's outputs include:</p>
+<ul>
+<li><strong>DC motors</strong> that spin the wheels forward or backward.</li>
+<li><strong>NeoPixel LEDs</strong> that display any color.</li>
+<li>The <strong>piezo buzzer</strong> that plays tones.</li>
+<li>The <strong>OLED display</strong> that shows text and graphics.</li>
+</ul>
+<p>The robot's microcontroller constantly reads inputs, runs your code, and triggers outputs. That loop — sense, decide, act — is the heartbeat of every robot program you will write.</p>
+<p>The diagram below shows how these three layers fit together. Click any component to learn what it does in the physical computing system.</p>
+<h4 id="diagram-physical-computing-explorer">Diagram: Physical Computing Explorer</h4>
+<details>
+<summary>Interactive diagram showing inputs, the microcontroller, and outputs forming the sense-decide-act loop</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> physical-computing-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>identify</em> (Bloom L1: Remember) the three layers of a physical computing system — inputs, processor, and outputs — and <em>explain</em> (Bloom L2: Understand) how information flows through the sense → decide → act loop.</p>
+<p><strong>Canvas size:</strong> 700 × 380 px, responsive (fills container width on resize)</p>
+<p><strong>Layout:</strong> Three vertical columns separated by animated flowing arrows:</p>
+<p>Left column — <strong>Inputs</strong>: Three sensor icons stacked vertically with labels: "Distance Sensor (ToF)", "Line Sensors (IR)", "Bump Sensor". Each icon is drawn as a simple geometric shape with a colored border. All three connect via dashed animated lines flowing rightward.</p>
+<p>Center column — <strong>Processor</strong>: A rounded rectangle labeled "Cytron Maker Pi RP2040" with "MicroPython Code" in smaller text inside and a blinking cursor. Color: navy (#1a237e). Animated dashed lines flow in from the left and out to the right.</p>
+<p>Right column — <strong>Outputs</strong>: Three output icons with labels: "DC Motors", "NeoPixel LEDs", "OLED Display". Each icon uses the appropriate visual metaphor (spinning wheel, colored dot grid, small screen).</p>
+<p><strong>Interactions:</strong>
+- Clicking any input icon highlights it yellow (#f9a825) and opens a tooltip popup stating: the sensor name, what physical phenomenon it measures, and an example reading (e.g., "Time-of-flight sensor: measures reflected infrared light. Example: 24 cm to nearest obstacle.").
+- Clicking the center processor box shows: "The microcontroller reads every input, executes your MicroPython code, and decides what outputs to trigger — all in milliseconds."
+- Clicking any output icon shows: the output name, what physical action it produces, and an example value (e.g., "DC Motors: spin the wheels. Example: speed=75 means 75% of full power.").
+- A "Play Loop" button (bottom-center, created with p5's <code>createButton()</code>) starts an animation where orange (#e65100) particles travel along the wire paths from left to right, illustrating the sense → decide → act cycle in motion. Clicking again pauses the animation.</p>
+<p><strong>Visual style:</strong> Bold flat illustration, thick black outlines, transparent background. Tooltips appear as navy (#1a237e) rounded rectangles with white text, positioned adjacent to the clicked element.</p>
+<p>Implementation: p5.js sketch with icons drawn programmatically using <code>rect()</code>, <code>ellipse()</code>, and <code>line()</code>. Tooltip divs managed as HTML elements parented to the canvas container. <code>createButton()</code> for the Play Loop control. Canvas resizes by calling <code>resizeCanvas(windowWidth * 0.9, 380)</code> in <code>windowResized()</code>.</p>
+</details>
+<h3 id="learning-by-building">Learning by Building</h3>
+<p><strong>Experiential learning</strong> means learning by doing, not just by reading. In this course, you will not just hear about PWM motor control — you will write the code, run it on your robot, and watch the wheels spin. You will not just read about debugging — you will debug real errors in real code and feel genuinely satisfied when they are fixed.</p>
+<p>The concepts in this textbook are the same ones found in university robotics courses. But you will understand them deeply because you will feel them happen on the hardware in your hands.</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">This part is tricky. That's okay. You're doing it anyway.</p>
+<p><img alt="Sparky giving a thumbs up" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+The connection between code and physical hardware is the hardest mental leap in this whole course. A number in your code actually makes a motor spin. A spinning motor actually moves a wheel. It feels magical at first. Give yourself permission to find it confusing — it will click, I promise. Every maker goes through this exact moment.</p>
+</div>
+<h2 id="electronics-basics">Electronics Basics</h2>
+<p>Before you start wiring your robot, you need a mental model of how electricity works. You do not need an electronics degree. But three ideas will unlock everything else: <strong>voltage</strong>, <strong>current</strong>, and <strong>circuits</strong>.</p>
+<h3 id="voltage-and-current">Voltage and Current</h3>
+<p>Imagine a water tower sitting on a hill. The height of the water creates pressure that pushes water through pipes. <strong>Voltage</strong> is like that pressure — it is the force that pushes electric charge through a wire. We measure voltage in <strong>volts (V)</strong>.</p>
+<p>Now imagine the amount of water actually flowing through the pipe. <strong>Current</strong> is the amount of electric charge flowing per second. We measure current in <strong>amperes, or amps (A)</strong>. More voltage means more push. More current means more charge flowing.</p>
+<p>Your robot gets its voltage from AA batteries. Each AA battery provides 1.5 volts. Four batteries connected end to end — called a <strong>series</strong> connection — give you 6 volts total. That 6 volts powers your microcontroller, your motors, and your sensors.</p>
+<h3 id="basic-circuits">Basic Circuits</h3>
+<p>A <strong>circuit</strong> is a complete loop for electricity to travel through. Electricity needs a continuous path from the positive terminal of a power source, through the components, and back to the negative terminal. If the path breaks anywhere — a loose wire, a disconnected plug — no current flows and nothing works.</p>
+<p>Think of a circuit like a circular racetrack. The electrons can only keep moving if the track is a complete loop. Break the track anywhere and every car stops. In your robot, every component — the microcontroller, the motors, the sensors, the LEDs — is part of the circuit. When you wire the robot, you are building that racetrack carefully, making sure every connection is solid.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Heads up — this one tripped me up the first time too.</p>
+<p><img alt="Sparky with warning pose" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+<strong>Always remove the batteries before changing any wires.</strong> Connecting or disconnecting wires while the power is on can cause a <strong>short circuit</strong> — electricity takes a shortcut that bypasses your components. Short circuits can damage the microcontroller board and drain your batteries in seconds. Power off first, wire second, power on last. Every time.</p>
+</div>
+<h3 id="your-battery-pack">Your Battery Pack</h3>
+<p><strong>AA batteries</strong> are small, cylindrical cells that store chemical energy and convert it to electrical energy. Your battery holder holds four AA alkaline batteries — the standard type found at any grocery store. Four batteries in series gives you 6 volts total to power the entire robot.</p>
+<p>When your robot starts acting sluggish or the code behaves strangely, check your batteries first. A nearly-dead battery delivers less voltage than it should. Less voltage means motors spin slower, sensors read incorrectly, and the microcontroller may crash or reset unexpectedly. Fresh batteries fix a surprising number of "mysterious" problems.</p>
+<h2 id="meet-your-robot-the-smart-car-chassis">Meet Your Robot: The Smart Car Chassis</h2>
+<p>The <strong>Smart Car Chassis</strong> is the physical platform your robot is built on. It is a flat acrylic plate with mounting holes for motors, wheels, and a battery holder. The chassis gives your robot its structure — like a skeleton that everything else attaches to.</p>
+<p>Your robot is powered by the <strong>Cytron Maker Pi RP2040</strong> board — a microcontroller designed specifically for controlling hardware. It has two DC motor drivers built in, a USB port for programming, and connectors for sensors and servos. It runs MicroPython, which means you program it in Python — one of the world's most popular and beginner-friendly programming languages.</p>
+<p>Here is a map of the key components you will use throughout this course:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cytron Maker Pi RP2040</strong></td>
+<td>The brain — runs MicroPython code and controls all hardware</td>
+</tr>
+<tr>
+<td><strong>DC Motors (×2)</strong></td>
+<td>Spin the wheels forward or backward</td>
+</tr>
+<tr>
+<td><strong>Yellow Wheels (×2)</strong></td>
+<td>Roll the robot across the floor</td>
+</tr>
+<tr>
+<td><strong>Time-of-Flight Sensor</strong></td>
+<td>Measures distance to the nearest obstacle in centimeters</td>
+</tr>
+<tr>
+<td><strong>NeoPixel LEDs (×2)</strong></td>
+<td>Display any color — great for status and debugging</td>
+</tr>
+<tr>
+<td><strong>Piezo Buzzer</strong></td>
+<td>Plays tones and beeps</td>
+</tr>
+<tr>
+<td><strong>Battery Holder</strong></td>
+<td>Holds four AA batteries (6 V total)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-engineering-design-process">The Engineering Design Process</h2>
+<p>Engineers do not sit down and write a perfect plan before they begin. They start with a rough idea, build something quick, test it, see what breaks, and improve it. This structured cycle for turning ideas into working things is called the <strong>engineering design process</strong>.</p>
+<h3 id="build-test-improve">Build, Test, Improve</h3>
+<p>The engineering design process has three core phases, and they repeat in a cycle:</p>
+<ol>
+<li><strong>Build</strong> — create a prototype (a quick, working version) of your idea.</li>
+<li><strong>Test</strong> — run the prototype and observe what happens. Does it do what you intended?</li>
+<li><strong>Improve</strong> — based on what you learned from testing, change one thing and build again.</li>
+</ol>
+<p>This <strong>build-test-improve cycle</strong> is exactly what you will follow in every lab. You will never be asked to write a perfect program from scratch. You will always start from a working example, test it on your actual robot, and add one feature at a time.</p>
+<p>The diagram below shows how the three phases connect. Click any phase to read what it involves.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>flowchart LR
+    A([&quot;🔨 Build\nCreate a prototype&quot;]) --&gt; B([&quot;🔍 Test\nRun and observe&quot;])
+    B --&gt; C([&quot;✨ Improve\nFix one thing&quot;])
+    C --&gt; A
+    click A href &quot;#build-test-improve&quot; &quot;Build: Start with a simple, working version&quot;
+    click B href &quot;#build-test-improve&quot; &quot;Test: Run the robot and watch what actually happens&quot;
+    click C href &quot;#build-test-improve&quot; &quot;Improve: Change exactly one thing, then test again&quot;
+</code></pre></div></td></tr></table></div>
+<h3 id="prototyping-methods">Prototyping Methods</h3>
+<p>A <strong>prototype</strong> is an early, rough version of something — built quickly to test an idea. In robotics, prototypes come in several forms:</p>
+<ul>
+<li><strong>Code prototypes</strong> — a short program that tests one single behavior, such as spinning only the left motor.</li>
+<li><strong>Hardware prototypes</strong> — a quick physical assembly that checks whether components connect and fit correctly.</li>
+<li><strong>Paper prototypes</strong> — a sketch or diagram of an algorithm on paper before writing any code, to make sure the logic makes sense first.</li>
+</ul>
+<p>In this course, you will use all three. Good engineers are not attached to their first prototype. They expect it to change. The goal of a prototype is to learn something — and then use that learning to build a better version.</p>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Double thumbs-up! You just built the foundation for everything!</p>
+<p><img alt="Sparky celebrating with confetti" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You covered a lot of ground in this chapter. You know the four pillars of computational thinking. You have a strategy for tackling hard problems and debugging broken code. You understand how physical computing connects code to the real world. You know how voltage and circuits work well enough to wire your robot safely. And you have a clear picture of every component on the Smart Car Chassis. That is the complete foundation. You now think like an engineer.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: List of Chapters">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                List of Chapters
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02-hardware-platform-assembly/" class="md-footer__link md-footer__link--next" aria-label="Next: 2. Hardware and Assembly">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                2. Hardware and Assembly
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

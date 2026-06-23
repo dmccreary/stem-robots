@@ -1,0 +1,15 @@
+{
+  "FOUND": "SteelBlue",
+  "ENV": "DarkSlateBlue",
+  "PROG": "DarkGreen",
+  "HW": "Teal",
+  "ELEC": "DarkGoldenrod",
+  "MOTOR": "Crimson",
+  "SENSOR": "DodgerBlue",
+  "DISPLAY": "MediumPurple",
+  "ROBOT": "OliveDrab",
+  "NET": "DarkOrchid",
+  "BLE": "Tomato",
+  "COMM": "Gold",
+  "ENG": "DimGray"
+}
