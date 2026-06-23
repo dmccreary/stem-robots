@@ -1,0 +1,10 @@
+{
+  "title": "Computational Thinking with STEM Robots",
+  "description": "A learning graph for a 14-week high school course teaching computational thinking through building and programming low-cost MicroPython robots. Covers physical computing, MicroPython programming, motor control, sensors, displays, WiFi, Bluetooth, and swarm robotics.",
+  "creator": "Dan McCreary",
+  "date": "2026-06-23",
+  "version": "1.0",
+  "format": "Learning Graph JSON v1.0",
+  "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
+  "license": "CC BY-NC-SA 4.0 DEED"
+}

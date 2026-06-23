@@ -1,0 +1,241 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Computational Thinking,,FOUND
+2,Abstraction,1,FOUND
+3,Algorithm Design,1,FOUND
+4,Decomposition,1,FOUND
+5,Pattern Recognition,1,FOUND
+6,Problem Solving Strategy,1|2|3|4|5,FOUND
+7,Debugging Fundamentals,6,FOUND
+8,Testing and Iteration,7,FOUND
+9,Physical Computing,1,FOUND
+10,Experiential Learning,1|9,FOUND
+11,Thonny IDE,19,ENV
+12,Thonny Installation,11,ENV
+13,REPL Interactive Shell,11|12,ENV
+14,Thonny File Upload,12|13,ENV
+15,Syntax Highlighting,11,ENV
+16,UF2 Firmware File,56,ENV
+17,BOOTSEL Button,16|56,ENV
+18,USB Cable Connection,55,ENV
+19,MicroPython Overview,1|9|55,PROG
+20,Python Syntax Basics,19,PROG
+21,Variables and Assignment,20,PROG
+22,Integer Data Type,21,PROG
+23,Float Data Type,21,PROG
+24,String Data Type,21,PROG
+25,Boolean Data Type,21,PROG
+26,Arithmetic Operators,21|22,PROG
+27,Comparison Operators,21|22,PROG
+28,Logical Operators,25|27,PROG
+29,If Statement,25|27|28,PROG
+30,Elif and Else Clauses,29,PROG
+31,For Loop,21|22,PROG
+32,While Loop,21|27,PROG
+33,Nested Loops,31|32,PROG
+34,Function Definition,21|29|31|32,PROG
+35,Function Parameters,34,PROG
+36,Return Values,34|35,PROG
+37,Scope and Local Variables,34,PROG
+38,Global Variables,21|34,PROG
+39,Exception Handling,34,PROG
+40,Try Except Finally,39,PROG
+41,KeyboardInterrupt Handling,40,PROG
+42,Importing Modules,20,PROG
+43,Built-in Libraries,42,PROG
+44,Lists,21,PROG
+45,List Indexing,44,PROG
+46,List Iteration,44|31,PROG
+47,Tuples,44,PROG
+48,Dictionaries,44,PROG
+49,String Manipulation,24,PROG
+50,Formatted Strings,24|21,PROG
+51,Comments and Code Style,20,PROG
+52,Modular Programming,34|42,PROG
+53,Reusable Functions,34|35|36,PROG
+54,Import Config Pattern,52|42,PROG
+55,Microcontroller Overview,9,HW
+56,Raspberry Pi Pico,55,HW
+57,RP2040 Chip,56,HW
+58,Raspberry Pi Pico W,56,HW
+59,Cytron Maker Pi RP2040,56|57,HW
+60,GPIO Pin Basics,59,HW
+61,GPIO Pin Numbering,60,HW
+62,Digital Input Pin,60|61,HW
+63,Digital Output Pin,60|61,HW
+64,Flash Memory,56,HW
+65,Pinout Diagram,60|61,HW
+66,Grove Connectors,59,HW
+67,Dupont Connectors,73,HW
+68,Castellated Edge PCB,56,HW
+69,Voltage and Current,,ELEC
+70,Basic Circuits,69,ELEC
+71,Resistors,69|70,ELEC
+72,Transistors,69|70|71,ELEC
+73,Breadboard Layout,70,ELEC
+74,Smart Car Chassis,,ELEC
+75,AA Batteries,69,ELEC
+76,Battery Pack,75,ELEC
+77,Power Management,69|76,ELEC
+78,LiPo Battery,75,ELEC
+79,Analog vs Digital Signals,69,ELEC
+80,ADC Analog Digital Converter,79|62,ELEC
+81,DC Motor Overview,69|70,MOTOR
+82,Motor Terminals,81,MOTOR
+83,Motor Direction Control,81|82,MOTOR
+84,Motor Forward Motion,83,MOTOR
+85,Motor Reverse Motion,83,MOTOR
+86,Motor Stop,84|85,MOTOR
+87,H-Bridge Circuit,83|72,MOTOR
+88,H-Bridge Switch States,87,MOTOR
+89,DPDT Switch,87,MOTOR
+90,Motor Driver IC,87|59,MOTOR
+91,Pulse Width Modulation,60|79,MOTOR
+92,PWM Duty Cycle,91,MOTOR
+93,PWM Frequency,91|92,MOTOR
+94,16-Bit Duty Cycle Values,92,MOTOR
+95,Motor Speed Control,91|83,MOTOR
+96,PWM Motor Control Code,95|34|90,MOTOR
+97,Left Motor Control,96,MOTOR
+98,Right Motor Control,96,MOTOR
+99,Differential Drive,97|98,MOTOR
+100,Servo Motor,81|91,MOTOR
+101,Servo Angle Range,100,MOTOR
+102,Servo PWM Calibration,100|93|92,MOTOR
+103,Servo Sweep Code,102|31|34,MOTOR
+104,Linear Range Mapping,102|26|34,MOTOR
+105,Piezo Buzzer,60|91,MOTOR
+106,Tone Frequency Control,105|93,MOTOR
+107,Sound Feedback,106,MOTOR
+108,Sensor Types Overview,9|62,SENSOR
+109,Time-of-Flight Sensor,108,SENSOR
+110,VL53L0X Sensor,109,SENSOR
+111,ToF Sensor I2C Setup,110|211,SENSOR
+112,ToF Distance Reading,111|34,SENSOR
+113,Zero Distance Calibration,112,SENSOR
+114,Scale Factor Calibration,112|113,SENSOR
+115,Max Distance Limit,112,SENSOR
+116,Ultrasonic Sensor,108,SENSOR
+117,Ultrasonic Trigger Echo,116|63|62,SENSOR
+118,Infrared Sensor,108|62,SENSOR
+119,IR Digital Output,118|62,SENSOR
+120,IR Sensor Calibration,119|123,SENSOR
+121,Bump Switch,108|62,SENSOR
+122,Microswitch Wiring,121|66,SENSOR
+123,Potentiometer Input,80|62,SENSOR
+124,Sensor Calibration Process,108|113|114,SENSOR
+125,Sensor Data Filtering,112|34|44,SENSOR
+126,Sensor Fusion,112|117|119|125,SENSOR
+127,NeoPixel LEDs,60|91,DISPLAY
+128,WS2816 LED Strip,127,DISPLAY
+129,RGB Color Values,127|22|44,DISPLAY
+130,NeoPixel Library,42|127|128|129,DISPLAY
+131,LED Animation,130|31|32,DISPLAY
+132,LED Status Indicators,130,DISPLAY
+133,OLED Display Overview,9|55,DISPLAY
+134,SSD1306 Driver Chip,133,DISPLAY
+135,I2C Display Mode,134|211,DISPLAY
+136,SPI Display Mode,134|214,DISPLAY
+137,Display Resolution,133|22,DISPLAY
+138,Framebuffer,133|137,DISPLAY
+139,Blit Operation,138,DISPLAY
+140,Display Text Output,134|138|19,DISPLAY
+141,Drawing Lines,138|140,DISPLAY
+142,Drawing Circles,138|140,DISPLAY
+143,Drawing Rectangles,138|140,DISPLAY
+144,Bar Chart on Display,143|44|112,DISPLAY
+145,Live Sensor on Display,140|112|144,DISPLAY
+146,Animated Faces on OLED,140|141|142|143,DISPLAY
+147,Distance Meter Display,144|145,DISPLAY
+148,Servo Meter Display,147|102,DISPLAY
+149,Open-Loop Motor Control,96|84|85|86,ROBOT
+150,Closed-Loop Feedback,149|112,ROBOT
+151,Feedback Loop,150,ROBOT
+152,Collision Avoidance,112|149|150,ROBOT
+153,Obstacle Detection,112|152,ROBOT
+154,Distance Threshold,153|22,ROBOT
+155,Random Turn Direction,154|34,ROBOT
+156,Collision Avoidance Code,152|155|96|40|41,ROBOT
+157,Line Following,119|96,ROBOT
+158,Dual IR Sensor Reading,157|119|46,ROBOT
+159,Motor Differential Adjust,158|99,ROBOT
+160,Line Following Code,157|158|159|34,ROBOT
+161,Robot Dance Sequence,96|107|34,ROBOT
+162,Timed Motor Patterns,161|218,ROBOT
+163,Config File Pattern,54|60|59,ROBOT
+164,Pin Assignment Constants,163|60,ROBOT
+165,Secrets File Pattern,54|42,ROBOT
+166,Gitignore File,165|233,ROBOT
+167,WiFi Overview,9|55,NET
+168,Raspberry Pi Pico W WiFi,58|167,NET
+169,WLAN Object,168|42,NET
+170,Access Point Connection,169|165,NET
+171,WiFi isConnected Check,170|32,NET
+172,IP Address Retrieval,171,NET
+173,Ping Test Slow Mode,172|168,NET
+174,Ping Test Fast Mode,173|168,NET
+175,Web Server Concept,167|55,NET
+176,Socket Programming,175|42,NET
+177,HTTP Protocol,167|24,NET
+178,HTTP GET Request,177|176,NET
+179,HTTP POST Request,177|176,NET
+180,HTML Page Generation,178|50|24,NET
+181,JavaScript Fetch API,179|180,NET
+182,Port 80 HTTP Default,176|177,NET
+183,IoT Internet of Things,167|9,NET
+184,Secrets File for WiFi,165|170,NET
+185,Bluetooth Overview,9|55,BLE
+186,Bluetooth Low Energy BLE,185,BLE
+187,BLE vs Classic Bluetooth,186,BLE
+188,BLE vs WiFi Comparison,186|167,BLE
+189,BLE Advertising,186,BLE
+190,BLE Scanning,186,BLE
+191,GATT Protocol,186,BLE
+192,GATT Service Definition,191,BLE
+193,GATT Characteristic,191|192,BLE
+194,BLE Central Role,191|192|193,BLE
+195,BLE Peripheral Role,191|192|193,BLE
+196,BLE Connection Pairing,194|195,BLE
+197,BLE Message Sending,196|34,BLE
+198,bluetooth Module,186|42,BLE
+199,BLE Range and Power,186,BLE
+200,BLE Reliability,196|197,BLE
+201,Swarm Robotics,185|9|1,BLE
+202,Emergent Behavior,201,BLE
+203,Leader-Follower Pattern,201|196,BLE
+204,BLE Leader Robot Code,203|194|34|96,BLE
+205,BLE Follower Robot Code,203|195|34|96,BLE
+206,Collective Obstacle Avoid,201|152|196,BLE
+207,Swarm Algorithm Design,201|203|3,BLE
+208,Distributed Systems,201|167,BLE
+209,Convoy Following,203|204|205,BLE
+210,Synchronized Swarm Dance,201|204|205|161,BLE
+211,I2C Bus,60|69,COMM
+212,I2C SDA SCL Pins,211|61,COMM
+213,I2C Frequency Config,211|212,COMM
+214,SPI Bus,60|69,COMM
+215,GPIO Interrupt Setup,60|34,COMM
+216,IRQ Falling Edge,215|62,COMM
+217,Button Debouncing,216|218,COMM
+218,Timers and Delays,42|32,COMM
+219,Serial Communication,60|19,COMM
+220,I2C Scanner Tool,211|13,COMM
+221,SPI vs I2C Comparison,211|214,COMM
+222,Engineering Design Process,1|9,ENG
+223,Build-Test-Improve Cycle,222|8,ENG
+224,Prototyping Methods,223,ENG
+225,Mechanical Design Basics,74|69,ENG
+226,No-Soldering Assembly,59|66|67|74,ENG
+227,Hardware Troubleshooting,7|59|60,ENG
+228,Software Troubleshooting,7|34|19,ENG
+229,Safety Practices,69|75,ENG
+230,Code Documentation,34|51,ENG
+231,Project Planning,222,ENG
+232,Team Collaboration,231,ENG
+233,Version Control Git,230|51,ENG
+234,Git Commit Workflow,233,ENG
+235,State Machine Pattern,34|29|30|47,ENG
+236,Multithreading Basics,32|34|42,ENG
+237,Asynchronous Programming,236|42,ENG
+238,PID Control Overview,150|151|26,ENG
+239,Encoder Motor Feedback,96|80|238,ENG
+240,Data Logging,34|42|236,ENG
