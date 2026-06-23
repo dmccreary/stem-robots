@@ -1,0 +1,15 @@
+{
+  "FOUND": "Foundation Concepts",
+  "ENV": "Development Environment",
+  "PROG": "Python Programming",
+  "HW": "Hardware Platform",
+  "ELEC": "Electronics Fundamentals",
+  "MOTOR": "Motors and Actuators",
+  "SENSOR": "Sensors and Input",
+  "DISPLAY": "Display and Output",
+  "ROBOT": "Robot Behaviors",
+  "NET": "Networking and Wireless",
+  "BLE": "Bluetooth and Swarm",
+  "COMM": "Communication Protocols",
+  "ENG": "Engineering Design"
+}

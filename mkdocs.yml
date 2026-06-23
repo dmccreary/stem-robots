@@ -20,8 +20,13 @@ nav:
     - 14 Week Course: course-descriptions/14-week-course.md
   
   - Learning Graph:
-    - Concepts Covered: learning-graph/concepts-covered-v1.md
+    - Introduction: learning-graph/index.md
     - Course Description Assessment: learning-graph/course-description-assessment.md
+    - Concepts Covered: learning-graph/concepts-covered-v1.md
+    - Concept List: learning-graph/concept-list.md
+    - Concept Taxonomy: learning-graph/concept-taxonomy.md
+    - Graph Quality Metrics: learning-graph/quality-metrics.md
+    - Taxonomy Distribution: learning-graph/taxonomy-distribution.md
 
   - Learning Graphs:
     - learning-graphs/index.md
@@ -69,6 +74,7 @@ nav:
 
   - MicroSims:
     - Introduction: sims/index.md
+    - Learning Graph Viewer: sims/graph-viewer/index.md
     - Learning Graph: sims/learning-graph/index.md
     - H-Bridge: sims/h-bridge/index.md
     - Pulse Width Modulation: sims/pwm/index.md
