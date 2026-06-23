@@ -58,13 +58,22 @@ Each robot kit uses a `config.py` file defining hardware pin assignments and con
 - **Educational progression**: Code complexity increases from basic motor control to collision avoidance
 - **Error handling**: Try/catch blocks for graceful shutdown on KeyboardInterrupt
 
+## Content Generation
+
+Before generating any student-facing or instructor-facing content, read:
+
+> **[`CONTENT-GENERATION-GUIDELINES.md`](CONTENT-GENERATION-GUIDELINES.md)**
+
+That file defines reading levels, voice, mascot usage (Sparky), code example
+rules, chapter structure, and instructor guide standards for this project.
+
 ## Development Notes
 
 ### MkDocs Configuration
 - Theme: Material Design
 - Features: Code copying, navigation expansion, search
 - Analytics: Google Analytics enabled
-- Custom CSS: `docs/css/extra.css`
+- Custom CSS: `docs/css/extra.css` (general), `docs/css/mascot.css` (mascot admonitions)
 
 ### Content Organization
 - Navigation structure defined in `mkdocs.yml`

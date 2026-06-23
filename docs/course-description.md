@@ -8,7 +8,7 @@ quality_score: 97
 
 **Title:** Computational Thinking with STEM Robots
 
-**Target Audience:** High school students, grades 9–12, with little or no prior coding experience
+**Target Audience:** Junior high and high school students, grades 8–12, with little or no prior coding experience
 
 **Prerequisites:** None. Basic familiarity with a keyboard and web browser is helpful but not required.
 
