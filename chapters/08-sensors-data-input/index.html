@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Transform the robot into a sensing, responsive system — work with time-of-flight, ultrasonic, infrared, bump switch, and potentiometer sensors, then learn calibration, data filtering, sensor fusion, and the I2C scanner tool.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -22,15 +22,15 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>8. Sensors and Input - STEM Robots</title>
+        <title>Sensors and Data Input - STEM Robots</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              8. Sensors and Input
+              Sensors and Data Input
             
           </span>
         </div>
@@ -137,11 +137,13 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -173,13 +175,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -224,7 +227,7 @@
       <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -244,8 +247,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
+    
   </span>
   
 
@@ -264,8 +269,10 @@
       <a href="../../about/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     About This Website
+    
   </span>
   
 
@@ -284,8 +291,10 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Course Description
+    
   </span>
   
 
@@ -304,8 +313,10 @@
       <a href="../../journey-map/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Journey Map
+    
   </span>
   
 
@@ -324,8 +335,10 @@
       <a href="../../robot-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Robot Description
+    
   </span>
   
 
@@ -344,8 +357,10 @@
       <a href="../../gallery/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Gallery
+    
   </span>
   
 
@@ -364,8 +379,10 @@
       <a href="../../great-ways-to-teach/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Great Ways To Teach
+    
   </span>
   
 
@@ -394,6 +411,7 @@
     
     
     
+    
       
         
         
@@ -404,11 +422,14 @@
         
   
   
+  
     <a href="../../course-descriptions/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Course Descriptions
+    
   </span>
   
 
@@ -439,57 +460,32 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
+    
     
     
     
@@ -502,13 +498,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
     Chapters
+    
   </span>
   
 
@@ -540,8 +537,10 @@
       <a href="../01-intro-computational-thinking/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     1. Computational Thinking
+    
   </span>
   
 
@@ -561,8 +560,10 @@
       <a href="../02-hardware-platform-assembly/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     2. Hardware and Assembly
+    
   </span>
   
 
@@ -582,8 +583,10 @@
       <a href="../03-micropython-dev-environment/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     3. MicroPython and Setup
+    
   </span>
   
 
@@ -603,8 +606,10 @@
       <a href="../04-control-flow-functions/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     4. Control Flow and Functions
+    
   </span>
   
 
@@ -624,8 +629,10 @@
       <a href="../05-data-structures-modular-code/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     5. Data Structures and Git
+    
   </span>
   
 
@@ -645,8 +652,10 @@
       <a href="../06-electronics-motors-protocols/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     6. Motors and Protocols
+    
   </span>
   
 
@@ -666,8 +675,10 @@
       <a href="../07-pwm-motor-speed-actuators/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     7. PWM and Actuators
+    
   </span>
   
 
@@ -696,8 +707,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
     8. Sensors and Input
+    
   </span>
   
 
@@ -707,8 +720,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
     8. Sensors and Input
+    
   </span>
   
 
@@ -756,6 +771,225 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sensor-types-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensor Types Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-of-flight-sensor-vl53l0x" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-of-Flight Sensor — VL53L0X
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time-of-Flight Sensor — VL53L0X">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tof-sensor-i2c-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      ToF Sensor I2C Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tof-distance-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      ToF Distance Reading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zero-distance-calibration-and-scale-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zero Distance Calibration and Scale Factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max-distance-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Max Distance Limit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ultrasonic-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Sensor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ultrasonic Sensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonic-trigger-echo-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Trigger-Echo Operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrared-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrared Sensor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Infrared Sensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ir-digital-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      IR Digital Output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ir-sensor-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      IR Sensor Calibration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bump-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bump Switch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bump Switch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#microswitch-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microswitch Wiring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potentiometer-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Potentiometer Input
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensor-calibration-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensor Calibration Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensor Calibration Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-sensor-calibration-two-point-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Sensor Calibration Two-Point Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensor-data-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensor Data Filtering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensor-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensor Fusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-scanner-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C Scanner Tool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spi-vs-i2c-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPI vs. I2C Comparison
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -775,8 +1009,10 @@
       <a href="../09-display-systems-output/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     9. Displays and Output
+    
   </span>
   
 
@@ -796,8 +1032,10 @@
       <a href="../10-robot-behaviors-navigation/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     10. Robot Behaviors
+    
   </span>
   
 
@@ -817,8 +1055,10 @@
       <a href="../11-wireless-networking-web-servers/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     11. WiFi and Web Servers
+    
   </span>
   
 
@@ -838,8 +1078,10 @@
       <a href="../12-bluetooth-low-energy/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     12. Bluetooth Low Energy
+    
   </span>
   
 
@@ -859,8 +1101,10 @@
       <a href="../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     13. Swarm and Advanced
+    
   </span>
   
 
@@ -907,6 +1151,7 @@
     
     
     
+    
       
         
         
@@ -915,13 +1160,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graph/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graph
+    
   </span>
   
 
@@ -960,6 +1208,7 @@
     
     
     
+    
       
         
         
@@ -968,13 +1217,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graphs/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graphs
+    
   </span>
   
 
@@ -1017,6 +1269,7 @@
     
     
     
+    
       
         
         
@@ -1027,11 +1280,14 @@
         
   
   
+  
     <a href="../../setup/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Getting Started
+    
   </span>
   
 
@@ -1056,8 +1312,10 @@
       <a href="../../personas/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Personas
+    
   </span>
   
 
@@ -1076,8 +1334,10 @@
       <a href="../../topics/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Topics
+    
   </span>
   
 
@@ -1138,6 +1398,7 @@
     
     
     
+    
       
         
         
@@ -1146,13 +1407,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../lessons/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Lessons
+    
   </span>
   
 
@@ -1187,6 +1451,7 @@
     
     
     
+    
       
         
         
@@ -1195,13 +1460,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructor's Guide
+    
   </span>
   
 
@@ -1230,25 +1498,58 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
     
@@ -1260,13 +1561,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     MicroSims
+    
   </span>
   
 
@@ -1301,6 +1605,7 @@
     
     
     
+    
       
         
         
@@ -1309,13 +1614,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../kits/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Kits
+    
   </span>
   
 
@@ -1354,6 +1662,7 @@
     
     
     
+    
       
         
         
@@ -1364,11 +1673,14 @@
         
   
   
+  
     <a href="../../kits/wifi-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Wireless Bot
+    
   </span>
   
 
@@ -1393,8 +1705,10 @@
       <a href="../../kits/bump-switch/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Bump Switches
+    
   </span>
   
 
@@ -1413,8 +1727,10 @@
       <a href="../../kits/line-follower/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Line Follower
+    
   </span>
   
 
@@ -1433,8 +1749,10 @@
       <a href="../../kits/adjust/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Adjustabot
+    
   </span>
   
 
@@ -1453,8 +1771,10 @@
       <a href="../../kits/ultrasonic/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Ultrasonic
+    
   </span>
   
 
@@ -1481,6 +1801,7 @@
     
     
     
+    
       
         
         
@@ -1491,11 +1812,14 @@
         
   
   
+  
     <a href="../../kits/wifi-display-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     WiFi Display Bot
+    
   </span>
   
 
@@ -1530,6 +1854,7 @@
     
     
     
+    
       
         
         
@@ -1540,11 +1865,14 @@
         
   
   
+  
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructors Guide
+    
   </span>
   
 
@@ -1569,8 +1897,10 @@
       <a href="../../faq/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     FAQ
+    
   </span>
   
 
@@ -1589,8 +1919,10 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Glossary
+    
   </span>
   
 
@@ -1609,8 +1941,10 @@
       <a href="../../references/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     References
+    
   </span>
   
 
@@ -1629,8 +1963,10 @@
       <a href="../../license/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     License
+    
   </span>
   
 
@@ -1649,8 +1985,10 @@
       <a href="../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Contact
+    
   </span>
   
 
@@ -1669,8 +2007,10 @@
       <a href="../../prompts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     STEM Robotics Prompts
+    
   </span>
   
 
@@ -1689,8 +2029,10 @@
       <a href="../../sims/template/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     MicroSim Template
+    
   </span>
   
 
@@ -1752,6 +2094,225 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sensor-types-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensor Types Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-of-flight-sensor-vl53l0x" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-of-Flight Sensor — VL53L0X
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time-of-Flight Sensor — VL53L0X">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tof-sensor-i2c-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      ToF Sensor I2C Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tof-distance-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      ToF Distance Reading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zero-distance-calibration-and-scale-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zero Distance Calibration and Scale Factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max-distance-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Max Distance Limit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ultrasonic-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Sensor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ultrasonic Sensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonic-trigger-echo-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Trigger-Echo Operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrared-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrared Sensor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Infrared Sensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ir-digital-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      IR Digital Output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ir-sensor-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      IR Sensor Calibration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bump-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bump Switch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bump Switch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#microswitch-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microswitch Wiring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potentiometer-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Potentiometer Input
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensor-calibration-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensor Calibration Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensor Calibration Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-sensor-calibration-two-point-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Sensor Calibration Two-Point Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensor-data-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensor Data Filtering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensor-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensor Fusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-scanner-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C Scanner Tool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spi-vs-i2c-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPI vs. I2C Comparison
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1766,11 +2327,17 @@
                 
                   
 
+
   
   
 
 
 <h1 id="sensors-and-data-input">Sensors and Data Input</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome, maker — let's give your robot eyes and ears!</p>
+<p><img alt="Sparky waving" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+So far I can move, but I can't sense the world around me. This chapter adds perception. We'll wire up five different sensor types, learn how to clean up noisy readings, and combine multiple sensors into one smart decision. By the end, I'll know when a wall is approaching — before I hit it.</p>
+</div>
 <h2 id="summary">Summary</h2>
 <p>This chapter transforms the robot from a motion machine into a sensing, responsive
 system. Students work with every sensor in the course — the VL53L0X time-of-flight
@@ -1813,13 +2380,420 @@ understanding of hardware communication.</p>
 <li><a href="../06-electronics-motors-protocols/">Chapter 6: Electronics, DC Motors, and Communication Protocols</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<h2 id="sensor-types-overview">Sensor Types Overview</h2>
+<p>A <strong>sensor</strong> converts a physical quantity — distance, light, heat, force — into an electrical signal your microcontroller can read. Sensors are the robot's inputs. Without them, the robot has no awareness of the world around it.</p>
+<p>Every sensor in this course connects to the microcontroller in one of three ways:</p>
+<ul>
+<li><strong>Digital output</strong> — the sensor reports one of two states: detected or not detected. Infrared sensors and bump switches work this way.</li>
+<li><strong>Analog output</strong> — the sensor produces a smoothly varying voltage proportional to the measurement. Potentiometers and some light sensors work this way (read with ADC).</li>
+<li><strong>I2C or SPI</strong> — the sensor communicates over a serial bus with a digital number. The VL53L0X distance sensor works this way.</li>
+</ul>
+<p>The table below introduces all five sensor types you will use in this course.</p>
+<p>Before the table, here is a key term you'll encounter for each: <strong>range</strong> is how far the sensor can measure. <strong>Resolution</strong> is the smallest change it can detect. <strong>Accuracy</strong> is how close the measurement is to the true value.</p>
+<table>
+<thead>
+<tr>
+<th>Sensor</th>
+<th>Measurement</th>
+<th>Connection type</th>
+<th>Typical range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VL53L0X (ToF)</td>
+<td>Distance</td>
+<td>I2C</td>
+<td>3 – 200 cm</td>
+</tr>
+<tr>
+<td>Ultrasonic (HC-SR04)</td>
+<td>Distance</td>
+<td>Digital (trigger/echo)</td>
+<td>2 – 400 cm</td>
+</tr>
+<tr>
+<td>Infrared (IR)</td>
+<td>Surface reflectivity</td>
+<td>Digital</td>
+<td>~1 – 10 cm</td>
+</tr>
+<tr>
+<td>Bump switch</td>
+<td>Contact/collision</td>
+<td>Digital</td>
+<td>Contact only</td>
+</tr>
+<tr>
+<td>Potentiometer</td>
+<td>Rotation angle</td>
+<td>Analog (ADC)</td>
+<td>0° – 270°</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="time-of-flight-sensor-vl53l0x">Time-of-Flight Sensor — VL53L0X</h2>
+<p>The <strong>time-of-flight sensor</strong> (ToF) is the primary distance sensor on this robot. It measures distance by emitting a brief pulse of infrared laser light and timing how long the pulse takes to bounce off an object and return. That elapsed time, divided by the speed of light, gives the distance.</p>
+<p>The <strong>VL53L0X</strong> is the specific ToF sensor model used in this course. It is made by STMicroelectronics and communicates over I2C. Its key advantages over simpler sensors are accuracy (±3% at short range), speed (measurements up to 50 times per second), and a small beam angle (approximately 25°) that gives focused forward readings.</p>
+<h3 id="tof-sensor-i2c-setup">ToF Sensor I2C Setup</h3>
+<p>Setting up the VL53L0X requires the <code>vl53l0x.py</code> driver library — a MicroPython module that handles the complex initialization sequence for this sensor. Copy <code>vl53l0x.py</code> to your robot's flash storage first. Then:</p>
+<p>Before the code, here is what the parameters mean: <code>I2C(0, ...)</code> selects I2C bus 0, <code>scl=Pin(17)</code> sets the clock pin, <code>sda=Pin(16)</code> sets the data pin, and <code>freq=400000</code> sets 400 kHz Fast mode. <code>VL53L0X(i2c)</code> initializes the sensor on that bus.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">vl53l0x</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span>
+             <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span>
+             <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+
+<span class="n">tof</span> <span class="o">=</span> <span class="n">vl53l0x</span><span class="o">.</span><span class="n">VL53L0X</span><span class="p">(</span><span class="n">i2c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ToF sensor ready&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="tof-distance-reading">ToF Distance Reading</h3>
+<p>To read a distance, call the sensor's <code>read()</code> method. It returns a raw value in millimeters:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">raw_mm</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">distance_cm</span> <span class="o">=</span> <span class="n">raw_mm</span> <span class="o">/</span> <span class="mi">10</span>    <span class="c1"># convert mm to cm</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance: </span><span class="si">{</span><span class="n">distance_cm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="zero-distance-calibration-and-scale-factor">Zero Distance Calibration and Scale Factor</h3>
+<p>No sensor is perfect. The VL53L0X has two calibration sources of error: a <strong>zero distance offset</strong> and a <strong>scale factor</strong> error.</p>
+<p><strong>Zero distance calibration</strong> corrects for the sensor reporting a non-zero distance when an object is touching it. Place an object at exactly 0 cm, read the sensor, and subtract that reading from all future readings:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">zero_offset</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>   <span class="c1"># record reading at 0 cm</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Scale factor calibration</strong> corrects for readings that scale incorrectly across distance. Place an object at a known distance (say 100 mm). If the sensor reports 92 mm instead of 100 mm, the scale factor is <code>100/92 = 1.087</code>. Multiply all future readings by this factor:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">scale_factor</span> <span class="o">=</span> <span class="mf">1.087</span>   <span class="c1"># measured calibration constant</span>
+<span class="n">corrected_mm</span> <span class="o">=</span> <span class="p">(</span><span class="n">raw_mm</span> <span class="o">-</span> <span class="n">zero_offset</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale_factor</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="max-distance-limit">Max Distance Limit</h3>
+<p>The VL53L0X has a <strong>max distance limit</strong> — about 200 cm under good conditions, less in bright ambient light. When the object is beyond range, the sensor returns a very large number (often 8190 or similar). Always check for out-of-range values:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">MAX_RANGE_MM</span> <span class="o">=</span> <span class="mi">1500</span>   <span class="c1"># treat anything over 150 cm as &quot;out of range&quot;</span>
+
+<span class="n">raw_mm</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">raw_mm</span> <span class="o">&gt;</span> <span class="n">MAX_RANGE_MM</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Out of range&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance: </span><span class="si">{</span><span class="n">raw_mm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="ultrasonic-sensor">Ultrasonic Sensor</h2>
+<p>An <strong>ultrasonic sensor</strong> measures distance by emitting a burst of sound (above human hearing range) and timing the echo. The most common model is the <strong>HC-SR04</strong>, which has two elements: a transmitter and a receiver.</p>
+<h3 id="ultrasonic-trigger-echo-operation">Ultrasonic Trigger-Echo Operation</h3>
+<p>The <strong>trigger-echo</strong> protocol controls the HC-SR04. Before the code, here is what each step does: you send a brief HIGH pulse on the Trigger pin (10 microseconds). The sensor emits 8 sound pulses. When the echo returns, the Echo pin goes HIGH for a duration proportional to the distance. You measure that duration and convert it to distance.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep_us</span><span class="p">,</span> <span class="n">ticks_us</span><span class="p">,</span> <span class="n">ticks_diff</span>
+
+<span class="n">trigger</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">ULTRASONIC_TRIGGER_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="n">echo</span>    <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">ULTRASONIC_ECHO_PIN</span><span class="p">,</span>    <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">read_ultrasonic_cm</span><span class="p">():</span>
+    <span class="n">trigger</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+    <span class="n">sleep_us</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">trigger</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
+    <span class="n">sleep_us</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>          <span class="c1"># 10 µs trigger pulse</span>
+    <span class="n">trigger</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+
+    <span class="k">while</span> <span class="n">echo</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>   <span class="c1"># wait for echo to start</span>
+        <span class="k">pass</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">ticks_us</span><span class="p">()</span>
+
+    <span class="k">while</span> <span class="n">echo</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>   <span class="c1"># wait for echo to end</span>
+        <span class="k">pass</span>
+    <span class="n">duration_us</span> <span class="o">=</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">ticks_us</span><span class="p">(),</span> <span class="n">start</span><span class="p">)</span>
+
+    <span class="n">distance_cm</span> <span class="o">=</span> <span class="n">duration_us</span> <span class="o">/</span> <span class="mi">58</span>   <span class="c1"># speed of sound constant</span>
+    <span class="k">return</span> <span class="n">distance_cm</span>
+</code></pre></div></td></tr></table></div>
+<p>The constant 58 comes from: speed of sound ≈ 343 m/s = 0.0343 cm/µs. Round trip distance = duration × 0.0343, so one-way distance = duration / 58.</p>
+<hr />
+<h2 id="infrared-sensor">Infrared Sensor</h2>
+<p>An <strong>infrared sensor</strong> (IR sensor) detects nearby surfaces by emitting infrared light and detecting the reflection. It outputs a digital signal: LOW when a surface is detected (within ~1–10 cm), HIGH when nothing is detected.</p>
+<h3 id="ir-digital-output">IR Digital Output</h3>
+<p>The IR sensor connects to a regular GPIO input pin, not an I2C bus:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ir_left</span>  <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">IR_LEFT_PIN</span><span class="p">,</span>  <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+<span class="n">ir_right</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">IR_RIGHT_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+
+<span class="n">left_detected</span>  <span class="o">=</span> <span class="n">ir_left</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>   <span class="c1"># 0 = detected, 1 = not detected</span>
+<span class="n">right_detected</span> <span class="o">=</span> <span class="n">ir_right</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Note: most IR sensors are <strong>active LOW</strong> — they output 0 (LOW) when detecting a surface, not 1. This is counterintuitive — check your sensor's datasheet.</p>
+<h3 id="ir-sensor-calibration">IR Sensor Calibration</h3>
+<p>IR sensors are sensitive to surface color and ambient light. A white surface reflects more IR than a black surface. <strong>IR calibration</strong> means finding the threshold at which your specific sensor reliably switches state.</p>
+<p>Test with the robot over a white surface, then a black surface. Note the ADC reading (if your module has an analog output) or the distance at which the digital output switches. Adjust the sensor's sensitivity trimmer potentiometer (the small dial on the sensor module) until it switches cleanly at the desired distance.</p>
+<hr />
+<h2 id="bump-switch">Bump Switch</h2>
+<p>A <strong>bump switch</strong> (also called a tactile sensor or microswitch) detects physical contact. When the robot bumps into an object, the switch presses and sends a signal to the microcontroller.</p>
+<h3 id="microswitch-wiring">Microswitch Wiring</h3>
+<p>A microswitch has three terminals: Common (COM), Normally Open (NO), and Normally Closed (NC). The most common wiring for robot bumpers:</p>
+<ul>
+<li>Connect COM to a GPIO pin configured with internal pull-up (<code>Pin.PULL_UP</code>).</li>
+<li>Connect NO to Ground.</li>
+</ul>
+<p>When the robot bumps something, NO connects to COM, pulling the GPIO pin LOW. With the pull-up, it reads HIGH normally and LOW on contact.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">bump</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BUMP_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">bump</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>    <span class="c1"># LOW = bumped</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contact detected — reversing!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Bump switches as a backup</p>
+<p><img alt="Sparky pointing up" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+The ToF sensor usually prevents collisions before they happen. But the bump switch catches the rare case where the ToF missed something — a transparent object, a low obstacle, or an unexpected side hit. Having both is good engineering: use the ToF for prevention, the bump switch for detection.</p>
+</div>
+<hr />
+<h2 id="potentiometer-input">Potentiometer Input</h2>
+<p>A <strong>potentiometer</strong> (pot) is a manually adjustable resistor. As you turn the dial, the output voltage changes smoothly from 0 V to 3.3 V. Read it with the ADC.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
+
+<span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">POT_PIN</span><span class="p">))</span>
+
+<span class="n">raw</span> <span class="o">=</span> <span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>             <span class="c1"># 0–65535</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span>
+<span class="n">angle_pct</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">/</span> <span class="mi">65535</span> <span class="o">*</span> <span class="mi">100</span>   <span class="c1"># convert to percentage</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pot: </span><span class="si">{</span><span class="n">angle_pct</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% (</span><span class="si">{</span><span class="n">voltage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> V)&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Potentiometers are useful for manually adjusting parameters — like setting the collision threshold distance without editing code, or controlling robot speed with a dial.</p>
+<hr />
+<h2 id="sensor-calibration-process">Sensor Calibration Process</h2>
+<p><strong>Sensor calibration</strong> is the process of adjusting sensor readings to match known physical values. All sensors have some error. Calibration reduces that error to an acceptable level.</p>
+<p>The general calibration process:</p>
+<ol>
+<li><strong>Zero calibration</strong> — measure the sensor at a known reference (zero distance, flat surface). Record this baseline.</li>
+<li><strong>Span calibration</strong> — measure at a second known point (maximum range). Calculate the scale factor.</li>
+<li><strong>Apply corrections</strong> — subtract the zero offset, multiply by the scale factor, in every reading.</li>
+</ol>
+<p>This two-point calibration (zero and span) works for most sensors. More precise calibration uses more reference points and fits a curve.</p>
+<h4 id="diagram-sensor-calibration-two-point-process">Diagram: Sensor Calibration Two-Point Process</h4>
+<iframe src="../../sims/sensor-calibration-explorer/main.html" width="100%" height="402px" scrolling="no"></iframe>
+<p><a href="../../sims/sensor-calibration-explorer/main.html">Run Sensor Calibration Two-Point Process Fullscreen</a></p>
+<details>
+<summary>Interactive MicroSim showing sensor zero and span calibration</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> sensor-calibration-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a p5.js MicroSim with a 700 × 400 canvas. Show a graph with:
+- X-axis: "True distance (cm)" from 0 to 200.
+- Y-axis: "Sensor reading (cm)" from 0 to 220.
+- A diagonal "ideal" line (green) where sensor = true distance.
+- A "raw sensor" line (orange) that is offset (starts at a non-zero Y intercept) and has a different slope.
+- After clicking "Calibrate", the orange line transforms into a corrected line that overlaps the green ideal line.</p>
+<p>Controls:
+- "Zero offset" slider: adjusts the Y intercept of the raw sensor line (-20 to +20 cm).
+- "Scale factor" slider: adjusts the slope of the raw sensor line (0.8 to 1.2).
+- "Calibrate" button: applies the corrections and animates the orange line rotating/shifting to match the green line.
+- A "Test point" slider moves a vertical cursor across the graph, showing "Raw: X cm, Corrected: Y cm, Error: Z cm."</p>
+<p>Learning objective (Bloom's Taxonomy — Applying): students practice adjusting calibration parameters and observe how they reduce sensor error.</p>
+<p>Responsive: redraw on window resize.</p>
+</details>
+<hr />
+<h2 id="sensor-data-filtering">Sensor Data Filtering</h2>
+<p>Raw sensor readings are noisy. Even with the robot sitting still, the ToF sensor might report 143 cm, then 145 cm, then 141 cm on successive reads. This noise can cause erratic robot behavior if used directly for decisions.</p>
+<p><strong>Sensor data filtering</strong> reduces noise by combining multiple readings. Two common approaches:</p>
+<p><strong>Moving average</strong> — keep the last N readings in a list and return their average:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">readings</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">filtered_distance</span><span class="p">(</span><span class="n">new_reading</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">readings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_reading</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">window</span><span class="p">:</span>
+        <span class="n">readings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>        <span class="c1"># remove oldest reading</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Median filter</strong> — take the median of the last N readings (eliminates spike outliers better than average):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">median_distance</span><span class="p">(</span><span class="n">new_reading</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">readings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_reading</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">window</span><span class="p">:</span>
+        <span class="n">readings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">sorted_r</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sorted_r</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">sorted_r</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>The median filter is better for rejecting single bad readings (spikes). The moving average is smoother but reacts more slowly to real changes. Choose based on your application.</p>
+<hr />
+<h2 id="sensor-fusion">Sensor Fusion</h2>
+<p><strong>Sensor fusion</strong> means combining readings from multiple sensors to make a more reliable decision. No single sensor is perfect in all conditions. By combining sensors, you compensate for each one's weaknesses.</p>
+<p>A simple example: use the ToF sensor for long-range detection (&gt;30 cm) and an IR sensor for short-range confirmation (&lt;10 cm). Both must agree before triggering an emergency stop:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">obstacle_detected</span><span class="p">(</span><span class="n">tof_cm</span><span class="p">,</span> <span class="n">ir_value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if an obstacle is confirmed by two sensors.&quot;&quot;&quot;</span>
+    <span class="n">tof_close</span> <span class="o">=</span> <span class="n">tof_cm</span> <span class="o">&lt;</span> <span class="mi">20</span>        <span class="c1"># ToF says close</span>
+    <span class="n">ir_detected</span> <span class="o">=</span> <span class="n">ir_value</span> <span class="o">==</span> <span class="mi">0</span>    <span class="c1"># IR says detected (active LOW)</span>
+    <span class="k">return</span> <span class="n">tof_close</span> <span class="ow">and</span> <span class="n">ir_detected</span>
+</code></pre></div></td></tr></table></div>
+<p>More advanced fusion (like a Kalman filter) combines sensor readings mathematically, weighting more reliable sensors higher. For this course, the simple <code>and</code> combination above is effective and understandable.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Two sensors, one decision</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Requiring two sensors to agree before taking action is called <strong>fault tolerance</strong> — a strategy to prevent false alarms. A single sensor can malfunction. Two sensors rarely fail the same way at the same time. In safety-critical systems, engineers often require three sensors and use a "voting" rule: take action only if at least 2 of 3 agree.</p>
+</div>
+<hr />
+<h2 id="i2c-scanner-tool">I2C Scanner Tool</h2>
+<p>When wiring a new I2C sensor, it's helpful to confirm the sensor is connected and responding. The <strong>I2C scanner tool</strong> scans all 127 possible addresses and reports which ones have a device:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span>
+             <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span>
+             <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+
+<span class="n">devices</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">devices</span><span class="p">)</span><span class="si">}</span><span class="s2"> I2C device(s):&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">addr</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Address: </span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Run this before using a new sensor. If the device doesn't show up:</p>
+<ol>
+<li>Check the SDA and SCL wires are not swapped.</li>
+<li>Check the power (3.3 V and GND) connections.</li>
+<li>Try reducing the frequency to 100000 (100 kHz).</li>
+<li>Check the sensor's datasheet for its I2C address.</li>
+</ol>
+<hr />
+<h2 id="spi-vs-i2c-comparison">SPI vs. I2C Comparison</h2>
+<p>You encountered both I2C and SPI in Chapter 6. Here is a practical comparison focused on your work in this course:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>I2C</th>
+<th>SPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wires needed</td>
+<td>2 (SDA, SCL)</td>
+<td>4 (MOSI, MISO, SCK, CS)</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>100–400 kHz</td>
+<td>1–10+ MHz</td>
+</tr>
+<tr>
+<td>Multiple devices</td>
+<td>Address-based (no extra pins)</td>
+<td>CS pin per device</td>
+</tr>
+<tr>
+<td>Which sensors use it</td>
+<td>VL53L0X, OLED (mode selectable)</td>
+<td>Some displays, SD cards</td>
+</tr>
+<tr>
+<td>Scanner tool available</td>
+<td>Yes (<code>i2c.scan()</code>)</td>
+<td>No standard equivalent</td>
+</tr>
+</tbody>
+</table>
+<p>For this course: use I2C for all sensors and the OLED display. SPI shows up in library files for other display types but you will rarely write SPI code directly.</p>
+<hr />
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>The <strong>VL53L0X ToF sensor</strong> measures distance over I2C with high accuracy — calibrate zero offset and scale factor</li>
+<li><strong>Ultrasonic sensors</strong> use trigger/echo pulses — convert duration to distance with the speed-of-sound constant</li>
+<li><strong>IR sensors</strong> output digital HIGH/LOW based on surface reflectivity — active LOW, calibrate the sensitivity trimmer</li>
+<li><strong>Bump switches</strong> detect physical contact using a pull-up resistor and active-LOW wiring</li>
+<li><strong>Potentiometers</strong> produce analog voltage — read with <code>ADC.read_u16()</code> and convert to percentage</li>
+<li><strong>Calibration</strong> corrects zero offset and scale factor — always calibrate before trusting sensor data</li>
+<li><strong>Filtering</strong> (moving average, median) smooths noisy readings — choose based on speed vs. outlier rejection</li>
+<li><strong>Sensor fusion</strong> combines multiple sensors for more reliable decisions</li>
+<li>The <strong>I2C scanner</strong> (<code>i2c.scan()</code>) verifies sensor wiring before writing driver code</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Your robot can now sense its environment!</p>
+<p><img alt="Sparky celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Double thumbs-up, maker! You wired up five sensors, learned to calibrate them, filtered their noise, and combined them into smarter decisions. The next chapter gives your robot a voice — a display to show what it's seeing. Then in Chapter 10, we wire sensing and motion together into fully autonomous behavior!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1907,10 +2881,12 @@ understanding of hardware communication.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

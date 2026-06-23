@@ -1,0 +1,39 @@
+{
+  "title": "Robot Assembly Workflow",
+  "description": "Students will sequence the eight assembly steps in the correct order and explain the mechanical reason each step precedes the next (e.g., why standoffs must be installed before the board is mounted).",
+  "creator": "Dan McCreary STEM Robots",
+  "date": "2026-06-23",
+  "subject": [
+    "Robotics",
+    "Physical Computing",
+    "Computational Thinking",
+    "MicroPython"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "robot-assembly-workflow",
+  "library": "p5.js",
+  "bloomLevel": "Apply (L3) \u2014 Assemble the Smart Car chassis by following the correct sequence of steps and explain why each step comes before the next.",
+  "bloomVerb": "Assemble",
+  "completion_status": "implemented",
+  "chapter_number": 2,
+  "chapter_title": "Hardware Platform and Robot Assembly",
+  "chapter_dir": "02-hardware-platform-assembly",
+  "educational": {
+    "gradeLevel": "Middle School to High School (grades 6-12)",
+    "subjectArea": "STEM Robotics / Physical Computing",
+    "learningObjectives": [
+      "Students will sequence the eight assembly steps in the correct order and explain the mechanical reason each step precedes the next (e.g., why standoffs must be installed before the board is mounted)."
+    ],
+    "bloomTaxonomy": "Apply (L3) \u2014 Assemble the Smart Car chassis by following the correct sequence of steps and explain why each step comes before the next.",
+    "prerequisites": "Basic familiarity with the robot platform and MicroPython introduced earlier in the course.",
+    "duration": "5-15 minutes"
+  },
+  "pedagogical": {
+    "interactionPattern": "Interactive p5.js exploration with immediate visual feedback",
+    "rationale": "Manipulating the model and seeing the result immediately helps students build an accurate mental model before working with the physical robot.",
+    "assessment": "Use the discussion questions in the lesson plan to check for understanding."
+  }
+}

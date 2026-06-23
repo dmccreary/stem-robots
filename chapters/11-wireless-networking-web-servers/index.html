@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Upgrade your robot to a WiFi-connected device — connect the Raspberry Pi Pico W to a network, retrieve an IP address, and build a socket-based HTTP web server that serves an HTML control page and responds to GET and POST requests for browser-based robot control.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -22,15 +22,15 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>11. WiFi and Web Servers - STEM Robots</title>
+        <title>Wireless Networking and Web Servers - STEM Robots</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              11. WiFi and Web Servers
+              Wireless Networking and Web Servers
             
           </span>
         </div>
@@ -137,11 +137,13 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -173,13 +175,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -224,7 +227,7 @@
       <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -244,8 +247,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
+    
   </span>
   
 
@@ -264,8 +269,10 @@
       <a href="../../about/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     About This Website
+    
   </span>
   
 
@@ -284,8 +291,10 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Course Description
+    
   </span>
   
 
@@ -304,8 +313,10 @@
       <a href="../../journey-map/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Journey Map
+    
   </span>
   
 
@@ -324,8 +335,10 @@
       <a href="../../robot-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Robot Description
+    
   </span>
   
 
@@ -344,8 +357,10 @@
       <a href="../../gallery/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Gallery
+    
   </span>
   
 
@@ -364,8 +379,10 @@
       <a href="../../great-ways-to-teach/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Great Ways To Teach
+    
   </span>
   
 
@@ -394,6 +411,7 @@
     
     
     
+    
       
         
         
@@ -404,11 +422,14 @@
         
   
   
+  
     <a href="../../course-descriptions/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Course Descriptions
+    
   </span>
   
 
@@ -439,57 +460,32 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
+    
     
     
     
@@ -502,13 +498,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
     Chapters
+    
   </span>
   
 
@@ -540,8 +537,10 @@
       <a href="../01-intro-computational-thinking/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     1. Computational Thinking
+    
   </span>
   
 
@@ -561,8 +560,10 @@
       <a href="../02-hardware-platform-assembly/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     2. Hardware and Assembly
+    
   </span>
   
 
@@ -582,8 +583,10 @@
       <a href="../03-micropython-dev-environment/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     3. MicroPython and Setup
+    
   </span>
   
 
@@ -603,8 +606,10 @@
       <a href="../04-control-flow-functions/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     4. Control Flow and Functions
+    
   </span>
   
 
@@ -624,8 +629,10 @@
       <a href="../05-data-structures-modular-code/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     5. Data Structures and Git
+    
   </span>
   
 
@@ -645,8 +652,10 @@
       <a href="../06-electronics-motors-protocols/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     6. Motors and Protocols
+    
   </span>
   
 
@@ -666,8 +675,10 @@
       <a href="../07-pwm-motor-speed-actuators/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     7. PWM and Actuators
+    
   </span>
   
 
@@ -687,8 +698,10 @@
       <a href="../08-sensors-data-input/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     8. Sensors and Input
+    
   </span>
   
 
@@ -708,8 +721,10 @@
       <a href="../09-display-systems-output/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     9. Displays and Output
+    
   </span>
   
 
@@ -729,8 +744,10 @@
       <a href="../10-robot-behaviors-navigation/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     10. Robot Behaviors
+    
   </span>
   
 
@@ -759,8 +776,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
     11. WiFi and Web Servers
+    
   </span>
   
 
@@ -770,8 +789,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
     11. WiFi and Web Servers
+    
   </span>
   
 
@@ -819,6 +840,183 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#wifi-overview-and-the-internet-of-things" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi Overview and the Internet of Things
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WiFi Overview and the Internet of Things">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-raspberry-pi-pico-w" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Raspberry Pi Pico W
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to WiFi
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to WiFi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-wlan-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      The WLAN Object
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-point-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Point Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wifi-isconnected-check-and-ip-address-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi isConnected Check and IP Address Retrieval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ping-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ping Test
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-web-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building a Web Server
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building a Web Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-get-and-post-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP GET and POST Requests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#socket-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Socket Programming
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-page-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML Page Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML Page Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-web-server-request-response-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Web Server Request-Response Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-complete-web-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete Web Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-fetch-api-asynchronous-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScript Fetch API — Asynchronous Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secrets-file-for-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secrets File for WiFi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -838,8 +1036,10 @@
       <a href="../12-bluetooth-low-energy/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     12. Bluetooth Low Energy
+    
   </span>
   
 
@@ -859,8 +1059,10 @@
       <a href="../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     13. Swarm and Advanced
+    
   </span>
   
 
@@ -907,6 +1109,7 @@
     
     
     
+    
       
         
         
@@ -915,13 +1118,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graph/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graph
+    
   </span>
   
 
@@ -960,6 +1166,7 @@
     
     
     
+    
       
         
         
@@ -968,13 +1175,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graphs/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graphs
+    
   </span>
   
 
@@ -1017,6 +1227,7 @@
     
     
     
+    
       
         
         
@@ -1027,11 +1238,14 @@
         
   
   
+  
     <a href="../../setup/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Getting Started
+    
   </span>
   
 
@@ -1056,8 +1270,10 @@
       <a href="../../personas/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Personas
+    
   </span>
   
 
@@ -1076,8 +1292,10 @@
       <a href="../../topics/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Topics
+    
   </span>
   
 
@@ -1138,6 +1356,7 @@
     
     
     
+    
       
         
         
@@ -1146,13 +1365,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../lessons/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Lessons
+    
   </span>
   
 
@@ -1187,6 +1409,7 @@
     
     
     
+    
       
         
         
@@ -1195,13 +1418,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructor's Guide
+    
   </span>
   
 
@@ -1230,25 +1456,58 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
     
@@ -1260,13 +1519,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     MicroSims
+    
   </span>
   
 
@@ -1301,6 +1563,7 @@
     
     
     
+    
       
         
         
@@ -1309,13 +1572,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../kits/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Kits
+    
   </span>
   
 
@@ -1354,6 +1620,7 @@
     
     
     
+    
       
         
         
@@ -1364,11 +1631,14 @@
         
   
   
+  
     <a href="../../kits/wifi-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Wireless Bot
+    
   </span>
   
 
@@ -1393,8 +1663,10 @@
       <a href="../../kits/bump-switch/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Bump Switches
+    
   </span>
   
 
@@ -1413,8 +1685,10 @@
       <a href="../../kits/line-follower/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Line Follower
+    
   </span>
   
 
@@ -1433,8 +1707,10 @@
       <a href="../../kits/adjust/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Adjustabot
+    
   </span>
   
 
@@ -1453,8 +1729,10 @@
       <a href="../../kits/ultrasonic/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Ultrasonic
+    
   </span>
   
 
@@ -1481,6 +1759,7 @@
     
     
     
+    
       
         
         
@@ -1491,11 +1770,14 @@
         
   
   
+  
     <a href="../../kits/wifi-display-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     WiFi Display Bot
+    
   </span>
   
 
@@ -1530,6 +1812,7 @@
     
     
     
+    
       
         
         
@@ -1540,11 +1823,14 @@
         
   
   
+  
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructors Guide
+    
   </span>
   
 
@@ -1569,8 +1855,10 @@
       <a href="../../faq/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     FAQ
+    
   </span>
   
 
@@ -1589,8 +1877,10 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Glossary
+    
   </span>
   
 
@@ -1609,8 +1899,10 @@
       <a href="../../references/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     References
+    
   </span>
   
 
@@ -1629,8 +1921,10 @@
       <a href="../../license/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     License
+    
   </span>
   
 
@@ -1649,8 +1943,10 @@
       <a href="../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Contact
+    
   </span>
   
 
@@ -1669,8 +1965,10 @@
       <a href="../../prompts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     STEM Robotics Prompts
+    
   </span>
   
 
@@ -1689,8 +1987,10 @@
       <a href="../../sims/template/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     MicroSim Template
+    
   </span>
   
 
@@ -1752,6 +2052,183 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#wifi-overview-and-the-internet-of-things" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi Overview and the Internet of Things
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WiFi Overview and the Internet of Things">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-raspberry-pi-pico-w" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Raspberry Pi Pico W
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to WiFi
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to WiFi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-wlan-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      The WLAN Object
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-point-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Point Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wifi-isconnected-check-and-ip-address-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi isConnected Check and IP Address Retrieval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ping-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ping Test
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-web-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building a Web Server
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building a Web Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-get-and-post-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP GET and POST Requests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#socket-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Socket Programming
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-page-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML Page Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML Page Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-web-server-request-response-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Web Server Request-Response Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-complete-web-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete Web Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-fetch-api-asynchronous-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScript Fetch API — Asynchronous Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secrets-file-for-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secrets File for WiFi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1766,11 +2243,17 @@
                 
                   
 
+
   
   
 
 
 <h1 id="wireless-networking-and-web-servers">Wireless Networking and Web Servers</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome, maker — your robot is going online!</p>
+<p><img alt="Sparky waving" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+So far you've controlled me with Thonny over a USB cable. This chapter cuts the cord. The Raspberry Pi Pico W has a built-in WiFi chip, and we're about to use it to serve a control webpage — meaning you'll drive me from any browser, on any device, connected to the same network. That's IoT: the Internet of Things.</p>
+</div>
 <h2 id="summary">Summary</h2>
 <p>This chapter upgrades the robot to a wireless, internet-connected device. Students
 connect the Raspberry Pi Pico W to a WiFi access point using the WLAN object, retrieve
@@ -1810,13 +2293,399 @@ protecting WiFi credentials.</p>
 <li><a href="../10-robot-behaviors-navigation/">Chapter 10: Robot Behaviors and Autonomous Navigation</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<h2 id="wifi-overview-and-the-internet-of-things">WiFi Overview and the Internet of Things</h2>
+<p><strong>WiFi</strong> (Wireless Fidelity) is a wireless communication technology that lets devices connect to a local network and (optionally) the internet without cables. Your phone, laptop, and smart TV all use WiFi. Now your robot can too.</p>
+<p>Before we connect, let's understand the concept of <strong>IoT — the Internet of Things</strong>. The IoT is the idea of connecting physical objects (things) to the internet so they can send and receive data. A smart thermostat, a fitness tracker, a connected light bulb — these are all IoT devices. Your robot, running a web server, is an IoT device. It has a network address, and anything on the network can communicate with it.</p>
+<p>This matters beyond this course: IoT is a major part of modern engineering, manufacturing, agriculture, and healthcare. The skills you learn in this chapter — networking, HTTP, web servers — are the same skills engineers use to build real IoT products.</p>
+<h3 id="the-raspberry-pi-pico-w">The Raspberry Pi Pico W</h3>
+<p>The <strong>Raspberry Pi Pico W</strong> is the WiFi-capable version of the Pico microcontroller board. It adds a CYW43439 wireless chip alongside the RP2040 processor. This chip supports:</p>
+<ul>
+<li><strong>2.4 GHz WiFi</strong> (802.11n) — standard home and school wireless</li>
+<li><strong>Bluetooth 5.2</strong> (covered in Chapter 12)</li>
+</ul>
+<p>The WiFi chip connects to the RP2040 over SPI. MicroPython's <code>network</code> module handles all the complexity — from your perspective, connecting to WiFi is just a few lines of code.</p>
+<hr />
+<h2 id="connecting-to-wifi">Connecting to WiFi</h2>
+<h3 id="the-wlan-object">The WLAN Object</h3>
+<p>The <strong>WLAN object</strong> is MicroPython's interface to the wireless chip. Before the code, here is what the parameter means: <code>network.STA_IF</code> selects "station mode" — connecting to an existing access point as a client. The alternative, <code>AP_IF</code>, would make the board <em>create</em> its own hotspot.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
+
+<span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
+<span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>   <span class="c1"># power on the WiFi chip</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="access-point-connection">Access Point Connection</h3>
+<p>An <strong>access point</strong> (AP) is the router or WiFi hotspot the robot connects to. Your school's WiFi network is an access point. To connect, call <code>wlan.connect()</code> with the network name (SSID) and password:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">secrets</span> <span class="kn">import</span> <span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span>
+
+<span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>We import the credentials from <code>secrets.py</code> rather than writing them directly in the code. (You set up <code>secrets.py</code> in Chapter 5.)</p>
+<h3 id="wifi-isconnected-check-and-ip-address-retrieval">WiFi isConnected Check and IP Address Retrieval</h3>
+<p>Connecting to WiFi takes a few seconds. We need to wait until the connection is established before using the network. The <strong><code>isConnected()</code></strong> method returns <code>True</code> once the connection succeeds.</p>
+<p>Before the code, here is what <code>ticks_ms()</code> and <code>ticks_diff()</code> do: they measure elapsed time without pausing the program (you learned these in Chapter 4). This gives us a timeout — if the connection doesn't succeed within 10 seconds, we stop waiting and report an error.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span><span class="p">,</span> <span class="n">sleep</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">ticks_ms</span><span class="p">(),</span> <span class="n">start</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10000</span><span class="p">:</span>   <span class="c1"># 10 second timeout</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WiFi connection failed!&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+    <span class="n">ip</span> <span class="o">=</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connected! IP address: </span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The <strong>IP address retrieval</strong> uses <code>wlan.ifconfig()</code>, which returns a tuple of four values: <code>(ip, subnet_mask, gateway, dns_server)</code>. We take index <code>[0]</code> for the IP address — something like <code>192.168.1.105</code>.</p>
+<h3 id="ping-test">Ping Test</h3>
+<p>Before building a web server, verify connectivity with a ping test. A <strong>ping</strong> sends a small network packet to a known server and measures the round-trip time. If the ping succeeds, the WiFi connection is working.</p>
+<p>MicroPython doesn't have a built-in <code>ping</code> command, but you can test connectivity by attempting a simple DNS lookup or using the <code>uping</code> module if available on your firmware. Alternatively, use the <strong>Thonny slow mode ping test</strong>: open Thonny's network tools and enter the board's IP address in a browser — if the web server is running, the page loads.</p>
+<p><strong>Fast mode ping test</strong> uses the Arduino/MicroPython <code>network.ping()</code> function (firmware-dependent). Check whether your firmware version includes it:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Simple connectivity test — try connecting to a known address</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s2">&quot;google.com&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DNS working — network is connected:&quot;</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Network issue:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="building-a-web-server">Building a Web Server</h2>
+<p>Now let's build the web server. Before diving into the code, we need to understand two key concepts: the HTTP protocol and socket programming.</p>
+<h3 id="http-protocol">HTTP Protocol</h3>
+<p><strong>HTTP</strong> (HyperText Transfer Protocol) is the language of the web. When you type a URL in your browser, it sends an HTTP request to a web server. The server reads the request and sends back an HTTP response with the content (an HTML page, an image, a JSON object, etc.).</p>
+<p>Every HTTP conversation has two sides:</p>
+<ul>
+<li><strong>Client</strong> (your browser) — sends a request</li>
+<li><strong>Server</strong> (your robot) — receives the request and sends a response</li>
+</ul>
+<h3 id="http-get-and-post-requests">HTTP GET and POST Requests</h3>
+<p>Two types of HTTP requests matter for robot control:</p>
+<p>An <strong>HTTP GET request</strong> asks for a resource. When you type <code>http://192.168.1.105/</code> in your browser, the browser sends a GET request for the root page. GET requests carry parameters in the URL: <code>http://192.168.1.105/action?cmd=forward</code>.</p>
+<p>An <strong>HTTP POST request</strong> sends data to the server. When you click a form button that submits a motor command, the browser sends a POST request with the command in the request body. POST is more appropriate than GET for actions that change the robot's state.</p>
+<p>For simplicity in this course, we handle both GET and POST. Many simple robot controllers use GET with URL parameters.</p>
+<h3 id="socket-programming">Socket Programming</h3>
+<p>A <strong>socket</strong> is a software endpoint for sending and receiving data over a network. Your robot's web server listens on a socket. When a browser connects, it gets a client socket for that conversation.</p>
+<p>Before the code, here is the flow: <code>socket.socket()</code> creates a socket object. <code>bind()</code> assigns it an address and port. <code>listen(1)</code> tells it to accept connections (up to 1 queued at a time). <code>accept()</code> blocks (waits) until a client connects, then returns a new socket and the client's address.</p>
+<p><strong>Port 80</strong> is the default port for HTTP. When you type a URL without a port number, the browser automatically uses port 80. This is why we bind to port 80 — no need to type <code>:8080</code> in the URL.</p>
+<h3 id="html-page-generation">HTML Page Generation</h3>
+<p><strong>HTML page generation</strong> means building an HTML string in Python and sending it as the HTTP response. The robot doesn't serve static files from disk — it builds the page dynamically.</p>
+<p>Before the code below, here is what the HTML does: the <code>&lt;form&gt;</code> sends a POST request back to the robot with the button value as form data. Each button sends a different <code>cmd</code> value: <code>forward</code>, <code>back</code>, <code>left</code>, <code>right</code>, or <code>stop</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">html_page</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;Ready&quot;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;HTTP/1.1 200 OK</span>
+<span class="s2">Content-Type: text/html</span>
+
+<span class="s2">&lt;!DOCTYPE html&gt;</span>
+<span class="s2">&lt;html&gt;</span>
+<span class="s2">&lt;head&gt;&lt;title&gt;Robot Control&lt;/title&gt;&lt;/head&gt;</span>
+<span class="s2">&lt;body&gt;</span>
+<span class="s2">&lt;h1&gt;Sparky Robot Control&lt;/h1&gt;</span>
+<span class="s2">&lt;p&gt;Status: </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">&lt;/p&gt;</span>
+<span class="s2">&lt;form method=&quot;POST&quot;&gt;</span>
+<span class="s2">  &lt;button name=&quot;cmd&quot; value=&quot;forward&quot;&gt;Forward&lt;/button&gt;</span>
+<span class="s2">  &lt;button name=&quot;cmd&quot; value=&quot;back&quot;&gt;Back&lt;/button&gt;&lt;br&gt;</span>
+<span class="s2">  &lt;button name=&quot;cmd&quot; value=&quot;left&quot;&gt;Left&lt;/button&gt;</span>
+<span class="s2">  &lt;button name=&quot;cmd&quot; value=&quot;right&quot;&gt;Right&lt;/button&gt;&lt;br&gt;</span>
+<span class="s2">  &lt;button name=&quot;cmd&quot; value=&quot;stop&quot;&gt;Stop&lt;/button&gt;</span>
+<span class="s2">&lt;/form&gt;</span>
+<span class="s2">&lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="diagram-web-server-request-response-flow">Diagram: Web Server Request-Response Flow</h4>
+<iframe src="../../sims/http-request-response-flow/main.html" width="100%" height="720px" scrolling="no"></iframe>
+<p><a href="../../sims/http-request-response-flow/main.html">Run Web Server Request-Response Flow Fullscreen</a></p>
+<details>
+<summary>Interactive diagram showing how the browser and robot exchange HTTP messages</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> http-request-response-flow<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a Mermaid sequence diagram (sequenceDiagram) showing:</p>
+<p>Participants: Browser, WiFi Network, Robot (Pico W)</p>
+<p>Sequence:
+1. Browser -&gt;&gt; WiFi Network: HTTP GET / (request root page)
+2. WiFi Network -&gt;&gt; Robot: Forward the request
+3. Robot -&gt;&gt; Robot: Build HTML response
+4. Robot -&gt;&gt; WiFi Network: HTTP 200 OK + HTML page
+5. WiFi Network -&gt;&gt; Browser: Deliver response
+6. Browser -&gt;&gt; Browser: Render the HTML control page
+7. User clicks "Forward" button
+8. Browser -&gt;&gt; WiFi Network: HTTP POST /action?cmd=forward
+9. WiFi Network -&gt;&gt; Robot: Forward the POST
+10. Robot -&gt;&gt; Robot: Parse cmd, call go_forward()
+11. Robot -&gt;&gt; WiFi Network: HTTP 200 OK (updated status page)
+12. WiFi Network -&gt;&gt; Browser: Deliver new page</p>
+<p>Every step has a click directive opening an infobox explaining what that step does and the relevant MicroPython code.</p>
+<p>Canvas: 700 × 500 px. Responsive on window resize.</p>
+</details>
+<hr />
+<h2 id="the-complete-web-server">The Complete Web Server</h2>
+<p>Now let's put everything together. This is the complete web-controlled robot program. Before the code, here is the structure: the server loop calls <code>accept()</code> to wait for a connection, reads the HTTP request to find the command, calls the appropriate motor function, and sends back an updated HTML page.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span><span class="o">,</span> <span class="nn">socket</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">secrets</span> <span class="kn">import</span> <span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="c1"># WiFi setup</span>
+<span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
+<span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">ip</span> <span class="o">=</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Server running at http://</span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span>
+
+<span class="c1"># Motor setup (from Chapter 7)</span>
+<span class="n">right_fwd</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_FORWARD_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">right_rev</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_REVERSE_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">left_fwd</span>  <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">LEFT_FORWARD_PIN</span><span class="p">),</span>  <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">left_rev</span>  <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">LEFT_REVERSE_PIN</span><span class="p">),</span>  <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">FULL</span> <span class="o">=</span> <span class="mi">65535</span>
+
+<span class="k">def</span> <span class="nf">set_speed</span><span class="p">(</span><span class="n">pf</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">speed</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">speed</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>   <span class="n">pf</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">speed</span><span class="p">);</span> <span class="n">pr</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">speed</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">pf</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>     <span class="n">pr</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="o">-</span><span class="n">speed</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>           <span class="n">pf</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>     <span class="n">pr</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">go_forward</span><span class="p">():</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">FULL</span><span class="p">)</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">FULL</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">stop_motors</span><span class="p">():</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">handle_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s2">&quot;forward&quot;</span><span class="p">:</span> <span class="n">go_forward</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s2">&quot;stop&quot;</span><span class="p">:</span>  <span class="n">stop_motors</span><span class="p">()</span>
+    <span class="c1"># add back, left, right as needed</span>
+
+<span class="c1"># Socket server</span>
+<span class="n">addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;Ready&quot;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">conn</span><span class="p">,</span> <span class="n">client</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+        <span class="c1"># Parse cmd from POST body: &quot;cmd=forward&quot;</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
+            <span class="n">body</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">body</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;cmd=&quot;</span><span class="p">):</span>
+                <span class="n">cmd</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">handle_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+                <span class="n">status</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+        <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">html_page</span><span class="p">(</span><span class="n">status</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">stop_motors</span><span class="p">()</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Server stopped.&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="javascript-fetch-api-asynchronous-control">JavaScript Fetch API — Asynchronous Control</h2>
+<p>The button-form approach above works, but it reloads the page with every click — not ideal for driving a robot. A smoother approach uses the <strong>JavaScript Fetch API</strong> to send commands without reloading the page.</p>
+<p>Before the code snippet, here is the idea: instead of a form that navigates away, JavaScript intercepts the button click, sends a POST request in the background, and updates just the status text on the page — no full reload.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// JavaScript inside the HTML page (inside &lt;script&gt; tags)</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sendCmd</span><span class="p">(</span><span class="nx">cmd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/action&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cmd=&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">cmd</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">).</span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">text</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>This turns the robot controller into a real-time interface — press Forward, robot starts moving immediately. Press Stop, it stops. No page reload between commands.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Your robot is now a web server</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Think about what just happened: a $35 microcontroller is accepting HTTP connections from browsers, parsing requests, controlling motors, and sending back HTML responses. That's exactly what production web servers do — just at a much larger scale. The concepts are identical. You're learning real web server architecture.</p>
+</div>
+<hr />
+<h2 id="secrets-file-for-wifi">Secrets File for WiFi</h2>
+<p>We covered this in Chapter 5, but it deserves emphasis here because WiFi credentials are more sensitive than other config values.</p>
+<p>The <code>secrets.py</code> file stores network credentials:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># secrets.py — NEVER commit to version control</span>
+<span class="n">WIFI_SSID</span>     <span class="o">=</span> <span class="s2">&quot;SchoolRobotics&quot;</span>
+<span class="n">WIFI_PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;your-password-here&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>Your <code>.gitignore</code> must include <code>secrets.py</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>secrets.py
+</code></pre></div></td></tr></table></div>
+<p>If your school has a guest network, use that for robot WiFi rather than the main school network — it keeps the robot isolated and simplifies access. Ask your IT administrator which network is appropriate for student projects.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Separate networks for robots</p>
+<p><img alt="Sparky warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A robot running a web server on port 80 is accepting connections from any device on the same network. On a home network, that's fine. On a shared school network with hundreds of students, make sure you're on an appropriate VLAN or guest network. Never run an open, unprotected web server on a network you don't control.</p>
+</div>
+<hr />
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>WiFi Overview:</strong> the Pico W adds a 2.4 GHz WiFi chip — enabling IoT (Internet of Things) connectivity</li>
+<li><strong>WLAN object</strong> with <code>STA_IF</code> (station mode) connects the robot to an existing access point</li>
+<li><strong><code>isconnected()</code></strong> and <code>ifconfig()[0]</code> verify connection and retrieve the IP address</li>
+<li><strong>HTTP protocol</strong> — GET requests ask for pages; POST requests submit data to the server</li>
+<li><strong>Socket programming</strong> — <code>bind()</code> port 80, <code>listen()</code>, <code>accept()</code> in a loop to handle browser connections</li>
+<li><strong>HTML page generation</strong> — build HTML strings in Python and send them as HTTP responses</li>
+<li><strong>JavaScript Fetch API</strong> — enables asynchronous commands (no page reload) for smoother robot control</li>
+<li><strong>secrets.py</strong> keeps WiFi credentials out of version control — always list it in <code>.gitignore</code></li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Your robot is online — and browser-controlled!</p>
+<p><img alt="Sparky celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Double thumbs-up, maker! You built a real web server on a microcontroller, served HTML to a browser, and controlled a robot over WiFi. That is genuinely impressive engineering. The next chapter adds Bluetooth — robot-to-robot communication that doesn't need a router at all. The robots are about to talk to each other!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1904,10 +2773,12 @@ protecting WiFi credentials.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

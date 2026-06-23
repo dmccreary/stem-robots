@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Learn how Bluetooth Low Energy (BLE) enables direct robot-to-robot communication — explore advertising, scanning, GATT protocol, central and peripheral roles, then pair two Pico W robots and send movement commands between them using MicroPython's bluetooth module.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -22,15 +22,15 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>12. Bluetooth Low Energy - STEM Robots</title>
+        <title>Bluetooth Low Energy Fundamentals - STEM Robots</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              12. Bluetooth Low Energy
+              Bluetooth Low Energy Fundamentals
             
           </span>
         </div>
@@ -137,11 +137,13 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -173,13 +175,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -224,7 +227,7 @@
       <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -244,8 +247,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
+    
   </span>
   
 
@@ -264,8 +269,10 @@
       <a href="../../about/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     About This Website
+    
   </span>
   
 
@@ -284,8 +291,10 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Course Description
+    
   </span>
   
 
@@ -304,8 +313,10 @@
       <a href="../../journey-map/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Journey Map
+    
   </span>
   
 
@@ -324,8 +335,10 @@
       <a href="../../robot-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Robot Description
+    
   </span>
   
 
@@ -344,8 +357,10 @@
       <a href="../../gallery/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Gallery
+    
   </span>
   
 
@@ -364,8 +379,10 @@
       <a href="../../great-ways-to-teach/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Great Ways To Teach
+    
   </span>
   
 
@@ -394,6 +411,7 @@
     
     
     
+    
       
         
         
@@ -404,11 +422,14 @@
         
   
   
+  
     <a href="../../course-descriptions/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Course Descriptions
+    
   </span>
   
 
@@ -439,57 +460,32 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
+    
     
     
     
@@ -502,13 +498,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
     Chapters
+    
   </span>
   
 
@@ -540,8 +537,10 @@
       <a href="../01-intro-computational-thinking/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     1. Computational Thinking
+    
   </span>
   
 
@@ -561,8 +560,10 @@
       <a href="../02-hardware-platform-assembly/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     2. Hardware and Assembly
+    
   </span>
   
 
@@ -582,8 +583,10 @@
       <a href="../03-micropython-dev-environment/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     3. MicroPython and Setup
+    
   </span>
   
 
@@ -603,8 +606,10 @@
       <a href="../04-control-flow-functions/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     4. Control Flow and Functions
+    
   </span>
   
 
@@ -624,8 +629,10 @@
       <a href="../05-data-structures-modular-code/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     5. Data Structures and Git
+    
   </span>
   
 
@@ -645,8 +652,10 @@
       <a href="../06-electronics-motors-protocols/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     6. Motors and Protocols
+    
   </span>
   
 
@@ -666,8 +675,10 @@
       <a href="../07-pwm-motor-speed-actuators/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     7. PWM and Actuators
+    
   </span>
   
 
@@ -687,8 +698,10 @@
       <a href="../08-sensors-data-input/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     8. Sensors and Input
+    
   </span>
   
 
@@ -708,8 +721,10 @@
       <a href="../09-display-systems-output/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     9. Displays and Output
+    
   </span>
   
 
@@ -729,8 +744,10 @@
       <a href="../10-robot-behaviors-navigation/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     10. Robot Behaviors
+    
   </span>
   
 
@@ -750,8 +767,10 @@
       <a href="../11-wireless-networking-web-servers/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     11. WiFi and Web Servers
+    
   </span>
   
 
@@ -780,8 +799,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
     12. Bluetooth Low Energy
+    
   </span>
   
 
@@ -791,8 +812,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
     12. Bluetooth Low Energy
+    
   </span>
   
 
@@ -840,6 +863,192 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#bluetooth-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bluetooth Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-vs-classic-bluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE vs. Classic Bluetooth
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-vs-wifi-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE vs. WiFi Comparison
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLE vs. WiFi Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-wifi-vs-ble-communication-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: WiFi vs BLE Communication Topology
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-advertising-and-scanning" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Advertising and Scanning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLE Advertising and Scanning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ble-range-and-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Range and Power
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-gatt-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      The GATT Protocol
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The GATT Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gatt-service-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      GATT Service Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gatt-characteristic" class="md-nav__link">
+    <span class="md-ellipsis">
+      GATT Characteristic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#central-and-peripheral-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Central and Peripheral Roles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Central and Peripheral Roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ble-peripheral-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Peripheral Role
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ble-central-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Central Role
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-connection-pairing" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Connection Pairing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bluetooth-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      The bluetooth Module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-message-sending-peripheral-follower-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Message Sending — Peripheral (Follower) Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-message-sending-central-leader-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Message Sending — Central (Leader) Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Reliability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -859,8 +1068,10 @@
       <a href="../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     13. Swarm and Advanced
+    
   </span>
   
 
@@ -907,6 +1118,7 @@
     
     
     
+    
       
         
         
@@ -915,13 +1127,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graph/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graph
+    
   </span>
   
 
@@ -960,6 +1175,7 @@
     
     
     
+    
       
         
         
@@ -968,13 +1184,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graphs/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graphs
+    
   </span>
   
 
@@ -1017,6 +1236,7 @@
     
     
     
+    
       
         
         
@@ -1027,11 +1247,14 @@
         
   
   
+  
     <a href="../../setup/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Getting Started
+    
   </span>
   
 
@@ -1056,8 +1279,10 @@
       <a href="../../personas/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Personas
+    
   </span>
   
 
@@ -1076,8 +1301,10 @@
       <a href="../../topics/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Topics
+    
   </span>
   
 
@@ -1138,6 +1365,7 @@
     
     
     
+    
       
         
         
@@ -1146,13 +1374,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../lessons/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Lessons
+    
   </span>
   
 
@@ -1187,6 +1418,7 @@
     
     
     
+    
       
         
         
@@ -1195,13 +1427,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructor's Guide
+    
   </span>
   
 
@@ -1230,25 +1465,58 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
     
@@ -1260,13 +1528,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     MicroSims
+    
   </span>
   
 
@@ -1301,6 +1572,7 @@
     
     
     
+    
       
         
         
@@ -1309,13 +1581,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../kits/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Kits
+    
   </span>
   
 
@@ -1354,6 +1629,7 @@
     
     
     
+    
       
         
         
@@ -1364,11 +1640,14 @@
         
   
   
+  
     <a href="../../kits/wifi-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Wireless Bot
+    
   </span>
   
 
@@ -1393,8 +1672,10 @@
       <a href="../../kits/bump-switch/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Bump Switches
+    
   </span>
   
 
@@ -1413,8 +1694,10 @@
       <a href="../../kits/line-follower/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Line Follower
+    
   </span>
   
 
@@ -1433,8 +1716,10 @@
       <a href="../../kits/adjust/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Adjustabot
+    
   </span>
   
 
@@ -1453,8 +1738,10 @@
       <a href="../../kits/ultrasonic/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Ultrasonic
+    
   </span>
   
 
@@ -1481,6 +1768,7 @@
     
     
     
+    
       
         
         
@@ -1491,11 +1779,14 @@
         
   
   
+  
     <a href="../../kits/wifi-display-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     WiFi Display Bot
+    
   </span>
   
 
@@ -1530,6 +1821,7 @@
     
     
     
+    
       
         
         
@@ -1540,11 +1832,14 @@
         
   
   
+  
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructors Guide
+    
   </span>
   
 
@@ -1569,8 +1864,10 @@
       <a href="../../faq/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     FAQ
+    
   </span>
   
 
@@ -1589,8 +1886,10 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Glossary
+    
   </span>
   
 
@@ -1609,8 +1908,10 @@
       <a href="../../references/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     References
+    
   </span>
   
 
@@ -1629,8 +1930,10 @@
       <a href="../../license/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     License
+    
   </span>
   
 
@@ -1649,8 +1952,10 @@
       <a href="../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Contact
+    
   </span>
   
 
@@ -1669,8 +1974,10 @@
       <a href="../../prompts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     STEM Robotics Prompts
+    
   </span>
   
 
@@ -1689,8 +1996,10 @@
       <a href="../../sims/template/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     MicroSim Template
+    
   </span>
   
 
@@ -1752,6 +2061,192 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#bluetooth-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bluetooth Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-vs-classic-bluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE vs. Classic Bluetooth
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-vs-wifi-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE vs. WiFi Comparison
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLE vs. WiFi Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-wifi-vs-ble-communication-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: WiFi vs BLE Communication Topology
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-advertising-and-scanning" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Advertising and Scanning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLE Advertising and Scanning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ble-range-and-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Range and Power
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-gatt-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      The GATT Protocol
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The GATT Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gatt-service-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      GATT Service Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gatt-characteristic" class="md-nav__link">
+    <span class="md-ellipsis">
+      GATT Characteristic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#central-and-peripheral-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Central and Peripheral Roles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Central and Peripheral Roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ble-peripheral-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Peripheral Role
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ble-central-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Central Role
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-connection-pairing" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Connection Pairing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bluetooth-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      The bluetooth Module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-message-sending-peripheral-follower-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Message Sending — Peripheral (Follower) Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-message-sending-central-leader-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Message Sending — Central (Leader) Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE Reliability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1766,11 +2261,17 @@
                 
                   
 
+
   
   
 
 
 <h1 id="bluetooth-low-energy-fundamentals">Bluetooth Low Energy Fundamentals</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome, maker — let's make two robots talk to each other!</p>
+<p><img alt="Sparky waving" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+WiFi connects your robot to the internet through a router. Bluetooth Low Energy connects robots directly to each other — no router needed. In this chapter, one robot becomes the leader and another becomes the follower, communicating over a direct wireless link. That's the foundation for swarm robotics.</p>
+</div>
 <h2 id="summary">Summary</h2>
 <p>This chapter introduces Bluetooth Low Energy as the communication backbone for
 multi-robot coordination. Students learn how BLE differs from Classic Bluetooth and
@@ -1807,13 +2308,506 @@ robotics chapter that follows.</p>
 <li><a href="../11-wireless-networking-web-servers/">Chapter 11: Wireless Networking and Web Servers</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<h2 id="bluetooth-overview">Bluetooth Overview</h2>
+<p><strong>Bluetooth</strong> is a short-range wireless communication technology designed to connect devices directly — without a network router in between. It runs on the 2.4 GHz radio frequency band, the same band as WiFi, but uses a different protocol optimized for low power and direct device-to-device links.</p>
+<p>Bluetooth was invented in 1994 (named after a Viking king who united Norse tribes — a nod to uniting communication protocols). Since then it has evolved significantly. The two main variants you will encounter today are <strong>Classic Bluetooth</strong> and <strong>Bluetooth Low Energy (BLE)</strong>.</p>
+<p>Classic Bluetooth is designed for continuous data streaming — audio headphones, speakers, and file transfer. BLE is designed for infrequent, small data bursts — fitness trackers, heart rate monitors, smart locks, and now, robot-to-robot commands. The Pico W supports both, but this chapter focuses on BLE.</p>
+<hr />
+<h2 id="ble-vs-classic-bluetooth">BLE vs. Classic Bluetooth</h2>
+<p>Before comparing BLE to WiFi, let's compare BLE to Classic Bluetooth. These are two separate protocols that share the Bluetooth name but work very differently.</p>
+<p><strong>Classic Bluetooth</strong> (also called Bluetooth BR/EDR — Basic Rate/Enhanced Data Rate):</p>
+<ul>
+<li>Designed for audio and file transfer</li>
+<li>Continuous streaming capability</li>
+<li>Higher power consumption</li>
+<li>More complex pairing process</li>
+<li>Not ideal for microcontrollers</li>
+</ul>
+<p><strong>Bluetooth Low Energy (BLE)</strong>:</p>
+<ul>
+<li>Designed for small, infrequent data packets</li>
+<li>Very low power — a BLE device can run for months on a coin cell battery</li>
+<li>Simple pairing model</li>
+<li>Perfect for sensor data and robot commands</li>
+<li>Supported natively on Raspberry Pi Pico W</li>
+</ul>
+<p>For robot-to-robot commands (strings like "FORWARD", "STOP", "LEFT"), BLE is the ideal choice. Commands are short, don't need to stream continuously, and BLE's low power is a bonus for battery-powered robots.</p>
+<hr />
+<h2 id="ble-vs-wifi-comparison">BLE vs. WiFi Comparison</h2>
+<p>You used WiFi in Chapter 11 to build a web server. Why use BLE for robot-to-robot communication instead of WiFi?</p>
+<p>Before the comparison table, here are the key differences in plain language: WiFi requires a router — if the router goes down, your robots lose communication. BLE connects devices directly, peer-to-peer — no router needed. BLE also uses much less power than WiFi, though it has shorter range.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>WiFi (Pico W)</th>
+<th>BLE (Pico W)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requires router</td>
+<td>Yes</td>
+<td>No (direct peer connection)</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>30–50 m (indoors)</td>
+<td>10–30 m (indoors)</td>
+</tr>
+<tr>
+<td>Power consumption</td>
+<td>High (~80 mA during transmission)</td>
+<td>Very low (~0.3 mA idle)</td>
+</tr>
+<tr>
+<td>Data rate</td>
+<td>High (Mbps)</td>
+<td>Low (1–2 Mbps max, typical payloads &lt; 20 bytes)</td>
+</tr>
+<tr>
+<td>Latency</td>
+<td>10–50 ms</td>
+<td>1–10 ms</td>
+</tr>
+<tr>
+<td>Setup complexity</td>
+<td>Medium</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Web servers, large data, internet access</td>
+<td>Robot commands, sensor data, peer-to-peer</td>
+</tr>
+</tbody>
+</table>
+<p>For a swarm robotics lab where two robots talk to each other in a classroom, BLE is the better choice: faster response, no router dependency, lower power drain.</p>
+<h4 id="diagram-wifi-vs-ble-communication-topology">Diagram: WiFi vs BLE Communication Topology</h4>
+<iframe src="../../sims/wifi-vs-ble-topology/main.html" width="100%" height="380px" scrolling="no"></iframe>
+<p><a href="../../sims/wifi-vs-ble-topology/main.html">Run WiFi vs BLE Communication Topology Fullscreen</a></p>
+<details>
+<summary>Interactive diagram comparing WiFi (hub-and-spoke) and BLE (peer-to-peer) network topologies</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> wifi-vs-ble-topology<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a side-by-side Mermaid graph showing two network topologies:</p>
+<p>Left subgraph "WiFi (via router)":
+Browser -- HTTP --&gt; Router -- WiFi --&gt; Robot A
+Robot B -- WiFi --&gt; Router</p>
+<p>Right subgraph "BLE (direct)":
+Robot A (Central) -- BLE --&gt; Robot B (Peripheral)</p>
+<p>Use different node shapes: diamonds for routers, rectangles for robots/browsers.</p>
+<p>Every node and connection has a click directive opening an infobox: Router infobox explains "single point of failure — if the router goes down, all robots lose contact." BLE connection infobox explains "direct peer link — works even without a network."</p>
+<p>Canvas: 700 × 300 px. Responsive on window resize.</p>
+</details>
+<hr />
+<h2 id="ble-advertising-and-scanning">BLE Advertising and Scanning</h2>
+<p>BLE communication begins with <strong>advertising</strong>. A BLE device in <strong>advertising mode</strong> broadcasts small packets of data on three special radio channels, repeatedly, at regular intervals (typically every 100–1000 ms). These packets say: "I'm here. Here's my name and some info about me."</p>
+<p>A second device can <strong>scan</strong> the airwaves to detect advertising packets. The <strong>scanning device</strong> listens on those same channels, collects advertising packets it hears, and shows you a list of available BLE devices nearby.</p>
+<p>This advertising/scanning model is one-way: the advertiser broadcasts, and any scanner nearby can hear it. No pairing is needed just to receive advertising data — it's like a public announcement.</p>
+<p>After scanning, a scanner can choose to <strong>connect</strong> to an advertiser. Once connected, the two devices can exchange data in both directions using the <strong>GATT protocol</strong>.</p>
+<h3 id="ble-range-and-power">BLE Range and Power</h3>
+<p><strong>BLE range</strong> depends heavily on the environment. In open air, BLE can reach 30–50 meters. Indoors, with walls and interference, expect 10–20 meters. For a classroom robot lab, this is more than adequate.</p>
+<p><strong>BLE power</strong> is the technology's strongest advantage for battery-powered devices. In advertising mode, the Pico W consumes about 1–2 mA. While connected and idle (no data being sent), it drops below 1 mA. Compare this to WiFi at 80–150 mA during active data transfer. For a robot running on a battery pack, BLE extends battery life dramatically.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Advertising without connecting</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+BLE advertising has a clever use: you can send data WITHOUT ever connecting. A fitness tracker broadcasts your heart rate in its advertising packet. Any compatible receiver can read it — no connection, no pairing. For robots that need to broadcast their position or status to everyone nearby, this is powerful. You'll see this used in swarm robotics in Chapter 13.</p>
+</div>
+<hr />
+<h2 id="the-gatt-protocol">The GATT Protocol</h2>
+<p>Once two BLE devices connect, they communicate using <strong>GATT — the Generic Attribute Profile</strong>. GATT is the data model that defines how information is organized and exchanged over a BLE connection.</p>
+<p>GATT is built around a hierarchy: <strong>Services</strong> contain <strong>Characteristics</strong>, which hold the actual data.</p>
+<h3 id="gatt-service-definition">GATT Service Definition</h3>
+<p>A <strong>GATT service</strong> is a collection of related data and behaviors. Think of it as a category. Examples: "Robot Control Service", "Battery Service", "Temperature Service". Each service has a unique 128-bit <strong>UUID</strong> (Universally Unique Identifier) — a long number that identifies exactly that service type.</p>
+<p>For this course, we define a custom service called the "Robot Command Service" with a UUID we choose.</p>
+<h3 id="gatt-characteristic">GATT Characteristic</h3>
+<p>A <strong>GATT characteristic</strong> is a single data value within a service. It's the actual slot where data lives. A characteristic also has a UUID, a data type, and permissions (readable, writable, notifiable).</p>
+<p>For robot control, we define one characteristic: the <strong>Command Characteristic</strong>. The central (leader robot) writes a command string to this characteristic. The peripheral (follower robot) receives a notification and reads the value.</p>
+<p>Before the code, here is the data flow: Central writes "FORWARD" to the Command Characteristic → Peripheral gets a <code>_IRQ_GATTS_WRITE</code> interrupt → Peripheral reads the value → Peripheral calls <code>go_forward()</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">bluetooth</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+
+<span class="c1"># UUID for our custom robot command service</span>
+<span class="n">_SERVICE_UUID</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;12345678-1234-5678-1234-56789abcdef0&quot;</span><span class="p">)</span>
+
+<span class="c1"># UUID for the command characteristic (writable by central)</span>
+<span class="n">_CMD_UUID</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;12345678-1234-5678-1234-56789abcdef1&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="central-and-peripheral-roles">Central and Peripheral Roles</h2>
+<p>BLE connections are asymmetric — one device is the <strong>central</strong> and one is the <strong>peripheral</strong>. These roles are fixed for the duration of a connection.</p>
+<h3 id="ble-peripheral-role">BLE Peripheral Role</h3>
+<p>The <strong>peripheral</strong> is the device that:
+- Advertises its presence
+- Waits for a central to connect
+- Hosts the GATT server (owns the services and characteristics)
+- Accepts writes from the central</p>
+<p>In our robot pair, the <strong>follower robot</strong> is the peripheral. It advertises "Robot Follower" and waits for the leader to connect.</p>
+<h3 id="ble-central-role">BLE Central Role</h3>
+<p>The <strong>central</strong> is the device that:
+- Scans for advertising peripherals
+- Initiates the connection
+- Reads and writes characteristics on the peripheral's GATT server</p>
+<p>In our robot pair, the <strong>leader robot</strong> is the central. It scans for "Robot Follower", connects, and sends commands.</p>
+<p>The following table summarizes the two roles:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Central (Leader)</th>
+<th>Peripheral (Follower)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network role</td>
+<td>Scanner, initiates connection</td>
+<td>Advertiser, accepts connection</td>
+</tr>
+<tr>
+<td>GATT role</td>
+<td>Client (reads/writes)</td>
+<td>Server (hosts data)</td>
+</tr>
+<tr>
+<td>Action</td>
+<td><code>connect()</code>, <code>write()</code></td>
+<td><code>advertise()</code>, respond to writes</td>
+</tr>
+<tr>
+<td>Robot analogy</td>
+<td>Commander</td>
+<td>Soldier</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ble-connection-pairing">BLE Connection Pairing</h2>
+<p><strong>BLE connection pairing</strong> in this context means two Pico W boards establishing a BLE link. Unlike Classic Bluetooth, BLE doesn't always require a numeric PIN — simple connections can be made without user interaction.</p>
+<p>The sequence:
+1. Peripheral starts advertising with a service UUID.
+2. Central scans and finds the peripheral by its UUID or name.
+3. Central calls <code>gap_connect()</code> to initiate the connection.
+4. Both sides receive a <code>_IRQ_CENTRAL_CONNECT</code> (peripheral) or <code>_IRQ_PERIPHERAL_CONNECT</code> (central) interrupt event.
+5. The connection is established. Central can now read/write characteristics.</p>
+<p>The <code>bluetooth</code> module in MicroPython uses an <strong>IRQ callback</strong> (interrupt handler) to handle BLE events — connection, disconnection, write notifications. You register one callback function, and it receives all BLE events, distinguished by an event code.</p>
+<hr />
+<h2 id="the-bluetooth-module">The bluetooth Module</h2>
+<p>MicroPython's <strong><code>bluetooth</code> module</strong> provides the low-level BLE interface. It is lower-level than many BLE libraries — you work directly with UUIDs, handles, and IRQ event codes. This gives you full control at the cost of more boilerplate code.</p>
+<p>Before the code below, here is what each line does: <code>bluetooth.BLE()</code> creates the BLE driver object. <code>ble.active(True)</code> powers on the radio. <code>ble.irq(handler)</code> registers the callback function for all events.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">bluetooth</span>
+
+<span class="n">ble</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">BLE</span><span class="p">()</span>
+<span class="n">ble</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">bt_irq</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handle all BLE events.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>    <span class="c1"># _IRQ_CENTRAL_CONNECT</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Central connected!&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># _IRQ_CENTRAL_DISCONNECT</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Central disconnected.&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>  <span class="c1"># _IRQ_GATTS_WRITE</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data written to characteristic.&quot;</span><span class="p">)</span>
+
+<span class="n">ble</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">bt_irq</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="ble-message-sending-peripheral-follower-code">BLE Message Sending — Peripheral (Follower) Code</h2>
+<p>Let's write the peripheral code for the follower robot. This robot advertises a service, waits for the leader to connect, and executes motor commands when the leader writes to the command characteristic.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">bluetooth</span><span class="o">,</span> <span class="nn">struct</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">micropython</span> <span class="kn">import</span> <span class="n">const</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="n">_IRQ_CENTRAL_CONNECT</span>    <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">_IRQ_CENTRAL_DISCONNECT</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">_IRQ_GATTS_WRITE</span>        <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">_SERVICE_UUID</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;12345678-1234-5678-1234-56789abcdef0&quot;</span><span class="p">)</span>
+<span class="n">_CMD_UUID</span>     <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;12345678-1234-5678-1234-56789abcdef1&quot;</span><span class="p">)</span>
+<span class="n">_FLAG_WRITE</span>   <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x0008</span><span class="p">)</span>
+
+<span class="n">ble</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">BLE</span><span class="p">()</span>
+<span class="n">ble</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Register service and characteristic</span>
+<span class="p">((</span><span class="n">cmd_handle</span><span class="p">,),)</span> <span class="o">=</span> <span class="n">ble</span><span class="o">.</span><span class="n">gatts_register_services</span><span class="p">([</span>
+    <span class="p">(</span><span class="n">_SERVICE_UUID</span><span class="p">,</span> <span class="p">[</span>
+        <span class="p">(</span><span class="n">_CMD_UUID</span><span class="p">,</span> <span class="n">_FLAG_WRITE</span><span class="p">),</span>
+    <span class="p">]),</span>
+<span class="p">])</span>
+
+<span class="n">conn_handle</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">bt_irq</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">conn_handle</span>
+    <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">_IRQ_CENTRAL_CONNECT</span><span class="p">:</span>
+        <span class="n">conn_handle</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Leader connected!&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="n">_IRQ_CENTRAL_DISCONNECT</span><span class="p">:</span>
+        <span class="n">conn_handle</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">advertise</span><span class="p">()</span>   <span class="c1"># start advertising again</span>
+    <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="n">_IRQ_GATTS_WRITE</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">attr_handle</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="n">attr_handle</span> <span class="o">==</span> <span class="n">cmd_handle</span><span class="p">:</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">ble</span><span class="o">.</span><span class="n">gatts_read</span><span class="p">(</span><span class="n">cmd_handle</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">execute_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+
+<span class="n">ble</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">bt_irq</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">advertise</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;RobotFollower&quot;</span><span class="p">):</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+    <span class="n">name_bytes</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+    <span class="n">payload</span> <span class="o">+=</span> <span class="nb">bytes</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">name_bytes</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mh">0x09</span><span class="p">])</span> <span class="o">+</span> <span class="n">name_bytes</span>
+    <span class="n">ble</span><span class="o">.</span><span class="n">gap_advertise</span><span class="p">(</span><span class="mi">100_000</span><span class="p">,</span> <span class="n">adv_data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Advertising as &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;...&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">execute_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Command received:&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span>
+    <span class="c1"># Motor control calls go here — same functions as Chapter 10</span>
+
+<span class="n">advertise</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="ble-message-sending-central-leader-code">BLE Message Sending — Central (Leader) Code</h2>
+<p>The central (leader) robot scans for the follower, connects, and periodically writes command strings to the command characteristic.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">bluetooth</span><span class="o">,</span> <span class="nn">struct</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">micropython</span> <span class="kn">import</span> <span class="n">const</span>
+
+<span class="n">_IRQ_SCAN_RESULT</span>         <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">_IRQ_PERIPHERAL_CONNECT</span>  <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">_IRQ_PERIPHERAL_DISCONNECT</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">_IRQ_GATTC_WRITE_DONE</span>    <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+
+<span class="n">_SERVICE_UUID</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;12345678-1234-5678-1234-56789abcdef0&quot;</span><span class="p">)</span>
+
+<span class="n">ble</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">BLE</span><span class="p">()</span>
+<span class="n">ble</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">conn_handle</span>   <span class="o">=</span> <span class="kc">None</span>
+<span class="n">value_handle</span>  <span class="o">=</span> <span class="kc">None</span>
+<span class="n">target_found</span>  <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">bt_irq</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">conn_handle</span><span class="p">,</span> <span class="n">target_found</span>
+    <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">_IRQ_SCAN_RESULT</span><span class="p">:</span>
+        <span class="n">addr_type</span><span class="p">,</span> <span class="n">addr</span><span class="p">,</span> <span class="n">adv_type</span><span class="p">,</span> <span class="n">rssi</span><span class="p">,</span> <span class="n">adv_data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="sa">b</span><span class="s2">&quot;RobotFollower&quot;</span> <span class="ow">in</span> <span class="n">adv_data</span><span class="p">:</span>
+            <span class="n">target_found</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">ble</span><span class="o">.</span><span class="n">gap_scan</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>   <span class="c1"># stop scanning</span>
+            <span class="n">ble</span><span class="o">.</span><span class="n">gap_connect</span><span class="p">(</span><span class="n">addr_type</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found follower — connecting...&quot;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="n">_IRQ_PERIPHERAL_CONNECT</span><span class="p">:</span>
+        <span class="n">conn_handle</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connected to follower!&quot;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="n">_IRQ_PERIPHERAL_DISCONNECT</span><span class="p">:</span>
+        <span class="n">conn_handle</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Follower disconnected.&quot;</span><span class="p">)</span>
+
+<span class="n">ble</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">bt_irq</span><span class="p">)</span>
+<span class="n">ble</span><span class="o">.</span><span class="n">gap_scan</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>   <span class="c1"># scan for 5 seconds</span>
+
+<span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">conn_handle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">value_handle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ble</span><span class="o">.</span><span class="n">gattc_write</span><span class="p">(</span><span class="n">conn_handle</span><span class="p">,</span> <span class="n">value_handle</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sent: </span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># After connecting, discover services and find the write handle</span>
+<span class="c1"># Then in the main loop:</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">send_command</span><span class="p">(</span><span class="s2">&quot;FORWARD&quot;</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">send_command</span><span class="p">(</span><span class="s2">&quot;STOP&quot;</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">conn_handle</span><span class="p">:</span>
+        <span class="n">ble</span><span class="o">.</span><span class="n">gap_disconnect</span><span class="p">(</span><span class="n">conn_handle</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done.&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">BLE code is longer — that's okay</p>
+<p><img alt="Sparky encouraging" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+The BLE code is more complex than anything we've written before. That's because BLE is a real, production wireless protocol — the same one in your phone's Bluetooth headphones. Understanding it fully takes time. Focus on the overall structure: peripheral advertises, central scans and connects, central writes, peripheral responds. The details fill in with practice.</p>
+</div>
+<hr />
+<h2 id="ble-reliability">BLE Reliability</h2>
+<p><strong>BLE reliability</strong> — the probability that a message gets through — is high but not perfect. Packet loss can occur from:</p>
+<ul>
+<li>Physical obstruction (metal shelving, thick concrete walls)</li>
+<li>Radio interference from other 2.4 GHz devices (other robots, WiFi)</li>
+<li>Distance exceeding the chip's range</li>
+</ul>
+<p>Strategies to improve reliability:</p>
+<ol>
+<li><strong>Keep robots close</strong> — under 5 m for classroom use, you'll get near-perfect reliability.</li>
+<li><strong>Retry on failure</strong> — check the IRQ status code; if a write fails, retry once.</li>
+<li><strong>Acknowledge with a response</strong> — after the peripheral executes a command, it can write a response back to the central as confirmation.</li>
+<li><strong>Reduce interference</strong> — run robots on BLE while keeping WiFi on a separate channel, or disable WiFi while using BLE.</li>
+</ol>
+<p>For the swarm robotics lab in Chapter 13, these reliability considerations directly affect whether leader-follower coordination works consistently. Test in the actual physical space before the formal lab.</p>
+<hr />
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Bluetooth Low Energy (BLE)</strong> connects devices directly — no router needed, very low power</li>
+<li><strong>BLE vs Classic Bluetooth:</strong> BLE is for small data bursts; Classic is for audio streaming</li>
+<li><strong>BLE vs WiFi:</strong> BLE needs no router, uses less power, has lower latency — ideal for robot-to-robot commands</li>
+<li><strong>Advertising</strong> broadcasts device presence; <strong>scanning</strong> listens for advertisers</li>
+<li><strong>GATT protocol</strong> organizes data into Services (categories) and Characteristics (data slots)</li>
+<li><strong>Peripheral</strong> (follower) advertises and hosts the GATT server; <strong>Central</strong> (leader) scans, connects, and writes</li>
+<li><strong>BLE pairing</strong> in MicroPython uses <code>bluetooth.BLE()</code>, <code>gap_advertise()</code>, <code>gap_connect()</code>, and an IRQ callback</li>
+<li><strong>BLE reliability</strong> depends on distance and interference — stay under 5 m for classroom labs</li>
+<li>The <code>bluetooth</code> module provides the full BLE stack — lower level than WiFi but full control</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Two robots communicating wirelessly — you made that happen!</p>
+<p><img alt="Sparky celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Double thumbs-up, engineer! You understand BLE advertising, GATT services, central and peripheral roles, and you wrote code that pairs two robots and sends commands between them. In Chapter 13, we take this further into swarm robotics — where groups of robots coordinate through BLE to exhibit collective behavior. The future of robotics is in your hands!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1901,10 +2895,12 @@ robotics chapter that follows.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

@@ -1,0 +1,14 @@
+{
+  "sim_id": "sensor-calibration-explorer",
+  "diagram_name": "Sensor Calibration Two-Point Process",
+  "chapter_number": 8,
+  "chapter_title": "Sensors and Data Input",
+  "chapter_dir": "08-sensors-data-input",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: MicroSim\n**sim-id:** sensor-calibration-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nCreate a p5.js MicroSim with a 700 × 400 canvas. Show a graph with:\n- X-axis: \"True distance (cm)\" from 0 to 200.\n- Y-axis: \"Sensor reading (cm)\" from 0 to 220.\n- A diagonal \"ideal\" line (green) where sensor = true distance.\n- A \"raw sensor\" line (orange) that is offset (starts at a non-zero Y intercept) and has a different slope.\n- After clicking \"Calibrate\", the orange line transforms into a corrected line that overlaps the green ideal line.\n\nControls:\n- \"Zero offset\" slider: adjusts the Y intercept of the raw sensor line (-20 to +20 cm).\n- \"Scale factor\" slider: adjusts the slope of the raw sensor line (0.8 to 1.2).\n- \"Calibrate\" button: applies the corrections and animates the orange line rotating/shifting to match the green line.\n- A \"Test point\" slider moves a vertical cursor across the graph, showing \"Raw: X cm, Corrected: Y cm, Error: Z cm.\"\n\nLearning objective (Bloom's Taxonomy — Applying): students practice adjusting calibration parameters and observe how they reduce sensor error.\n\nResponsive: redraw on window resize."
+}

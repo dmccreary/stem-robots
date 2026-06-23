@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Round out the MicroPython toolkit with lists, tuples, dictionaries, and string manipulation — then learn modular programming, the config.py pattern, secrets files, and Git basics for tracking your robot programs.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -22,15 +22,15 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>5. Data Structures and Git - STEM Robots</title>
+        <title>Data Structures, Modular Programming, and Version Control - STEM Robots</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. Data Structures and Git
+              Data Structures, Modular Programming, and Version Control
             
           </span>
         </div>
@@ -137,11 +137,13 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -173,13 +175,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -224,7 +227,7 @@
       <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -244,8 +247,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
+    
   </span>
   
 
@@ -264,8 +269,10 @@
       <a href="../../about/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     About This Website
+    
   </span>
   
 
@@ -284,8 +291,10 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Course Description
+    
   </span>
   
 
@@ -304,8 +313,10 @@
       <a href="../../journey-map/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Journey Map
+    
   </span>
   
 
@@ -324,8 +335,10 @@
       <a href="../../robot-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Robot Description
+    
   </span>
   
 
@@ -344,8 +357,10 @@
       <a href="../../gallery/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Gallery
+    
   </span>
   
 
@@ -364,8 +379,10 @@
       <a href="../../great-ways-to-teach/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Great Ways To Teach
+    
   </span>
   
 
@@ -394,6 +411,7 @@
     
     
     
+    
       
         
         
@@ -404,11 +422,14 @@
         
   
   
+  
     <a href="../../course-descriptions/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Course Descriptions
+    
   </span>
   
 
@@ -439,57 +460,32 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
+    
     
     
     
@@ -502,13 +498,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
     Chapters
+    
   </span>
   
 
@@ -540,8 +537,10 @@
       <a href="../01-intro-computational-thinking/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     1. Computational Thinking
+    
   </span>
   
 
@@ -561,8 +560,10 @@
       <a href="../02-hardware-platform-assembly/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     2. Hardware and Assembly
+    
   </span>
   
 
@@ -582,8 +583,10 @@
       <a href="../03-micropython-dev-environment/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     3. MicroPython and Setup
+    
   </span>
   
 
@@ -603,8 +606,10 @@
       <a href="../04-control-flow-functions/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     4. Control Flow and Functions
+    
   </span>
   
 
@@ -633,8 +638,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
     5. Data Structures and Git
+    
   </span>
   
 
@@ -644,8 +651,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
     5. Data Structures and Git
+    
   </span>
   
 
@@ -693,6 +702,222 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lists-ordered-collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lists — Ordered Collections
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lists — Ordered Collections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Indexing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Iteration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="List Iteration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-list-index-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: List Index Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tuples-immutable-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuples — Immutable Sequences
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dictionaries-key-value-stores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dictionaries — Key-Value Stores
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-manipulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Manipulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="String Manipulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formatted-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatted Strings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modular-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modular Programming
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modular Programming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-configpy-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The config.py Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reusable-functions-and-module-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reusable Functions and Module Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serial Communication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-control-with-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version Control with Git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Version Control with Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initializing-a-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initializing a Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-git-commit-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Git Commit Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Git Commit Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-git-commit-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Git Commit Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-gitignore-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      The .gitignore File
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -712,8 +937,10 @@
       <a href="../06-electronics-motors-protocols/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     6. Motors and Protocols
+    
   </span>
   
 
@@ -733,8 +960,10 @@
       <a href="../07-pwm-motor-speed-actuators/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     7. PWM and Actuators
+    
   </span>
   
 
@@ -754,8 +983,10 @@
       <a href="../08-sensors-data-input/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     8. Sensors and Input
+    
   </span>
   
 
@@ -775,8 +1006,10 @@
       <a href="../09-display-systems-output/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     9. Displays and Output
+    
   </span>
   
 
@@ -796,8 +1029,10 @@
       <a href="../10-robot-behaviors-navigation/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     10. Robot Behaviors
+    
   </span>
   
 
@@ -817,8 +1052,10 @@
       <a href="../11-wireless-networking-web-servers/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     11. WiFi and Web Servers
+    
   </span>
   
 
@@ -838,8 +1075,10 @@
       <a href="../12-bluetooth-low-energy/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     12. Bluetooth Low Energy
+    
   </span>
   
 
@@ -859,8 +1098,10 @@
       <a href="../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     13. Swarm and Advanced
+    
   </span>
   
 
@@ -907,6 +1148,7 @@
     
     
     
+    
       
         
         
@@ -915,13 +1157,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graph/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graph
+    
   </span>
   
 
@@ -960,6 +1205,7 @@
     
     
     
+    
       
         
         
@@ -968,13 +1214,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graphs/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graphs
+    
   </span>
   
 
@@ -1017,6 +1266,7 @@
     
     
     
+    
       
         
         
@@ -1027,11 +1277,14 @@
         
   
   
+  
     <a href="../../setup/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Getting Started
+    
   </span>
   
 
@@ -1056,8 +1309,10 @@
       <a href="../../personas/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Personas
+    
   </span>
   
 
@@ -1076,8 +1331,10 @@
       <a href="../../topics/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Topics
+    
   </span>
   
 
@@ -1138,6 +1395,7 @@
     
     
     
+    
       
         
         
@@ -1146,13 +1404,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../lessons/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Lessons
+    
   </span>
   
 
@@ -1187,6 +1448,7 @@
     
     
     
+    
       
         
         
@@ -1195,13 +1457,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructor's Guide
+    
   </span>
   
 
@@ -1230,25 +1495,58 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
     
@@ -1260,13 +1558,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     MicroSims
+    
   </span>
   
 
@@ -1301,6 +1602,7 @@
     
     
     
+    
       
         
         
@@ -1309,13 +1611,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../kits/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Kits
+    
   </span>
   
 
@@ -1354,6 +1659,7 @@
     
     
     
+    
       
         
         
@@ -1364,11 +1670,14 @@
         
   
   
+  
     <a href="../../kits/wifi-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Wireless Bot
+    
   </span>
   
 
@@ -1393,8 +1702,10 @@
       <a href="../../kits/bump-switch/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Bump Switches
+    
   </span>
   
 
@@ -1413,8 +1724,10 @@
       <a href="../../kits/line-follower/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Line Follower
+    
   </span>
   
 
@@ -1433,8 +1746,10 @@
       <a href="../../kits/adjust/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Adjustabot
+    
   </span>
   
 
@@ -1453,8 +1768,10 @@
       <a href="../../kits/ultrasonic/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Ultrasonic
+    
   </span>
   
 
@@ -1481,6 +1798,7 @@
     
     
     
+    
       
         
         
@@ -1491,11 +1809,14 @@
         
   
   
+  
     <a href="../../kits/wifi-display-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     WiFi Display Bot
+    
   </span>
   
 
@@ -1530,6 +1851,7 @@
     
     
     
+    
       
         
         
@@ -1540,11 +1862,14 @@
         
   
   
+  
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructors Guide
+    
   </span>
   
 
@@ -1569,8 +1894,10 @@
       <a href="../../faq/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     FAQ
+    
   </span>
   
 
@@ -1589,8 +1916,10 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Glossary
+    
   </span>
   
 
@@ -1609,8 +1938,10 @@
       <a href="../../references/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     References
+    
   </span>
   
 
@@ -1629,8 +1960,10 @@
       <a href="../../license/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     License
+    
   </span>
   
 
@@ -1649,8 +1982,10 @@
       <a href="../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Contact
+    
   </span>
   
 
@@ -1669,8 +2004,10 @@
       <a href="../../prompts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     STEM Robotics Prompts
+    
   </span>
   
 
@@ -1689,8 +2026,10 @@
       <a href="../../sims/template/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     MicroSim Template
+    
   </span>
   
 
@@ -1752,6 +2091,222 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lists-ordered-collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lists — Ordered Collections
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lists — Ordered Collections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Indexing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Iteration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="List Iteration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-list-index-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: List Index Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tuples-immutable-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuples — Immutable Sequences
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dictionaries-key-value-stores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dictionaries — Key-Value Stores
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-manipulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Manipulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="String Manipulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formatted-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatted Strings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modular-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modular Programming
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modular Programming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-configpy-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The config.py Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reusable-functions-and-module-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reusable Functions and Module Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serial Communication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-control-with-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version Control with Git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Version Control with Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initializing-a-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initializing a Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-git-commit-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Git Commit Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Git Commit Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-git-commit-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Git Commit Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-gitignore-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      The .gitignore File
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1766,11 +2321,17 @@
                 
                   
 
+
   
   
 
 
 <h1 id="data-structures-modular-programming-and-version-control">Data Structures, Modular Programming, and Version Control</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome, maker — let's organize your code like a pro!</p>
+<p><img alt="Sparky waving" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+You know variables and loops. Now we add containers that hold many values at once, patterns that keep your code tidy across multiple files, and a tool that saves every version of your work so you can always go back. These skills make the difference between a first draft and a finished project.</p>
+</div>
 <h2 id="summary">Summary</h2>
 <p>This chapter rounds out the core MicroPython toolkit and introduces software
 engineering practices that scale. Students learn Python's primary data structures —
@@ -1805,13 +2366,421 @@ track their robot programs throughout the course.</p>
 <li><a href="../04-control-flow-functions/">Chapter 4: Control Flow, Functions, and Exception Handling</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<h2 id="lists-ordered-collections">Lists — Ordered Collections</h2>
+<p>A <strong>list</strong> is an ordered collection of values stored under a single variable name. Instead of creating <code>color_0</code>, <code>color_1</code>, <code>color_2</code>, you store all three in one list. Lists use square brackets and commas:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+<span class="n">speeds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">sensor_readings</span> <span class="o">=</span> <span class="p">[</span><span class="mf">14.2</span><span class="p">,</span> <span class="mf">13.8</span><span class="p">,</span> <span class="mf">15.1</span><span class="p">,</span> <span class="mf">14.7</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>Lists can hold any data type — strings, integers, floats, even other lists. A single list can even mix types, though it is usually clearer to keep one type per list.</p>
+<h3 id="list-indexing">List Indexing</h3>
+<p><strong>Indexing</strong> means accessing a single item by its position. Python counts positions starting at 0, not 1. So the first item in <code>colors</code> is at index 0, the second at index 1, and so on.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>    <span class="c1"># &quot;red&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>    <span class="c1"># &quot;green&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>    <span class="c1"># &quot;blue&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>Negative indexes count from the end. <code>colors[-1]</code> gives <code>"blue"</code> — the last item. <code>colors[-2]</code> gives <code>"green"</code>.</p>
+<p>You can also update a list item by assigning to an index:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;orange&quot;</span>    <span class="c1"># changes &quot;red&quot; to &quot;orange&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>Use <code>len(colors)</code> to find out how many items the list has. Accessing <code>colors[3]</code> when there are only 3 items (indexes 0–2) raises an <code>IndexError</code> — a very common bug.</p>
+<h3 id="list-iteration">List Iteration</h3>
+<p><strong>Iterating</strong> a list means visiting each item one at a time. The simplest way uses a <code>for</code> loop:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setting LED to:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>When you also need the index, use <code>enumerate()</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">colors</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LED </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Common list methods worth knowing:</p>
+<ul>
+<li><code>colors.append("yellow")</code> — adds an item to the end</li>
+<li><code>colors.remove("green")</code> — removes the first matching item</li>
+<li><code>len(colors)</code> — returns the number of items</li>
+</ul>
+<h4 id="diagram-list-index-explorer">Diagram: List Index Explorer</h4>
+<iframe src="../../sims/list-index-explorer/main.html" width="100%" height="302px" scrolling="no"></iframe>
+<p><a href="../../sims/list-index-explorer/main.html">Run List Index Explorer Fullscreen</a></p>
+<details>
+<summary>Interactive MicroSim showing list indexing and iteration</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> list-index-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a p5.js MicroSim with a 700 × 300 canvas. Show a horizontal array of 5 colored boxes labeled with values (e.g., "red", "green", "blue", "orange", "purple"). Above each box, display the positive index (0, 1, 2, 3, 4). Below each box, display the negative index (-5, -4, -3, -2, -1).</p>
+<p>Controls:
+- A slider "Index" from -5 to 4 selects a box, which highlights yellow with a glowing border.
+- A text display shows: "colors[X] = 'value'" where X is the current index.
+- A "Iterate" button animates the highlight moving left to right through all items with a 500ms delay between steps.</p>
+<p>Clicking any box directly selects it and updates the index display.</p>
+<p>Learning objective (Bloom's Taxonomy — Applying): students practice accessing specific items by index, including negative indexing.</p>
+<p>Responsive: redraw on window resize.</p>
+</details>
+<hr />
+<h2 id="tuples-immutable-sequences">Tuples — Immutable Sequences</h2>
+<p>A <strong>tuple</strong> is like a list, but it cannot be changed after creation. Tuples use parentheses instead of square brackets:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">motor_pins</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>      <span class="c1"># pin numbers never change</span>
+<span class="n">rgb_red</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>           <span class="c1"># RGB color — stays constant</span>
+<span class="n">board_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>          <span class="c1"># OLED resolution</span>
+</code></pre></div></td></tr></table></div>
+<p>The word <strong>immutable</strong> means "cannot be mutated (changed)." Once you create a tuple, you cannot append to it, remove from it, or change its values. Python enforces this. Trying to do <code>motor_pins[0] = 5</code> raises a <code>TypeError</code>.</p>
+<p>Tuples are useful when the data should never change — hardware pin numbers, screen dimensions, color constants. Using a tuple instead of a list signals to anyone reading your code: "these values are fixed on purpose."</p>
+<p>Tuples support indexing and iteration exactly like lists:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="n">motor_pins</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setting up pin:&quot;</span><span class="p">,</span> <span class="n">pin</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First pin:&quot;</span><span class="p">,</span> <span class="n">motor_pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="dictionaries-key-value-stores">Dictionaries — Key-Value Stores</h2>
+<p>A <strong>dictionary</strong> stores pairs of keys and values. Instead of accessing data by position (like a list), you access it by name. Dictionaries use curly braces:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">robot</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sparky&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;speed&quot;</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>
+    <span class="s2">&quot;is_moving&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;distance_cm&quot;</span><span class="p">:</span> <span class="mf">30.5</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Access a value with its key in square brackets:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">robot</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>      <span class="c1"># &quot;Sparky&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">robot</span><span class="p">[</span><span class="s2">&quot;speed&quot;</span><span class="p">])</span>     <span class="c1"># 75</span>
+</code></pre></div></td></tr></table></div>
+<p>Update a value the same way:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">robot</span><span class="p">[</span><span class="s2">&quot;speed&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">robot</span><span class="p">[</span><span class="s2">&quot;is_moving&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div></td></tr></table></div>
+<p>Add a new key-value pair by simply assigning to a new key:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">robot</span><span class="p">[</span><span class="s2">&quot;battery_pct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">85</span>
+</code></pre></div></td></tr></table></div>
+<p>Dictionaries are great for grouping related data about one thing. Instead of separate variables <code>robot_name</code>, <code>robot_speed</code>, <code>robot_distance</code>, you have one <code>robot</code> dictionary with all the properties in one place.</p>
+<p>The table below compares the three data structures:</p>
+<table>
+<thead>
+<tr>
+<th>Structure</th>
+<th>Syntax</th>
+<th>Access method</th>
+<th>Mutable?</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List</td>
+<td><code>[a, b, c]</code></td>
+<td>Index <code>[0]</code></td>
+<td>Yes</td>
+<td>Ordered sequences, sensor logs</td>
+</tr>
+<tr>
+<td>Tuple</td>
+<td><code>(a, b, c)</code></td>
+<td>Index <code>[0]</code></td>
+<td>No</td>
+<td>Fixed values, pin assignments</td>
+</tr>
+<tr>
+<td>Dictionary</td>
+<td><code>{k: v}</code></td>
+<td>Key <code>["name"]</code></td>
+<td>Yes</td>
+<td>Named properties of one object</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Which container should I use?</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Ask yourself: "Do I need to change the values? Are the values named or numbered?" If the values are fixed, use a tuple. If they're numbered in order, use a list. If they're named properties of one thing (like a robot's stats), use a dictionary. Getting this right makes your code easier to read and harder to break.</p>
+</div>
+<hr />
+<h2 id="string-manipulation">String Manipulation</h2>
+<p>Strings are more than just labels. MicroPython provides many operations for working with text — splitting it, joining it, searching it, and formatting it.</p>
+<p>Some useful string operations:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Hello, Sparky!&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">))</span>         <span class="c1"># 14 — number of characters</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>      <span class="c1"># &quot;HELLO, SPARKY!&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>      <span class="c1"># &quot;hello, sparky!&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>         <span class="c1"># &quot;Hello&quot; — slice characters 0–4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Sparky&quot;</span><span class="p">,</span> <span class="s2">&quot;Robot&quot;</span><span class="p">))</span>  <span class="c1"># &quot;Hello, Robot!&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sparky&quot;</span> <span class="ow">in</span> <span class="n">message</span><span class="p">)</span>  <span class="c1"># True — membership test</span>
+</code></pre></div></td></tr></table></div>
+<p>String <strong>slicing</strong> lets you extract a part of a string. <code>message[0:5]</code> gives characters at indexes 0, 1, 2, 3, 4 — but not index 5. The format is <code>[start:stop]</code> where stop is not included.</p>
+<h3 id="formatted-strings">Formatted Strings</h3>
+<p><strong>Formatted strings</strong> (also called f-strings) let you embed variable values directly inside a string. Before the code, here is the idea: put the letter <code>f</code> before the opening quote, then use curly braces <code>{}</code> around any variable or expression you want to insert.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">robot_name</span> <span class="o">=</span> <span class="s2">&quot;Sparky&quot;</span>
+<span class="n">distance_cm</span> <span class="o">=</span> <span class="mf">23.5</span>
+<span class="n">speed_pct</span> <span class="o">=</span> <span class="mi">75</span>
+
+<span class="c1"># f-string — clean and readable</span>
+<span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Robot </span><span class="si">{</span><span class="n">robot_name</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">distance_cm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm away at </span><span class="si">{</span><span class="n">speed_pct</span><span class="si">}</span><span class="s2">% speed.&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="c1"># Output: Robot Sparky is 23.5 cm away at 75% speed.</span>
+</code></pre></div></td></tr></table></div>
+<p>The <code>:</code> inside <code>{}</code> adds formatting. <code>:.1f</code> means "one decimal place as a float." F-strings are the clearest way to build display text for the OLED screen.</p>
+<hr />
+<h2 id="modular-programming">Modular Programming</h2>
+<p>As your robot programs grow, one long <code>main.py</code> file becomes hard to manage. <strong>Modular programming</strong> means splitting your code into separate files — each file handles one concern. This is the same decomposition idea from Chapter 1, applied to code organization.</p>
+<p>In MicroPython, each <code>.py</code> file is a module. You import it just like a built-in library.</p>
+<h3 id="the-configpy-pattern">The config.py Pattern</h3>
+<p><strong>The most important modular pattern in this course</strong> is the <code>config.py</code> file. Hardware pin numbers belong in <code>config.py</code>, not scattered through your program. If you ever change which pin a motor connects to, you change one line in <code>config.py</code> and everything else still works.</p>
+<p>Create <code>config.py</code> on your board with pin assignments as constants:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># config.py — hardware pin assignments for Cytron Maker Pi RP2040</span>
+
+<span class="c1"># Motor pins (PWM-controlled H-bridge)</span>
+<span class="n">RIGHT_FORWARD_PIN</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">RIGHT_REVERSE_PIN</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">LEFT_FORWARD_PIN</span>  <span class="o">=</span> <span class="mi">9</span>
+<span class="n">LEFT_REVERSE_PIN</span>  <span class="o">=</span> <span class="mi">8</span>
+
+<span class="c1"># NeoPixel LED</span>
+<span class="n">NEOPIXEL_PIN</span>   <span class="o">=</span> <span class="mi">18</span>
+<span class="n">NEOPIXEL_COUNT</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># I2C bus for sensors and display</span>
+<span class="n">I2C_SDA_PIN</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">I2C_SCL_PIN</span> <span class="o">=</span> <span class="mi">17</span>
+</code></pre></div></td></tr></table></div>
+<p>Then import it in <code>main.py</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># main.py</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Right forward pin:&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">RIGHT_FORWARD_PIN</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This pattern keeps hardware details in one place and logic in another. Professional engineers call this <strong>separation of concerns</strong> — each file has exactly one job.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">UPPERCASE constants are a signal</p>
+<p><img alt="Sparky pointing up" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Pin numbers and hardware constants go in <code>config.py</code> in UPPERCASE. That capitalization signals to any reader: "this value is fixed — don't change it at runtime." When you see <code>config.RIGHT_FORWARD_PIN</code> in code, you know exactly where to look if the pin ever needs changing.</p>
+</div>
+<h3 id="reusable-functions-and-module-files">Reusable Functions and Module Files</h3>
+<p>You can also put groups of related functions in their own module file. For example, a <code>motors.py</code> file could hold all motor control functions:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># motors.py</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="k">def</span> <span class="nf">stop_all</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Stop all motors safely.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All motors stopped.&quot;</span><span class="p">)</span>
+    <span class="c1"># PWM code goes here in Chapter 7</span>
+</code></pre></div></td></tr></table></div>
+<p>Then import and use it in <code>main.py</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">motors</span>
+<span class="n">motors</span><span class="o">.</span><span class="n">stop_all</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>This is exactly how the course's library files (<code>vl53l0x.py</code>, <code>ssd1306.py</code>) work. They are modules you import to get sensor and display functionality without writing those drivers yourself.</p>
+<hr />
+<h2 id="serial-communication">Serial Communication</h2>
+<p><strong>Serial communication</strong> is how MicroPython sends text to Thonny's Shell pane. Every <code>print()</code> statement you write sends data over the USB cable as serial output. This works because the USB connection creates a virtual <strong>serial port</strong> — a communication channel that sends data one bit at a time.</p>
+<p>Serial output is your most basic debugging tool. When you don't know what a sensor is reading, add a <code>print()</code>. When you don't know if a function is being called, add a <code>print()</code>. This technique is called <strong>print debugging</strong>, and professional engineers use it constantly.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">distance_cm</span> <span class="o">=</span> <span class="mi">25</span>   <span class="c1"># will be read from sensor later</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[DEBUG] distance_cm = </span><span class="si">{</span><span class="n">distance_cm</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># temporary debug line</span>
+
+<span class="k">if</span> <span class="n">distance_cm</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+    <span class="n">stop_motors</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Remove or comment out debug prints before your final program — too many slows the loop slightly and clutters the output.</p>
+<hr />
+<h2 id="software-troubleshooting">Software Troubleshooting</h2>
+<p><strong>Software troubleshooting</strong> is the systematic process of finding and fixing bugs. Bugs are not failures — they are information. An error message tells you exactly where something went wrong and what type of error occurred.</p>
+<p>When Thonny shows a red traceback, read it from the bottom up:</p>
+<ol>
+<li>The last line names the exception type and message: <code>AttributeError: 'NoneType' object has no attribute 'read'</code></li>
+<li>The line above shows the file and line number: <code>File "main.py", line 23</code></li>
+<li>Working upward shows the call stack — how the program got there</li>
+</ol>
+<p>A systematic troubleshooting process:</p>
+<ol>
+<li>Read the full error message before changing anything.</li>
+<li>Identify the file and line number from the traceback.</li>
+<li>Add print statements before and after the failing line.</li>
+<li>Check one variable at a time in the REPL.</li>
+<li>Test the smallest possible piece of code that still shows the bug.</li>
+</ol>
+<p>This process — isolate, hypothesize, test, observe — is the engineering design process applied to code.</p>
+<hr />
+<h2 id="code-documentation">Code Documentation</h2>
+<p><strong>Code documentation</strong> means writing explanations that help readers understand your code. There are two places to do this in Python: comments and docstrings.</p>
+<p><strong>Comments</strong> use <code>#</code> and explain a single line or short section. You practiced these in Chapter 3.</p>
+<p><strong>Docstrings</strong> are strings at the top of a function that explain what it does. They use triple quotes:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">read_distance</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return distance in centimeters from the VL53L0X sensor.</span>
+<span class="sd">    Returns -1 if the sensor is not connected.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>   <span class="c1"># sensor code goes here in Chapter 8</span>
+</code></pre></div></td></tr></table></div>
+<p>Good documentation answers: What does this do? What inputs does it need? What does it return? These questions matter most when someone else reads your code — or when you return to it after a week away.</p>
+<hr />
+<h2 id="version-control-with-git">Version Control with Git</h2>
+<p><strong>Version control</strong> is a system that tracks changes to your files over time. It lets you save checkpoints of your code. If you break something, you can go back to the last working checkpoint. We use <strong>Git</strong> — the most widely used version control system in the world.</p>
+<p>Git stores your code's history in a hidden folder called a <strong>repository</strong> (or repo). Every checkpoint is called a <strong>commit</strong>.</p>
+<h3 id="initializing-a-repository">Initializing a Repository</h3>
+<p>On your laptop (not the robot board), open a terminal in your project folder. Before the commands below, here is what each does: <code>git init</code> creates a new repository. <code>git add</code> stages files for the next commit. <code>git commit</code> saves those files as a checkpoint with a description.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>git<span class="w"> </span>init<span class="w">                        </span><span class="c1"># create a new repository</span>
+git<span class="w"> </span>add<span class="w"> </span>main.py<span class="w"> </span>config.py<span class="w">       </span><span class="c1"># stage specific files</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Initial robot program&quot;</span><span class="w">  </span><span class="c1"># save a checkpoint</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="the-git-commit-workflow">The Git Commit Workflow</h3>
+<p>The <strong>Git commit workflow</strong> is the cycle you repeat after every meaningful change:</p>
+<ol>
+<li>Make changes to your code in Thonny.</li>
+<li>Test the changes on the robot.</li>
+<li>Copy the updated files to your laptop.</li>
+<li>Stage the changed files: <code>git add filename.py</code></li>
+<li>Commit with a clear message: <code>git commit -m "Add collision avoidance function"</code></li>
+</ol>
+<p>A good commit message completes the sentence "This commit will...". "Fix motor speed bug" is good. "updates" is not.</p>
+<h4 id="diagram-git-commit-workflow">Diagram: Git Commit Workflow</h4>
+<iframe src="../../sims/git-commit-workflow/main.html" width="100%" height="300px" scrolling="no"></iframe>
+<p><a href="../../sims/git-commit-workflow/main.html">Run Git Commit Workflow Fullscreen</a></p>
+<details>
+<summary>Interactive diagram of the Git commit workflow stages</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> git-commit-workflow<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a Mermaid flowchart (graph LR, left to right) showing the four Git areas:</p>
+<ol>
+<li>"Working Directory" (yellow box) — where you edit files</li>
+<li>"Staging Area" (orange box) — files marked for the next commit</li>
+<li>"Local Repository" (blue box) — committed history on your laptop</li>
+<li>"Remote (GitHub)" (green box) — optional cloud backup</li>
+</ol>
+<p>Arrows between areas labeled with commands:
+- Working Dir → Staging Area: <code>git add</code>
+- Staging Area → Local Repo: <code>git commit -m "message"</code>
+- Local Repo → Remote: <code>git push</code>
+- Remote → Local Repo: <code>git pull</code></p>
+<p>Every box and every arrow has a click directive that opens an infobox with a plain-language explanation of what that area stores or what that command does.</p>
+<p>Canvas: 700 × 200 px. Responsive on window resize.</p>
+</details>
+<h3 id="the-gitignore-file">The .gitignore File</h3>
+<p><strong>Not every file belongs in version control.</strong> A <code>.gitignore</code> file lists patterns of files Git should ignore.</p>
+<p>Create a file named <code>.gitignore</code> in your project folder:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code># Ignore secrets file — NEVER commit WiFi passwords
+secrets.py
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore OS junk files
+.DS_Store
+Thumbs.db
+</code></pre></div></td></tr></table></div>
+<p>The <code>secrets.py</code> file stores your WiFi network name and password. If you commit it to a public repository, anyone in the world can see your credentials. Always list <code>secrets.py</code> in <code>.gitignore</code> before your first commit.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Never commit secrets.py</p>
+<p><img alt="Sparky warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+WiFi passwords and API keys should never be in a Git repository. Add <code>secrets.py</code> to <code>.gitignore</code> before your first commit. If you accidentally commit credentials, consider them compromised — change the password immediately. This is a real-world security principle, not just a class rule.</p>
+</div>
+<hr />
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Lists</strong> store ordered, changeable sequences accessed by index (<code>[0]</code>, <code>[-1]</code>)</li>
+<li><strong>Tuples</strong> store fixed, unchangeable sequences — use them for pin numbers and constants</li>
+<li><strong>Dictionaries</strong> store named key-value pairs — perfect for grouping an object's properties</li>
+<li><strong>f-strings</strong> embed variables in text cleanly: <code>f"Speed: {speed_pct}%"</code></li>
+<li><strong>config.py</strong> centralizes all pin assignments — change hardware in one place</li>
+<li><strong>Modular programming</strong> splits code across multiple files, each with one job</li>
+<li><strong>Serial output</strong> (<code>print()</code>) is your primary debugging tool</li>
+<li><strong>Git</strong> tracks code history; commit often with clear messages</li>
+<li><strong>secrets.py</strong> never goes in version control — always add it to <code>.gitignore</code></li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You code like a software engineer now!</p>
+<p><img alt="Sparky celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Double thumbs-up, maker! Lists, tuples, dictionaries, modular files, Git commits — you now have the tools that professional engineers use every day. The next chapter dives into the electronics and motors that make me actually move. Get ready to roll!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1899,10 +2868,12 @@ track their robot programs throughout the course.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

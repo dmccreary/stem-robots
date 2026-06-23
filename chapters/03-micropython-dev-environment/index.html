@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Flash MicroPython firmware onto your robot, connect via USB, and use the Thonny IDE and REPL to write and run your first programs — then learn the core data types and operators that power every MicroPython program in this course.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -22,15 +22,15 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>3. MicroPython and Setup - STEM Robots</title>
+        <title>MicroPython and Development Environment Setup - STEM Robots</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3. MicroPython and Setup
+              MicroPython and Development Environment Setup
             
           </span>
         </div>
@@ -137,11 +137,13 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -173,13 +175,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -224,7 +227,7 @@
       <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -244,8 +247,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
+    
   </span>
   
 
@@ -264,8 +269,10 @@
       <a href="../../about/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     About This Website
+    
   </span>
   
 
@@ -284,8 +291,10 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Course Description
+    
   </span>
   
 
@@ -304,8 +313,10 @@
       <a href="../../journey-map/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Journey Map
+    
   </span>
   
 
@@ -324,8 +335,10 @@
       <a href="../../robot-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Robot Description
+    
   </span>
   
 
@@ -344,8 +357,10 @@
       <a href="../../gallery/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Gallery
+    
   </span>
   
 
@@ -364,8 +379,10 @@
       <a href="../../great-ways-to-teach/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Great Ways To Teach
+    
   </span>
   
 
@@ -394,6 +411,7 @@
     
     
     
+    
       
         
         
@@ -404,11 +422,14 @@
         
   
   
+  
     <a href="../../course-descriptions/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Course Descriptions
+    
   </span>
   
 
@@ -439,57 +460,32 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
+    
     
     
     
@@ -502,13 +498,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
     Chapters
+    
   </span>
   
 
@@ -540,8 +537,10 @@
       <a href="../01-intro-computational-thinking/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     1. Computational Thinking
+    
   </span>
   
 
@@ -561,8 +560,10 @@
       <a href="../02-hardware-platform-assembly/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     2. Hardware and Assembly
+    
   </span>
   
 
@@ -591,8 +592,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
     3. MicroPython and Setup
+    
   </span>
   
 
@@ -602,8 +605,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
     3. MicroPython and Setup
+    
   </span>
   
 
@@ -651,6 +656,219 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#what-is-micropython" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is MicroPython?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Is MicroPython?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-micropython-in-the-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: MicroPython in the Stack
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flashing-the-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flashing the Firmware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-thonny" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to Thonny
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to Thonny">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-thonny" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Thonny
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntax-highlighting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntax Highlighting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-repl-your-live-experiment-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      The REPL — Your Live Experiment Lab
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploading-programs-with-thonny" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading Programs with Thonny
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-syntax-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Syntax Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-and-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables and Assignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables and Assignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-variable-assignment-interactive-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Variable Assignment Interactive Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-core-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Four Core Data Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Four Core Data Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Floats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#booleans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Booleans
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arithmetic-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arithmetic Operators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Operators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logical-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Operators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments-and-code-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments and Code Style
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -670,8 +888,10 @@
       <a href="../04-control-flow-functions/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     4. Control Flow and Functions
+    
   </span>
   
 
@@ -691,8 +911,10 @@
       <a href="../05-data-structures-modular-code/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     5. Data Structures and Git
+    
   </span>
   
 
@@ -712,8 +934,10 @@
       <a href="../06-electronics-motors-protocols/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     6. Motors and Protocols
+    
   </span>
   
 
@@ -733,8 +957,10 @@
       <a href="../07-pwm-motor-speed-actuators/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     7. PWM and Actuators
+    
   </span>
   
 
@@ -754,8 +980,10 @@
       <a href="../08-sensors-data-input/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     8. Sensors and Input
+    
   </span>
   
 
@@ -775,8 +1003,10 @@
       <a href="../09-display-systems-output/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     9. Displays and Output
+    
   </span>
   
 
@@ -796,8 +1026,10 @@
       <a href="../10-robot-behaviors-navigation/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     10. Robot Behaviors
+    
   </span>
   
 
@@ -817,8 +1049,10 @@
       <a href="../11-wireless-networking-web-servers/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     11. WiFi and Web Servers
+    
   </span>
   
 
@@ -838,8 +1072,10 @@
       <a href="../12-bluetooth-low-energy/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     12. Bluetooth Low Energy
+    
   </span>
   
 
@@ -859,8 +1095,10 @@
       <a href="../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     13. Swarm and Advanced
+    
   </span>
   
 
@@ -907,6 +1145,7 @@
     
     
     
+    
       
         
         
@@ -915,13 +1154,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graph/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graph
+    
   </span>
   
 
@@ -960,6 +1202,7 @@
     
     
     
+    
       
         
         
@@ -968,13 +1211,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graphs/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graphs
+    
   </span>
   
 
@@ -1017,6 +1263,7 @@
     
     
     
+    
       
         
         
@@ -1027,11 +1274,14 @@
         
   
   
+  
     <a href="../../setup/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Getting Started
+    
   </span>
   
 
@@ -1056,8 +1306,10 @@
       <a href="../../personas/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Personas
+    
   </span>
   
 
@@ -1076,8 +1328,10 @@
       <a href="../../topics/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Topics
+    
   </span>
   
 
@@ -1138,6 +1392,7 @@
     
     
     
+    
       
         
         
@@ -1146,13 +1401,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../lessons/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Lessons
+    
   </span>
   
 
@@ -1187,6 +1445,7 @@
     
     
     
+    
       
         
         
@@ -1195,13 +1454,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructor's Guide
+    
   </span>
   
 
@@ -1230,25 +1492,58 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
     
@@ -1260,13 +1555,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     MicroSims
+    
   </span>
   
 
@@ -1301,6 +1599,7 @@
     
     
     
+    
       
         
         
@@ -1309,13 +1608,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../kits/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Kits
+    
   </span>
   
 
@@ -1354,6 +1656,7 @@
     
     
     
+    
       
         
         
@@ -1364,11 +1667,14 @@
         
   
   
+  
     <a href="../../kits/wifi-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Wireless Bot
+    
   </span>
   
 
@@ -1393,8 +1699,10 @@
       <a href="../../kits/bump-switch/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Bump Switches
+    
   </span>
   
 
@@ -1413,8 +1721,10 @@
       <a href="../../kits/line-follower/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Line Follower
+    
   </span>
   
 
@@ -1433,8 +1743,10 @@
       <a href="../../kits/adjust/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Adjustabot
+    
   </span>
   
 
@@ -1453,8 +1765,10 @@
       <a href="../../kits/ultrasonic/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Ultrasonic
+    
   </span>
   
 
@@ -1481,6 +1795,7 @@
     
     
     
+    
       
         
         
@@ -1491,11 +1806,14 @@
         
   
   
+  
     <a href="../../kits/wifi-display-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     WiFi Display Bot
+    
   </span>
   
 
@@ -1530,6 +1848,7 @@
     
     
     
+    
       
         
         
@@ -1540,11 +1859,14 @@
         
   
   
+  
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructors Guide
+    
   </span>
   
 
@@ -1569,8 +1891,10 @@
       <a href="../../faq/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     FAQ
+    
   </span>
   
 
@@ -1589,8 +1913,10 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Glossary
+    
   </span>
   
 
@@ -1609,8 +1935,10 @@
       <a href="../../references/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     References
+    
   </span>
   
 
@@ -1629,8 +1957,10 @@
       <a href="../../license/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     License
+    
   </span>
   
 
@@ -1649,8 +1979,10 @@
       <a href="../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Contact
+    
   </span>
   
 
@@ -1669,8 +2001,10 @@
       <a href="../../prompts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     STEM Robotics Prompts
+    
   </span>
   
 
@@ -1689,8 +2023,10 @@
       <a href="../../sims/template/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     MicroSim Template
+    
   </span>
   
 
@@ -1752,6 +2088,219 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#what-is-micropython" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is MicroPython?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Is MicroPython?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-micropython-in-the-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: MicroPython in the Stack
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flashing-the-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flashing the Firmware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-thonny" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to Thonny
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to Thonny">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-thonny" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Thonny
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntax-highlighting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntax Highlighting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-repl-your-live-experiment-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      The REPL — Your Live Experiment Lab
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploading-programs-with-thonny" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading Programs with Thonny
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-syntax-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Syntax Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-and-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables and Assignment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables and Assignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-variable-assignment-interactive-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Variable Assignment Interactive Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-core-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Four Core Data Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Four Core Data Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Floats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#booleans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Booleans
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arithmetic-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arithmetic Operators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Operators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logical-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Operators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments-and-code-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments and Code Style
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1766,11 +2315,17 @@
                 
                   
 
+
   
   
 
 
 <h1 id="micropython-and-development-environment-setup">MicroPython and Development Environment Setup</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome, maker — let's bring your robot to life!</p>
+<p><img alt="Sparky waving" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+This chapter is a big one. By the time we're done, your robot will run real code — code that <em>you</em> wrote. We'll install the programming language, hook up the board, and write our very first MicroPython programs. Computational thinking is YOUR superpower — let's activate it!</p>
+</div>
 <h2 id="summary">Summary</h2>
 <p>This chapter gets students writing and running real code on the robot. It covers
 flashing MicroPython firmware via the BOOTSEL button and UF2 file, connecting to
@@ -1808,13 +2363,481 @@ and clean code style — the building blocks for every program in the course.</p
 <li><a href="../02-hardware-platform-assembly/">Chapter 2: Hardware Platform and Robot Assembly</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<h2 id="what-is-micropython">What Is MicroPython?</h2>
+<p>Your robot's brain is a small computer called a microcontroller. It can run programs — but it doesn't speak English. You have to speak its language. We use <strong>MicroPython</strong> for that.</p>
+<p><strong>MicroPython</strong> is a lightweight version of the Python programming language designed to run on small, low-power hardware. A regular Python program runs on a laptop or desktop computer with gigabytes of memory. MicroPython runs on a microcontroller with just 264 kilobytes of RAM — about the size of a single small image file. Despite that tiny footprint, MicroPython gives you real Python: loops, functions, lists, even object-oriented programming.</p>
+<p>Python is one of the world's most popular programming languages. Once you know MicroPython, you already know the basics of regular Python too. That is a skill that transfers far beyond robots.</p>
+<p>MicroPython is not the only language you could use on this hardware. C and C++ also work. But they require far more setup, and they are harder for beginners. MicroPython lets you focus on the robotics, not the language.</p>
+<h4 id="diagram-micropython-in-the-stack">Diagram: MicroPython in the Stack</h4>
+<iframe src="../../sims/micropython-stack-diagram/main.html" width="100%" height="760px" scrolling="no"></iframe>
+<p><a href="../../sims/micropython-stack-diagram/main.html">Run MicroPython in the Stack Fullscreen</a></p>
+<details>
+<summary>Where MicroPython sits between your code and the robot hardware</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> micropython-stack-diagram<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a vertical stack diagram using Mermaid showing the four layers of the system:</p>
+<p>Layer 1 (top): "Your Code (the program you write)" — light blue background
+Layer 2: "MicroPython Interpreter" — orange background, labeled "translates your code into machine instructions"
+Layer 3: "MicroPython Firmware" — yellow background, labeled "lives on the RP2040 flash memory"
+Layer 4 (bottom): "Hardware (RP2040 chip, motors, sensors)" — gray background</p>
+<p>Use Mermaid graph TD (top-down). Each node has a click directive that opens an infobox describing that layer. Arrow labels show the direction of control (Your Code → MicroPython → Hardware) and the direction of data (Hardware → MicroPython → Your Code).</p>
+<p>Canvas: 400 × 300 px. Responsive: redraw on window resize.</p>
+</details>
+<hr />
+<h2 id="flashing-the-firmware">Flashing the Firmware</h2>
+<p>Before your board can run MicroPython, you need to install it. The board ships with a different program already on it. We replace that program by copying a special file onto the board. This process is called <strong>flashing the firmware</strong>.</p>
+<p><strong>Firmware</strong> is permanent software stored in your device's memory. It is the lowest layer of software — the stuff that runs before anything else. MicroPython's firmware turns a bare RP2040 chip into a Python computer.</p>
+<p>The file we copy is called a <strong>UF2 file</strong>. <strong>UF2</strong> stands for USB Flashing Format. It is a standard format that lets you update a microcontroller's firmware by simply dragging and dropping a file, just like copying a document. You do not need any special programming hardware.</p>
+<p>Here is the complete flashing process, step by step:</p>
+<ol>
+<li>Download the MicroPython UF2 file from the official MicroPython website. Look for the version for the "Raspberry Pi Pico" or "Cytron Maker Pi RP2040."</li>
+<li>Hold down the <strong>BOOTSEL button</strong> on your board. BOOTSEL stands for Boot Select. This button tells the chip to start in a special mode where it can receive new firmware.</li>
+<li>While still holding BOOTSEL, plug the USB cable into your board and your computer.</li>
+<li>Release the BOOTSEL button. Your board will appear on your computer as a USB drive named <code>RPI-RP2</code>.</li>
+<li>Drag the UF2 file onto that drive. The board will automatically reboot and run MicroPython.</li>
+</ol>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Tip — data cables only!</p>
+<p><img alt="Sparky pointing up" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Use a <strong>data USB cable</strong>, not a charge-only cable. Many USB cables sold with phone accessories are charge-only — they carry power but no data. If your computer doesn't see the <code>RPI-RP2</code> drive after plugging in, try a different cable. This is the number-one reason the flashing step fails.</p>
+</div>
+<p>After flashing, the <code>RPI-RP2</code> drive disappears and the board reboots. That is normal — it means the firmware installed correctly. If the drive stays visible, the UF2 file may be the wrong version or the cable may be charge-only.</p>
+<hr />
+<h2 id="connecting-to-thonny">Connecting to Thonny</h2>
+<p>Now we need a way to talk to the board. We use an <strong>IDE</strong> for that. An <strong>IDE</strong> (Integrated Development Environment) is a program that lets you write code, send it to your board, and see what happens. We use <strong>Thonny</strong> — a free, beginner-friendly IDE designed exactly for MicroPython.</p>
+<h3 id="installing-thonny">Installing Thonny</h3>
+<p>Thonny is one download and one click to install. Go to <code>thonny.org</code> and choose the installer for your operating system (Windows, Mac, or Linux). The installer includes everything you need — you do not need to install Python separately.</p>
+<p>Once installed, open Thonny. The main window has two parts:</p>
+<ul>
+<li><strong>Editor pane (top):</strong> Where you write and save programs.</li>
+<li><strong>Shell pane (bottom):</strong> Where you interact with the board directly.</li>
+</ul>
+<p>Before Thonny can talk to your board, you need to configure the interpreter. Go to <strong>Tools → Options → Interpreter</strong> and select "MicroPython (Raspberry Pi Pico)" from the dropdown. Then select the correct serial port. On Windows, it appears as something like <code>COM3</code>. On Mac, it looks like <code>/dev/cu.usbmodem...</code>. Click OK and Thonny will connect.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Think about this — what's a serial port?</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+A <strong>serial port</strong> is a communication channel — a pathway data travels through, one bit at a time. Your USB cable creates a virtual serial port. Thonny uses it to send your code to the board and receive output back. When you see output in the Shell pane, it traveled over that same cable.</p>
+</div>
+<h3 id="syntax-highlighting">Syntax Highlighting</h3>
+<p>One of Thonny's most helpful features is <strong>syntax highlighting</strong>. <strong>Syntax</strong> means the rules of a programming language — which words are allowed, how to punctuate them, and what order things go in. Syntax highlighting colors different parts of your code so they are easy to read.</p>
+<p>In Thonny, keywords like <code>if</code>, <code>for</code>, and <code>def</code> appear in one color. Strings appear in another. Numbers are a third color. Comments — notes you write for yourself — appear in a muted color because they don't affect what the program does.</p>
+<p>If you ever see a line that didn't get colored the way you expected, that is often a sign of a typo. Syntax highlighting is your first line of defense against bugs.</p>
+<hr />
+<h2 id="the-repl-your-live-experiment-lab">The REPL — Your Live Experiment Lab</h2>
+<p>The most powerful feature of MicroPython on the RP2040 is the <strong>REPL</strong>. <strong>REPL</strong> stands for Read-Evaluate-Print Loop. It is the interactive prompt in Thonny's Shell pane.</p>
+<p>Here is what REPL does:</p>
+<ul>
+<li><strong>Read</strong> — it reads whatever you type.</li>
+<li><strong>Evaluate</strong> — it runs that code immediately.</li>
+<li><strong>Print</strong> — it shows you the result.</li>
+<li><strong>Loop</strong> — it waits for you to type something else.</li>
+</ul>
+<p>You do not need to write a whole program and save it. You just type one line and press Enter. The board runs it right now. This is perfect for experiments.</p>
+<p>Try it. Click in the Shell pane in Thonny (you should see <code>&gt;&gt;&gt;</code> — that is the REPL prompt). Type the following and press Enter:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, robot!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The board prints:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Hello, robot!
+</code></pre></div></td></tr></table></div>
+<p>That's your first MicroPython output. Let's try some math:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="mi">7</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span>
+<span class="mf">3.3333333333333</span>
+</code></pre></div></td></tr></table></div>
+<p>The REPL evaluates each expression and prints the result immediately. This is how engineers explore new hardware — try small things, see what happens, build up from there.</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">This feels simple — and that's the point.</p>
+<p><img alt="Sparky encouraging" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+The REPL might feel too simple right now — like a fancy calculator. But every expert programmer uses it to test ideas before writing a full program. When something isn't working later in the course, we'll come back to the REPL and test one line at a time. That habit will save you hours of frustration.</p>
+</div>
+<hr />
+<h2 id="uploading-programs-with-thonny">Uploading Programs with Thonny</h2>
+<p>The REPL is great for experiments. But for programs that run automatically when the board powers up, we need to write a file and save it to the board.</p>
+<p>In Thonny's editor pane (the top panel), type a short program. Then go to <strong>File → Save As</strong> and choose "MicroPython device" when asked where to save. Name the file <code>main.py</code>.</p>
+<p>The special name <code>main.py</code> is important. When the Cytron board powers up, it looks for a file called <code>main.py</code> on its flash storage and runs it automatically. Save any other file name and it won't auto-run — you'll need to run it manually from Thonny.</p>
+<p>Here is a simple program to save as <code>main.py</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Robot starting up!&quot;</span><span class="p">)</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ready to roll!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Unplug the USB cable, plug it back in (or press the reset button if your board has one), and watch the Shell. Your program runs automatically. That is the complete workflow: write in the editor, save to the board, and the board runs it.</p>
+<hr />
+<h2 id="python-syntax-basics">Python Syntax Basics</h2>
+<p>Now that the environment works, let's learn the language. MicroPython follows the same syntax rules as regular Python. <strong>Syntax</strong> is the grammar of a programming language — the rules that say which arrangements of words and symbols are legal.</p>
+<p>Python has a few key syntax rules every beginner needs to know:</p>
+<ul>
+<li><strong>Indentation matters.</strong> Python uses spaces to show which code belongs inside a block (like a loop or a function). Mixing tabs and spaces causes errors. Thonny's default is 4 spaces per indent level.</li>
+<li><strong>Case is significant.</strong> <code>Speed</code> and <code>speed</code> are different names. Most Python code uses lowercase with underscores for variable and function names.</li>
+<li><strong>Colons start blocks.</strong> After <code>if</code>, <code>for</code>, <code>while</code>, <code>def</code>, and similar keywords, you put a colon. Everything indented under it is inside that block.</li>
+<li><strong>No semicolons needed.</strong> Unlike C or JavaScript, Python ends statements with a newline, not a semicolon.</li>
+</ul>
+<p>These four rules cover 90% of syntax errors beginners make. When Thonny shows a red error about an <code>IndentationError</code> or <code>SyntaxError</code>, look for violations of these rules first.</p>
+<hr />
+<h2 id="variables-and-assignment">Variables and Assignment</h2>
+<p>A <strong>variable</strong> is a named storage location in memory. You create a variable by giving it a name and assigning a value with the <code>=</code> sign. The <code>=</code> sign in Python means "store this value" — it is not asking "are these equal?"</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">speed</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">robot_name</span> <span class="o">=</span> <span class="s2">&quot;Sparky&quot;</span>
+<span class="n">is_moving</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div></td></tr></table></div>
+<p>Each line creates a variable. <code>speed</code> stores the number 50. <code>robot_name</code> stores the text "Sparky". <code>is_moving</code> stores <code>True</code>, meaning the robot is currently in motion.</p>
+<p>Variable names follow these rules:</p>
+<ul>
+<li>Must start with a letter or underscore</li>
+<li>Can contain letters, numbers, and underscores</li>
+<li>Cannot contain spaces or hyphens</li>
+<li>Cannot be a Python keyword like <code>for</code>, <code>if</code>, or <code>while</code></li>
+</ul>
+<p>Good variable names are descriptive. <code>d</code> is a legal name, but <code>distance_cm</code> tells you exactly what is stored. Descriptive names make debugging much easier.</p>
+<h4 id="diagram-variable-assignment-interactive-explorer">Diagram: Variable Assignment Interactive Explorer</h4>
+<iframe src="../../sims/variable-assignment-explorer/main.html" width="100%" height="352px" scrolling="no"></iframe>
+<p><a href="../../sims/variable-assignment-explorer/main.html">Run Variable Assignment Interactive Explorer Fullscreen</a></p>
+<details>
+<summary>Interactive p5.js visualization of variables storing values in memory</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> variable-assignment-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a p5.js MicroSim with a 700 × 350 canvas. Show a left panel with two input fields where the user can type a variable name and a value. When they click "Assign", an animated arrow flies from an "Assignment statement" box on the left to a "Memory box" on the right, and the memory box updates with the new variable name and value. Show up to 4 memory boxes stacked vertically on the right.</p>
+<p>Add a "Reset" button that clears all memory boxes with a fade-out animation.</p>
+<p>Hovering a memory box shows a tooltip: "Variable: [name] stores [value] of type [type]."</p>
+<p>Learning objective (Bloom's Taxonomy — Applying): students practice the concept that assignment stores a value in a named location, not that two things are equal.</p>
+<p>Responsive: redraw on window resize. Font size: 14px. Color scheme: navy blue memory boxes, yellow arrow animation, orange labels.</p>
+</details>
+<hr />
+<h2 id="the-four-core-data-types">The Four Core Data Types</h2>
+<p>Every value in MicroPython has a <strong>data type</strong> — a category that tells Python what kind of information it is and what operations make sense on it. Let's meet the four types you will use throughout this course.</p>
+<h3 id="integers">Integers</h3>
+<p>An <strong>integer</strong> is a whole number — no decimal point. Examples: <code>0</code>, <code>5</code>, <code>-3</code>, <code>1000</code>. We use integers constantly in robot code: motor speeds, distances in centimeters, LED color values (0–255), and loop counters.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">distance_cm</span> <span class="o">=</span> <span class="mi">15</span>        <span class="c1"># distance from sensor in centimeters</span>
+<span class="n">motor_speed</span> <span class="o">=</span> <span class="mi">65535</span>     <span class="c1"># maximum PWM duty cycle value (16-bit)</span>
+<span class="n">led_red</span> <span class="o">=</span> <span class="mi">255</span>           <span class="c1"># maximum red intensity for NeoPixel LED</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="floats">Floats</h3>
+<p>A <strong>float</strong> (short for floating-point number) is a number with a decimal point. Examples: <code>3.14</code>, <code>0.5</code>, <code>-9.81</code>. Floats are useful for sensor calibration constants, voltage calculations, and angles.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">scale_factor</span> <span class="o">=</span> <span class="mf">0.92</span>     <span class="c1"># calibration constant for distance sensor</span>
+<span class="n">battery_voltage</span> <span class="o">=</span> <span class="mf">7.4</span>   <span class="c1"># nominal LiPo battery voltage</span>
+<span class="n">turn_angle</span> <span class="o">=</span> <span class="mf">45.0</span>       <span class="c1"># servo angle in degrees</span>
+</code></pre></div></td></tr></table></div>
+<p>Be careful mixing integers and floats. Division in Python (and MicroPython) always returns a float: <code>7 / 2</code> gives <code>3.5</code>, not <code>3</code>. If you need whole-number division, use <code>//</code>: <code>7 // 2</code> gives <code>3</code>.</p>
+<h3 id="strings">Strings</h3>
+<p>A <strong>string</strong> is text — any sequence of characters between quotes. You can use single quotes <code>'like this'</code> or double quotes <code>"like this"</code>. We use strings for labels on the OLED display, messages printed to the REPL, and WiFi credentials.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">robot_name</span> <span class="o">=</span> <span class="s2">&quot;Sparky&quot;</span>
+<span class="n">status_message</span> <span class="o">=</span> <span class="s1">&#39;All systems go!&#39;</span>
+<span class="n">ssid</span> <span class="o">=</span> <span class="s2">&quot;SchoolRobotics&quot;</span>   <span class="c1"># WiFi network name</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="booleans">Booleans</h3>
+<p>A <strong>boolean</strong> is a value that is either <code>True</code> or <code>False</code>. Booleans come from comparisons and control the flow of your programs. When you ask "is the obstacle closer than 20 cm?", the answer is a boolean.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">is_moving</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">obstacle_detected</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">motor_enabled</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div></td></tr></table></div>
+<p><code>True</code> and <code>False</code> are capitalized. MicroPython is case-sensitive, so <code>true</code> (lowercase) would cause a <code>NameError</code>.</p>
+<p>The table below summarizes the four data types:</p>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Example Values</th>
+<th>Common Robot Uses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td><code>0</code>, <code>255</code>, <code>65535</code></td>
+<td>Motor speed, LED values, loop counters</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><code>3.14</code>, <code>0.92</code>, <code>45.0</code></td>
+<td>Sensor calibration, angles, voltages</td>
+</tr>
+<tr>
+<td><code>str</code></td>
+<td><code>"Sparky"</code>, <code>"GO"</code></td>
+<td>Display text, WiFi SSID, status messages</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><code>True</code>, <code>False</code></td>
+<td>Flags, conditionals, sensor states</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="arithmetic-operators">Arithmetic Operators</h2>
+<p><strong>Operators</strong> are symbols that perform operations on values. MicroPython supports all the arithmetic operators you know from math class, plus a few extras useful for robot code.</p>
+<p>Before the table, here is a plain-language explanation of each one:</p>
+<ul>
+<li><strong>Addition (<code>+</code>)</strong> — adds two numbers, or joins two strings.</li>
+<li><strong>Subtraction (<code>-</code>)</strong> — subtracts the right value from the left.</li>
+<li><strong>Multiplication (<code>*</code>)</strong> — multiplies. Also repeats strings: <code>"Go!" * 3</code> gives <code>"Go!Go!Go!"</code>.</li>
+<li><strong>Division (<code>/</code>)</strong> — always produces a float, even when both inputs are integers.</li>
+<li><strong>Integer division (<code>//</code>)</strong> — divides and discards the decimal part, giving a whole number.</li>
+<li><strong>Modulo (<code>%</code>)</strong> — gives the remainder after division. <code>10 % 3</code> gives <code>1</code> because 3 goes into 10 three times with 1 left over.</li>
+<li><strong>Exponentiation (<code>**</code>)</strong> — raises the left number to the power of the right. <code>2 ** 8</code> gives <code>256</code>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Symbol</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Addition</td>
+<td><code>+</code></td>
+<td><code>100 + 55</code></td>
+<td><code>155</code></td>
+</tr>
+<tr>
+<td>Subtraction</td>
+<td><code>-</code></td>
+<td><code>100 - 55</code></td>
+<td><code>45</code></td>
+</tr>
+<tr>
+<td>Multiplication</td>
+<td><code>*</code></td>
+<td><code>4 * 16</code></td>
+<td><code>64</code></td>
+</tr>
+<tr>
+<td>Division</td>
+<td><code>/</code></td>
+<td><code>7 / 2</code></td>
+<td><code>3.5</code></td>
+</tr>
+<tr>
+<td>Integer division</td>
+<td><code>//</code></td>
+<td><code>7 // 2</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td>Modulo</td>
+<td><code>%</code></td>
+<td><code>10 % 3</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>Exponentiation</td>
+<td><code>**</code></td>
+<td><code>2 ** 8</code></td>
+<td><code>256</code></td>
+</tr>
+</tbody>
+</table>
+<p>Try a few of these in the REPL right now. The REPL is the perfect place to test arithmetic before you embed it in a program.</p>
+<hr />
+<h2 id="comparison-operators">Comparison Operators</h2>
+<p><strong>Comparison operators</strong> compare two values and produce a boolean result — either <code>True</code> or <code>False</code>. These are the building blocks of every decision your robot makes: "Is the distance less than 20 cm? Should I stop?"</p>
+<p>Before the table, here is each operator explained in plain language:</p>
+<ul>
+<li><strong>Equal to (<code>==</code>)</strong> — two equal signs. Asks "are these the same?" One equal sign (<code>=</code>) assigns; two equal signs (<code>==</code>) compare.</li>
+<li><strong>Not equal to (<code>!=</code>)</strong> — asks "are these different?"</li>
+<li><strong>Less than (<code>&lt;</code>)</strong> — asks "is the left smaller than the right?"</li>
+<li><strong>Greater than (<code>&gt;</code>)</strong> — asks "is the left bigger than the right?"</li>
+<li><strong>Less than or equal to (<code>&lt;=</code>)</strong> — true if left is smaller than or the same as right.</li>
+<li><strong>Greater than or equal to (<code>&gt;=</code>)</strong> — true if left is bigger than or the same as right.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Symbol</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equal to</td>
+<td><code>==</code></td>
+<td><code>5 == 5</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td>Not equal to</td>
+<td><code>!=</code></td>
+<td><code>5 != 3</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td>Less than</td>
+<td><code>&lt;</code></td>
+<td><code>3 &lt; 10</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td>Greater than</td>
+<td><code>&gt;</code></td>
+<td><code>3 &gt; 10</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td>Less than or equal</td>
+<td><code>&lt;=</code></td>
+<td><code>5 &lt;= 5</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td>Greater than or equal</td>
+<td><code>&gt;=</code></td>
+<td><code>3 &gt;= 10</code></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p>In robot code, you will use comparison operators constantly:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">distance_cm</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="k">if</span> <span class="n">distance_cm</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Obstacle nearby — stop!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Don't mix up = and ==</p>
+<p><img alt="Sparky warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Using one <code>=</code> instead of two <code>==</code> inside an <code>if</code> statement is one of the most common bugs beginners write. <code>distance = 15</code> stores the value 15. <code>distance == 15</code> asks "is distance equal to 15?" If you write <code>if distance = 15:</code>, Python gives you a <code>SyntaxError</code>. Two equal signs for comparison — always.</p>
+</div>
+<hr />
+<h2 id="logical-operators">Logical Operators</h2>
+<p><strong>Logical operators</strong> combine boolean values. They let you build more complex conditions: "Is the distance less than 20 cm AND is the robot moving?" Three logical operators exist in MicroPython:</p>
+<ul>
+<li><strong><code>and</code></strong> — returns <code>True</code> only if <strong>both</strong> sides are <code>True</code>.</li>
+<li><strong><code>or</code></strong> — returns <code>True</code> if <strong>at least one</strong> side is <code>True</code>.</li>
+<li><strong><code>not</code></strong> — flips <code>True</code> to <code>False</code> and <code>False</code> to <code>True</code>.</li>
+</ul>
+<p>Here are examples using robot sensor scenarios:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">obstacle_close</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">robot_moving</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Both must be true to trigger emergency stop</span>
+<span class="k">if</span> <span class="n">obstacle_close</span> <span class="ow">and</span> <span class="n">robot_moving</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Emergency stop!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Logical operators follow a clear priority order. <code>not</code> evaluates first, then <code>and</code>, then <code>or</code>. When in doubt, use parentheses to make the order explicit:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">distance_cm</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">motor_speed</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Too fast, too close — stopping!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Parentheses make the intent clear and prevent bugs from subtle operator order surprises.</p>
+<hr />
+<h2 id="comments-and-code-style">Comments and Code Style</h2>
+<p>Good code is readable. Not just by you today, but by you six months from now, and by your teammates. <strong>Comments</strong> are notes you write in the code for human readers. Python ignores them completely — they have no effect on what the program does.</p>
+<p>Write a comment with the <code>#</code> symbol. Everything after <code>#</code> on that line is a comment:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Set forward motor speed (0–65535 for 16-bit PWM)</span>
+<span class="n">motor_speed</span> <span class="o">=</span> <span class="mi">32768</span>    <span class="c1"># 50% duty cycle</span>
+
+<span class="c1"># Check if obstacle is within stopping distance</span>
+<span class="k">if</span> <span class="n">distance_cm</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>   <span class="c1"># threshold: 20 cm</span>
+    <span class="n">stop_motors</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Good comments explain <em>why</em>, not <em>what</em>. The code shows what is happening. Comments explain the reasoning: why 20 cm? why 32768?</p>
+<p><strong>Code style</strong> is the set of conventions that make code look consistent. In Python, the standard style guide is called PEP 8. The most important rules for this course:</p>
+<ul>
+<li>Variable names use lowercase and underscores: <code>motor_speed</code>, not <code>MotorSpeed</code> or <code>motorspeed</code>.</li>
+<li>Constants (values that never change) use UPPERCASE: <code>MAX_SPEED = 65535</code>.</li>
+<li>Put a single space on each side of operators: <code>x = 5 + 3</code>, not <code>x=5+3</code>.</li>
+<li>Put a blank line between logical sections of a program.</li>
+</ul>
+<p>Here is a complete, well-styled example program that brings together everything in this chapter:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Robot startup program — variables, types, and operators</span>
+<span class="n">robot_name</span> <span class="o">=</span> <span class="s2">&quot;Sparky&quot;</span>       <span class="c1"># string: the robot&#39;s name</span>
+<span class="n">motor_speed</span> <span class="o">=</span> <span class="mi">50</span>            <span class="c1"># int: speed as percentage</span>
+<span class="n">distance_cm</span> <span class="o">=</span> <span class="mf">30.5</span>          <span class="c1"># float: sensor reading in cm</span>
+<span class="n">is_moving</span> <span class="o">=</span> <span class="kc">False</span>           <span class="c1"># bool: motor state flag</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Robot:&quot;</span><span class="p">,</span> <span class="n">robot_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Speed:&quot;</span><span class="p">,</span> <span class="n">motor_speed</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check if path is clear before moving</span>
+<span class="k">if</span> <span class="n">distance_cm</span> <span class="o">&gt;</span> <span class="mf">20.0</span><span class="p">:</span>
+    <span class="n">is_moving</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Path clear — ready to move!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Obstacle detected — staying put.&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Run this in Thonny. Change <code>distance_cm</code> to <code>10.0</code> and re-run. Watch how the output changes. This experiment-driven cycle is how engineers work.</p>
+<hr />
+<h2 id="key-takeaways">Key Takeaways</h2>
+<p>Let's review what you accomplished in this chapter:</p>
+<ul>
+<li>You flashed MicroPython firmware onto the board using BOOTSEL and a UF2 file</li>
+<li>You installed Thonny and configured it to talk to the board over USB</li>
+<li>You used the REPL to run MicroPython code one line at a time</li>
+<li>You saved a <code>main.py</code> file that runs automatically on power-up</li>
+<li>You learned the four core data types: <code>int</code>, <code>float</code>, <code>str</code>, and <code>bool</code></li>
+<li>You practiced arithmetic, comparison, and logical operators</li>
+<li>You wrote comments and applied Python code style</li>
+</ul>
+<p>These building blocks appear in every program in this course. When something looks unfamiliar in a later chapter, come back here.</p>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You just turned a bare circuit board into a Python computer!</p>
+<p><img alt="Sparky celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Double thumbs-up, maker! You flashed firmware, installed an IDE, used the REPL, and wrote real MicroPython programs. That is not a small thing — most people never get this far. The next chapter builds loops, functions, and everything you need to make your robot actually <em>do</em> things. You've got this!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1902,10 +2925,12 @@ and clean code style — the building blocks for every program in the course.</p
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

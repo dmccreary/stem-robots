@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Build the programming structures that make robots behave intelligently — conditionals, loops, functions, exception handling, and timing — the patterns used in every robot program in this course.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -22,15 +22,15 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>4. Control Flow and Functions - STEM Robots</title>
+        <title>Control Flow, Functions, and Exception Handling - STEM Robots</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4. Control Flow and Functions
+              Control Flow, Functions, and Exception Handling
             
           </span>
         </div>
@@ -137,11 +137,13 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -173,13 +175,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -224,7 +227,7 @@
       <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -244,8 +247,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
+    
   </span>
   
 
@@ -264,8 +269,10 @@
       <a href="../../about/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     About This Website
+    
   </span>
   
 
@@ -284,8 +291,10 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Course Description
+    
   </span>
   
 
@@ -304,8 +313,10 @@
       <a href="../../journey-map/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Journey Map
+    
   </span>
   
 
@@ -324,8 +335,10 @@
       <a href="../../robot-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Robot Description
+    
   </span>
   
 
@@ -344,8 +357,10 @@
       <a href="../../gallery/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Gallery
+    
   </span>
   
 
@@ -364,8 +379,10 @@
       <a href="../../great-ways-to-teach/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Great Ways To Teach
+    
   </span>
   
 
@@ -394,6 +411,7 @@
     
     
     
+    
       
         
         
@@ -404,11 +422,14 @@
         
   
   
+  
     <a href="../../course-descriptions/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Course Descriptions
+    
   </span>
   
 
@@ -439,57 +460,32 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
+    
     
     
     
@@ -502,13 +498,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
     Chapters
+    
   </span>
   
 
@@ -540,8 +537,10 @@
       <a href="../01-intro-computational-thinking/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     1. Computational Thinking
+    
   </span>
   
 
@@ -561,8 +560,10 @@
       <a href="../02-hardware-platform-assembly/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     2. Hardware and Assembly
+    
   </span>
   
 
@@ -582,8 +583,10 @@
       <a href="../03-micropython-dev-environment/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     3. MicroPython and Setup
+    
   </span>
   
 
@@ -612,8 +615,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
     4. Control Flow and Functions
+    
   </span>
   
 
@@ -623,8 +628,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
     4. Control Flow and Functions
+    
   </span>
   
 
@@ -672,6 +679,228 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#making-decisions-with-ifelifelse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Making Decisions with if/elif/else
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Making Decisions with if/elif/else">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-elif-and-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding elif and else
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding elif and else">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-collision-avoidance-decision-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Collision Avoidance Decision Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repeating-actions-with-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repeating Actions with Loops
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Repeating Actions with Loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-for-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      The for Loop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-while-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      The while Loop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nested Loops
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organizing-code-with-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organizing Code with Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Organizing Code with Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-a-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining a Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters-and-return-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters and Return Values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-and-local-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scope and Local Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Variables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exception-handling-and-clean-shutdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exception Handling and Clean Shutdown
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exception Handling and Clean Shutdown">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keyboardinterrupt-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      KeyboardInterrupt Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importing Modules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Importing Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#built-in-libraries-youll-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Libraries You'll Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timers-and-delays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timers and Delays
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Timers and Delays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-robot-main-loop-with-timing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Robot Main Loop with Timing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting It All Together
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -691,8 +920,10 @@
       <a href="../05-data-structures-modular-code/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     5. Data Structures and Git
+    
   </span>
   
 
@@ -712,8 +943,10 @@
       <a href="../06-electronics-motors-protocols/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     6. Motors and Protocols
+    
   </span>
   
 
@@ -733,8 +966,10 @@
       <a href="../07-pwm-motor-speed-actuators/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     7. PWM and Actuators
+    
   </span>
   
 
@@ -754,8 +989,10 @@
       <a href="../08-sensors-data-input/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     8. Sensors and Input
+    
   </span>
   
 
@@ -775,8 +1012,10 @@
       <a href="../09-display-systems-output/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     9. Displays and Output
+    
   </span>
   
 
@@ -796,8 +1035,10 @@
       <a href="../10-robot-behaviors-navigation/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     10. Robot Behaviors
+    
   </span>
   
 
@@ -817,8 +1058,10 @@
       <a href="../11-wireless-networking-web-servers/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     11. WiFi and Web Servers
+    
   </span>
   
 
@@ -838,8 +1081,10 @@
       <a href="../12-bluetooth-low-energy/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     12. Bluetooth Low Energy
+    
   </span>
   
 
@@ -859,8 +1104,10 @@
       <a href="../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     13. Swarm and Advanced
+    
   </span>
   
 
@@ -907,6 +1154,7 @@
     
     
     
+    
       
         
         
@@ -915,13 +1163,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graph/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graph
+    
   </span>
   
 
@@ -960,6 +1211,7 @@
     
     
     
+    
       
         
         
@@ -968,13 +1220,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graphs/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graphs
+    
   </span>
   
 
@@ -1017,6 +1272,7 @@
     
     
     
+    
       
         
         
@@ -1027,11 +1283,14 @@
         
   
   
+  
     <a href="../../setup/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Getting Started
+    
   </span>
   
 
@@ -1056,8 +1315,10 @@
       <a href="../../personas/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Personas
+    
   </span>
   
 
@@ -1076,8 +1337,10 @@
       <a href="../../topics/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Topics
+    
   </span>
   
 
@@ -1138,6 +1401,7 @@
     
     
     
+    
       
         
         
@@ -1146,13 +1410,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../lessons/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Lessons
+    
   </span>
   
 
@@ -1187,6 +1454,7 @@
     
     
     
+    
       
         
         
@@ -1195,13 +1463,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructor's Guide
+    
   </span>
   
 
@@ -1230,25 +1501,58 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
     
@@ -1260,13 +1564,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     MicroSims
+    
   </span>
   
 
@@ -1301,6 +1608,7 @@
     
     
     
+    
       
         
         
@@ -1309,13 +1617,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../kits/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Kits
+    
   </span>
   
 
@@ -1354,6 +1665,7 @@
     
     
     
+    
       
         
         
@@ -1364,11 +1676,14 @@
         
   
   
+  
     <a href="../../kits/wifi-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Wireless Bot
+    
   </span>
   
 
@@ -1393,8 +1708,10 @@
       <a href="../../kits/bump-switch/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Bump Switches
+    
   </span>
   
 
@@ -1413,8 +1730,10 @@
       <a href="../../kits/line-follower/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Line Follower
+    
   </span>
   
 
@@ -1433,8 +1752,10 @@
       <a href="../../kits/adjust/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Adjustabot
+    
   </span>
   
 
@@ -1453,8 +1774,10 @@
       <a href="../../kits/ultrasonic/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Ultrasonic
+    
   </span>
   
 
@@ -1481,6 +1804,7 @@
     
     
     
+    
       
         
         
@@ -1491,11 +1815,14 @@
         
   
   
+  
     <a href="../../kits/wifi-display-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     WiFi Display Bot
+    
   </span>
   
 
@@ -1530,6 +1857,7 @@
     
     
     
+    
       
         
         
@@ -1540,11 +1868,14 @@
         
   
   
+  
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructors Guide
+    
   </span>
   
 
@@ -1569,8 +1900,10 @@
       <a href="../../faq/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     FAQ
+    
   </span>
   
 
@@ -1589,8 +1922,10 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Glossary
+    
   </span>
   
 
@@ -1609,8 +1944,10 @@
       <a href="../../references/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     References
+    
   </span>
   
 
@@ -1629,8 +1966,10 @@
       <a href="../../license/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     License
+    
   </span>
   
 
@@ -1649,8 +1988,10 @@
       <a href="../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Contact
+    
   </span>
   
 
@@ -1669,8 +2010,10 @@
       <a href="../../prompts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     STEM Robotics Prompts
+    
   </span>
   
 
@@ -1689,8 +2032,10 @@
       <a href="../../sims/template/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     MicroSim Template
+    
   </span>
   
 
@@ -1752,6 +2097,228 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#making-decisions-with-ifelifelse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Making Decisions with if/elif/else
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Making Decisions with if/elif/else">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-elif-and-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding elif and else
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding elif and else">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-collision-avoidance-decision-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Collision Avoidance Decision Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repeating-actions-with-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repeating Actions with Loops
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Repeating Actions with Loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-for-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      The for Loop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-while-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      The while Loop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nested Loops
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organizing-code-with-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organizing Code with Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Organizing Code with Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-a-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining a Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters-and-return-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters and Return Values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-and-local-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scope and Local Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Variables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exception-handling-and-clean-shutdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exception Handling and Clean Shutdown
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exception Handling and Clean Shutdown">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keyboardinterrupt-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      KeyboardInterrupt Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importing Modules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Importing Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#built-in-libraries-youll-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Libraries You'll Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timers-and-delays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timers and Delays
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Timers and Delays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-robot-main-loop-with-timing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Robot Main Loop with Timing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting It All Together
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1766,11 +2333,17 @@
                 
                   
 
+
   
   
 
 
 <h1 id="control-flow-functions-and-exception-handling">Control Flow, Functions, and Exception Handling</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome, maker — let's give your robot a brain!</p>
+<p><img alt="Sparky waving" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+In Chapter 3 you learned to store values in variables. Now we teach your robot to <em>make decisions</em> and <em>repeat actions</em>. By the end of this chapter, your robot will respond differently depending on what its sensors detect. That's the real magic of programming.</p>
+</div>
 <h2 id="summary">Summary</h2>
 <p>This chapter builds the programming structures that make robots behave intelligently.
 Students learn to write conditional logic with if/elif/else, repeat actions with for
@@ -1805,13 +2378,487 @@ that follows.</p>
 <li><a href="../03-micropython-dev-environment/">Chapter 3: MicroPython and Development Environment Setup</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<h2 id="making-decisions-with-ifelifelse">Making Decisions with if/elif/else</h2>
+<p>Every robot needs to make decisions. "Is there an obstacle ahead? Should I turn left or right? Is the battery low?" In MicroPython, we express decisions using <strong>if statements</strong>.</p>
+<p>An <strong>if statement</strong> runs a block of code only when a condition is <code>True</code>. The condition is any expression that evaluates to <code>True</code> or <code>False</code> — exactly the boolean comparisons you learned in Chapter 3.</p>
+<p>Here is the simplest form. The condition <code>distance_cm &lt; 20</code> is either <code>True</code> or <code>False</code>. If it is <code>True</code>, the indented block runs. If it is <code>False</code>, nothing happens.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">distance_cm</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="k">if</span> <span class="n">distance_cm</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Obstacle detected!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stopping motors.&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Notice the colon after the condition and the four-space indent on the block. Both are required. Leave out the colon and Python gives you a <code>SyntaxError</code>. Remove the indent and the print statement no longer belongs to the if block.</p>
+<h3 id="adding-elif-and-else">Adding elif and else</h3>
+<p>An <strong>elif clause</strong> (short for "else if") checks a second condition only when the first one is <code>False</code>. An <strong>else clause</strong> runs when none of the above conditions are <code>True</code>. Together, they let you describe multiple outcomes:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">distance_cm</span> <span class="o">=</span> <span class="mi">35</span>
+
+<span class="k">if</span> <span class="n">distance_cm</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Too close — stop!&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">distance_cm</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Getting close — slow down.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Path clear — full speed ahead!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Python checks conditions from top to bottom. The moment one is <code>True</code>, it runs that block and skips the rest. Only one branch ever runs.</p>
+<p>The table below shows how distance ranges map to robot responses:</p>
+<table>
+<thead>
+<tr>
+<th>Distance</th>
+<th>Condition</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Less than 20 cm</td>
+<td><code>distance_cm &lt; 20</code></td>
+<td>Stop motors</td>
+</tr>
+<tr>
+<td>20–50 cm</td>
+<td><code>distance_cm &lt; 50</code></td>
+<td>Slow down</td>
+</tr>
+<tr>
+<td>50 cm and above</td>
+<td>else</td>
+<td>Full speed</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagram-collision-avoidance-decision-flow">Diagram: Collision Avoidance Decision Flow</h4>
+<iframe src="../../sims/collision-decision-flow/main.html" width="100%" height="960px" scrolling="no"></iframe>
+<p><a href="../../sims/collision-decision-flow/main.html">Run Collision Avoidance Decision Flow Fullscreen</a></p>
+<details>
+<summary>Interactive flowchart of the if/elif/else distance decision</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> collision-decision-flow<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a Mermaid flowchart (graph TD) showing:
+- Start node: "Read distance sensor"
+- Diamond: "distance_cm &lt; 20?" — Yes branch leads to "Stop motors" box, No branch continues
+- Diamond: "distance_cm &lt; 50?" — Yes branch leads to "Slow down" box, No branch continues
+- Final box: "Full speed ahead"
+- All terminal boxes have arrows back to "Read distance sensor" (loop)</p>
+<p>Every decision diamond and action box has a click directive that opens an infobox explaining what that step does in plain language.</p>
+<p>Canvas: 500 × 450 px. Responsive on window resize.</p>
+</details>
+<hr />
+<h2 id="repeating-actions-with-loops">Repeating Actions with Loops</h2>
+<p>Robots don't act once and stop. They run the same actions over and over — check the sensor, adjust the motors, check the sensor again. <strong>Loops</strong> make this possible.</p>
+<h3 id="the-for-loop">The for Loop</h3>
+<p>A <strong>for loop</strong> repeats a block of code a fixed number of times, or once for each item in a sequence. Before the code example, here is what the key piece does: <code>range(5)</code> produces the sequence <code>[0, 1, 2, 3, 4]</code> — five values starting at 0. The loop variable <code>i</code> takes each value in turn.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Blink number:&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This prints five lines, counting from 0 to 4. You can also loop over a list:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setting LED to:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Use <code>for</code> loops when you know exactly how many repetitions you need.</p>
+<h3 id="the-while-loop">The while Loop</h3>
+<p>A <strong>while loop</strong> repeats as long as a condition is <code>True</code>. It is perfect when you don't know in advance how many times to repeat — like running the collision-avoidance check forever, or waiting until the sensor reads below a threshold.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Run forever until the program is stopped</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Checking sensors...&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><code>while True</code> runs forever. This is the standard way to write the main loop of a robot program. We stop it by pressing Ctrl+C in Thonny, which we handle in the exception section below.</p>
+<p>You can also use a condition that eventually becomes <code>False</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">distance_cm</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">while</span> <span class="n">distance_cm</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moving forward. Distance:&quot;</span><span class="p">,</span> <span class="n">distance_cm</span><span class="p">)</span>
+    <span class="n">distance_cm</span> <span class="o">-=</span> <span class="mi">5</span>    <span class="c1"># simulate getting closer to a wall</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Think about infinite loops</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+<code>while True</code> sounds dangerous — won't it run forever? Yes, that's the point! A robot's main program <em>should</em> run until you decide to stop it. The key is having clean shutdown code inside a <code>try/except</code> block, which we'll write in a few minutes.</p>
+</div>
+<h3 id="nested-loops">Nested Loops</h3>
+<p>A <strong>nested loop</strong> is a loop inside another loop. The inner loop runs completely for each single step of the outer loop. We use nested loops for things like NeoPixel animations where we repeat a color pattern many times.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Blink 3 different colors, 4 times each</span>
+<span class="k">for</span> <span class="n">color_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">blink</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Color&quot;</span><span class="p">,</span> <span class="n">color_index</span><span class="p">,</span> <span class="s2">&quot;blink&quot;</span><span class="p">,</span> <span class="n">blink</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The outer loop runs 3 times (colors 0, 1, 2). For each outer step, the inner loop runs 4 times. Total iterations: 3 × 4 = 12.</p>
+<p>Be careful with nested loops: adding one nesting level multiplies the total iterations. A triple-nested loop over <code>range(100)</code> would run a million times — likely too slow for a real-time robot control loop.</p>
+<hr />
+<h2 id="organizing-code-with-functions">Organizing Code with Functions</h2>
+<p>As programs grow, repeating the same lines in multiple places becomes a problem. If you want to change how the robot stops, you'd need to find every stop in the code and update each one. <strong>Functions</strong> solve this by giving a name to a block of code. Write it once, use it anywhere.</p>
+<h3 id="defining-a-function">Defining a Function</h3>
+<p>The keyword <code>def</code> defines a function. Give it a name, a pair of parentheses, and a colon. Indent the body.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">stop_motors</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Motors stopped.&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Now <code>stop_motors()</code> can be called anywhere in your program. The function body runs each time it is called.</p>
+<h3 id="parameters-and-return-values">Parameters and Return Values</h3>
+<p>Functions become much more powerful with <strong>parameters</strong> — inputs that the function receives when it is called. A <strong>return value</strong> is the output the function sends back. Before the code, here is the idea: <code>move_forward</code> needs to know the speed (a number 0–100) and how long to move (in seconds). It uses those inputs and prints what it would do.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">move_forward</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moving at speed&quot;</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="s2">&quot;for&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="s2">&quot;seconds.&quot;</span><span class="p">)</span>
+    <span class="c1"># Motor control code goes here in Chapter 7</span>
+
+<span class="n">move_forward</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>     <span class="c1"># speed=75, duration=2 seconds</span>
+<span class="n">move_forward</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>   <span class="c1"># speed=50, duration=0.5 seconds</span>
+</code></pre></div></td></tr></table></div>
+<p>A <strong>return value</strong> sends data back to the caller. This is useful for sensor-reading functions that compute a result. The <code>return</code> statement ends the function immediately and sends a value back.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">apply_scale</span><span class="p">(</span><span class="n">raw_value</span><span class="p">):</span>
+    <span class="n">distance_cm</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">*</span> <span class="mf">0.092</span>   <span class="c1"># scale factor converts raw to cm</span>
+    <span class="k">return</span> <span class="n">distance_cm</span>
+
+<span class="n">dist</span> <span class="o">=</span> <span class="n">apply_scale</span><span class="p">(</span><span class="mi">1500</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distance:&quot;</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="s2">&quot;cm&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Functions are your robot's vocabulary</p>
+<p><img alt="Sparky pointing up" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Name your functions like actions: <code>move_forward()</code>, <code>stop_motors()</code>, <code>read_distance()</code>, <code>play_tone()</code>. When your main loop reads like plain English — "move forward, check distance, if close then stop" — your code is at the right level of abstraction. That's the decomposition pillar of computational thinking in action.</p>
+</div>
+<h3 id="scope-and-local-variables">Scope and Local Variables</h3>
+<p><strong>Scope</strong> determines where a variable can be seen and used. A variable created inside a function is a <strong>local variable</strong> — it only exists inside that function. When the function ends, the variable disappears.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">compute_speed</span><span class="p">(</span><span class="n">raw_value</span><span class="p">):</span>
+    <span class="n">scaled</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">*</span> <span class="mf">0.5</span>    <span class="c1"># local variable — only lives here</span>
+    <span class="k">return</span> <span class="n">scaled</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">compute_speed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># print(scaled)    # NameError — scaled is gone after function ends</span>
+</code></pre></div></td></tr></table></div>
+<p>Local variables prevent naming conflicts. Two different functions can both have a local variable called <code>speed</code> without interfering with each other.</p>
+<h3 id="global-variables">Global Variables</h3>
+<p>Sometimes you need a variable that every function can see and change. A <strong>global variable</strong> is defined outside all functions. To modify it inside a function, you must declare it with the <code>global</code> keyword.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">is_moving</span> <span class="o">=</span> <span class="kc">False</span>    <span class="c1"># global variable</span>
+
+<span class="k">def</span> <span class="nf">start_motors</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">is_moving</span>    <span class="c1"># tell Python we want the global one</span>
+    <span class="n">is_moving</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Motors on. is_moving =&quot;</span><span class="p">,</span> <span class="n">is_moving</span><span class="p">)</span>
+
+<span class="n">start_motors</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After call:&quot;</span><span class="p">,</span> <span class="n">is_moving</span><span class="p">)</span>    <span class="c1"># True</span>
+</code></pre></div></td></tr></table></div>
+<p>Without <code>global</code>, Python would create a new local <code>is_moving</code> inside <code>start_motors()</code> instead of changing the global one. Always use <code>global</code> when a function needs to modify a global variable.</p>
+<p>In robot programs, global variables are common for state flags: <code>is_moving</code>, <code>obstacle_detected</code>, <code>current_speed</code>. Keep the list short — too many globals make code hard to follow.</p>
+<hr />
+<h2 id="exception-handling-and-clean-shutdown">Exception Handling and Clean Shutdown</h2>
+<p>Things go wrong. A sensor gives a bad reading. A motor stalls. The user presses Ctrl+C to stop the program. If your code doesn't handle these situations, the robot might freeze with the motors still running.</p>
+<p><strong>Exception handling</strong> lets you catch these problems and respond safely. An <strong>exception</strong> is an error that occurs while the program runs. Python reports it and normally stops the program. Before the code, here is the structure: the <code>try</code> block runs your normal code. If something goes wrong, Python jumps to the matching <code>except</code> block. The <code>finally</code> block runs no matter what — even if there was an error. This is where we put motor-shutdown code.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting main loop...&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running...&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ctrl+C pressed — shutting down.&quot;</span><span class="p">)</span>
+
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cleanup: stopping motors.&quot;</span><span class="p">)</span>
+    <span class="c1"># Motor stop code goes here in Chapter 7</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="keyboardinterrupt-handling">KeyboardInterrupt Handling</h3>
+<p><strong>KeyboardInterrupt</strong> is the specific exception Python raises when you press Ctrl+C. In Thonny, pressing the Stop button sends this signal. Catching it lets you run cleanup code before the program exits.</p>
+<p>Without this pattern, pressing Stop might leave your motors running. With it, <code>finally</code> always runs the cleanup — guaranteed.</p>
+<p>The full pattern for every robot main loop looks like this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Robot started. Press Ctrl+C to stop.&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Main robot logic goes here</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stopping.&quot;</span><span class="p">)</span>
+
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Motors off. Goodbye!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Memorize this pattern. Every robot program you write in this course uses it.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Always write the finally block</p>
+<p><img alt="Sparky warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Forgetting the <code>finally</code> block means your motors could keep running after your program crashes or stops. A robot spinning with no code running can damage the wheels or battery connector. Always shut down hardware in <code>finally</code> — it runs even when the program exits with an error.</p>
+</div>
+<hr />
+<h2 id="importing-modules">Importing Modules</h2>
+<p>MicroPython comes with many built-in tools called <strong>modules</strong>. A <strong>module</strong> is a file of ready-made functions and objects. Before you can use a module's features, you must <strong>import</strong> it.</p>
+<p>Two import styles exist. The first imports the whole module:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># call sleep() from the time module</span>
+</code></pre></div></td></tr></table></div>
+<p>The second imports only what you need:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>        <span class="c1"># shorter — no module prefix needed</span>
+</code></pre></div></td></tr></table></div>
+<p>The second style is more common in short robot programs because it makes code less verbose.</p>
+<h3 id="built-in-libraries-youll-use">Built-in Libraries You'll Use</h3>
+<p>MicroPython includes several <strong>built-in libraries</strong> — pre-installed modules that work without any extra download. The table below lists the ones you will use most often in this course.</p>
+<p>Before the table, here is a brief explanation of each: <code>machine</code> controls GPIO pins, PWM, and I2C directly. <code>time</code> gives you delays and timestamps. <code>neopixel</code> drives RGB LED strips. <code>network</code> handles WiFi on the Pico W. <code>bluetooth</code> enables BLE communication.</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>What it provides</th>
+<th>First chapter used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>machine</code></td>
+<td>GPIO pins, PWM, I2C, SPI</td>
+<td>Chapter 7</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><code>sleep()</code>, <code>ticks_ms()</code></td>
+<td>This chapter</td>
+</tr>
+<tr>
+<td><code>neopixel</code></td>
+<td>NeoPixel LED control</td>
+<td>Chapter 9</td>
+</tr>
+<tr>
+<td><code>network</code></td>
+<td>WiFi connection on Pico W</td>
+<td>Chapter 11</td>
+</tr>
+<tr>
+<td><code>bluetooth</code></td>
+<td>BLE advertising and scanning</td>
+<td>Chapter 12</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="timers-and-delays">Timers and Delays</h2>
+<p>Robot programs often need to wait. Wait 2 seconds after startup. Wait 100 milliseconds between sensor readings. Wait half a second while the motor runs. The <code>sleep()</code> function creates these pauses.</p>
+<p><code>sleep(seconds)</code> pauses the program for the given number of seconds. You can use a float for sub-second delays:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>        <span class="c1"># pause for 2 seconds</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>      <span class="c1"># pause for 500 milliseconds</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>      <span class="c1"># pause for 100 ms (a common sensor poll rate)</span>
+</code></pre></div></td></tr></table></div>
+<p>For timing that does not pause the program — useful for checking "has 500 ms passed since the last reading?" — use <code>ticks_ms()</code> and <code>ticks_diff()</code>. <code>ticks_ms()</code> returns milliseconds since the board booted. <code>ticks_diff()</code> subtracts two tick values correctly even when the counter wraps around.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
+<span class="c1"># ... do some work here ...</span>
+<span class="n">elapsed</span> <span class="o">=</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">ticks_ms</span><span class="p">(),</span> <span class="n">start</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elapsed:&quot;</span><span class="p">,</span> <span class="n">elapsed</span><span class="p">,</span> <span class="s2">&quot;ms&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Always use <code>ticks_diff()</code> instead of plain subtraction when measuring time. Plain subtraction fails when the counter wraps around after about 12 days of uptime.</p>
+<h4 id="diagram-robot-main-loop-with-timing">Diagram: Robot Main Loop with Timing</h4>
+<iframe src="../../sims/robot-main-loop-timing/main.html" width="100%" height="402px" scrolling="no"></iframe>
+<p><a href="../../sims/robot-main-loop-timing/main.html">Run Robot Main Loop with Timing Fullscreen</a></p>
+<details>
+<summary>Interactive MicroSim showing the main loop timing pattern</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> robot-main-loop-timing<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a p5.js MicroSim with a 700 × 400 canvas. Show a timeline animation of the robot's main loop:</p>
+<ul>
+<li>A horizontal "time" axis runs left to right.</li>
+<li>Each loop iteration is shown as a stacked block. Inside the block, colored segments represent: "Read sensor" (blue, ~5ms), "Make decision" (orange, ~1ms), "Move motor" (green, ~2ms), "Sleep 100ms" (gray, ~100ms).</li>
+<li>An animated "NOW" cursor moves along the timeline in real time.</li>
+<li>A "Speed" toggle button cycles through 1×, 5×, 10× animation speed.</li>
+<li>A "Loop #" counter in the top right increments each iteration.</li>
+<li>Hovering each segment type shows a tooltip with the MicroPython function name and approximate duration.</li>
+</ul>
+<p>Learning objective (Bloom's Taxonomy — Understanding): students grasp that each loop iteration has distinct phases, and that sleep() determines the polling rate.</p>
+<p>Responsive: redraw on window resize. Canvas min-width: 400px.</p>
+</details>
+<hr />
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+<p>Let's write a complete program that uses every concept in this chapter. This is the skeleton of every robot program you will write in the course.</p>
+<p>Before the code, here is what each section does: we define helper functions (<code>check_obstacle</code> and <code>respond</code>) that we can call from the main loop. The main loop runs forever inside <code>try</code>, reading a sensor and calling those functions. The <code>except</code> block catches Ctrl+C. The <code>finally</code> block shuts down hardware.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="c1"># Global state</span>
+<span class="n">is_running</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Functions</span>
+<span class="k">def</span> <span class="nf">check_obstacle</span><span class="p">(</span><span class="n">distance</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;stop&quot;</span>
+    <span class="k">elif</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;slow&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;go&quot;</span>
+
+<span class="k">def</span> <span class="nf">respond</span><span class="p">(</span><span class="n">action</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;stop&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stopping!&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;slow&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slowing down.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moving forward.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Main program</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Robot starting...&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">distance_cm</span> <span class="o">=</span> <span class="mi">30</span>    <span class="c1"># real code reads from sensor in Chapter 8</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">check_obstacle</span><span class="p">(</span><span class="n">distance_cm</span><span class="p">)</span>
+        <span class="n">respond</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ctrl+C received.&quot;</span><span class="p">)</span>
+
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Motors off. Program ended.&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Run this in Thonny. Change <code>distance_cm</code> to <code>15</code> and re-run. Change it to <code>45</code>. Watch how the output changes. You now have a working decision-making loop.</p>
+<hr />
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>if/elif/else</strong> lets the robot make decisions based on sensor data</li>
+<li><strong>for loops</strong> repeat a fixed number of times; <strong>while loops</strong> repeat while a condition is True</li>
+<li><strong>Functions</strong> organize code into named, reusable blocks with parameters and return values</li>
+<li><strong>Local variables</strong> live inside functions; <strong>global variables</strong> are shared across the whole program</li>
+<li><strong>try/except/finally</strong> catches errors and guarantees cleanup code runs</li>
+<li><strong>KeyboardInterrupt</strong> is how you stop a robot program with Ctrl+C</li>
+<li><strong>import</strong> loads built-in modules like <code>time</code>, <code>machine</code>, and <code>neopixel</code></li>
+<li><strong>sleep()</strong> pauses the program; <strong>ticks_ms()</strong> measures elapsed time without pausing</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Your robot now has a brain!</p>
+<p><img alt="Sparky celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Double thumbs-up, engineer! You now know how to write programs that make decisions, repeat actions, organize code into functions, and shut down safely. These patterns appear in every robot program in this course. The next chapter adds data structures and the tools to write clean, modular code across multiple files. You're building momentum!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1899,10 +2946,12 @@ that follows.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Bridge electronics theory and robot motion — learn how transistors, H-bridges, and motor driver ICs control DC motors, explore power management, analog/digital signals, and establish the I2C and SPI buses used by every sensor and display in the course.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -22,15 +22,15 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>6. Motors and Protocols - STEM Robots</title>
+        <title>Electronics, DC Motors, and Communication Protocols - STEM Robots</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6. Motors and Protocols
+              Electronics, DC Motors, and Communication Protocols
             
           </span>
         </div>
@@ -137,11 +137,13 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -173,13 +175,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -224,7 +227,7 @@
       <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -244,8 +247,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
+    
   </span>
   
 
@@ -264,8 +269,10 @@
       <a href="../../about/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     About This Website
+    
   </span>
   
 
@@ -284,8 +291,10 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Course Description
+    
   </span>
   
 
@@ -304,8 +313,10 @@
       <a href="../../journey-map/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Journey Map
+    
   </span>
   
 
@@ -324,8 +335,10 @@
       <a href="../../robot-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Robot Description
+    
   </span>
   
 
@@ -344,8 +357,10 @@
       <a href="../../gallery/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Gallery
+    
   </span>
   
 
@@ -364,8 +379,10 @@
       <a href="../../great-ways-to-teach/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Great Ways To Teach
+    
   </span>
   
 
@@ -394,6 +411,7 @@
     
     
     
+    
       
         
         
@@ -404,11 +422,14 @@
         
   
   
+  
     <a href="../../course-descriptions/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Course Descriptions
+    
   </span>
   
 
@@ -439,57 +460,32 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
+    
     
     
     
@@ -502,13 +498,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
     Chapters
+    
   </span>
   
 
@@ -540,8 +537,10 @@
       <a href="../01-intro-computational-thinking/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     1. Computational Thinking
+    
   </span>
   
 
@@ -561,8 +560,10 @@
       <a href="../02-hardware-platform-assembly/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     2. Hardware and Assembly
+    
   </span>
   
 
@@ -582,8 +583,10 @@
       <a href="../03-micropython-dev-environment/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     3. MicroPython and Setup
+    
   </span>
   
 
@@ -603,8 +606,10 @@
       <a href="../04-control-flow-functions/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     4. Control Flow and Functions
+    
   </span>
   
 
@@ -624,8 +629,10 @@
       <a href="../05-data-structures-modular-code/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     5. Data Structures and Git
+    
   </span>
   
 
@@ -654,8 +661,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
     6. Motors and Protocols
+    
   </span>
   
 
@@ -665,8 +674,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
     6. Motors and Protocols
+    
   </span>
   
 
@@ -714,6 +725,222 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#transistors-the-electronic-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transistors — The Electronic Switch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Power Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#battery-pack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Battery Pack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lipo-battery" class="md-nav__link">
+    <span class="md-ellipsis">
+      LiPo Battery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analog-vs-digital-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analog vs. Digital Signals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analog vs. Digital Signals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-analog-vs-digital-signal-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Analog vs Digital Signal Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dc-motors-and-direction-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      DC Motors and Direction Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DC Motors and Direction Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#motor-terminals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor Terminals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motor-forward-reverse-and-stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor Forward, Reverse, and Stop
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-h-bridge-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      The H-Bridge Circuit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The H-Bridge Circuit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#h-bridge-switch-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      H-Bridge Switch States
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-dpdt-switch-as-an-analogy" class="md-nav__link">
+    <span class="md-ellipsis">
+      A DPDT Switch as an Analogy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A DPDT Switch as an Analogy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-h-bridge-switch-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: H-Bridge Switch States
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motor-driver-ic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor Driver IC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-bus-a-two-wire-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C Bus — A Two-Wire Network
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I2C Bus — A Two-Wire Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i2c-addresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C Addresses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c-sda-and-scl-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C SDA and SCL Pins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c-frequency-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C Frequency Config
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spi-bus-high-speed-serial" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPI Bus — High-Speed Serial
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -733,8 +960,10 @@
       <a href="../07-pwm-motor-speed-actuators/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     7. PWM and Actuators
+    
   </span>
   
 
@@ -754,8 +983,10 @@
       <a href="../08-sensors-data-input/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     8. Sensors and Input
+    
   </span>
   
 
@@ -775,8 +1006,10 @@
       <a href="../09-display-systems-output/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     9. Displays and Output
+    
   </span>
   
 
@@ -796,8 +1029,10 @@
       <a href="../10-robot-behaviors-navigation/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     10. Robot Behaviors
+    
   </span>
   
 
@@ -817,8 +1052,10 @@
       <a href="../11-wireless-networking-web-servers/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     11. WiFi and Web Servers
+    
   </span>
   
 
@@ -838,8 +1075,10 @@
       <a href="../12-bluetooth-low-energy/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     12. Bluetooth Low Energy
+    
   </span>
   
 
@@ -859,8 +1098,10 @@
       <a href="../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     13. Swarm and Advanced
+    
   </span>
   
 
@@ -907,6 +1148,7 @@
     
     
     
+    
       
         
         
@@ -915,13 +1157,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graph/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graph
+    
   </span>
   
 
@@ -960,6 +1205,7 @@
     
     
     
+    
       
         
         
@@ -968,13 +1214,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graphs/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graphs
+    
   </span>
   
 
@@ -1017,6 +1266,7 @@
     
     
     
+    
       
         
         
@@ -1027,11 +1277,14 @@
         
   
   
+  
     <a href="../../setup/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Getting Started
+    
   </span>
   
 
@@ -1056,8 +1309,10 @@
       <a href="../../personas/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Personas
+    
   </span>
   
 
@@ -1076,8 +1331,10 @@
       <a href="../../topics/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Topics
+    
   </span>
   
 
@@ -1138,6 +1395,7 @@
     
     
     
+    
       
         
         
@@ -1146,13 +1404,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../lessons/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Lessons
+    
   </span>
   
 
@@ -1187,6 +1448,7 @@
     
     
     
+    
       
         
         
@@ -1195,13 +1457,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructor's Guide
+    
   </span>
   
 
@@ -1230,25 +1495,58 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
     
@@ -1260,13 +1558,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     MicroSims
+    
   </span>
   
 
@@ -1301,6 +1602,7 @@
     
     
     
+    
       
         
         
@@ -1309,13 +1611,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../kits/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Kits
+    
   </span>
   
 
@@ -1354,6 +1659,7 @@
     
     
     
+    
       
         
         
@@ -1364,11 +1670,14 @@
         
   
   
+  
     <a href="../../kits/wifi-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Wireless Bot
+    
   </span>
   
 
@@ -1393,8 +1702,10 @@
       <a href="../../kits/bump-switch/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Bump Switches
+    
   </span>
   
 
@@ -1413,8 +1724,10 @@
       <a href="../../kits/line-follower/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Line Follower
+    
   </span>
   
 
@@ -1433,8 +1746,10 @@
       <a href="../../kits/adjust/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Adjustabot
+    
   </span>
   
 
@@ -1453,8 +1768,10 @@
       <a href="../../kits/ultrasonic/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Ultrasonic
+    
   </span>
   
 
@@ -1481,6 +1798,7 @@
     
     
     
+    
       
         
         
@@ -1491,11 +1809,14 @@
         
   
   
+  
     <a href="../../kits/wifi-display-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     WiFi Display Bot
+    
   </span>
   
 
@@ -1530,6 +1851,7 @@
     
     
     
+    
       
         
         
@@ -1540,11 +1862,14 @@
         
   
   
+  
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructors Guide
+    
   </span>
   
 
@@ -1569,8 +1894,10 @@
       <a href="../../faq/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     FAQ
+    
   </span>
   
 
@@ -1589,8 +1916,10 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Glossary
+    
   </span>
   
 
@@ -1609,8 +1938,10 @@
       <a href="../../references/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     References
+    
   </span>
   
 
@@ -1629,8 +1960,10 @@
       <a href="../../license/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     License
+    
   </span>
   
 
@@ -1649,8 +1982,10 @@
       <a href="../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Contact
+    
   </span>
   
 
@@ -1669,8 +2004,10 @@
       <a href="../../prompts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     STEM Robotics Prompts
+    
   </span>
   
 
@@ -1689,8 +2026,10 @@
       <a href="../../sims/template/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     MicroSim Template
+    
   </span>
   
 
@@ -1752,6 +2091,222 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#transistors-the-electronic-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transistors — The Electronic Switch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Power Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#battery-pack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Battery Pack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lipo-battery" class="md-nav__link">
+    <span class="md-ellipsis">
+      LiPo Battery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analog-vs-digital-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analog vs. Digital Signals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analog vs. Digital Signals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-analog-vs-digital-signal-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Analog vs Digital Signal Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dc-motors-and-direction-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      DC Motors and Direction Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DC Motors and Direction Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#motor-terminals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor Terminals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motor-forward-reverse-and-stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor Forward, Reverse, and Stop
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-h-bridge-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      The H-Bridge Circuit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The H-Bridge Circuit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#h-bridge-switch-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      H-Bridge Switch States
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-dpdt-switch-as-an-analogy" class="md-nav__link">
+    <span class="md-ellipsis">
+      A DPDT Switch as an Analogy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A DPDT Switch as an Analogy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-h-bridge-switch-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: H-Bridge Switch States
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motor-driver-ic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor Driver IC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-bus-a-two-wire-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C Bus — A Two-Wire Network
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I2C Bus — A Two-Wire Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i2c-addresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C Addresses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c-sda-and-scl-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C SDA and SCL Pins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c-frequency-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C Frequency Config
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spi-bus-high-speed-serial" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPI Bus — High-Speed Serial
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1766,11 +2321,17 @@
                 
                   
 
+
   
   
 
 
 <h1 id="electronics-dc-motors-and-communication-protocols">Electronics, DC Motors, and Communication Protocols</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome, maker — let's electrify things!</p>
+<p><img alt="Sparky waving" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+This is the chapter where software meets hardware for real. We'll learn why motors spin, how to flip their direction, and how the microcontroller talks to every sensor and display on the robot. The electronics ideas here power everything from Chapter 7 onward.</p>
+</div>
 <h2 id="summary">Summary</h2>
 <p>This chapter bridges electronics theory and robot motion. Students learn how
 transistors enable H-bridge circuits to reverse DC motor direction, explore power
@@ -1810,13 +2371,319 @@ all subsequent chapters.</p>
 <li><a href="../04-control-flow-functions/">Chapter 4: Control Flow, Functions, and Exception Handling</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<h2 id="transistors-the-electronic-switch">Transistors — The Electronic Switch</h2>
+<p>A <strong>transistor</strong> is a tiny electronic switch. Unlike a physical light switch that you flip with your finger, a transistor is switched by electricity. A small electrical signal at one terminal controls whether a much larger current flows through the other two terminals.</p>
+<p>Transistors are the foundation of modern electronics. The RP2040 chip inside your robot contains hundreds of millions of them. For our purposes, the most important use is simple: a GPIO pin on the microcontroller outputs a tiny signal, and that signal switches a transistor on or off. The transistor then controls a much larger current — enough to run a motor.</p>
+<p>Without transistors, microcontrollers couldn't drive motors at all. A GPIO pin can only supply about 12 milliamps. A DC motor needs hundreds of milliamps. The transistor bridges that gap by acting as an amplifier: small signal in, large current out.</p>
+<p>There are two main families of transistors: <strong>BJTs</strong> (bipolar junction transistors) and <strong>MOSFETs</strong> (metal-oxide-semiconductor field-effect transistors). The motor driver IC on the Cytron board uses MOSFETs internally because they are more efficient at higher currents and faster switching. You don't need to design transistor circuits yourself — the motor driver handles all of that — but knowing the principle explains why the circuit works.</p>
+<hr />
+<h2 id="power-management">Power Management</h2>
+<p>Before we discuss motors, let's understand where the power comes from.</p>
+<h3 id="battery-pack">Battery Pack</h3>
+<p>Your robot runs on a <strong>battery pack</strong> — a holder for AA or AAA batteries. AA alkaline batteries deliver about 1.5 V each. With four in series (connected end-to-end), you get 6 V total. This powers the motors and charges the onboard voltage regulator that supplies 3.3 V to the microcontroller and logic circuits.</p>
+<p>The Cytron Maker Pi RP2040 can accept power from both the battery pack and the USB cable simultaneously. When both are connected, the board automatically selects the right source. When only the battery is connected, your robot runs fully standalone — no laptop required.</p>
+<h3 id="lipo-battery">LiPo Battery</h3>
+<p>A <strong>LiPo battery</strong> (Lithium Polymer) is a rechargeable alternative to AA cells. LiPo cells deliver 3.7 V each, and a two-cell (2S) pack delivers 7.4 V — enough to power the robot for longer than AA batteries.</p>
+<p>LiPo batteries require careful handling. <strong>Power management</strong> with LiPo cells means never discharging below about 3.0 V per cell — deep discharge damages them permanently. Many robot kits include a low-battery indicator LED for this reason. If you use a LiPo, always disconnect it when storing the robot for more than a few days.</p>
+<p>The table below compares the two power options:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>AA Battery Pack (4×)</th>
+<th>LiPo 2S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Voltage</td>
+<td>6.0 V (nominal)</td>
+<td>7.4 V (nominal)</td>
+</tr>
+<tr>
+<td>Capacity</td>
+<td>~2000 mAh (alkaline)</td>
+<td>1000–2000 mAh typical</td>
+</tr>
+<tr>
+<td>Rechargeable</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Safety</td>
+<td>Low risk</td>
+<td>Must avoid overcharge/deep discharge</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Low per use</td>
+<td>Higher upfront, lower long-term</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Charge before class</p>
+<p><img alt="Sparky pointing up" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+If your class uses LiPo batteries, charge them the night before. A fully charged battery gives you about 30–45 minutes of active robot use. Bring a charged spare if you can. Nothing ends a lab session faster than a dead battery.</p>
+</div>
+<hr />
+<h2 id="analog-vs-digital-signals">Analog vs. Digital Signals</h2>
+<p>The physical world is <strong>analog</strong> — temperature, distance, light, and pressure vary smoothly and continuously. Computers are <strong>digital</strong> — they work with discrete values, typically 0 or 1 (off or on). Understanding the difference between these two signal types is essential for reading sensors.</p>
+<p>A <strong>digital signal</strong> has exactly two states: HIGH (3.3 V on the RP2040) or LOW (0 V). A button is digital — pressed or not pressed. An infrared sensor output is digital — detects line or does not detect line.</p>
+<p>An <strong>analog signal</strong> can be any voltage in a range. A potentiometer (dial) is analog — it produces a smoothly varying voltage between 0 V and 3.3 V as you turn it. A light sensor, a temperature sensor, and a microphone are all analog.</p>
+<p>The RP2040 cannot read analog voltages directly with its digital logic. It uses an <strong>ADC</strong> (Analog-to-Digital Converter) to sample the voltage and convert it to a number. The RP2040's ADC has 12-bit resolution, which means it maps the 0–3.3 V range to 0–4095. A reading of 2048 means the voltage is about 1.65 V — roughly halfway.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
+
+<span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>           <span class="c1"># GPIO 26 is ADC channel 0</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>    <span class="c1"># read 16-bit value (0–65535)</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Voltage: </span><span class="si">{</span><span class="n">voltage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> V&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Notice the example uses <code>read_u16()</code> which returns a 16-bit value (0–65535) rather than the raw 12-bit value. MicroPython scales it automatically.</p>
+<h4 id="diagram-analog-vs-digital-signal-comparison">Diagram: Analog vs Digital Signal Comparison</h4>
+<iframe src="../../sims/analog-digital-signals/main.html" width="100%" height="352px" scrolling="no"></iframe>
+<p><a href="../../sims/analog-digital-signals/main.html">Run Analog vs Digital Signal Comparison Fullscreen</a></p>
+<details>
+<summary>Interactive comparison of analog and digital signal waveforms</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> analog-digital-signals<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a p5.js MicroSim with a 700 × 350 canvas split into two panels side by side.</p>
+<p>Left panel — "Analog Signal":
+- Shows a smooth sine wave drawn in orange.
+- A vertical dashed line follows the mouse X position and displays the voltage value at that point.
+- Label: "Voltage: X.XX V"</p>
+<p>Right panel — "Digital Signal":
+- Shows a square wave (PWM-like) in blue — high and low states with sharp transitions.
+- Same vertical cursor showing "HIGH (3.3V)" or "LOW (0V)" at the cursor position.</p>
+<p>Below both panels, a "Signal Type" dropdown lets the student switch the left panel between: Sine wave, Potentiometer (sawtooth ramp), Microphone (noise).</p>
+<p>Learning objective (Bloom's Taxonomy — Understanding): students distinguish continuous analog signals from discrete digital signals and understand why ADC conversion is needed.</p>
+<p>Responsive: redraw on window resize.</p>
+</details>
+<hr />
+<h2 id="dc-motors-and-direction-control">DC Motors and Direction Control</h2>
+<p>A <strong>DC motor</strong> (Direct Current motor) converts electrical energy into rotational mechanical energy. When current flows through the motor's coils, it creates a magnetic field that interacts with permanent magnets inside the motor housing, causing the shaft to spin.</p>
+<h3 id="motor-terminals">Motor Terminals</h3>
+<p>A simple DC motor has two <strong>terminals</strong> — two wires or contacts where you connect power. The direction the motor spins depends on which terminal receives the positive voltage and which receives the negative (ground).</p>
+<p>If you connect terminal A to positive (+) and terminal B to negative (−), the motor spins clockwise. Swap the connections — terminal B to positive, terminal A to negative — and the motor spins counter-clockwise. That's the key principle of DC motor direction control.</p>
+<h3 id="motor-forward-reverse-and-stop">Motor Forward, Reverse, and Stop</h3>
+<p>Before the H-bridge circuit explains how we switch direction electronically, here are the three states we need:</p>
+<ul>
+<li><strong>Forward motion</strong> — current flows through the motor in one direction. The robot's wheels spin forward.</li>
+<li><strong>Reverse motion</strong> — current flows through the motor in the opposite direction. The wheels spin backward.</li>
+<li><strong>Motor stop</strong> — no current flows, or both terminals are at the same voltage. The wheels stop.</li>
+</ul>
+<p>We cannot simply connect the motor to a GPIO pin and reverse the connection in code — a GPIO pin only outputs a positive voltage, not a negative one. We need a special circuit called an H-bridge.</p>
+<hr />
+<h2 id="the-h-bridge-circuit">The H-Bridge Circuit</h2>
+<p>An <strong>H-bridge</strong> is an electronic circuit that can apply voltage across a motor in either direction. The name comes from the shape of the circuit — four switches arranged in a shape that resembles the letter "H", with the motor in the middle crossbar.</p>
+<p>The four switches are transistors (usually MOSFETs). Before examining the switch states, here is the concept: by closing two specific switches and opening the other two, we route current through the motor in one direction. By switching which pair is closed, we reverse the current direction.</p>
+<h3 id="h-bridge-switch-states">H-Bridge Switch States</h3>
+<p>The four switches in an H-bridge are often labeled SW1 (top-left), SW2 (bottom-right), SW3 (top-right), and SW4 (bottom-left). The motor connects between the midpoints. Let's trace three states:</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>SW1</th>
+<th>SW2</th>
+<th>SW3</th>
+<th>SW4</th>
+<th>Motor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forward</td>
+<td>ON</td>
+<td>ON</td>
+<td>OFF</td>
+<td>OFF</td>
+<td>Spins CW</td>
+</tr>
+<tr>
+<td>Reverse</td>
+<td>OFF</td>
+<td>OFF</td>
+<td>ON</td>
+<td>ON</td>
+<td>Spins CCW</td>
+</tr>
+<tr>
+<td>Stop (coast)</td>
+<td>OFF</td>
+<td>OFF</td>
+<td>OFF</td>
+<td>OFF</td>
+<td>Free-spinning</td>
+</tr>
+<tr>
+<td>Stop (brake)</td>
+<td>ON</td>
+<td>OFF</td>
+<td>ON</td>
+<td>OFF</td>
+<td>Braked (locked)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Never close SW1 and SW3 at the same time, or SW2 and SW4 at the same time.</strong> This creates a short circuit — direct path from positive to negative — that can damage or destroy the transistors. This condition is called a <strong>shoot-through</strong> or <strong>H-bridge fault</strong>. Motor driver ICs include built-in protection against this.</p>
+<h3 id="a-dpdt-switch-as-an-analogy">A DPDT Switch as an Analogy</h3>
+<p>A <strong>DPDT switch</strong> (Double Pole Double Throw) is a physical switch that achieves the same result as an H-bridge. It has two poles (two separate circuits), each of which can connect to either of two positions. Wired correctly, flipping the switch reverses the motor connections manually.</p>
+<p>The H-bridge is an electronic DPDT switch — it does the same thing, but controlled by GPIO signals instead of a physical flip.</p>
+<h4 id="diagram-h-bridge-switch-states">Diagram: H-Bridge Switch States</h4>
+<iframe src="../../sims/h-bridge-simulator/main.html" width="100%" height="402px" scrolling="no"></iframe>
+<p><a href="../../sims/h-bridge-simulator/main.html">Run H-Bridge Switch States Fullscreen</a></p>
+<details>
+<summary>Interactive H-bridge circuit showing switch states and current flow</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> h-bridge-simulator<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a p5.js MicroSim with a 700 × 400 canvas. Draw an H-bridge circuit schematically:</p>
+<ul>
+<li>Four switch symbols at the four corners of an "H" shape (SW1 top-left, SW2 bottom-left, SW3 top-right, SW4 bottom-right).</li>
+<li>A motor symbol (circle with M) in the horizontal center bar.</li>
+<li>Power supply (V+) at top, Ground at bottom.</li>
+<li>Current flow shown as animated dots moving along the wire when switches are in a valid state.</li>
+<li>The dot color indicates direction: orange for forward, blue for reverse.</li>
+</ul>
+<p>Three buttons: "Forward", "Reverse", "Stop". Clicking each:
+- Updates switch states (green circle = closed, red circle = open).
+- Animates current flow dots in the correct direction.
+- Updates a text label: "Motor: FORWARD / REVERSE / STOPPED".</p>
+<p>Hovering each switch shows a tooltip: "SW1 — top-left switch. Closed = connects motor terminal A to V+."</p>
+<p>Learning objective (Bloom's Taxonomy — Analyzing): students trace current paths through the H-bridge to predict motor direction.</p>
+<p>Responsive: redraw on window resize.</p>
+</details>
+<h3 id="motor-driver-ic">Motor Driver IC</h3>
+<p>Designing an H-bridge from individual transistors requires careful engineering. Instead, we use a <strong>motor driver IC</strong> (Integrated Circuit) — a pre-built chip that contains the H-bridge circuitry plus protection features. The Cytron Maker Pi RP2040 uses the MX1508 motor driver IC, which handles two DC motors simultaneously.</p>
+<p>The motor driver exposes simple control pins: one pin per motor direction. Pulling a pin HIGH or LOW with the microcontroller's GPIO controls the transistors inside the IC. The motor driver handles the shoot-through protection internally — you can't accidentally short it through normal MicroPython code.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Never stall a motor at full power</p>
+<p><img alt="Sparky warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A <strong>stalled motor</strong> — one that is mechanically blocked from spinning but still receiving full voltage — draws very high current and heats up rapidly. Extended stalling can overheat the motor driver IC or the motor windings. If your robot hits a wall and can't move, it should stop trying within a few seconds. Always include a timeout or distance check in your motor loops.</p>
+</div>
+<hr />
+<h2 id="i2c-bus-a-two-wire-network">I2C Bus — A Two-Wire Network</h2>
+<p>The <strong>I2C bus</strong> (Inter-Integrated Circuit, pronounced "I-squared-C") is a communication protocol that lets a microcontroller talk to multiple sensors and devices using just two wires. It is the primary bus for sensors and displays on this robot.</p>
+<p>Two wires carry all communication:</p>
+<ul>
+<li><strong>SDA</strong> (Serial Data) — carries data bits in both directions.</li>
+<li><strong>SCL</strong> (Serial Clock) — carries a clock signal that synchronizes data transfer.</li>
+</ul>
+<p>The clock signal is what makes I2C <strong>synchronous</strong> — both devices agree on when each bit starts and ends by following the same clock. This makes I2C more reliable than asynchronous protocols, at the cost of needing a dedicated clock line.</p>
+<h3 id="i2c-addresses">I2C Addresses</h3>
+<p>Every I2C device has a unique 7-bit <strong>address</strong> (from 0 to 127). When the microcontroller wants to talk to the distance sensor, it broadcasts the sensor's address on the SDA line. Only the device with that address responds. All other devices on the bus stay quiet.</p>
+<p>This is how you can connect multiple I2C devices to the same two pins. The VL53L0X distance sensor uses address <code>0x29</code> (hexadecimal). The SSD1306 OLED display typically uses <code>0x3C</code> or <code>0x3D</code>. As long as addresses don't conflict, many devices share the bus.</p>
+<h3 id="i2c-sda-and-scl-pins">I2C SDA and SCL Pins</h3>
+<p>On the Cytron Maker Pi RP2040, the I2C bus uses GPIO pins 16 (SDA) and 17 (SCL). These are defined in <code>config.py</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">I2C_SDA_PIN</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">I2C_SCL_PIN</span> <span class="o">=</span> <span class="mi">17</span>
+</code></pre></div></td></tr></table></div>
+<p>In MicroPython, you create an I2C object like this. Before the code, here is what the parameters mean: <code>0</code> selects I2C bus 0 (the RP2040 has two), <code>scl</code> specifies the clock pin, <code>sda</code> specifies the data pin, and <code>freq</code> sets the communication speed in Hz.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span>
+             <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span>
+             <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>   <span class="c1"># 400 kHz — Fast mode</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="i2c-frequency-config">I2C Frequency Config</h3>
+<p><strong>I2C frequency</strong> is how fast bits travel on the bus. Standard mode is 100 kHz (100,000 bits per second). Fast mode is 400 kHz. The VL53L0X sensor works well at 400 kHz. If you use 400 kHz and get communication errors, try dropping to 100 kHz — some devices don't support Fast mode.</p>
+<p>To scan all devices connected to the bus and print their addresses:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">devices</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I2C devices found:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+<p>This should print something like <code>['0x29', '0x3c']</code> if both the distance sensor and the OLED display are connected.</p>
+<hr />
+<h2 id="spi-bus-high-speed-serial">SPI Bus — High-Speed Serial</h2>
+<p>The <strong>SPI bus</strong> (Serial Peripheral Interface) is a second communication protocol for fast, short-distance connections. SPI uses four wires instead of I2C's two:</p>
+<ul>
+<li><strong>MOSI</strong> — Master Out Slave In (data from microcontroller to device)</li>
+<li><strong>MISO</strong> — Master In Slave Out (data from device to microcontroller)</li>
+<li><strong>SCK</strong> — Serial Clock</li>
+<li><strong>CS</strong> — Chip Select (one per device — selects which device is active)</li>
+</ul>
+<p>The table below compares I2C and SPI. Understanding this comparison helps you choose the right bus for a given sensor.</p>
+<p>Before the table, here is the key difference: I2C is slower but uses only 2 wires and supports many devices easily. SPI is faster but uses more wires and requires a separate CS pin per device.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>I2C</th>
+<th>SPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wires</td>
+<td>2 (SDA, SCL)</td>
+<td>4 (MOSI, MISO, SCK, CS)</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>100–400 kHz (standard)</td>
+<td>1–10+ MHz</td>
+</tr>
+<tr>
+<td>Device addressing</td>
+<td>Address on the bus</td>
+<td>Chip Select pin per device</td>
+</tr>
+<tr>
+<td>Robot use cases</td>
+<td>Distance sensor, OLED display</td>
+<td>Some displays, SD cards</td>
+</tr>
+</tbody>
+</table>
+<p>In this course, we primarily use I2C. The OLED display supports both I2C and SPI modes — we use I2C mode because it requires fewer wires. You will see SPI referenced in data sheets and libraries, so knowing what it is prevents confusion.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">I2C or SPI — why does it matter?</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Think of I2C as a shared party phone line — many devices share the same two wires, each waiting its turn. SPI is like private phone lines — faster, but you need a separate line (CS pin) for each device. For this robot with a handful of sensors, I2C's simplicity wins. For a high-speed display update or SD card access, SPI's speed wins.</p>
+</div>
+<hr />
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Transistors</strong> act as electronic switches — a small GPIO signal controls large motor current</li>
+<li><strong>Battery packs</strong> provide 6 V for motors; <strong>LiPo batteries</strong> provide 7.4 V with longer life</li>
+<li><strong>Analog signals</strong> vary continuously; <strong>digital signals</strong> are HIGH or LOW</li>
+<li>The <strong>ADC</strong> converts analog voltages to numbers (0–65535 in MicroPython)</li>
+<li>A <strong>DC motor</strong> spins in the direction determined by which terminal gets positive voltage</li>
+<li>An <strong>H-bridge</strong> uses four transistor switches to reverse motor direction electronically</li>
+<li>The <strong>motor driver IC</strong> (MX1508) contains the H-bridge and shoot-through protection</li>
+<li><strong>I2C</strong> uses two wires (SDA, SCL) with device addressing — 400 kHz Fast mode for this course</li>
+<li><strong>SPI</strong> uses four wires and is faster than I2C — used for some displays and SD cards</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You understand the electronics that make robots move!</p>
+<p><img alt="Sparky celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Double thumbs-up, engineer! Transistors, H-bridges, I2C, SPI — this is the layer between code and physical motion. Understanding it puts you ahead of most hobbyist programmers who just copy code without knowing why it works. Next chapter, we put all of this to use with PWM motor control — and make me actually roll!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1904,10 +2771,12 @@ all subsequent chapters.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

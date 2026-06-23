@@ -1,0 +1,14 @@
+{
+  "sim_id": "analog-digital-signals",
+  "diagram_name": "Analog vs Digital Signal Comparison",
+  "chapter_number": 6,
+  "chapter_title": "Electronics, DC Motors, and Communication Protocols",
+  "chapter_dir": "06-electronics-motors-protocols",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: MicroSim\n**sim-id:** analog-digital-signals<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nCreate a p5.js MicroSim with a 700 × 350 canvas split into two panels side by side.\n\nLeft panel — \"Analog Signal\":\n- Shows a smooth sine wave drawn in orange.\n- A vertical dashed line follows the mouse X position and displays the voltage value at that point.\n- Label: \"Voltage: X.XX V\"\n\nRight panel — \"Digital Signal\":\n- Shows a square wave (PWM-like) in blue — high and low states with sharp transitions.\n- Same vertical cursor showing \"HIGH (3.3V)\" or \"LOW (0V)\" at the cursor position.\n\nBelow both panels, a \"Signal Type\" dropdown lets the student switch the left panel between: Sine wave, Potentiometer (sawtooth ramp), Microphone (noise).\n\nLearning objective (Bloom's Taxonomy — Understanding): students distinguish continuous analog signals from discrete digital signals and understand why ADC conversion is needed.\n\nResponsive: redraw on window resize."
+}

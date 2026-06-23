@@ -425,6 +425,10 @@
          <lastmod>2026-06-23</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/stem-robots/prompts/generate-microsims-todo/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/stem-robots/setup/</loc>
          <lastmod>2026-06-23</lastmod>
     </url>
@@ -457,11 +461,39 @@
          <lastmod>2026-06-23</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/analog-digital-signals/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/breadboard-layout-explorer/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/stem-robots/sims/collision-avoidance/</loc>
          <lastmod>2026-06-23</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/stem-robots/sims/collision-avoidance/TODO/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/collision-decision-flow/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/cytron-board-explorer/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/differential-drive-simulator/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/git-commit-workflow/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/gpio-pin-explorer/</loc>
          <lastmod>2026-06-23</lastmod>
     </url>
     <url>
@@ -477,11 +509,39 @@
          <lastmod>2026-06-23</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/h-bridge-simulator/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/http-request-response-flow/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/stem-robots/sims/learning-graph/</loc>
          <lastmod>2026-06-23</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/stem-robots/sims/learning-graph/TODO/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/list-index-explorer/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/micropython-stack-diagram/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/oled-coordinate-explorer/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/open-closed-loop-comparison/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/physical-computing-explorer/</loc>
          <lastmod>2026-06-23</lastmod>
     </url>
     <url>
@@ -493,11 +553,35 @@
          <lastmod>2026-06-23</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/pwm-duty-cycle-explorer/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/robot-assembly-workflow/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/robot-main-loop-timing/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/sensor-calibration-explorer/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/stem-robots/sims/template/</loc>
          <lastmod>2026-06-23</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/stem-robots/sims/template/TODO/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/variable-assignment-explorer/</loc>
+         <lastmod>2026-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/sims/wifi-vs-ble-topology/</loc>
          <lastmod>2026-06-23</lastmod>
     </url>
     <url>

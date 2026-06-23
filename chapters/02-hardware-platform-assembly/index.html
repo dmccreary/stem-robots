@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Explore the Cytron Maker Pi RP2040 board, GPIO pins, connectors, and safety practices, then assemble your Smart Car chassis with no soldering required.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -22,15 +22,15 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>2. Hardware and Assembly - STEM Robots</title>
+        <title>Hardware Platform and Robot Assembly - STEM Robots</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2. Hardware and Assembly
+              Hardware Platform and Robot Assembly
             
           </span>
         </div>
@@ -137,11 +137,13 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -173,13 +175,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -224,7 +227,7 @@
       <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -244,8 +247,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
+    
   </span>
   
 
@@ -264,8 +269,10 @@
       <a href="../../about/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     About This Website
+    
   </span>
   
 
@@ -284,8 +291,10 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Course Description
+    
   </span>
   
 
@@ -304,8 +313,10 @@
       <a href="../../journey-map/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Journey Map
+    
   </span>
   
 
@@ -324,8 +335,10 @@
       <a href="../../robot-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Robot Description
+    
   </span>
   
 
@@ -344,8 +357,10 @@
       <a href="../../gallery/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Gallery
+    
   </span>
   
 
@@ -364,8 +379,10 @@
       <a href="../../great-ways-to-teach/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Great Ways To Teach
+    
   </span>
   
 
@@ -394,6 +411,7 @@
     
     
     
+    
       
         
         
@@ -404,11 +422,14 @@
         
   
   
+  
     <a href="../../course-descriptions/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Course Descriptions
+    
   </span>
   
 
@@ -439,57 +460,32 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
+    
     
     
     
@@ -502,13 +498,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
     Chapters
+    
   </span>
   
 
@@ -540,8 +537,10 @@
       <a href="../01-intro-computational-thinking/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     1. Computational Thinking
+    
   </span>
   
 
@@ -570,8 +569,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
     2. Hardware and Assembly
+    
   </span>
   
 
@@ -581,8 +582,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
     2. Hardware and Assembly
+    
   </span>
   
 
@@ -630,6 +633,174 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#what-is-a-microcontroller" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is a Microcontroller?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-raspberry-pi-pico-family" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Raspberry Pi Pico Family
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-cytron-maker-pi-rp2040-your-robots-brain" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Cytron Maker Pi RP2040 — Your Robot's Brain
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Cytron Maker Pi RP2040 — Your Robot&#39;s Brain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cytron-maker-pi-rp2040-board-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Cytron Maker Pi RP2040 Board Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpio-pins-your-robot-talks-to-the-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIO Pins: Your Robot Talks to the World
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPIO Pins: Your Robot Talks to the World">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-gpio-pin-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: GPIO Pin Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storing-your-programs-flash-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storing Your Programs: Flash Memory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectors-wiring-without-soldering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connectors: Wiring Without Soldering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resistors-and-breadboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resistors and Breadboards
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resistors and Breadboards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-breadboard-layout-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Breadboard Layout Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safety-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safety Practices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mechanical-design-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mechanical Design Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-soldering-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      No-Soldering Assembly
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="No-Soldering Assembly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-robot-assembly-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Robot Assembly Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-built" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You Built
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -649,8 +820,10 @@
       <a href="../03-micropython-dev-environment/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     3. MicroPython and Setup
+    
   </span>
   
 
@@ -670,8 +843,10 @@
       <a href="../04-control-flow-functions/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     4. Control Flow and Functions
+    
   </span>
   
 
@@ -691,8 +866,10 @@
       <a href="../05-data-structures-modular-code/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     5. Data Structures and Git
+    
   </span>
   
 
@@ -712,8 +889,10 @@
       <a href="../06-electronics-motors-protocols/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     6. Motors and Protocols
+    
   </span>
   
 
@@ -733,8 +912,10 @@
       <a href="../07-pwm-motor-speed-actuators/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     7. PWM and Actuators
+    
   </span>
   
 
@@ -754,8 +935,10 @@
       <a href="../08-sensors-data-input/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     8. Sensors and Input
+    
   </span>
   
 
@@ -775,8 +958,10 @@
       <a href="../09-display-systems-output/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     9. Displays and Output
+    
   </span>
   
 
@@ -796,8 +981,10 @@
       <a href="../10-robot-behaviors-navigation/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     10. Robot Behaviors
+    
   </span>
   
 
@@ -817,8 +1004,10 @@
       <a href="../11-wireless-networking-web-servers/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     11. WiFi and Web Servers
+    
   </span>
   
 
@@ -838,8 +1027,10 @@
       <a href="../12-bluetooth-low-energy/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     12. Bluetooth Low Energy
+    
   </span>
   
 
@@ -859,8 +1050,10 @@
       <a href="../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     13. Swarm and Advanced
+    
   </span>
   
 
@@ -907,6 +1100,7 @@
     
     
     
+    
       
         
         
@@ -915,13 +1109,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graph/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graph
+    
   </span>
   
 
@@ -960,6 +1157,7 @@
     
     
     
+    
       
         
         
@@ -968,13 +1166,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graphs/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graphs
+    
   </span>
   
 
@@ -1017,6 +1218,7 @@
     
     
     
+    
       
         
         
@@ -1027,11 +1229,14 @@
         
   
   
+  
     <a href="../../setup/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Getting Started
+    
   </span>
   
 
@@ -1056,8 +1261,10 @@
       <a href="../../personas/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Personas
+    
   </span>
   
 
@@ -1076,8 +1283,10 @@
       <a href="../../topics/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Topics
+    
   </span>
   
 
@@ -1138,6 +1347,7 @@
     
     
     
+    
       
         
         
@@ -1146,13 +1356,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../lessons/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Lessons
+    
   </span>
   
 
@@ -1187,6 +1400,7 @@
     
     
     
+    
       
         
         
@@ -1195,13 +1409,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructor's Guide
+    
   </span>
   
 
@@ -1230,25 +1447,58 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
     
@@ -1260,13 +1510,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     MicroSims
+    
   </span>
   
 
@@ -1301,6 +1554,7 @@
     
     
     
+    
       
         
         
@@ -1309,13 +1563,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../kits/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Kits
+    
   </span>
   
 
@@ -1354,6 +1611,7 @@
     
     
     
+    
       
         
         
@@ -1364,11 +1622,14 @@
         
   
   
+  
     <a href="../../kits/wifi-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Wireless Bot
+    
   </span>
   
 
@@ -1393,8 +1654,10 @@
       <a href="../../kits/bump-switch/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Bump Switches
+    
   </span>
   
 
@@ -1413,8 +1676,10 @@
       <a href="../../kits/line-follower/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Line Follower
+    
   </span>
   
 
@@ -1433,8 +1698,10 @@
       <a href="../../kits/adjust/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Adjustabot
+    
   </span>
   
 
@@ -1453,8 +1720,10 @@
       <a href="../../kits/ultrasonic/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Ultrasonic
+    
   </span>
   
 
@@ -1481,6 +1750,7 @@
     
     
     
+    
       
         
         
@@ -1491,11 +1761,14 @@
         
   
   
+  
     <a href="../../kits/wifi-display-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     WiFi Display Bot
+    
   </span>
   
 
@@ -1530,6 +1803,7 @@
     
     
     
+    
       
         
         
@@ -1540,11 +1814,14 @@
         
   
   
+  
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructors Guide
+    
   </span>
   
 
@@ -1569,8 +1846,10 @@
       <a href="../../faq/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     FAQ
+    
   </span>
   
 
@@ -1589,8 +1868,10 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Glossary
+    
   </span>
   
 
@@ -1609,8 +1890,10 @@
       <a href="../../references/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     References
+    
   </span>
   
 
@@ -1629,8 +1912,10 @@
       <a href="../../license/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     License
+    
   </span>
   
 
@@ -1649,8 +1934,10 @@
       <a href="../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Contact
+    
   </span>
   
 
@@ -1669,8 +1956,10 @@
       <a href="../../prompts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     STEM Robotics Prompts
+    
   </span>
   
 
@@ -1689,8 +1978,10 @@
       <a href="../../sims/template/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     MicroSim Template
+    
   </span>
   
 
@@ -1752,6 +2043,174 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#what-is-a-microcontroller" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is a Microcontroller?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-raspberry-pi-pico-family" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Raspberry Pi Pico Family
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-cytron-maker-pi-rp2040-your-robots-brain" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Cytron Maker Pi RP2040 — Your Robot's Brain
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Cytron Maker Pi RP2040 — Your Robot&#39;s Brain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cytron-maker-pi-rp2040-board-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Cytron Maker Pi RP2040 Board Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpio-pins-your-robot-talks-to-the-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIO Pins: Your Robot Talks to the World
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPIO Pins: Your Robot Talks to the World">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-gpio-pin-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: GPIO Pin Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storing-your-programs-flash-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storing Your Programs: Flash Memory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectors-wiring-without-soldering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connectors: Wiring Without Soldering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resistors-and-breadboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resistors and Breadboards
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resistors and Breadboards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-breadboard-layout-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Breadboard Layout Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safety-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safety Practices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mechanical-design-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mechanical Design Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-soldering-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      No-Soldering Assembly
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="No-Soldering Assembly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-robot-assembly-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Robot Assembly Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-built" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You Built
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1766,11 +2225,17 @@
                 
                   
 
+
   
   
 
 
 <h1 id="hardware-platform-and-robot-assembly">Hardware Platform and Robot Assembly</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome back, maker!</p>
+<p><img alt="Sparky waving" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+This chapter is where the robot stops being an idea and starts being something you can hold. We will learn the names of every part, understand how the brain of the robot works, and wire everything together — without touching a soldering iron. Let's make it real!</p>
+</div>
 <h2 id="summary">Summary</h2>
 <p>This chapter introduces the physical computing platform that drives the entire course.
 Students explore the Raspberry Pi Pico family, the RP2040 microcontroller chip, and the
@@ -1808,13 +2273,365 @@ the course.</p>
 <li><a href="../01-intro-computational-thinking/">Chapter 1: Introduction to Computational Thinking and Physical Computing</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<h2 id="what-is-a-microcontroller">What Is a Microcontroller?</h2>
+<p>Every robot needs a brain. That brain is a <strong>microcontroller</strong> — a tiny computer built onto a single chip. A microcontroller has no keyboard and no screen. It runs one program at a time and is designed to control hardware directly. It turns motors on, reads sensors, and blinks LEDs, all from a board smaller than a credit card.</p>
+<p>The specific chip powering your robot is the <strong>RP2040</strong>, made by the Raspberry Pi Foundation. The RP2040 is a <strong>dual-core processor</strong>, meaning it contains two independent processors on one chip. It runs at up to 133 MHz and includes 264 KB of fast working memory called RAM. The chip is about the size of a large postage stamp, but it has all the computing power this course needs.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Hmm, think about this for a second, maker.</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+A laptop has billions of transistors and costs hundreds of dollars. The RP2040 has only about 30 million transistors — but it still runs MicroPython code fast enough to drive two motors and read a distance sensor at the same time. In robotics, <em>right-sized</em> beats biggest every time.</p>
+</div>
+<h2 id="the-raspberry-pi-pico-family">The Raspberry Pi Pico Family</h2>
+<p>The RP2040 chip alone is too tiny to work with easily. It ships pre-soldered onto a development board called the <strong>Raspberry Pi Pico</strong>. The Pico adds a USB connector for programming, voltage regulators to manage power, and 40 header pins for connecting sensors and motors. It is about the size of a stick of gum and costs around $4.</p>
+<p>There is also a version called the <strong>Raspberry Pi Pico W</strong>. The "W" stands for wireless. The Pico W adds a small Wi-Fi and Bluetooth radio module right next to the RP2040 chip. It looks almost identical to the standard Pico. The Pico W unlocks wireless features that appear in the advanced chapters of this course.</p>
+<p>Before we go further, let's compare the two boards side by side:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Raspberry Pi Pico</th>
+<th>Raspberry Pi Pico W</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processor</td>
+<td>RP2040 (dual-core, 133 MHz)</td>
+<td>RP2040 (dual-core, 133 MHz)</td>
+</tr>
+<tr>
+<td>Flash storage</td>
+<td>2 MB</td>
+<td>2 MB</td>
+</tr>
+<tr>
+<td>Wi-Fi</td>
+<td>No</td>
+<td>Yes (2.4 GHz)</td>
+</tr>
+<tr>
+<td>Bluetooth</td>
+<td>No</td>
+<td>Yes (BLE 5.2)</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>~$4</td>
+<td>~$6</td>
+</tr>
+<tr>
+<td>Use in this course</td>
+<td>Early labs</td>
+<td>Wi-Fi and BLE labs</td>
+</tr>
+</tbody>
+</table>
+<p>Both boards use the same RP2040 chip. The only difference is the wireless module. All MicroPython programs written for the Pico run unchanged on the Pico W.</p>
+<h2 id="the-cytron-maker-pi-rp2040-your-robots-brain">The Cytron Maker Pi RP2040 — Your Robot's Brain</h2>
+<p>A bare Raspberry Pi Pico is great for experimenting on its own. But building a robot with one requires extra circuits: motor driver chips, connector blocks, LED indicators, and a buzzer. The <strong>Cytron Maker Pi RP2040</strong> board bundles all of those extras into one package. It is the board your robot actually uses.</p>
+<p>Here is what the Cytron board adds on top of a plain Pico:</p>
+<ul>
+<li>Two DC motor driver channels, each handling up to 1 A of current</li>
+<li>Seven Grove connector ports for sensors and peripherals</li>
+<li>13 onboard LEDs showing the state of each GPIO pin in real time</li>
+<li>A piezo buzzer for sound output</li>
+<li>A reset button and a boot button for programming</li>
+<li>Screw terminal blocks for connecting motors and power</li>
+</ul>
+<p>The Cytron board snaps onto the Smart Car chassis without modification. All of the pin numbers from the plain Pico are preserved, so the MicroPython code you write works on both boards. Now let's explore the board's layout using an interactive diagram.</p>
+<h4 id="diagram-cytron-maker-pi-rp2040-board-explorer">Diagram: Cytron Maker Pi RP2040 Board Explorer</h4>
+<iframe src="../../sims/cytron-board-explorer/main.html" width="100%" height="502px" scrolling="no"></iframe>
+
+<details>
+<summary>Cytron Maker Pi RP2040 Board Explorer</summary>
+<p>Type: infographic
+<strong>sim-id:</strong> cytron-board-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Remember (L1) — Identify the main components on the Cytron Maker Pi RP2040 board.
+Bloom Verb: Identify</p>
+<p>Learning Objective: Students will identify each major component on the Cytron Maker Pi RP2040 board and state its function in the robot system.</p>
+<p>Layout:
+- Left 65% of canvas: Stylized top-view illustration of the Cytron Maker Pi RP2040 board showing component placement with labels
+- Right 35% of canvas: Info panel that updates when the user clicks any labeled component</p>
+<p>Components shown on the board illustration (each is a labeled, clickable region):
+1. RP2040 chip — large square IC in the center
+2. Raspberry Pi Pico module outline — dashed border showing the Pico footprint
+3. USB Micro-B connector — left edge
+4. Motor driver terminals (M1, M2) — blue screw terminals at the bottom
+5. Grove connectors (GP0, GP1, GP2, GP4, GP16, GP17, GP26) — white 4-pin connectors along the edges
+6. Onboard LEDs (13 total) — small circles adjacent to GPIO pin labels
+7. Piezo buzzer — small circular component with label
+8. Reset button — labeled square button
+9. Boot button — labeled square button
+10. Power terminal — large green screw terminal block</p>
+<p>Info panel content displayed on click:
+1. RP2040 Chip: "The brain. Dual-core ARM processor at up to 133 MHz. Executes your MicroPython code."
+2. Pico module: "The Raspberry Pi Pico mounts here. Its 40 pins align with sockets on this board."
+3. USB connector: "Plug your USB cable here to upload programs or to power the board from a laptop."
+4. Motor drivers M1, M2: "Each channel drives one DC motor up to 1 A and can reverse direction. M1 = left motor, M2 = right motor."
+5. Grove connectors: "Keyed 4-pin connectors for sensors. They only plug in one way — you cannot wire them backwards."
+6. Onboard LEDs: "Each LED lights up when its GPIO pin goes HIGH. No extra wiring needed to see pin state."
+7. Piezo buzzer: "Generates tones. Your code uses PWM to play notes or beep patterns."
+8. Reset button: "Restarts the board without unplugging USB. Press once to reboot."
+9. Boot button: "Hold this while plugging in USB to enter bootloader mode for firmware updates."
+10. Power terminal: "Connect the AA battery pack here. Provides motor power independently of USB."</p>
+<p>Visual style:
+- Board drawn as a flat top-view illustration in the Cytron blue-green color palette
+- Clickable regions glow orange on hover
+- Active (clicked) region outlined in orange with info panel updating immediately
+- Info panel: white text on dark navy background
+- Transitions smooth when switching between components</p>
+<p>Responsive behavior: Canvas redraws on window resize. Board illustration scales proportionally. Info panel always occupies the right column.</p>
+<p>Instructional Rationale: Clicking labeled component regions at the Remember level builds part-name fluency before students handle physical hardware. Hover highlights prevent "where is it?" confusion during assembly.</p>
+</details>
+<h2 id="gpio-pins-your-robot-talks-to-the-world">GPIO Pins: Your Robot Talks to the World</h2>
+<p>The most important feature of any microcontroller is its ability to communicate with the outside world. It does this through <strong>GPIO pins</strong> — short for <strong>General Purpose Input/Output</strong> pins. Each GPIO pin is a small metal contact on the board that your MicroPython code can control directly. You set a pin to either send a signal out, or listen for a signal coming in.</p>
+<p>Before going further, let's define two key ideas. A <strong>digital signal</strong> has exactly two levels: HIGH or LOW. HIGH means the pin is at 3.3 volts (V), which MicroPython reads as <code>True</code> or <code>1</code>. LOW means the pin is at 0 V, which reads as <code>False</code> or <code>0</code>. These two states map directly to the binary logic inside the RP2040.</p>
+<p>A pin set as a <strong>digital output pin</strong> sends a HIGH or LOW signal outward — for example, switching an LED on or off, or telling a motor driver to run. A pin set as a <strong>digital input pin</strong> listens for a HIGH or LOW signal coming in — for example, reading a button press or a sensor output. You decide in MicroPython code whether each pin acts as an input or an output.</p>
+<p>The RP2040 has 30 GPIO pins, numbered <strong>GP0 through GP29</strong>. Not all of them appear on the Cytron board — some are used internally. The pins that are available are printed on the board's <strong>pinout diagram</strong>, a reference drawing showing every pin's number, location, and special functions. Reading the pinout diagram is a skill you will use every week in this course.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Here's a move that saves engineers a lot of time.</p>
+<p><img alt="Sparky giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Bookmark the Cytron Maker Pi RP2040 pinout diagram on your browser right now. You will look at it dozens of times this semester. Knowing which pin number maps to which physical hole on the board prevents wiring mistakes that can take 30 minutes to find.</p>
+</div>
+<h4 id="diagram-gpio-pin-explorer">Diagram: GPIO Pin Explorer</h4>
+<iframe src="../../sims/gpio-pin-explorer/main.html" width="100%" height="412px" scrolling="no"></iframe>
+
+<details>
+<summary>GPIO Pin Explorer MicroSim</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> gpio-pin-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Understand (L2) — Explain how GPIO pins switch between input and output modes and how HIGH/LOW states map to voltage.
+Bloom Verb: Explain</p>
+<p>Learning Objective: Students will explain the difference between a digital input pin and a digital output pin, and correctly map HIGH/LOW states to voltage levels and MicroPython boolean values.</p>
+<p>Canvas layout:
+- Left 55%: Visual schematic showing a simplified view of two GPIO pins — one connected to an LED with a resistor (output mode), one connected to a push button (input mode)
+- Right 45%: Control panel with mode selector and data display</p>
+<p>Visual elements:
+- Schematic shows: an "RP2040" microcontroller block, a wire from GP15 to an LED and resistor, a wire from GP14 to a push button
+- LED glows yellow when HIGH; is gray when LOW
+- Button shows "pressed" vs "released" state visually (depressed outline vs raised)
+- Voltage bar on each wire: 0.0 V to 3.3 V scale with animated fill
+- Current mode label above each pin: "OUTPUT" or "INPUT"</p>
+<p>Interactive controls (right panel):
+- Dropdown: "Select Pin Mode" — Output or Input
+- Toggle button: "Set HIGH / Set LOW" (active in Output mode)
+- Toggle button: "Press Button / Release Button" (active in Input mode)
+- Data display: Pin Mode, Voltage reading, MicroPython value (True / False)</p>
+<p>Data Visibility Requirements:
+Stage 1: Output mode, LOW — LED off, 0.0 V, value = False
+Stage 2: Click "Set HIGH" — LED lights yellow, 3.3 V, value = True
+Stage 3: Switch dropdown to Input — controls change to button toggle
+Stage 4: Click "Press Button" — 3.3 V, value = True (pull-up keeps line high when pressed)
+Stage 5: Click "Release Button" — 0.0 V, value = False</p>
+<p>Default parameters:
+- Mode: Output
+- State: LOW (LED off)</p>
+<p>Responsive behavior: Canvas redraws on window resize. Schematic and control panel maintain proportional widths. Voltage bars redraw correctly at all sizes.</p>
+<p>Instructional Rationale: Step-through with concrete voltage values is appropriate for an Understand/Explain objective. Students need to see the exact voltage change when they toggle HIGH/LOW before they can explain the relationship between code and electricity. Continuous animation would obscure the binary nature of the two states.</p>
+</details>
+<h2 id="storing-your-programs-flash-memory">Storing Your Programs: Flash Memory</h2>
+<p>When you upload a MicroPython program to your board, it has to live somewhere. That somewhere is <strong>flash memory</strong> — a type of permanent storage built into the Pico module. The Cytron board's Pico module includes <strong>2 MB of flash memory</strong>. That is enough to hold dozens of MicroPython programs and all the libraries you need.</p>
+<p>Flash memory keeps your programs even when power is off. The moment you power the board back on, it reads the stored program and starts running it. This is different from RAM (Random Access Memory), which holds data only while the board is running. Flash is for long-term storage; RAM is for fast, temporary use while the program executes.</p>
+<p>You do not need to manage flash memory yourself. The IDE (development tool) you use handles it automatically when you save files to the board. Just know that the 2 MB limit means you should keep program files small and text-based — large audio files or images would fill the storage too quickly.</p>
+<h2 id="connectors-wiring-without-soldering">Connectors: Wiring Without Soldering</h2>
+<p>One reason this course requires no soldering is the Cytron board's selection of connectors. A <strong>connector</strong> is a standardized physical interface that lets you attach and detach wires safely and repeatedly. Three connector types appear on your board, and knowing all three prevents wiring mistakes.</p>
+<p><strong>Grove connectors</strong> are white 4-pin connectors with a distinctive keyed shape. They only plug in one direction, making wiring mistakes impossible. Each Grove connector carries two signal wires, one 3.3 V power wire, and one ground wire. Most sensors in this course use Grove cables — just plug in and go.</p>
+<p><strong>Dupont connectors</strong> are plain individual 2.54 mm jumper wires you will use when a sensor does not have a Grove port. They are less foolproof than Grove connectors because they can be plugged in backwards. Always check the pin labels before connecting a Dupont cable. The pinout diagram shows which position is signal, power, and ground.</p>
+<p><strong>Castellated edges</strong> are the small half-circle holes along the edge of the Raspberry Pi Pico module. The word "castellated" means the edge looks like the top of a castle wall, with alternating notches. These holes let the Pico be soldered directly onto another circuit board. In this course you will not solder, but understanding castellated edges explains why the Pico fits so snugly on the Cytron board.</p>
+<p>Here is a summary of all three connector types:</p>
+<table>
+<thead>
+<tr>
+<th>Connector Type</th>
+<th>Pins</th>
+<th>Direction-safe?</th>
+<th>Common use in this course</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Grove</td>
+<td>4 (2 signal, VCC, GND)</td>
+<td>Yes — keyed shape prevents reversal</td>
+<td>Most sensors and peripherals</td>
+</tr>
+<tr>
+<td>Dupont</td>
+<td>Varies (1 pin per wire)</td>
+<td>No — check polarity before plugging in</td>
+<td>Sensors without Grove ports</td>
+</tr>
+<tr>
+<td>Castellated Edge</td>
+<td>40 (all GPIO signals)</td>
+<td>Yes — aligns mechanically to board</td>
+<td>How the Pico mounts to the Cytron board</td>
+</tr>
+</tbody>
+</table>
+<h2 id="resistors-and-breadboards">Resistors and Breadboards</h2>
+<p>Two more fundamental electronics tools appear in early labs: resistors and breadboards. Let's define each one before you encounter them on the workbench.</p>
+<p>A <strong>resistor</strong> is a tiny electronic component that limits how much electric current can flow through a wire. It looks like a small cylinder with colored stripes and two metal leads. In robotics labs, resistors do three main jobs. They protect LEDs from burning out by limiting current. They create stable HIGH or LOW voltages on input pins when nothing is connected. And they set signal levels for some sensors. The colored stripes encode the resistor's value in <strong>ohms (Ω)</strong> — the unit of electrical resistance.</p>
+<p>A <strong>breadboard</strong> is a rectangular plastic board covered in tiny spring-loaded holes. It lets you build temporary circuits by pushing wires and components into the holes — no soldering required. Inside the breadboard, rows of holes are electrically connected to each other. Two long rails along the edges carry power (+) and ground (−). Horizontal rows of five holes in the middle all connect across each row. You use a breadboard to prototype circuits quickly, test different wiring ideas, and check components before committing to a permanent design.</p>
+<h4 id="diagram-breadboard-layout-explorer">Diagram: Breadboard Layout Explorer</h4>
+<iframe src="../../sims/breadboard-layout-explorer/main.html" width="100%" height="422px" scrolling="no"></iframe>
+
+<details>
+<summary>Breadboard Layout Explorer</summary>
+<p>Type: infographic
+<strong>sim-id:</strong> breadboard-layout-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Understand (L2) — Explain how the internal connections of a breadboard allow components to share electrical pathways.
+Bloom Verb: Explain</p>
+<p>Learning Objective: Students will explain which holes on a breadboard are electrically connected to each other, and correctly trace a circuit path from the power rail through a component to ground.</p>
+<p>Layout:
+- Left 70%: Top-view illustration of a standard 830-hole breadboard (63 rows × 10 columns plus 2 power rails per side)
+- Right 30%: Info panel showing a plain-English description of the selected connection</p>
+<p>Visual elements:
+- Breadboard drawn in realistic detail: cream body, red and blue power rail stripes, column letters (a–e, f–j), row numbers (1–63)
+- Center gap (DIP channel) shown as a dark groove labeled "IC channel — NOT connected across the gap"
+- Holes rendered as small dark circles with hover glow</p>
+<p>Interactivity:
+- Hover any hole: cursor changes to pointer, hole glows orange
+- Click any hole in a row (columns a–e): entire row a–e on that side lights yellow; info panel: "All five holes in this row (a–e, row N) are connected. This connection does NOT cross the center gap."
+- Click any hole in a row (columns f–j): entire row f–j lights yellow; info panel shows same message for that side
+- Click the red (+) power rail: entire red rail glows; info panel: "Connected to 3.3 V power. All holes in this rail column share the same voltage."
+- Click the blue (−) power rail: entire blue rail glows; info panel: "Connected to GND (0 V). All holes in this rail column share ground."
+- "Reset highlights" button clears all glowing holes</p>
+<p>Info panel for each selection shows a small diagram of the connection path as a colored line tracing through the selected holes.</p>
+<p>Responsive behavior: Canvas scales with window width. Breadboard illustration maintains aspect ratio. Info panel stacks below the breadboard on narrow viewports.</p>
+<p>Instructional Rationale: Clicking holes to highlight invisible internal connections makes breadboard topology concrete and visible. Students build an accurate mental model before handling physical hardware, preventing the most common beginner mistake — assuming holes across the center gap are connected.</p>
+</details>
+<h2 id="safety-practices">Safety Practices</h2>
+<p>Before you touch any hardware, let's cover the safety rules. Electronics labs are safe when you follow simple habits every single time. Skipping these habits is the main way students damage boards — and a damaged board can mean weeks of waiting for a replacement.</p>
+<p>The core safety rules for this course are:</p>
+<ul>
+<li><strong>Power off before wiring.</strong> Disconnect the USB cable and battery pack before adding or changing any wires. Touching the wrong pin while the board is powered can destroy it instantly.</li>
+<li><strong>Handle boards by the edges.</strong> The chips and solder joints on the bottom of the board are sensitive to static electricity from your fingers. Hold boards at the sides, not across the components.</li>
+<li><strong>Never exceed 3.3 V on GPIO pins.</strong> The RP2040's GPIO pins are rated for 3.3 V maximum. Connecting a 5 V signal will damage them. Always check a sensor's voltage rating before wiring.</li>
+<li><strong>Use a data USB cable.</strong> Some USB cables are charge-only and cannot transfer programs. If your computer cannot connect to the board, try a different cable before assuming the board is broken.</li>
+<li><strong>Do not force connectors.</strong> Grove connectors fit in one orientation only. If a connector requires real force, stop and check the direction. Forcing the wrong orientation breaks pins.</li>
+</ul>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Heads up — this one gets every maker at least once.</p>
+<p><img alt="Sparky warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+The most common way students damage a Cytron board is changing a wire while USB is still plugged in. It always feels faster to "just quickly swap one wire." It is not faster when you have to wait for a replacement board. Power off first. Every time. No exceptions.</p>
+</div>
+<h2 id="mechanical-design-basics">Mechanical Design Basics</h2>
+<p>The robot's body is called the <strong>Smart Car chassis</strong> — a flat acrylic or aluminum base plate with mounting holes for motors, battery packs, and the Cytron board. The word <strong>chassis</strong> comes from automotive engineering and means the structural frame of a vehicle. The chassis is the skeleton that holds every other component in place.</p>
+<p>The chassis uses <strong>standoffs</strong> — small metal or nylon pillars that create space between the Cytron board and the base plate. Standoffs keep the solder joints on the bottom of the board from touching the chassis surface, which would cause a short circuit. They also set the board at the right height so motor wires can reach the terminal blocks cleanly.</p>
+<p>Two DC motors mount to the underside of the chassis using plastic brackets and small M3 screws. Each motor shaft presses into a rubber wheel. The wheels are the main actuators — the physical things your software eventually moves. Keeping the motor mounts tight and the wheels centered is the key to a robot that drives in a straight line.</p>
+<h2 id="no-soldering-assembly">No-Soldering Assembly</h2>
+<p>Now let's put it all together. The assembly process for the Smart Car has eight stages. Every connection uses a screw, a press-fit, or a plug. No heat is needed.</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">This part looks like a lot. You've got this, engineer.</p>
+<p><img alt="Sparky encouraging" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+Every maker I know felt a little nervous the first time they stared at a pile of robot parts. Take it one step at a time. The instructions show you exactly which hole each screw goes into. If something does not fit easily, check the orientation before applying any force — the right angle plus gentle pressure is almost always the answer.</p>
+</div>
+<p>Here is the assembly sequence:</p>
+<ol>
+<li><strong>Attach the motors.</strong> Press each DC motor into its plastic bracket. Fix the bracket to the underside of the chassis with M3 screws. Orient both motors so the shafts point outward toward the chassis edges.</li>
+<li><strong>Install the standoffs.</strong> Thread four M3 nylon standoffs through the corner holes of the chassis from the top side. Tighten the nuts underneath. Use nylon, not metal — metal standoffs can short the board.</li>
+<li><strong>Route the motor wires.</strong> Thread the red and black leads from each motor up through the chassis opening to the top surface. Keep them untangled now so they are easy to connect later.</li>
+<li><strong>Mount the Cytron board.</strong> Lower the board onto the four standoffs. Align the corner mounting holes with the standoff tops. Press gently and secure with M3 screws. The board should sit flat with no rocking.</li>
+<li><strong>Connect the motor terminals.</strong> Insert the left motor wires into the M1 screw terminal and the right motor wires into M2. Tighten each screw until the wire is firmly gripped. Tug gently to confirm. A loose wire causes erratic motor behavior.</li>
+<li><strong>Attach the wheels.</strong> Press each yellow rubber wheel onto its motor shaft until it clicks. Spin each wheel by hand — it should spin freely and sit straight. A crooked wheel causes the robot to veer off course.</li>
+<li><strong>Connect the battery pack.</strong> Plug the battery pack connector into the power terminal. Red wire goes to positive (+), black to negative (−). Reversed polarity can destroy the motor driver chips.</li>
+<li><strong>Connect the sensor cable.</strong> Plug the time-of-flight sensor's Grove cable into the Grove port labeled GP16/GP17. Tuck any excess cable length under the board so it stays clear of the wheels.</li>
+</ol>
+<h4 id="diagram-robot-assembly-workflow">Diagram: Robot Assembly Workflow</h4>
+<iframe src="../../sims/robot-assembly-workflow/main.html" width="100%" height="522px" scrolling="no"></iframe>
+
+<details>
+<summary>Robot Assembly Workflow</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> robot-assembly-workflow<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Apply (L3) — Assemble the Smart Car chassis by following the correct sequence of steps and explain why each step comes before the next.
+Bloom Verb: Assemble</p>
+<p>Learning Objective: Students will sequence the eight assembly steps in the correct order and explain the mechanical reason each step precedes the next (e.g., why standoffs must be installed before the board is mounted).</p>
+<p>Layout:
+- Eight vertical steps arranged as a top-to-bottom flowchart
+- Each step is a rounded rectangle with a step number, short title, and a simple icon
+- Downward arrow connectors between steps
+- Right side: Expanded detail panel that appears when a step is clicked</p>
+<p>Steps with icons and click-to-expand detail text:</p>
+<p>Step 1 — Attach Motors
+Icon: Motor + gear
+Detail: "Mount each motor into its plastic bracket with two M3 screws. Both shafts point outward. Reason for first: motors are hardest to reach once the board is mounted above them."</p>
+<p>Step 2 — Install Standoffs
+Icon: Four pillars
+Detail: "Thread four M3 nylon standoffs through the chassis corner holes; nuts below. Use nylon — metal standoffs can short the board. Reason: the board mounts onto these standoffs next."</p>
+<p>Step 3 — Route Motor Wires
+Icon: Two-color wire
+Detail: "Thread red and black motor wires up through the chassis opening to the top surface. Reason: impossible to route wires cleanly after the board covers the opening."</p>
+<p>Step 4 — Mount Cytron Board
+Icon: PCB outline
+Detail: "Lower the board onto the standoffs and secure with M3 screws. Board must sit flat with no rocking. Reason: the board must be in place before wires reach its terminals."</p>
+<p>Step 5 — Connect Motor Terminals
+Icon: Screw terminal
+Detail: "Left motor wires go into M1, right into M2. Tighten each screw and tug to confirm grip. Reason: a loose wire causes erratic motor behavior that looks like a software bug."</p>
+<p>Step 6 — Attach Wheels
+Icon: Yellow wheel
+Detail: "Press each wheel onto its shaft until it clicks. Spin by hand — must spin freely and sit perpendicular. Reason: a crooked wheel causes the robot to veer even when code is perfect."</p>
+<p>Step 7 — Connect Battery Pack
+Icon: AA batteries
+Detail: "Red wire to + terminal, black to − terminal. Never reverse polarity. Reason: reversed polarity can permanently damage the motor driver chips."</p>
+<p>Step 8 — Connect Sensor Cable
+Icon: Grove plug
+Detail: "Plug the time-of-flight sensor Grove cable into the GP16/GP17 port. Tuck excess cable. Reason: this sensor is used in every collision-avoidance lab starting in Chapter 8."</p>
+<p>Visual style:
+- Steps use a blue-to-green gradient (step 1 = blue, step 8 = green) to represent assembly progress
+- Clicked step highlighted with orange border; all others remain their gradient color
+- Detail panel slides in smoothly from the right on click
+- Completed steps show a small green checkmark in the top-right corner after being clicked
+- Arrow connectors: gray with directional arrowheads</p>
+<p>Responsive behavior: Flowchart scales with window width. On narrow viewports, detail panel stacks below the flowchart. Step rectangles maintain a minimum 80 px height.</p>
+<p>Instructional Rationale: A clickable workflow at the Apply level gives students a scaffold to consult during physical assembly. Revealing "why this step is here" turns a rote procedure into deliberate reasoning about mechanical dependencies — the same decomposition thinking introduced in Chapter 1.</p>
+</details>
+<h2 id="hardware-troubleshooting">Hardware Troubleshooting</h2>
+<p>No matter how carefully you assemble the robot, something will not work on the first try. That is not a failure — it is a normal part of engineering. <strong>Hardware troubleshooting</strong> is the skill of figuring out <em>why</em> something does not work and fixing it step by step.</p>
+<p>Before you decide a component is broken, work through this checklist:</p>
+<ul>
+<li><strong>Is it powered?</strong> Check that USB is firmly connected. Look for the green power LED on the Cytron board. If it is not lit, the board has no power.</li>
+<li><strong>Is the program uploaded?</strong> Confirm your file was saved to the board, not just to your laptop. Use your IDE's file browser to see what files are stored on the board.</li>
+<li><strong>Are all wires seated?</strong> Gently tug each connector to confirm it is fully plugged in. A wire that looks connected but is not fully seated is one of the most common hardware bugs.</li>
+<li><strong>Is anything reversed?</strong> Check your battery pack polarity. Red to positive, black to negative. Reversed polarity damages hardware instantly.</li>
+<li><strong>Is the correct Grove port in use?</strong> Your code specifies GPIO pin numbers. Make sure the physical cable matches. GP16 and GP17 are the I2C data pins for the time-of-flight sensor — any other port will not work.</li>
+<li><strong>Do the onboard LEDs tell you anything?</strong> The Cytron board has 13 LEDs that light up when their GPIO pin goes HIGH. If your code sets a pin HIGH and the LED stays dark, the program is not running as expected.</li>
+</ul>
+<p>Hardware troubleshooting is the same <strong>debugging fundamentals</strong> you learned in Chapter 1 — form a hypothesis, test it, observe the result. Work through one hypothesis at a time. Changing two things at once makes it impossible to know which change fixed the problem.</p>
+<h2 id="what-you-built">What You Built</h2>
+<p>You now know the complete hardware platform that powers your robot for this entire course. You can name every component on the Cytron board, explain what GPIO pins do, read a pinout diagram, use Grove and Dupont connectors safely, and follow the no-soldering assembly sequence from a pile of parts to a rolling chassis. That is a solid foundation to build the rest of the course on.</p>
+<details class="question">
+<summary>Check your understanding — click to reveal the answers</summary>
+<p><strong>Q1.</strong> What does GPIO stand for, and why does the direction (input vs. output) matter?</p>
+<p><strong>A1.</strong> GPIO stands for General Purpose Input/Output. The direction determines whether the pin sends a signal (output — like controlling an LED) or receives a signal (input — like reading a button). Setting the wrong direction in code means the pin cannot do its job.</p>
+<p><strong>Q2.</strong> What is the difference between a Grove connector and a Dupont connector? When would you use each?</p>
+<p><strong>A2.</strong> A Grove connector is keyed (has a notch that prevents backwards insertion) and carries 4 wires in a standard layout. A Dupont connector is a generic single-wire jumper that can be inserted backwards. Use Grove for sensors that have Grove ports; use Dupont when a sensor only has bare wire leads.</p>
+<p><strong>Q3.</strong> What is flash memory used for on the Cytron board, and why does it not lose data when you unplug the robot?</p>
+<p><strong>A3.</strong> Flash memory stores MicroPython programs permanently. It keeps data without power because it uses floating-gate transistors that hold charge even when electricity is removed — the same technology used in USB flash drives.</p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Double thumbs-up, engineer — you built a robot!</p>
+<p><img alt="Sparky celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You just assembled a real robot. Motors, wires, a microcontroller brain — and not a soldering iron in sight. The hardware is ready. In the next chapter we set up the software tools, upload your very first program, and watch Sparky's LEDs blink on command. Let's go!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1902,10 +2719,12 @@ the course.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

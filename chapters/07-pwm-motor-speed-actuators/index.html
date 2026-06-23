@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Master Pulse Width Modulation (PWM) and apply it to control motor speed, differential drive turning, servo angle, piezo buzzer tones, and event-driven GPIO interrupts — unlocking smooth, programmable robot motion.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -22,15 +22,15 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>7. PWM and Actuators - STEM Robots</title>
+        <title>PWM, Motor Speed Control, and Actuators - STEM Robots</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7. PWM and Actuators
+              PWM, Motor Speed Control, and Actuators
             
           </span>
         </div>
@@ -137,11 +137,13 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -173,13 +175,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -224,7 +227,7 @@
       <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -244,8 +247,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
+    
   </span>
   
 
@@ -264,8 +269,10 @@
       <a href="../../about/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     About This Website
+    
   </span>
   
 
@@ -284,8 +291,10 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Course Description
+    
   </span>
   
 
@@ -304,8 +313,10 @@
       <a href="../../journey-map/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Journey Map
+    
   </span>
   
 
@@ -324,8 +335,10 @@
       <a href="../../robot-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Robot Description
+    
   </span>
   
 
@@ -344,8 +357,10 @@
       <a href="../../gallery/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Gallery
+    
   </span>
   
 
@@ -364,8 +379,10 @@
       <a href="../../great-ways-to-teach/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Great Ways To Teach
+    
   </span>
   
 
@@ -394,6 +411,7 @@
     
     
     
+    
       
         
         
@@ -404,11 +422,14 @@
         
   
   
+  
     <a href="../../course-descriptions/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Course Descriptions
+    
   </span>
   
 
@@ -439,57 +460,32 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
+    
     
     
     
@@ -502,13 +498,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
     Chapters
+    
   </span>
   
 
@@ -540,8 +537,10 @@
       <a href="../01-intro-computational-thinking/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     1. Computational Thinking
+    
   </span>
   
 
@@ -561,8 +560,10 @@
       <a href="../02-hardware-platform-assembly/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     2. Hardware and Assembly
+    
   </span>
   
 
@@ -582,8 +583,10 @@
       <a href="../03-micropython-dev-environment/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     3. MicroPython and Setup
+    
   </span>
   
 
@@ -603,8 +606,10 @@
       <a href="../04-control-flow-functions/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     4. Control Flow and Functions
+    
   </span>
   
 
@@ -624,8 +629,10 @@
       <a href="../05-data-structures-modular-code/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     5. Data Structures and Git
+    
   </span>
   
 
@@ -645,8 +652,10 @@
       <a href="../06-electronics-motors-protocols/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     6. Motors and Protocols
+    
   </span>
   
 
@@ -675,8 +684,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
     7. PWM and Actuators
+    
   </span>
   
 
@@ -686,8 +697,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
     7. PWM and Actuators
+    
   </span>
   
 
@@ -735,6 +748,264 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#pulse-width-modulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pulse Width Modulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pulse Width Modulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pwm-duty-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM Duty Cycle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PWM Duty Cycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-pwm-duty-cycle-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: PWM Duty Cycle Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM Frequency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-bit-duty-cycle-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      16-Bit Duty Cycle Values
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motor-speed-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor Speed Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Motor Speed Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pwm-motor-control-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM Motor Control Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-motor-control-and-right-motor-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Left Motor Control and Right Motor Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differential-drive-turning-by-varying-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differential Drive — Turning by Varying Speed
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Differential Drive — Turning by Varying Speed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-differential-drive-turn-simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Differential Drive Turn Simulator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-motors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Motors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Servo Motors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servo-angle-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Angle Range
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servo-pwm-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo PWM Calibration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-range-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Range Mapping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servo-sweep-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Sweep Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#piezo-buzzer-sound-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Piezo Buzzer — Sound Feedback
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Piezo Buzzer — Sound Feedback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tone-frequency-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tone Frequency Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sound-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sound Feedback
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpio-interrupts-and-button-debouncing" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIO Interrupts and Button Debouncing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPIO Interrupts and Button Debouncing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpio-interrupt-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIO Interrupt Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irq-falling-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      IRQ Falling Edge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#button-debouncing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Button Debouncing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting It All Together
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -754,8 +1025,10 @@
       <a href="../08-sensors-data-input/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     8. Sensors and Input
+    
   </span>
   
 
@@ -775,8 +1048,10 @@
       <a href="../09-display-systems-output/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     9. Displays and Output
+    
   </span>
   
 
@@ -796,8 +1071,10 @@
       <a href="../10-robot-behaviors-navigation/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     10. Robot Behaviors
+    
   </span>
   
 
@@ -817,8 +1094,10 @@
       <a href="../11-wireless-networking-web-servers/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     11. WiFi and Web Servers
+    
   </span>
   
 
@@ -838,8 +1117,10 @@
       <a href="../12-bluetooth-low-energy/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     12. Bluetooth Low Energy
+    
   </span>
   
 
@@ -859,8 +1140,10 @@
       <a href="../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     13. Swarm and Advanced
+    
   </span>
   
 
@@ -907,6 +1190,7 @@
     
     
     
+    
       
         
         
@@ -915,13 +1199,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graph/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graph
+    
   </span>
   
 
@@ -960,6 +1247,7 @@
     
     
     
+    
       
         
         
@@ -968,13 +1256,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graphs/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graphs
+    
   </span>
   
 
@@ -1017,6 +1308,7 @@
     
     
     
+    
       
         
         
@@ -1027,11 +1319,14 @@
         
   
   
+  
     <a href="../../setup/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Getting Started
+    
   </span>
   
 
@@ -1056,8 +1351,10 @@
       <a href="../../personas/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Personas
+    
   </span>
   
 
@@ -1076,8 +1373,10 @@
       <a href="../../topics/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Topics
+    
   </span>
   
 
@@ -1138,6 +1437,7 @@
     
     
     
+    
       
         
         
@@ -1146,13 +1446,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../lessons/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Lessons
+    
   </span>
   
 
@@ -1187,6 +1490,7 @@
     
     
     
+    
       
         
         
@@ -1195,13 +1499,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructor's Guide
+    
   </span>
   
 
@@ -1230,25 +1537,58 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
     
@@ -1260,13 +1600,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     MicroSims
+    
   </span>
   
 
@@ -1301,6 +1644,7 @@
     
     
     
+    
       
         
         
@@ -1309,13 +1653,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../kits/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Kits
+    
   </span>
   
 
@@ -1354,6 +1701,7 @@
     
     
     
+    
       
         
         
@@ -1364,11 +1712,14 @@
         
   
   
+  
     <a href="../../kits/wifi-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Wireless Bot
+    
   </span>
   
 
@@ -1393,8 +1744,10 @@
       <a href="../../kits/bump-switch/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Bump Switches
+    
   </span>
   
 
@@ -1413,8 +1766,10 @@
       <a href="../../kits/line-follower/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Line Follower
+    
   </span>
   
 
@@ -1433,8 +1788,10 @@
       <a href="../../kits/adjust/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Adjustabot
+    
   </span>
   
 
@@ -1453,8 +1810,10 @@
       <a href="../../kits/ultrasonic/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Ultrasonic
+    
   </span>
   
 
@@ -1481,6 +1840,7 @@
     
     
     
+    
       
         
         
@@ -1491,11 +1851,14 @@
         
   
   
+  
     <a href="../../kits/wifi-display-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     WiFi Display Bot
+    
   </span>
   
 
@@ -1530,6 +1893,7 @@
     
     
     
+    
       
         
         
@@ -1540,11 +1904,14 @@
         
   
   
+  
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructors Guide
+    
   </span>
   
 
@@ -1569,8 +1936,10 @@
       <a href="../../faq/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     FAQ
+    
   </span>
   
 
@@ -1589,8 +1958,10 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Glossary
+    
   </span>
   
 
@@ -1609,8 +1980,10 @@
       <a href="../../references/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     References
+    
   </span>
   
 
@@ -1629,8 +2002,10 @@
       <a href="../../license/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     License
+    
   </span>
   
 
@@ -1649,8 +2024,10 @@
       <a href="../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Contact
+    
   </span>
   
 
@@ -1669,8 +2046,10 @@
       <a href="../../prompts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     STEM Robotics Prompts
+    
   </span>
   
 
@@ -1689,8 +2068,10 @@
       <a href="../../sims/template/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     MicroSim Template
+    
   </span>
   
 
@@ -1752,6 +2133,264 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#pulse-width-modulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pulse Width Modulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pulse Width Modulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pwm-duty-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM Duty Cycle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PWM Duty Cycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-pwm-duty-cycle-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: PWM Duty Cycle Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM Frequency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-bit-duty-cycle-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      16-Bit Duty Cycle Values
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motor-speed-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor Speed Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Motor Speed Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pwm-motor-control-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM Motor Control Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-motor-control-and-right-motor-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Left Motor Control and Right Motor Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differential-drive-turning-by-varying-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differential Drive — Turning by Varying Speed
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Differential Drive — Turning by Varying Speed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-differential-drive-turn-simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Differential Drive Turn Simulator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-motors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Motors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Servo Motors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servo-angle-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Angle Range
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servo-pwm-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo PWM Calibration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-range-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Range Mapping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servo-sweep-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Sweep Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#piezo-buzzer-sound-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Piezo Buzzer — Sound Feedback
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Piezo Buzzer — Sound Feedback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tone-frequency-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tone Frequency Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sound-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sound Feedback
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpio-interrupts-and-button-debouncing" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIO Interrupts and Button Debouncing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPIO Interrupts and Button Debouncing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpio-interrupt-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIO Interrupt Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irq-falling-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      IRQ Falling Edge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#button-debouncing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Button Debouncing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting It All Together
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1766,11 +2405,17 @@
                 
                   
 
+
   
   
 
 
 <h1 id="pwm-motor-speed-control-and-actuators">PWM, Motor Speed Control, and Actuators</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome, maker — let's make me roll!</p>
+<p><img alt="Sparky waving" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+We've assembled the hardware, learned the language, and understood the electronics. Now it's time for the payoff: writing code that actually makes the wheels spin. By the end of this chapter, you'll control motor speed, make precise turns, sweep a servo, and play tones on the buzzer. Let's make it roll!</p>
+</div>
 <h2 id="summary">Summary</h2>
 <p>This chapter unlocks smooth, programmable motion. Students master Pulse Width
 Modulation — from duty cycle and frequency fundamentals through 16-bit values — and
@@ -1809,13 +2454,527 @@ event-driven robot responses.</p>
 <li><a href="../06-electronics-motors-protocols/">Chapter 6: Electronics, DC Motors, and Communication Protocols</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<h2 id="pulse-width-modulation">Pulse Width Modulation</h2>
+<p>In Chapter 6 you learned that a GPIO pin is either HIGH (3.3 V) or LOW (0 V). That is digital — two states. But motor speed is not digital. You want to drive at 25%, 50%, 75%, or any percentage in between. How do you get a variable output from a digital pin?</p>
+<p>The answer is <strong>Pulse Width Modulation</strong>, or <strong>PWM</strong>. PWM rapidly switches a pin between HIGH and LOW many times per second. Instead of changing the voltage level, it changes the <em>proportion of time</em> the pin is HIGH. That proportion is the <strong>duty cycle</strong>.</p>
+<h3 id="pwm-duty-cycle">PWM Duty Cycle</h3>
+<p>The <strong>duty cycle</strong> is the percentage of each cycle that the signal is HIGH. If a signal is HIGH for half the cycle and LOW for half the cycle, the duty cycle is 50%. A 25% duty cycle is HIGH for one quarter of the cycle.</p>
+<p>The average voltage delivered is proportional to the duty cycle. A 50% duty cycle on a 6 V motor supply delivers an average of 3 V to the motor. The motor's mechanical inertia smooths out the rapid switching, so it spins at approximately half speed.</p>
+<p>Before the interactive diagram below, here are the three duty cycle values to keep in mind: 0% means always off (motor stopped), 100% means always on (full speed), and any value between controls speed proportionally.</p>
+<h4 id="diagram-pwm-duty-cycle-explorer">Diagram: PWM Duty Cycle Explorer</h4>
+<iframe src="../../sims/pwm-duty-cycle-explorer/main.html" width="100%" height="402px" scrolling="no"></iframe>
+<p><a href="../../sims/pwm-duty-cycle-explorer/main.html">Run PWM Duty Cycle Explorer Fullscreen</a></p>
+<details>
+<summary>Interactive MicroSim showing PWM waveforms and average voltage</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> pwm-duty-cycle-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a p5.js MicroSim with a 700 × 400 canvas split into two sections:</p>
+<p>Top section (60% height): PWM waveform display.
+- Draw a square wave showing HIGH (3.3V) and LOW (0V) pulses.
+- An orange horizontal dashed line shows the "average voltage" level.
+- The waveform updates in real time as the duty cycle changes.
+- Label the HIGH time (Ton) and LOW time (Toff) with arrows.</p>
+<p>Bottom section (40% height): Controls and stats.
+- A large horizontal slider "Duty Cycle" from 0% to 100%.
+- Numeric display: "Duty Cycle: 50%", "Average Voltage: 1.65 V", "Motor Speed: ~50%".
+- A small animated motor icon (spinning circle) whose rotation speed is proportional to the duty cycle.</p>
+<p>Learning objective (Bloom's Taxonomy — Understanding): students connect duty cycle percentage to average voltage and motor speed.</p>
+<p>Responsive: redraw on window resize.</p>
+</details>
+<h3 id="pwm-frequency">PWM Frequency</h3>
+<p>The <strong>PWM frequency</strong> is how many times per second the signal completes one full HIGH-LOW cycle. Motor control typically uses 50–1000 Hz. At 50 Hz, the signal switches 50 times per second. At 1000 Hz, it switches 1000 times per second.</p>
+<p>Higher frequencies feel smoother to the motor but require more processing. Lower frequencies can cause audible buzzing from the motor coils. For the DC motors on this robot, 50 Hz works reliably.</p>
+<h3 id="16-bit-duty-cycle-values">16-Bit Duty Cycle Values</h3>
+<p>MicroPython's PWM objects accept duty cycle as a 16-bit integer (0 to 65535), not a percentage. This gives finer control than 0–100 integers.</p>
+<p>The conversion is simple. Before the code, here is the math: multiply the desired percentage (0.0 to 1.0) by 65535. So 50% is <code>0.5 * 65535 = 32767</code>. Full speed is 65535. Stopped is 0.</p>
+<table>
+<thead>
+<tr>
+<th>Percent</th>
+<th>16-bit value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0% (off)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>25%</td>
+<td>16383</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>32767</td>
+</tr>
+<tr>
+<td>75%</td>
+<td>49151</td>
+</tr>
+<tr>
+<td>100% (full)</td>
+<td>65535</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="motor-speed-control">Motor Speed Control</h2>
+<p>Now let's wire PWM to the motors. In MicroPython, the <code>machine.PWM</code> class controls PWM output on any GPIO pin. Before the code, here is what the parameters mean: <code>Pin(pin_number)</code> selects the GPIO pin, and <code>freq=50</code> sets 50 Hz.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="c1"># Set up PWM for the right motor forward pin</span>
+<span class="n">right_fwd</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_FORWARD_PIN</span><span class="p">))</span>
+<span class="n">right_fwd</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>   <span class="c1"># 50 Hz motor frequency</span>
+</code></pre></div></td></tr></table></div>
+<p>To set a speed, call <code>duty_u16()</code> with a value from 0 to 65535:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">right_fwd</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32767</span><span class="p">)</span>    <span class="c1"># 50% speed</span>
+<span class="n">right_fwd</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">65535</span><span class="p">)</span>    <span class="c1"># full speed</span>
+<span class="n">right_fwd</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>        <span class="c1"># stop</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="pwm-motor-control-code">PWM Motor Control Code</h3>
+<p>A complete motor setup uses one PWM object per direction wire. Each DC motor has two direction wires: forward and reverse. To drive forward, we set the forward PWM to our desired speed and the reverse PWM to 0 (off). To drive in reverse, we swap them.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="c1"># Create PWM objects for both motor direction pins</span>
+<span class="n">right_fwd</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_FORWARD_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">right_rev</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_REVERSE_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">left_fwd</span>  <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">LEFT_FORWARD_PIN</span><span class="p">),</span>  <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">left_rev</span>  <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">LEFT_REVERSE_PIN</span><span class="p">),</span>  <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">set_speed</span><span class="p">(</span><span class="n">pwm_fwd</span><span class="p">,</span> <span class="n">pwm_rev</span><span class="p">,</span> <span class="n">speed</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set motor speed. Positive = forward, negative = reverse, 0 = stop.</span>
+<span class="sd">    speed is -65535 to 65535.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">speed</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pwm_fwd</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span>
+        <span class="n">pwm_rev</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">speed</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pwm_fwd</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">pwm_rev</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="o">-</span><span class="n">speed</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pwm_fwd</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">pwm_rev</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="left-motor-control-and-right-motor-control">Left Motor Control and Right Motor Control</h3>
+<p>Each wheel has its own motor and its own pair of PWM pins. <strong>Left motor control</strong> and <strong>right motor control</strong> work identically — they just use different pin numbers from <code>config.py</code>.</p>
+<p>The <code>set_speed()</code> function above works for both motors. Call it twice — once for left, once for right:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">FULL</span> <span class="o">=</span> <span class="mi">65535</span>
+<span class="n">HALF</span> <span class="o">=</span> <span class="mi">32767</span>
+
+<span class="c1"># Drive forward at 50% speed</span>
+<span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">HALF</span><span class="p">)</span>
+<span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">HALF</span><span class="p">)</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Stop</span>
+<span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Always stop both motors together</p>
+<p><img alt="Sparky pointing up" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Call <code>set_speed(..., 0)</code> on both motors in your <code>finally</code> block (see Chapter 4). If your program crashes while one motor is running and the other is stopped, the robot will spin in circles until the battery dies. Stopping both motors in <code>finally</code> prevents this.</p>
+</div>
+<hr />
+<h2 id="differential-drive-turning-by-varying-speed">Differential Drive — Turning by Varying Speed</h2>
+<p>A two-wheeled robot turns by running the two wheels at different speeds. This is called <strong>differential drive</strong>. No steering wheel is needed.</p>
+<p>Before the concept diagram, here is the idea: if both wheels run at the same speed, the robot goes straight. If the right wheel runs faster than the left, the robot turns left (pivoting around the slower wheel). If the left runs faster, the robot turns right.</p>
+<p>Three common maneuvers:</p>
+<ul>
+<li><strong>Gradual left turn:</strong> right wheel at full, left wheel at half.</li>
+<li><strong>Spin left in place:</strong> right wheel forward, left wheel backward at the same speed.</li>
+<li><strong>Spin right in place:</strong> left wheel forward, right wheel backward at the same speed.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">spin_left</span><span class="p">(</span><span class="n">speed</span><span class="o">=</span><span class="mi">32767</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Spin in place to the left.&quot;&quot;&quot;</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">speed</span><span class="p">)</span>    <span class="c1"># right wheel forward</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="o">-</span><span class="n">speed</span><span class="p">)</span>   <span class="c1"># left wheel backward</span>
+
+<span class="k">def</span> <span class="nf">turn_gradual_left</span><span class="p">(</span><span class="n">speed</span><span class="o">=</span><span class="mi">32767</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gentle left curve — right faster, left slower.&quot;&quot;&quot;</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">speed</span><span class="p">)</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">speed</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="diagram-differential-drive-turn-simulator">Diagram: Differential Drive Turn Simulator</h4>
+<iframe src="../../sims/differential-drive-simulator/main.html" width="100%" height="452px" scrolling="no"></iframe>
+<p><a href="../../sims/differential-drive-simulator/main.html">Run Differential Drive Turn Simulator Fullscreen</a></p>
+<details>
+<summary>Interactive MicroSim showing robot turn behavior for different wheel speed ratios</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> differential-drive-simulator<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create a p5.js MicroSim with a 700 × 450 canvas. Show a top-down view of the robot (a rectangle with L and R labels for left and right wheels).</p>
+<p>Two vertical sliders on the left panel:
+- "Left wheel speed" from -100% to +100%
+- "Right wheel speed" from -100% to +100%</p>
+<p>The robot animates in the top-down view, turning and moving based on the differential of the two speeds. Use simple Euler integration to update position and heading each frame. Show the robot's path as a fading trail of dots.</p>
+<p>Preset buttons below the sliders: "Forward", "Backward", "Spin Left", "Spin Right", "Gradual Left", "Gradual Right". Each sets the sliders to the correct values and starts the animation.</p>
+<p>A "Reset position" button returns the robot to center.</p>
+<p>Learning objective (Bloom's Taxonomy — Applying): students predict and verify robot motion from left/right speed ratios.</p>
+<p>Responsive: redraw on window resize.</p>
+</details>
+<hr />
+<h2 id="servo-motors">Servo Motors</h2>
+<p>A <strong>servo motor</strong> is a different kind of actuator from a DC motor. Instead of spinning continuously, a servo rotates to a specific <strong>angle</strong> — anywhere from 0° to 180° in a standard servo. Servos are used for steering, sensor sweeping, and gripper arms.</p>
+<p>Servos are also controlled by PWM, but the duty cycle means something different than it does for DC motors. For a servo:</p>
+<ul>
+<li>A pulse width of <strong>1 ms</strong> (at 50 Hz) corresponds to approximately <strong>0°</strong>.</li>
+<li>A pulse width of <strong>1.5 ms</strong> corresponds to approximately <strong>90°</strong> (center).</li>
+<li>A pulse width of <strong>2 ms</strong> corresponds to approximately <strong>180°</strong>.</li>
+</ul>
+<h3 id="servo-angle-range">Servo Angle Range</h3>
+<p>The <strong>servo angle range</strong> (0°–180°) maps to PWM pulse widths (1–2 ms). Since we specify duty cycle as a 16-bit number (0–65535) for a 50 Hz signal (period = 20 ms):</p>
+<ul>
+<li>1 ms pulse = 1/20 = 5% duty cycle = <code>0.05 * 65535 ≈ 3276</code></li>
+<li>2 ms pulse = 2/20 = 10% duty cycle = <code>0.10 * 65535 ≈ 6553</code></li>
+</ul>
+<h3 id="servo-pwm-calibration">Servo PWM Calibration</h3>
+<p><strong>Servo PWM calibration</strong> means finding the exact duty cycle values for 0° and 180° on your specific servo. Manufacturers allow some variation, so the actual 0° position might be at 3000 or 3500 duty cycle units, not exactly 3276. Calibrate by setting a value, observing the actual angle, and adjusting until it matches.</p>
+<h3 id="linear-range-mapping">Linear Range Mapping</h3>
+<p><strong>Linear range mapping</strong> is a formula to convert an angle (0–180) to a duty cycle value (min_duty to max_duty). Before the code, here is the math: we scale the input angle proportionally across the output duty cycle range.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">angle_to_duty</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">min_duty</span><span class="o">=</span><span class="mi">3276</span><span class="p">,</span> <span class="n">max_duty</span><span class="o">=</span><span class="mi">6553</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert servo angle (0-180) to 16-bit duty cycle value.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">min_duty</span> <span class="o">+</span> <span class="p">(</span><span class="n">angle</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">max_duty</span> <span class="o">-</span> <span class="n">min_duty</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="servo-sweep-code">Servo Sweep Code</h3>
+<p>A <strong>servo sweep</strong> moves the servo from 0° to 180° and back in a smooth loop. The <code>range()</code> function generates the angle sequence:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="n">servo</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SERVO_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">set_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
+    <span class="n">duty</span> <span class="o">=</span> <span class="n">angle_to_duty</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+    <span class="n">servo</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
+
+<span class="c1"># Sweep from 0 to 180 and back</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">181</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>     <span class="c1"># 0° to 180° in 5° steps</span>
+            <span class="n">set_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mf">0.02</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">):</span>   <span class="c1"># 180° back to 0°</span>
+            <span class="n">set_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mf">0.02</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">servo</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>The <code>sleep(0.02)</code> gives the servo time to physically move to each position before the next command arrives.</p>
+<hr />
+<h2 id="piezo-buzzer-sound-feedback">Piezo Buzzer — Sound Feedback</h2>
+<p>A <strong>piezo buzzer</strong> is a simple device that vibrates when AC voltage is applied. PWM produces AC-like rapid switching, which makes the piezo element vibrate at the PWM frequency. That vibration moves air and produces sound.</p>
+<p>The pitch of the tone is determined by the PWM frequency: higher frequency → higher pitch. Standard musical notes correspond to specific frequencies (e.g., middle C = 262 Hz, A4 = 440 Hz).</p>
+<h3 id="tone-frequency-control">Tone Frequency Control</h3>
+<p>To play a tone, set the buzzer pin's PWM frequency to the desired pitch, then set the duty cycle to 50% (equal on/off time produces the loudest tone):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BUZZER_PIN</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Play a tone at the given frequency (Hz) for duration seconds.&quot;&quot;&quot;</span>
+    <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
+    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32767</span><span class="p">)</span>   <span class="c1"># 50% duty cycle for maximum volume</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>       <span class="c1"># silence between notes</span>
+
+<span class="c1"># Play a simple startup melody</span>
+<span class="n">play_tone</span><span class="p">(</span><span class="mi">440</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>    <span class="c1"># A4</span>
+<span class="n">play_tone</span><span class="p">(</span><span class="mi">523</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>    <span class="c1"># C5</span>
+<span class="n">play_tone</span><span class="p">(</span><span class="mi">659</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>    <span class="c1"># E5</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="sound-feedback">Sound Feedback</h3>
+<p><strong>Sound feedback</strong> is a useful user experience pattern — play a tone when the robot starts up, when it detects an obstacle, or when a button is pressed. It communicates state without requiring the student to watch the OLED display.</p>
+<p>A short high-pitched beep for detection, a low-pitched buzz for a warning, and a rising melody for success are easy to implement and significantly improve the robot's expressiveness.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Sound is output too</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Sensors are inputs. Motors and displays are outputs. The buzzer is also an output — but an audio one. In computational thinking terms, the buzzer is an actuator just like a motor. It converts an electrical signal (PWM) into a physical effect (sound waves). Keep that input/output mental model in mind as you add features.</p>
+</div>
+<hr />
+<h2 id="gpio-interrupts-and-button-debouncing">GPIO Interrupts and Button Debouncing</h2>
+<p>So far, you've checked sensors inside a <code>while True</code> loop. This is called <strong>polling</strong> — you ask "has anything changed?" on every iteration. Polling works fine for slow sensors, but for fast events like button presses, there's a better approach: <strong>interrupts</strong>.</p>
+<h3 id="gpio-interrupt-setup">GPIO Interrupt Setup</h3>
+<p>A <strong>GPIO interrupt</strong> tells the microcontroller to automatically call a function the moment a pin changes state — without waiting for the main loop to get to it. You <strong>attach</strong> (register) the interrupt by calling <code>irq()</code> on a Pin object.</p>
+<p>Before the code, here is what the parameters mean: <code>trigger</code> specifies which signal edge triggers the interrupt, and <code>handler</code> specifies the function to call.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+
+<span class="n">button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">button_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Button pressed!&quot;</span><span class="p">)</span>
+
+<span class="n">button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">button_pressed</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="irq-falling-edge">IRQ Falling Edge</h3>
+<p>The <strong>IRQ falling edge</strong> trigger fires when the pin changes from HIGH to LOW. With an active-low button (pressed = LOW, because of the pull-up resistor), this is exactly when the button is pressed.</p>
+<p>Why FALLING? The button pin is connected to 3.3 V through a <strong>pull-up resistor</strong> — an internal resistor that holds the pin HIGH when nothing is pressing it. When you press the button, it connects the pin to ground (0 V), pulling it LOW. That transition from HIGH to LOW is the falling edge.</p>
+<p><code>Pin.IRQ_RISING</code> fires when the pin goes from LOW to HIGH — i.e., when the button is released.</p>
+<h3 id="button-debouncing">Button Debouncing</h3>
+<p>Physical buttons don't switch cleanly. When you press a button, the metal contacts bounce — making and breaking contact 5–50 times in just a few milliseconds. Without handling this, your interrupt fires 10–20 times per press instead of once.</p>
+<p><strong>Debouncing</strong> is the technique of ignoring the extra bounces. The simplest approach for robot code is to record the time of the last interrupt and ignore any new interrupt that arrives within 50–200 ms:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
+
+<span class="n">button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+<span class="n">last_press_time</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">button_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">last_press_time</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">last_press_time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">:</span>    <span class="c1"># 150 ms debounce</span>
+        <span class="n">last_press_time</span> <span class="o">=</span> <span class="n">now</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Button press registered!&quot;</span><span class="p">)</span>
+
+<span class="n">button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">button_pressed</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The <code>ticks_diff()</code> function handles timer rollover correctly, just as in Chapter 4.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Keep interrupt handlers short</p>
+<p><img alt="Sparky warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Interrupt handler functions (like <code>button_pressed</code>) run in a special context. Keep them short — set a flag, record a timestamp, and exit. Do NOT call <code>sleep()</code>, <code>print()</code>, or I2C functions inside an interrupt handler. These can cause crashes. Instead, set a boolean flag like <code>button_was_pressed = True</code> in the handler, then check that flag in your main loop and take action there.</p>
+</div>
+<hr />
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+<p>Here is a complete robot program that uses PWM for motor control, plays a startup tone, and handles a button interrupt. It demonstrates every concept from this chapter working together.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="c1"># Set up motors</span>
+<span class="n">right_fwd</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_FORWARD_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">right_rev</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_REVERSE_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">left_fwd</span>  <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">LEFT_FORWARD_PIN</span><span class="p">),</span>  <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">left_rev</span>  <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">LEFT_REVERSE_PIN</span><span class="p">),</span>  <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">buzzer</span>    <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BUZZER_PIN</span><span class="p">))</span>
+
+<span class="n">button_flag</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">last_press</span>  <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">on_button</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">button_flag</span><span class="p">,</span> <span class="n">last_press</span>
+    <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">ticks_ms</span><span class="p">(),</span> <span class="n">last_press</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">:</span>
+        <span class="n">last_press</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
+        <span class="n">button_flag</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+<span class="n">button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">on_button</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">beep</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">440</span><span class="p">,</span> <span class="n">dur</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">freq</span><span class="p">);</span> <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32767</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="n">dur</span><span class="p">);</span> <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">beep</span><span class="p">(</span><span class="mi">659</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>   <span class="c1"># startup tone</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">button_flag</span><span class="p">:</span>
+            <span class="n">button_flag</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">beep</span><span class="p">(</span><span class="mi">880</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Button pressed!&quot;</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">right_fwd</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">right_rev</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">left_fwd</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>  <span class="n">left_rev</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Motors and buzzer off.&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>PWM</strong> switches a pin between HIGH and LOW rapidly — the duty cycle controls average voltage</li>
+<li><strong>Duty cycle</strong> is expressed as a 16-bit integer (0–65535) in MicroPython</li>
+<li><strong>Motor speed</strong> is controlled by the duty cycle on the forward or reverse pin</li>
+<li><strong>Differential drive</strong> turns the robot by running left and right wheels at different speeds</li>
+<li><strong>Servo motors</strong> rotate to a specific angle, controlled by PWM pulse width (1–2 ms at 50 Hz)</li>
+<li><strong>Linear mapping</strong> converts an angle (0–180) to a duty cycle value</li>
+<li><strong>Piezo buzzer</strong> tone pitch is controlled by PWM frequency</li>
+<li><strong>GPIO interrupts</strong> call a handler function the instant a pin changes state — faster than polling</li>
+<li><strong>Debouncing</strong> ignores extra button-bounce triggers within a short time window</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Your robot is alive — and it's rolling!</p>
+<p><img alt="Sparky celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Double thumbs-up! You wrote real code that spins my wheels, turns me, sweeps a servo, and plays tones. That's physical computing — software controlling the physical world. Next chapter, we add eyes: sensors that let me measure the world around me. The robot is about to get smart!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1903,10 +3062,12 @@ event-driven robot responses.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+        <meta name="description" content="Converge all prior skills into autonomous robot behavior — implement open-loop and closed-loop motor control, build a full collision avoidance algorithm, construct a dual-sensor line follower, choreograph a robot dance, and apply the config/secrets/gitignore patterns to a production-quality project.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -22,15 +22,15 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>10. Robot Behaviors - STEM Robots</title>
+        <title>Robot Behaviors and Autonomous Navigation - STEM Robots</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              10. Robot Behaviors
+              Robot Behaviors and Autonomous Navigation
             
           </span>
         </div>
@@ -137,11 +137,13 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -173,13 +175,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -224,7 +227,7 @@
       <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -244,8 +247,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
+    
   </span>
   
 
@@ -264,8 +269,10 @@
       <a href="../../about/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     About This Website
+    
   </span>
   
 
@@ -284,8 +291,10 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Course Description
+    
   </span>
   
 
@@ -304,8 +313,10 @@
       <a href="../../journey-map/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Journey Map
+    
   </span>
   
 
@@ -324,8 +335,10 @@
       <a href="../../robot-description/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Robot Description
+    
   </span>
   
 
@@ -344,8 +357,10 @@
       <a href="../../gallery/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Gallery
+    
   </span>
   
 
@@ -364,8 +379,10 @@
       <a href="../../great-ways-to-teach/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Great Ways To Teach
+    
   </span>
   
 
@@ -394,6 +411,7 @@
     
     
     
+    
       
         
         
@@ -404,11 +422,14 @@
         
   
   
+  
     <a href="../../course-descriptions/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Course Descriptions
+    
   </span>
   
 
@@ -439,57 +460,32 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
+    
     
     
     
@@ -502,13 +498,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
     Chapters
+    
   </span>
   
 
@@ -540,8 +537,10 @@
       <a href="../01-intro-computational-thinking/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     1. Computational Thinking
+    
   </span>
   
 
@@ -561,8 +560,10 @@
       <a href="../02-hardware-platform-assembly/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     2. Hardware and Assembly
+    
   </span>
   
 
@@ -582,8 +583,10 @@
       <a href="../03-micropython-dev-environment/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     3. MicroPython and Setup
+    
   </span>
   
 
@@ -603,8 +606,10 @@
       <a href="../04-control-flow-functions/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     4. Control Flow and Functions
+    
   </span>
   
 
@@ -624,8 +629,10 @@
       <a href="../05-data-structures-modular-code/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     5. Data Structures and Git
+    
   </span>
   
 
@@ -645,8 +652,10 @@
       <a href="../06-electronics-motors-protocols/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     6. Motors and Protocols
+    
   </span>
   
 
@@ -666,8 +675,10 @@
       <a href="../07-pwm-motor-speed-actuators/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     7. PWM and Actuators
+    
   </span>
   
 
@@ -687,8 +698,10 @@
       <a href="../08-sensors-data-input/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     8. Sensors and Input
+    
   </span>
   
 
@@ -708,8 +721,10 @@
       <a href="../09-display-systems-output/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     9. Displays and Output
+    
   </span>
   
 
@@ -738,8 +753,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
     10. Robot Behaviors
+    
   </span>
   
 
@@ -749,8 +766,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
     10. Robot Behaviors
+    
   </span>
   
 
@@ -798,6 +817,198 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#open-loop-vs-closed-loop-motor-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open-Loop vs. Closed-Loop Motor Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open-Loop vs. Closed-Loop Motor Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-loop-motor-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open-Loop Motor Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closed-loop-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Closed-Loop Feedback
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Closed-Loop Feedback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-open-loop-vs-closed-loop-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Open-Loop vs. Closed-Loop Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collision-avoidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collision Avoidance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Collision Avoidance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obstacle-detection-and-distance-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obstacle Detection and Distance Threshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-turn-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random Turn Direction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-complete-collision-avoidance-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete Collision Avoidance Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#line-following" class="md-nav__link">
+    <span class="md-ellipsis">
+      Line Following
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Line Following">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dual-ir-sensor-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual IR Sensor Reading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motor-differential-adjust" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor Differential Adjust
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-complete-line-following-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete Line Following Program
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-dance-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Robot Dance Sequence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-secrets-and-gitignore-in-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config, Secrets, and .gitignore in Production
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config, Secrets, and .gitignore in Production">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-file-pattern-and-pin-assignment-constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config File Pattern and Pin Assignment Constants
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets-file-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secrets File Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitignore-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gitignore File
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -817,8 +1028,10 @@
       <a href="../11-wireless-networking-web-servers/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     11. WiFi and Web Servers
+    
   </span>
   
 
@@ -838,8 +1051,10 @@
       <a href="../12-bluetooth-low-energy/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     12. Bluetooth Low Energy
+    
   </span>
   
 
@@ -859,8 +1074,10 @@
       <a href="../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     13. Swarm and Advanced
+    
   </span>
   
 
@@ -907,6 +1124,7 @@
     
     
     
+    
       
         
         
@@ -915,13 +1133,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graph/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graph
+    
   </span>
   
 
@@ -960,6 +1181,7 @@
     
     
     
+    
       
         
         
@@ -968,13 +1190,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../learning-graphs/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Learning Graphs
+    
   </span>
   
 
@@ -1017,6 +1242,7 @@
     
     
     
+    
       
         
         
@@ -1027,11 +1253,14 @@
         
   
   
+  
     <a href="../../setup/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Getting Started
+    
   </span>
   
 
@@ -1056,8 +1285,10 @@
       <a href="../../personas/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Personas
+    
   </span>
   
 
@@ -1076,8 +1307,10 @@
       <a href="../../topics/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Topics
+    
   </span>
   
 
@@ -1138,6 +1371,7 @@
     
     
     
+    
       
         
         
@@ -1146,13 +1380,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../lessons/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Lessons
+    
   </span>
   
 
@@ -1187,6 +1424,7 @@
     
     
     
+    
       
         
         
@@ -1195,13 +1433,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructor's Guide
+    
   </span>
   
 
@@ -1230,25 +1471,58 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
     
@@ -1260,13 +1534,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     MicroSims
+    
   </span>
   
 
@@ -1301,6 +1578,7 @@
     
     
     
+    
       
         
         
@@ -1309,13 +1587,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
   
   
     <a href="../../kits/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Kits
+    
   </span>
   
 
@@ -1354,6 +1635,7 @@
     
     
     
+    
       
         
         
@@ -1364,11 +1646,14 @@
         
   
   
+  
     <a href="../../kits/wifi-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Wireless Bot
+    
   </span>
   
 
@@ -1393,8 +1678,10 @@
       <a href="../../kits/bump-switch/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Bump Switches
+    
   </span>
   
 
@@ -1413,8 +1700,10 @@
       <a href="../../kits/line-follower/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Line Follower
+    
   </span>
   
 
@@ -1433,8 +1722,10 @@
       <a href="../../kits/adjust/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Adjustabot
+    
   </span>
   
 
@@ -1453,8 +1744,10 @@
       <a href="../../kits/ultrasonic/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Ultrasonic
+    
   </span>
   
 
@@ -1481,6 +1774,7 @@
     
     
     
+    
       
         
         
@@ -1491,11 +1785,14 @@
         
   
   
+  
     <a href="../../kits/wifi-display-bot/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     WiFi Display Bot
+    
   </span>
   
 
@@ -1530,6 +1827,7 @@
     
     
     
+    
       
         
         
@@ -1540,11 +1838,14 @@
         
   
   
+  
     <a href="../../instructors-guide/" class="md-nav__link">
       
   
+  
   <span class="md-ellipsis">
     Instructors Guide
+    
   </span>
   
 
@@ -1569,8 +1870,10 @@
       <a href="../../faq/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     FAQ
+    
   </span>
   
 
@@ -1589,8 +1892,10 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Glossary
+    
   </span>
   
 
@@ -1609,8 +1914,10 @@
       <a href="../../references/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     References
+    
   </span>
   
 
@@ -1629,8 +1936,10 @@
       <a href="../../license/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     License
+    
   </span>
   
 
@@ -1649,8 +1958,10 @@
       <a href="../../contact/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Contact
+    
   </span>
   
 
@@ -1669,8 +1980,10 @@
       <a href="../../prompts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     STEM Robotics Prompts
+    
   </span>
   
 
@@ -1689,8 +2002,10 @@
       <a href="../../sims/template/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     MicroSim Template
+    
   </span>
   
 
@@ -1752,6 +2067,198 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#open-loop-vs-closed-loop-motor-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open-Loop vs. Closed-Loop Motor Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open-Loop vs. Closed-Loop Motor Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-loop-motor-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open-Loop Motor Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closed-loop-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Closed-Loop Feedback
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Closed-Loop Feedback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-open-loop-vs-closed-loop-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Open-Loop vs. Closed-Loop Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collision-avoidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collision Avoidance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Collision Avoidance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obstacle-detection-and-distance-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obstacle Detection and Distance Threshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-turn-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random Turn Direction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-complete-collision-avoidance-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete Collision Avoidance Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#line-following" class="md-nav__link">
+    <span class="md-ellipsis">
+      Line Following
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Line Following">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dual-ir-sensor-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual IR Sensor Reading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motor-differential-adjust" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor Differential Adjust
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-complete-line-following-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete Line Following Program
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-dance-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Robot Dance Sequence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-secrets-and-gitignore-in-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config, Secrets, and .gitignore in Production
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config, Secrets, and .gitignore in Production">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-file-pattern-and-pin-assignment-constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config File Pattern and Pin Assignment Constants
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets-file-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secrets File Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitignore-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gitignore File
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1766,11 +2273,17 @@
                 
                   
 
+
   
   
 
 
 <h1 id="robot-behaviors-and-autonomous-navigation">Robot Behaviors and Autonomous Navigation</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome, maker — this is the chapter you've been building toward!</p>
+<p><img alt="Sparky waving" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Motors, sensors, displays, functions, loops — you've built every piece separately. In this chapter, we wire them all together into a robot that navigates on its own. Collision avoidance. Line following. Even a dance routine. Computational thinking is YOUR superpower — and this chapter is proof.</p>
+</div>
 <h2 id="summary">Summary</h2>
 <p>This chapter is where all prior skills converge into autonomous robot behavior.
 Students implement open-loop and closed-loop (feedback) motor control, build a full
@@ -1810,13 +2323,521 @@ should use.</p>
 <li><a href="../08-sensors-data-input/">Chapter 8: Sensors and Data Input</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<h2 id="open-loop-vs-closed-loop-motor-control">Open-Loop vs. Closed-Loop Motor Control</h2>
+<p>Before building behaviors, we need to understand two fundamentally different approaches to motor control. This distinction is the foundation of robotics and control engineering.</p>
+<h3 id="open-loop-motor-control">Open-Loop Motor Control</h3>
+<p><strong>Open-loop motor control</strong> sends a command to the motors and does nothing to verify the result. You say "go forward at 50% speed" and trust that it happens. No sensor checks. No correction.</p>
+<p>Open-loop is simple and works fine for timed patterns — "drive forward for 2 seconds, then turn for 0.5 seconds." The problem is that real motors are imperfect. One motor may be slightly faster than the other. The battery voltage drops as it drains. These factors cause drift — the robot veers off course over time.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Open-loop: drive forward for 2 seconds, then turn right</span>
+<span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">HALF</span><span class="p">)</span>
+<span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">HALF</span><span class="p">)</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># right stops</span>
+<span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">HALF</span><span class="p">)</span>   <span class="c1"># left keeps going — turns right</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Open-loop works for choreographed sequences where the path is pre-planned. It fails for reactive navigation.</p>
+<h3 id="closed-loop-feedback">Closed-Loop Feedback</h3>
+<p><strong>Closed-loop feedback</strong> continuously measures the output (what is actually happening) and compares it to the goal (what should be happening). If there is a difference (called the <strong>error</strong>), the controller adjusts its output to reduce that error.</p>
+<p>The <strong>feedback loop</strong> is the cycle:</p>
+<ol>
+<li><strong>Sense</strong> — read the current state (sensor value)</li>
+<li><strong>Compare</strong> — how far is the current state from the goal?</li>
+<li><strong>Act</strong> — adjust the motor output to reduce the difference</li>
+<li><strong>Repeat</strong> — go back to step 1</li>
+</ol>
+<p>For collision avoidance, the sensor is the ToF distance sensor. The goal is "maintain a safe distance." When the measured distance drops below the threshold, the motors respond. That is a closed feedback loop.</p>
+<h4 id="diagram-open-loop-vs-closed-loop-control">Diagram: Open-Loop vs. Closed-Loop Control</h4>
+<iframe src="../../sims/open-closed-loop-comparison/main.html" width="100%" height="560px" scrolling="no"></iframe>
+<p><a href="../../sims/open-closed-loop-comparison/main.html">Run Open-Loop vs. Closed-Loop Control Fullscreen</a></p>
+<details>
+<summary>Interactive diagram comparing open-loop and closed-loop control systems</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> open-closed-loop-comparison<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p>Create two Mermaid flowcharts side by side (use subgraph):</p>
+<p>Left subgraph "Open-Loop":
+Controller → Actuator (Motors) → Output (Robot Motion)
+No feedback arrow.</p>
+<p>Right subgraph "Closed-Loop":
+Controller → Actuator (Motors) → Output (Robot Motion) → Sensor (Distance) → Error Calculation → Controller (loop back)</p>
+<p>Every node has a click directive opening an infobox explaining that component's role. Error node infobox explains: "Error = Goal distance - Measured distance. If error &gt; 0, speed up. If error &lt; 0, slow down or stop."</p>
+<p>Canvas: 700 × 300 px. Responsive on window resize.</p>
+</details>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Why does feedback matter?</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Think about riding a bicycle. You don't look at your hands once, set the handlebar angle, and close your eyes — you constantly check where you're going and adjust. That's closed-loop control. Your eyes are the sensor, your brain is the controller, your arms are the actuators. The robot works the same way.</p>
+</div>
+<hr />
+<h2 id="collision-avoidance">Collision Avoidance</h2>
+<p><strong>Collision avoidance</strong> is the behavior of detecting an obstacle and changing course before hitting it. It is the most fundamental autonomous robot behavior — and the first one we will fully implement.</p>
+<h3 id="obstacle-detection-and-distance-threshold">Obstacle Detection and Distance Threshold</h3>
+<p><strong>Obstacle detection</strong> means determining whether an object is close enough to be a concern. We use the ToF sensor to measure distance, then compare it to a <strong>distance threshold</strong> — a fixed value that defines "too close."</p>
+<p>In this course, we use two thresholds:</p>
+<ul>
+<li><strong>Warning threshold (50 cm):</strong> slow down</li>
+<li><strong>Stop threshold (20 cm):</strong> stop and turn</li>
+</ul>
+<p>Before the code, here is the decision logic: if distance is above 50 cm, drive forward at full speed. If it drops to 20–50 cm, slow down. If it drops below 20 cm, stop and pick a random turn direction.</p>
+<h3 id="random-turn-direction">Random Turn Direction</h3>
+<p><strong>Random turn direction</strong> prevents the robot from getting stuck in a corner. If the robot always turned left when it hit an obstacle, it could end up running in tight circles or stuck in a left-corner trap. By randomly choosing left or right, the robot explores the space more efficiently.</p>
+<p>Before the code, here is how randomness works in MicroPython: <code>random.choice([True, False])</code> returns <code>True</code> or <code>False</code> with equal probability. We interpret <code>True</code> as "turn left" and <code>False</code> as "turn right."</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">pick_random_turn</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="the-complete-collision-avoidance-algorithm">The Complete Collision Avoidance Algorithm</h3>
+<p>Now let's build the full collision avoidance behavior. Before the code, here is the overall structure: we have five movement functions (<code>go_forward</code>, <code>go_slow</code>, <code>stop_motors</code>, <code>turn_left</code>, <code>turn_right</code>). The main loop reads the sensor, decides the response, and calls the appropriate function.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">vl53l0x</span><span class="o">,</span> <span class="nn">config</span>
+
+<span class="c1"># Set up motors (same as Chapter 7)</span>
+<span class="n">right_fwd</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_FORWARD_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">right_rev</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_REVERSE_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">left_fwd</span>  <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">LEFT_FORWARD_PIN</span><span class="p">),</span>  <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">left_rev</span>  <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">LEFT_REVERSE_PIN</span><span class="p">),</span>  <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">FULL</span> <span class="o">=</span> <span class="mi">65535</span>
+<span class="n">HALF</span> <span class="o">=</span> <span class="mi">32767</span>
+
+<span class="k">def</span> <span class="nf">set_speed</span><span class="p">(</span><span class="n">pf</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">speed</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">speed</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pf</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">speed</span><span class="p">);</span> <span class="n">pr</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">speed</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pf</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">pr</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="o">-</span><span class="n">speed</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pf</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">pr</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">go_forward</span><span class="p">():</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">FULL</span><span class="p">)</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">FULL</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">go_slow</span><span class="p">():</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">HALF</span><span class="p">)</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">HALF</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">stop_motors</span><span class="p">():</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">turn_left</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.4</span><span class="p">):</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">FULL</span><span class="p">)</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="o">-</span><span class="n">FULL</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">turn_right</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.4</span><span class="p">):</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="o">-</span><span class="n">FULL</span><span class="p">)</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">FULL</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+
+<span class="c1"># Set up ToF sensor</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span>
+             <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+<span class="n">tof</span> <span class="o">=</span> <span class="n">vl53l0x</span><span class="o">.</span><span class="n">VL53L0X</span><span class="p">(</span><span class="n">i2c</span><span class="p">)</span>
+
+<span class="n">STOP_DIST_CM</span>  <span class="o">=</span> <span class="mi">20</span>
+<span class="n">SLOW_DIST_CM</span>  <span class="o">=</span> <span class="mi">50</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">dist_cm</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="o">/</span> <span class="mi">10</span>
+
+        <span class="k">if</span> <span class="n">dist_cm</span> <span class="o">&gt;</span> <span class="n">SLOW_DIST_CM</span><span class="p">:</span>
+            <span class="n">go_forward</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">dist_cm</span> <span class="o">&gt;</span> <span class="n">STOP_DIST_CM</span><span class="p">:</span>
+            <span class="n">go_slow</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">stop_motors</span><span class="p">()</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+            <span class="n">direction</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="s2">&quot;left&quot;</span><span class="p">:</span>
+                <span class="n">turn_left</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">turn_right</span><span class="p">()</span>
+
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">stop_motors</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stopped.&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This is a complete, production-quality collision avoidance program. The constants <code>STOP_DIST_CM</code> and <code>SLOW_DIST_CM</code> are easy to tune without touching the logic. The <code>finally</code> block guarantees the motors stop.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Tune your thresholds on the actual floor</p>
+<p><img alt="Sparky pointing up" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+The 20 cm and 50 cm values are starting points, not magic numbers. Run the robot on your actual test surface, observe where it stops, and adjust. A robot on carpet needs different thresholds than one on tile. A competition arena is different from a classroom floor. Tuning is part of the engineering process — expect to iterate.</p>
+</div>
+<hr />
+<h2 id="line-following">Line Following</h2>
+<p><strong>Line following</strong> is the behavior of keeping the robot on a track — usually a black tape line on a white surface. It is one of the classic competitions in educational robotics.</p>
+<h3 id="dual-ir-sensor-reading">Dual IR Sensor Reading</h3>
+<p>Line-following robots use two infrared sensors mounted at the front, spaced about the width of the line apart. The sensors point down at the surface. When a sensor is over the black line, it reads LOW (line detected). When over the white surface, it reads HIGH (no line).</p>
+<p>This dual-sensor arrangement gives four possible states:</p>
+<table>
+<thead>
+<tr>
+<th>Left IR</th>
+<th>Right IR</th>
+<th>Meaning</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HIGH</td>
+<td>HIGH</td>
+<td>Both off the line</td>
+<td>Turn — line is lost</td>
+</tr>
+<tr>
+<td>LOW</td>
+<td>HIGH</td>
+<td>Left on line, right off</td>
+<td>Turn right to center</td>
+</tr>
+<tr>
+<td>HIGH</td>
+<td>LOW</td>
+<td>Right on line, left off</td>
+<td>Turn left to center</td>
+</tr>
+<tr>
+<td>LOW</td>
+<td>LOW</td>
+<td>Both on line (wide line)</td>
+<td>Drive straight</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ir_left</span>  <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">IR_LEFT_PIN</span><span class="p">,</span>  <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+<span class="n">ir_right</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">IR_RIGHT_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+
+<span class="n">left_val</span>  <span class="o">=</span> <span class="n">ir_left</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+<span class="n">right_val</span> <span class="o">=</span> <span class="n">ir_right</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="motor-differential-adjust">Motor Differential Adjust</h3>
+<p><strong>Motor differential adjust</strong> means running one motor faster than the other to steer back onto the line. Rather than making sharp turns, we adjust speed gradually — smoother tracking.</p>
+<p>For example, when the left sensor detects the line and the right doesn't (robot drifted left), we need to turn right. We slow the left motor and keep the right at full speed:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">adjust_motors</span><span class="p">(</span><span class="n">left_val</span><span class="p">,</span> <span class="n">right_val</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">left_val</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">right_val</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># Left sensor on line — slow left, keep right fast (turn right)</span>
+        <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">FULL</span><span class="p">)</span>
+        <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">HALF</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">left_val</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">right_val</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Right sensor on line — keep left fast, slow right (turn left)</span>
+        <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">HALF</span><span class="p">)</span>
+        <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">FULL</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Both sensors on line or both off — drive straight</span>
+        <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">FULL</span><span class="p">)</span>
+        <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">FULL</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="the-complete-line-following-program">The Complete Line Following Program</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ir_left</span>  <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">IR_LEFT_PIN</span><span class="p">,</span>  <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+<span class="n">ir_right</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">IR_RIGHT_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">lv</span> <span class="o">=</span> <span class="n">ir_left</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+        <span class="n">rv</span> <span class="o">=</span> <span class="n">ir_right</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+        <span class="n">adjust_motors</span><span class="p">(</span><span class="n">lv</span><span class="p">,</span> <span class="n">rv</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.02</span><span class="p">)</span>   <span class="c1"># 50 Hz update rate</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">stop_motors</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-warning">
+<p class="admonition-title">IR sensors are sensitive to surface and light</p>
+<p><img alt="Sparky warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Bright sunlight or fluorescent flicker can confuse IR sensors. Test your line follower in the same lighting conditions you'll use for the actual run. If the robot misbehaves in a specific area, check for shadows, shiny surfaces, or light reflections — not always the code's fault.</p>
+</div>
+<hr />
+<h2 id="robot-dance-sequence">Robot Dance Sequence</h2>
+<p>A <strong>robot dance sequence</strong> is a choreographed series of timed motor patterns. Unlike the reactive behaviors above (which respond to sensor input), a dance is fully <strong>open-loop</strong> — every move is timed in advance. This is a great creative challenge: design a dance using only forward, backward, left turn, right turn, and spin.</p>
+<p><strong>Timed motor patterns</strong> are just calls to motor functions followed by <code>sleep()</code>. The key is counting beats: if your song is 120 BPM (beats per minute), one beat = 60/120 = 0.5 seconds.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="k">def</span> <span class="nf">spin</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">FULL</span><span class="p">)</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="o">-</span><span class="n">FULL</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">back</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="o">-</span><span class="n">FULL</span><span class="p">)</span>
+    <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="o">-</span><span class="n">FULL</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+
+<span class="c1"># A simple 8-beat dance at 120 BPM (0.5s per beat)</span>
+<span class="k">def</span> <span class="nf">dance</span><span class="p">():</span>
+    <span class="n">go_forward</span><span class="p">();</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>      <span class="c1"># beat 1</span>
+    <span class="n">spin</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">);</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>      <span class="c1"># beat 2</span>
+    <span class="n">spin</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">);</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>     <span class="c1"># beat 3</span>
+    <span class="n">back</span><span class="p">();</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>            <span class="c1"># beat 4</span>
+    <span class="n">go_forward</span><span class="p">();</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>      <span class="c1"># beats 5–6</span>
+    <span class="n">spin</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">);</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>     <span class="c1"># beat 7 (half beat)</span>
+    <span class="n">spin</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">);</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>    <span class="c1"># beat 7 (half beat)</span>
+    <span class="n">stop_motors</span><span class="p">()</span>                 <span class="c1"># beat 8 — end</span>
+</code></pre></div></td></tr></table></div>
+<p>Encourage creativity here: try adding buzzer tones, NeoPixel color changes, and OLED face changes synchronized with motor moves. A robot that blinks, beeps, and dances is memorable.</p>
+<hr />
+<h2 id="config-secrets-and-gitignore-in-production">Config, Secrets, and .gitignore in Production</h2>
+<p>This is a good moment to revisit the file organization patterns from Chapter 5, now that you have a complete robot program. Every production-quality robot project should use all three.</p>
+<h3 id="config-file-pattern-and-pin-assignment-constants">Config File Pattern and Pin Assignment Constants</h3>
+<p><strong>Config file pattern:</strong> All hardware pin numbers and calibration constants live in <code>config.py</code>, not in <code>main.py</code>. This was introduced in Chapter 5. Here is the complete <code>config.py</code> for the full course robot:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># config.py — Cytron Maker Pi RP2040 pin assignments</span>
+
+<span class="c1"># Motors</span>
+<span class="n">RIGHT_FORWARD_PIN</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">RIGHT_REVERSE_PIN</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">LEFT_FORWARD_PIN</span>  <span class="o">=</span> <span class="mi">9</span>
+<span class="n">LEFT_REVERSE_PIN</span>  <span class="o">=</span> <span class="mi">8</span>
+
+<span class="c1"># Sensors</span>
+<span class="n">I2C_SDA_PIN</span>         <span class="o">=</span> <span class="mi">16</span>
+<span class="n">I2C_SCL_PIN</span>         <span class="o">=</span> <span class="mi">17</span>
+<span class="n">IR_LEFT_PIN</span>         <span class="o">=</span> <span class="mi">28</span>
+<span class="n">IR_RIGHT_PIN</span>        <span class="o">=</span> <span class="mi">27</span>
+<span class="n">BUMP_PIN</span>            <span class="o">=</span> <span class="mi">26</span>
+<span class="n">ULTRASONIC_TRIG_PIN</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ULTRASONIC_ECHO_PIN</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># Outputs</span>
+<span class="n">NEOPIXEL_PIN</span>   <span class="o">=</span> <span class="mi">18</span>
+<span class="n">NEOPIXEL_COUNT</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">BUZZER_PIN</span>     <span class="o">=</span> <span class="mi">22</span>
+<span class="n">SERVO_PIN</span>      <span class="o">=</span> <span class="mi">12</span>
+
+<span class="c1"># Tuning constants</span>
+<span class="n">STOP_DIST_CM</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">SLOW_DIST_CM</span> <span class="o">=</span> <span class="mi">50</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Pin assignment constants</strong> in UPPERCASE signal that these values are fixed hardware facts, not runtime variables.</p>
+<h3 id="secrets-file-pattern">Secrets File Pattern</h3>
+<p><strong>Secrets file pattern:</strong> WiFi credentials live in <code>secrets.py</code>, a separate file that is never committed to version control:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># secrets.py — NEVER commit this file to git!</span>
+<span class="n">WIFI_SSID</span>     <span class="o">=</span> <span class="s2">&quot;SchoolRobotics&quot;</span>
+<span class="n">WIFI_PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;your-password-here&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>In <code>main.py</code>, import only what you need:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">secrets</span> <span class="kn">import</span> <span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="gitignore-file">Gitignore File</h3>
+<p>The <code>.gitignore</code> file in your project root prevents <code>secrets.py</code> (and other unwanted files) from being committed:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>secrets.py
+__pycache__/
+*.pyc
+.DS_Store
+</code></pre></div></td></tr></table></div>
+<p>With these three files in place (<code>config.py</code>, <code>secrets.py</code>, <code>.gitignore</code>), your project follows professional engineering standards: hardware facts are separated from logic, credentials are protected, and your repository is clean.</p>
+<hr />
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Open-loop control</strong> sends commands without feedback — good for timed sequences, drifts over time</li>
+<li><strong>Closed-loop feedback</strong> continuously senses and corrects — essential for reactive navigation</li>
+<li><strong>Collision avoidance</strong> uses distance thresholds to trigger stop and random turn behaviors</li>
+<li><strong>Random turn direction</strong> prevents the robot from getting trapped in corners</li>
+<li><strong>Line following</strong> reads dual IR sensors and uses motor differential to stay on a track</li>
+<li><strong>Motor differential adjust</strong> steers by running one wheel faster than the other — no steering servo needed</li>
+<li><strong>Robot dance sequences</strong> are open-loop timed patterns — combine with sound and lights for performance</li>
+<li><strong>config.py</strong> holds all pin constants; <strong>secrets.py</strong> holds WiFi credentials; <strong>.gitignore</strong> protects secrets</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Your robot navigates the world on its own — you did that!</p>
+<p><img alt="Sparky celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Double thumbs-up, engineer! Collision avoidance, line following, a dance routine — these behaviors combine every skill from the past nine chapters. The next chapter adds WiFi: your robot becomes internet-connected and browser-controlled. The journey keeps going!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1904,10 +2925,12 @@ should use.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

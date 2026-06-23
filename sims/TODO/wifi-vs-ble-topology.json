@@ -1,0 +1,14 @@
+{
+  "sim_id": "wifi-vs-ble-topology",
+  "diagram_name": "WiFi vs BLE Communication Topology",
+  "chapter_number": 12,
+  "chapter_title": "Bluetooth Low Energy Fundamentals",
+  "chapter_dir": "12-bluetooth-low-energy",
+  "library": "Mermaid",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: diagram\n**sim-id:** wifi-vs-ble-topology<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\nCreate a side-by-side Mermaid graph showing two network topologies:\n\nLeft subgraph \"WiFi (via router)\":\nBrowser -- HTTP --> Router -- WiFi --> Robot A\nRobot B -- WiFi --> Router\n\nRight subgraph \"BLE (direct)\":\nRobot A (Central) -- BLE --> Robot B (Peripheral)\n\nUse different node shapes: diamonds for routers, rectangles for robots/browsers.\n\nEvery node and connection has a click directive opening an infobox: Router infobox explains \"single point of failure — if the router goes down, all robots lose contact.\" BLE connection infobox explains \"direct peer link — works even without a network.\"\n\nCanvas: 700 × 300 px. Responsive on window resize."
+}
