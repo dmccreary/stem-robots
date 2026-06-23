@@ -1,0 +1,39 @@
+{
+  "title": "GPIO Pin Explorer",
+  "description": "Students will explain the difference between a digital input pin and a digital output pin, and correctly map HIGH/LOW states to voltage levels and MicroPython boolean values.",
+  "creator": "Dan McCreary STEM Robots",
+  "date": "2026-06-23",
+  "subject": [
+    "Robotics",
+    "Physical Computing",
+    "Computational Thinking",
+    "MicroPython"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "gpio-pin-explorer",
+  "library": "p5.js",
+  "bloomLevel": "Understand (L2) \u2014 Explain how GPIO pins switch between input and output modes and how HIGH/LOW states map to voltage.",
+  "bloomVerb": "Explain",
+  "completion_status": "implemented",
+  "chapter_number": 2,
+  "chapter_title": "Hardware Platform and Robot Assembly",
+  "chapter_dir": "02-hardware-platform-assembly",
+  "educational": {
+    "gradeLevel": "Middle School to High School (grades 6-12)",
+    "subjectArea": "STEM Robotics / Physical Computing",
+    "learningObjectives": [
+      "Students will explain the difference between a digital input pin and a digital output pin, and correctly map HIGH/LOW states to voltage levels and MicroPython boolean values."
+    ],
+    "bloomTaxonomy": "Understand (L2) \u2014 Explain how GPIO pins switch between input and output modes and how HIGH/LOW states map to voltage.",
+    "prerequisites": "Basic familiarity with the robot platform and MicroPython introduced earlier in the course.",
+    "duration": "5-15 minutes"
+  },
+  "pedagogical": {
+    "interactionPattern": "Interactive p5.js exploration with immediate visual feedback",
+    "rationale": "Manipulating the model and seeing the result immediately helps students build an accurate mental model before working with the physical robot.",
+    "assessment": "Use the discussion questions in the lesson plan to check for understanding."
+  }
+}

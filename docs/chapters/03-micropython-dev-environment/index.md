@@ -66,6 +66,10 @@ MicroPython is not the only language you could use on this hardware. C and C++ a
 
 #### Diagram: MicroPython in the Stack
 
+
+<iframe src="../../sims/micropython-stack-diagram/main.html" width="100%" height="760px" scrolling="no"></iframe>
+[Run MicroPython in the Stack Fullscreen](../../sims/micropython-stack-diagram/main.html)
+
 <details markdown="1">
 <summary>Where MicroPython sits between your code and the robot hardware</summary>
 Type: diagram
@@ -241,6 +245,10 @@ Variable names follow these rules:
 Good variable names are descriptive. `d` is a legal name, but `distance_cm` tells you exactly what is stored. Descriptive names make debugging much easier.
 
 #### Diagram: Variable Assignment Interactive Explorer
+
+
+<iframe src="../../sims/variable-assignment-explorer/main.html" width="100%" height="352px" scrolling="no"></iframe>
+[Run Variable Assignment Interactive Explorer Fullscreen](../../sims/variable-assignment-explorer/main.html)
 
 <details markdown="1">
 <summary>Interactive p5.js visualization of variables storing values in memory</summary>

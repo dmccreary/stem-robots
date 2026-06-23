@@ -1,0 +1,14 @@
+{
+  "sim_id": "variable-assignment-explorer",
+  "diagram_name": "Variable Assignment Interactive Explorer",
+  "chapter_number": 3,
+  "chapter_title": "MicroPython and Development Environment Setup",
+  "chapter_dir": "03-micropython-dev-environment",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: MicroSim\n**sim-id:** variable-assignment-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nCreate a p5.js MicroSim with a 700 × 350 canvas. Show a left panel with two input fields where the user can type a variable name and a value. When they click \"Assign\", an animated arrow flies from an \"Assignment statement\" box on the left to a \"Memory box\" on the right, and the memory box updates with the new variable name and value. Show up to 4 memory boxes stacked vertically on the right.\n\nAdd a \"Reset\" button that clears all memory boxes with a fade-out animation.\n\nHovering a memory box shows a tooltip: \"Variable: [name] stores [value] of type [type].\"\n\nLearning objective (Bloom's Taxonomy — Applying): students practice the concept that assignment stores a value in a named location, not that two things are equal.\n\nResponsive: redraw on window resize. Font size: 14px. Color scheme: navy blue memory boxes, yellow arrow animation, orange labels."
+}

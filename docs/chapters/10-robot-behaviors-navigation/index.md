@@ -97,6 +97,10 @@ For collision avoidance, the sensor is the ToF distance sensor. The goal is "mai
 
 #### Diagram: Open-Loop vs. Closed-Loop Control
 
+
+<iframe src="../../sims/open-closed-loop-comparison/main.html" width="100%" height="560px" scrolling="no"></iframe>
+[Run Open-Loop vs. Closed-Loop Control Fullscreen](../../sims/open-closed-loop-comparison/main.html)
+
 <details markdown="1">
 <summary>Interactive diagram comparing open-loop and closed-loop control systems</summary>
 Type: diagram

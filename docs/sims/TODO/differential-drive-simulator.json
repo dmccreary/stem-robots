@@ -1,0 +1,14 @@
+{
+  "sim_id": "differential-drive-simulator",
+  "diagram_name": "Differential Drive Turn Simulator",
+  "chapter_number": 7,
+  "chapter_title": "PWM, Motor Speed Control, and Actuators",
+  "chapter_dir": "07-pwm-motor-speed-actuators",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: MicroSim\n**sim-id:** differential-drive-simulator<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nCreate a p5.js MicroSim with a 700 × 450 canvas. Show a top-down view of the robot (a rectangle with L and R labels for left and right wheels).\n\nTwo vertical sliders on the left panel:\n- \"Left wheel speed\" from -100% to +100%\n- \"Right wheel speed\" from -100% to +100%\n\nThe robot animates in the top-down view, turning and moving based on the differential of the two speeds. Use simple Euler integration to update position and heading each frame. Show the robot's path as a fading trail of dots.\n\nPreset buttons below the sliders: \"Forward\", \"Backward\", \"Spin Left\", \"Spin Right\", \"Gradual Left\", \"Gradual Right\". Each sets the sliders to the correct values and starts the animation.\n\nA \"Reset position\" button returns the robot to center.\n\nLearning objective (Bloom's Taxonomy — Applying): students predict and verify robot motion from left/right speed ratios.\n\nResponsive: redraw on window resize."
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Open-Loop vs Closed-Loop Control</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis', subGraphTitleMargin: { top: 10, bottom: 14 } }
+        });
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; overflow: hidden; font-family: Arial, Helvetica, sans-serif; }
+        main { display: block; width: 100%; height: 100%; }
+        .mermaid {
+            width: 100%; height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            background-color: aliceblue;
+        }
+        .mermaid svg { max-width: 100%; max-height: 100vh; }
+        #tooltip {
+            position: absolute; background-color: #102a43; color: #fff;
+            padding: 8px 12px; border-radius: 6px;
+            font-family: Arial, Helvetica, sans-serif; font-size: 14px;
+            max-width: 290px; pointer-events: none; opacity: 0;
+            transition: opacity 0.2s; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        #tooltip.visible { opacity: 1; }
+        .node { cursor: pointer; }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="mermaid">
+flowchart LR
+    subgraph Open["Open-Loop"]
+    direction LR
+        OC_Ctrl["Controller"]:::ctrl --> OC_Act["Actuator<br/>(Motors)"]:::act --> OC_Out["Output<br/>(Robot Motion)"]:::out
+    end
+    subgraph Closed["Closed-Loop"]
+    direction LR
+        CL_Ctrl["Controller"]:::ctrl --> CL_Act["Actuator<br/>(Motors)"]:::act --> CL_Out["Output<br/>(Robot Motion)"]:::out
+        CL_Out --> CL_Sensor["Sensor<br/>(Distance)"]:::sensor --> CL_Err["Error<br/>Calculation"]:::err --> CL_Ctrl
+    end
+
+    classDef ctrl fill:#42a5f5,stroke:#333,stroke-width:2px,color:#fff,font-size:16px
+    classDef act fill:#7e57c2,stroke:#333,stroke-width:2px,color:#fff,font-size:16px
+    classDef out fill:#26a69a,stroke:#333,stroke-width:2px,color:#fff,font-size:16px
+    classDef sensor fill:#ffa726,stroke:#333,stroke-width:2px,color:#000,font-size:16px
+    classDef err fill:#ef5350,stroke:#333,stroke-width:2px,color:#fff,font-size:16px
+    linkStyle default stroke:#777,stroke-width:2px,font-size:14px
+        </div>
+    </main>
+    <div id="tooltip"></div>
+    <script>
+        const tooltips = {
+            'OC_Ctrl': 'Controller: decides the motor command from a fixed plan. In open-loop it never checks the result — it just runs the plan and hopes.',
+            'OC_Act': 'Actuator (Motors): carries out the command, spinning the wheels at the commanded speed.',
+            'OC_Out': 'Output (Robot Motion): the robot moves. In open-loop there is no arrow back, so errors (a slick floor, a weak battery) are never corrected.',
+            'CL_Ctrl': 'Controller: sets the motor command, then adjusts it every cycle based on the measured error. This feedback is what makes the loop "closed".',
+            'CL_Act': 'Actuator (Motors): drives the wheels at the commanded speed, same as open-loop.',
+            'CL_Out': 'Output (Robot Motion): the robot moves — and this time the motion is measured and fed back.',
+            'CL_Sensor': 'Sensor (Distance): measures the real result, for example the time-of-flight distance to a wall.',
+            'CL_Err': 'Error = Goal distance - Measured distance. If error > 0, speed up. If error < 0, slow down or stop. The result loops back to the controller.'
+        };
+        const tooltip = document.getElementById('tooltip');
+        function setupTooltips() {
+            document.querySelectorAll('.node').forEach(node => {
+                const id = node.id.replace('flowchart-', '').split('-')[0];
+                if (tooltips[id]) {
+                    node.addEventListener('mouseenter', () => {
+                        tooltip.textContent = tooltips[id]; tooltip.classList.add('visible');
+                    });
+                    node.addEventListener('mousemove', (e) => {
+                        const tr = tooltip.getBoundingClientRect();
+                        tooltip.style.left = Math.min(e.pageX + 15, window.innerWidth - tr.width - 20) + 'px';
+                        tooltip.style.top = Math.min(e.pageY + 15, window.innerHeight - tr.height - 20) + 'px';
+                    });
+                    node.addEventListener('mouseleave', () => tooltip.classList.remove('visible'));
+                }
+            });
+        }
+        function waitForMermaid() {
+            const m = document.querySelector('.mermaid');
+            if (m && m.querySelector('svg') && document.querySelectorAll('.node').length > 0) setupTooltips();
+            else setTimeout(waitForMermaid, 100);
+        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(waitForMermaid, 100));
+        else setTimeout(waitForMermaid, 100);
+    </script>
+</body>
+</html>

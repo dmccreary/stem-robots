@@ -1,0 +1,39 @@
+{
+  "title": "Breadboard Layout Explorer",
+  "description": "Students will explain which holes on a breadboard are electrically connected to each other, and correctly trace a circuit path from the power rail through a component to ground.",
+  "creator": "Dan McCreary STEM Robots",
+  "date": "2026-06-23",
+  "subject": [
+    "Robotics",
+    "Physical Computing",
+    "Computational Thinking",
+    "MicroPython"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "breadboard-layout-explorer",
+  "library": "p5.js",
+  "bloomLevel": "Understand (L2) \u2014 Explain how the internal connections of a breadboard allow components to share electrical pathways.",
+  "bloomVerb": "Explain",
+  "completion_status": "implemented",
+  "chapter_number": 2,
+  "chapter_title": "Hardware Platform and Robot Assembly",
+  "chapter_dir": "02-hardware-platform-assembly",
+  "educational": {
+    "gradeLevel": "Middle School to High School (grades 6-12)",
+    "subjectArea": "STEM Robotics / Physical Computing",
+    "learningObjectives": [
+      "Students will explain which holes on a breadboard are electrically connected to each other, and correctly trace a circuit path from the power rail through a component to ground."
+    ],
+    "bloomTaxonomy": "Understand (L2) \u2014 Explain how the internal connections of a breadboard allow components to share electrical pathways.",
+    "prerequisites": "Basic familiarity with the robot platform and MicroPython introduced earlier in the course.",
+    "duration": "5-15 minutes"
+  },
+  "pedagogical": {
+    "interactionPattern": "Interactive p5.js exploration with immediate visual feedback",
+    "rationale": "Manipulating the model and seeing the result immediately helps students build an accurate mental model before working with the physical robot.",
+    "assessment": "Use the discussion questions in the lesson plan to check for understanding."
+  }
+}

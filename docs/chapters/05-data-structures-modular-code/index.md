@@ -109,6 +109,10 @@ Common list methods worth knowing:
 
 #### Diagram: List Index Explorer
 
+
+<iframe src="../../sims/list-index-explorer/main.html" width="100%" height="302px" scrolling="no"></iframe>
+[Run List Index Explorer Fullscreen](../../sims/list-index-explorer/main.html)
+
 <details markdown="1">
 <summary>Interactive MicroSim showing list indexing and iteration</summary>
 Type: MicroSim
@@ -403,6 +407,10 @@ The **Git commit workflow** is the cycle you repeat after every meaningful chang
 A good commit message completes the sentence "This commit will...". "Fix motor speed bug" is good. "updates" is not.
 
 #### Diagram: Git Commit Workflow
+
+
+<iframe src="../../sims/git-commit-workflow/main.html" width="100%" height="300px" scrolling="no"></iframe>
+[Run Git Commit Workflow Fullscreen](../../sims/git-commit-workflow/main.html)
 
 <details markdown="1">
 <summary>Interactive diagram of the Git commit workflow stages</summary>

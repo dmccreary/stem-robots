@@ -205,6 +205,10 @@ Content-Type: text/html
 
 #### Diagram: Web Server Request-Response Flow
 
+
+<iframe src="../../sims/http-request-response-flow/main.html" width="100%" height="720px" scrolling="no"></iframe>
+[Run Web Server Request-Response Flow Fullscreen](../../sims/http-request-response-flow/main.html)
+
 <details markdown="1">
 <summary>Interactive diagram showing how the browser and robot exchange HTTP messages</summary>
 Type: diagram

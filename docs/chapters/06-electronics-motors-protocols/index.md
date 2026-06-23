@@ -123,6 +123,10 @@ Notice the example uses `read_u16()` which returns a 16-bit value (0–65535) ra
 
 #### Diagram: Analog vs Digital Signal Comparison
 
+
+<iframe src="../../sims/analog-digital-signals/main.html" width="100%" height="352px" scrolling="no"></iframe>
+[Run Analog vs Digital Signal Comparison Fullscreen](../../sims/analog-digital-signals/main.html)
+
 <details markdown="1">
 <summary>Interactive comparison of analog and digital signal waveforms</summary>
 Type: MicroSim
@@ -198,6 +202,10 @@ A **DPDT switch** (Double Pole Double Throw) is a physical switch that achieves 
 The H-bridge is an electronic DPDT switch — it does the same thing, but controlled by GPIO signals instead of a physical flip.
 
 #### Diagram: H-Bridge Switch States
+
+
+<iframe src="../../sims/h-bridge-simulator/main.html" width="100%" height="402px" scrolling="no"></iframe>
+[Run H-Bridge Switch States Fullscreen](../../sims/h-bridge-simulator/main.html)
 
 <details markdown="1">
 <summary>Interactive H-bridge circuit showing switch states and current flow</summary>
