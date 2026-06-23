@@ -19,6 +19,10 @@ nav:
     - Two Hour Hands On: course-descriptions/two-hour-hands-on.md
     - 14 Week Course: course-descriptions/14-week-course.md
   
+  - Learning Graph:
+    - Concepts Covered: learning-graph/concepts-covered-v1.md
+    - Course Description Assessment: learning-graph/course-description-assessment.md
+
   - Learning Graphs:
     - learning-graphs/index.md
     - learning-graphs/01-course-description.md
