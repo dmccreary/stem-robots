@@ -100,7 +100,7 @@ The Cytron board snaps onto the Smart Car chassis without modification. All of t
 
 #### Diagram: Cytron Maker Pi RP2040 Board Explorer
 
-<iframe src="../../sims/cytron-board-explorer/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/cytron-board-explorer/main.html" width="100%" height="502px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Cytron Maker Pi RP2040 Board Explorer</summary>
@@ -170,7 +170,7 @@ The RP2040 has 30 GPIO pins, numbered **GP0 through GP29**. Not all of them appe
 
 #### Diagram: GPIO Pin Explorer
 
-<iframe src="../../sims/gpio-pin-explorer/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/gpio-pin-explorer/main.html" width="100%" height="412px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>GPIO Pin Explorer MicroSim</summary>
@@ -253,7 +253,7 @@ A **breadboard** is a rectangular plastic board covered in tiny spring-loaded ho
 
 #### Diagram: Breadboard Layout Explorer
 
-<iframe src="../../sims/breadboard-layout-explorer/main.html" width="100%" height="450px" scrolling="no"></iframe>
+<iframe src="../../sims/breadboard-layout-explorer/main.html" width="100%" height="422px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Breadboard Layout Explorer</summary>
@@ -336,7 +336,7 @@ Here is the assembly sequence:
 
 #### Diagram: Robot Assembly Workflow
 
-<iframe src="../../sims/robot-assembly-workflow/main.html" width="100%" height="520px" scrolling="no"></iframe>
+<iframe src="../../sims/robot-assembly-workflow/main.html" width="100%" height="522px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Robot Assembly Workflow</summary>

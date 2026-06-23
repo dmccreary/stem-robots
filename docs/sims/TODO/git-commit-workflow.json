@@ -1,0 +1,14 @@
+{
+  "sim_id": "git-commit-workflow",
+  "diagram_name": "Git Commit Workflow",
+  "chapter_number": 5,
+  "chapter_title": "Data Structures, Modular Programming, and Version Control",
+  "chapter_dir": "05-data-structures-modular-code",
+  "library": "Mermaid",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: diagram\n**sim-id:** git-commit-workflow<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\nCreate a Mermaid flowchart (graph LR, left to right) showing the four Git areas:\n\n1. \"Working Directory\" (yellow box) — where you edit files\n2. \"Staging Area\" (orange box) — files marked for the next commit\n3. \"Local Repository\" (blue box) — committed history on your laptop\n4. \"Remote (GitHub)\" (green box) — optional cloud backup\n\nArrows between areas labeled with commands:\n- Working Dir → Staging Area: `git add`\n- Staging Area → Local Repo: `git commit -m \"message\"`\n- Local Repo → Remote: `git push`\n- Remote → Local Repo: `git pull`\n\nEvery box and every arrow has a click directive that opens an infobox with a plain-language explanation of what that area stores or what that command does.\n\nCanvas: 700 × 200 px. Responsive on window resize."
+}

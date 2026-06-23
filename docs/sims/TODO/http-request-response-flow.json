@@ -1,0 +1,14 @@
+{
+  "sim_id": "http-request-response-flow",
+  "diagram_name": "Web Server Request-Response Flow",
+  "chapter_number": 11,
+  "chapter_title": "Wireless Networking and Web Servers",
+  "chapter_dir": "11-wireless-networking-web-servers",
+  "library": "Mermaid",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: diagram\n**sim-id:** http-request-response-flow<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\nCreate a Mermaid sequence diagram (sequenceDiagram) showing:\n\nParticipants: Browser, WiFi Network, Robot (Pico W)\n\nSequence:\n1. Browser ->> WiFi Network: HTTP GET / (request root page)\n2. WiFi Network ->> Robot: Forward the request\n3. Robot ->> Robot: Build HTML response\n4. Robot ->> WiFi Network: HTTP 200 OK + HTML page\n5. WiFi Network ->> Browser: Deliver response\n6. Browser ->> Browser: Render the HTML control page\n7. User clicks \"Forward\" button\n8. Browser ->> WiFi Network: HTTP POST /action?cmd=forward\n9. WiFi Network ->> Robot: Forward the POST\n10. Robot ->> Robot: Parse cmd, call go_forward()\n11. Robot ->> WiFi Network: HTTP 200 OK (updated status page)\n12. WiFi Network ->> Browser: Deliver new page\n\nEvery step has a click directive opening an infobox explaining what that step does and the relevant MicroPython code.\n\nCanvas: 700 × 500 px. Responsive on window resize."
+}

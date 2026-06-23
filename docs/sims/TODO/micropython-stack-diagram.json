@@ -1,0 +1,14 @@
+{
+  "sim_id": "micropython-stack-diagram",
+  "diagram_name": "MicroPython in the Stack",
+  "chapter_number": 3,
+  "chapter_title": "MicroPython and Development Environment Setup",
+  "chapter_dir": "03-micropython-dev-environment",
+  "library": "Mermaid",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: diagram\n**sim-id:** micropython-stack-diagram<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\nCreate a vertical stack diagram using Mermaid showing the four layers of the system:\n\nLayer 1 (top): \"Your Code (the program you write)\" — light blue background\nLayer 2: \"MicroPython Interpreter\" — orange background, labeled \"translates your code into machine instructions\"\nLayer 3: \"MicroPython Firmware\" — yellow background, labeled \"lives on the RP2040 flash memory\"\nLayer 4 (bottom): \"Hardware (RP2040 chip, motors, sensors)\" — gray background\n\nUse Mermaid graph TD (top-down). Each node has a click directive that opens an infobox describing that layer. Arrow labels show the direction of control (Your Code → MicroPython → Hardware) and the direction of data (Hardware → MicroPython → Your Code).\n\nCanvas: 400 × 300 px. Responsive: redraw on window resize."
+}

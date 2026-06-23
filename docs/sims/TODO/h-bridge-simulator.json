@@ -1,0 +1,14 @@
+{
+  "sim_id": "h-bridge-simulator",
+  "diagram_name": "H-Bridge Switch States",
+  "chapter_number": 6,
+  "chapter_title": "Electronics, DC Motors, and Communication Protocols",
+  "chapter_dir": "06-electronics-motors-protocols",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: MicroSim\n**sim-id:** h-bridge-simulator<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nCreate a p5.js MicroSim with a 700 × 400 canvas. Draw an H-bridge circuit schematically:\n\n- Four switch symbols at the four corners of an \"H\" shape (SW1 top-left, SW2 bottom-left, SW3 top-right, SW4 bottom-right).\n- A motor symbol (circle with M) in the horizontal center bar.\n- Power supply (V+) at top, Ground at bottom.\n- Current flow shown as animated dots moving along the wire when switches are in a valid state.\n- The dot color indicates direction: orange for forward, blue for reverse.\n\nThree buttons: \"Forward\", \"Reverse\", \"Stop\". Clicking each:\n- Updates switch states (green circle = closed, red circle = open).\n- Animates current flow dots in the correct direction.\n- Updates a text label: \"Motor: FORWARD / REVERSE / STOPPED\".\n\nHovering each switch shows a tooltip: \"SW1 — top-left switch. Closed = connects motor terminal A to V+.\"\n\nLearning objective (Bloom's Taxonomy — Analyzing): students trace current paths through the H-bridge to predict motor direction.\n\nResponsive: redraw on window resize."
+}

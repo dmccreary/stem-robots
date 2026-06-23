@@ -1,0 +1,14 @@
+{
+  "sim_id": "open-closed-loop-comparison",
+  "diagram_name": "Open-Loop vs. Closed-Loop Control",
+  "chapter_number": 10,
+  "chapter_title": "Robot Behaviors and Autonomous Navigation",
+  "chapter_dir": "10-robot-behaviors-navigation",
+  "library": "Mermaid",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: diagram\n**sim-id:** open-closed-loop-comparison<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\nCreate two Mermaid flowcharts side by side (use subgraph):\n\nLeft subgraph \"Open-Loop\":\nController → Actuator (Motors) → Output (Robot Motion)\nNo feedback arrow.\n\nRight subgraph \"Closed-Loop\":\nController → Actuator (Motors) → Output (Robot Motion) → Sensor (Distance) → Error Calculation → Controller (loop back)\n\nEvery node has a click directive opening an infobox explaining that component's role. Error node infobox explains: \"Error = Goal distance - Measured distance. If error > 0, speed up. If error < 0, slow down or stop.\"\n\nCanvas: 700 × 300 px. Responsive on window resize."
+}

@@ -1,0 +1,14 @@
+{
+  "sim_id": "robot-main-loop-timing",
+  "diagram_name": "Robot Main Loop with Timing",
+  "chapter_number": 4,
+  "chapter_title": "Control Flow, Functions, and Exception Handling",
+  "chapter_dir": "04-control-flow-functions",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: MicroSim\n**sim-id:** robot-main-loop-timing<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nCreate a p5.js MicroSim with a 700 × 400 canvas. Show a timeline animation of the robot's main loop:\n\n- A horizontal \"time\" axis runs left to right.\n- Each loop iteration is shown as a stacked block. Inside the block, colored segments represent: \"Read sensor\" (blue, ~5ms), \"Make decision\" (orange, ~1ms), \"Move motor\" (green, ~2ms), \"Sleep 100ms\" (gray, ~100ms).\n- An animated \"NOW\" cursor moves along the timeline in real time.\n- A \"Speed\" toggle button cycles through 1×, 5×, 10× animation speed.\n- A \"Loop #\" counter in the top right increments each iteration.\n- Hovering each segment type shows a tooltip with the MicroPython function name and approximate duration.\n\nLearning objective (Bloom's Taxonomy — Understanding): students grasp that each loop iteration has distinct phases, and that sleep() determines the polling rate.\n\nResponsive: redraw on window resize. Canvas min-width: 400px."
+}

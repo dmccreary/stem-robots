@@ -90,12 +90,35 @@ nav:
     - Exploration vs Competition: instructors-guide/exploration-vs-competition.md
 
   - MicroSims:
-    - Introduction: sims/index.md
+    - List of MicroSims: sims/index.md
+    - Analog vs Digital Signal Comparison: sims/analog-digital-signals/index.md
+    - Breadboard Layout Explorer: sims/breadboard-layout-explorer/index.md
+    - Collision Avoidance Decision Flow: sims/collision-decision-flow/index.md
+    - Collision Avoidance Robot: sims/collision-avoidance/index.md
+    - Concept Graph Viewer: sims/learning-graph/index.md
+    - Cytron Maker Pi RP2040 Board Explorer: sims/cytron-board-explorer/index.md
+    - Differential Drive Turn Simulator: sims/differential-drive-simulator/index.md
+    - Git Commit Workflow: sims/git-commit-workflow/index.md
+    - GPIO Pin Explorer: sims/gpio-pin-explorer/index.md
+    - H-Bridge Circuit: sims/h-bridge/index.md
+    - H-Bridge Switch States: sims/h-bridge-simulator/index.md
     - Learning Graph Viewer: sims/graph-viewer/index.md
-    - Learning Graph: sims/learning-graph/index.md
-    - H-Bridge: sims/h-bridge/index.md
-    - Pulse Width Modulation: sims/pwm/index.md
-    - Collision Avoidance: sims/collision-avoidance/index.md
+    - List Index Explorer: sims/list-index-explorer/index.md
+    - MicroPython in the Stack: sims/micropython-stack-diagram/index.md
+    - MicroSim Template: sims/template/index.md
+    - OLED Coordinate System Explorer: sims/oled-coordinate-explorer/index.md
+    - Open-Loop vs. Closed-Loop Control: sims/open-closed-loop-comparison/index.md
+    - Physical Computing Explorer: sims/physical-computing-explorer/index.md
+    - Pulse-Width Modulation: sims/pwm/index.md
+    - PWM Duty Cycle Explorer: sims/pwm-duty-cycle-explorer/index.md
+    - Robot Assembly Workflow: sims/robot-assembly-workflow/index.md
+    - Robot Main Loop with Timing: sims/robot-main-loop-timing/index.md
+    - Sensor Calibration Two-Point Process: sims/sensor-calibration-explorer/index.md
+    - Variable Assignment Interactive Explorer: sims/variable-assignment-explorer/index.md
+    - Web Server Request-Response Flow: sims/http-request-response-flow/index.md
+    - WiFi vs BLE Communication Topology: sims/wifi-vs-ble-topology/index.md
+
+
   - Kits:
     - Introduction to Kits: kits/index.md
     - Base Robot:

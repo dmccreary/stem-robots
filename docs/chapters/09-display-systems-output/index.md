@@ -311,6 +311,10 @@ def draw_face(state="happy"):
 
 #### Diagram: OLED Coordinate System Explorer
 
+
+<iframe src="../../sims/oled-coordinate-explorer/main.html" width="100%" height="402px" scrolling="no"></iframe>
+[Run OLED Coordinate System Explorer Fullscreen](../../sims/oled-coordinate-explorer/main.html)
+
 <details markdown="1">
 <summary>Interactive MicroSim showing the OLED pixel coordinate system and drawing primitives</summary>
 Type: MicroSim

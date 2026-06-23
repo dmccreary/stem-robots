@@ -1,0 +1,14 @@
+{
+  "sim_id": "list-index-explorer",
+  "diagram_name": "List Index Explorer",
+  "chapter_number": 5,
+  "chapter_title": "Data Structures, Modular Programming, and Version Control",
+  "chapter_dir": "05-data-structures-modular-code",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: MicroSim\n**sim-id:** list-index-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nCreate a p5.js MicroSim with a 700 × 300 canvas. Show a horizontal array of 5 colored boxes labeled with values (e.g., \"red\", \"green\", \"blue\", \"orange\", \"purple\"). Above each box, display the positive index (0, 1, 2, 3, 4). Below each box, display the negative index (-5, -4, -3, -2, -1).\n\nControls:\n- A slider \"Index\" from -5 to 4 selects a box, which highlights yellow with a glowing border.\n- A text display shows: \"colors[X] = 'value'\" where X is the current index.\n- A \"Iterate\" button animates the highlight moving left to right through all items with a 500ms delay between steps.\n\nClicking any box directly selects it and updates the index display.\n\nLearning objective (Bloom's Taxonomy — Applying): students practice accessing specific items by index, including negative indexing.\n\nResponsive: redraw on window resize."
+}

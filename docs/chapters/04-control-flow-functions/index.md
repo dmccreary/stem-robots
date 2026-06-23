@@ -96,6 +96,10 @@ The table below shows how distance ranges map to robot responses:
 
 #### Diagram: Collision Avoidance Decision Flow
 
+
+<iframe src="../../sims/collision-decision-flow/main.html" width="100%" height="960px" scrolling="no"></iframe>
+[Run Collision Avoidance Decision Flow Fullscreen](../../sims/collision-decision-flow/main.html)
+
 <details markdown="1">
 <summary>Interactive flowchart of the if/elif/else distance decision</summary>
 Type: diagram
@@ -379,6 +383,10 @@ print("Elapsed:", elapsed, "ms")
 Always use `ticks_diff()` instead of plain subtraction when measuring time. Plain subtraction fails when the counter wraps around after about 12 days of uptime.
 
 #### Diagram: Robot Main Loop with Timing
+
+
+<iframe src="../../sims/robot-main-loop-timing/main.html" width="100%" height="402px" scrolling="no"></iframe>
+[Run Robot Main Loop with Timing Fullscreen](../../sims/robot-main-loop-timing/main.html)
 
 <details markdown="1">
 <summary>Interactive MicroSim showing the main loop timing pattern</summary>

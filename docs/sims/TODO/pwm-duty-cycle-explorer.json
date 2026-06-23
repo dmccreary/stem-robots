@@ -1,0 +1,14 @@
+{
+  "sim_id": "pwm-duty-cycle-explorer",
+  "diagram_name": "PWM Duty Cycle Explorer",
+  "chapter_number": 7,
+  "chapter_title": "PWM, Motor Speed Control, and Actuators",
+  "chapter_dir": "07-pwm-motor-speed-actuators",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: MicroSim\n**sim-id:** pwm-duty-cycle-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nCreate a p5.js MicroSim with a 700 × 400 canvas split into two sections:\n\nTop section (60% height): PWM waveform display.\n- Draw a square wave showing HIGH (3.3V) and LOW (0V) pulses.\n- An orange horizontal dashed line shows the \"average voltage\" level.\n- The waveform updates in real time as the duty cycle changes.\n- Label the HIGH time (Ton) and LOW time (Toff) with arrows.\n\nBottom section (40% height): Controls and stats.\n- A large horizontal slider \"Duty Cycle\" from 0% to 100%.\n- Numeric display: \"Duty Cycle: 50%\", \"Average Voltage: 1.65 V\", \"Motor Speed: ~50%\".\n- A small animated motor icon (spinning circle) whose rotation speed is proportional to the duty cycle.\n\nLearning objective (Bloom's Taxonomy — Understanding): students connect duty cycle percentage to average voltage and motor speed.\n\nResponsive: redraw on window resize."
+}

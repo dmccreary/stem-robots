@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Web Server Request-Response Flow</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            sequence: { useMaxWidth: true, mirrorActors: false, messageFontSize: 15, actorFontSize: 15 }
+        });
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; overflow: hidden; font-family: Arial, Helvetica, sans-serif; }
+        main { display: block; width: 100%; height: 100%; }
+        .mermaid {
+            width: 100%; height: 100vh;
+            display: flex; justify-content: center; align-items: flex-start;
+            background-color: aliceblue; padding-top: 6px;
+        }
+        .mermaid svg { max-width: 100%; max-height: 100vh; }
+        #tooltip {
+            position: absolute; background-color: #102a43; color: #fff;
+            padding: 8px 12px; border-radius: 6px;
+            font-family: Arial, Helvetica, sans-serif; font-size: 13px;
+            white-space: pre-line; max-width: 300px; pointer-events: none; opacity: 0;
+            transition: opacity 0.2s; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        #tooltip.visible { opacity: 1; }
+        .messageText { cursor: pointer; }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="mermaid">
+sequenceDiagram
+    participant B as Browser
+    participant W as WiFi Network
+    participant R as Robot (Pico W)
+    B->>W: HTTP GET / (request root page)
+    W->>R: Forward the request
+    R->>R: Build HTML response
+    R->>W: HTTP 200 OK + HTML page
+    W->>B: Deliver response
+    B->>B: Render the HTML control page
+    B->>B: User clicks "Forward" button
+    B->>W: HTTP POST /action?cmd=forward
+    W->>R: Forward the POST
+    R->>R: Parse cmd, call go_forward()
+    R->>W: HTTP 200 OK (updated status page)
+    W->>B: Deliver new page
+        </div>
+    </main>
+    <div id="tooltip"></div>
+    <script>
+        // Step explanations in message order, with the relevant MicroPython code.
+        const steps = [
+            'The browser asks the robot for its home page.\nCode: requests come into the socket your server opened with s = socket.socket().',
+            'The WiFi router relays the request to the robot at its IP address (for example 192.168.1.42).',
+            'The robot builds the web page text.\nCode: html = "<html>...buttons...</html>"',
+            'The robot sends the page back with a success status line.\nCode: cl.send("HTTP/1.0 200 OK\\r\\n\\r\\n"); cl.send(html)',
+            'The router delivers the response back to the browser.',
+            'The browser draws the control page so the user can see the Forward button.',
+            'The user presses a button. The browser will send a new request describing the action.',
+            'The browser posts the chosen command to the robot.\nThe query string cmd=forward tells the robot what to do.',
+            'The router relays the POST request to the robot.',
+            'The robot reads the command and runs the matching function.\nCode: if "cmd=forward" in request: go_forward()',
+            'The robot replies with an updated status page confirming the action.\nCode: cl.send("HTTP/1.0 200 OK\\r\\n\\r\\n"); cl.send(status_html)',
+            'The router delivers the updated page; the browser shows the new robot status.'
+        ];
+        const tooltip = document.getElementById('tooltip');
+        function setup() {
+            const msgs = document.querySelectorAll('.messageText');
+            msgs.forEach((el, i) => {
+                if (i >= steps.length) return;
+                el.addEventListener('mouseenter', () => {
+                    tooltip.textContent = (i + 1) + '. ' + steps[i];
+                    tooltip.classList.add('visible');
+                });
+                el.addEventListener('mousemove', (e) => {
+                    const tr = tooltip.getBoundingClientRect();
+                    tooltip.style.left = Math.min(e.pageX + 15, window.innerWidth - tr.width - 20) + 'px';
+                    tooltip.style.top = Math.min(e.pageY + 15, window.innerHeight - tr.height - 20) + 'px';
+                });
+                el.addEventListener('mouseleave', () => tooltip.classList.remove('visible'));
+            });
+        }
+        function waitForMermaid() {
+            const svg = document.querySelector('.mermaid svg');
+            if (svg && document.querySelectorAll('.messageText').length >= 12) setup();
+            else setTimeout(waitForMermaid, 100);
+        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(waitForMermaid, 100));
+        else setTimeout(waitForMermaid, 100);
+    </script>
+</body>
+</html>

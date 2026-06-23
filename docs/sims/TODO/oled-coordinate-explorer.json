@@ -1,0 +1,14 @@
+{
+  "sim_id": "oled-coordinate-explorer",
+  "diagram_name": "OLED Coordinate System Explorer",
+  "chapter_number": 9,
+  "chapter_title": "Display Systems and Visual Output",
+  "chapter_dir": "09-display-systems-output",
+  "library": "p5.js",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: MicroSim\n**sim-id:** oled-coordinate-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nCreate a p5.js MicroSim with a 700 × 400 canvas. Show a scaled-up representation of the 128×64 OLED display (rendered 4× actual size = 512×256 pixels on canvas).\n\nFeatures:\n- A black background rectangle representing the OLED screen.\n- A grid overlay (toggle button \"Show grid\") showing pixel positions every 8 pixels.\n- Mouse hover shows a tooltip: \"Pixel: (x, y)\" at the cursor position (in OLED coordinates, 0–127 x, 0–63 y).\n- Four buttons: \"Draw Text\", \"Draw Line\", \"Draw Circle\", \"Draw Rect\".\n  - Each button draws the corresponding element at a random position and displays the corresponding ssd1306 Python code in a code box below the display.\n- A \"Clear\" button resets the display.\n\nLearning objective (Bloom's Taxonomy — Applying): students practice placing drawing commands at specific coordinates and reading back the code equivalent.\n\nResponsive: redraw on window resize."
+}

@@ -184,6 +184,10 @@ The diagram below shows how these three layers fit together. Click any component
 
 #### Diagram: Physical Computing Explorer
 
+
+<iframe src="../../sims/physical-computing-explorer/main.html" width="100%" height="422px" scrolling="no"></iframe>
+[Run Physical Computing Explorer Fullscreen](../../sims/physical-computing-explorer/main.html)
+
 <details markdown="1">
 <summary>Interactive diagram showing inputs, the microcontroller, and outputs forming the sense-decide-act loop</summary>
 Type: MicroSim

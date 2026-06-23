@@ -107,6 +107,10 @@ For a swarm robotics lab where two robots talk to each other in a classroom, BLE
 
 #### Diagram: WiFi vs BLE Communication Topology
 
+
+<iframe src="../../sims/wifi-vs-ble-topology/main.html" width="100%" height="380px" scrolling="no"></iframe>
+[Run WiFi vs BLE Communication Topology Fullscreen](../../sims/wifi-vs-ble-topology/main.html)
+
 <details markdown="1">
 <summary>Interactive diagram comparing WiFi (hub-and-spoke) and BLE (peer-to-peer) network topologies</summary>
 Type: diagram

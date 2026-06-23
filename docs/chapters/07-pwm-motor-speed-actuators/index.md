@@ -71,6 +71,10 @@ Before the interactive diagram below, here are the three duty cycle values to ke
 
 #### Diagram: PWM Duty Cycle Explorer
 
+
+<iframe src="../../sims/pwm-duty-cycle-explorer/main.html" width="100%" height="402px" scrolling="no"></iframe>
+[Run PWM Duty Cycle Explorer Fullscreen](../../sims/pwm-duty-cycle-explorer/main.html)
+
 <details markdown="1">
 <summary>Interactive MicroSim showing PWM waveforms and average voltage</summary>
 Type: MicroSim
@@ -220,6 +224,10 @@ def turn_gradual_left(speed=32767):
 ```
 
 #### Diagram: Differential Drive Turn Simulator
+
+
+<iframe src="../../sims/differential-drive-simulator/main.html" width="100%" height="452px" scrolling="no"></iframe>
+[Run Differential Drive Turn Simulator Fullscreen](../../sims/differential-drive-simulator/main.html)
 
 <details markdown="1">
 <summary>Interactive MicroSim showing robot turn behavior for different wheel speed ratios</summary>

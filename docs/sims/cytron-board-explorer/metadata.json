@@ -1,0 +1,39 @@
+{
+  "title": "Cytron Maker Pi RP2040 Board Explorer",
+  "description": "Students will identify each major component on the Cytron Maker Pi RP2040 board and state its function in the robot system.",
+  "creator": "Dan McCreary STEM Robots",
+  "date": "2026-06-23",
+  "subject": [
+    "Robotics",
+    "Physical Computing",
+    "Computational Thinking",
+    "MicroPython"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "cytron-board-explorer",
+  "library": "p5.js",
+  "bloomLevel": "Remember (L1) \u2014 Identify the main components on the Cytron Maker Pi RP2040 board.",
+  "bloomVerb": "Identify",
+  "completion_status": "implemented",
+  "chapter_number": 2,
+  "chapter_title": "Hardware Platform and Robot Assembly",
+  "chapter_dir": "02-hardware-platform-assembly",
+  "educational": {
+    "gradeLevel": "Middle School to High School (grades 6-12)",
+    "subjectArea": "STEM Robotics / Physical Computing",
+    "learningObjectives": [
+      "Students will identify each major component on the Cytron Maker Pi RP2040 board and state its function in the robot system."
+    ],
+    "bloomTaxonomy": "Remember (L1) \u2014 Identify the main components on the Cytron Maker Pi RP2040 board.",
+    "prerequisites": "Basic familiarity with the robot platform and MicroPython introduced earlier in the course.",
+    "duration": "5-15 minutes"
+  },
+  "pedagogical": {
+    "interactionPattern": "Interactive p5.js exploration with immediate visual feedback",
+    "rationale": "Manipulating the model and seeing the result immediately helps students build an accurate mental model before working with the physical robot.",
+    "assessment": "Use the discussion questions in the lesson plan to check for understanding."
+  }
+}

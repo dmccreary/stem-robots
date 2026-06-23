@@ -1,0 +1,14 @@
+{
+  "sim_id": "collision-decision-flow",
+  "diagram_name": "Collision Avoidance Decision Flow",
+  "chapter_number": 4,
+  "chapter_title": "Control Flow, Functions, and Exception Handling",
+  "chapter_dir": "04-control-flow-functions",
+  "library": "Mermaid",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-06-23",
+  "specification": "Type: diagram\n**sim-id:** collision-decision-flow<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\nCreate a Mermaid flowchart (graph TD) showing:\n- Start node: \"Read distance sensor\"\n- Diamond: \"distance_cm < 20?\" — Yes branch leads to \"Stop motors\" box, No branch continues\n- Diamond: \"distance_cm < 50?\" — Yes branch leads to \"Slow down\" box, No branch continues\n- Final box: \"Full speed ahead\"\n- All terminal boxes have arrows back to \"Read distance sensor\" (loop)\n\nEvery decision diamond and action box has a click directive that opens an infobox explaining what that step does in plain language.\n\nCanvas: 500 × 450 px. Responsive on window resize."
+}

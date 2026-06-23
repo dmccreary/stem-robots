@@ -1,0 +1,39 @@
+{
+  "title": "PWM Duty Cycle Explorer",
+  "description": "Type: MicroSim **sim-id:** pwm-duty-cycle-explorer<br/> **Library:** p5.js<br/> **Status:** Specified  Create a p5.js MicroSim with a 700 \u00d7 400 canvas split into two sections:  Top section (60% height): PWM waveform display. - Draw a squ...",
+  "creator": "Dan McCreary STEM Robots",
+  "date": "2026-06-23",
+  "subject": [
+    "Robotics",
+    "Physical Computing",
+    "Computational Thinking",
+    "MicroPython"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "pwm-duty-cycle-explorer",
+  "library": "p5.js",
+  "bloomLevel": "TBD",
+  "bloomVerb": "TBD",
+  "completion_status": "implemented",
+  "chapter_number": 7,
+  "chapter_title": "PWM, Motor Speed Control, and Actuators",
+  "chapter_dir": "07-pwm-motor-speed-actuators",
+  "educational": {
+    "gradeLevel": "Middle School to High School (grades 6-12)",
+    "subjectArea": "STEM Robotics / Physical Computing",
+    "learningObjectives": [
+      "Type: MicroSim **sim-id:** pwm-duty-cycle-explorer<br/> **Library:** p5.js<br/> **Status:** Specified  Create a p5.js MicroSim with a 700 \u00d7 400 canvas split into two sections:  Top section (60% height): PWM waveform display. - Draw a squ..."
+    ],
+    "bloomTaxonomy": "TBD",
+    "prerequisites": "Basic familiarity with the robot platform and MicroPython introduced earlier in the course.",
+    "duration": "5-15 minutes"
+  },
+  "pedagogical": {
+    "interactionPattern": "Interactive p5.js exploration with immediate visual feedback",
+    "rationale": "Manipulating the model and seeing the result immediately helps students build an accurate mental model before working with the physical robot.",
+    "assessment": "Use the discussion questions in the lesson plan to check for understanding."
+  }
+}

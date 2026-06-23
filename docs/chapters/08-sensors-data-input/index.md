@@ -275,6 +275,10 @@ This two-point calibration (zero and span) works for most sensors. More precise 
 
 #### Diagram: Sensor Calibration Two-Point Process
 
+
+<iframe src="../../sims/sensor-calibration-explorer/main.html" width="100%" height="402px" scrolling="no"></iframe>
+[Run Sensor Calibration Two-Point Process Fullscreen](../../sims/sensor-calibration-explorer/main.html)
+
 <details markdown="1">
 <summary>Interactive MicroSim showing sensor zero and span calibration</summary>
 Type: MicroSim
