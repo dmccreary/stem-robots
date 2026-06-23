@@ -19,6 +19,22 @@ nav:
     - Two Hour Hands On: course-descriptions/two-hour-hands-on.md
     - 14 Week Course: course-descriptions/14-week-course.md
   
+  - Chapters:
+    - List of Chapters: chapters/index.md
+    - 1. Computational Thinking: chapters/01-intro-computational-thinking/index.md
+    - 2. Hardware and Assembly: chapters/02-hardware-platform-assembly/index.md
+    - 3. MicroPython and Setup: chapters/03-micropython-dev-environment/index.md
+    - 4. Control Flow and Functions: chapters/04-control-flow-functions/index.md
+    - 5. Data Structures and Git: chapters/05-data-structures-modular-code/index.md
+    - 6. Motors and Protocols: chapters/06-electronics-motors-protocols/index.md
+    - 7. PWM and Actuators: chapters/07-pwm-motor-speed-actuators/index.md
+    - 8. Sensors and Input: chapters/08-sensors-data-input/index.md
+    - 9. Displays and Output: chapters/09-display-systems-output/index.md
+    - 10. Robot Behaviors: chapters/10-robot-behaviors-navigation/index.md
+    - 11. WiFi and Web Servers: chapters/11-wireless-networking-web-servers/index.md
+    - 12. Bluetooth Low Energy: chapters/12-bluetooth-low-energy/index.md
+    - 13. Swarm and Advanced: chapters/13-swarm-robotics-advanced-patterns/index.md
+
   - Learning Graph:
     - Introduction: learning-graph/index.md
     - Course Description Assessment: learning-graph/course-description-assessment.md
@@ -27,6 +43,7 @@ nav:
     - Concept Taxonomy: learning-graph/concept-taxonomy.md
     - Graph Quality Metrics: learning-graph/quality-metrics.md
     - Taxonomy Distribution: learning-graph/taxonomy-distribution.md
+    - Mascot Test: learning-graph/mascot-render-test.md
 
   - Learning Graphs:
     - learning-graphs/index.md
@@ -163,6 +180,7 @@ plugins:
 #  - social
 markdown_extensions:
   - admonition
+  - md_in_html
   - pymdownx.details
   - pymdownx.superfences
   - attr_list
@@ -170,6 +188,7 @@ markdown_extensions:
       linenums: true
 extra_css:
     - css/extra.css
+    - css/mascot.css
 copyright: Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
 extra:
   schema: https://dmccreary.github.io/intelligent-textbooks/ns/textbook/v1
