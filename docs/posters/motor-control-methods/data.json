@@ -1,0 +1,96 @@
+{
+  "title": "Motor Control Methods: H-Bridge · Motor Driver IC · Transistor",
+  "image": "motor-control-infographic.png",
+  "layout": "grid",
+  "palette": ["#1389A6", "#C7164E", "#6A3FB5"],
+  "zones": [
+    {
+      "id": "h-bridge",
+      "label": "H-Bridge Circuit",
+      "color": "#1389A6",
+      "x1": 2, "y1": 12, "x2": 34, "y2": 90,
+      "summary": "Four switches arranged in an H — enables full forward and reverse motor control",
+      "facts": [
+        "Named 'H-bridge' because the circuit diagram looks like the letter H",
+        "Four switches (S1–S4) connect motor terminals to power and ground",
+        "Forward: close S1 (top-left) + S4 (bottom-right); current flows left to right through motor",
+        "Reverse: close S2 (bottom-left) + S3 (top-right); current flows right to left through motor",
+        "Coast (free-wheel): open all four switches — motor spins down on its own",
+        "Brake: close both bottom switches (S2+S4) — short-circuits motor terminals to GND, stops quickly",
+        "Shoot-through danger: NEVER close S1+S2 or S3+S4 simultaneously — this short-circuits the power supply directly to ground",
+        "In real circuits, BJT or MOSFET transistors replace the mechanical switches",
+        "A DPDT (double-pole double-throw) mechanical switch implements a manual H-bridge",
+        "Motor driver ICs implement this concept in silicon with built-in protection",
+        "Concept taught in Chapter 6; foundational to understanding all DC motor direction control"
+      ]
+    },
+    {
+      "id": "motor-driver-ic",
+      "label": "Motor Driver IC",
+      "color": "#C7164E",
+      "x1": 34, "y1": 12, "x2": 67, "y2": 90,
+      "summary": "Integrated chip with two H-bridges — the practical choice for all course robot projects",
+      "facts": [
+        "An IC that contains two complete H-bridge circuits in one package",
+        "On the Cytron Maker Pi RP2040: MX1508 dual H-bridge driver IC",
+        "MX1508 specs: 1 A continuous, 1.5 A peak (5 s) per channel; motor supply 2–10 V",
+        "Common alternative: TB6612FNG (1.2 A continuous, 3.2 A peak; 2.7–13.5 V VM)",
+        "Control pins per channel: IN1, IN2 (direction) + PWM (speed from MCU)",
+        "IN1=HIGH, IN2=LOW → forward; IN1=LOW, IN2=HIGH → reverse; both LOW → brake",
+        "PWM duty cycle sets speed: 0% = stopped, 100% = full speed",
+        "Built-in flyback diodes absorb back-EMF spikes when motor stops or reverses — protects MCU",
+        "Built-in dead-time logic prevents shoot-through — safe to use without timing worries",
+        "MicroPython on Cytron board: two GPIO pairs (M1A/M1B, M2A/M2B) + two PWM pins",
+        "Best for: all robot projects in this course — safe, simple, two-channel integrated solution"
+      ]
+    },
+    {
+      "id": "transistor",
+      "label": "Single Transistor",
+      "color": "#6A3FB5",
+      "x1": 67, "y1": 12, "x2": 98, "y2": 90,
+      "summary": "One transistor controls on/off or speed via PWM — no direction reversal",
+      "facts": [
+        "A single NPN transistor (e.g., 2N2222 for small motors, TIP120 for larger) acts as an electronic switch",
+        "Base (B): connected to MCU GPIO via a current-limiting resistor (~1 kΩ for 2N2222)",
+        "Collector (C): connected to the motor's negative terminal",
+        "Emitter (E): connected to GND",
+        "Motor positive terminal: connected to the power supply (3–12 V depending on motor)",
+        "GPIO HIGH → transistor ON → current flows through motor → motor spins",
+        "GPIO LOW → transistor OFF → no current → motor stops (or coasts)",
+        "PWM on the GPIO pin controls motor speed by rapidly switching the transistor on and off",
+        "Limitation: current always flows the same direction — motor cannot be reversed",
+        "A flyback diode MUST be added across motor terminals to absorb back-EMF spikes",
+        "To add direction control you need four transistors (full H-bridge) or a motor driver IC",
+        "Best for: simple on/off loads (fan, pump, one-direction conveyor, beginner experiments)"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which motor control method uses four switches in an H shape to allow both forward and reverse motor direction?",
+      "correct_zone": "h-bridge",
+      "explanation": "The H-bridge gets its name from the H-shaped circuit of four switches. Closing the diagonal pair S1+S4 drives the motor forward; closing the opposite diagonal S2+S3 reverses it. All motor driver ICs implement this concept inside their silicon."
+    },
+    {
+      "question": "Which motor control IC is built into the Cytron Maker Pi RP2040 board used in this course?",
+      "correct_zone": "motor-driver-ic",
+      "explanation": "The Cytron Maker Pi RP2040 uses the MX1508 dual H-bridge driver IC — rated at 1 A continuous and 1.5 A peak per channel. It handles two DC motors, each controlled by a direction pair (IN1/IN2) plus a PWM speed pin."
+    },
+    {
+      "question": "Which method can control motor SPEED with PWM but cannot reverse the motor's direction?",
+      "correct_zone": "transistor",
+      "explanation": "A single NPN transistor switches current on and off. A PWM signal on the base varies the duty cycle and thus the average current through the motor — controlling speed. But current always flows the same direction through the motor, so it cannot reverse without additional circuitry."
+    },
+    {
+      "question": "Which method risks a short circuit (shoot-through) if switches on the same leg are closed at the same time?",
+      "correct_zone": "h-bridge",
+      "explanation": "In an H-bridge, closing S1+S2 (or S3+S4) simultaneously connects the power supply directly to ground — called shoot-through. This destroys transistors and can damage the power supply. Motor driver ICs have built-in dead-time logic to prevent this."
+    },
+    {
+      "question": "Which method requires adding an external flyback diode across the motor terminals to prevent damage from back-EMF spikes?",
+      "correct_zone": "transistor",
+      "explanation": "When a transistor switches off, the motor's collapsing magnetic field generates a voltage spike (back-EMF) that can exceed the transistor's breakdown voltage. A flyback diode in parallel with the motor clamps this spike. Motor driver ICs have flyback diodes built in, so external ones are not needed."
+    }
+  ]
+}
