@@ -21,18 +21,42 @@ nav:
   
   - Chapters:
     - List of Chapters: chapters/index.md
-    - 1. Computational Thinking: chapters/01-intro-computational-thinking/index.md
-    - 2. Hardware and Assembly: chapters/02-hardware-platform-assembly/index.md
-    - 3. MicroPython and Setup: chapters/03-micropython-dev-environment/index.md
-    - 4. Control Flow and Functions: chapters/04-control-flow-functions/index.md
-    - 5. Data Structures and Git: chapters/05-data-structures-modular-code/index.md
-    - 6. Motors and Protocols: chapters/06-electronics-motors-protocols/index.md
-    - 7. PWM and Actuators: chapters/07-pwm-motor-speed-actuators/index.md
-    - 8. Sensors and Input: chapters/08-sensors-data-input/index.md
-    - 9. Displays and Output: chapters/09-display-systems-output/index.md
-    - 10. Robot Behaviors: chapters/10-robot-behaviors-navigation/index.md
-    - 11. WiFi and Web Servers: chapters/11-wireless-networking-web-servers/index.md
-    - 12. Bluetooth Low Energy: chapters/12-bluetooth-low-energy/index.md
+    - 1. Computational Thinking:
+      - Computational Thinking: chapters/01-intro-computational-thinking/index.md
+      - Quiz: chapters/01-intro-computational-thinking/quiz.md
+    - 2. Hardware and Assembly:
+      - Hardware and Assembly: chapters/02-hardware-platform-assembly/index.md
+      - Quiz: chapters/02-hardware-platform-assembly/quiz.md
+    - 3. MicroPython and Setup:
+      - MicroPython and Setup: chapters/03-micropython-dev-environment/index.md
+      - Quiz: chapters/03-micropython-dev-environment/quiz.md
+    - 4. Control Flow and Functions:
+      - Control Flow and Functions: chapters/04-control-flow-functions/index.md
+      - Quiz: chapters/04-control-flow-functions/quiz.md
+    - 5. Data Structures and Git:
+      - Data Structures and Git: chapters/05-data-structures-modular-code/index.md
+      - Quiz: chapters/05-data-structures-modular-code/quiz.md
+    - 6. Motors and Protocols:
+      - Motors and Protocols: chapters/06-electronics-motors-protocols/index.md
+      - Quiz: chapters/06-electronics-motors-protocols/quiz.md
+    - 7. PWM and Actuators:
+      - PWM and Actuators: chapters/07-pwm-motor-speed-actuators/index.md
+      - Quiz: chapters/07-pwm-motor-speed-actuators/quiz.md
+    - 8. Sensors and Input:
+      - Sensors and Input: chapters/08-sensors-data-input/index.md
+      - Quiz: chapters/08-sensors-data-input/quiz.md
+    - 9. Displays and Output:
+      - Displays and Output: chapters/09-display-systems-output/index.md
+      - Quiz: chapters/09-display-systems-output/quiz.md
+    - 10. Robot Behaviors:
+      - Robot Behaviors: chapters/10-robot-behaviors-navigation/index.md
+      - Quiz: chapters/10-robot-behaviors-navigation/quiz.md
+    - 11. WiFi and Web Servers:
+      - WiFi and Web Servers: chapters/11-wireless-networking-web-servers/index.md
+      - Quiz: chapters/11-wireless-networking-web-servers/quiz.md
+    - 12. Bluetooth Low Energy:
+      - Bluetooth Low Energy: chapters/12-bluetooth-low-energy/index.md
+      - Quiz: chapters/12-bluetooth-low-energy/quiz.md
     - 13. Swarm and Advanced: chapters/13-swarm-robotics-advanced-patterns/index.md
 
   - Learning Graph:
@@ -44,6 +68,8 @@ nav:
     - Graph Quality Metrics: learning-graph/quality-metrics.md
     - Taxonomy Distribution: learning-graph/taxonomy-distribution.md
     - Mascot Test: learning-graph/mascot-render-test.md
+    - FAQ Quality Report: learning-graph/faq-quality-report.md
+    - Quiz Generation Report: learning-graph/quiz-generation-report.md
 
   - Learning Graphs:
     - learning-graphs/index.md
@@ -118,6 +144,14 @@ nav:
     - Web Server Request-Response Flow: sims/http-request-response-flow/index.md
     - WiFi vs BLE Communication Topology: sims/wifi-vs-ble-topology/index.md
 
+  - Posters:
+    - List of Posters: posters/index.md
+    - Distance Sensors: posters/distance-sensors/index.md
+    - Communication Protocols: posters/communication-protocols/index.md
+    - Wireless Technologies: posters/wireless-technologies/index.md
+    - Robot Control Modes: posters/robot-control-modes/index.md
+    - Robot Kits: posters/robot-kits/index.md
+    - Motor Control Methods: posters/motor-control-methods/index.md
 
   - Kits:
     - Introduction to Kits: kits/index.md
