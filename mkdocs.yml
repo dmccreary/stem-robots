@@ -59,18 +59,6 @@ nav:
       - Quiz: chapters/12-bluetooth-low-energy/quiz.md
     - 13. Swarm and Advanced: chapters/13-swarm-robotics-advanced-patterns/index.md
 
-  - Learning Graph:
-    - Introduction: learning-graph/index.md
-    - Course Description Assessment: learning-graph/course-description-assessment.md
-    - Concepts Covered: learning-graph/concepts-covered-v1.md
-    - Concept List: learning-graph/concept-list.md
-    - Concept Taxonomy: learning-graph/concept-taxonomy.md
-    - Graph Quality Metrics: learning-graph/quality-metrics.md
-    - Taxonomy Distribution: learning-graph/taxonomy-distribution.md
-    - Mascot Test: learning-graph/mascot-render-test.md
-    - FAQ Quality Report: learning-graph/faq-quality-report.md
-    - Quiz Generation Report: learning-graph/quiz-generation-report.md
-
   - Learning Graphs:
     - learning-graphs/index.md
     - learning-graphs/01-course-description.md
@@ -110,10 +98,11 @@ nav:
     - Infrared Sensors: lessons/60-ir-sensors.md
     - Collision Avoidance: lessons/65-collision-avoidance.md
     - Using Perf Boards: lessons/70-using-perf-boards.md
-  - Instructor's Guide:
-    - Introduction: instructors-guide/index.md
-    - Computational Thinking: instructors-guide/computational-thinking.md
-    - Exploration vs Competition: instructors-guide/exploration-vs-competition.md
+  
+  - Teachers's Guide:
+    - Introduction: teachers-guide/index.md
+    - Computational Thinking: teachers-guide/computational-thinking.md
+    - Exploration vs Competition: teachers-guide/exploration-vs-competition.md
 
   - MicroSims:
     - List of MicroSims: sims/index.md
@@ -201,6 +190,20 @@ nav:
     - Intro: instructors-guide/index.md
     - Computational Thinking: instructors-guide/computational-thinking.md
     - Exploration vs Competition: instructors-guide/exploration-vs-competition.md
+  
+    - Learning Graph:
+    - Introduction: learning-graph/index.md
+    - Course Description Assessment: learning-graph/course-description-assessment.md
+    - Concepts Covered: learning-graph/concepts-covered-v1.md
+    - Concept List: learning-graph/concept-list.md
+    - Concept Taxonomy: learning-graph/concept-taxonomy.md
+    - Graph Quality Metrics: learning-graph/quality-metrics.md
+    - Taxonomy Distribution: learning-graph/taxonomy-distribution.md
+    - Mascot Test: learning-graph/mascot-render-test.md
+    - FAQ Quality Report: learning-graph/faq-quality-report.md
+    - Quiz Generation Report: learning-graph/quiz-generation-report.md
+
+  
   - FAQ: faq.md
   - Glossary: glossary.md
   - References: references.md
