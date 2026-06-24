@@ -9,33 +9,43 @@ hide:
 
 These comparison infographic posters are designed for classroom display, hallway bulletin boards, and textbook reference. Each poster lets students click a column to explore facts and then switch to **Quiz Me** mode to test their understanding.
 
----
+<div class="grid cards" markdown>
 
-<div class="grid cards" markdown style="grid-template-columns: repeat(2, 1fr);">
+-   **[I2C vs SPI Communication Protocols](./communication-protocols/index.md)**
 
--   **[Distance Sensors Compared](distance-sensors/index.md)**
+    ![I2C vs SPI Communication Protocols](./communication-protocols/communication-protocols-infographic.png)
 
-    IR reflective · HC-SR04 ultrasonic · VL53L0X laser ToF — range, accuracy, and interface type.
+    An interactive side-by-side comparison of the I2C and SPI serial communication protocols covering wires, topology, speed, addressing, and best uses with a built-in quiz.
 
--   **[Communication Protocols: I2C vs SPI](communication-protocols/index.md)**
+-   **[Distance Sensors Compared](./distance-sensors/index.md)**
 
-    Two-wire I2C vs four-wire SPI — speed, wiring, addressing, and which devices use each.
+    ![Distance Sensors Compared](./distance-sensors/distance-sensors-infographic.png)
 
--   **[Wireless Technologies Compared](wireless-technologies/index.md)**
+    An interactive comparison of IR reflective, HC-SR04 ultrasonic, and VL53L0X laser time-of-flight distance sensors — range, accuracy, and interface — with a built-in quiz.
 
-    WiFi · Bluetooth LE · Classic Bluetooth — range, power, connection model, and robot use cases.
+-   **[Motor Control Methods Compared](./motor-control-methods/index.md)**
 
--   **[Robot Control Modes Compared](robot-control-modes/index.md)**
+    ![Motor Control Methods Compared](./motor-control-methods/motor-control-infographic.png)
 
-    Open-loop · Closed-loop · Teleoperated — how does your robot make decisions?
+    An interactive comparison of H-bridge circuits, motor driver ICs, and single transistors for controlling DC motors — direction, speed, complexity, and cost — with a built-in quiz.
 
--   **[STEM Robot Kits Compared](robot-kits/index.md)**
+-   **[Robot Control Modes Compared](./robot-control-modes/index.md)**
 
-    Base Bot · WiFi Bot · Display Bot — cost, components, and which chapters each supports.
+    ![Robot Control Modes Compared](./robot-control-modes/robot-control-modes-infographic.png)
 
--   **[Motor Control Methods Compared](motor-control-methods/index.md)**
+    An interactive comparison of open-loop, closed-loop, and teleoperated robot control — sensor use, reliability, code complexity, and when to choose each — with a built-in quiz.
 
-    H-Bridge · Motor Driver IC · Single Transistor — three ways to drive a DC motor.
+-   **[STEM Robot Kits Compared](./robot-kits/index.md)**
+
+    ![STEM Robot Kits Compared](./robot-kits/robot-kits-infographic.png)
+
+    An interactive comparison of the Base Bot, WiFi Bot, and Display Bot kits — cost, components, capabilities, and which chapters each supports — with a built-in quiz.
+
+-   **[Wireless Technologies Compared](./wireless-technologies/index.md)**
+
+    ![Wireless Technologies Compared](./wireless-technologies/wireless-technologies-infographic.png)
+
+    An interactive comparison of WiFi, Bluetooth LE, and Classic Bluetooth — range, power, connection model, and robot use cases — with a built-in quiz.
 
 </div>
 
