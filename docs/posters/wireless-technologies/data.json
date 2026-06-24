@@ -1,0 +1,94 @@
+{
+  "title": "Wireless Technologies Compared: WiFi · Bluetooth LE · Classic Bluetooth",
+  "image": "wireless-technologies-infographic.png",
+  "layout": "grid",
+  "palette": ["#1A6B3C", "#C7164E", "#1389A6"],
+  "zones": [
+    {
+      "id": "wifi",
+      "label": "WiFi",
+      "color": "#1A6B3C",
+      "x1": 2, "y1": 12, "x2": 34, "y2": 90,
+      "summary": "Internet-connected wireless via a router — browser control from any device",
+      "facts": [
+        "Standard: IEEE 802.11 b/g/n — 2.4 GHz only (no 5 GHz on CYW43439)",
+        "Hardware on Pico W: Infineon CYW43439 built-in chip (same chip as BLE)",
+        "Connection: joins an existing access point (router); gets IP address via DHCP",
+        "Range: 15–30 m typical indoors (walls and interference reduce range significantly)",
+        "Speed: 10–100 Mbps (more than enough for robot control pages)",
+        "Power draw: up to ~270 mA peak TX; ~50–80 mA when connected and idle",
+        "MicroPython: import network; WLAN object; connect(), isconnected(), ifconfig()",
+        "Robot use: serve an HTML control page on port 80; steer robot from any browser",
+        "Requires: access point (router) in range; WiFi credentials in secrets.py file",
+        "Best for: web-based teleoperation, IoT data logging, multi-device control"
+      ]
+    },
+    {
+      "id": "ble",
+      "label": "Bluetooth LE",
+      "color": "#C7164E",
+      "x1": 34, "y1": 12, "x2": 67, "y2": 90,
+      "summary": "Direct device-to-device link — ultra-low power, robot-to-robot without a router",
+      "facts": [
+        "Standard: Bluetooth 5.2 Low Energy (BLE), 2.4 GHz ISM band",
+        "Hardware on Pico W: same CYW43439 chip as WiFi — both can run simultaneously via antenna time-sharing",
+        "Connection: one device advertises; the other scans and connects — no router needed",
+        "Range: 10–30 m outdoors; 5–20 m typical indoors",
+        "Speed: 1–3 Mbps (plenty for sensor data and movement commands)",
+        "Power draw: very low — designed for coin-cell devices; 1–15 mA active",
+        "Round-trip latency: ~1–10 ms (faster than WiFi for direct commands)",
+        "MicroPython: import bluetooth; BLE object; advertise(), scan(), connect()",
+        "GATT: services and characteristics structure data; central/peripheral roles",
+        "Robot use: one Pico W leads (central), another follows (peripheral) — swarm robotics",
+        "Best for: robot-to-robot communication, wearables, direct phone-to-robot control"
+      ]
+    },
+    {
+      "id": "classic-bt",
+      "label": "Classic Bluetooth",
+      "color": "#1389A6",
+      "x1": 67, "y1": 12, "x2": 98, "y2": 90,
+      "summary": "Older wireless standard — CYW43439 has hardware support but official MicroPython exposes BLE only",
+      "facts": [
+        "Standard: Bluetooth BR/EDR (Basic Rate/Enhanced Data Rate), 2.4 GHz ISM band",
+        "Hardware: CYW43439 chip has BR/EDR hardware — but Raspberry Pi's official MicroPython firmware exposes BLE only (Classic BT requires C SDK)",
+        "Connection: device pairing with PIN; master/slave architecture",
+        "Range: 10–100 m (Class 1 up to 100 m; Class 2 typical ~10 m)",
+        "Speed: 1 Mbps (BR) to 3 Mbps (EDR); up to 24 Mbps with 802.11 assist",
+        "Power draw: medium — higher than BLE; not optimized for battery-powered devices",
+        "Round-trip latency: ~30–100 ms (higher than BLE due to polling interval)",
+        "Profiles: SPP (serial port), A2DP (audio), HID (keyboard/mouse), RFCOMM",
+        "Common uses: wireless speakers, headsets, keyboard/mouse, older Arduino HC-05 robots",
+        "Robot use in this course: not used — use BLE (Chapter 12) for direct wireless links",
+        "Best for: audio streaming, legacy serial-port replacement if you use the C SDK"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which wireless technology on the Pico W lets you control your robot from any web browser on the same network?",
+      "correct_zone": "wifi",
+      "explanation": "WiFi connects the Pico W to a router so it can serve an HTML page on port 80. Any browser on the same network — phone, tablet, laptop — can load the page and send motor commands via HTTP GET or POST."
+    },
+    {
+      "question": "Which technology uses GATT services and central/peripheral roles to link two robots directly without a router?",
+      "correct_zone": "ble",
+      "explanation": "Bluetooth LE uses the GATT protocol with one device as the central (leader) and the other as the peripheral (follower). They connect directly — no router or access point is needed, and round-trip latency is just 1–10 ms."
+    },
+    {
+      "question": "Which technology is available in official Raspberry Pi MicroPython firmware only via the C SDK, not through the high-level bluetooth module?",
+      "correct_zone": "classic-bt",
+      "explanation": "The CYW43439 chip has Classic Bluetooth (BR/EDR) hardware, but Raspberry Pi's official MicroPython firmware only exposes BLE. To use BR/EDR you need the lower-level C SDK. In this course we always use BLE, not Classic Bluetooth."
+    },
+    {
+      "question": "Which wireless technology uses the least power and is designed for coin-cell battery devices with a latency of just 1–10 ms?",
+      "correct_zone": "ble",
+      "explanation": "Bluetooth Low Energy was designed specifically for very low power — it can run on a small coin cell for months by sleeping between transmissions. BLE also has lower latency (1–10 ms) than WiFi for direct robot commands."
+    },
+    {
+      "question": "Which technology requires a network password stored in a secrets.py file and an access point (router) in range?",
+      "correct_zone": "wifi",
+      "explanation": "WiFi needs an access point (router) to join and uses a network password. In this course we store the SSID and password in a secrets.py file that is listed in .gitignore so credentials are never committed to version control."
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "title": "STEM Robot Kits Compared: Base Bot · WiFi Bot · Display Bot",
+  "image": "robot-kits-infographic.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#1389A6", "#6A3FB5"],
+  "zones": [
+    {
+      "id": "base-bot",
+      "label": "Base Bot",
+      "color": "#C7164E",
+      "x1": 2, "y1": 12, "x2": 34, "y2": 90,
+      "summary": "The core kit — motors, chassis, and a time-of-flight sensor",
+      "facts": [
+        "Total cost: ~$18 (the most affordable entry point)",
+        "Microcontroller: Cytron Maker Pi RP2040 (~$11) — RP2040 chip, built-in motor driver, NeoPixels, buzzer",
+        "Motor driver: MX1508 dual H-bridge IC — 1 A continuous, 1.5 A peak (5 s) per channel",
+        "Movement: two DC motors + wheels; motor driver built into the Cytron board",
+        "Distance sensor: VL53L0X time-of-flight (I2C) — 3 to 120 cm default, up to 200 cm long-range mode",
+        "Power: USB cable from laptop (programming + running) or 3× AA battery pack",
+        "LEDs: 2 NeoPixel RGB LEDs on the Cytron board (GPIO pin 18)",
+        "Sound: onboard piezo buzzer with mute switch",
+        "Control: USB-tethered via Thonny — code runs while cable is plugged in",
+        "Best for: first-time robot builders; collision avoidance labs; dance programs",
+        "Key chapters: 6 (motors), 7 (PWM), 8 (sensors), 10 (autonomous navigation)"
+      ]
+    },
+    {
+      "id": "wifi-bot",
+      "label": "WiFi Bot",
+      "color": "#1389A6",
+      "x1": 34, "y1": 12, "x2": 67, "y2": 90,
+      "summary": "Adds wireless — control your robot from any browser or pair robots over BLE",
+      "facts": [
+        "Total cost: ~$21 (Base Bot components + Raspberry Pi Pico W swap)",
+        "Microcontroller: Raspberry Pi Pico W — RP2040 + Infineon CYW43439 WiFi/BLE chip",
+        "Motor driver: same Cytron board MX1508 dual H-bridge (1 A continuous per channel)",
+        "Movement: same two DC motors + wheels",
+        "Distance sensor: same VL53L0X ToF (I2C) — 3 to 120 cm default, up to 200 cm",
+        "Power: LiPo battery pack recommended for truly wireless operation; also USB",
+        "WiFi: 802.11 b/g/n 2.4 GHz; run an HTTP web server for browser-based control",
+        "Bluetooth LE: direct robot-to-robot communication for swarm robotics; 1–10 ms latency",
+        "WiFi and BLE can run simultaneously on the CYW43439 via antenna time-sharing",
+        "Control: fully wireless after upload — drive from phone, tablet, or laptop browser",
+        "Best for: IoT projects, browser-based control, BLE robot swarms",
+        "Key chapters: 11 (web server), 12 (BLE), 13 (swarm robotics)"
+      ]
+    },
+    {
+      "id": "display-bot",
+      "label": "Display Bot",
+      "color": "#6A3FB5",
+      "x1": 67, "y1": 12, "x2": 98, "y2": 90,
+      "summary": "Adds an OLED screen — show sensor readings and status on the robot itself",
+      "facts": [
+        "Total cost: ~$24 (Base Bot + ~$6 for SSD1306 OLED display module)",
+        "Microcontroller: Cytron Maker Pi RP2040 (same as Base Bot)",
+        "Motor driver: MX1508 dual H-bridge — 1 A continuous per channel",
+        "Movement: same two DC motors + wheels",
+        "Distance sensor: same VL53L0X ToF (I2C) — 3 to 120 cm default, up to 200 cm",
+        "Display: SSD1306 128×64 pixel OLED — monochrome (each pixel is ON or OFF), I2C connected",
+        "I2C bus: both the SSD1306 (address 0x3C) and VL53L0X share the same I2C bus — different addresses",
+        "Display library: MicroPython SSD1306 driver; supports text, lines, rectangles, pixels",
+        "Power: USB cable or battery pack",
+        "Control: USB-tethered or with battery for portable demos",
+        "Best for: live sensor readings, distance bar graphs, status messages on the robot",
+        "Key chapters: 8 (sensors), 9 (display systems), plus any chapter with an added HUD"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which kit is the most affordable at about $18 and is the best starting point for a first-time robot builder?",
+      "correct_zone": "base-bot",
+      "explanation": "The Base Bot costs about $18 — the Cytron Maker Pi RP2040 board (~$11), a chassis kit (~$4), and a VL53L0X sensor (~$3). It has everything needed for motors (MX1508 driver), distance sensing, NeoPixels, and a buzzer."
+    },
+    {
+      "question": "Which kit lets you drive your robot from a web browser on your phone without a USB cable?",
+      "correct_zone": "wifi-bot",
+      "explanation": "The WiFi Bot uses the Raspberry Pi Pico W which has a built-in CYW43439 WiFi chip. It runs an HTTP web server on port 80, so any browser on the same network — phone, tablet, laptop — can load the control page and steer the robot wirelessly."
+    },
+    {
+      "question": "Which kit adds an SSD1306 OLED screen so the robot can show live sensor readings on itself?",
+      "correct_zone": "display-bot",
+      "explanation": "The Display Bot adds a 128×64 pixel monochrome OLED display over I2C. It can show distance readings, bar graphs, status messages, or any other live data while the robot is running. Both the display and the ToF sensor share the same I2C bus at different addresses."
+    },
+    {
+      "question": "Which kit supports BLE robot-to-robot communication with just 1–10 ms latency for swarm robotics?",
+      "correct_zone": "wifi-bot",
+      "explanation": "The WiFi Bot's Pico W chip (CYW43439) supports both WiFi and Bluetooth LE. BLE enables one robot (central) to send commands directly to another robot (peripheral) with round-trip latency of just 1–10 ms — no router needed."
+    },
+    {
+      "question": "Which kit wires both a VL53L0X ToF sensor and an OLED display on the same I2C bus simultaneously?",
+      "correct_zone": "display-bot",
+      "explanation": "The Display Bot wires both the VL53L0X (I2C address 0x29) and the SSD1306 OLED (I2C address 0x3C) on the same I2C bus. They work simultaneously because each has a unique address. The Base Bot and WiFi Bot use I2C only for the ToF sensor."
+    }
+  ]
+}
