@@ -4,14 +4,7 @@
 
 This is the original website that we built for our students.  It has hundreds of step-by-step tutorials on learning how to use MicroPython to write programs that control robots.
 
-[MicroPython for Kids Website](https://dmccreary.github.io/micropython/micropython/)
-
-## Introduction to Python with Trinket
-
-This site is our most popular site for students who are new to Python programming.  This has a well-designed set of lessons that use the Trinket site which is a kid-safe place to learn Python with turtle graphics.
-
-[Introduction to Python Website](https://www.coderdojotc.org/python/trinket/00-introduction/)
-
+[Learning MicroPython (ages 10-14)](https://dmccreary.github.io/learning-micropython/)
 
 ## AI Racing League
 
@@ -43,3 +36,15 @@ For advanced high-school students, we encourage you to continue your learning by
 ## Instructable
 
 [$25 Robot Platform for Teaching Programming](https://www.instructables.com/Collision-Avoidance-Robot-for-Teaching-Programming/) - March 22nd 2017
+
+## Robot Kits
+
+### BerryBot
+
+[BerryBot Programmable Educational Robot](https://picobricks.com/products/berrybot-programmable-educational-robot) - uses a Grove-connector board similar to the
+Cytron Maker Pi board.  Uses a Raspberry Pi-RP2040 based motherboard with a USB-C connector.
+Includes a built-in rechargeable LiPo battery.
+
+### Yahboom 2WD $100 Collision Avoidance Robot Kit
+
+[Yahboom Python Programming Smart Car Development Board Kit For Raspberry Pi Pico](https://www.ebay.com/itm/366387148852) - uses stepper motors and an ultrasonic ping sensor.
