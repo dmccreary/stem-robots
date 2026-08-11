@@ -10,10 +10,17 @@ import machine
 #   SCL  -> GPIO11 (I2C1 SCL)
 #   DRDY -> GPIO12 (data-ready, digital input)
 #
-# Uses the RP2040's internal weak pull-ups on SDA/SCL instead of relying on
-# pull-ups on the breakout board. Internal pull-ups on the RP2040 are weak
-# (~50-80 kOhm) so this is best for short breadboard wiring during testing;
-# swap to external 4.7k pull-ups if the bus becomes unreliable at length.
+# Pull-ups: the raw pin level check below always enables the RP2040's
+# internal weak pull-up (~50-80 kOhm) on purpose - it needs a known "1" idle
+# reference so a stuck-low reading actually means something (a short, a
+# miswired pin, or a dead module), rather than a floating, meaningless value.
+#
+# The I2C scan itself does NOT enable the internal pull-up. This breakout
+# board was tested both ways and scanned successfully without it, meaning it
+# has its own onboard pull-ups (common on GY-271/273-style HMC5883L boards).
+# If you swap in a bare module with no onboard pull-ups, the scan may come up
+# empty - in that case add machine.Pin.PULL_UP back to the sda/scl Pin()
+# calls just before the I2C scan.
 I2C_SDA_PIN = 10
 I2C_SCL_PIN = 11
 I2C_BUS = 1
@@ -76,10 +83,10 @@ if sda_raw.value() == 0 or scl_raw.value() == 0:
 
 print()
 print("=" * 50)
-print("I2C{} scan (SDA=GPIO{}, SCL=GPIO{}, internal pull-ups enabled)".format(I2C_BUS, I2C_SDA_PIN, I2C_SCL_PIN))
+print("I2C{} scan (SDA=GPIO{}, SCL=GPIO{}, no internal pull-ups - testing board's own pull-ups)".format(I2C_BUS, I2C_SDA_PIN, I2C_SCL_PIN))
 print("=" * 50)
-sda = machine.Pin(I2C_SDA_PIN, machine.Pin.IN, machine.Pin.PULL_UP)
-scl = machine.Pin(I2C_SCL_PIN, machine.Pin.IN, machine.Pin.PULL_UP)
+sda = machine.Pin(I2C_SDA_PIN, machine.Pin.IN)
+scl = machine.Pin(I2C_SCL_PIN, machine.Pin.IN)
 i2c = machine.I2C(I2C_BUS, sda=sda, scl=scl, freq=400000)
 
 devices = i2c.scan()
