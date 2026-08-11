@@ -41,10 +41,15 @@ For advanced high-school students, we encourage you to continue your learning by
 
 ### BerryBot
 
-[BerryBot Programmable Educational Robot](https://picobricks.com/products/berrybot-programmable-educational-robot) - uses a Grove-connector board similar to the
+[BerryBot 2WD Programmable Educational Robot](https://picobricks.com/products/berrybot-programmable-educational-robot) - uses a Grove-connector board similar to the
 Cytron Maker Pi board.  Uses a Raspberry Pi-RP2040 based motherboard with a USB-C connector.
-Includes a built-in rechargeable LiPo battery.
+Includes a built-in rechargeable LiPo battery.  Uses a ball castor for the third wheel.
 
 ### Yahboom 2WD $100 Collision Avoidance Robot Kit
 
 [Yahboom Python Programming Smart Car Development Board Kit For Raspberry Pi Pico](https://www.ebay.com/itm/366387148852) - uses stepper motors and an ultrasonic ping sensor.
+
+### Picobricks Robot
+
+[PicoBricks Zero to Hero Kit: All in One Robotic Kit](https://picobricks.com/products/best-programmable-stem-robotics-kit) - $131 - very similar to our base
+robot kit and includes a very small OLED display.  Uses the Pico W.  Two layer design with the Pico and OLED on the top.  The kit includes additional sensors and two servo motors.

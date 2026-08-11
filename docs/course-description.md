@@ -37,7 +37,14 @@ robots respond intelligently. The course introduces wireless control via a Raspb
 Pico W variant, covering both WiFi (web server control) and **Bluetooth Low Energy (BLE)**
 communication between robots. The Bluetooth unit culminates in a **Swarm Robots lab** where
 pairs of robots coordinate through BLE messaging to exhibit collective behaviors — an
-accessible introduction to distributed systems and emergent intelligence. The final weeks
+accessible introduction to distributed systems and emergent intelligence. The capstone
+chapter adds a second, WiFi-based path to swarm coordination: robots equipped with a
+low-cost **9-DOF inertial measurement unit (IMU)** — a gyroscope and accelerometer/magnetometer
+pair — calibrate their own sensors, fuse gyro and compass readings into a stable heading
+estimate, and synchronize turns across the swarm by having one robot broadcast its heading
+over WiFi (UDP) while the others steer to match it. Comparing this heading-synchronization
+pattern to the BLE leader/follower pattern gives students a concrete, hands-on way to reason
+about trade-offs between wireless protocols. The final weeks
 are reserved for student-designed projects, encouraging creativity, persistence, and
 engineering iteration.
 
@@ -56,7 +63,7 @@ engineering iteration.
 9. **Collision Avoidance and Line Following** — closed-loop feedback, threshold-based decisions, algorithm tuning
 10. **Wireless and IoT Concepts** — WiFi connectivity, web servers on microcontrollers, HTTP GET/POST
 11. **Bluetooth Communication** — Bluetooth Low Energy (BLE) on Raspberry Pi Pico W; advertising, scanning, GATT services, peer-to-peer robot messaging
-12. **Swarm Robotics** — coordinating multiple robots via BLE; emergent behaviors, leader/follower patterns, collective obstacle avoidance
+12. **Swarm Robotics** — coordinating multiple robots via BLE; emergent behaviors, leader/follower patterns, collective obstacle avoidance; a second WiFi/UDP heading-synchronization pattern built on a 9-DOF IMU (gyroscope + accelerometer/magnetometer), including per-robot sensor calibration and complementary-filter sensor fusion
 13. **Engineering Design Process** — iterative build-test-improve cycle, debugging, documentation
 14. **Student Capstone Projects** — open-ended projects integrating sensors, displays, motors, and wireless
 
@@ -117,6 +124,8 @@ After completing this course, students will be able to:
 - **Describe** the difference between open-loop and closed-loop (feedback) motor control and give an example of each.
 - **Explain** how Bluetooth Low Energy (BLE) differs from WiFi in terms of range, power consumption, and use case, and why BLE is preferred for robot-to-robot communication.
 - **Describe** the concept of emergent behavior in swarm robotics: how simple per-robot rules produce complex group-level outcomes.
+- **Explain** why a 9-DOF IMU's gyroscope and magnetometer are combined with a complementary filter rather than trusted individually: the gyroscope drifts over time and the magnetometer alone is noisy and prone to nearby-metal interference.
+- **Describe** why per-robot magnetometer calibration (hard-iron offset) is required before a compass heading is usable, and why re-calibration is needed after the sensor is remounted.
 
 ---
 
@@ -137,6 +146,10 @@ After completing this course, students will be able to:
 - **Configure** a Raspberry Pi Pico W as a BLE peripheral that advertises a custom service and accepts commands from a central device.
 - **Program** a BLE central device to scan for, connect to, and send movement commands to a BLE peripheral robot.
 - **Execute** the Swarm Robots lab: pair two Pico W robots over BLE and demonstrate a leader/follower or coordinated stop behavior.
+- **Read** raw gyroscope and accelerometer/magnetometer values from an L3GD20 + LSM303D IMU module over I2C and confirm sane readings (near-zero gyro at rest, ~1 g accelerometer magnitude while still).
+- **Calibrate** a magnetometer by rotating the robot through a full turn, recording the min/max readings, and computing the hard-iron offset.
+- **Implement** a complementary filter in MicroPython that fuses gyroscope and calibrated magnetometer readings into a stable compass heading.
+- **Configure** a Raspberry Pi Pico W as its own WiFi access point and broadcast UDP packets to every connected follower.
 
 ---
 
@@ -153,6 +166,7 @@ After completing this course, students will be able to:
 - **Analyze** how the web server handles different HTTP request types (GET vs. POST) and routes each to the appropriate hardware action.
 - **Compare** WiFi and Bluetooth as wireless communication options for robots, examining latency, range, power draw, and complexity of setup.
 - **Break down** a swarm behavior (e.g., collective obstacle avoidance) into its individual robot rules and explain how each rule contributes to the group outcome.
+- **Compare** the BLE leader/follower pattern to the WiFi/UDP heading-synchronization pattern, analyzing how each handles adding more followers, tolerates dropped messages, and depends on per-robot sensor calibration.
 
 ---
 
@@ -186,6 +200,7 @@ After completing this course, students will be able to:
 - **Extend** an existing robot program with a new feature (servo-mounted sensor sweep, animated face, WiFi control) by following a modular design pattern.
 - **Build** a two-robot Swarm Robots lab in which one Pico W acts as the BLE central (leader) and a second acts as the peripheral (follower), with the follower mirroring the leader's movements in real time.
 - **Design** a custom swarm behavior (e.g., synchronized dance, distributed obstacle mapping, or convoy following) and implement it using BLE messaging between two or more robots.
+- **Build** a WiFi-based heading-synchronization swarm: one master robot hosting an access point and broadcasting its IMU-derived heading over UDP, and two or more follower robots that calibrate their own IMUs and steer to match the broadcast heading.
 
 ---
 
