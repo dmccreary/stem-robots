@@ -1,6 +1,6 @@
 # Concept Taxonomy — Computational Thinking with STEM Robots
 
-13 categories covering all 240 concepts. Each category has a 3–5 letter TaxonomyID.
+13 categories covering all 252 concepts. Each category has a 3–5 letter TaxonomyID.
 
 ---
 
@@ -12,11 +12,11 @@
 | 4 | HW | Hardware Platform | 14 | RP2040, Raspberry Pi Pico, Cytron board, GPIO pins, connectors |
 | 5 | ELEC | Electronics Fundamentals | 12 | Voltage, circuits, resistors, transistors, breadboard, batteries |
 | 6 | MOTOR | Motors and Actuators | 27 | DC motors, H-bridge, PWM, servo motors, piezo buzzer |
-| 7 | SENSOR | Sensors and Input | 19 | ToF, ultrasonic, IR, bump switches, ADC, calibration |
+| 7 | SENSOR | Sensors and Input | 26 | ToF, ultrasonic, IR, bump switches, ADC, calibration, 9-DOF IMU (gyroscope + accelerometer/magnetometer), sensor fusion |
 | 8 | DISPLAY | Display and Output | 22 | NeoPixels, OLED display, framebuffer, drawing primitives, charts |
 | 9 | ROBOT | Robot Behaviors | 18 | Collision avoidance, line following, feedback loops, dance, config patterns |
-| 10 | NET | Networking and Wireless | 18 | WiFi, web server, HTTP, sockets, IoT |
-| 11 | BLE | Bluetooth and Swarm | 26 | BLE, GATT, swarm robotics, leader/follower, emergent behavior |
+| 10 | NET | Networking and Wireless | 20 | WiFi, web server, HTTP, sockets, IoT, access point hosting, UDP broadcast |
+| 11 | BLE | Bluetooth and Swarm | 29 | BLE, GATT, swarm robotics, leader/follower, emergent behavior, IMU-based heading synchronization |
 | 12 | COMM | Communication Protocols | 11 | I2C, SPI, GPIO interrupts, debouncing, timers, serial |
 | 13 | ENG | Engineering Design | 19 | Design process, troubleshooting, documentation, git, advanced patterns |
 
@@ -59,7 +59,11 @@ as a motor-driven platform.
 ### SENSOR — Sensors and Input
 All sensor types used in the course: time-of-flight (VL53L0X), ultrasonic, infrared, bump
 switches, and potentiometer. Includes I2C sensor setup, calibration (zero distance, scale
-factor), data filtering, and sensor fusion concepts.
+factor), data filtering, and sensor fusion concepts. Extends into 9-DOF inertial measurement
+units (IMUs) for the swarm robotics capstone: the L3GD20 gyroscope and LSM303D
+accelerometer/magnetometer, per-robot gyroscope and magnetometer (hard-iron) calibration,
+and the complementary filter that fuses gyro and compass readings into a stable heading
+estimate.
 
 ### DISPLAY — Display and Output
 Output subsystems: NeoPixel LED strips (colors, animation), OLED display (text, drawing
@@ -74,13 +78,20 @@ pin assignment constants, and secrets/gitignore file patterns for project hygien
 ### NET — Networking and Wireless
 WiFi connectivity on the Raspberry Pi Pico W: WLAN object, access point connection,
 ping tests, socket-based web server, HTTP GET/POST handling, HTML generation, JavaScript
-fetch API, IoT concepts.
+fetch API, IoT concepts. Also covers hosting a WiFi access point directly on a Pico W
+(as opposed to joining an existing one) and UDP broadcast sockets, the networking pattern
+used by the WiFi-based swarm heading-synchronization lab.
 
 ### BLE — Bluetooth and Swarm Robotics
 Bluetooth Low Energy from fundamentals to multi-robot coordination: BLE advertising,
 scanning, GATT protocol (services and characteristics), central/peripheral roles, BLE
 pairing and messaging, and the Swarm Robotics lab (leader/follower, emergent behavior,
-collective obstacle avoidance, convoy following).
+collective obstacle avoidance, convoy following). Swarm Robotics itself has two
+independent implementations in the course: the BLE leader/follower pattern, and a
+second heading-synchronization pattern where a master robot broadcasts its IMU-derived
+heading over a UDP broadcast socket (see NET) and each follower steers to match it using
+its own onboard 9-DOF IMU (see SENSOR) — a comparison point for wireless protocol
+trade-offs (range, power, and how many followers one master can support).
 
 ### COMM — Communication Protocols
 Hardware communication protocols and low-level I/O: I2C bus (SDA/SCL, frequency

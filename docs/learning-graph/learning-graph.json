@@ -1305,6 +1305,66 @@
       "id": 240,
       "label": "Data Logging",
       "group": "ENG"
+    },
+    {
+      "id": 241,
+      "label": "9-DOF IMU Overview",
+      "group": "SENSOR"
+    },
+    {
+      "id": 242,
+      "label": "L3GD20 Gyroscope",
+      "group": "SENSOR"
+    },
+    {
+      "id": 243,
+      "label": "LSM303D Accelerometer Magnetometer",
+      "group": "SENSOR"
+    },
+    {
+      "id": 244,
+      "label": "Gyroscope Calibration",
+      "group": "SENSOR"
+    },
+    {
+      "id": 245,
+      "label": "Magnetometer Hard Iron Calibration",
+      "group": "SENSOR"
+    },
+    {
+      "id": 246,
+      "label": "Complementary Filter Sensor Fusion",
+      "group": "SENSOR"
+    },
+    {
+      "id": 247,
+      "label": "Heading Estimation",
+      "group": "SENSOR"
+    },
+    {
+      "id": 248,
+      "label": "WiFi Access Point Host Mode",
+      "group": "NET"
+    },
+    {
+      "id": 249,
+      "label": "UDP Broadcast Networking",
+      "group": "NET"
+    },
+    {
+      "id": 250,
+      "label": "Heading Synchronization Swarm Pattern",
+      "group": "BLE"
+    },
+    {
+      "id": 251,
+      "label": "UDP Master Broadcast Code",
+      "group": "BLE"
+    },
+    {
+      "id": 252,
+      "label": "UDP Follower Steering Code",
+      "group": "BLE"
     }
   ],
   "edges": [
@@ -3119,6 +3179,114 @@
     {
       "from": 240,
       "to": 236
+    },
+    {
+      "from": 241,
+      "to": 108
+    },
+    {
+      "from": 241,
+      "to": 211
+    },
+    {
+      "from": 242,
+      "to": 241
+    },
+    {
+      "from": 242,
+      "to": 211
+    },
+    {
+      "from": 243,
+      "to": 241
+    },
+    {
+      "from": 243,
+      "to": 211
+    },
+    {
+      "from": 244,
+      "to": 242
+    },
+    {
+      "from": 244,
+      "to": 124
+    },
+    {
+      "from": 245,
+      "to": 243
+    },
+    {
+      "from": 245,
+      "to": 124
+    },
+    {
+      "from": 246,
+      "to": 244
+    },
+    {
+      "from": 246,
+      "to": 245
+    },
+    {
+      "from": 246,
+      "to": 126
+    },
+    {
+      "from": 247,
+      "to": 246
+    },
+    {
+      "from": 248,
+      "to": 167
+    },
+    {
+      "from": 248,
+      "to": 168
+    },
+    {
+      "from": 249,
+      "to": 176
+    },
+    {
+      "from": 249,
+      "to": 248
+    },
+    {
+      "from": 250,
+      "to": 201
+    },
+    {
+      "from": 250,
+      "to": 247
+    },
+    {
+      "from": 250,
+      "to": 249
+    },
+    {
+      "from": 251,
+      "to": 250
+    },
+    {
+      "from": 251,
+      "to": 248
+    },
+    {
+      "from": 251,
+      "to": 34
+    },
+    {
+      "from": 252,
+      "to": 250
+    },
+    {
+      "from": 252,
+      "to": 238
+    },
+    {
+      "from": 252,
+      "to": 96
     }
   ]
 }

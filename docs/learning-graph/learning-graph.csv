@@ -239,3 +239,15 @@ ConceptID,ConceptLabel,Dependencies,TaxonomyID
 238,PID Control Overview,150|151|26,ENG
 239,Encoder Motor Feedback,96|80|238,ENG
 240,Data Logging,34|42|236,ENG
+241,9-DOF IMU Overview,108|211,SENSOR
+242,L3GD20 Gyroscope,241|211,SENSOR
+243,LSM303D Accelerometer Magnetometer,241|211,SENSOR
+244,Gyroscope Calibration,242|124,SENSOR
+245,Magnetometer Hard Iron Calibration,243|124,SENSOR
+246,Complementary Filter Sensor Fusion,244|245|126,SENSOR
+247,Heading Estimation,246,SENSOR
+248,WiFi Access Point Host Mode,167|168,NET
+249,UDP Broadcast Networking,176|248,NET
+250,Heading Synchronization Swarm Pattern,201|247|249,BLE
+251,UDP Master Broadcast Code,250|248|34,BLE
+252,UDP Follower Steering Code,250|238|96,BLE

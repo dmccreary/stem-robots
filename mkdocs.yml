@@ -167,9 +167,12 @@ nav:
     - Adjustabot: kits/adjust/index.md
     - Ultrasonic: kits/ultrasonic/index.md
   
-    - WiFi Display Bot: 
+    - WiFi Display Bot:
       - Intro: kits/wifi-display-bot/index.md
       - Display Status: kits/wifi-display-bot/display-status.md
+
+    - Swarm Robot:
+      - Build Plan: kits/swarm-robot/plan.md
 
   - Instructors Guide:
     - Intro: instructors-guide/index.md
