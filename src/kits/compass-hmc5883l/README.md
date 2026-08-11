@@ -16,6 +16,13 @@ readout.
 | SCL          | GPIO11              | I2C1 SCL                       |
 | DRDY         | GPIO12              | Data-ready, only read by `01-probe.py` |
 
+No external pull-up resistors are used on SDA/SCL. `01-probe.py` tested the
+bus both with and without the RP2040's internal weak pull-ups enabled and it
+scanned successfully either way, confirming this HMC5883L breakout has its
+own onboard pull-ups (common on GY-271/273-style boards). If you swap in a
+bare module without onboard pull-ups, re-enable `machine.Pin.PULL_UP` on the
+SDA/SCL pins in each script, or the bus may not respond.
+
 ### OLED display and buttons (SPI0)
 
 Pin assignments live in [`config.py`](config.py): `SCL_PIN` (SPI clock),
