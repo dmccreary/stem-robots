@@ -1740,7 +1740,7 @@
 
 
 <h1 id="concept-taxonomy-computational-thinking-with-stem-robots">Concept Taxonomy — Computational Thinking with STEM Robots</h1>
-<p>13 categories covering all 240 concepts. Each category has a 3–5 letter TaxonomyID.</p>
+<p>13 categories covering all 252 concepts. Each category has a 3–5 letter TaxonomyID.</p>
 <hr />
 <table>
 <thead>
@@ -1799,8 +1799,8 @@
 <td>7</td>
 <td>SENSOR</td>
 <td>Sensors and Input</td>
-<td>19</td>
-<td>ToF, ultrasonic, IR, bump switches, ADC, calibration</td>
+<td>26</td>
+<td>ToF, ultrasonic, IR, bump switches, ADC, calibration, 9-DOF IMU (gyroscope + accelerometer/magnetometer), sensor fusion</td>
 </tr>
 <tr>
 <td>8</td>
@@ -1820,15 +1820,15 @@
 <td>10</td>
 <td>NET</td>
 <td>Networking and Wireless</td>
-<td>18</td>
-<td>WiFi, web server, HTTP, sockets, IoT</td>
+<td>20</td>
+<td>WiFi, web server, HTTP, sockets, IoT, access point hosting, UDP broadcast</td>
 </tr>
 <tr>
 <td>11</td>
 <td>BLE</td>
 <td>Bluetooth and Swarm</td>
-<td>26</td>
-<td>BLE, GATT, swarm robotics, leader/follower, emergent behavior</td>
+<td>29</td>
+<td>BLE, GATT, swarm robotics, leader/follower, emergent behavior, IMU-based heading synchronization</td>
 </tr>
 <tr>
 <td>12</td>
@@ -1877,7 +1877,11 @@ as a motor-driven platform.</p>
 <h3 id="sensor-sensors-and-input">SENSOR — Sensors and Input</h3>
 <p>All sensor types used in the course: time-of-flight (VL53L0X), ultrasonic, infrared, bump
 switches, and potentiometer. Includes I2C sensor setup, calibration (zero distance, scale
-factor), data filtering, and sensor fusion concepts.</p>
+factor), data filtering, and sensor fusion concepts. Extends into 9-DOF inertial measurement
+units (IMUs) for the swarm robotics capstone: the L3GD20 gyroscope and LSM303D
+accelerometer/magnetometer, per-robot gyroscope and magnetometer (hard-iron) calibration,
+and the complementary filter that fuses gyro and compass readings into a stable heading
+estimate.</p>
 <h3 id="display-display-and-output">DISPLAY — Display and Output</h3>
 <p>Output subsystems: NeoPixel LED strips (colors, animation), OLED display (text, drawing
 primitives, framebuffer, blit), data visualization (bar charts, distance meter), animated
@@ -1889,12 +1893,19 @@ pin assignment constants, and secrets/gitignore file patterns for project hygien
 <h3 id="net-networking-and-wireless">NET — Networking and Wireless</h3>
 <p>WiFi connectivity on the Raspberry Pi Pico W: WLAN object, access point connection,
 ping tests, socket-based web server, HTTP GET/POST handling, HTML generation, JavaScript
-fetch API, IoT concepts.</p>
+fetch API, IoT concepts. Also covers hosting a WiFi access point directly on a Pico W
+(as opposed to joining an existing one) and UDP broadcast sockets, the networking pattern
+used by the WiFi-based swarm heading-synchronization lab.</p>
 <h3 id="ble-bluetooth-and-swarm-robotics">BLE — Bluetooth and Swarm Robotics</h3>
 <p>Bluetooth Low Energy from fundamentals to multi-robot coordination: BLE advertising,
 scanning, GATT protocol (services and characteristics), central/peripheral roles, BLE
 pairing and messaging, and the Swarm Robotics lab (leader/follower, emergent behavior,
-collective obstacle avoidance, convoy following).</p>
+collective obstacle avoidance, convoy following). Swarm Robotics itself has two
+independent implementations in the course: the BLE leader/follower pattern, and a
+second heading-synchronization pattern where a master robot broadcasts its IMU-derived
+heading over a UDP broadcast socket (see NET) and each follower steers to match it using
+its own onboard 9-DOF IMU (see SENSOR) — a comparison point for wireless protocol
+trade-offs (range, power, and how many followers one master can support).</p>
 <h3 id="comm-communication-protocols">COMM — Communication Protocols</h3>
 <p>Hardware communication protocols and low-level I/O: I2C bus (SDA/SCL, frequency
 configuration), SPI bus, GPIO interrupts (IRQ, falling edge), button debouncing, timers
