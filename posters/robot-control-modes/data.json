@@ -1,0 +1,97 @@
+{
+  "title": "Robot Control Modes: Open-Loop · Closed-Loop · Teleoperated",
+  "image": "robot-control-modes-infographic.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#6A3FB5", "#1389A6"],
+  "zones": [
+    {
+      "id": "open-loop",
+      "label": "Open-Loop Control",
+      "color": "#C7164E",
+      "x1": 2, "y1": 12, "x2": 34, "y2": 90,
+      "summary": "Pre-programmed timed sequences — no sensor feedback",
+      "facts": [
+        "Definition: the robot executes a fixed sequence of motor commands with no awareness of the result",
+        "Sensor needed: none — the program controls only timing",
+        "MicroPython pattern: motor_on(); time.sleep(1); motor_off()",
+        "Example: drive forward 2 s, turn left 0.5 s, repeat — robot dance routine",
+        "Reliability: errors accumulate over time — wheel slip, battery drop, floor friction cause drift",
+        "The robot cannot detect or correct for obstacles, wheel slip, or surface changes",
+        "Advantage: simplest code; no sensor wiring required; great for scripted demonstrations",
+        "Disadvantage: drifts off course over time; no ability to react to the environment",
+        "Used in Chapter 10: timed motor patterns, robot dance sequences",
+        "Real-world analogy: a music box — plays the same sequence every time regardless of the audience",
+        "Best for: scripted demonstrations, dance routines, simple intro labs"
+      ]
+    },
+    {
+      "id": "closed-loop",
+      "label": "Closed-Loop Control",
+      "color": "#6A3FB5",
+      "x1": 34, "y1": 12, "x2": 67, "y2": 90,
+      "summary": "Sensor feedback drives decisions — the robot adapts to its environment",
+      "facts": [
+        "Definition: the robot reads sensors, compares the reading to a goal, and adjusts motors to reduce error",
+        "Feedback cycle: Sense → Compare → Act → Repeat (runs continuously)",
+        "Sensor needed: distance sensor (ToF, ultrasonic) or line-following IR pair",
+        "MicroPython pattern: while True: d = tof.read(); if d < 20: turn(); else: forward()",
+        "Example: collision avoidance — stop and turn if ToF reads < 20 cm",
+        "Example: line following — if left IR detects line, turn left; if right IR detects, turn right",
+        "Reliability: self-correcting; adapts to obstacles, surface changes, and battery drop",
+        "Advantage: autonomous — robot responds to real-world conditions without human input",
+        "Disadvantage: more complex code; sensor noise can cause erratic behavior without filtering",
+        "Used in Chapter 10: collision avoidance algorithm, dual-sensor line follower",
+        "Best for: autonomous navigation, obstacle avoidance, any behavior that must adapt to the world"
+      ]
+    },
+    {
+      "id": "teleoperated",
+      "label": "Teleoperated Control",
+      "color": "#1389A6",
+      "x1": 67, "y1": 12, "x2": 98, "y2": 90,
+      "summary": "A human operator sends real-time commands via WiFi or BLE",
+      "facts": [
+        "Definition: a human pilot sends movement commands in real time over a wireless link",
+        "Sensor needed: the wireless radio (WiFi or BLE); distance sensors optional for safety",
+        "WiFi method: robot runs an HTTP web server; browser sends GET/POST requests to control motors",
+        "WiFi round-trip latency: ~7–30 ms on a local LAN (Pico W measured)",
+        "BLE method: phone or another Pico W sends BLE GATT characteristic writes to drive motors",
+        "BLE round-trip latency: ~1–10 ms (faster than WiFi for direct peer-to-peer commands)",
+        "MicroPython: parse incoming HTTP request or BLE packet; map command to motor action",
+        "WiFi requires: both robot and browser on the same network via an access point (router)",
+        "BLE requires: no router — device connects directly to robot (peer-to-peer)",
+        "Advantage: human judgment guides the robot; excellent for exploration or competition",
+        "Disadvantage: requires wireless signal; limited by operator reaction time and range",
+        "Used in Chapter 11 (WiFi web server) and Chapter 12 (BLE central/peripheral)",
+        "Best for: robot competitions, remote inspection, demos where a human steers the action"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which control mode uses no sensors and relies entirely on pre-timed motor commands?",
+      "correct_zone": "open-loop",
+      "explanation": "Open-loop control executes a fixed sequence of timed commands with no feedback from the environment. The robot dance routine is a classic open-loop program — it runs the same way every time, regardless of what obstacles or conditions it encounters."
+    },
+    {
+      "question": "Which control mode reads sensor data and changes motor behavior based on what the sensor detects?",
+      "correct_zone": "closed-loop",
+      "explanation": "Closed-loop control creates a feedback cycle: Sense → Compare → Act → Repeat. The robot measures distance (or line position), compares it to a threshold, and adjusts motors accordingly. Collision avoidance and line following are both closed-loop behaviors."
+    },
+    {
+      "question": "Which control mode requires a human pilot sending real-time commands over WiFi or Bluetooth?",
+      "correct_zone": "teleoperated",
+      "explanation": "Teleoperated control puts a human in the loop: the operator sends forward/turn/stop commands via a web browser (WiFi) or a BLE connection. The robot executes those commands in real time with latency of 7–30 ms (WiFi) or 1–10 ms (BLE)."
+    },
+    {
+      "question": "Which control mode causes the robot to drift off course over time because it cannot detect wheel slip or battery drop?",
+      "correct_zone": "open-loop",
+      "explanation": "Open-loop robots run fixed timed sequences. When one wheel is slightly faster, the battery drops, or the floor surface changes, there is no correction mechanism — errors accumulate and the robot drifts from its intended path."
+    },
+    {
+      "question": "In Chapter 10, the collision avoidance robot stops and turns when the ToF sensor reads less than 20 cm. What control mode is this?",
+      "correct_zone": "closed-loop",
+      "explanation": "The collision avoidance algorithm reads a real sensor (ToF distance), compares it to a threshold (20 cm), and changes motor behavior (stop, reverse, turn). That Sense → Compare → Act → Repeat cycle is the definition of closed-loop control."
+    }
+  ]
+}

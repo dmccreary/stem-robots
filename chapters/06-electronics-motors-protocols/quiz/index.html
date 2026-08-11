@@ -1,0 +1,2313 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/stem-robots/chapters/06-electronics-motors-protocols/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../07-pwm-motor-speed-actuators/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - STEM Robots</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-6SSB9XBXM9"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-6SSB9XBXM9",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-6SSB9XBXM9",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-electronics-dc-motors-and-communication-protocols" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="STEM Robots" class="md-header__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            STEM Robots
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="STEM Robots" class="md-nav__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    STEM Robots
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../journey-map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Journey Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-intro-computational-thinking/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Computational Thinking
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-hardware-platform-assembly/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Hardware and Assembly
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-micropython-dev-environment/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. MicroPython and Setup
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-control-flow-functions/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Control Flow and Functions
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-data-structures-modular-code/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Data Structures and Git
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    6. Motors and Protocols
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            6. Motors and Protocols
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-the-role-of-a-transistor-in-controlling-a-dc-motor-from-a-microcontroller-gpio-pin" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is the role of a transistor in controlling a DC motor from a microcontroller GPIO pin?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-how-does-a-dc-motors-spin-direction-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. How does a DC motor's spin direction change?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-what-is-a-shoot-through-condition-in-an-h-bridge-and-why-is-it-dangerous" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. What is a "shoot-through" condition in an H-bridge, and why is it dangerous?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-does-the-adc-on-the-rp2040-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What does the ADC on the RP2040 do?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-are-the-two-wires-of-the-i2c-bus-and-what-role-does-each-play" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. What are the two wires of the I2C bus and what role does each play?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-how-does-a-lipo-battery-differ-from-a-set-of-aa-batteries-for-powering-a-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. How does a LiPo battery differ from a set of AA batteries for powering a robot?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-how-does-a-dpdt-switch-relate-to-an-h-bridge-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. How does a DPDT switch relate to an H-bridge circuit?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-why-does-the-i2c-bus-allow-multiple-sensors-to-share-the-same-two-wires" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Why does the I2C bus allow multiple sensors to share the same two wires?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-compared-to-i2c-what-is-spis-main-advantage-and-main-drawback" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Compared to I2C, what is SPI's main advantage and main drawback?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-what-is-the-risk-of-leaving-a-stalled-motor-running-at-full-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. What is the risk of leaving a stalled motor running at full power?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-pwm-motor-speed-actuators/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. PWM and Actuators
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-sensors-data-input/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. Sensors and Input
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-display-systems-output/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. Displays and Output
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-robot-behaviors-navigation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. Robot Behaviors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-wireless-networking-web-servers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. WiFi and Web Servers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-bluetooth-low-energy/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Bluetooth Low Energy
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Swarm and Advanced
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../setup/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../lessons/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../teachers-guide/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Teacher's Guide
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Robot Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../instructors-guide/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../gallery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Photo Gallery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../prompts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STEM Robotics Prompts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sims/template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MicroSim Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-the-role-of-a-transistor-in-controlling-a-dc-motor-from-a-microcontroller-gpio-pin" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is the role of a transistor in controlling a DC motor from a microcontroller GPIO pin?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-how-does-a-dc-motors-spin-direction-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. How does a DC motor's spin direction change?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-what-is-a-shoot-through-condition-in-an-h-bridge-and-why-is-it-dangerous" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. What is a "shoot-through" condition in an H-bridge, and why is it dangerous?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-does-the-adc-on-the-rp2040-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What does the ADC on the RP2040 do?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-are-the-two-wires-of-the-i2c-bus-and-what-role-does-each-play" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. What are the two wires of the I2C bus and what role does each play?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-how-does-a-lipo-battery-differ-from-a-set-of-aa-batteries-for-powering-a-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. How does a LiPo battery differ from a set of AA batteries for powering a robot?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-how-does-a-dpdt-switch-relate-to-an-h-bridge-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. How does a DPDT switch relate to an H-bridge circuit?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-why-does-the-i2c-bus-allow-multiple-sensors-to-share-the-same-two-wires" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Why does the I2C bus allow multiple sensors to share the same two wires?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-compared-to-i2c-what-is-spis-main-advantage-and-main-drawback" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Compared to I2C, what is SPI's main advantage and main drawback?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-what-is-the-risk-of-leaving-a-stalled-motor-running-at-full-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. What is the risk of leaving a stalled motor running at full power?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="quiz-electronics-dc-motors-and-communication-protocols">Quiz: Electronics, DC Motors, and Communication Protocols</h1>
+<p>Test your understanding of transistors, H-bridges, motor control, analog signals, and communication buses with these questions.</p>
+<hr />
+<h4 id="1-what-is-the-role-of-a-transistor-in-controlling-a-dc-motor-from-a-microcontroller-gpio-pin">1. What is the role of a transistor in controlling a DC motor from a microcontroller GPIO pin?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It converts the motor's mechanical rotation back into a voltage the microcontroller can read</li>
+<li>It acts as an electronic switch, using the GPIO's small signal to control the larger current the motor needs</li>
+<li>It stores electrical charge and releases it in bursts to make the motor spin</li>
+<li>It limits the current flowing into the GPIO pin to prevent damage to the RP2040</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A GPIO pin can only supply about 12 milliamps — far too little to run a DC motor, which needs hundreds of milliamps. A transistor bridges this gap: a small control signal on one terminal switches a much larger current through the other two terminals. This amplification principle is why microcontrollers can control powerful motors without burning out their output pins.</p>
+<p><strong>Concept Tested:</strong> Transistors</p>
+</details>
+<hr />
+<h4 id="2-how-does-a-dc-motors-spin-direction-change">2. How does a DC motor's spin direction change?</h4>
+<div class="upper-alpha">
+<ol>
+<li>By increasing the voltage above 6 V to trigger a reverse-bias mode</li>
+<li>By reversing which terminal receives the positive voltage</li>
+<li>By reducing the PWM duty cycle below 25%</li>
+<li>By connecting the motor to a different GPIO pin number</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A DC motor's direction depends on which terminal receives the positive voltage. If terminal A is positive and B is ground, the motor spins clockwise. Swap the connections — B positive, A ground — and it spins counterclockwise. The H-bridge circuit automates this electronic reversal. Voltage level, duty cycle, and pin number selection do not by themselves reverse direction.</p>
+<p><strong>Concept Tested:</strong> Motor Direction Control</p>
+</details>
+<hr />
+<h4 id="3-what-is-a-shoot-through-condition-in-an-h-bridge-and-why-is-it-dangerous">3. What is a "shoot-through" condition in an H-bridge, and why is it dangerous?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The motor accelerates too quickly and overshoots its target speed</li>
+<li>Two switches on the same side close simultaneously, creating a short circuit from V+ directly to ground</li>
+<li>The robot shoots past an obstacle because the sensors did not detect it in time</li>
+<li>The firmware update fails and corrupts the stored program</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. In an H-bridge, if the top-left and bottom-left switches (or top-right and bottom-right) close at the same time, a direct path forms from the positive supply to ground — bypassing the motor entirely. This is called shoot-through or H-bridge fault. The resulting short circuit can draw enormous current and destroy the transistors instantly. Motor driver ICs include protection circuitry to prevent this.</p>
+<p><strong>Concept Tested:</strong> H-Bridge Circuit / H-Bridge Switch States</p>
+</details>
+<hr />
+<h4 id="4-what-does-the-adc-on-the-rp2040-do">4. What does the ADC on the RP2040 do?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It converts digital PWM signals into analog voltages to drive servo motors</li>
+<li>It converts analog voltages (continuous signals) into digital numbers (0–65535) that MicroPython can read</li>
+<li>It measures the current flowing through the motor driver chips</li>
+<li>It provides the clock signal that synchronizes I2C communication</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. ADC stands for Analog-to-Digital Converter. The physical world produces analog signals (smoothly varying voltages), but the RP2040's processor works with digital numbers. The ADC samples an analog voltage between 0 and 3.3 V and converts it to a 16-bit integer (0–65535) that MicroPython reads with <code>read_u16()</code>. Options A, C, and D describe different circuits — DAC, a current sensor, and I2C clock, respectively.</p>
+<p><strong>Concept Tested:</strong> ADC Analog Digital Converter</p>
+</details>
+<hr />
+<h4 id="5-what-are-the-two-wires-of-the-i2c-bus-and-what-role-does-each-play">5. What are the two wires of the I2C bus and what role does each play?</h4>
+<div class="upper-alpha">
+<ol>
+<li>VCC (power) and GND (ground) — they supply voltage to all I2C devices</li>
+<li>MOSI (data out) and MISO (data in) — they carry data in opposite directions simultaneously</li>
+<li>SDA (Serial Data) and SCL (Serial Clock) — SDA carries data, SCL synchronizes the timing</li>
+<li>TX (transmit) and RX (receive) — they carry data in one direction each</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. I2C uses exactly two signal wires: SDA (Serial Data Line) carries data bits in both directions, and SCL (Serial Clock Line) carries a clock signal that synchronizes when each bit is valid. The clock makes I2C synchronous. Options A, B, and D describe other signals — power, SPI, and UART respectively. Both I2C wires also need a power and ground connection, but VCC and GND are not part of the I2C signaling.</p>
+<p><strong>Concept Tested:</strong> I2C SDA SCL Pins</p>
+</details>
+<hr />
+<h4 id="6-how-does-a-lipo-battery-differ-from-a-set-of-aa-batteries-for-powering-a-robot">6. How does a LiPo battery differ from a set of AA batteries for powering a robot?</h4>
+<div class="upper-alpha">
+<ol>
+<li>LiPo batteries provide less voltage than AA batteries and are used for lower-power sensors</li>
+<li>LiPo batteries are rechargeable and provide higher voltage (7.4 V for 2S) but require careful handling to avoid damage</li>
+<li>LiPo batteries only work with SPI-connected sensors, not I2C devices</li>
+<li>LiPo batteries replace both the motor power and USB cable connection simultaneously</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A LiPo 2S battery provides 7.4 V (two 3.7 V cells), more than the 6 V from four AA batteries. LiPo cells are rechargeable and generally provide longer runtime, but they require careful handling: never discharge below about 3.0 V per cell (deep discharge causes permanent damage), and always disconnect when storing. They have no relationship to sensor bus types (C) and do not replace the USB connection for programming (D).</p>
+<p><strong>Concept Tested:</strong> LiPo Battery / Power Management</p>
+</details>
+<hr />
+<h4 id="7-how-does-a-dpdt-switch-relate-to-an-h-bridge-circuit">7. How does a DPDT switch relate to an H-bridge circuit?</h4>
+<div class="upper-alpha">
+<ol>
+<li>A DPDT switch is the digital output pin that enables the motor driver IC</li>
+<li>A DPDT switch achieves the same motor direction reversal as an H-bridge, but mechanically rather than electronically</li>
+<li>A DPDT switch limits current through the motor to prevent overheating</li>
+<li>A DPDT switch controls the frequency of the PWM signal sent to the motor</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A DPDT (Double Pole Double Throw) physical switch can flip both motor connections simultaneously — effectively reversing which terminal gets positive voltage. An H-bridge does the same thing electronically using transistors controlled by GPIO signals. The text describes the H-bridge as "an electronic DPDT switch." Options A, C, and D do not describe the DPDT's function.</p>
+<p><strong>Concept Tested:</strong> DPDT Switch</p>
+</details>
+<hr />
+<h4 id="8-why-does-the-i2c-bus-allow-multiple-sensors-to-share-the-same-two-wires">8. Why does the I2C bus allow multiple sensors to share the same two wires?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Sensors take turns — each one activates for a fixed time slot in a round-robin schedule</li>
+<li>Each I2C device has a unique address, and the microcontroller broadcasts that address to select which device responds</li>
+<li>The SDA line carries multiple data streams in parallel, one per device</li>
+<li>Each device has its own internal clock that prevents signal collisions</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Each I2C device is assigned a unique 7-bit address (0–127). When the microcontroller wants to communicate with the VL53L0X (address <code>0x29</code>), it broadcasts that address on SDA. Only the device at that address responds; all others stay silent. This addressing scheme allows many devices to share the same two wires without interfering. Options A, C, and D do not accurately describe I2C addressing.</p>
+<p><strong>Concept Tested:</strong> I2C Bus</p>
+</details>
+<hr />
+<h4 id="9-compared-to-i2c-what-is-spis-main-advantage-and-main-drawback">9. Compared to I2C, what is SPI's main advantage and main drawback?</h4>
+<div class="upper-alpha">
+<ol>
+<li>SPI is simpler (fewer wires) and shorter range, while I2C supports more devices</li>
+<li>SPI is slower but more reliable in electrically noisy environments</li>
+<li>SPI is faster (1–10+ MHz vs 100–400 kHz) but requires more wires and a separate Chip Select pin per device</li>
+<li>SPI supports wireless communication, while I2C only works with wired connections</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. SPI can run at 1 MHz or faster — significantly faster than I2C's 100–400 kHz. This makes SPI better for high-speed displays or SD cards. The tradeoff is wiring complexity: SPI needs four wires (MOSI, MISO, SCK, CS) plus a separate CS pin for each additional device, versus I2C's two shared wires with addressing. Neither protocol is wireless.</p>
+<p><strong>Concept Tested:</strong> SPI Bus</p>
+</details>
+<hr />
+<h4 id="10-what-is-the-risk-of-leaving-a-stalled-motor-running-at-full-power">10. What is the risk of leaving a stalled motor running at full power?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The motor will spin in reverse direction automatically</li>
+<li>The high current draw from a blocked motor can overheat the motor driver IC or motor windings</li>
+<li>The motor will drain only the NeoPixel LEDs, not the main battery pack</li>
+<li>The microcontroller will automatically reboot to prevent damage</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A stalled motor (blocked from spinning but still receiving voltage) draws maximum current because there is no back-EMF limiting it. This excess current heats up the motor windings and the motor driver IC rapidly. Extended stalling can permanently damage both. Always include a timeout or sensor check in motor loops so the robot stops trying to push against an obstacle within a few seconds.</p>
+<p><strong>Concept Tested:</strong> Motor Driver IC</p>
+</details>
+<hr />
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Motors and Protocols">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Motors and Protocols
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../07-pwm-motor-speed-actuators/" class="md-footer__link md-footer__link--next" aria-label="Next: PWM and Actuators">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                PWM and Actuators
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

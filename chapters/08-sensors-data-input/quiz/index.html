@@ -1,0 +1,2313 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/stem-robots/chapters/08-sensors-data-input/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../09-display-systems-output/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - STEM Robots</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-6SSB9XBXM9"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-6SSB9XBXM9",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-6SSB9XBXM9",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-sensors-and-data-input" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="STEM Robots" class="md-header__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            STEM Robots
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="STEM Robots" class="md-nav__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    STEM Robots
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../journey-map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Journey Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-intro-computational-thinking/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Computational Thinking
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-hardware-platform-assembly/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Hardware and Assembly
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-micropython-dev-environment/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. MicroPython and Setup
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-control-flow-functions/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Control Flow and Functions
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-data-structures-modular-code/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Data Structures and Git
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-electronics-motors-protocols/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Motors and Protocols
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-pwm-motor-speed-actuators/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. PWM and Actuators
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    8. Sensors and Input
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            8. Sensors and Input
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-how-does-the-vl53l0x-time-of-flight-sensor-measure-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. How does the VL53L0X time-of-flight sensor measure distance?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-the-purpose-of-zero-distance-calibration-on-the-vl53l0x-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What is the purpose of zero distance calibration on the VL53L0X sensor?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-an-ultrasonic-sensors-echo-pin-stays-high-for-870-microseconds-after-a-trigger-pulse-approximately-how-far-away-is-the-obstacle-in-centimeters" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. An ultrasonic sensor's Echo pin stays HIGH for 870 microseconds after a trigger pulse. Approximately how far away is the obstacle in centimeters?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-an-infrared-sensor-outputs-a-low-0-signal-when-the-robot-is-over-a-black-line-what-does-this-design-pattern-mean-for-reading-the-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. An infrared sensor outputs a LOW (0) signal when the robot is over a black line. What does this design pattern mean for reading the sensor?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-does-a-moving-average-filter-do-to-sensor-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. What does a moving average filter do to sensor data?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-is-sensor-fusion-and-why-is-it-more-reliable-than-using-a-single-sensor-alone" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. What is sensor fusion, and why is it more reliable than using a single sensor alone?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-what-does-the-i2cscan-function-return" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. What does the i2c.scan() function return?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-how-does-a-bump-switch-detect-a-collision-and-what-wiring-pattern-is-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. How does a bump switch detect a collision, and what wiring pattern is used?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-a-potentiometer-is-connected-to-adc-pin-gp26-and-returns-read_u16-value-of-32768-what-voltage-is-at-the-pin-and-what-percentage-of-full-rotation-is-that" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. A potentiometer is connected to ADC pin GP26 and returns read_u16() value of 32768. What voltage is at the pin, and what percentage of full rotation is that?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-why-should-you-always-check-for-out-of-range-readings-from-the-vl53l0x-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Why should you always check for out-of-range readings from the VL53L0X sensor?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-display-systems-output/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. Displays and Output
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-robot-behaviors-navigation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. Robot Behaviors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-wireless-networking-web-servers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. WiFi and Web Servers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-bluetooth-low-energy/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Bluetooth Low Energy
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13-swarm-robotics-advanced-patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Swarm and Advanced
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../setup/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../lessons/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../teachers-guide/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Teacher's Guide
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Robot Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../instructors-guide/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../gallery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Photo Gallery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../prompts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STEM Robotics Prompts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sims/template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MicroSim Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-how-does-the-vl53l0x-time-of-flight-sensor-measure-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. How does the VL53L0X time-of-flight sensor measure distance?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-the-purpose-of-zero-distance-calibration-on-the-vl53l0x-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What is the purpose of zero distance calibration on the VL53L0X sensor?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-an-ultrasonic-sensors-echo-pin-stays-high-for-870-microseconds-after-a-trigger-pulse-approximately-how-far-away-is-the-obstacle-in-centimeters" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. An ultrasonic sensor's Echo pin stays HIGH for 870 microseconds after a trigger pulse. Approximately how far away is the obstacle in centimeters?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-an-infrared-sensor-outputs-a-low-0-signal-when-the-robot-is-over-a-black-line-what-does-this-design-pattern-mean-for-reading-the-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. An infrared sensor outputs a LOW (0) signal when the robot is over a black line. What does this design pattern mean for reading the sensor?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-does-a-moving-average-filter-do-to-sensor-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. What does a moving average filter do to sensor data?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-is-sensor-fusion-and-why-is-it-more-reliable-than-using-a-single-sensor-alone" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. What is sensor fusion, and why is it more reliable than using a single sensor alone?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-what-does-the-i2cscan-function-return" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. What does the i2c.scan() function return?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-how-does-a-bump-switch-detect-a-collision-and-what-wiring-pattern-is-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. How does a bump switch detect a collision, and what wiring pattern is used?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-a-potentiometer-is-connected-to-adc-pin-gp26-and-returns-read_u16-value-of-32768-what-voltage-is-at-the-pin-and-what-percentage-of-full-rotation-is-that" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. A potentiometer is connected to ADC pin GP26 and returns read_u16() value of 32768. What voltage is at the pin, and what percentage of full rotation is that?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-why-should-you-always-check-for-out-of-range-readings-from-the-vl53l0x-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Why should you always check for out-of-range readings from the VL53L0X sensor?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="quiz-sensors-and-data-input">Quiz: Sensors and Data Input</h1>
+<p>Test your understanding of sensor types, calibration, data filtering, sensor fusion, and I2C communication with these questions.</p>
+<hr />
+<h4 id="1-how-does-the-vl53l0x-time-of-flight-sensor-measure-distance">1. How does the VL53L0X time-of-flight sensor measure distance?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It measures the voltage drop across a variable resistor that changes with proximity</li>
+<li>It emits a burst of sound and measures how long the echo takes to return</li>
+<li>It emits a brief infrared laser pulse and times how long it takes to bounce back</li>
+<li>It detects changes in the magnetic field caused by approaching metal objects</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The VL53L0X is a time-of-flight sensor that fires a brief pulse of infrared laser light. The sensor measures the round-trip time for that light to reflect off an object and return. Dividing by the speed of light gives the distance. Option B describes an ultrasonic sensor. Option A describes a potentiometer. Option D describes a Hall effect magnetic sensor.</p>
+<p><strong>Concept Tested:</strong> Time-of-Flight Sensor / VL53L0X Sensor</p>
+</details>
+<hr />
+<h4 id="2-what-is-the-purpose-of-zero-distance-calibration-on-the-vl53l0x-sensor">2. What is the purpose of zero distance calibration on the VL53L0X sensor?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It verifies that the sensor reads 0 when it is powered off</li>
+<li>It corrects for a non-zero baseline reading the sensor reports even when an object is touching it</li>
+<li>It sets the maximum measurable distance to zero for short-range operation</li>
+<li>It recalibrates the I2C address if two sensors are connected simultaneously</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. No sensor is perfect. The VL53L0X may report a small positive distance even when an object is in contact with it. Zero calibration records this offset at a known zero-distance reference and subtracts it from all future readings. This removes the systematic error. Option A describes behavior when powered off (not a calibration). Options C and D do not describe this calibration step.</p>
+<p><strong>Concept Tested:</strong> Zero Distance Calibration</p>
+</details>
+<hr />
+<h4 id="3-an-ultrasonic-sensors-echo-pin-stays-high-for-870-microseconds-after-a-trigger-pulse-approximately-how-far-away-is-the-obstacle-in-centimeters">3. An ultrasonic sensor's Echo pin stays HIGH for 870 microseconds after a trigger pulse. Approximately how far away is the obstacle in centimeters?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Approximately 5 cm</li>
+<li>Approximately 15 cm</li>
+<li>Approximately 30 cm</li>
+<li>Approximately 50 cm</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The distance formula for ultrasonic sensors is <code>distance_cm = duration_us / 58</code>. For 870 µs: <code>870 / 58 ≈ 15 cm</code>. The constant 58 comes from the speed of sound (~343 m/s or ~0.0343 cm/µs); the round-trip distance halved gives the one-way distance. A result of 30 cm would require about 1740 µs; 5 cm would be about 290 µs.</p>
+<p><strong>Concept Tested:</strong> Ultrasonic Trigger Echo</p>
+</details>
+<hr />
+<h4 id="4-an-infrared-sensor-outputs-a-low-0-signal-when-the-robot-is-over-a-black-line-what-does-this-design-pattern-mean-for-reading-the-sensor">4. An infrared sensor outputs a LOW (0) signal when the robot is over a black line. What does this design pattern mean for reading the sensor?</h4>
+<div class="upper-alpha">
+<ol>
+<li>LOW means the sensor is malfunctioning and needs to be replaced</li>
+<li>The sensor is active HIGH — 0 is the idle state when no surface is present</li>
+<li>The sensor is active LOW — a 0 reading means a surface IS detected</li>
+<li>LOW output means the robot must slow down to avoid IR interference</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. Most infrared sensors are "active LOW" — they output 0 (LOW) when they detect a surface and 1 (HIGH) when they don't. This is counterintuitive to beginners who expect "detected = 1." Understanding this convention is critical for writing correct line-following logic. The note in the chapter specifically warns: "0 = detected, 1 = not detected" — check your sensor's datasheet to confirm.</p>
+<p><strong>Concept Tested:</strong> IR Digital Output</p>
+</details>
+<hr />
+<h4 id="5-what-does-a-moving-average-filter-do-to-sensor-data">5. What does a moving average filter do to sensor data?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It removes the oldest sensor readings from the list and replaces them with zeros</li>
+<li>It averages the last N readings together to smooth out random noise</li>
+<li>It predicts future sensor values based on the current rate of change</li>
+<li>It amplifies small sensor differences to make the data more responsive</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A moving average filter maintains a window of the last N readings and returns their average. This smooths random noise because individual spike readings are diluted by the surrounding normal values. The tradeoff is that the filter introduces lag — it responds more slowly to real sudden changes. The median filter is better at rejecting single outlier spikes.</p>
+<p><strong>Concept Tested:</strong> Sensor Data Filtering</p>
+</details>
+<hr />
+<h4 id="6-what-is-sensor-fusion-and-why-is-it-more-reliable-than-using-a-single-sensor-alone">6. What is sensor fusion, and why is it more reliable than using a single sensor alone?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Sensor fusion averages the readings from identical sensors to improve accuracy</li>
+<li>Sensor fusion combines readings from different sensor types so each compensates for the other's weaknesses</li>
+<li>Sensor fusion merges sensor data into a single compressed file for faster transmission</li>
+<li>Sensor fusion synchronizes multiple sensors to update at the same time</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Sensor fusion combines data from multiple sensor types — such as using a ToF sensor for long-range detection and an IR sensor for close-range confirmation. Each sensor has conditions where it can fail (transparent objects confuse ToF; IR is sensitive to ambient light). Requiring both to agree before triggering a decision compensates for individual failures. Simple averaging of identical sensors (A) is not fusion.</p>
+<p><strong>Concept Tested:</strong> Sensor Fusion</p>
+</details>
+<hr />
+<h4 id="7-what-does-the-i2cscan-function-return">7. What does the <code>i2c.scan()</code> function return?</h4>
+<div class="upper-alpha">
+<ol>
+<li>A list of all GPIO pins that are currently configured as I2C</li>
+<li>A list of hexadecimal addresses for all I2C devices currently connected and responding</li>
+<li>The current frequency in kHz at which the I2C bus is operating</li>
+<li>A diagnostic string explaining any wiring errors detected on the bus</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. <code>i2c.scan()</code> sends an address probe to each of the 127 possible I2C addresses and records which ones respond. It returns a list of the responding addresses as integers. For example, if the VL53L0X (0x29) and OLED (0x3C) are connected, you get <code>[41, 60]</code> (decimal). Converting with <code>hex()</code> gives <code>['0x29', '0x3c']</code>. This is the first debugging step when an I2C sensor doesn't respond.</p>
+<p><strong>Concept Tested:</strong> I2C Scanner Tool</p>
+</details>
+<hr />
+<h4 id="8-how-does-a-bump-switch-detect-a-collision-and-what-wiring-pattern-is-used">8. How does a bump switch detect a collision, and what wiring pattern is used?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The switch connects the GPIO pin to 5 V when pressed, triggering a HIGH signal</li>
+<li>The switch uses I2C to report contact force as a digital reading</li>
+<li>The switch connects the GPIO pin to ground when pressed; a pull-up resistor holds it HIGH normally</li>
+<li>The switch breaks the motor power circuit when an obstacle is hit, stopping the robot immediately</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. A microswitch (bump sensor) is wired with an internal pull-up resistor holding the GPIO pin HIGH when nothing is pressed. When the robot contacts an obstacle, the switch's Normally Open contact closes, connecting the pin directly to ground — pulling it LOW. Code reads <code>0</code> (LOW) as "bumped." This active-LOW wiring with pull-up is the standard pattern for buttons and bumpers.</p>
+<p><strong>Concept Tested:</strong> Bump Switch / Microswitch Wiring</p>
+</details>
+<hr />
+<h4 id="9-a-potentiometer-is-connected-to-adc-pin-gp26-and-returns-read_u16-value-of-32768-what-voltage-is-at-the-pin-and-what-percentage-of-full-rotation-is-that">9. A potentiometer is connected to ADC pin GP26 and returns <code>read_u16()</code> value of 32768. What voltage is at the pin, and what percentage of full rotation is that?</h4>
+<div class="upper-alpha">
+<ol>
+<li>1.65 V, approximately 50%</li>
+<li>3.3 V, approximately 100%</li>
+<li>0.82 V, approximately 25%</li>
+<li>2.48 V, approximately 75%</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. <code>read_u16()</code> returns values from 0 to 65535 mapping to 0 V to 3.3 V. A value of 32768 is approximately halfway through the range. Voltage: <code>32768 / 65535 × 3.3 ≈ 1.65 V</code>. Percentage: <code>32768 / 65535 × 100 ≈ 50%</code>. This midpoint reading (half of 65535) represents the potentiometer dial turned to the center of its rotation range.</p>
+<p><strong>Concept Tested:</strong> Potentiometer Input</p>
+</details>
+<hr />
+<h4 id="10-why-should-you-always-check-for-out-of-range-readings-from-the-vl53l0x-sensor">10. Why should you always check for out-of-range readings from the VL53L0X sensor?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Out-of-range readings indicate the sensor's I2C address has changed and needs rescanning</li>
+<li>When the object is beyond the sensor's maximum range, it returns a very large number that would be misinterpreted as a valid close reading without a check</li>
+<li>Out-of-range readings cause the sensor to enter a low-power sleep mode that must be manually reset</li>
+<li>The VL53L0X only reports out-of-range errors when the motor is running and creating electrical interference</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. When the VL53L0X cannot detect an object within range (typically because it is too far away or the surface absorbs the laser), it returns a very large number such as 8190. If your code compares this to the <code>STOP_DIST_CM</code> threshold without a range check, the robot may behave incorrectly — thinking nothing is close when in reality the sensor simply didn't get a valid reading. Always filter out values above <code>MAX_RANGE_MM</code> before using the data.</p>
+<p><strong>Concept Tested:</strong> Max Distance Limit / ToF Distance Reading</p>
+</details>
+<hr />
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sensors and Input">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Sensors and Input
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../09-display-systems-output/" class="md-footer__link md-footer__link--next" aria-label="Next: Displays and Output">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Displays and Output
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
