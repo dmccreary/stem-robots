@@ -67,6 +67,14 @@ students love this little but mighty kit!
 
 [Motion Sensor Kit](./imu-mpu6050/index.md)
 
+## Rainbow Bot
+
+We add a colorful 8x8 NeoPixel matrix to the base robot for
+one of our most colorful robots.  Kids love to change the
+color and patterns created as the robot move and change direction.
+
+[Rainbow Bot 8x8 NeoPixel Matrix](./rainbow-bot/index.md)
+
 ## Swarm Robot
 
 This robot really rocks when you have two or more robots working together.
@@ -80,5 +88,3 @@ robots to show new capabilities.
 
 Note - if you are not familiar with integrated motion units (IMUs) we
 suggest you try the [Compass](./compass-hmc5883l/index.md) and [IMU](./imu-mpu6050/index.md) kits first.
-
-##
