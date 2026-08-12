@@ -475,7 +475,7 @@ print("Gyro chip ID:", hex(gyro_id[0]))     # expect 0xD4 or 0xD7
 ```
 
 The full driver code for both chips — with all the register constants — is in the
-[Swarm Robot Build Plan](../../kits/swarm-robot/plan.md), written for the exact module
+[Swarm Robot Build Plan](../../kits/swarm-bot/plan.md), written for the exact module
 this course uses.
 
 ---
@@ -718,7 +718,7 @@ def steer(error, base_speed, Kp=0.02):
 The full master and follower scripts — WiFi joining, the non-blocking receive loop, and
 wiring `steer()`'s output into the motor pins from `config.py` — are written out
 step by step, phase by phase, in the
-[Swarm Robot Build Plan](../../kits/swarm-robot/plan.md), matched to the exact
+[Swarm Robot Build Plan](../../kits/swarm-bot/plan.md), matched to the exact
 Cytron ROBO-PICO and 9-DOF IMU hardware this course uses.
 
 Before trying it on real robots, this checklist — pulled from that build plan — heads
