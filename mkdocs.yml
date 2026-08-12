@@ -167,7 +167,8 @@ nav:
     - Adjustabot: kits/adjust/index.md
     - Ultrasonic: kits/ultrasonic/index.md
     - Compass Bot: kits/compass-hmc5883l/index.md
-  
+    - IMU/MPU6050 Kit: kits/imu-mpu6050/index.md
+
     - WiFi Display Bot:
       - Intro: kits/wifi-display-bot/index.md
       - Display Status: kits/wifi-display-bot/display-status.md
