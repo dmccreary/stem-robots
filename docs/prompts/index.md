@@ -1,2 +1,0 @@
-# STEM Robotics Prompts
-

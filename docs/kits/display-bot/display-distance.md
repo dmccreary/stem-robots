@@ -33,12 +33,6 @@ CS = machine.Pin(15)
 spi=machine.SPI(0,baudrate=100000,sck=SCK, mosi=SDL)
 oled = ssd1306.SSD1306_SPI(WIDTH, HEIGHT, spi, DC, RES, CS)
 
-# Create a VL53L0X object
-tof = VL53L0X.VL53L0X(i2c)
-
-def turn_motor_on(pwm):
-   pwm.duty_u16(POWER_LEVEL)
-
 delay = .05
 
 # time of flight calibration parameters
@@ -76,10 +70,8 @@ def update_distance_chart(distance):
         x += 1
     oled.show()
 
-mode = 0
 # loop forever
 def main():
-    global valid_distance
     while True:
         distance = get_distance()
         update_distance_chart(distance)

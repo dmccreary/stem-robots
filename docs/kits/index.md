@@ -10,7 +10,7 @@ with many ways to enhance it using additional sensors, displays and controls.
 - Chassis Kit: $4
 - Time of Flight Distance Sensor: $3
 
-[Base Robot Kit](./base/index.md)
+[Base Robot Kit](./base-bot/index.md)
 
 ## Base Bot with 8-Element NeoPixel
 
@@ -27,7 +27,16 @@ and display faces on the robot.  This does increase the price of the base
 robot to around $32 per robot, which is still about 1/10th the price of many
 other STEM robot kits such as the Lego Mindstorms robot kit.
 
-[Display Robot](./display/index.md)
+[Display Robot](./display-bot/index.md)
+
+## Adjusta Bot
+
+This robot starts with the Display robot and adds three potentiometers so
+the parameters of collision avoidance — motor power, distance threshold,
+and turn time — can be tuned by turning a knob instead of editing code.
+It's ideal for classrooms without a PC available for every robot.
+
+[Adjusta Bot](./adjusta-bot/index.md)
 
 ## Bump Switch Bot
 
@@ -35,7 +44,24 @@ Although we love our low-cost $3 time-of-flight distance sensor, this retro
 robot shows that sometimes a simple switch can be an effective signal
 to the robot that it is time to turn.
 
-[Bump Switch Robot](./bump-switch/index.md)
+[Bump Switch Bot](./bump-switch-bot/index.md)
+
+## Line Follower Bot
+
+This robot uses two low-cost IR sensors to follow a line on the floor,
+teaching the concept of feedback control. It requires careful calibration
+of sensor sensitivity and motor power balance, and it's a favorite
+"aha" moment once students get it working.
+
+[Line Follower Bot](./line-follower-bot/index.md)
+
+## Ultrasonic Bot
+
+This robot swaps the time-of-flight sensor for a low-cost HC-SR04P
+ultrasonic distance sensor, giving students a second way to measure
+distance for collision avoidance.
+
+[Ultrasonic Bot](./ultrasonic-bot/index.md)
 
 ## WiFi Robot
 
@@ -46,7 +72,7 @@ the powerful Raspberry Pi Pico W that supports BOTH WiFi and bluetooth
 wireless communication.  There are two variations, one with a display and
 one without a display.  My advise?  Go with the display!
 
-[WiFi Bot](./wifi-bot/)
+[WiFi Bot](./wifi-bot/index.md)
 [WiFi Display Bot](./wifi-display-bot/index.md)
 
 ## Digital Compass Kit
@@ -84,7 +110,7 @@ need several WiFi Display robots retrofitted with sensors to demonstrate this ca
 shows how both sensors and wireless communication can be added to our
 robots to show new capabilities.
 
-[Swarm Robot](./swarm-robot/index.md)
+[Swarm Robot](./swarm-bot/plan.md)
 
 Note - if you are not familiar with integrated motion units (IMUs) we
 suggest you try the [Compass](./compass-hmc5883l/index.md) and [IMU](./imu-mpu6050/index.md) kits first.

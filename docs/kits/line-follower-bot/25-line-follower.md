@@ -1,4 +1,4 @@
-# Line Follower Robot
+# Line Follower Bot
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cmBz65zH0GQ?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -13,12 +13,12 @@ The total cost of the kit is about $20.
 |Part Name|Description|Price|Link|
 |---------|-----------|-----|----|
 |Cytron Board|Main board with RP2040 and motor driver. Kits come with Grove connectors and a screwdriver.|$12||
-|SmartCar Chassis|SmartCar chassis with wheels and 4 AA battery pack||
+|SmartCar Chassis|SmartCar chassis with wheels and 4 AA battery pack|||
 |IR Sensors (2)|Low cost IR light sensors|$1||
 
 ## IR Sensors
 
-![](../../../img/ir-sensors.png)
+![](../../img/ir-sensors.png)
 
 We can purchase IR sensors on eBay for about $1 each in quantity 10.
 The sensors send a digital 0/1 signal to the microcontroller depending on if they are over the line.
@@ -138,10 +138,10 @@ def main():
         r = right_sensor.value()
         l = left_sensor.value()
         if r == 0 and l == 1:
-            print("right over white - turning left")
+            print("right over white - turning right")
             right()
-        if l == 0:
-            print("left over white")
+        elif l == 0:
+            print("left over white - turning left")
             left()
         else:
             forward()

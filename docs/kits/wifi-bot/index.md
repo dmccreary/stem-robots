@@ -82,7 +82,7 @@ Success! We have connected to your access point!
 Try to ping the device at 10.0.0.57
 ```
 
-To test this you must open your Terminal application (or PowerSheel on Windows) and run the ping commend:
+To test this you must open your Terminal application (or PowerShell on Windows) and run the ping command:
 
 ```sh
 ping 10.0.0.57
@@ -100,15 +100,17 @@ Request timeout for icmp_seq 2
 64 bytes from 10.0.0.57: icmp_seq=3 ttl=255 time=740.691 ms
 ```
 
-Note that your IP address might be different.  In this mode, ping will usually have three timeouts and then repond in about three seconds.  The is slow because the Raspberry Pi Pico is in a power saving mode by default.  It takes time to load the networking code into the WiFi chip.  We will fix this in the next labs.
+Note that your IP address might be different.  In this mode, ping will usually have three timeouts and then respond in about three seconds.  This is slow because the Raspberry Pi Pico is in a power saving mode by default.  It takes time to load the networking code into the WiFi chip.  We will fix this in the next labs.
 
 ## Ping Test Slow
 
-In this lab we 
+In this lab we connect to WiFi with the default power-saving mode still enabled, so you can see the multi-second delay for yourself before we fix it.
 
 [Ping Test Slow Lab](./02-ping-test-slow.md)
 
-## Ping Test Slow
+## Ping Test Fast
+
+In this lab we disable WiFi power management so the robot responds in milliseconds instead of seconds — the setting we'll want for real-time robot control.
 
 [Ping Test Fast Lab](./03-ping-test-fast.md)
 

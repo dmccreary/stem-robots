@@ -131,56 +131,62 @@ nav:
     - Introduction to Kits: kits/index.md
 
     - Base Robot:
-      - Introduction to Base Robot: kits/base/index.md
-      - Testing Motor Connections: kits/base/01-testing-motor-connections.md
-      - NeoPixel Test: kits/base/03-neopixel-test.md
-      - Motor Up/Down Lab: kits/base/06-up-down-motor-lab.md
-      - Sound Test: kits/base/06-test-sound.md
-      - Motor Connection Lab: kits/base/07-motor-connection-lab.md
-      - Drive Square Lab: kits/base/07b-drive-square-lab.md
-      - I2C Scanner Test: kits/base/09-i2c-scanner-test.md
-      - Time of Flight Lab: kits/base/10-time-of-flight-lab.md
-      - Adding Sound to Time of Flight: kits/base/12-time-of-flight-sound-lab.md
-      - Collision Avoidance Robot: kits/base/20-collision-avoidance-robot.md
+      - Introduction to Base Robot: kits/base-bot/index.md
+      - Testing Motor Connections: kits/base-bot/01-testing-motor-connections.md
+      - NeoPixel Test: kits/base-bot/03-neopixel-test.md
+      - Motor Up/Down Lab: kits/base-bot/06-up-down-motor-lab.md
+      - Sound Test: kits/base-bot/06-test-sound.md
+      - Motor Connection Lab: kits/base-bot/07-motor-connection-lab.md
+      - Drive Square Lab: kits/base-bot/07b-drive-square-lab.md
+      - I2C Scanner Test: kits/base-bot/09-i2c-scanner-test.md
+      - Time of Flight Lab: kits/base-bot/10-time-of-flight-lab.md
+      - Adding Sound to Time of Flight: kits/base-bot/12-time-of-flight-sound-lab.md
+      - Collision Avoidance Robot: kits/base-bot/20-collision-avoidance-robot.md
     
-    - Display Robot: 
+    - Display Robot:
       - Intro: kits/display-bot/index.md
       - Display Setup: kits/display-bot/display-setup.md
       - Time of Flight Range Test: kits/display-bot/tof-range-display-test.md
       - Display Distance Chart: kits/display-bot/display-distance.md
       - Display Face: kits/display-bot/display-face.md
-      - Collision Avoidance Display: kits/display-bot/collision-avoidance-display.md
 
-    - Wireless Bot:
-        - Introduction: kits/wifi-bot/index.md
-        - Ping Test Slow: kits/wifi-bot/02-ping-test-slow.md
-        - Ping Test Fast: kits/wifi-bot/03-ping-test-fast.md
-        - Simple Web Server: kits/wifi-bot/05-simple-web-server.md
-        - Web Server Test: kits/wifi-bot/web-server-test.md
-  
-    - Rainbow Bot:
-      - Introduction: kits/rainbow-bot/index.md
-      - 8x8 NeoPixel Matrix: kits/rainbow-bot/rainbow-bot-test.md
-      - Rainbow Bot Dance: kits/rainbow-bot/rainbow-bot-dance.md
-    
+    - Rainbow Bot: kits/rainbow-bot/index.md
+
     - Bump Switch Bot: kits/bump-switch-bot/index.md
-    - Line Follower: kits/line-follower/index.md
-    - Adjustabot: kits/adjusta-bot/index.md
-    - Ultrasonic: kits/ultrasonic/index.md
-    - Compass Kit: kits/compass-hmc5883l/index.md
-    - IMU/MPU6050 Kit: kits/imu-mpu6050/index.md
+    - Line Follower Bot:
+      - Introduction: kits/line-follower-bot/index.md
+      - Line Follower Lab: kits/line-follower-bot/25-line-follower.md
+    - Adjusta Bot: kits/adjusta-bot/index.md
+    - Ultrasonic Bot: kits/ultrasonic-bot/index.md
 
+    - WiFi Bot:
+      - Intro: kits/wifi-bot/index.md
+      - Ping Test Slow: kits/wifi-bot/02-ping-test-slow.md
+      - Ping Test Fast: kits/wifi-bot/03-ping-test-fast.md
+      - Simple Web Server: kits/wifi-bot/05-simple-web-server.md
+      - Web Server Test: kits/wifi-bot/web-server-test.md
+    
     - WiFi Display Bot:
       - Intro: kits/wifi-display-bot/index.md
       - Display Status: kits/wifi-display-bot/display-status.md
 
-    - Swarm Robot:
-      - Build Plan: kits/swarm-robot/plan.md
+    - Compass Kit: kits/compass-hmc5883l/index.md
+    - IMU/MPU6050 Kit: kits/imu-mpu6050/index.md
 
-  - Instructors Guide:
-    - Intro: instructors-guide/index.md
-    - Computational Thinking: instructors-guide/computational-thinking.md
-    - Exploration vs Competition: instructors-guide/exploration-vs-competition.md
+    - Swarm Bot:
+      - Build Plan: kits/swarm-bot/plan.md
+
+  - Teacher's Guide:
+    - Intro: teachers-guide/index.md
+    - Computational Thinking: teachers-guide/computational-thinking.md
+    - Exploration vs Competition: teachers-guide/exploration-vs-competition.md
+    - Great Ways To Teach: teachers-guide/great-ways-to-teach.md
+    - Two Hour Hands On: teachers-guide/two-hour-hands-on.md
+    - 14 Week Course: teachers-guide/14-week-course.md
+    - Sample Prompts:
+      - List of Prompts: teachers-guide/prompts/index.md
+      - Generate MicroSim TODO List: teachers-guide/prompts/generate-microsims.md
+      - Robot Description: teachers-guide/prompts/robot-description.md
   
   - Learning Graph:
     - Introduction: learning-graph/index.md
@@ -202,11 +208,6 @@ nav:
   - Photo Gallery: gallery/index.md
   - License: license.md
   - Contact: contact.md
-
-
-
-  - prompts/index.md
-  - sims/template/index.md
  
 # Dan's Microsite Standards from here down
 edit_uri: 'blob/master/docs'

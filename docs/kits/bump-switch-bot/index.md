@@ -1,4 +1,4 @@
-# MicroSwitch Robot
+# Bump Switch Bot
 
 This robot was inspired by my friend, Michael York.  Michael noted that you don't need complex sensors to build a robot.  You can use microswitches.
 
