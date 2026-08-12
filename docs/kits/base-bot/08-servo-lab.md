@@ -105,7 +105,7 @@ old_angle = -1
 while True:
     # only print on change in the button_presses value
     if angle != old_angle:
-        duty = ServoDuty(angle)
+        duty = convert(angle, -90, 90, SERVO_MIN_DUTY, SERVO_MAX_DUTY)
         print('new angle:', angle, 'duty: ', duty)
         pwm.duty_u16(duty)
         old_angle = angle
@@ -150,9 +150,6 @@ def button_pressed_handler(pin):
             angle +=1
         else:
             angle -=1
-        # wrap around to first mode
-        if mode >= mode_count: mode = 0
-        if mode < 0: mode = mode_count - 1
         last_time = new_time
         
 # now we register the handler function when the button is pressed
@@ -206,12 +203,23 @@ for i in range(12, 16):
 
 ## Adding Cleanup Code
 
-PWM signals continue to be generated even after you do a STOP/RESET on your microcontroller.  This could drain batteries and wear out your servo motors.  To stop the servos from getting PWM signals you can add an interrupt to your code to catch these signals and set the PWM duty cycle back to zero. This
+PWM signals continue to be generated even after you do a STOP/RESET on your microcontroller.  This could drain batteries and wear out your servo motors.  To stop the servos from getting PWM signals, catch the keyboard interrupt and zero out each servo's duty cycle in a `finally` block, the same pattern used in the other base-bot labs:
 
 ```py
+def stop_all_servos():
+    for pin in (SERVO_1_PIN, SERVO_2_PIN, SERVO_3_PIN, SERVO_4_PIN):
+        PWM(Pin(pin)).duty_u16(0)
 
+try:
+    main()
+except KeyboardInterrupt:
+    print('Got ctrl-c')
+finally:
+    print('Cleaning up')
+    print('Powering down all servos now.')
+    stop_all_servos()
 ```
 
 ## References
 
-[MicroPython Reference Page](https://docs.micropython.org/en/latest/pyboard/tutorial/servo.html) - this page is not very helpful.  The implication is that servo controls are standardized across MicroPython system.  This does not appear to be the case.
+[MicroPython Reference Page](https://docs.micropython.org/en/latest/pyboard/tutorial/servo.html) - written for the pyboard, not the RP2040. Servo duty-cycle ranges are not standardized across MicroPython ports, so verify the min/max duty values in this lab's Calibration section against your own servo rather than assuming they'll match.

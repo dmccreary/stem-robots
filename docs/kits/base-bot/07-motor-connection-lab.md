@@ -4,9 +4,10 @@
 
 The Maker Pi RP2040 board contains a MX1508 dual-channel H-bridge chip and easy-to-connect screw headers for power and motor connections.  This is fantastic for teaching robotics since students can driver two motors without ever having to use a soldering iron.
 
-!!! Note that the is designed to work with small DC-hobby motors and there is no documentation on exactly what motor driver chip is used or its precise current and power limitations.
+!!! note
+    This chip is designed to work with small DC-hobby motors, and there is no documentation on exactly what motor driver chip is used or its precise current and power limitations.
 
-The documentation only indicates that the maximum current is 1A continuous power and 1.5A for up to 5 seconds.  The input voltage is only rated at 6 volts, which find for our standard 4 AA battery packs.
+The documentation only indicates that the maximum current is 1A continuous power and 1.5A for up to 5 seconds.  The input voltage is only rated at 6 volts, which is fine for our standard 4 AA battery packs.
 
 If this motor driver chip is similar to the ubiquitous [L293x motor controllers](https://www.ti.com/document-viewer/L293D/datasheet/specifications#ESD_Rating_1), and the current should be 1A per motor.
 

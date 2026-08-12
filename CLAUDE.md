@@ -81,6 +81,11 @@ rules, chapter structure, and instructor guide standards for this project.
 - Each kit/lesson includes both theory and hands-on labs
 - Simulations provide interactive learning without hardware requirements
 
+### Kit Naming Convention
+- Every kit directory under `docs/kits/` that represents a complete, driveable robot (chassis + motors) must end its directory name with `-bot` — e.g. `base-bot/`, `display-bot/`, `wifi-bot/`, `wifi-display-bot/`, `rainbow-bot/`, `bump-switch-bot/`, `line-follower-bot/`, `adjusta-bot/`, `ultrasonic-bot/`, `swarm-bot/`.
+- Smaller standalone sensor/component kits that are not a complete robot (e.g. a sensor wired up on a breadboard, no chassis or motors) do NOT get the `-bot` suffix — e.g. `compass-hmc5883l/`, `imu-mpu6050/`.
+- When renaming a kit directory to match this convention, update every reference to the old path in the same change: `mkdocs.yml` nav entries, cross-links from other kit pages, and any relative image/asset paths inside the moved files.
+
 ### MicroPython Conventions
 - Hardware configuration centralized in `config.py` files
 - Consistent naming: `RIGHT_FORWARD_PIN`, `LEFT_REVERSE_PIN`, etc.

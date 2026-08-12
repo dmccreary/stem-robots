@@ -63,8 +63,6 @@ import utime
 import urandom
 from ssd1306 import SSD1306_I2C
 from neopixel import Neopixel
-from machine import Pin, I2C
-from ssd1306 import SSD1306_I2C
 import framebuf
 import math
 import utime
@@ -104,7 +102,7 @@ BUZZER_PIN = 22
 
 # Adjust these parameters to tune the collision avoidance behavior
 
-POWER_LEL = 35000
+POWER_LEVEL = 35000
 TURN_DISTANCE = 20 # distance we decide to turn - try 20
 REVERSE_TIME = .4 # how long we backup
 TURN_TIME = .4 # how long we turn
@@ -138,21 +136,6 @@ sda=machine.Pin(OLED_SDA_PIN)
 scl=machine.Pin(OLED_SCL_PIN)
 i2c=machine.I2C(1,sda=sda, scl=scl, freq=40000) # 400k is too fast and has issues
 print( 'i2c={:02X}'.format( i2c.scan()[0] ) )
-#print(help(i2c))
-#print(help(i2c.init))
-#print(help(i2c.scan))
-#print(help(i2c.start))
-#print(help(i2c.stop))
-#print(help(i2c.readinto))
-#print(help(i2c.write))
-#print(help(i2c.readfrom))
-#print(help(i2c.readfrom_into))
-#print(help(i2c.writeto))
-#print(help(i2c.writevto))
-#print(help(i2c.readfrom_mem))
-#print(help(i2c.readfrom_mem_into))
-#print(help(i2c.writeto_mem))
-#exit
 
 oled = SSD1306_I2C(128, 32, i2c)
 
@@ -191,14 +174,6 @@ def ring2(cx,cy,r,c):   # Centre (x,y), radius, colour
         oled.pixel(cx+x3,cy+y3,c)
         oled.pixel(cx+x3,cy-y3,c)
 
-#print(help(oled.text()))
-#print(help())
-#help('modules')
-#help(oled)
-#help(oled.text)
-#help(framebuf.FrameBuffer)
-#help(framebuf.FrameBuffer.help())
-
 # Clear the oled display in case it has junk on it.
 oled.fill(0) # Black
 
@@ -218,8 +193,8 @@ utime.sleep(1)
 
 
 #
-# Back to the motor control stuff. (sorry... i'm soppy today)
-# 
+# Back to the motor control stuff.
+#
 # This function gets called every time the button is pressed.  The parameter "pin" is not used.
 def button_pressed_handler(pin):
     global mode, last_time
@@ -279,8 +254,7 @@ def ping():
     return int(distance)
 
 def turn_motor_on(pwm):
-   #pwm.duty_u16(65025)
-   pwm.duty_u16(16000)
+   pwm.duty_u16(POWER_LEVEL)
 
 def turn_motor_off(pwm):
    pwm.duty_u16(0)

@@ -64,13 +64,13 @@ tof = VL53L0X.VL53L0X(i2c)
 
 # get the normalized time-of-flight distance
 def get_distance():
-    global zero_dist, scale_factor
+    global ZERO_DIST
     tof_distance = tof.read()
     if tof_distance > MAX_DIST:
         return tof_distance
     # if our current time-of-flight distance is lower than our zero distance then reset the zero distance
     if tof_distance < ZERO_DIST:
-        zero_dist = tof_distance
+        ZERO_DIST = tof_distance
     return  int((tof_distance - ZERO_DIST) * SCALE_DIST)
 
 # use the dist_scale to turn on LEDs

@@ -17,10 +17,6 @@ This should return a list of the devices it finds.  If you just have the Time-of
 
 ```
 [41]
-``
-
-```py
-device_id = i2c.scan()[0]
 ```
 
 ## Testing for the Time-of-Flight Sensor

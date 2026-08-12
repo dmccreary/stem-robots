@@ -1,4 +1,8 @@
-# MPU6050 IMU Kit
+# Motion Detection Explorer Kit
+
+![](./box-cover.png)
+
+Learning about how to detect motion in a robot using a sensitive MEMS sensor.
 
 !!! mascot-welcome "Welcome, maker!"
     ![Sparky waving](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
@@ -87,6 +91,8 @@ require an expensive lab instrument.
 
 ## What's in This Kit
 
+![Photograph of the Motion Detection Kit](./motion-detection-kit.jpg)
+
 This kit has five parts, all listed with pin details in
 [`config.py`](https://github.com/dmccreary/stem-robots/blob/main/src/kits/imu-mpu6050/config.py):
 
@@ -99,6 +105,8 @@ This kit has five parts, all listed with pin details in
 | SSD1306/SSD1309 OLED (128×64) | Shows live sensor readings |
 
 ### Wiring
+
+![Breadboard Wiring](./breadboard-wiring.jpg)
 
 The MPU6050 talks to the Pico over **I2C**, a two-wire protocol also used by
 the compass sensor in an earlier kit. The OLED uses a different protocol
