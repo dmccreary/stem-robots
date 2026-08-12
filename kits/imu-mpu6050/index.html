@@ -1,0 +1,2756 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/stem-robots/kits/imu-mpu6050/">
+      
+      
+        <link rel="prev" href="../compass-hmc5883l/">
+      
+      
+        <link rel="next" href="../wifi-display-bot/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>IMU/MPU6050 Kit - STEM Robots</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-6SSB9XBXM9"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-6SSB9XBXM9",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-6SSB9XBXM9",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mpu6050-imu-kit" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="STEM Robots" class="md-header__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            STEM Robots
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              IMU/MPU6050 Kit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="STEM Robots" class="md-nav__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    STEM Robots
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../journey-map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Journey Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../setup/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../lessons/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../teachers-guide/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Teacher's Guide
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Robot Kits
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Robot Kits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../base/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Base Robot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Display Robot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../wifi-bot/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Wireless Bot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../rainbow-bot/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Rainbow Bot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bump-switch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bump Bot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../line-follower/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Line Follower
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adjusta-bot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adjustabot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ultrasonic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ultrasonic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compass-hmc5883l/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compass Kit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    IMU/MPU6050 Kit
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    IMU/MPU6050 Kit
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-an-imu" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is an IMU?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-mems-technology-makes-this-possible" class="md-nav__link">
+    <span class="md-ellipsis">
+      How MEMS Technology Makes This Possible
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-in-this-kit" class="md-nav__link">
+    <span class="md-ellipsis">
+      What's in This Kit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What's in This Kit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploading-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading the Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-walkthrough-of-every-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step Walkthrough of Every Program
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Walkthrough of Every Program">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-01-probepy-is-anyone-there" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 01-probe.py — Is Anyone There?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-02-test-streampy-numbers-without-a-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 02-test-stream.py — Numbers Without a Screen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-03-test-oled-hellopy-hello-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 03-test-oled-hello.py — Hello, Screen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-04-display-accel-barspy-feeling-gravity" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 04-display-accel-bars.py — Feeling Gravity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-05-display-gyro-barspy-feeling-spin" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 05-display-gyro-bars.py — Feeling Spin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-06-display-tilt-levelpy-bubble-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 06-display-tilt-level.py — Bubble Level
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-07-display-six-barspy-all-six-at-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 07-display-six-bars.py — All Six at Once
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-08-calibrate-gyropy-teaching-the-sensor-to-sit-still" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 08-calibrate-gyro.py — Teaching the Sensor to Sit Still
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-09-demo-gyro-driftpy-why-calibration-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 09-demo-gyro-drift.py — Why Calibration Matters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-10-demo-complementary-filterpy-two-sensors-are-better-than-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. 10-demo-complementary-filter.py — Two Sensors Are Better Than One
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-11-demo-shake-detectorpy-catching-a-bump" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. 11-demo-shake-detector.py — Catching a Bump
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-12-demo-swarm-comparepy-two-robots-two-opinions" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. 12-demo-swarm-compare.py — Two Robots, Two Opinions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-default-demo-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Default Demo: main.py
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Default Demo: main.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#five-modes-no-calibration-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Five Modes, No Calibration Required
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-shaking-changes-the-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Shaking Changes the Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-one-sensor-to-a-swarm-adding-a-magnetometer" class="md-nav__link">
+    <span class="md-ellipsis">
+      From One Sensor to a Swarm: Adding a Magnetometer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../wifi-display-bot/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    WiFi Display Bot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../swarm-robot/plan/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Swarm Robot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../instructors-guide/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gallery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Photo Gallery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prompts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STEM Robotics Prompts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sims/template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MicroSim Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-an-imu" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is an IMU?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-mems-technology-makes-this-possible" class="md-nav__link">
+    <span class="md-ellipsis">
+      How MEMS Technology Makes This Possible
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-in-this-kit" class="md-nav__link">
+    <span class="md-ellipsis">
+      What's in This Kit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What's in This Kit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploading-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading the Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-walkthrough-of-every-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step Walkthrough of Every Program
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Walkthrough of Every Program">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-01-probepy-is-anyone-there" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 01-probe.py — Is Anyone There?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-02-test-streampy-numbers-without-a-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 02-test-stream.py — Numbers Without a Screen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-03-test-oled-hellopy-hello-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 03-test-oled-hello.py — Hello, Screen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-04-display-accel-barspy-feeling-gravity" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 04-display-accel-bars.py — Feeling Gravity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-05-display-gyro-barspy-feeling-spin" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 05-display-gyro-bars.py — Feeling Spin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-06-display-tilt-levelpy-bubble-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 06-display-tilt-level.py — Bubble Level
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-07-display-six-barspy-all-six-at-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 07-display-six-bars.py — All Six at Once
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-08-calibrate-gyropy-teaching-the-sensor-to-sit-still" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 08-calibrate-gyro.py — Teaching the Sensor to Sit Still
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-09-demo-gyro-driftpy-why-calibration-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 09-demo-gyro-drift.py — Why Calibration Matters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-10-demo-complementary-filterpy-two-sensors-are-better-than-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. 10-demo-complementary-filter.py — Two Sensors Are Better Than One
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-11-demo-shake-detectorpy-catching-a-bump" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. 11-demo-shake-detector.py — Catching a Bump
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-12-demo-swarm-comparepy-two-robots-two-opinions" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. 12-demo-swarm-compare.py — Two Robots, Two Opinions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-default-demo-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Default Demo: main.py
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Default Demo: main.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#five-modes-no-calibration-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Five Modes, No Calibration Required
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-shaking-changes-the-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Shaking Changes the Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-one-sensor-to-a-swarm-adding-a-magnetometer" class="md-nav__link">
+    <span class="md-ellipsis">
+      From One Sensor to a Swarm: Adding a Magnetometer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="mpu6050-imu-kit">MPU6050 IMU Kit</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome, maker!</p>
+<p><img alt="Sparky waving" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Today we're not building a robot that drives — we're building one that
+<em>feels</em>. Grab a Pico, a breadboard, an MPU6050 sensor, and a little OLED
+screen, and let's find out how a robot knows which way is down!</p>
+</div>
+<p>This kit is not a full robot. There are no wheels and no motors. It is a
+small, standalone learning bench: a Raspberry Pi Pico, a breadboard, some
+jumper wires, an MPU6050 sensor, and an OLED display. Its only job is to
+teach one thing well — how an <strong>IMU</strong> sensor works, and how MicroPython code
+reads, displays, and calibrates it. Once you understand this kit, you'll be
+ready to bolt the same sensor onto a real robot chassis.</p>
+<h2 id="what-is-an-imu">What Is an IMU?</h2>
+<p><strong>IMU</strong> stands for <strong>Inertial Measurement Unit</strong>. You'll also see the same
+kind of chip called an <strong>MPU</strong>, short for <strong>Motion Processing Unit</strong> — that's
+where the "MPU" in "MPU6050" comes from. Both names mean the same kind of
+device: a chip that senses its own movement.</p>
+<p>Every sensor you've used so far in this course answers the question "what's
+around me?" A time-of-flight sensor measures distance to a wall. A line
+sensor detects a dark stripe on the floor. An IMU asks a completely
+different question: <strong>"what am I doing right now?"</strong></p>
+<ul>
+<li>Am I tipping forward or backward?</li>
+<li>Am I spinning?</li>
+<li>Did something just hit me?</li>
+<li>Which way is "up"?</li>
+</ul>
+<p>Think about your own inner ear. Close your eyes on a spinning office chair
+and you can still feel that you're turning. You don't need to see it. That
+sense — motion and balance, felt from the inside — is exactly what an IMU
+gives a robot. The MPU6050 packs two sensors into one tiny chip to do this:</p>
+<table>
+<thead>
+<tr>
+<th>Sensor</th>
+<th>What it measures</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Accelerometer</strong></td>
+<td>Acceleration along the X, Y, and Z axes — including gravity</td>
+<td>g (1g = Earth's gravity)</td>
+</tr>
+<tr>
+<td><strong>Gyroscope</strong></td>
+<td>How fast the sensor is rotating around each axis</td>
+<td>degrees per second (deg/s)</td>
+</tr>
+</tbody>
+</table>
+<p>That combination — three axes of acceleration plus three axes of rotation —
+is why the MPU6050 is called a <strong>6-DOF</strong> sensor: six degrees of freedom.</p>
+<p>Why does this matter in robotics? A robot with an IMU can tell if it just
+got picked up, tipped over, or bumped into something — without waiting for a
+distance sensor to notice. It can keep its balance. It can estimate which
+way it's facing even between GPS updates or camera frames. Self-driving
+cars, drones, game controllers, and phones all use the exact same idea you're
+about to wire up on a breadboard.</p>
+<h2 id="how-mems-technology-makes-this-possible">How MEMS Technology Makes This Possible</h2>
+<p>A chip this small and this cheap — an MPU6050 breakout costs only a few
+dollars — can measure motion because of <strong>MEMS</strong>, or <strong>Micro-Electro-
+Mechanical Systems</strong>. MEMS means tiny mechanical parts, built at the same
+microscopic scale as computer chips, etched right onto a sliver of silicon.</p>
+<p>Inside the MPU6050, next to the ordinary circuits, are structures smaller
+than the width of a human hair — with parts that actually move:</p>
+<ul>
+<li><strong>The accelerometer</strong> contains a tiny mass held in place by microscopic
+  springs. When the chip accelerates — or when gravity pulls on it — that
+  mass shifts a <em>tiny</em> amount. Tiny comb-shaped electrodes on either side of
+  the mass detect that shift as a change in capacitance (an electrical
+  property related to how close two surfaces are). More shift means more
+  acceleration.</li>
+<li><strong>The gyroscope</strong> uses a different trick: a structure vibrating at a
+  constant rate. When the whole chip rotates, that vibration bends slightly
+  in a new direction — a physics effect called the <strong>Coriolis effect</strong>
+  (the same effect that curves hurricane winds on a rotating Earth). The
+  chip measures that bend and turns it into a rotation rate.</li>
+</ul>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">A mechanical machine you can't see</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Here's the wild part: there really is a microscopic mass swinging on
+microscopic springs inside that little chip, right now. It's a real
+machine — just one you'd need a microscope to see move.</p>
+</div>
+<p>MEMS is why this sensor is reliable enough to trust: it has no motors, no
+wear-prone bearings, and it's manufactured on the same automated production
+lines that make ordinary computer chips by the billion. That's also why your
+phone can tell when you rotate it, why game controllers know when you tilt
+them, and why a five-dollar breakout board can do something that used to
+require an expensive lab instrument.</p>
+<h2 id="whats-in-this-kit">What's in This Kit</h2>
+<p>This kit has five parts, all listed with pin details in
+<a href="https://github.com/dmccreary/stem-robots/blob/main/src/kits/imu-mpu6050/config.py"><code>config.py</code></a>:</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspberry Pi Pico</td>
+<td>Runs the MicroPython code</td>
+</tr>
+<tr>
+<td>Breadboard</td>
+<td>Holds everything without soldering</td>
+</tr>
+<tr>
+<td>Jumper wires</td>
+<td>Connect the Pico, sensor, and display</td>
+</tr>
+<tr>
+<td>MPU6050 breakout</td>
+<td>The IMU itself</td>
+</tr>
+<tr>
+<td>SSD1306/SSD1309 OLED (128×64)</td>
+<td>Shows live sensor readings</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wiring">Wiring</h3>
+<p>The MPU6050 talks to the Pico over <strong>I2C</strong>, a two-wire protocol also used by
+the compass sensor in an earlier kit. The OLED uses a different protocol
+called <strong>SPI</strong>, which needs a few more wires but runs faster.</p>
+<table>
+<thead>
+<tr>
+<th>MPU6050 pin</th>
+<th>Pico pin</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VCC</td>
+<td>3.3V OUT</td>
+<td>Power</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>SDA</td>
+<td>GPIO10</td>
+<td>I2C data</td>
+</tr>
+<tr>
+<td>SCL</td>
+<td>GPIO11</td>
+<td>I2C clock</td>
+</tr>
+<tr>
+<td>XDA / XCL</td>
+<td>GPIO12 / GPIO13</td>
+<td>Not used in this kit</td>
+</tr>
+<tr>
+<td>AD0</td>
+<td>GPIO14</td>
+<td>Address select (left unconnected = address <code>0x68</code>)</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>GPIO15</td>
+<td>Not used in this kit</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>OLED pin</th>
+<th>Pico pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCL (clock)</td>
+<td>GPIO2</td>
+</tr>
+<tr>
+<td>SDA (data)</td>
+<td>GPIO3</td>
+</tr>
+<tr>
+<td>RES</td>
+<td>GPIO4</td>
+</tr>
+<tr>
+<td>DC</td>
+<td>GPIO5</td>
+</tr>
+<tr>
+<td>CS</td>
+<td>GPIO6</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-warning">
+<p class="admonition-title">GPIO10 and GPIO11 aren't interchangeable</p>
+<p><img alt="Sparky warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+On the Pico's RP2040 chip, GPIO10 can <em>only</em> be I2C data (SDA) and
+GPIO11 can <em>only</em> be I2C clock (SCL) — swap them and MicroPython
+refuses to start with a <code>bad SCL pin</code> error. If your sensor still isn't
+found after fixing that, double check the physical wires aren't crossed
+the <em>other</em> way, landing SCL and SDA on the opposite pins from what the
+chip expects.</p>
+</div>
+<h3 id="uploading-the-code">Uploading the Code</h3>
+<p>Every program in this kit is a separate MicroPython file, numbered in the
+order you'd naturally try them. To copy the whole kit — every program, the
+shared <code>config.py</code>, the display driver, and any saved calibration — onto
+the Pico in one step, run
+<a href="https://github.com/dmccreary/stem-robots/blob/main/src/kits/imu-mpu6050/upload-code.sh"><code>upload-code.sh</code></a> from a
+terminal:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>./upload-code.sh
+</code></pre></div></td></tr></table></div>
+<p>Any single program can also be run directly from Thonny, or headlessly with:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mpremote<span class="w"> </span>connect<span class="w"> </span>/dev/cu.usbmodem101<span class="w"> </span>run<span class="w"> </span><span class="m">01</span>-probe.py
+</code></pre></div></td></tr></table></div>
+<p>(Your port name may differ — check what shows up when you plug in the Pico.)</p>
+<h2 id="step-by-step-walkthrough-of-every-program">Step-by-Step Walkthrough of Every Program</h2>
+<p>Each program below builds on the one before it. Try them in order the first
+time through.</p>
+<h3 id="1-01-probepy-is-anyone-there">1. <code>01-probe.py</code> — Is Anyone There?</h3>
+<p>Before writing any real program, we need to know the sensor is actually
+there and talking. <code>01-probe.py</code> scans the I2C bus and lists every address
+that answers — like a roll call for chips:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="n">I2C_BUS</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">sda</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">scl</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+<span class="n">devices</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>If the MPU6050 answers, it always shows up at address <code>0x68</code> (or <code>0x69</code> if
+the AD0 pin is wired high). The probe then reads a register called
+<strong><code>WHO_AM_I</code></strong> — every MPU6050 always reports back <code>0x68</code> here, no matter
+what its I2C address is — as a second confirmation that the chip really is
+an MPU6050 and not some other I2C device wired to the same pins.</p>
+<h3 id="2-02-test-streampy-numbers-without-a-screen">2. <code>02-test-stream.py</code> — Numbers Without a Screen</h3>
+<p>You don't need a display to know the sensor works. This program prints
+accelerometer and gyroscope readings straight to the console, six numbers
+per line:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">MPU6050_ADDRESS_LOW</span><span class="p">,</span> <span class="n">ACCEL_XOUT_H</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">az</span><span class="p">,</span> <span class="n">_temp</span><span class="p">,</span> <span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">,</span> <span class="n">gz</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;hhhhhhh&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>That one <code>readfrom_mem</code> call grabs all 14 bytes the sensor needs in a single
+trip across the wire — accelerometer X/Y/Z, a temperature reading we don't
+use yet, and gyroscope X/Y/Z. <code>struct.unpack</code> turns those raw bytes into six
+signed numbers. Run this program and gently rotate the sensor — the numbers
+should change smoothly and immediately.</p>
+<h3 id="3-03-test-oled-hellopy-hello-screen">3. <code>03-test-oled-hello.py</code> — Hello, Screen</h3>
+<p>The classic first program for any display: put "Hello World!" on the
+screen. If you can read it, the SPI wiring and the OLED driver both work —
+completely separate from whether the MPU6050 works:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">oled</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">init_display</span><span class="p">()</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="4-04-display-accel-barspy-feeling-gravity">4. <code>04-display-accel-bars.py</code> — Feeling Gravity</h3>
+<p>Now we combine the sensor and the screen. This program draws three
+horizontal bars — X, Y, and Z acceleration — each growing left or right from
+a center line as you tilt or move the sensor. Hold it still and one bar
+should already be pushed out: that's gravity, always pulling at 1g on
+whichever axis points straight down.</p>
+<h3 id="5-05-display-gyro-barspy-feeling-spin">5. <code>05-display-gyro-bars.py</code> — Feeling Spin</h3>
+<p>Same three-bar layout, but this time driven by the gyroscope instead of the
+accelerometer. Spin the sensor and the bars swing out; let it rest and they
+snap back to center. This is a good way to <em>feel</em> the difference between the
+two sensors: the accelerometer reacts to <strong>tilt and gravity</strong>, the
+gyroscope reacts to <strong>how fast you're turning it</strong>.</p>
+<h3 id="6-06-display-tilt-levelpy-bubble-level">6. <code>06-display-tilt-level.py</code> — Bubble Level</h3>
+<p>This program turns the accelerometer into a digital version of the bubble
+level a carpenter uses. A dot drifts away from the center of a circle as you
+tilt the board, and the screen prints "LEVEL" once you get it flat:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">LEVEL_TOLERANCE_G</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ay</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">LEVEL_TOLERANCE_G</span><span class="p">:</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;LEVEL&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>Under the hood, it turns the X and Y acceleration into <strong>roll</strong> and <strong>pitch</strong>
+angles (in degrees) using <code>atan2</code> — the same trigonometry a robot uses to
+know it's about to tip over.</p>
+<h3 id="7-07-display-six-barspy-all-six-at-once">7. <code>07-display-six-bars.py</code> — All Six at Once</h3>
+<p>This puts everything from programs 4 and 5 on one screen: six compact bars,
+<code>AX</code>/<code>AY</code>/<code>AZ</code>/<code>GX</code>/<code>GY</code>/<code>GZ</code>, all updating live. It's the best "just pick it
+up and play" demo in the kit — every possible motion moves at least one bar
+— which is why it's the default screen in <code>main.py</code> (more on that below).</p>
+<h3 id="8-08-calibrate-gyropy-teaching-the-sensor-to-sit-still">8. <code>08-calibrate-gyro.py</code> — Teaching the Sensor to Sit Still</h3>
+<p>Set a resting gyroscope on a table and it should read exactly <code>0</code> deg/s on
+every axis. In real hardware, it never quite does — manufacturing isn't
+perfect, so every MPU6050 has a small constant <strong>bias</strong>, often a few deg/s,
+even sitting perfectly still.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">gx_offset</span> <span class="o">=</span> <span class="n">sum_x</span> <span class="o">/</span> <span class="n">samples</span> <span class="o">/</span> <span class="n">GYRO_SCALE</span>
+</code></pre></div></td></tr></table></div>
+<p>This program averages five seconds of readings — <strong>you must hold the sensor
+completely still and flat</strong> — to measure that bias for each axis, then
+saves it to a file called <code>calibration.json</code> on the Pico. Other programs can
+load that file later and subtract the bias out.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Calibration only works if you hold still</p>
+<p><img alt="Sparky warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+If the sensor moves — even a little — during those five seconds, real
+motion gets averaged in as if it were bias. That produces a <em>worse</em>
+correction than no correction at all. Set it down flat, let go, and
+don't touch the table either.</p>
+</div>
+<h3 id="9-09-demo-gyro-driftpy-why-calibration-matters">9. <code>09-demo-gyro-drift.py</code> — Why Calibration Matters</h3>
+<p>This program proves calibration is worth doing. It integrates the
+gyroscope's Z-axis reading over time into a running heading estimate — two
+ways at once. <strong>RAW</strong> uses the sensor's raw output; <strong>CAL</strong> subtracts the
+bias saved by program 8:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">raw_heading</span> <span class="o">=</span> <span class="p">(</span><span class="n">raw_heading</span> <span class="o">+</span> <span class="n">gz</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">%</span> <span class="mf">360.0</span>
+<span class="n">cal_heading</span> <span class="o">=</span> <span class="p">(</span><span class="n">cal_heading</span> <span class="o">+</span> <span class="p">(</span><span class="n">gz</span> <span class="o">-</span> <span class="n">gz_offset</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">%</span> <span class="mf">360.0</span>
+</code></pre></div></td></tr></table></div>
+<p>Set the sensor down and don't touch it. Watch RAW slowly count upward (or
+downward) even though nothing is moving — that's the uncorrected bias adding
+up, one tiny slice of time (<code>dt</code>) at a time. CAL should drift far more
+slowly. Neither one drifts to exactly zero forever, though — which is
+exactly the problem the last section of this page explains how to solve.</p>
+<h3 id="10-10-demo-complementary-filterpy-two-sensors-are-better-than-one">10. <code>10-demo-complementary-filter.py</code> — Two Sensors Are Better Than One</h3>
+<p>This program shows three different estimates of tilt (roll) side by side:</p>
+<ul>
+<li><strong>GYRO</strong> — integrated from the gyroscope. Fast and smooth, but drifts.</li>
+<li><strong>ACC</strong> — computed directly from gravity, using the accelerometer. Never
+  drifts, but jumps around with every bump and vibration.</li>
+<li><strong>FILT</strong> — a blend of both, called a <strong>complementary filter</strong>.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">filtered_roll</span> <span class="o">=</span> <span class="n">FILTER_ALPHA</span> <span class="o">*</span> <span class="p">(</span><span class="n">filtered_roll</span> <span class="o">+</span> <span class="p">(</span><span class="n">gx</span> <span class="o">-</span> <span class="n">gx_offset</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">FILTER_ALPHA</span><span class="p">)</span> <span class="o">*</span> <span class="n">accel_roll</span>
+</code></pre></div></td></tr></table></div>
+<p>That one line is the whole trick: trust the gyroscope almost completely
+(<code>FILTER_ALPHA = 0.98</code>, or 98%) moment to moment, but constantly nudge the
+result a small amount (2%) back toward whatever the accelerometer says. The
+gyroscope smooths out the accelerometer's noise; the accelerometer keeps the
+gyroscope from drifting forever. Tilt the sensor slowly, then jerk it
+quickly, and watch how differently each row reacts.</p>
+<h3 id="11-11-demo-shake-detectorpy-catching-a-bump">11. <code>11-demo-shake-detector.py</code> — Catching a Bump</h3>
+<p>At rest, no matter which way the sensor is pointed, its <em>total</em>
+acceleration (all three axes combined) always measures close to 1g — that's
+just gravity. A tap, drop, or shake briefly pushes that total number well
+above or below 1g:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">magnitude</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ax</span> <span class="o">*</span> <span class="n">ax</span> <span class="o">+</span> <span class="n">ay</span> <span class="o">*</span> <span class="n">ay</span> <span class="o">+</span> <span class="n">az</span> <span class="o">*</span> <span class="n">az</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">magnitude</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">SHAKE_THRESHOLD_G</span><span class="p">:</span>
+</code></pre></div></td></tr></table></div>
+<p>When that happens, the screen flashes <strong>SHAKE!</strong> in big inverted (white
+background, black text) letters. A real robot could use this exact same
+check to notice a collision — even one its distance sensor never saw
+coming.</p>
+<h3 id="12-12-demo-swarm-comparepy-two-robots-two-opinions">12. <code>12-demo-swarm-compare.py</code> — Two Robots, Two Opinions</h3>
+<p>This program draws a compass-style needle from a <em>calibrated</em> gyroscope
+heading — the same math as program 9's CAL line, just drawn as a dial
+instead of a number. It's meant to be copied onto <strong>two or more</strong> Picos and
+started at the same instant, pointing the same way.</p>
+<p>Watch what happens: both needles agree at first, then slowly drift apart.
+Each board is only trusting its own slightly-imperfect gyroscope, with no
+way to check itself against the other. That's not a bug — it's a preview of
+a real problem every swarm of robots has to solve, which the last section of
+this page explains.</p>
+<h2 id="the-default-demo-mainpy">The Default Demo: <code>main.py</code></h2>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">One big program, five small ones</p>
+<p><img alt="Sparky encouraging" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+This next program is the longest one in the kit. Don't let that worry
+you — it's really just programs 4, 5, 6, 7, and 10 taking turns on the
+same screen, plus one clever trick to switch between them.</p>
+</div>
+<p>Once you've tried the numbered programs, the kit's <code>main.py</code> — copied from
+<a href="https://github.com/dmccreary/stem-robots/blob/main/src/kits/imu-mpu6050/main-template.py"><code>main-template.py</code></a> — is
+what runs automatically every time the Pico powers on. It's built to hand
+someone the kit with zero instructions and still make sense.</p>
+<h3 id="five-modes-no-calibration-required">Five Modes, No Calibration Required</h3>
+<p><code>main.py</code> cycles through five display modes, each one a simplified version
+of a program you've already met:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Name</th>
+<th>Same idea as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 (default)</td>
+<td>Six Bars</td>
+<td><code>07-display-six-bars.py</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td>Tilt Level</td>
+<td><code>06-display-tilt-level.py</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Accel Bars</td>
+<td><code>04-display-accel-bars.py</code> (X/Y/Z only)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Gyro Bars</td>
+<td><code>05-display-gyro-bars.py</code> (X/Y/Z only)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Sensor Fusion</td>
+<td><code>10-demo-complementary-filter.py</code></td>
+</tr>
+</tbody>
+</table>
+<p>Mode 0 — Six Bars — is the very first thing you see, on purpose. It's the
+demo where <em>any</em> motion moves <em>something</em> on the screen, so a total stranger
+picking up the kit immediately understands "oh, this reacts to how I move
+it" within a couple of seconds, no reading required.</p>
+<p>Notice <code>main.py</code> never loads <code>calibration.json</code>. That's deliberate: this is
+the program a new user meets first, before they've ever run program 8. Mode
+4's Sensor Fusion display still works fine without calibration — it just
+carries a small, harmless bias in its GYRO row, which is invisible at a
+glance and doesn't stop the demo from making its point.</p>
+<h3 id="how-shaking-changes-the-mode">How Shaking Changes the Mode</h3>
+<p><code>main.py</code> reuses the exact shake-detection math from program 11 — total
+acceleration more than <code>0.5</code>g away from the resting 1g counts as a shake —
+but instead of just flashing a message, a shake <strong>advances to the next
+mode</strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="n">shook</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cooling_down</span><span class="p">:</span>
+    <span class="n">next_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">mode_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">MODES</span><span class="p">)</span>
+    <span class="n">next_name</span><span class="p">,</span> <span class="n">_draw</span><span class="p">,</span> <span class="n">_on_enter</span> <span class="o">=</span> <span class="n">MODES</span><span class="p">[</span><span class="n">next_index</span><span class="p">]</span>
+
+    <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">WHITE</span><span class="p">)</span>
+    <span class="n">center_text</span><span class="p">(</span><span class="s2">&quot;Shake Detected&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">)</span>
+    <span class="n">center_text</span><span class="p">(</span><span class="s2">&quot;Changing Mode&quot;</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">)</span>
+    <span class="n">center_text</span><span class="p">(</span><span class="n">next_name</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">)</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="n">SHAKE_MESSAGE_MS</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>That screen — white background, bold black text, the upcoming mode's name
+spelled out — is impossible to miss. After the last mode (Sensor Fusion), a
+shake wraps back around to Six Bars, so the demo never gets "stuck" at the
+end.</p>
+<p>One detail makes this feel smooth instead of glitchy: <code>MODE_COOLDOWN_MS</code>.
+For a second and a half after every mode change, new shakes are ignored.
+Without it, a single real-world shake — which rarely lasts just one instant
+— could trigger two or three mode changes in a row before you even let go of
+the sensor.</p>
+<p>Try it yourself: run <code>main.py</code>, watch the Six Bars mode react to every
+movement, then give the board one firm shake and read the message before
+the next mode appears.</p>
+<h2 id="from-one-sensor-to-a-swarm-adding-a-magnetometer">From One Sensor to a Swarm: Adding a Magnetometer</h2>
+<p>Program 12 showed two boards' headings quietly drifting apart, each trusting
+only its own gyroscope. That's not just a demo quirk — it's a fundamental
+limit of this exact 6-DOF sensor, and understanding <em>why</em> points straight at
+how real robot swarms solve it.</p>
+<p>Here's the core problem: the accelerometer can tell you which way is
+<strong>down</strong> (that's how program 6's Tilt Level works), but it cannot tell you
+which way is <strong>north</strong>. Spin the sensor flat on a table, staying perfectly
+level the whole time, and gravity still pulls straight down on the same
+axis — the accelerometer sees no change at all. The only sensor tracking
+that spin is the gyroscope, and the gyroscope only measures a <em>rate of
+change</em> that has to be added up over time — which means, as program 9
+showed, it drifts.</p>
+<p>A <strong>magnetometer</strong> solves this by sensing something the accelerometer can't:
+Earth's magnetic field. Just like a compass needle, it points toward
+magnetic north no matter how the sensor is spinning. Add a magnetometer to
+this kit's accelerometer and gyroscope, and you get a full <strong>9-DOF</strong> sensor
+— nine degrees of freedom, three sensors, three axes each. That's exactly
+the <a href="../../chapters/13-swarm-robotics-advanced-patterns/">L3GD20 gyroscope + LSM303D accelerometer/magnetometer combo</a>
+used later in this course to build a real swarm.</p>
+<p>The magnetometer isn't a free lunch, though. Motors, batteries, and nearby
+metal all distort magnetic fields, so every magnetometer needs its own
+<strong>hard-iron calibration</strong> — you can see this exact idea already at work in
+the <a href="https://github.com/dmccreary/stem-robots/blob/main/src/kits/compass-hmc5883l/README.md">compass kit</a>, where
+rotating the sensor through a full circle measures and cancels out that
+local distortion. And a magnetometer reading alone is noisy and slow, in
+the same way this kit's accelerometer alone was noisy in program 10 — so a
+9-DOF sensor gets fused together with the same <strong>complementary filter</strong> idea
+from program 10, just extended to blend three sensors into one stable
+heading instead of two.</p>
+<p>Here's where it becomes a <em>swarm</em> technique rather than a single-robot one.
+Program 12 already showed that two boards, left alone, disagree more and
+more over time. A magnetometer fixes that for <em>one</em> robot by giving it its
+own absolute compass reference. But a whole swarm needs every robot to agree
+with <strong>each other</strong>, not just with a compass — and cheap magnetometers still
+have small errors that differ from one to the next. The fix used later in
+this course is for one robot to broadcast its own fused heading over WiFi,
+using a networking pattern called <strong>UDP broadcast</strong>, so every other robot in
+the swarm can steer to match it — the same way you might follow a friend's
+pointed finger instead of trying to work out north yourself. No robot has to
+be perfectly accurate on its own. They just all have to agree.</p>
+<p>That's the real destination this kit has been building toward: everything
+you practiced here — reading raw sensor values, calibrating out bias, and
+blending two disagreeing sensors into one trustworthy answer — is precisely
+what it takes to keep an entire swarm of robots pointed the same direction.</p>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You just learned how robots feel motion!</p>
+<p><img alt="Sparky celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Look at what you built: you probed a sensor over I2C, streamed live
+motion data, drew five different OLED visualizations, measured a real
+gyroscope bias, and fused two sensors into one steady answer. That's the
+same toolkit real robotics engineers use — you just used it on a
+breadboard instead of a spacecraft!</p>
+</div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../compass-hmc5883l/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Compass Kit">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Compass Kit
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../wifi-display-bot/" class="md-footer__link md-footer__link--next" aria-label="Next: Intro">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Intro
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
