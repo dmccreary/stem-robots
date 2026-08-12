@@ -129,24 +129,20 @@ nav:
 
   - Robot Kits:
     - Introduction to Kits: kits/index.md
+
     - Base Robot:
-      - Introduction: kits/base/index.md
-      - kits/base/01-testing-motor-connections.md
-      - kits/base/06-up-down-motor-lab.md
-      - kits/base/07-motor-connection-lab.md
-      - kits/base/07b-drive-square-lab.md
-      - kits/base/08-servo-lab.md
-      - kits/base/09-i2c-scanner-test.md
-      - kits/base/10-time-of-flight-lab.md
-      - kits/base/11-ping-lab.md
-      - kits/base/12-time-of-flight-sound-lab.md
-      - kits/base/20-collision-avoidance-robot.md
-      - kits/base/21-collision-avoidance-ping.md
-      - kits/base/23-microswitch-bot.md
-      - kits/base/24-ping-servo-meter.md
-      - kits/base/25-line-follower.md
-      - kits/base/03-neopixel-test.md
-      - kits/base/06-test-sound.md
+      - Introduction to Base Robot: kits/base/index.md
+      - Testing Motor Connections: kits/base/01-testing-motor-connections.md
+      - NeoPixel Test: kits/base/03-neopixel-test.md
+      - Motor Up/Down Lab: kits/base/06-up-down-motor-lab.md
+      - Sound Test: kits/base/06-test-sound.md
+      - Motor Connection Lab: kits/base/07-motor-connection-lab.md
+      - Drive Square Lab: kits/base/07b-drive-square-lab.md
+      - I2C Scanner Test: kits/base/09-i2c-scanner-test.md
+      - Time of Flight Lab: kits/base/10-time-of-flight-lab.md
+      - Adding Sound to Time of Flight: kits/base/12-time-of-flight-sound-lab.md
+      - Collision Avoidance Robot: kits/base/20-collision-avoidance-robot.md
+    
     - Display Robot: 
       - Intro: kits/display/index.md
       - Display Setup: kits/display/display-setup.md
@@ -162,11 +158,15 @@ nav:
         - Simple Web Server: kits/wifi-bot/05-simple-web-server.md
         - Web Server Test: kits/wifi-bot/web-server-test.md
   
+    - Rainbow Bot:
+      - Introduction: kits/rainbow-bot/index.md
+      - 8x8 NeoPixel Matrix: kits/rainbow-bot/rainbow-bot-test.md
+      - Rainbow Bot Dance: kits/rainbow-bot/rainbow-bot-dance.md
     - Bump Bot: kits/bump-switch/index.md
     - Line Follower: kits/line-follower/index.md
-    - Adjustabot: kits/adjust/index.md
+    - Adjustabot: kits/adjusta-bot/index.md
     - Ultrasonic: kits/ultrasonic/index.md
-    - Compass Bot: kits/compass-hmc5883l/index.md
+    - Compass Kit: kits/compass-hmc5883l/index.md
     - IMU/MPU6050 Kit: kits/imu-mpu6050/index.md
 
     - WiFi Display Bot:

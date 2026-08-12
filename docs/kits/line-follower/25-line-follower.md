@@ -18,7 +18,7 @@ The total cost of the kit is about $20.
 
 ## IR Sensors
 
-![](../../img/ir-sensors.png)
+![](../../../img/ir-sensors.png)
 
 We can purchase IR sensors on eBay for about $1 each in quantity 10.
 The sensors send a digital 0/1 signal to the microcontroller depending on if they are over the line.

@@ -7,6 +7,8 @@ so we can control our robot wirelessly.
 
 ## Cytron Robo Pico Pinout
 
+![Cytron Robo Pico](./cytron-robo-pico-board.png)
+
 ![](../../img/cytron-robo-pico-pinout.png)
 
 Note that the GPIO breakout female header allows us to connect our display cable directly to the board without using Grove connectors!
