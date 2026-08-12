@@ -144,12 +144,12 @@ nav:
       - Collision Avoidance Robot: kits/base/20-collision-avoidance-robot.md
     
     - Display Robot: 
-      - Intro: kits/display/index.md
-      - Display Setup: kits/display/display-setup.md
-      - Time of Flight Range Test: kits/display/tof-range-display-test.md
-      - Display Distance Chart: kits/display/display-distance.md
-      - Display Face: kits/display/display-face.md
-      - Collision Avoidance Display: kits/display/collision-avoidance-display.md
+      - Intro: kits/display-bot/index.md
+      - Display Setup: kits/display-bot/display-setup.md
+      - Time of Flight Range Test: kits/display-bot/tof-range-display-test.md
+      - Display Distance Chart: kits/display-bot/display-distance.md
+      - Display Face: kits/display-bot/display-face.md
+      - Collision Avoidance Display: kits/display-bot/collision-avoidance-display.md
 
     - Wireless Bot:
         - Introduction: kits/wifi-bot/index.md
@@ -162,7 +162,8 @@ nav:
       - Introduction: kits/rainbow-bot/index.md
       - 8x8 NeoPixel Matrix: kits/rainbow-bot/rainbow-bot-test.md
       - Rainbow Bot Dance: kits/rainbow-bot/rainbow-bot-dance.md
-    - Bump Bot: kits/bump-switch/index.md
+    
+    - Bump Switch Bot: kits/bump-switch-bot/index.md
     - Line Follower: kits/line-follower/index.md
     - Adjustabot: kits/adjusta-bot/index.md
     - Ultrasonic: kits/ultrasonic/index.md
