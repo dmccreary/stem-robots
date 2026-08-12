@@ -472,3 +472,28 @@ what it takes to keep an entire swarm of robots pointed the same direction.
     gyroscope bias, and fused two sensors into one steady answer. That's the
     same toolkit real robotics engineers use — you just used it on a
     breadboard instead of a spacecraft!
+
+## References
+
+[MPU-6000/MPU-6050 Product Specification](https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf) - InvenSense/TDK. The official datasheet: register map, electrical characteristics, and pin configuration for the 6-DOF sensor used in this kit.
+
+
+## Purchasing Your Own Sensors
+
+There are two reasons we selected the MPU6050 in the GY-521 package. The first is
+that is is low cost (about $1 if you are a clever shopper) and the second reason is
+that because it is popular and therefore also well documented.  The initial release of the MPU6050 was back in November of 2010.  Since then it has been use in many low-cost robotics projects.
+When the MPU6050 is combined with a magnetic sensor such as the [HMC5883L magnetosensor](../compass-hmc5883l/index.md) then robots can know and communicate their orientation.
+
+### eBay
+
+[MPU6050 search on eBay](https://www.ebay.com/sch/i.html?_nkw=MPU6050+GY-521&_sop=15) - typical breakout boards (often labeled GY-521) sorted by price, low to high.
+For example, this part on eBay was listed for .99 cents with free shipping.
+
+![GY-521 Part on Ebay](./part-listing-on-ebay.png){ width="200px"}
+
+### AliExpress
+
+[MPU6050 search on AliExpress](https://www.aliexpress.com/wholesale?SearchText=MPU6050+GY-521) - the same breakout boards, usually cheaper in small bulk quantities but with longer shipping times.
+
+![GY-521 Part on AliExpress](./part-listing-on-aliexpress.png){ width="200px"}
