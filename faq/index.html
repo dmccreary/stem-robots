@@ -650,8 +650,6 @@
         
       
         
-          
-        
       
         
           
@@ -816,6 +814,12 @@
         
       
         
+          
+        
+      
+        
+          
+        
       
         
       
@@ -828,7 +832,7 @@
         
       
         
-          
+      
         
       
         
@@ -837,12 +841,6 @@
       
         
           
-        
-      
-        
-          
-        
-      
         
       
         
@@ -889,6 +887,16 @@
     
       
         
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -907,11 +915,11 @@
         
   
   
-    <a href="../instructors-guide/index.md" class="md-nav__link">
+    <a href="../teachers-guide/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Instructors Guide
+    Teacher's Guide
   </span>
   
 
@@ -2036,46 +2044,6 @@
   
   <span class="md-ellipsis">
     Contact
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../prompts/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    STEM Robotics Prompts
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sims/template/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MicroSim Template
   </span>
   
 
@@ -3527,7 +3495,7 @@ files. See <a href="../chapters/05-data-structures-modular-code/">Chapter 5</a>.
 <p>The most common causes are:</p>
 <ul>
 <li><strong>Wiring:</strong> Double-check that SDA and SCL are connected to the correct Grove/Dupont pins and that the sensor has power (VCC) and ground (GND).</li>
-<li><strong>I2C scanner:</strong> Run the I2C scanner program to verify the sensor appears at address <code>0x29</code>. If nothing shows up, the sensor is not communicating. See the <a href="../kits/base/09-i2c-scanner-test/">I2C Scanner lab</a>.</li>
+<li><strong>I2C scanner:</strong> Run the I2C scanner program to verify the sensor appears at address <code>0x29</code>. If nothing shows up, the sensor is not communicating. See the <a href="kits/base/09-i2c-scanner-test.md">I2C Scanner lab</a>.</li>
 <li><strong>Library missing:</strong> The <code>vl53l0x.py</code> library file must be uploaded to the robot's flash storage. Check the Files panel in Thonny.</li>
 <li><strong>Too close or too far:</strong> The VL53L0X reads reliably between 3 cm and 200 cm. Readings below 3 cm or above 200 cm may return 0 or the maximum value.</li>
 <li><strong>Calibration:</strong> A zero-distance offset may be needed. See <a href="../chapters/08-sensors-data-input/">Chapter 8</a>.</li>

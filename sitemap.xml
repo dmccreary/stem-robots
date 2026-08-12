@@ -5,6 +5,10 @@
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/stem-robots/TODO/</loc>
+         <lastmod>2026-08-12</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/stem-robots/about/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
@@ -165,71 +169,67 @@
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/01-testing-motor-connections/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/01-testing-motor-connections/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/03-neopixel-test/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/03-neopixel-test/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/06-test-sound/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/06-test-sound/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/06-up-down-motor-lab/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/06-up-down-motor-lab/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/07-motor-connection-lab/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/07-motor-connection-lab/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/07b-drive-square-lab/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/07b-drive-square-lab/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/08-servo-lab/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/08-servo-lab/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/09-i2c-scanner-test/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/09-i2c-scanner-test/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/10-time-of-flight-lab/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/10-time-of-flight-lab/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/11-ping-lab/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/11-ping-lab/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/12-time-of-flight-sound-lab/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/12-time-of-flight-sound-lab/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/20-collision-avoidance-robot/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/20-collision-avoidance-robot/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/21-collision-avoidance-ping/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/21-collision-avoidance-ping/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/base/24-ping-servo-meter/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/base-bot/24-ping-servo-meter/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/bump-switch/</loc>
-         <lastmod>2026-08-12</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/bump-switch/23-microswitch-bot/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/bump-switch-bot/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
@@ -237,23 +237,23 @@
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/display/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/display-bot/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/display/display-distance/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/display-bot/display-distance/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/display/display-face/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/display-bot/display-face/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/display/display-setup/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/display-bot/display-setup/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/display/tof-range-display-test/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/display-bot/tof-range-display-test/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
@@ -261,11 +261,11 @@
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/line-follower/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/line-follower-bot/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/line-follower/25-line-follower/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/line-follower-bot/25-line-follower/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
@@ -273,11 +273,11 @@
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/swarm-robot/plan/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/swarm-bot/plan/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/kits/ultrasonic/</loc>
+         <loc>https://dmccreary.github.io/stem-robots/kits/ultrasonic-bot/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
@@ -517,18 +517,6 @@
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/prompts/</loc>
-         <lastmod>2026-08-12</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/stem-robots/prompts/generate-microsims-todo/</loc>
-         <lastmod>2026-08-12</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/stem-robots/prompts/robot-description/</loc>
-         <lastmod>2026-08-12</lastmod>
-    </url>
-    <url>
          <loc>https://dmccreary.github.io/stem-robots/setup/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
@@ -669,14 +657,6 @@
          <lastmod>2026-08-12</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/stem-robots/sims/template/</loc>
-         <lastmod>2026-08-12</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/stem-robots/sims/template/TODO/</loc>
-         <lastmod>2026-08-12</lastmod>
-    </url>
-    <url>
          <loc>https://dmccreary.github.io/stem-robots/sims/variable-assignment-explorer/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
@@ -714,6 +694,18 @@
     </url>
     <url>
          <loc>https://dmccreary.github.io/stem-robots/teachers-guide/two-hour-hands-on/</loc>
+         <lastmod>2026-08-12</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/teachers-guide/prompts/</loc>
+         <lastmod>2026-08-12</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/teachers-guide/prompts/generate-microsims-todo/</loc>
+         <lastmod>2026-08-12</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/stem-robots/teachers-guide/prompts/robot-description/</loc>
          <lastmod>2026-08-12</lastmod>
     </url>
 </urlset>
