@@ -166,6 +166,7 @@ nav:
     - Line Follower: kits/line-follower/index.md
     - Adjustabot: kits/adjust/index.md
     - Ultrasonic: kits/ultrasonic/index.md
+    - Compass Bot: kits/compass-hmc5883l/index.md
   
     - WiFi Display Bot:
       - Intro: kits/wifi-display-bot/index.md
