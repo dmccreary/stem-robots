@@ -1,0 +1,41 @@
+# main-template.py
+#
+# The combined "mastery" program for this kit -- it should use MOST of the
+# concepts from the numbered lessons together, not introduce anything new.
+#
+# Deliberately NOT named main.py: copying this to main.py is a conscious
+# choice the student/instructor makes (mpremote fs cp main-template.py
+# :main.py), so it never silently overwrites whatever's already running on
+# a device. Explain that promotion step in README.md. See
+# src/kits/imu-mpu6050/main-template.py for the reference example.
+#
+# If this kit's main program is safe to ship as a literal main.py instead
+# (no risk of clobbering unrelated device state), rename this file and
+# delete this comment block -- don't keep both patterns half-applied.
+
+from machine import Pin, PWM
+import time
+import config
+
+# {{Initialize every subsystem this program combines -- motors, sensors,
+# NeoPixels, display, etc. -- using config.py names throughout.}}
+
+
+def main():
+    try:
+        while True:
+            # {{combine concepts from the numbered lessons: read a sensor,
+            # react with motors/LEDs/sound, repeat}}
+            time.sleep(0.05)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        # {{shut everything down cleanly: stop motors, turn off
+        # NeoPixels/speaker, release any sensor object. This is the file
+        # most likely to auto-run on boot -- a missing finally block here
+        # is a safety bug, not a style nit.}}
+        pass
+
+
+if __name__ == "__main__":
+    main()

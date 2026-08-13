@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# Upload the whole {{KIT_TITLE}} kit onto the Pico's flash filesystem:
+# {{DEPENDENCY_SUMMARY}}config.py, and every numbered script.
+#
+# Modeled on src/kits/imu-mpu6050/upload-code.sh -- the most complete
+# upload script in the repo. Delete the lib/ block below if this kit has
+# no shared driver to bundle (no OLED, no VL53L0X, etc).
+set -e
+
+PORT=/dev/cu.usbmodem101
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+echo "Uploading to $PORT ..."
+
+# --- shared driver(s), if this kit vendors a lib/ directory ---------------
+if [ -d "$SCRIPT_DIR/lib" ]; then
+    mpremote connect "$PORT" fs mkdir :lib >/dev/null 2>&1 || true
+    for f in "$SCRIPT_DIR"/lib/*.py; do
+        name="$(basename "$f")"
+        echo "  lib/$name"
+        mpremote connect "$PORT" fs cp "$f" ":lib/$name"
+    done
+fi
+
+# --- secrets.py, if this kit needs network credentials --------------------
+if [ -f "$SCRIPT_DIR/secrets.py" ]; then
+    echo "  secrets.py (edit this file with your WiFi credentials before class!)"
+    mpremote connect "$PORT" fs cp "$SCRIPT_DIR/secrets.py" :secrets.py
+fi
+
+echo "  config.py"
+mpremote connect "$PORT" fs cp "$SCRIPT_DIR/config.py" :config.py
+
+for f in "$SCRIPT_DIR"/[0-9][0-9]-*.py; do
+    name="$(basename "$f")"
+    echo "  $name"
+    mpremote connect "$PORT" fs cp "$f" ":$name"
+done
+
+# --- main program -----------------------------------------------------
+# If you ship a literal main.py, it auto-runs on boot -- include it here.
+# If you use the main-template.py trick (see checklist) to avoid clobbering
+# whatever's already on the device, do NOT upload it automatically; tell
+# the student/instructor to promote it manually in README.md instead.
+if [ -f "$SCRIPT_DIR/main.py" ]; then
+    echo "  main.py"
+    mpremote connect "$PORT" fs cp "$SCRIPT_DIR/main.py" :main.py
+fi
+
+echo
+echo "Done. Files now on device:"
+mpremote connect "$PORT" fs ls
