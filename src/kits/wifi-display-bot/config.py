@@ -1,8 +1,11 @@
 # Hardware configuration for the Cytron Maker Pi RP2040 (Pico W)
-# Wi-Fi Bot: motors, NeoPixels, speaker, and a VL53L0X time-of-flight sensor,
-# controlled over a web server on the Pico W's wireless chip.
+# Wifi Display Bot: motors, NeoPixels, speaker, and an SSD1306 SPI OLED
+# display, controlled over the Pico W's wireless chip.
 # Wi-Fi credentials live in secrets.py, not here - keep hardware pin
 # assignments and network secrets in separate files.
+
+from machine import Pin, SPI
+import ssd1306
 
 # ---------------------------------------------------------------------------
 # Motor driver (H-bridge on GP8-GP11)
@@ -26,9 +29,24 @@ NUMBER_NEOPIXELS = 2
 SPEAKER_PIN = 22
 
 # ---------------------------------------------------------------------------
-# I2C bus 0 - VL53L0X time-of-flight distance sensor
+# SSD1306 SPI OLED display
 # ---------------------------------------------------------------------------
-I2C_BUS = 0
-I2C_SDA_PIN = 16
-I2C_SCL_PIN = 17
-TIME_OF_FLIGHT_I2C_ADDRESS = 41
+DISPLAY_WIDTH = 128
+DISPLAY_HEIGHT = 64
+SPI_BUS = 0
+SPI_BAUDRATE = 100000
+SCL_PIN = 2   # SPI clock
+SDA_PIN = 3   # SPI MOSI
+RES_PIN = 4
+DC_PIN = 5
+CS_PIN = 6
+
+
+def init_display():
+    clock = Pin(SCL_PIN)
+    data = Pin(SDA_PIN)
+    res = Pin(RES_PIN)
+    dc = Pin(DC_PIN)
+    cs = Pin(CS_PIN)
+    spi = SPI(SPI_BUS, baudrate=SPI_BAUDRATE, sck=clock, mosi=data)
+    return ssd1306.SSD1306_SPI(DISPLAY_WIDTH, DISPLAY_HEIGHT, spi, dc, res, cs)

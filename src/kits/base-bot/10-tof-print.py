@@ -3,9 +3,11 @@
 from machine import Pin, PWM, I2C
 import time
 import VL53L0X
-I2C_SDA_PIN = 16
-I2C_SCL_PIN = 17
-I2C_BUS = 0
+import config
+
+I2C_SDA_PIN = config.I2C_SDA_PIN
+I2C_SCL_PIN = config.I2C_SCL_PIN
+I2C_BUS = config.I2C_BUS
 
 sda=Pin(I2C_SDA_PIN) # row one on our standard Pico breadboard
 scl=Pin(I2C_SCL_PIN) # row two on our standard Pico breadboard

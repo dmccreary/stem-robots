@@ -9,6 +9,7 @@ import random
 import VL53L0X
 from neopixel import NeoPixel
 import framebuf
+import config
 
 # key parameters
 POWER_LEVEL = 30000 # min is 20000 max is 65025
@@ -18,43 +19,44 @@ TURN_TIME = .4 # how long we turn
 MAX_DIST = 300
 
 # The Piezo Buzzer is on GP22
-buzzer=PWM(Pin(22))
+SPEAKER_PIN = config.SPEAKER_PIN
+buzzer=PWM(Pin(SPEAKER_PIN))
 
 # Motor Pins are A: 8,9 and B: 10,11
-RIGHT_FORWARD_PIN = 9
-RIGHT_REVERSE_PIN = 8
-LEFT_FORWARD_PIN = 10
-LEFT_REVERSE_PIN = 11
+RIGHT_FORWARD_PIN = config.RIGHT_FORWARD_PIN
+RIGHT_REVERSE_PIN = config.RIGHT_REVERSE_PIN
+LEFT_FORWARD_PIN = config.LEFT_FORWARD_PIN
+LEFT_REVERSE_PIN = config.LEFT_REVERSE_PIN
 # our PWM objects
 right_forward = PWM(Pin(RIGHT_FORWARD_PIN))
 right_reverse = PWM(Pin(RIGHT_REVERSE_PIN))
 left_forward = PWM(Pin(LEFT_FORWARD_PIN))
 left_reverse = PWM(Pin(LEFT_REVERSE_PIN))
 
-NUMBER_PIXELS = 2
+NUMBER_PIXELS = config.NUMBER_NEOPIXELS
 STATE_MACHINE = 0
-NEOPIXEL_PIN = 18
+NEOPIXEL_PIN = config.NEOPIXEL_PIN
 
 # The Neopixels on the Maker Pi RP2040 are the GRB variety, not RGB
 strip = strip = NeoPixel(Pin(NEOPIXEL_PIN), NUMBER_PIXELS)
 
-TOF_DATA_PIN = 26
-TOF_CLOCK_PIN = 27
+TOF_DATA_PIN = config.I2C_SDA_PIN
+TOF_CLOCK_PIN = config.I2C_SCL_PIN
 
 sda=machine.Pin(TOF_DATA_PIN) # row one on our standard Pico breadboard
 scl=machine.Pin(TOF_CLOCK_PIN) # row two on our standard Pico breadboard
-i2c=machine.I2C(1, sda=sda, scl=scl, freq=400000)
+i2c=machine.I2C(config.I2C_BUS, sda=sda, scl=scl, freq=400000)
 
-WIDTH = 128
-HEIGHT = 64
-SCK=Pin(2)
-SDL=Pin(3)
+WIDTH = config.DISPLAY_WIDTH
+HEIGHT = config.DISPLAY_HEIGHT
+SCK=Pin(config.SCL_PIN)
+SDL=Pin(config.SDA_PIN)
 # servo pins
-RES = machine.Pin(13)
-DC = machine.Pin(14)
-CS = machine.Pin(15)
+RES = machine.Pin(config.RES_PIN)
+DC = machine.Pin(config.DC_PIN)
+CS = machine.Pin(config.CS_PIN)
 
-spi=machine.SPI(0,baudrate=100000,sck=SCK, mosi=SDL)
+spi=machine.SPI(config.SPI_BUS,baudrate=config.SPI_BAUDRATE,sck=SCK, mosi=SDL)
 oled = ssd1306.SSD1306_SPI(WIDTH, HEIGHT, spi, DC, RES, CS)
 
 # Create a VL53L0X object

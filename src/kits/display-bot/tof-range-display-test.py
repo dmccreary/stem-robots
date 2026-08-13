@@ -3,20 +3,21 @@ import time
 from machine import Pin, I2C
 import ssd1306
 import VL53L0X
+import config
 
-sda=machine.Pin(26)
-scl=machine.Pin(27)
-i2c=machine.I2C(1,sda=sda, scl=scl, freq=400000)
+sda=machine.Pin(config.I2C_SDA_PIN)
+scl=machine.Pin(config.I2C_SCL_PIN)
+i2c=machine.I2C(config.I2C_BUS,sda=sda, scl=scl, freq=400000)
 
-WIDTH = 128
-HEIGHT = 64
-SCK=machine.Pin(2)
-SDL=machine.Pin(3)
-spi=machine.SPI(0,baudrate=100000,sck=SCK, mosi=SDL)
+WIDTH = config.DISPLAY_WIDTH
+HEIGHT = config.DISPLAY_HEIGHT
+SCK=machine.Pin(config.SCL_PIN)
+SDL=machine.Pin(config.SDA_PIN)
+spi=machine.SPI(config.SPI_BUS,baudrate=config.SPI_BAUDRATE,sck=SCK, mosi=SDL)
 # servo pins
-RES = machine.Pin(13)
-DC = machine.Pin(14)
-CS = machine.Pin(15)
+RES = machine.Pin(config.RES_PIN)
+DC = machine.Pin(config.DC_PIN)
+CS = machine.Pin(config.CS_PIN)
 oled = ssd1306.SSD1306_SPI(WIDTH, HEIGHT, spi, DC, RES, CS)
 
 tof = VL53L0X.VL53L0X(i2c)

@@ -1,9 +1,10 @@
 import machine
 from neopixel import NeoPixel
 from utime import sleep
+import config
 
-NEOPIXEL_PIN = 18
-NUMBER_PIXELS = 2
+NEOPIXEL_PIN = config.NEOPIXEL_PIN
+NUMBER_PIXELS = config.NUMBER_NEOPIXELS
 
 strip = NeoPixel(machine.Pin(NEOPIXEL_PIN), NUMBER_PIXELS)
 

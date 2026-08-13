@@ -1,15 +1,16 @@
 from machine import Pin, PWM
 from utime import sleep, sleep_us, ticks_us
 from urandom import randint
+import config
 
 # onboard LED
 led_onboard = machine.Pin(25, machine.Pin.OUT)
 
 # lower right pins with USB on top
-RIGHT_FORWARD_PIN = 19
-RIGHT_REVERSE_PIN = 21
-LEFT_FORWARD_PIN = 18
-LEFT_REVERSE_PIN = 20
+RIGHT_FORWARD_PIN = config.RIGHT_FORWARD_PIN
+RIGHT_REVERSE_PIN = config.RIGHT_REVERSE_PIN
+LEFT_FORWARD_PIN = config.LEFT_FORWARD_PIN
+LEFT_REVERSE_PIN = config.LEFT_REVERSE_PIN
 
 # Our PWM objects - one for each motor and direction
 right_forward = PWM(Pin(RIGHT_FORWARD_PIN))
@@ -17,8 +18,8 @@ right_reverse = PWM(Pin(RIGHT_REVERSE_PIN))
 left_forward = PWM(Pin(LEFT_FORWARD_PIN))
 left_reverse = PWM(Pin(LEFT_REVERSE_PIN))
 
-TRIGGER_PIN = 16 # With USB on the top, this pin is the bottom left corner
-ECHO_PIN = 17 # One up from bottom left corner
+TRIGGER_PIN = config.TRIGGER_PIN # With USB on the top, this pin is the bottom left corner
+ECHO_PIN = config.ECHO_PIN # One up from bottom left corner
 
 trigger = Pin(TRIGGER_PIN, Pin.OUT) # send trigger out to sensor
 echo = Pin(ECHO_PIN, Pin.IN) # get the delay interval back

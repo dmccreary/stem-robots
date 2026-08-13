@@ -1,19 +1,20 @@
 from machine import Pin, PWM
 from utime import sleep
+import config
 
 POWER_LEVEL = 65025
 
 # change these numbers until you get the right wheel and direction
-RIGHT_FORWARD_PIN = 9
-RIGHT_REVERSE_PIN = 8
-LEFT_FORWARD_PIN = 10
-LEFT_REVERSE_PIN = 11
+RIGHT_FORWARD_PIN = config.RIGHT_FORWARD_PIN
+RIGHT_REVERSE_PIN = config.RIGHT_REVERSE_PIN
+LEFT_FORWARD_PIN = config.LEFT_FORWARD_PIN
+LEFT_REVERSE_PIN = config.LEFT_REVERSE_PIN
 
 # setup all the PWM objects with a frequency of 50 Hz
-right_forward = PWM(Pin(RIGHT_FORWARD_PIN), freq=50)
-right_reverse = PWM(Pin(RIGHT_REVERSE_PIN), freq=50)
-left_forward = PWM(Pin(LEFT_FORWARD_PIN), freq=50)
-left_reverse = PWM(Pin(LEFT_REVERSE_PIN), freq=50)
+right_forward = PWM(Pin(RIGHT_FORWARD_PIN), freq=config.MOTOR_PWM_FREQUENCY)
+right_reverse = PWM(Pin(RIGHT_REVERSE_PIN), freq=config.MOTOR_PWM_FREQUENCY)
+left_forward = PWM(Pin(LEFT_FORWARD_PIN), freq=config.MOTOR_PWM_FREQUENCY)
+left_reverse = PWM(Pin(LEFT_REVERSE_PIN), freq=config.MOTOR_PWM_FREQUENCY)
 
 def spin_wheel(pwm):
     pwm.duty_u16(POWER_LEVEL)

@@ -2,23 +2,24 @@
 from machine import Pin, PWM
 from time import sleep
 import ssd1306
+import config
 
-spi_sck=machine.Pin(2)
-spi_tx=machine.Pin(3)
-spi=machine.SPI(0,baudrate=100000,sck=spi_sck, mosi=spi_tx)
-CS = machine.Pin(1)
-DC = machine.Pin(4)
-RES = machine.Pin(5)
+spi_sck=machine.Pin(config.SCL_PIN)
+spi_tx=machine.Pin(config.SDA_PIN)
+spi=machine.SPI(config.SPI_BUS,baudrate=config.SPI_BAUDRATE,sck=spi_sck, mosi=spi_tx)
+CS = machine.Pin(config.CS_PIN)
+DC = machine.Pin(config.DC_PIN)
+RES = machine.Pin(config.RES_PIN)
 
-width=128
-height=64
+width=config.DISPLAY_WIDTH
+height=config.DISPLAY_HEIGHT
 oled = ssd1306.SSD1306_SPI(width, height, spi, DC, RES, CS)
 
 # lower right pins with USB on top
-RIGHT_FORWARD_PIN = 18
-RIGHT_REVERSE_PIN = 19
-LEFT_FORWARD_PIN = 21
-LEFT_REVERSE_PIN = 20
+RIGHT_FORWARD_PIN = config.RIGHT_FORWARD_PIN
+RIGHT_REVERSE_PIN = config.RIGHT_REVERSE_PIN
+LEFT_FORWARD_PIN = config.LEFT_FORWARD_PIN
+LEFT_REVERSE_PIN = config.LEFT_REVERSE_PIN
 
 DRIVE_SPEED = 255 # 100 to 255
 

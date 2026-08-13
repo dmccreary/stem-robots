@@ -1,13 +1,14 @@
 import machine
 import ssd1306
+import config
 
-SCK=machine.Pin(2)
-SDL=machine.Pin(3)
-spi=machine.SPI(0,sck=SCK, mosi=SDL)
-CS = machine.Pin(15)
-DC = machine.Pin(14)
-RES = machine.Pin(13)
-oled = ssd1306.SSD1306_SPI(128, 64, spi, DC, RES, CS)
+SCK=machine.Pin(config.SCL_PIN)
+SDL=machine.Pin(config.SDA_PIN)
+spi=machine.SPI(config.SPI_BUS,sck=SCK, mosi=SDL)
+CS = machine.Pin(config.CS_PIN)
+DC = machine.Pin(config.DC_PIN)
+RES = machine.Pin(config.RES_PIN)
+oled = ssd1306.SSD1306_SPI(config.DISPLAY_WIDTH, config.DISPLAY_HEIGHT, spi, DC, RES, CS)
 
 oled.fill(0)
 oled.text('Hello World!', 0, 0)
