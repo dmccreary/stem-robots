@@ -1,7 +1,8 @@
 from machine import Pin, PWM
 from utime import sleep
+import config
 
-SPEAKER_PIN = 22
+SPEAKER_PIN = config.SPEAKER_PIN
 
 speaker = PWM(SPEAKER_PIN)
 

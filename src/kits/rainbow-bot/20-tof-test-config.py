@@ -5,9 +5,9 @@ from time import sleep
 import VL53L0X
 import config
 
-sda=machine.Pin(config.TOF_SDA_PIN) # row one on our standard Pico breadboard
-scl=machine.Pin(config.TOF_SCL_PIN) # row two on our standard Pico breadboard
-i2c=machine.I2C(config.TOF_I2C_BUS, sda=sda, scl=scl)
+sda=machine.Pin(config.I2C_SDA_PIN) # row one on our standard Pico breadboard
+scl=machine.Pin(config.I2C_SCL_PIN) # row two on our standard Pico breadboard
+i2c=machine.I2C(config.I2C_BUS, sda=sda, scl=scl)
 print("Device found at decimal", i2c.scan())
 
 # Create a VL53L0X object

@@ -3,7 +3,7 @@ from utime import sleep
 from neopixel import NeoPixel
 import config
 
-NUMBER_PIXELS = config.NUMBER_PIXELS
+NUMBER_PIXELS = config.NUMBER_NEOPIXELS
 NEOPIXEL_PIN = config.NEOPIXEL_PIN
 strip = NeoPixel(Pin(NEOPIXEL_PIN), NUMBER_PIXELS)
 

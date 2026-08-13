@@ -5,17 +5,18 @@ from utime import sleep
 import ssd1306
 import VL53L0X
 from neopixel import NeoPixel
+import config
 
-WIDTH = 128
-HEIGHT = 64
-SCK=Pin(2)
-SDL=Pin(3)
+WIDTH = config.DISPLAY_WIDTH
+HEIGHT = config.DISPLAY_HEIGHT
+SCK=Pin(config.SCL_PIN)
+SDL=Pin(config.SDA_PIN)
 # servo pins
-RES = machine.Pin(13)
-DC = machine.Pin(14)
-CS = machine.Pin(15)
+RES = machine.Pin(config.RES_PIN)
+DC = machine.Pin(config.DC_PIN)
+CS = machine.Pin(config.CS_PIN)
 
-spi=machine.SPI(0,baudrate=100000,sck=SCK, mosi=SDL)
+spi=machine.SPI(config.SPI_BUS,baudrate=config.SPI_BAUDRATE,sck=SCK, mosi=SDL)
 oled = ssd1306.SSD1306_SPI(WIDTH, HEIGHT, spi, DC, RES, CS)
 
 HALF_HEIGHT = HEIGHT >> 1

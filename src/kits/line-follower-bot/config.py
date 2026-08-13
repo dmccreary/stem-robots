@@ -1,21 +1,14 @@
 # Hardware configuration for the Cytron Maker Pi RP2040
-# Rainbow Bot: motors, a 64-pixel NeoPixel ring, speaker, and a VL53L0X
-# time-of-flight sensor.
+# Line Follower Bot: motors, a speaker, and two digital IR line sensors.
 
 # ---------------------------------------------------------------------------
 # Motor driver (H-bridge on GP8-GP11)
 # ---------------------------------------------------------------------------
-RIGHT_FORWARD_PIN = 9
-RIGHT_REVERSE_PIN = 8
-LEFT_FORWARD_PIN = 10
-LEFT_REVERSE_PIN = 11
+RIGHT_FORWARD_PIN = 11
+RIGHT_REVERSE_PIN = 10
+LEFT_FORWARD_PIN = 8
+LEFT_REVERSE_PIN = 9
 MAX_POWER_LEVEL = 65025
-
-# ---------------------------------------------------------------------------
-# NeoPixel LED ring
-# ---------------------------------------------------------------------------
-NEOPIXEL_PIN = 6
-NUMBER_NEOPIXELS = 64
 
 # ---------------------------------------------------------------------------
 # Piezo speaker
@@ -23,9 +16,7 @@ NUMBER_NEOPIXELS = 64
 SPEAKER_PIN = 22
 
 # ---------------------------------------------------------------------------
-# I2C bus 0 - VL53L0X time-of-flight distance sensor
+# IR line sensors (digital: 0 = over a dark/black line, 1 = over light)
 # ---------------------------------------------------------------------------
-I2C_BUS = 0
-I2C_SDA_PIN = 16
-I2C_SCL_PIN = 17
-TIME_OF_FLIGHT_I2C_ADDRESS = 41
+RIGHT_SENSOR_PIN = 2
+LEFT_SENSOR_PIN = 4

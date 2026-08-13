@@ -16,10 +16,10 @@ left_forward = PWM(Pin(config.LEFT_FORWARD_PIN))
 left_reverse = PWM(Pin(config.LEFT_REVERSE_PIN))
 
 # Set PWM frequency for motors (1000 Hz is good for motors)
-right_forward.freq(1000)
-right_reverse.freq(1000)
-left_forward.freq(1000)
-left_reverse.freq(1000)
+right_forward.freq(config.MOTOR_PWM_FREQUENCY)
+right_reverse.freq(config.MOTOR_PWM_FREQUENCY)
+left_forward.freq(config.MOTOR_PWM_FREQUENCY)
+left_reverse.freq(config.MOTOR_PWM_FREQUENCY)
 
 # NeoPixel setup
 np = neopixel.NeoPixel(Pin(config.NEOPIXEL_PIN), config.NUMBER_NEOPIXELS)

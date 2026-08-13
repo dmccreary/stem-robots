@@ -6,28 +6,34 @@ from time import sleep, sleep_ms
 from urandom import randint
 from neopixel import NeoPixel
 import VL53L0X
+import config
+
+SPEAKER_PIN = config.SPEAKER_PIN
+I2C_SDA_PIN = config.I2C_SDA_PIN
+I2C_SCL_PIN = config.I2C_SCL_PIN
+I2C_BUS = config.I2C_BUS
 
 # Piezo Buzzer is on GP22
-buzzer=PWM(Pin(22))
+buzzer=PWM(Pin(SPEAKER_PIN))
 
 # this is the max power level
-MAX_POWER_LEVEL = 65025
+MAX_POWER_LEVEL = config.MAX_POWER_LEVEL
 DEMO_POWER_LEVEL = MAX_POWER_LEVEL // 2
 
 # Motor Pins are A: 8,9 and B: 10,11
-RIGHT_FORWARD_PIN = 9
-RIGHT_REVERSE_PIN = 8
-LEFT_FORWARD_PIN = 10
-LEFT_REVERSE_PIN = 11
+RIGHT_FORWARD_PIN = config.RIGHT_FORWARD_PIN
+RIGHT_REVERSE_PIN = config.RIGHT_REVERSE_PIN
+LEFT_FORWARD_PIN = config.LEFT_FORWARD_PIN
+LEFT_REVERSE_PIN = config.LEFT_REVERSE_PIN
 
 # our PWM objects
-right_forward = PWM(Pin(RIGHT_FORWARD_PIN), freq=50)
-right_reverse = PWM(Pin(RIGHT_REVERSE_PIN), freq=50)
-left_forward = PWM(Pin(LEFT_FORWARD_PIN), freq=50)
-left_reverse = PWM(Pin(LEFT_REVERSE_PIN), freq=50)
+right_forward = PWM(Pin(RIGHT_FORWARD_PIN), freq=config.MOTOR_PWM_FREQUENCY)
+right_reverse = PWM(Pin(RIGHT_REVERSE_PIN), freq=config.MOTOR_PWM_FREQUENCY)
+left_forward = PWM(Pin(LEFT_FORWARD_PIN), freq=config.MOTOR_PWM_FREQUENCY)
+left_reverse = PWM(Pin(LEFT_REVERSE_PIN), freq=config.MOTOR_PWM_FREQUENCY)
 
-NEOPIXEL_PIN = 18
-NUMBER_PIXELS = 2
+NEOPIXEL_PIN = config.NEOPIXEL_PIN
+NUMBER_PIXELS = config.NUMBER_NEOPIXELS
 
 strip = NeoPixel(Pin(NEOPIXEL_PIN), NUMBER_PIXELS)
 
@@ -68,9 +74,9 @@ def stop():
     turn_motor_off(left_reverse)
 
 # Time of flight sensor is on the I2C bus on Grove connector 0
-sda=machine.Pin(16) # row one on our standard Pico breadboard
-scl=machine.Pin(17) # row two on our standard Pico breadboard
-i2c=machine.I2C(0, sda=sda, scl=scl, freq=400000)
+sda=machine.Pin(I2C_SDA_PIN) # row one on our standard Pico breadboard
+scl=machine.Pin(I2C_SCL_PIN) # row two on our standard Pico breadboard
+i2c=machine.I2C(I2C_BUS, sda=sda, scl=scl, freq=400000)
 print("Device found at decimal", i2c.scan())
 
 delay = .05

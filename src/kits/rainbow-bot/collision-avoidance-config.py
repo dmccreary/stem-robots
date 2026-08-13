@@ -19,10 +19,10 @@ MAX_DIST = 500 # max ToF sensor value that is reasonable without error
 buzzer=PWM(Pin(config.SPEAKER_PIN))
 
 # Motor Pins are A: 8,9 and B: 10,11
-RIGHT_FORWARD_PIN = config.MOTOR_RIGHT_FORWARD_PIN
-RIGHT_REVERSE_PIN = config.MOTOR_RIGHT_REVERSE_PIN
-LEFT_FORWARD_PIN = config.MOTOR_LEFT_FORWARD_PIN
-LEFT_REVERSE_PIN = config.MOTOR_LEFT_REVERSE_PIN
+RIGHT_FORWARD_PIN = config.RIGHT_FORWARD_PIN
+RIGHT_REVERSE_PIN = config.RIGHT_REVERSE_PIN
+LEFT_FORWARD_PIN = config.LEFT_FORWARD_PIN
+LEFT_REVERSE_PIN = config.LEFT_REVERSE_PIN
 
 # our PWM objects
 PWM_FREQUENCY = 50
@@ -38,16 +38,16 @@ left_forward.freq(PWM_FREQUENCY)
 left_reverse = PWM(Pin(LEFT_REVERSE_PIN))
 left_reverse.freq(PWM_FREQUENCY)
 
-PERCENT_COLOR_WHEEL = round(255/config.NUMBER_PIXELS)
+PERCENT_COLOR_WHEEL = round(255/config.NUMBER_NEOPIXELS)
 
 # read from config file here for portability
-NUMBER_PIXELS = config.NUMBER_PIXELS
+NUMBER_PIXELS = config.NUMBER_NEOPIXELS
 
 strip = NeoPixel(machine.Pin(config.NEOPIXEL_PIN), NUMBER_PIXELS)
 
-sda=machine.Pin(config.TOF_SDA_PIN) # row one on our standard Pico breadboard
-scl=machine.Pin(config.TOF_SCL_PIN) # row two on our standard Pico breadboard
-i2c=machine.I2C(config.TOF_I2C_BUS, sda=sda, scl=scl)
+sda=machine.Pin(config.I2C_SDA_PIN) # row one on our standard Pico breadboard
+scl=machine.Pin(config.I2C_SCL_PIN) # row two on our standard Pico breadboard
+i2c=machine.I2C(config.I2C_BUS, sda=sda, scl=scl)
 print("Device found at decimal", i2c.scan())
 # Create a VL53L0X object
 tof = VL53L0X.VL53L0X(i2c)
@@ -140,7 +140,7 @@ def draw_left(counter, wait):
     sleep(wait)
 
 def draw_all_off():
-    for i in range(0, config.NUMBER_PIXELS):
+    for i in range(0, config.NUMBER_NEOPIXELS):
         strip[i] = OFF
     strip.write()
 
