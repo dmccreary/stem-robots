@@ -1,0 +1,62 @@
+# {{KIT_TITLE}}
+
+{{ONE_PARAGRAPH_SUMMARY -- what this kit is, what sensor/hardware it uses, what it teaches. Written plainly; this file is read by students, teachers, and volunteers alike, not just students.}}
+
+## Wiring
+
+| {{PART}} pin | Pico pin | Notes |
+|---|---|---|
+| VCC | 3.3V OUT | |
+| GND | GND | |
+| ... | ... | |
+
+<!--
+If a wire needs to land on a specific GPIO for a hardware reason (a fixed
+I2C bus role, an SPI-only pin, etc.), explain WHY here, not just what pin.
+Real example from src/kits/imu-mpu6050/README.md: the RP2040's I2C1 block
+fixes GPIO10=SDA/GPIO11=SCL, and the probe script auto-detects when those
+are swapped on the breadboard. That kind of concrete debugging note is far
+more useful to a nervous volunteer than a bare pinout table -- if you hit a
+real wiring bug while building this kit, write it down here.
+-->
+
+## Files
+
+| File | Purpose |
+|---|---|
+| `01-{{first_lesson}}.py` | {{what it teaches -- ONE concept}} |
+| `02-{{next_lesson}}.py` | {{builds on 01}} |
+| ... | ... |
+| `config.py` | Centralizes every pin and constant this kit uses. |
+| `upload-code.sh` | Uploads everything onto the Pico's flash in one pass. |
+
+## Uploading
+
+```bash
+./upload-code.sh
+```
+
+After that, any script can be run directly from Thonny (open the file,
+press F5), or headlessly:
+
+```bash
+mpremote connect /dev/cu.usbmodem101 run 01-{{first_lesson}}.py
+```
+
+## For Instructors, Mentors, and Volunteers
+
+<!--
+This section is the part almost every kit in this repo is missing (see
+references/checklist.md). It doesn't need to be long, but it needs to be
+real -- write down the failure you actually expect someone to hit, not a
+generic "check your wiring."
+-->
+
+- **Estimated time:** {{X}} minutes for the full numbered sequence.
+- **Before class:** {{anything that must be prepped ahead of time -- e.g.
+  "flash MicroPython onto every Pico" or "pre-cut jumper wires"}}.
+- **Common failure and how to spot it:** {{a specific symptom -> specific
+  cause -> specific fix, ideally from a real debugging session, not a
+  hypothetical}}.
+- **If a student gets stuck:** {{what to check first -- usually "run
+  01-... and read its output" for a kit that has a diagnostic-first lesson}}.

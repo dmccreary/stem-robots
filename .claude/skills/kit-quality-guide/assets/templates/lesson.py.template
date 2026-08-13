@@ -1,0 +1,32 @@
+# {{NN}}-{{lesson-name}}.py
+#
+# {{One-sentence description of the ONE new concept this lesson introduces.
+# Every lesson should teach exactly one thing -- save combining concepts for
+# the final main.py / main-template.py.}}
+
+from machine import Pin
+import time
+import config
+
+# {{Set up whatever this lesson needs, using config.py names -- never a bare
+# pin number. If this is a diagnostic-first lesson (like 01-probe.py in
+# imu-mpu6050/compass-hmc5883l), this is the right place for it: the very
+# first lesson in a kit should confirm the wiring works before anything
+# else builds on top of it.}}
+
+
+def main():
+    try:
+        while True:
+            # {{the one concept this lesson demonstrates}}
+            time.sleep(0.1)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        # {{clean shutdown -- stop motors, turn off LEDs/sound, release the
+        # sensor. Every looping lesson needs this, not just main.py.}}
+        pass
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,93 @@
+# {{KIT_TITLE}}
+
+{{One or two sentences, in second person, hooking the student with why this kit
+matters -- what will they be able to build/measure/control by the end?}}
+
+<!--
+Structure below follows CONTENT-GENERATION-GUIDELINES.md §1.5 exactly, and
+matches docs/kits/compass-hmc5883l/index.md -- the one kit page in this repo
+that fully implements it. Don't skip the Summary/Concepts Covered/Prerequisites
+block even though most existing kit pages do -- that's a gap, not a norm.
+-->
+
+!!! mascot-welcome "Welcome, maker!"
+    ![Sparky waving](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    {{2-3 sentences, Sparky speaking directly to the student, previewing what
+    they'll build in this lab.}}
+
+## Summary
+
+{{3-5 sentence prose overview at 8th-grade reading level. No code, no bullet
+lists -- see guidelines §1.1-§1.3 for voice and sentence-length rules.}}
+
+## Concepts Covered
+
+This lab covers the following concepts from the learning graph:
+
+1. {{concept}}
+2. {{concept}}
+
+## Prerequisites
+
+This lab builds on concepts from:
+
+- [Chapter N: {{chapter title}}](../../chapters/NN-slug/index.md) -- {{what it
+  contributes}}
+
+## Parts List
+
+| Part | Price | Where to buy |
+|---|---|---|
+| {{part}} | ${{x}} | [{{source}}]({{link}}) |
+
+**Total cost: ${{total}}**
+
+<!--
+Every image in this textbook is an original photo Dan took. If you don't
+have a real photo yet, say so explicitly in a TODO comment for a human to
+fill in -- never substitute a stock or AI-generated image.
+-->
+
+## Wiring
+
+![{{alt text describing the photo}}](../../img/{{path}}.jpg)
+*{{caption -- what the photo shows}}*
+
+| {{Part}} pin | Pico pin | Notes |
+|---|---|---|
+| VCC | 3.3V OUT | |
+| GND | GND | |
+
+## Step 1: {{first concept, e.g. "Scan the I2C bus"}}
+
+{{Explanation, one code example (5-15 lines, runnable as written, using
+config.py pin names -- never hardcoded numbers), then a "try it now" line
+telling the student exactly what to run.}}
+
+```python
+# 01-{{lesson_name}}.py
+```
+
+{{One sentence explaining what the code *does*, not what it *is*.}}
+
+!!! mascot-tip "{{specific tip title}}"
+    ![Sparky with a tip](../../img/mascot/tip.png){ class="mascot-admonition-img" }
+    {{1-3 sentences, specific to this step -- never generic filler.}}
+
+## Step 2: {{next concept}}
+
+{{...repeat the Step N pattern for each numbered lesson in src/kits/<name>/...}}
+
+## Key Takeaways
+
+- {{takeaway}}
+- {{takeaway}}
+
+!!! mascot-celebration "You did it!"
+    ![Sparky celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    {{Summarize what was built and celebrate the milestone.}}
+
+## References
+
+- {{real citation -- datasheet, MicroPython docs, etc. Never fabricate a
+  reference.}}

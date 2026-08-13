@@ -1,0 +1,66 @@
+# Hardware configuration for the {{KIT_TITLE}}.
+#
+# Every lesson in this kit imports from this file instead of repeating pin
+# numbers, so the whole kit's wiring is described in exactly one place.
+# Keep every pin/address/constant here -- if a lesson file needs a magic
+# number, it belongs in config.py, not inline.
+
+from machine import Pin
+
+# ---------------------------------------------------------------------------
+# {{SECTION_1_NAME}}  -- e.g. "Motor driver (H-bridge on GPx-GPy)"
+# ---------------------------------------------------------------------------
+# Robot kits (chassis + motors): keep this naming convention exactly --
+# audit_kit.py and every other kit in the repo expect *_PIN suffixes and
+# this exact set of names.
+# RIGHT_FORWARD_PIN = 9
+# RIGHT_REVERSE_PIN = 8
+# LEFT_FORWARD_PIN = 10
+# LEFT_REVERSE_PIN = 11
+# MOTOR_PWM_FREQUENCY = 50   # project convention -- see CLAUDE.md
+# MAX_POWER_LEVEL = 65025
+
+# ---------------------------------------------------------------------------
+# {{SECTION_2_NAME}}  -- e.g. "NeoPixel LEDs" / "Piezo speaker"
+# ---------------------------------------------------------------------------
+# NEOPIXEL_PIN = 18
+# NUMBER_NEOPIXELS = 2
+# SPEAKER_PIN = 22
+
+# ---------------------------------------------------------------------------
+# {{SECTION_3_NAME}}  -- e.g. "I2C bus N -- <sensor name> sensor"
+# ---------------------------------------------------------------------------
+# I2C_BUS = 0
+# I2C_SDA_PIN = 16
+# I2C_SCL_PIN = 17
+# {{SENSOR}}_I2C_ADDRESS = 0x00
+
+# ---------------------------------------------------------------------------
+# {{SECTION_4_NAME}}  -- e.g. "OLED display (SPI0)"
+# ---------------------------------------------------------------------------
+# Only include this block if the kit has a display. Standalone sensor kits
+# (imu-mpu6050, compass-hmc5883l) put display setup here and leave sensor
+# I2C pins as plain constants below -- see those two kits for the pattern.
+# import ssd1306
+#
+# WIDTH = 128
+# HEIGHT = 64
+# SCL_PIN = 2
+# SDA_PIN = 3
+# RES_PIN = 4
+# DC_PIN = 5
+# CS_PIN = 6
+#
+#
+# def init_display():
+#     from machine import SPI
+#     clock = Pin(SCL_PIN)
+#     data = Pin(SDA_PIN)
+#     res = Pin(RES_PIN)
+#     dc = Pin(DC_PIN)
+#     cs = Pin(CS_PIN)
+#     spi = SPI(0, sck=clock, mosi=data)
+#     return ssd1306.SSD1306_SPI(WIDTH, HEIGHT, spi, dc, res, cs)
+
+# Delete every commented section you don't need, uncomment and fill in the
+# ones you do, and delete this trailing comment block once config.py is real.
