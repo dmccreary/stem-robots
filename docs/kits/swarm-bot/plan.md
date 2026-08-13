@@ -14,8 +14,8 @@ on hand: the **Cytron ROBO-PICO** board running a **Raspberry Pi Pico W**, and t
 The design report's generic bill of materials assumed a separate motor driver
 (TB6612FNG). The ROBO-PICO already has an onboard dual motor driver, LiPo charge
 circuit, buzzer, NeoPixel, and five Grove ports — all visible on its pinout diagram
-and already used by other kits in this repo (`src/kits/wi-fi/config.py`,
-`src/kits/base/config.py`). That simplifies the per-robot BOM to just:
+and already used by other kits in this repo (`src/kits/wi-fi-bot/config.py`,
+`src/kits/base-bot/config.py`). That simplifies the per-robot BOM to just:
 
 | Item | Status |
 |---|---|
@@ -67,7 +67,7 @@ is enough.
 
 ## 4. Software Layout
 
-Follow the numbering convention already used in `src/kits/base/` and `src/kits/wi-fi/`.
+Follow the numbering convention already used in `src/kits/base-bot/` and `src/kits/wi-fi-bot/`.
 Proposed new files:
 
 ```
@@ -113,7 +113,7 @@ LOOP_HZ = 50
 ### Phase 1 — Confirm both IMU chips answer on I2C
 
 1. Wire the IMU per Section 3.
-2. Run the existing I2C scanner pattern (`src/kits/base/09-i2c-scanner-test.py`) but
+2. Run the existing I2C scanner pattern (`src/kits/base-bot/09-i2c-scanner-test.py`) but
    print **all** devices found, not just the first:
 
    ```py
@@ -264,7 +264,7 @@ the IMU is too close to the motors; add a standoff and recalibrate.
 
 ### Phase 7 — Master: WiFi AP + UDP broadcast (`06-master-ap-broadcast.py`)
 
-Reuse the `network` / `socket` patterns already in `src/kits/wi-fi/`, but in
+Reuse the `network` / `socket` patterns already in `src/kits/wi-fi-bot/`, but in
 Access-Point mode broadcasting UDP instead of Station mode serving a TCP web page:
 
 ```py
@@ -345,7 +345,7 @@ def steer(error, base_speed, Kp=0.02):
 
 Feed `left`/`right` into the existing motor pins from `config.py`
 (`RIGHT_FORWARD_PIN`, `LEFT_FORWARD_PIN`, etc.) — same PWM pattern already used in
-`src/kits/base/04-motor-test.py`.
+`src/kits/base-bot/04-motor-test.py`.
 
 ### Phase 10 — Two-robot integration test (`09-swarm-integration-test.py`)
 

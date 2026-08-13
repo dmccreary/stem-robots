@@ -1,4 +1,5 @@
 # Display WiFi Stats
+import machine
 from machine import Pin
 import network
 import ssd1306

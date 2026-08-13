@@ -1,5 +1,6 @@
 # Display Time of Flight Distance Chart On OLED Display
 
+import machine
 from machine import Pin
 from utime import sleep
 import ssd1306

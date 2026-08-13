@@ -18,14 +18,14 @@ The total cost of the kit is about $20.
 
 ## IR Sensors
 
-![](../../img/ir-sensors.png)
+![](ir-sensors.png)
 
 We can purchase IR sensors on eBay for about $1 each in quantity 10.
 The sensors send a digital 0/1 signal to the microcontroller depending on if they are over the line.
 Our job is to write some MicroPython code to keep the robot following the line.
 Each IR sensor has a small trim potentiometer that we must adjust for the correct sensitivity for each room. 
 
-![](../../img/ir-sensor.jpeg)
+![](ir-sensor.jpeg)
 
 Each IR sensor has a small trim potentiometer that we must adjust for the correct sensitivity for each room.  Some
 of our rooms have a white floor with a black line and some

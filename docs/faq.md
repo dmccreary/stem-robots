@@ -638,7 +638,7 @@ Check in this order:
 The most common causes are:
 
 - **Wiring:** Double-check that SDA and SCL are connected to the correct Grove/Dupont pins and that the sensor has power (VCC) and ground (GND).
-- **I2C scanner:** Run the I2C scanner program to verify the sensor appears at address `0x29`. If nothing shows up, the sensor is not communicating. See the [I2C Scanner lab](kits/base/09-i2c-scanner-test.md).
+- **I2C scanner:** Run the I2C scanner program to verify the sensor appears at address `0x29`. If nothing shows up, the sensor is not communicating. See the [I2C Scanner lab](kits/base-bot/09-i2c-scanner-test.md).
 - **Library missing:** The `vl53l0x.py` library file must be uploaded to the robot's flash storage. Check the Files panel in Thonny.
 - **Too close or too far:** The VL53L0X reads reliably between 3 cm and 200 cm. Readings below 3 cm or above 200 cm may return 0 or the maximum value.
 - **Calibration:** A zero-distance offset may be needed. See [Chapter 8](chapters/08-sensors-data-input/index.md).

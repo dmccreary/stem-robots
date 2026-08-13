@@ -15,8 +15,31 @@ Note that the GPIO breakout female header allows us to connect our display cable
 
 ## Source Code
 
-We can use the [base robot source code](https://github.com/dmccreary/stem-robots/tree/main/src/kits/base) as
-a starting point for our wireless robot.
+We can use the [base robot source code](https://github.com/dmccreary/stem-robots/tree/main/src/kits/base-bot) as
+a starting point for our wireless robot. This kit's own source, including the
+web-server labs below and a shared `config.py`, lives in
+[`src/kits/wi-fi-bot/`](https://github.com/dmccreary/stem-robots/tree/main/src/kits/wi-fi-bot).
+
+## Uploading the Code
+
+To copy the whole kit — `config.py`, `secrets.py`, and every script — onto
+the Pico W in one step, run
+[`upload-code.sh`](https://github.com/dmccreary/stem-robots/blob/main/src/kits/wi-fi-bot/upload-code.sh)
+from a terminal:
+
+```bash
+./upload-code.sh
+```
+
+This also uploads `secrets.py` as-is, so edit it with your own SSID and
+password first (see the Secrets File section below). Any single script can
+also be run directly from Thonny, or headlessly with:
+
+```bash
+mpremote connect /dev/cu.usbmodem101 run 70-web-server-test.py
+```
+
+(Your port name may differ — check what shows up when you plug in the Pico.)
 
 ## MicroPython Wireless Functions
 

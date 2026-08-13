@@ -1,5 +1,6 @@
 # Demo for Maker Pi RP2040 board
 
+import machine
 from machine import Pin, PWM
 from time import sleep, sleep_ms
 # for picking a random direction to turn

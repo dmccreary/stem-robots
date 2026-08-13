@@ -1,5 +1,6 @@
 # Test program for VL53L0X
 import time
+import machine
 from machine import Pin, I2C
 import ssd1306
 import VL53L0X

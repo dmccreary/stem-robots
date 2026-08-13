@@ -1,3 +1,4 @@
+import machine
 from machine import Pin, SPI
 import ssd1306
 import config

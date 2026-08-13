@@ -4,11 +4,11 @@ The Grove sensors on our Maker Pi RP2040 only supply 3.3 volts.  So the standard
 
 Using the Grove 4 connection wire the HC-SP04P sensor with the trigger on GPIO-16 (White cable) and the echo on GPIO-17 (Yellow cable),  VCC (Red cable), and GND (Black cable)
 
-![Ultrasonic Sensor](../../img/HC-SP04P_Grove.jpg)
+![Ultrasonic Sensor](HC-SP04P_Grove.jpg)
 
 All wired up 
 
-![Maker Pi RP2040 with sensor](../../img/Maker_Pi_RP2040-Ping.jpg)
+![Maker Pi RP2040 with sensor](Maker_Pi_RP2040-Ping.jpg)
 
 ```
 # Sample code to test HC-SR04 Ultrasonice Ping Sensor
