@@ -994,7 +994,7 @@ The process of using computers to read data from sensors about the world around 
 
 The Pico pinout diagram shows you the ways that each Pin can be used.  Different colors are used for GPIO numbers, I2C, and SPI interfaces.
 
-![](../img/pi-pico-pinout.png)
+![](img/pi-pico-pinout.png)
 
 * [Pinout PDF](https://datasheets.raspberrypi.org/pico/Pico-R3-A4-Pinout.pdf)
 

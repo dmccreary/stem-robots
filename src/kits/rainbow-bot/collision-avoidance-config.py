@@ -1,6 +1,7 @@
 # Collision Avoidance Demo for Cytron Maker Pi RP2040 board
 # Version 3.0 with startup sounds and NeoPixel feedback
 
+import machine
 from machine import Pin,PWM
 from utime import sleep
 import random

@@ -1,3 +1,4 @@
+import machine
 from machine import Pin
 import ssd1306
 import framebuf

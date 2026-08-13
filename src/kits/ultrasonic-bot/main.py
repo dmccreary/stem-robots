@@ -1,3 +1,4 @@
+import machine
 from machine import Pin, PWM
 from utime import sleep, sleep_us, ticks_us
 from urandom import randint

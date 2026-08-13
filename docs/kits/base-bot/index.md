@@ -28,3 +28,23 @@ We find it is more precise and reliable than the older ultrasonic ping sensor.  
 Although there are many variations of our STEM Robot, this
 robot was specifically designed for classrooms that
 don't want to require any soldering and complex wiring.
+
+## Uploading the Code
+
+The source code for every lab in this kit, plus a shared `config.py`, lives in
+[`src/kits/base-bot/`](https://github.com/dmccreary/stem-robots/tree/main/src/kits/base-bot).
+To copy the whole kit onto the Pico in one step, run
+[`upload-code.sh`](https://github.com/dmccreary/stem-robots/blob/main/src/kits/base-bot/upload-code.sh)
+from a terminal:
+
+```bash
+./upload-code.sh
+```
+
+Any single program can also be run directly from Thonny, or headlessly with:
+
+```bash
+mpremote connect /dev/cu.usbmodem101 run 04-motor-test.py
+```
+
+(Your port name may differ — check what shows up when you plug in the Pico.)

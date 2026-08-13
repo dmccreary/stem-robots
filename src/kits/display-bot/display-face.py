@@ -1,5 +1,6 @@
 # Display face with eye with gaze movement
 
+import machine
 from machine import Pin
 from utime import sleep
 import ssd1306

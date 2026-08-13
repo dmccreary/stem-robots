@@ -1,4 +1,5 @@
 # drive forward
+import machine
 from machine import Pin, PWM
 from time import sleep
 import ssd1306

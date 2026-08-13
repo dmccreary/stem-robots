@@ -1,5 +1,6 @@
 # Demo for Maker Pi RP2040 board
 
+import machine
 from machine import Pin,PWM
 from time import sleep
 import VL53L0X
