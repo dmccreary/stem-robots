@@ -846,6 +846,10 @@
         
       
         
+          
+        
+      
+        
       
     
     
@@ -1134,6 +1138,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Ultrasonic Bot
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1143,6 +1158,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uploading-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading the Code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1284,6 +1327,27 @@
   
   <span class="md-ellipsis">
     IMU/MPU6050 Kit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-dof-imu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9-DOF IMU Kit
   </span>
   
 
@@ -1608,6 +1672,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uploading-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading the Code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1626,6 +1707,18 @@
 
 <h1 id="ultrasonic-bot">Ultrasonic Bot</h1>
 <p><a href="https://dmccreary.github.io/micropython/kits/maker-pi-rp2040-robot/11-ping-lab/">Ultrasonic Robot on the MicroPython for Kids Site</a></p>
+<h2 id="uploading-the-code">Uploading the Code</h2>
+<p>The source code for this kit, plus a shared <code>config.py</code>, lives in
+<a href="https://github.com/dmccreary/stem-robots/tree/main/src/kits/ultrasonic-bot"><code>src/kits/ultrasonic-bot/</code></a>.
+To copy the whole kit onto the Pico in one step, run
+<a href="https://github.com/dmccreary/stem-robots/blob/main/src/kits/ultrasonic-bot/upload-code.sh"><code>upload-code.sh</code></a>
+from a terminal:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>./upload-code.sh
+</code></pre></div></td></tr></table></div>
+<p>Any single script can also be run directly from Thonny, or headlessly with:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mpremote<span class="w"> </span>connect<span class="w"> </span>/dev/cu.usbmodem101<span class="w"> </span>run<span class="w"> </span>test-drive-all.py
+</code></pre></div></td></tr></table></div>
+<p>(Your port name may differ — check what shows up when you plug in the Pico.)</p>
 
 
 

@@ -846,6 +846,10 @@
         
       
         
+          
+        
+      
+        
       
     
     
@@ -1390,6 +1394,27 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../9-dof-imu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9-DOF IMU Kit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -1699,6 +1724,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uploading-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading the Code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1723,6 +1765,18 @@ Although it is not full color, it is large and bright enough that we can read th
 <p><a href="display-setup/">Display Setup</a></p>
 <p><a href="tof-range-display-test/">Time of Flight Range Test</a></p>
 <p><a href="display-distance/">Displaying Distance Chart</a></p>
+<h2 id="uploading-the-code">Uploading the Code</h2>
+<p>The source code for every lab in this kit, plus a shared <code>config.py</code>, lives in
+<a href="https://github.com/dmccreary/stem-robots/tree/main/src/kits/display-bot"><code>src/kits/display-bot/</code></a>.
+To copy the whole kit onto the Pico in one step, run
+<a href="https://github.com/dmccreary/stem-robots/blob/main/src/kits/display-bot/upload-code.sh"><code>upload-code.sh</code></a>
+from a terminal:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>./upload-code.sh
+</code></pre></div></td></tr></table></div>
+<p>Any single program can also be run directly from Thonny, or headlessly with:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mpremote<span class="w"> </span>connect<span class="w"> </span>/dev/cu.usbmodem101<span class="w"> </span>run<span class="w"> </span><span class="m">05</span>-display-test.py
+</code></pre></div></td></tr></table></div>
+<p>(Your port name may differ — check what shows up when you plug in the Pico.)</p>
 
 
 

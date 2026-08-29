@@ -1,0 +1,2307 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Resources for teaching computational thinking using low-cost robots. Content licensed Creative Commons ShareAlike Attribution Noncommercial">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/stem-robots/kits/9-dof-imu/">
+      
+      
+        <link rel="prev" href="../imu-mpu6050/">
+      
+      
+        <link rel="next" href="../swarm-bot/plan/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>9-DOF IMU Kit - STEM Robots</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-6SSB9XBXM9"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-6SSB9XBXM9",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-6SSB9XBXM9",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#9-dof-imu-kit" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="STEM Robots" class="md-header__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            STEM Robots
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9-DOF IMU Kit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="STEM Robots" class="md-nav__button md-logo" aria-label="STEM Robots" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    STEM Robots
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../journey-map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Journey Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../setup/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../lessons/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../teachers-guide/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Teacher's Guide
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Robot Kits
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Robot Kits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../base-bot/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Base Robot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../display-bot/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Display Robot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rainbow-bot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rainbow Bot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bump-switch-bot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bump Switch Bot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../line-follower-bot/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Line Follower Bot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adjusta-bot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adjusta Bot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ultrasonic-bot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ultrasonic Bot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../wifi-bot/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    WiFi Bot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../wifi-display-bot/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    WiFi Display Bot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compass-hmc5883l/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compass Kit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imu-mpu6050/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMU/MPU6050 Kit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    9-DOF IMU Kit
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    9-DOF IMU Kit
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parts-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parts List
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meet-the-9-dof-imu-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meet the 9-DOF IMU Module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring-the-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring the Sensor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-01-probepy-confirm-every-chip-answers-on-i2c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1 — 01-probe.py: Confirm Every Chip Answers on I2C
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-02-test-streampy-reading-raw-motion-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2 — 02-test-stream.py: Reading Raw Motion Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../swarm-bot/plan/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Swarm Bot
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../teachers-guide/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Teacher's Guide
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gallery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Photo Gallery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parts-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parts List
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meet-the-9-dof-imu-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meet the 9-DOF IMU Module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring-the-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring the Sensor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-01-probepy-confirm-every-chip-answers-on-i2c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1 — 01-probe.py: Confirm Every Chip Answers on I2C
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-02-test-streampy-reading-raw-motion-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2 — 02-test-stream.py: Reading Raw Motion Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="9-dof-imu-kit">9-DOF IMU Kit</h1>
+<p>Can a robot feel which way it's turning, without a camera or a compass
+needle? This kit wires up a real 9-axis motion sensor to a bare Raspberry Pi
+Pico and proves, with live numbers on the screen, that it can.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome, maker!</p>
+<p><img alt="Sparky waving" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+In this lab, we wire up a real 9-axis motion sensor, confirm every chip
+on it answers over I2C, and stream live gyroscope, accelerometer, and
+magnetometer data to the console. Computational thinking is YOUR
+superpower — let's activate it!</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>In this lab, we bring up a 9-DOF IMU module on a breadboard with a bare
+Raspberry Pi Pico. We start by scanning the I2C bus to confirm all three
+sensor chips are wired correctly, then check each chip's identity to prove
+we're really talking to the parts we expect. Once identity is confirmed, we
+stream raw gyroscope, accelerometer, and magnetometer readings to the
+console and check that they look physically sane. Along the way, we hit —
+and fix — a real hardware bug, because that's what bringing up new hardware
+actually looks like.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This lab covers the following concepts from the learning graph:</p>
+<ol>
+<li>I2C Bus</li>
+<li>I2C Scanner Tool</li>
+<li>9-DOF IMU Overview</li>
+<li>L3GD20 Gyroscope</li>
+<li>LSM303D Accelerometer Magnetometer</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This lab builds on concepts from:</p>
+<ul>
+<li><a href="../../chapters/06-electronics-motors-protocols/">Chapter 6: Electronics, Motors, and Protocols</a> — the I2C bus, addresses, and pull-up resistors</li>
+</ul>
+<p>If you haven't tried a motion sensor before, the
+<a href="../compass-hmc5883l/">Compass Kit</a> and
+<a href="../imu-mpu6050/">IMU/MPU6050 Kit</a> are gentler places to start.</p>
+<h2 id="parts-list">Parts List</h2>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Price</th>
+<th>Where to buy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspberry Pi Pico</td>
+<td><em>(reused from earlier kits)</em></td>
+<td></td>
+</tr>
+<tr>
+<td>Breadboard + jumper wires</td>
+<td><em>(reused from earlier kits)</em></td>
+<td></td>
+</tr>
+<tr>
+<td>"10 DOF" IMU module (L3GD20 + LSM303DLHC + BMP180)</td>
+<td><code>{{TODO: price}}</code></td>
+<td><code>{{TODO: purchase link}}</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total cost:</strong> <code>{{TODO}}</code> — fill in once you have the price/link for the sensor board handy.</p>
+<h2 id="meet-the-9-dof-imu-module">Meet the 9-DOF IMU Module</h2>
+<p><strong>IMU</strong> stands for <strong>Inertial Measurement Unit</strong> — a sensor that answers
+"what am I doing right now?" instead of "what's around me?" It can tell you
+whether something is spinning, tipping, or shaking, without a camera or any
+outside reference point.</p>
+<p><img alt="Top of the 9-DOF IMU module, showing its X/Y/Z axis markings and ten silkscreen-labeled pins" src="board-top.png" />
+<em>The module's silkscreen prints "10 DOF" and marks the axis directions right on the board — use those arrows, not guesswork, when you decide which edge is "front."</em></p>
+<p>This board actually carries <strong>three</strong> separate sensor chips, not one:</p>
+<table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>Senses</th>
+<th>I2C address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L3GD20</strong></td>
+<td>rotation rate (gyroscope) on 3 axes</td>
+<td><code>0x6B</code></td>
+</tr>
+<tr>
+<td><strong>LSM303DLHC</strong></td>
+<td>acceleration and magnetic field (accelerometer + magnetometer) on 3 axes each</td>
+<td><code>0x19</code> (accel), <code>0x1E</code> (mag)</td>
+</tr>
+<tr>
+<td><strong>BMP180</strong></td>
+<td>temperature and air pressure — a bonus chip, not used in this lab</td>
+<td><code>0x77</code></td>
+</tr>
+</tbody>
+</table>
+<p>Three chips, three axes each, on the gyro and accelerometer, plus three
+more on the magnetometer, is where the name <strong>9-DOF</strong> ("nine degrees of
+freedom") comes from. The board's own silkscreen calls it "10 DOF" because
+it's counting the bonus BMP180 too — we only use the first nine axes in this
+lab.</p>
+<p><img alt="Back of the 9-DOF IMU module, listing the chips and the meaning of the GIN/LIN pin prefixes" src="board-bottom.png" />
+<em>The back of the board spells out exactly what's on it — the fastest way to identify a sensor board is to just read the label.</em></p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Why three chips instead of one?</p>
+<p><img alt="Sparky thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+The MPU6050 in an earlier kit packs a gyroscope and accelerometer into a
+single chip with one I2C address. This board's designer instead picked
+two separate, ready-made chips — built by a company called
+STMicroelectronics, which makes sensor chips for products all over the
+world — and wired them to the same two bus wires. That's why this module
+answers at <em>three</em> different I2C addresses instead of one — each chip
+only knows about itself, and it's our code's job to talk to all three.</p>
+</div>
+<p>The board exposes ten pins. The important detail for wiring is that <code>VIN</code>
+takes power <strong>in</strong> (anywhere from 3.3V to 5V, printed right on the back),
+while <code>3Vo</code> is a regulated 3.3V <strong>output</strong> from the board's own onboard
+regulator — a convenience pin for powering something else, not a place to
+feed power in. Leave <code>3Vo</code> unconnected.</p>
+<h2 id="wiring-the-sensor">Wiring the Sensor</h2>
+<table>
+<thead>
+<tr>
+<th>Module pin</th>
+<th>Pico pin</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VIN</td>
+<td>3.3V OUT</td>
+<td>Power in — not <code>3Vo</code></td>
+</tr>
+<tr>
+<td>GND</td>
+<td>GND</td>
+<td></td>
+</tr>
+<tr>
+<td>SDA</td>
+<td>GPIO0</td>
+<td>I2C data</td>
+</tr>
+<tr>
+<td>SCL</td>
+<td>GPIO1</td>
+<td>I2C clock</td>
+</tr>
+<tr>
+<td>GINT</td>
+<td>GPIO11</td>
+<td>Gyro interrupt — wired up, not read by these lessons yet</td>
+</tr>
+<tr>
+<td>GRDY</td>
+<td>GPIO12</td>
+<td>Gyro data-ready — wired up, not read by these lessons yet</td>
+</tr>
+<tr>
+<td>LIN1</td>
+<td>GPIO13</td>
+<td>Accel/mag interrupt 1 — wired up, not read by these lessons yet</td>
+</tr>
+<tr>
+<td>LIN2</td>
+<td>GPIO14</td>
+<td>Accel/mag interrupt 2 — wired up, not read by these lessons yet</td>
+</tr>
+<tr>
+<td>LRDY</td>
+<td>GPIO15</td>
+<td>Accel/mag data-ready — wired up, not read by these lessons yet</td>
+</tr>
+<tr>
+<td>3Vo</td>
+<td><em>(not connected)</em></td>
+<td>Regulated output, not a power input</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">SDA is always an even pin, SCL is always the next odd one</p>
+<p><img alt="Sparky with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+On the RP2040 chip inside the Pico, every I2C data pin lands on an
+even-numbered GPIO and every I2C clock pin lands on the very next
+odd-numbered one — GPIO0/1, GPIO4/5, GPIO8/9, GPIO20/21, and so on. If
+you ever forget which GPIO is SDA and which is SCL, that pattern always
+holds.</p>
+</div>
+<p>Here's a real bug we hit while building this lab, because hardware
+debugging is part of engineering — not a sign something went wrong. A plain
+I2C scan found all four chips right away — but reading an actual register
+from any of them threw <code>OSError: [Errno 5] EIO</code>, every time, at every clock
+speed. The fix wasn't a wiring change at all:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Hardware peripheral - scans fine, but throws EIO on every real read here</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+
+<span class="c1"># Bit-banged software I2C - same pins, same pull-ups, works perfectly</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">SoftI2C</span><span class="p">(</span><span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-warning">
+<p class="admonition-title">A bus that scans but won't read isn't always a pull-up problem</p>
+<p><img alt="Sparky warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+It's tempting to add external pull-up resistors the moment reads start
+failing with <code>EIO</code>. Here's the proof that wasn't the real cause: if weak
+pull-ups were the problem, <code>SoftI2C</code> should have failed too — it uses
+the exact same physical resistors and the exact same clock speed. It
+didn't fail even once. That means the bug lived in the RP2040's hardware
+I2C0 peripheral driver on this board's firmware, not in the electrical
+bus. When a scan works but reads don't, try <code>machine.SoftI2C</code> before
+reaching for resistors.</p>
+</div>
+<h2 id="step-1-01-probepy-confirm-every-chip-answers-on-i2c">Step 1 — 01-probe.py: Confirm Every Chip Answers on I2C</h2>
+<p>Before trusting any sensor reading, we need proof the right chips are
+actually there. <code>01-probe.py</code> scans the bus, then reads an identity value
+back from each chip — because two different boards can share the same I2C
+address by coincidence, and a scan alone can't tell them apart.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">SoftI2C</span><span class="p">(</span><span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span>
+                       <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">devices</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>The gyroscope has a proper <strong>WHO_AM_I</strong> register that always reports a fixed
+value — <code>0xD4</code> for the L3GD20, <code>0xD7</code> for the closely related L3GD20H:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">who</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">GYRO_I2C_ADDRESS</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">WHO_AM_I_REGISTER</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>The accelerometer half of the LSM303DLHC has no identity register at all —
+a real limitation of this chip, not a gap in our code. The closest thing to
+a check is writing a setting and reading it back:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">ACCEL_I2C_ADDRESS</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x57</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">readback</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">ACCEL_I2C_ADDRESS</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>The magnetometer half makes up for it with three fixed identification bytes
+that spell out "H43":</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ida</span><span class="p">,</span> <span class="n">idb</span><span class="p">,</span> <span class="n">idc</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">MAG_I2C_ADDRESS</span><span class="p">,</span> <span class="mh">0x0A</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Try it now:</strong> run <code>01-probe.py</code> in Thonny and press <strong>F5</strong>. You should see
+all four devices found, followed by four identity confirmations and
+<code>TEST PASS - gyroscope, accelerometer, and magnetometer all found and
+identified</code>. If you want a quicker scan-only check while you're wiring
+things up, <code>i2c-scanner-test.py</code> does just the scan, without the identity
+checks.</p>
+<h2 id="step-2-02-test-streampy-reading-raw-motion-data">Step 2 — 02-test-stream.py: Reading Raw Motion Data</h2>
+<p>With identity confirmed, we can trust the readings enough to stream them.
+Two small driver classes — <code>L3GD20</code> and <code>LSM303DLHC</code> — handle the register
+math, so the lesson script itself stays simple:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">gyro</span> <span class="o">=</span> <span class="n">L3GD20</span><span class="p">(</span><span class="n">i2c</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">GYRO_I2C_ADDRESS</span><span class="p">)</span>
+<span class="n">accel_mag</span> <span class="o">=</span> <span class="n">LSM303DLHC</span><span class="p">(</span><span class="n">i2c</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">ACCEL_I2C_ADDRESS</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">MAG_I2C_ADDRESS</span><span class="p">)</span>
+
+<span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">,</span> <span class="n">gz</span> <span class="o">=</span> <span class="n">gyro</span><span class="o">.</span><span class="n">read_dps</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">az</span> <span class="o">=</span> <span class="n">accel_mag</span><span class="o">.</span><span class="n">read_accel_g</span><span class="p">()</span>
+<span class="n">mx</span><span class="p">,</span> <span class="n">my</span><span class="p">,</span> <span class="n">mz</span> <span class="o">=</span> <span class="n">accel_mag</span><span class="o">.</span><span class="n">read_mag_gauss</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p><code>read_dps()</code> returns rotation speed in <strong>degrees per second</strong>. <code>read_accel_g()</code>
+returns acceleration in multiples of Earth's gravity (<strong>g</strong>). <code>read_mag_gauss()</code>
+returns magnetic field strength in <strong>gauss</strong> — but it has to swap two of the
+three bytes it reads first, because the LSM303DLHC's magnetometer registers
+come out in <strong>X, Z, Y</strong> order, exactly the same surprising order the
+HMC5883L used back in the <a href="../compass-hmc5883l/">Compass Kit</a>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">read_mag_gauss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mag_address</span><span class="p">,</span> <span class="n">OUT_X_H_M</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ustruct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;&gt;hhh&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>  <span class="c1"># registers are ordered X, Z, Y</span>
+    <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+<p>Here's a real sample from this bench, sitting still on a table:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>gyro dps:   92.06   19.06   13.66  accel g: -0.06  0.05  0.90  mag gauss: -0.589 -0.730 -1.860
+</code></pre></div></td></tr></table></div>
+<p>The accelerometer's total pull (about 0.90g here) should sit close to 1g at
+rest — ours is a little low because the board wasn't sitting perfectly
+level. The gyroscope reading a steady 92 dps while the board never moved
+looks alarming at first, but it isn't a bug: every cheap <strong>MEMS</strong> gyroscope
+— MEMS means the sensor is a tiny mechanical part, built at the same
+microscopic scale as the rest of the chip — has a fixed <strong>zero-rate bias</strong>,
+an offset baked in from the factory that shows up even sitting perfectly
+still. A future calibration lesson — the same
+technique used for the MPU6050's gyro bias in the
+<a href="../imu-mpu6050/">IMU/MPU6050 Kit</a> — is how you'd measure and
+subtract that bias out.</p>
+<p><strong>Try it now:</strong> run
+<a href="https://github.com/dmccreary/stem-robots/blob/main/src/kits/9-dof-imu/upload-code.sh"><code>upload-code.sh</code></a>
+from a terminal to copy <code>config.py</code>, both numbered lessons, and the shared
+<code>l3gd20.py</code>/<code>lsm303dlhc.py</code> drivers onto the Pico in one step, then run
+<code>02-test-stream.py</code>. Rotate the board and watch the gyro numbers swing; tilt
+it and watch the accelerometer numbers shift.</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>A "9-DOF" IMU module is often two or three separate I2C chips sharing one
+  bus, not one combined chip — each with its own address and its own way of
+  proving its identity.</li>
+<li>A scan finding a device only proves <em>something</em> answered at that address —
+  reading a real identity value (WHO_AM_I, a register readback, or fixed ID
+  bytes) is what proves it's the chip you think it is.</li>
+<li>On the RP2040, SDA is always an even-numbered GPIO and SCL is always the
+  next odd one.</li>
+<li>A bus that scans fine but throws <code>EIO</code> on every real read isn't
+  automatically a pull-up problem — swapping the hardware <code>machine.I2C</code> for
+  bit-banged <code>machine.SoftI2C</code> on the exact same pins and pull-ups is a fast
+  way to tell the difference.</li>
+<li>Every MEMS gyroscope and accelerometer has some amount of built-in error
+  (zero-rate bias, a less-than-1g resting reading) that calibration, not
+  perfect hardware, is what corrects.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You brought up a real 9-axis sensor from scratch!</p>
+<p><img alt="Sparky celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Look at what you just did: you confirmed three real chips over I2C,
+tracked down a genuine peripheral-driver bug instead of reaching for a
+fix that wouldn't have helped, and got nine real axes of motion data
+streaming live. That's the exact kind of hardware bring-up work that
+turns this module into the compass a future swarm of robots will use to
+agree on which way they're all facing.</p>
+</div>
+<h2 id="references">References</h2>
+<p><a href="https://www.st.com/resource/en/datasheet/l3gd20.pdf">L3GD20 3-axis gyroscope — Datasheet</a> - STMicroelectronics. Register map and electrical specifications for the gyroscope used in this lab.</p>
+<p><a href="https://www.st.com/resource/en/datasheet/lsm303dlhc.pdf">LSM303DLHC accelerometer/magnetometer — Datasheet</a> - STMicroelectronics. Register map, the X/Z/Y magnetometer data order, and the identification bytes used in this lab.</p>
+<p><a href="https://docs.micropython.org/en/latest/library/machine.I2C.html">machine.I2C and machine.SoftI2C — MicroPython documentation</a> - official reference for the hardware and bit-banged I2C drivers used in this lab.</p>
+<p><a href="../swarm-bot/plan/">Swarm Robot Build Plan</a> - the L3GD20 + LSM303DLHC module bench-tested here is the same one planned for the swarm robot's WiFi heading-synchronization project.</p>
+<p><a href="https://github.com/dmccreary/stem-robots/tree/main/src/kits/9-dof-imu">Source code for this lab</a> - <code>01-probe.py</code>, <code>02-test-stream.py</code>, <code>i2c-scanner-test.py</code>, <code>config.py</code>, and the shared <code>l3gd20.py</code>/<code>lsm303dlhc.py</code> drivers.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../imu-mpu6050/" class="md-footer__link md-footer__link--prev" aria-label="Previous: IMU/MPU6050 Kit">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                IMU/MPU6050 Kit
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../swarm-bot/plan/" class="md-footer__link md-footer__link--next" aria-label="Next: Build Plan">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Build Plan
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

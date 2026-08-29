@@ -846,6 +846,10 @@
         
       
         
+          
+        
+      
+        
       
     
     
@@ -1390,6 +1394,27 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../9-dof-imu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9-DOF IMU Kit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -1724,6 +1749,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#uploading-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading the Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#micropython-wireless-functions" class="md-nav__link">
     <span class="md-ellipsis">
       MicroPython Wireless Functions
@@ -1813,8 +1847,23 @@ so we can control our robot wirelessly.</p>
 <p><img alt="" src="../../img/cytron-robo-pico-pinout.png" /></p>
 <p>Note that the GPIO breakout female header allows us to connect our display cable directly to the board without using Grove connectors!</p>
 <h2 id="source-code">Source Code</h2>
-<p>We can use the <a href="https://github.com/dmccreary/stem-robots/tree/main/src/kits/base">base robot source code</a> as
-a starting point for our wireless robot.</p>
+<p>We can use the <a href="https://github.com/dmccreary/stem-robots/tree/main/src/kits/base-bot">base robot source code</a> as
+a starting point for our wireless robot. This kit's own source, including the
+web-server labs below and a shared <code>config.py</code>, lives in
+<a href="https://github.com/dmccreary/stem-robots/tree/main/src/kits/wi-fi-bot"><code>src/kits/wi-fi-bot/</code></a>.</p>
+<h2 id="uploading-the-code">Uploading the Code</h2>
+<p>To copy the whole kit — <code>config.py</code>, <code>secrets.py</code>, and every script — onto
+the Pico W in one step, run
+<a href="https://github.com/dmccreary/stem-robots/blob/main/src/kits/wi-fi-bot/upload-code.sh"><code>upload-code.sh</code></a>
+from a terminal:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>./upload-code.sh
+</code></pre></div></td></tr></table></div>
+<p>This also uploads <code>secrets.py</code> as-is, so edit it with your own SSID and
+password first (see the Secrets File section below). Any single script can
+also be run directly from Thonny, or headlessly with:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mpremote<span class="w"> </span>connect<span class="w"> </span>/dev/cu.usbmodem101<span class="w"> </span>run<span class="w"> </span><span class="m">70</span>-web-server-test.py
+</code></pre></div></td></tr></table></div>
+<p>(Your port name may differ — check what shows up when you plug in the Pico.)</p>
 <h2 id="micropython-wireless-functions">MicroPython Wireless Functions</h2>
 <p>When you stop/restart Thonny you MUST make sure you have loaded the Pico "W" version of software.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>MicroPython v1.25.0 on 2025-04-15; Raspberry Pi Pico W with RP2040

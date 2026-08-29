@@ -840,6 +840,10 @@
         
       
         
+          
+        
+      
+        
       
     
     
@@ -1144,9 +1148,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#missing-hardware-photos-broken-image-links" class="md-nav__link">
+  <a href="#missing-hardware-photos-resolved-2026-08-12" class="md-nav__link">
     <span class="md-ellipsis">
-      Missing hardware photos (broken image links)
+      Missing hardware photos — RESOLVED 2026-08-12
     </span>
   </a>
   
@@ -1258,21 +1262,30 @@ file, duplicate files, obvious code bugs, typos) has already been fixed
 directly. The items below need your input — a decision, a photo, real
 hardware to verify against, or a call on scope — before they can be closed
 out.</p>
-<h2 id="missing-hardware-photos-broken-image-links">Missing hardware photos (broken image links)</h2>
-<p>These <code>![]()</code> references point at files that don't exist anywhere in the
-repo. Either supply the photo or remove the reference:</p>
+<h2 id="missing-hardware-photos-resolved-2026-08-12">Missing hardware photos — RESOLVED 2026-08-12</h2>
+<p>All five photos below were recovered from the <code>learning-micropython</code> sibling
+repo this textbook was derived from (same original photos Dan took — see the
+<a href="#from-the-srckits-configpy-standardization-session-2026-08-12"><code>config.py</code> standardization session</a>
+below) and placed beside their markdown files, matching the per-kit image
+convention already used by most other kits:</p>
 <ul>
-<li><a href="kits/base-bot/11-ping-lab.md">base-bot/11-ping-lab.md</a> → <code>../../img/HC-SP04P_Grove.jpg</code>, <code>../../img/Maker_Pi_RP2040-Ping.jpg</code></li>
-<li><a href="../kits/base-bot/07-motor-connection-lab/">base-bot/07-motor-connection-lab.md</a> → <code>../../img/maker-pi-rp2040-motor-driver.jpg</code></li>
-<li><a href="../kits/line-follower-bot/25-line-follower/">line-follower-bot/25-line-follower.md</a> → <code>../../img/ir-sensors.png</code>, <code>../../img/ir-sensor.jpeg</code></li>
+<li><a href="../kits/ultrasonic-bot/11-ping-lab/">ultrasonic-bot/11-ping-lab.md</a> → <code>HC-SP04P_Grove.jpg</code>, <code>Maker_Pi_RP2040-Ping.jpg</code> (this page moved from <code>base-bot/</code> to <code>ultrasonic-bot/</code> at some point after this list was first generated; both images now live directly in <code>kits/ultrasonic-bot/</code>)</li>
+<li><a href="../kits/base-bot/07-motor-connection-lab/">base-bot/07-motor-connection-lab.md</a> → <code>maker-pi-rp2040-motor-driver.jpg</code></li>
+<li><a href="../kits/line-follower-bot/25-line-follower/">line-follower-bot/25-line-follower.md</a> → <code>ir-sensors.png</code>, <code>ir-sensor.jpeg</code></li>
 </ul>
+<p>A full site-wide scan for broken <code>![]()</code> targets after this fix found two
+more, also fixed: <code>glossary.md</code> and <code>learning-graph/mascot-render-test.md</code>
+both used a relative path one directory level too deep (<code>../../img/...</code>
+instead of <code>../img/...</code>), pointing outside <code>docs/</code> entirely — not missing
+files, just a path bug. <code>pi-pico-pinout.png</code> (used by <code>glossary.md</code>) also
+had to be recovered from the sibling repo the same way.</p>
 <h2 id="orphaned-base-bot-pages-keep-or-cut">Orphaned base-bot pages — keep or cut?</h2>
 <p>Four lab pages exist under <code>kits/base-bot/</code> but are not in the <code>mkdocs.yml</code>
 nav, so they're unreachable from the site (I left them out rather than
 guessing your intent):</p>
 <ul>
 <li><a href="../kits/base-bot/08-servo-lab/">base-bot/08-servo-lab.md</a> — servo control lab</li>
-<li><a href="kits/base-bot/11-ping-lab.md">base-bot/11-ping-lab.md</a> — ultrasonic ping sensor test</li>
+<li><a href="../kits/ultrasonic-bot/11-ping-lab/">ultrasonic-bot/11-ping-lab.md</a> — ultrasonic ping sensor test (this page has since moved from <code>base-bot/</code> to <code>ultrasonic-bot/</code>, and its broken photos are now fixed — see above — but it's still not wired into the <code>mkdocs.yml</code> nav)</li>
 <li><a href="../kits/base-bot/21-collision-avoidance-ping/">base-bot/21-collision-avoidance-ping.md</a> — collision avoidance using the ping sensor instead of time-of-flight</li>
 <li><a href="../kits/base-bot/24-ping-servo-meter/">base-bot/24-ping-servo-meter.md</a> — ping + servo + OLED distance meter</li>
 </ul>
@@ -1318,17 +1331,23 @@ same bar, and in what order.</p>
 <h2 id="srckits-naming-still-doesnt-quite-match-docskits"><code>src/kits/</code> naming still doesn't quite match <code>docs/kits/</code></h2>
 <p>The <code>-bot</code> renaming convention (recorded in CLAUDE.md) applies to
 <code>docs/kits/</code>. The <code>src/kits/</code> folders were renamed too, but not to matching
-names: <code>src/kits/wi-fi-bot/</code> vs <code>docs/kits/wifi-bot/</code> (hyphen differs), and
-<code>src/kits/line-follower-bot/</code> currently exists but is empty. Decide whether
-<code>src/</code> should match <code>docs/</code> exactly, and if so what should live in the empty
-<code>line-follower-bot</code> source folder (right now that lab's code lives inline in
-the markdown, not as separate <code>.py</code> files like other kits).</p>
+names: <code>src/kits/wi-fi-bot/</code> vs <code>docs/kits/wifi-bot/</code> (hyphen differs).
+Decide whether <code>src/</code> should match <code>docs/</code> exactly, and if so whether to
+rename the folder or just leave a note explaining the mismatch.</p>
+<p>(Previously this item also noted <code>src/kits/line-follower-bot/</code> was empty —
+it's now populated with a full set of scripts and a <code>config.py</code>, ported over
+from a sibling repo during the 2026-08-12 config-standardization session
+below, so that part is resolved.)</p>
 <h2 id="ultrasonic-bot-overlaps-with-base-bots-ping-lab">Ultrasonic Bot overlaps with base-bot's ping lab</h2>
-<p><code>kits/ultrasonic-bot/index.md</code> is a one-line stub linking to an external
-site, while the real local content for ultrasonic/ping sensing already lives
-in <code>kits/base-bot/11-ping-lab.md</code> (currently orphaned, see above). Decide
-whether Ultrasonic Bot should be its own fleshed-out kit page, or whether it
-should just point at (or absorb) the base-bot ping lab.</p>
+<p><code>kits/ultrasonic-bot/index.md</code> is mostly a stub linking to an external site
+(I added an "Uploading the Code" section pointing at the new
+<code>src/kits/ultrasonic-bot/upload-code.sh</code>, but left the rest alone — see
+below). The real local content for ultrasonic/ping sensing already lives in
+<code>kits/ultrasonic-bot/11-ping-lab.md</code> (moved there from <code>base-bot/</code> since this
+item was first written, and its broken photos are now fixed — see above —
+but it's still orphaned from the nav, see above). Decide whether Ultrasonic
+Bot's <code>index.md</code> should absorb/link to <code>11-ping-lab.md</code> directly, or whether
+it needs its own separate walkthrough content.</p>
 <h2 id="base-bot-with-8-element-neopixel-has-no-page">"Base Bot with 8-Element NeoPixel" has no page</h2>
 <p>The section in <a href="../kits/">kits/index.md</a> describes a Base Bot variant
 with an 8-element NeoPixel strip but, unlike every other section, has no
@@ -1342,6 +1361,76 @@ corrected a print statement that said "turning left" while calling the
 <code>right()</code> function. I could not verify on real hardware that turning right
 is in fact the correct response when the right sensor reads white — please
 confirm on the bench before trusting it in front of a class.</p>
+<hr />
+<h1 id="from-the-srckits-configpy-standardization-session-2026-08-12">From the <code>src/kits/</code> config.py standardization session (2026-08-12)</h1>
+<p>A follow-up session gave every kit under <code>src/kits/*-bot/</code> (plus
+<code>line-follower-bot/</code>) a standardized <code>config.py</code>, an <code>upload-code.sh</code>, and a
+<code>README.md</code> — see <a href="../logs/kit-cleanup-tasks.md"><code>logs/kit-cleanup-tasks.md</code></a>
+for the full write-up. That work surfaced a few more open items.</p>
+<h2 id="docs-dont-mention-the-new-upload-workflow-yet-resolved-2026-08-12">Docs don't mention the new upload workflow yet — RESOLVED 2026-08-12</h2>
+<p>Added an "Uploading the Code" section (matching the <code>imu-mpu6050</code> wording —
+<code>./upload-code.sh</code>, plus the <code>mpremote ... run</code> pattern for a single script)
+to all 7 remaining kit <code>index.md</code> pages: <code>base-bot</code>, <code>display-bot</code>,
+<code>rainbow-bot</code>, <code>ultrasonic-bot</code>, <code>wifi-bot</code>, <code>wifi-display-bot</code>,
+<code>line-follower-bot</code>. For the two Wi-Fi kits, the section also notes that
+<code>upload-code.sh</code> pushes <code>secrets.py</code> as-is, so edit it with real credentials
+first.</p>
+<h2 id="stale-pre-rename-srckits-paths-in-docs-resolved-2026-08-12">Stale pre-rename <code>src/kits/</code> paths in docs — RESOLVED 2026-08-12</h2>
+<p>These predated the <code>-bot</code> rename and were missed by the earlier stale-link
+cleanup — all fixed:</p>
+<ul>
+<li><a href="../kits/wifi-bot/"><code>kits/wifi-bot/index.md</code></a> linked to
+  <code>src/kits/base</code>, now <code>src/kits/base-bot</code>.</li>
+<li><a href="../kits/swarm-bot/plan/"><code>kits/swarm-bot/plan.md</code></a> referenced
+  <code>src/kits/base/</code> and <code>src/kits/wi-fi/</code> in four places, now
+  <code>src/kits/base-bot/</code> and <code>src/kits/wi-fi-bot/</code>.</li>
+<li>Also found by the same sweep: <a href="../faq/"><code>faq.md</code></a> linked to
+  <code>kits/base/09-i2c-scanner-test.md</code> (a docs-internal link, not a
+  source-code path), now <code>kits/base-bot/09-i2c-scanner-test.md</code>.</li>
+</ul>
+<p>A <code>mkdocs build --strict</code> pass confirms these were the only ones — no
+remaining un-suffixed <code>kits/base/</code> or <code>src/kits/base/</code>-style references
+anywhere in <code>docs/</code>.</p>
+<h2 id="hardware-pin-corrections-need-a-bench-check">Hardware pin corrections need a bench check</h2>
+<p>Two kits had pin values corrected this session by reasoning from code/docs,
+not by testing on physical hardware:</p>
+<ul>
+<li><strong><code>ultrasonic-bot</code></strong>: <code>stop-motors.py</code> and <code>test-drive-all.py</code> previously
+  hardcoded motor pins that disagreed with <code>main.py</code>; <code>display-logo-ping.py</code>
+  used different HC-SR04 trigger/echo pins than <code>main.py</code>. All three were
+  changed to match <code>main.py</code> (treated as canonical since it's what
+  MicroPython boots, and it matches the <code>11-ping-lab.md</code> doc page). Please
+  verify on the bench that this is actually correct for your wiring.</li>
+<li><strong><code>wifi-display-bot</code></strong>: this kit never had a <code>config.py</code>, and its motor,
+  NeoPixel, and speaker pins were never hardcoded anywhere in its existing
+  code either — the new <code>config.py</code> values (motors on GP8-GP11, NeoPixel on
+  GP18, speaker on GP22) are inferred from the same layout used by
+  <code>base-bot</code>/<code>display-bot</code>/<code>wi-fi-bot</code>, not confirmed against this kit's own
+  hardware. Please verify before trusting it in front of a class.</li>
+</ul>
+<h2 id="missing-import-machine-bug-resolved-2026-08-12-wider-than-first-thought">Missing <code>import machine</code> bug — RESOLVED 2026-08-12, wider than first thought</h2>
+<p>The originally-flagged <code>display-bot</code> bug (<code>display-dist-chart.py</code>,
+<code>display-face.py</code>, <code>main.py</code>, <code>tof-range-display-test.py</code> — all did
+<code>from machine import Pin</code> but then called <code>machine.Pin(...)</code> /
+<code>machine.I2C(...)</code> elsewhere without a plain <code>import machine</code>, which should
+raise <code>NameError</code> on real hardware) is fixed.</p>
+<p>A repo-wide sweep for the same pattern turned up <strong>10 more instances</strong>,
+all fixed the same way (just adding <code>import machine</code>):
+<code>rainbow-bot/collision-avoidance-config.py</code>,
+<code>rainbow-bot/20-tof-test-config.py</code>,
+<code>wifi-display-bot/18-display-hello-world.py</code>,
+<code>wifi-display-bot/20-display-wifi.py</code>,
+<code>wifi-display-bot/19-display-hello-world-config.py</code>,
+<code>ultrasonic-bot/display-logo-ping.py</code>, <code>ultrasonic-bot/main.py</code>,
+<code>ultrasonic-bot/test-drive-all.py</code>, <code>base-bot/50-collision-avoidance-tof.py</code>,
+<code>base-bot/main.py</code>.</p>
+<p>The same sweep also found this bug in <code>src/kits/8-pixel/</code> (6 files) —
+<strong>deliberately left alone</strong>: that folder has zero references anywhere in
+<code>docs/</code> or <code>mkdocs.yml</code>, so it looks like unpublished/legacy code tied up in
+the still-open "Rainbow Bot has no real lab content" and "'Base Bot with
+8-Element NeoPixel' has no page" decisions above. Fixing bugs in code that
+might get deleted felt like the wrong kind of "helpful," so it's called out
+here instead.</p>
 
 
 
