@@ -1,0 +1,122 @@
+# {{NN}}-probe.py
+#
+# Confirms {{SENSOR_NAME}} is wired correctly and is really the chip we
+# think it is, before any other lesson trusts its data. Modeled on
+# src/kits/9-dof-imu/01-probe.py, src/kits/imu-mpu6050/01-probe.py, and
+# src/kits/compass-hmc5883l/01-probe.py.
+import sys
+import os
+import gc
+import machine
+import config
+
+# {{SENSOR_NAME}} wiring under test:
+#   VCC/VIN -> Pico 3.3V OUT (double-check this isn't a regulated OUTPUT
+#              pin on the sensor board - some boards break one out right
+#              next to the real power input and it's an easy mix-up)
+#   GND     -> Pico GND
+#   SDA     -> GPIO{{SDA_PIN}} ({{I2C_BUS_LABEL}} SDA)
+#   SCL     -> GPIO{{SCL_PIN}} ({{I2C_BUS_LABEL}} SCL)
+#   {{...list any other pins the user wired (interrupt/data-ready/etc),
+#      noting plainly if they're wired but not read by these lessons yet.}}
+
+print("=" * 50)
+print("Board / system info")
+print("=" * 50)
+u = os.uname()
+print("sysname :", u.sysname)
+print("nodename:", u.nodename)
+print("release :", u.release)
+print("version :", u.version)
+print("machine :", u.machine)
+print("platform:", sys.platform)
+
+gc.collect()
+free = gc.mem_free()
+alloc = gc.mem_alloc()
+print()
+print("RAM free : {} bytes ({:.1f} KB)".format(free, free / 1024))
+print("RAM used : {} bytes ({:.1f} KB)".format(alloc, alloc / 1024))
+print("RAM total: {} bytes ({:.1f} KB)".format(free + alloc, (free + alloc) / 1024))
+
+print()
+print("=" * 50)
+print("Raw pin level check (SDA=GPIO{}, SCL=GPIO{}, internal pull-ups enabled)".format(
+    config.I2C_SDA_PIN, config.I2C_SCL_PIN))
+print("=" * 50)
+sda_raw = machine.Pin(config.I2C_SDA_PIN, machine.Pin.IN, machine.Pin.PULL_UP)
+scl_raw = machine.Pin(config.I2C_SCL_PIN, machine.Pin.IN, machine.Pin.PULL_UP)
+print("SDA idle level:", sda_raw.value(), "(1 = pulled high as expected, 0 = stuck low / shorted / no pull-up reaching this net)")
+print("SCL idle level:", scl_raw.value(), "(1 = pulled high as expected, 0 = stuck low / shorted / no pull-up reaching this net)")
+if sda_raw.value() == 0 or scl_raw.value() == 0:
+    print("WARNING: a line is stuck low. With only the Pico's internal pull-up")
+    print("in the circuit, this points to a short, a reversed/miswired pin,")
+    print("or a dead/backwards module pulling the line down - not a missing")
+    print("external pull-up.")
+
+print()
+print("=" * 50)
+print("I2C scan (SDA=GPIO{}, SCL=GPIO{})".format(config.I2C_SDA_PIN, config.I2C_SCL_PIN))
+print("=" * 50)
+# Start with machine.I2C (the hardware peripheral). If a real read/write
+# later throws "OSError: [Errno 5] EIO" on every device despite a clean
+# scan here, that's a known real failure mode - see
+# .claude/skills/add-robotics-sensor/references/hardware-bringup.md before
+# assuming a pull-up problem. The fix, confirmed on real hardware, is
+# switching every i2c call in this kit to machine.SoftI2C on the same pins.
+i2c = machine.I2C(0, sda=machine.Pin(config.I2C_SDA_PIN), scl=machine.Pin(config.I2C_SCL_PIN), freq=100000)
+
+devices = i2c.scan()
+
+if not devices:
+    print("No I2C devices found.")
+    print("Check wiring: power, GND, SDA->GPIO{}, SCL->GPIO{}".format(
+        config.I2C_SDA_PIN, config.I2C_SCL_PIN))
+    print("TEST FAIL")
+else:
+    print("Found {} device(s):".format(len(devices)))
+    for addr in devices:
+        marker = ""
+        # {{Add one elif per expected chip address, e.g.:}}
+        # if addr == config.{{CHIP}}_I2C_ADDRESS:
+        #     marker = "  <-- {{CHIP_NAME}}"
+        print("  decimal {:3d}  hex 0x{:02X}{}".format(addr, addr, marker))
+
+    print()
+    print("=" * 50)
+    print("Identity checks")
+    print("=" * 50)
+    # {{For each chip, use whichever identity technique its datasheet
+    #   actually supports - don't assume WHO_AM_I exists on every chip:}}
+
+    # --- Technique A: a WHO_AM_I-style register with a fixed value -------
+    # if config.{{CHIP}}_I2C_ADDRESS in devices:
+    #     who = i2c.readfrom_mem(config.{{CHIP}}_I2C_ADDRESS, config.{{CHIP}}_WHO_AM_I_REGISTER, 1)[0]
+    #     if who == config.{{CHIP}}_WHO_AM_I_EXPECTED:
+    #         print("{{CHIP_NAME}} WHO_AM_I: 0x{:02X} - confirmed".format(who))
+    #     else:
+    #         print("{{CHIP_NAME}} WHO_AM_I: 0x{:02X} - unexpected value".format(who))
+    # else:
+    #     print("No device at {{CHIP_NAME}} address 0x{:02X}".format(config.{{CHIP}}_I2C_ADDRESS))
+
+    # --- Technique B: no identity register - write a setting, read it back
+    # if config.{{CHIP}}_I2C_ADDRESS in devices:
+    #     i2c.writeto_mem(config.{{CHIP}}_I2C_ADDRESS, {{SOME_CTRL_REGISTER}}, bytes([{{VALUE}}]))
+    #     readback = i2c.readfrom_mem(config.{{CHIP}}_I2C_ADDRESS, {{SOME_CTRL_REGISTER}}, 1)[0]
+    #     if readback == {{VALUE}}:
+    #         print("{{CHIP_NAME}} register readback confirmed")
+    #     else:
+    #         print("{{CHIP_NAME}} register readback: 0x{:02X} - unexpected".format(readback))
+
+    # --- Technique C: fixed identification bytes at a known address ------
+    # if config.{{CHIP}}_I2C_ADDRESS in devices:
+    #     idbytes = i2c.readfrom_mem(config.{{CHIP}}_I2C_ADDRESS, {{ID_REGISTER}}, {{N}})
+    #     if tuple(idbytes) == {{EXPECTED_TUPLE}}:
+    #         print("{{CHIP_NAME}} identification bytes confirmed")
+    #     else:
+    #         print("{{CHIP_NAME}} identification bytes unexpected:", [hex(b) for b in idbytes])
+
+    print()
+    # {{Overall pass/fail once every expected chip's identity check is in}}
+    # print("TEST PASS - ..." )
+    # print("TEST FAIL - expected devices at ...")

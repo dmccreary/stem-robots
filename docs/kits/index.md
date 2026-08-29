@@ -93,6 +93,16 @@ students love this little but mighty kit!
 
 [Motion Sensor Kit](./imu-mpu6050/index.md)
 
+## 9-DOF IMU Kit
+
+This kit wires up a full 9-axis motion sensor — a gyroscope plus a combined
+accelerometer/magnetometer, on two separate chips sharing one I2C bus — to a
+bare Pico on a breadboard. It's not a complete robot either; it's the bench
+test that proves the sensor works before it becomes the compass for a
+future swarm of robots.
+
+[9-DOF IMU Kit](./9-dof-imu/index.md)
+
 ## Rainbow Bot
 
 We add a colorful 8x8 NeoPixel matrix to the base robot for
