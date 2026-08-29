@@ -172,6 +172,7 @@ nav:
 
     - Compass Kit: kits/compass-hmc5883l/index.md
     - IMU/MPU6050 Kit: kits/imu-mpu6050/index.md
+    - 9-DOF IMU Kit: kits/9-dof-imu/index.md
 
     - Swarm Bot:
       - Build Plan: kits/swarm-bot/plan.md
