@@ -3,26 +3,35 @@ import struct
 import time
 from machine import Pin, I2S
 
-# MAX98357A I2S amplifier wiring:
-#   BCLK -> GPIO11 (bit clock)
-#   LRC  -> GPIO12 (word select / left-right clock)
-#   DIN  -> GPIO13 (serial audio data, Pico -> amp)
-#   GAIN -> GPIO14 (floating = default 9dB gain)
-#   SD   -> GPIO15 (shutdown control: HIGH = enabled, LOW = muted)
+# MAX98357A I2S amplifier wiring (tested on a plain Raspberry Pi Pico):
+#   BCLK -> GPIO2 (bit clock)
+#   LRC  -> GPIO3 (word select / left-right clock)
+#   DIN  -> GPIO4 (serial audio data, Pico -> amp)
+#   GAIN -> GPIO5 (floating = default 9dB gain)
+#   SD   -> GPIO6 (shutdown control: HIGH = enabled, LOW = muted)
 #   GND  -> Pico GND
 #   VIN  -> Pico VBUS (5V)
 #
-# BCLK and LRC are swapped relative to the amp board's left-to-right pin
-# order because MicroPython's rp2 I2S driver requires ws (LRC) to be
-# exactly one GPIO number higher than sck (BCLK).
+# MicroPython's rp2 I2S driver requires ws (LRC) to be exactly one GPIO
+# number higher than sck (BCLK), which GPIO2/3 satisfies.
+#
+# An earlier version of this file used GPIO11-15 and produced no sound on
+# two separate Pico boards, even though I2S init and write() never raised
+# an error. Moving to GPIO2-6 fixed it, but the actual cause was never
+# confirmed - on a plain Pico, GPIO11-15 have no special function, so it
+# was most likely a wiring mistake on the original pin range rather than
+# anything inherent to those GPIOs. (If this ever runs on a Cytron Maker
+# Pi RP2040 instead of a plain Pico, note that board hardwires GPIO8-11 to
+# its onboard motor driver and GPIO12-15 to its onboard servo headers, so
+# GPIO2-6 is the safe choice there too.)
 #
 # Self-contained on purpose (pins inlined, not imported from config.py) so
 # it can be run standalone from Thonny or `mpremote run`.
-BCLK_PIN = 11
-LRC_PIN = 12
-DIN_PIN = 13
-GAIN_PIN = 14
-SD_PIN = 15
+BCLK_PIN = 2
+LRC_PIN = 3
+DIN_PIN = 4
+GAIN_PIN = 5
+SD_PIN = 6
 
 I2S_ID = 0
 SAMPLE_RATE_HZ = 16000
