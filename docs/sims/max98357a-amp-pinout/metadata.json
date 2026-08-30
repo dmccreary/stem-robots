@@ -1,0 +1,38 @@
+{
+  "title": "MAX98357A Amplifier Pinout",
+  "description": "Students will identify each pin and component on the MAX98357A I2S amplifier breakout board and explain what it does in the audio circuit.",
+  "creator": "Dan McCreary STEM Robots",
+  "date": "2026-08-30",
+  "subject": [
+    "Robotics",
+    "Physical Computing",
+    "Audio Electronics",
+    "MicroPython"
+  ],
+  "type": "Interactive Infographic",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "max98357a-amp-pinout",
+  "library": "diagram.js",
+  "canvasHeight": 1191,
+  "bloomLevel": "Understand (L2) — Explain the purpose of each pin on the MAX98357A amplifier board.",
+  "bloomVerb": "Explain",
+  "completion_status": "implemented",
+  "educational": {
+    "gradeLevel": "Middle School to High School (grades 6-12)",
+    "subjectArea": "STEM Robotics / Physical Computing / Audio Electronics",
+    "learningObjectives": [
+      "Students will identify each pin and component on the MAX98357A amplifier board.",
+      "Students will explain why the speaker terminal, the amplifier chip, and each of the seven header pins are needed to make sound."
+    ],
+    "bloomTaxonomy": "Understand (L2) — Explain the purpose of each pin on the MAX98357A amplifier board.",
+    "prerequisites": "Familiarity with the MAX98357A Amp Kit and basic I2S/digital-audio vocabulary from the kit's lessons.",
+    "duration": "5-15 minutes"
+  },
+  "pedagogical": {
+    "interactionPattern": "Hover-to-explore callout overlay on a real photo of the board, with an optional quiz mode",
+    "rationale": "Letting students hover each real pin/pad on an actual photo of the board (rather than a schematic) ties the abstract signal names (BCLK, LRC, DIN, GAIN, SD) to the physical solder pads they will actually wire before they touch the hardware.",
+    "assessment": "Quiz mode asks students to identify each labeled part from its visual hint alone."
+  }
+}

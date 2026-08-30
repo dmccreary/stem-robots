@@ -60,12 +60,18 @@ Each robot kit uses a `config.py` file defining hardware pin assignments and con
 
 ## Content Generation
 
-Before generating any student-facing or instructor-facing content, read:
+**MUST READ FIRST:** Any process — whether Claude Code directly, a skill
+(chapter generator, quiz generator, glossary generator, FAQ generator, etc.),
+or a subagent — that generates or edits user-facing content (student-facing
+chapters, quizzes, glossary entries, FAQs, or instructor-facing guides) MUST
+read the following file before writing or editing that content:
 
 > **[`CONTENT-GENERATION-GUIDELINES.md`](CONTENT-GENERATION-GUIDELINES.md)**
 
 That file defines reading levels, voice, mascot usage (Sparky), code example
 rules, chapter structure, and instructor guide standards for this project.
+This requirement is not optional and applies regardless of which tool or
+skill is doing the generation.
 
 ## Development Notes
 

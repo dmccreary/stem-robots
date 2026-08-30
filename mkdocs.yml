@@ -104,6 +104,7 @@ nav:
     - H-Bridge Switch States: sims/h-bridge-simulator/index.md
     - Learning Graph Viewer: sims/graph-viewer/index.md
     - List Index Explorer: sims/list-index-explorer/index.md
+    - MAX98357A Amplifier Pinout: sims/max98357a-amp-pinout/index.md
     - MicroPython in the Stack: sims/micropython-stack-diagram/index.md
     - MicroSim Template: sims/template/index.md
     - OLED Coordinate System Explorer: sims/oled-coordinate-explorer/index.md
@@ -176,12 +177,12 @@ nav:
 
     - MAX98357A Amp Kit:
       - Introduction: kits/max98357a-amp/index.md
-      - "Lab 0: Meet Your Kit": kits/max98357a-amp/00-meet-your-kit.md
-      - "Lab 1: Your First Sound": kits/max98357a-amp/01-your-first-sound.md
-      - "Lab 2: Press the Button": kits/max98357a-amp/02-press-the-button.md
-      - "Lab 3: Light Up the Display": kits/max98357a-amp/03-light-up-the-display.md
-      - "Lab 4: Turn the Dial": kits/max98357a-amp/04-turn-the-dial.md
-      - "Lab 5: Volume Control Lab": kits/max98357a-amp/05-volume-control-lab.md
+      - "Lab 1: Meet Your Kit": kits/max98357a-amp/01-meet-your-kit.md
+      - "Lab 2: Your First Sound": kits/max98357a-amp/02-your-first-sound.md
+      - "Lab 3: Press the Button": kits/max98357a-amp/03-press-the-button.md
+      - "Lab 4: Light Up the Display": kits/max98357a-amp/04-light-up-the-display.md
+      - "Lab 5: Turn the Dial": kits/max98357a-amp/05-turn-the-dial.md
+      - "Lab 6: Volume Control Lab": kits/max98357a-amp/06-volume-control-lab.md
 
     - Swarm Bot:
       - Build Plan: kits/swarm-bot/plan.md
@@ -253,6 +254,8 @@ markdown_extensions:
 extra_css:
     - css/extra.css
     - css/mascot.css
+extra_javascript:
+    - js/extra.js
 copyright: Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
 extra:
   schema: https://dmccreary.github.io/intelligent-textbooks/ns/textbook/v1

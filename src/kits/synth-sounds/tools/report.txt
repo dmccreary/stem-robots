@@ -1,0 +1,16 @@
+beep alarm             original  1437 ms   synth  1125 ms   56 segments
+beep deep space        original  1620 ms   synth  1415 ms   51 segments
+beep wow wee           original  1176 ms   synth   970 ms   43 segments
+beeping up and down    original  1254 ms   synth   930 ms   52 segments
+cheerful               original   791 ms   synth   620 ms   22 segments
+determined             original  1890 ms   synth  1535 ms   54 segments
+excited                original  2440 ms   synth  2080 ms   75 segments
+laughing               original  2637 ms   synth  2265 ms   86 segments
+more chatter           original  1907 ms   synth  1355 ms   73 segments
+processing             original  2021 ms   synth  1680 ms   79 segments
+quick beep             original   444 ms   synth   280 ms   16 segments
+sad                    original   698 ms   synth   615 ms    8 segments
+shocked                original  3066 ms   synth  2645 ms   89 segments
+surprised              original  1023 ms   synth   910 ms   30 segments
+taking to himself      original  2638 ms   synth  2170 ms   86 segments
+unsure                 original   489 ms   synth   395 ms    8 segments

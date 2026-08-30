@@ -1,4 +1,4 @@
-# Lab 0: Meet Your Kit
+# Lab 1: Meet Your Kit
 
 ![](max98357a-amp-project-box.jpg)
 
@@ -6,6 +6,12 @@ You are holding a small computer inside a clear plastic box. It has a
 speaker, a round color screen, a button, and a knob. In this lab, you
 will turn it on and try every part — no computer and no typing needed
 yet.
+
+!!! mascot-welcome "Welcome, maker!"
+    ![Sparky waving](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    No computer, no typing, no code yet — just flip a switch and press
+    some buttons. Let's meet the kit with our hands before we ever open
+    Thonny!
 
 ## What You Need
 
@@ -71,6 +77,13 @@ disappears, then press the button again. The sound should be very
 quiet. Turn the knob all the way the other way and press the button
 one more time — now it should be loud.
 
+!!! mascot-tip "Watch and listen at the same time"
+    ![Sparky tip](../../img/mascot/tip.png){ class="mascot-admonition-img" }
+    Try turning the knob while a sound is still playing instead of before
+    you press the button. Watching the ring change *while* you hear the
+    volume shift is the fastest way to connect what you see to what you
+    hear.
+
 ### Step 5: Turn It Off
 
 When you are done exploring, flip the power switch back to **off**.
@@ -104,3 +117,9 @@ the actual instructions that make it work.
    press the button?
 4. True or false: pressing the button always plays the exact same
    sound.
+
+!!! mascot-celebration "You just explored a whole robot kit!"
+    ![Sparky celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    Power switch, button, knob, screen, speaker — you tried every part
+    with your own hands, no code required. That's exactly how real
+    engineers get to know new hardware!

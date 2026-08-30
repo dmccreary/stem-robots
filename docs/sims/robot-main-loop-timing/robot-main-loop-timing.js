@@ -14,6 +14,9 @@ let speedButton;
 const speeds = [1, 5, 10];
 let speedIdx = 0;
 
+let pauseButton;
+let isRunning = false;
+
 // Phases: name, duration(ms), color, function
 const phases = [
   { name: 'Read sensor', ms: 5, col: '#1e88e5', fn: 'distance = sensor.read()' },
@@ -33,6 +36,14 @@ function setup() {
   canvas.parent(document.querySelector('main'));
   textSize(defaultTextSize);
 
+  pauseButton = createButton('Start');
+  pauseButton.parent(document.querySelector('main'));
+  pauseButton.mousePressed(() => {
+    isRunning = !isRunning;
+    pauseButton.html(isRunning ? 'Pause' : 'Start');
+    lastFrameMs = millis();
+  });
+
   speedButton = createButton('Speed: 1x');
   speedButton.parent(document.querySelector('main'));
   speedButton.mousePressed(() => {
@@ -40,10 +51,13 @@ function setup() {
     speedButton.html('Speed: ' + speeds[speedIdx] + 'x');
   });
   positionControls();
-  describe('Animated timeline of one robot main-loop iteration showing four phases — read sensor, make decision, move motor, and a 100 ms sleep — with a moving NOW cursor and a loop counter.', LABEL);
+  describe('Animated timeline of one robot main-loop iteration showing four phases — read sensor, make decision, move motor, and a 100 ms sleep — with a moving NOW cursor and a loop counter. Starts paused; use the Start/Pause button to run it.', LABEL);
 }
 
-function positionControls() { speedButton.position(10, drawHeight + 12); }
+function positionControls() {
+  pauseButton.position(10, drawHeight + 12);
+  speedButton.position(90, drawHeight + 12);
+}
 
 function timelineRect() {
   return { x: margin, y: 150, w: canvasWidth - 2 * margin, h: 90 };
@@ -54,12 +68,14 @@ function msToX(ms, tl) { return tl.x + (ms / TOTAL) * tl.w; }
 function draw() {
   updateCanvasSize();
 
-  // advance time by real elapsed * speed
+  // advance time by real elapsed * speed, only while running
   const t = millis();
   let dt = t - lastFrameMs; lastFrameMs = t;
-  dt = constrain(dt, 0, 50);
-  nowMs += (dt / 1000) * 1000 * 0.4 * speeds[speedIdx]; // 0.4 scales 1x to a watchable pace
-  if (nowMs >= TOTAL) { nowMs -= TOTAL; loopCount++; }
+  if (isRunning) {
+    dt = constrain(dt, 0, 50);
+    nowMs += (dt / 1000) * 1000 * 0.4 * speeds[speedIdx]; // 0.4 scales 1x to a watchable pace
+    if (nowMs >= TOTAL) { nowMs -= TOTAL; loopCount++; }
+  }
 
   noStroke(); fill('aliceblue'); stroke('silver');
   rect(0, 0, canvasWidth, drawHeight);

@@ -1,0 +1,117 @@
+{
+  "title": "MAX98357A Amplifier Pinout",
+  "orientation": "landscape",
+  "image": "max98357a-top.png",
+  "layout": "top-bottom",
+  "showNumbers": true,
+  "callouts": [
+    {
+      "id": 1,
+      "label": "Speaker Output",
+      "x": 49.9,
+      "y": 24.4,
+      "radius": 5,
+      "color": "#8E44AD",
+      "panel": "top",
+      "hint": "The green two-hole screw terminal at the top of the board, with a tiny '-' and '+' printed next to it.",
+      "description": "This green screw terminal is where the wires to your speaker connect. Loosen each screw, slide a bare speaker wire underneath, and tighten it back down. This amp is designed for a 4-8 ohm speaker and can deliver up to 3 watts.",
+      "tip": "Match the '-' and '+' markings to your speaker's wires. If the sound seems weak or muffled, try swapping the two wires - most small speakers still work reversed, but matching polarity gives the cleanest sound."
+    },
+    {
+      "id": 2,
+      "label": "MAX98357A Chip",
+      "x": 49.0,
+      "y": 58.2,
+      "radius": 4,
+      "color": "#34495E",
+      "panel": "top",
+      "hint": "The small black square soldered near the center of the purple circuit board.",
+      "description": "This tiny black square is the MAX98357A itself - a mono Class-D amplifier chip. It has a digital-to-analog converter (DAC) built in, so it takes a digital audio stream on its I2S pins (BCLK, LRC, DIN) and turns it directly into an amplified analog signal strong enough to drive a speaker - no separate DAC chip needed.",
+      "tip": "Class-D means the chip amplifies by rapidly switching on and off (like a dimmer switch flickering very fast) instead of using a smooth analog signal. That makes it small and efficient enough to run from a battery-powered Pico."
+    },
+    {
+      "id": 3,
+      "label": "LRC",
+      "x": 14.6,
+      "y": 80.8,
+      "radius": 4,
+      "color": "#3498DB",
+      "panel": "bottom",
+      "hint": "The first (leftmost) silver pin along the bottom edge, labeled 'LRC' just above it.",
+      "description": "LRC stands for Left-Right Clock (also called Word Select). It is part of the I2S digital audio protocol and tells the chip which audio channel is being sent. Connect this pin to GPIO 12 on the Pico.",
+      "tip": "MicroPython's machine.I2S driver on the RP2040 requires LRC's GPIO number to be exactly one higher than BCLK's GPIO number - that's why LRC is on GPIO 12 and BCLK is on GPIO 11."
+    },
+    {
+      "id": 4,
+      "label": "BCLK",
+      "x": 25.3,
+      "y": 80.8,
+      "radius": 4,
+      "color": "#16A085",
+      "panel": "bottom",
+      "hint": "The second pin from the left, labeled 'BCLK' just below it.",
+      "description": "BCLK is the Bit Clock - a steady pulse that tells the amplifier exactly when to read each bit of digital audio data. Connect this pin to GPIO 11 on the Pico.",
+      "tip": "Think of BCLK as a metronome for the audio data: every tick means 'read the next bit now.'"
+    },
+    {
+      "id": 5,
+      "label": "DIN",
+      "x": 35.8,
+      "y": 80.8,
+      "radius": 4,
+      "color": "#2ECC71",
+      "panel": "bottom",
+      "hint": "The third pin from the left, labeled 'DIN' just above it.",
+      "description": "DIN (Data In) carries the actual digital audio bits, one at a time, timed by BCLK. Connect this pin to GPIO 13 on the Pico.",
+      "tip": "DIN, BCLK, and LRC together make up the I2S bus - the same three-wire pattern used by most digital microphones and audio chips."
+    },
+    {
+      "id": 6,
+      "label": "GAIN",
+      "x": 47.3,
+      "y": 80.8,
+      "radius": 4,
+      "color": "#F39C12",
+      "panel": "bottom",
+      "hint": "The fourth (middle) pin, labeled 'GAIN' just below it.",
+      "description": "GAIN sets how much the amplifier boosts the incoming audio signal. Left disconnected, the chip defaults to a gain of 9 dB. This kit wires GAIN to GPIO 14 on the Pico.",
+      "tip": "On the real MAX98357A chip, GAIN is normally set by tying it to Vin, GND, or a specific resistor - wiring it to a GPIO here just reuses the same pin footprint for this kit's wiring pattern."
+    },
+    {
+      "id": 7,
+      "label": "SD",
+      "x": 58.4,
+      "y": 80.8,
+      "radius": 4,
+      "color": "#E67E22",
+      "panel": "bottom",
+      "hint": "The fifth pin from the left, labeled 'SD' just above it.",
+      "description": "SD is the Shutdown pin - it turns the amplifier chip on or off. This kit connects it to GPIO 15 on the Pico so code can enable the amp right before playing a sound and disable it afterward to save power.",
+      "tip": "After enabling the amp, wait about 200ms before sending audio - the chip briefly mutes itself as it powers on, and very short clips can get swallowed by that mute."
+    },
+    {
+      "id": 8,
+      "label": "GND",
+      "x": 70.0,
+      "y": 80.8,
+      "radius": 4,
+      "color": "#9B59B6",
+      "panel": "bottom",
+      "hint": "The sixth pin from the left, labeled 'GND' just below it.",
+      "description": "GND is the common ground reference pin. Connect it to a GND pin on the Pico to complete the circuit for both power and the digital audio signals.",
+      "tip": "Every board in a circuit needs a shared ground connection - without it, all the other signals lose their reference point and nothing works reliably."
+    },
+    {
+      "id": 9,
+      "label": "Vin",
+      "x": 80.9,
+      "y": 80.8,
+      "radius": 4,
+      "color": "#E74C3C",
+      "panel": "bottom",
+      "hint": "The seventh (rightmost) pin, labeled 'Vin' just above it.",
+      "description": "Vin powers the amplifier chip itself, and accepts 2.5V to 5.5V. Connect it to the Pico's VBUS pin (5V) - not the 3V3 OUT pin.",
+      "tip": "The Pico's onboard 3.3V regulator only supplies a few hundred mA shared with the rest of the board. Powering the amp from 3V3 causes it to brown out, and audio cuts off after about a second - use VBUS instead."
+    }
+  ]
+}

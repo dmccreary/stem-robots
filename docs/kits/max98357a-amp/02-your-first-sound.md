@@ -1,10 +1,16 @@
-# Lab 1: Your First Sound
+# Lab 2: Your First Sound
 
-In Lab 0, you turned the kit on and pressed buttons without ever
+In Lab 1, you turned the kit on and pressed buttons without ever
 looking at the code. In this lab, you will connect the kit to a
 computer for the first time and run a program yourself. You will make
 the speaker play a musical tone, and then change the pitch of that
 tone.
+
+!!! mascot-welcome "Welcome back, maker!"
+    ![Sparky waving](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    Time to open the hood. We're connecting to a real computer and running
+    our first program together — let's make some noise on purpose this
+    time!
 
 ## What You Need
 
@@ -52,10 +58,11 @@ device Thonny is talking to.
 If you see the word **"Ready"** or the Thonny console shows a
 `>>>` prompt, you are connected.
 
-!!! warning "Only one program at a time"
-    A Pico can only talk to one program on your computer at a time.
-    If Thonny cannot connect, make sure no other program (like
-    `mpremote` in a terminal) is already connected to it.
+!!! mascot-warning "Only one program at a time"
+    ![Sparky warning](../../img/mascot/warning.png){ class="mascot-admonition-img" }
+    A Pico can only talk to one program on your computer at a time. If
+    Thonny won't connect, make sure nothing else — like `mpremote` in a
+    terminal — is already connected to it.
 
 ### Step 5: Open the Sound Test File
 
@@ -95,6 +102,12 @@ higher — noticeably higher-pitched.
 Now try `220` (half of 440). Run it again. The tone should sound much
 lower and deeper.
 
+!!! mascot-thinking "Why does doubling sound like 'the same note, higher'?"
+    ![Sparky thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
+    Every time you double a frequency, your ears hear the exact same note,
+    just one octave up. Try humming a note, then humming it again "an
+    octave higher" — that jump is always a doubling, every time.
+
 ## Try It Yourself
 
 - Try `TONE_HZ = 261` — that's close to middle C on a piano.
@@ -131,3 +144,9 @@ to remember that name, but you'll see it in the code as
 
 You can find the complete program at
 [`src/kits/max98357a-amp/01-sine-wave-test.py`](https://github.com/dmccreary/stem-robots/blob/main/src/kits/max98357a-amp/01-sine-wave-test.py).
+
+!!! mascot-celebration "You just wrote your first sound!"
+    ![Sparky celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You connected real hardware to real code and changed a number to bend
+    a sound wave on purpose. That's the same skill musicians, sound
+    engineers, and robot builders all rely on!

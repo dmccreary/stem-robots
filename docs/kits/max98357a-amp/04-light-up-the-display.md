@@ -1,8 +1,13 @@
-# Lab 3: Light Up the Display
+# Lab 4: Light Up the Display
 
 The round screen on your kit can show any word, in any color, at any
 spot on the circle. In this lab, you will draw your own message on the
 screen and pick your own colors.
+
+!!! mascot-welcome "Welcome back, maker!"
+    ![Sparky waving](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    My round screen is a blank canvas made of 57,600 tiny colored dots.
+    Let's put your own words on it, in your own colors!
 
 ## What You Need
 
@@ -45,11 +50,12 @@ Change `"Hello World!"` to your own name, like `"Hi, I'm Alex!"`. Run
 the program again. Your message should appear where "Hello World!"
 used to be.
 
-!!! tip "Watch the Edges"
-    The screen is round, but the picture underneath it is actually a
-    square. If your message is too long, the ends of it can disappear
-    under the black plastic ring (called the **bezel**) around the
-    glass. Keep your message short, or move it closer to the middle.
+!!! mascot-tip "Watch the edges"
+    ![Sparky tip](../../img/mascot/tip.png){ class="mascot-admonition-img" }
+    My screen is round, but the picture underneath it is actually a
+    square. A message that's too long can disappear under the black
+    plastic ring (called the **bezel**) around the glass — keep it short,
+    or move it closer to the middle.
 
 ### Step 4: Understand X and Y
 
@@ -86,6 +92,12 @@ see on a screen.
 Go back to `05-display-hello-world.py` and change `config.DISPLAY_WHITE`
 to `config.DISPLAY_BLUE`. Run the program. Your message should now be
 blue instead of white.
+
+!!! mascot-thinking "Same trick as a TV screen"
+    ![Sparky thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
+    Every color on my screen, on your TV, and on your phone comes from
+    mixing red, green, and blue light. There's no other color of light
+    hiding in there — just three, mixed in different amounts.
 
 ## Try It Yourself
 
@@ -129,3 +141,9 @@ glass immediately. That's why the program doesn't need any kind of
 
 You can find the complete program at
 [`src/kits/max98357a-amp/05-display-hello-world.py`](https://github.com/dmccreary/stem-robots/blob/main/src/kits/max98357a-amp/05-display-hello-world.py).
+
+!!! mascot-celebration "You just became a screen artist!"
+    ![Sparky celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You placed text with exact coordinates and mixed your own colors from
+    red, green, and blue. That's the same toolkit real game and app
+    designers use every day!
