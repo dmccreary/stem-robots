@@ -10,7 +10,7 @@ import config
 #   the amp on different GPIOs, see TODO.md for the pin tests to run.
 #
 # MicroPython's rp2 I2S driver requires ws (LRC) to be exactly one GPIO
-# number higher than sck (BCLK); config.py's defaults (GPIO2/3) satisfy
+# number higher than sck (BCLK); config.py's defaults (GPIO11/12) satisfy
 # that. (If this ever runs on a Cytron Maker Pi RP2040 instead of a plain
 # Pico, note that board hardwires GPIO8-11 to its onboard motor driver and
 # GPIO12-15 to its onboard servo headers - avoid those pins there.)
