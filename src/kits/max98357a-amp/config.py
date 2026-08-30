@@ -61,6 +61,7 @@ DISPLAY_HEIGHT = 240
 # RGB565: five bits of red, six of green, five of blue.
 DISPLAY_BLACK = 0x0000
 DISPLAY_WHITE = 0xFFFF
+DISPLAY_BLUE = 0x001F
 
 from machine import Pin, SPI
 import gc9a01
@@ -81,3 +82,12 @@ def init_display():
         cs=Pin(DISPLAY_CS_PIN, Pin.OUT),
         reset=Pin(DISPLAY_RES_PIN, Pin.OUT),
         rotation=0)
+
+
+# ---------------------------------------------------------------------------
+# 20K potentiometer (wiper -> ADC0)
+# ---------------------------------------------------------------------------
+# Wiper -> POT_PIN, outer legs -> 3V3 and GND so the wiper sweeps the full
+# 0-3.3V range. GPIO26 is the Pico's ADC0 - GPIO26-29 are the only pins
+# with ADC hardware behind them.
+POT_PIN = 26
