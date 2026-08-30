@@ -7,20 +7,20 @@
 # one GPIO number higher than BCLK_PIN (LRC_PIN = BCLK_PIN + 1), or
 # machine.I2S() raises a ValueError.
 #
-# Confirmed working on a plain Raspberry Pi Pico: BCLK=2, LRC=3, DIN=4,
-# GAIN=5, SD=6. GPIO11-15 produced silent audio with no error on two
-# separate Pico boards - see TODO.md for the pin tests still needed to
-# explain that and to check other pin groups (including on a Cytron Maker
-# Pi RP2040, which has GPIO8-15/18/20-22 hardwired to onboard hardware).
+# These are the pins actually wired inside the assembled project box (see
+# docs/kits/max98357a-amp/index.md) - BCLK/LRC/DIN/GAIN/SD as one
+# contiguous block (11-15), with the button right next to it on 16. GPIO
+# 11-15 looked broken early in development but wasn't - see TODO.md and
+# each script's SETTLE_MS comment for why.
 
 # ---------------------------------------------------------------------------
 # MAX98357A I2S amplifier
 # ---------------------------------------------------------------------------
-BCLK_PIN = 10   # bit clock
-LRC_PIN = 11    # word select / left-right clock (must be BCLK_PIN + 1)
-DIN_PIN = 12    # serial audio data, Pico -> amp
-GAIN_PIN = 13   # floating (Pin.IN, no pull) = default 9dB gain
-SD_PIN = 14     # shutdown control: HIGH = enabled, LOW = muted
+BCLK_PIN = 11   # bit clock
+LRC_PIN = 12    # word select / left-right clock (must be BCLK_PIN + 1)
+DIN_PIN = 13    # serial audio data, Pico -> amp
+GAIN_PIN = 14   # floating (Pin.IN, no pull) = default 9dB gain
+SD_PIN = 15     # shutdown control: HIGH = enabled, LOW = muted
 
 I2S_ID = 0
 
@@ -29,7 +29,7 @@ I2S_ID = 0
 # ---------------------------------------------------------------------------
 # One leg -> BUTTON_PIN, other leg -> GND. Internal PULL_UP holds the pin
 # HIGH when open; pressing it pulls the pin LOW.
-BUTTON_PIN = 15
+BUTTON_PIN = 16
 
 # ---------------------------------------------------------------------------
 # Sound playback (used by 03-play-sounds-on-button.py, 04-play-one-file-test.py)
