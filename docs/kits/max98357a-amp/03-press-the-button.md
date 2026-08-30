@@ -1,14 +1,20 @@
-# Lab 2: Press the Button
+# Lab 3: Press the Button
 
-In Lab 0, pressing the button on your kit played a different R2D2
+In Lab 1, pressing the button on your kit played a different R2D2
 sound every time. In this lab, you will run that same program from
 Thonny, watch the code decide which sound to play, and change how many
 sounds are in the list.
 
+!!! mascot-welcome "Welcome back, maker!"
+    ![Sparky waving](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    Ready to see how I pick which sound to play next? We're diving into
+    the code behind the button — a list, a counter, and a clever bit of
+    math that keeps everything in order.
+
 ## What You Need
 
 - Your MAX98357A kit, connected to your computer with a USB cable
-  (power switch **off**, same as Lab 1)
+  (power switch **off**, same as Lab 2)
 - Thonny, open and connected to the Pico
 
 ## What You'll Learn
@@ -93,7 +99,7 @@ Done - amp shut down.
 ## Try It Yourself
 
 - Run the program again and count how many sounds play before the
-  first one repeats. Does it match the number from Lab 0?
+  first one repeats. Does it match the number from Lab 1?
 - Find the line `print("Loaded {} sound(s)...` — that number tells you
   exactly how many `.wav` files are in the `sounds` folder without you
   having to count button presses.
@@ -117,6 +123,12 @@ three. Waiting a tiny bit (`time.sleep_ms(20)`) and checking again is
 called **debouncing**, and it's a trick used in almost every button
 project you'll ever build.
 
+!!! mascot-thinking "Have you ever double-clicked by accident?"
+    ![Sparky thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
+    That's the same bounce happening on a mouse button instead of mine.
+    Debouncing is why a single, deliberate click almost always registers
+    as exactly one click, not two.
+
 ## Check Your Understanding
 
 1. What value does the button pin read when it is **not** pressed —
@@ -133,3 +145,9 @@ project you'll ever build.
 
 You can find the complete program at
 [`src/kits/max98357a-amp/03-play-sounds-on-button.py`](https://github.com/dmccreary/stem-robots/blob/main/src/kits/max98357a-amp/03-play-sounds-on-button.py).
+
+!!! mascot-celebration "You just decoded a button's memory trick!"
+    ![Sparky celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You read a real `if` statement, traced a list, and figured out how
+    modulo keeps a counter from running off the end. That's exactly how
+    programmers manage lists in every kind of software!

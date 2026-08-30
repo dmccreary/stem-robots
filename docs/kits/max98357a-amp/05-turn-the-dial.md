@@ -1,10 +1,16 @@
-# Lab 4: Turn the Dial
+# Lab 5: Turn the Dial
 
 The knob on your kit is called a **potentiometer** (say it
 "po-TEN-she-AH-meter"), or "pot" for short. It's the same kind of part
 inside a real volume knob or a dimmer light switch. In this lab, you
 will watch the Pico read the knob's position and turn it into a
 glowing dial on the screen.
+
+!!! mascot-welcome "Welcome back, maker!"
+    ![Sparky waving](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    Buttons only know "on" or "off," but my knob knows *everywhere in
+    between*. Let's watch how I turn a twist of your fingers into a
+    number!
 
 ## What You Need
 
@@ -86,10 +92,16 @@ easily turn into a percentage or an angle on the dial.
 
 ## What's Happening Under the Hood
 
-The button you used in Lab 2 can only ever be **on** or **off** — a
+The button you used in Lab 3 can only ever be **on** or **off** — a
 **digital** signal. The knob is different. As you turn it, the voltage
 on its wire smoothly slides between 0 volts and 3.3 volts, landing
 anywhere in between — an **analog** signal.
+
+!!! mascot-thinking "Digital or analog — which is which?"
+    ![Sparky thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
+    A light switch is digital — only on or off. A dimmer switch is
+    analog — anywhere in between. My button is the light switch; my knob
+    is the dimmer.
 
 The Pico's brain, though, only understands digital numbers. A special
 piece of hardware called an **ADC** — Analog-to-Digital Converter —
@@ -115,3 +127,9 @@ watched that conversion happen live.
 
 You can find the complete program at
 [`src/kits/max98357a-amp/06-pot-gauge-test.py`](https://github.com/dmccreary/stem-robots/blob/main/src/kits/max98357a-amp/06-pot-gauge-test.py).
+
+!!! mascot-celebration "You just watched analog become digital!"
+    ![Sparky celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You turned a knob, read a raw ADC number, and mapped it onto a glowing
+    dial. That exact trick — analog in, digital out — runs inside nearly
+    every sensor a robot has!

@@ -1,10 +1,16 @@
-# Lab 5: Volume Control Lab
+# Lab 6: Volume Control Lab
 
 This is the big one. You've tried the speaker, the button, the
 display, and the knob separately. In this final lab, you'll look at
 the program that uses **all four parts together at the same time** —
 the exact same program that runs automatically every time you flip the
 power switch on your kit.
+
+!!! mascot-welcome "Welcome to the finale, maker!"
+    ![Sparky waving](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    Speaker, button, screen, knob — you've met every part on its own.
+    Now let's watch them all work together, at the exact same time, in
+    one program!
 
 ## What You Need
 
@@ -27,14 +33,20 @@ power switch on your kit.
 In Thonny, open **`07-play-sounds-with-volume.py`**.
 
 This is a long file — the longest one in the kit — because it's really
-Lab 2, Lab 3, and Lab 4 all working together, plus one new idea:
+Lab 3, Lab 4, and Lab 5 all working together, plus one new idea:
 controlling volume with the knob.
+
+!!! mascot-encourage "Don't let the length scare you"
+    ![Sparky encouraging](../../img/mascot/encouraging.png){ class="mascot-admonition-img" }
+    Nearly 300 lines sounds like a lot, but you already know almost all
+    of it — it's Lab 3, Lab 4, and Lab 5, combined into one program you
+    can read piece by piece.
 
 ### Step 2: Run It
 
 Press **Run** (F5). You should see the screen show **"Press button"**
 with **"Ready"** underneath it — this is the exact same screen you saw
-in Lab 0, the very first time you turned the kit on.
+in Lab 1, the very first time you turned the kit on.
 
 ### Step 3: Press the Button
 
@@ -75,7 +87,7 @@ def read_volume():
     return math.sqrt(linear)
 ```
 
-You already know the first line from Lab 4 — it turns the knob's raw
+You already know the first line from Lab 5 — it turns the knob's raw
 reading into a fraction between 0.0 and 1.0. The new part is
 `math.sqrt(linear)` — the **square root**.
 
@@ -96,7 +108,7 @@ reading into a fraction between 0.0 and 1.0. The new part is
   Himself" or "R2D2 More Chatter" — check `sounds/metadata.json` for
   the full list). Does the volume change feel less smooth now?
 - **Design challenge**: right now, the kit always plays sounds in the
-  same order. Using what you learned in Lab 2, could you change it so
+  same order. Using what you learned in Lab 3, could you change it so
   it picks a **random** sound instead? (Hint: MicroPython has a
   `random` module with a function called `random.randint(low, high)`
   that picks a random whole number in a range.)
@@ -111,6 +123,12 @@ square root of the knob's reading before using it stretches out the
 quiet end of the knob's travel and compresses the loud end, so turning
 the knob feels more even across its whole range — closer to how a
 "real" volume knob on a stereo or a phone behaves.
+
+!!! mascot-thinking "Loudness doesn't feel the way it measures"
+    ![Sparky thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
+    Doubling a number on a screen and doubling how loud something *feels*
+    to your ears are two different kinds of "double." The square root is
+    the trick that lines those two feelings back up.
 
 **Why does everything happen together?** Notice the program never
 stops to wait for one thing before checking another. Instead, it loops
@@ -142,3 +160,9 @@ You can find the complete program at
 [`src/kits/max98357a-amp/07-play-sounds-with-volume.py`](https://github.com/dmccreary/stem-robots/blob/main/src/kits/max98357a-amp/07-play-sounds-with-volume.py).
 This is the program saved on your Pico as `main.py`, which is why it
 starts automatically every time you turn the kit on.
+
+!!! mascot-celebration "You finished the whole kit!"
+    ![Sparky celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    Speaker, button, screen, and knob, all working together under one
+    program you understand line by line — that's not a small thing. You
+    built and explained a real embedded audio device!
