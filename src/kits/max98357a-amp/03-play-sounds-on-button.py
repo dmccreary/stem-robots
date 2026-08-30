@@ -117,6 +117,11 @@ sound_files = sorted(name for name in os.listdir(SOUND_DIR) if name.endswith(".w
 if not sound_files:
     raise RuntimeError("no .wav files found in " + SOUND_DIR)
 
+# sounds/metadata.json maps each filename to a Title Case display name
+# (e.g. "r2d2-unsure.wav" -> "R2D2 Unsure") - falls back to the raw
+# filename for any .wav not listed there.
+sound_titles = config.load_sound_titles()
+
 print("Loaded {} sound(s) from {}.".format(len(sound_files), SOUND_DIR))
 print("Press the button (GPIO{}) to play the next one in order. Ctrl-C to stop.".format(BUTTON_PIN))
 
@@ -132,7 +137,7 @@ try:
             if button.value() == 0:
                 name = sound_files[sound_index]
                 sound_index = (sound_index + 1) % len(sound_files)
-                print("Playing", name)
+                print("Playing", sound_titles.get(name, name))
                 play_wav(SOUND_DIR + "/" + name)
                 while button.value() == 0:  # wait for release before re-arming
                     time.sleep_ms(10)

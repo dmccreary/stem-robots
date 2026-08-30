@@ -101,26 +101,34 @@ def update_gauge(volume):
         current_step = target_step
 
 
-# --- Sound name label, centered in the middle of the ring ---
-TEXT_Y = 112
+# --- Two text rows, centered in the middle of the ring: the name of the
+# last sound played (top) and a static "Ready" status (bottom). The title
+# is deliberately NOT cleared when playback ends - it stays on screen so
+# a student has time to actually read it, instead of flashing by for the
+# 1-3 seconds the clip takes to play. ---
+TITLE_Y = 104
+STATUS_Y = TITLE_Y + 16  # directly below the title
 MAX_TEXT_CHARS = 20  # keeps the widest label clear of the ring at 3/9 o'clock
-last_label = None
+last_title = None
 
 
-def show_label(text):
-    global last_label
-    if text == last_label:
-        return
+def _draw_centered_row(y, text, color):
     if len(text) > MAX_TEXT_CHARS:
         text = text[:MAX_TEXT_CHARS - 3] + "..."
     text_width = len(text) * 8
     x = (config.DISPLAY_WIDTH - text_width) // 2
     # Clear the whole row first - text() doesn't erase characters from a
     # previous, longer label that the new one doesn't cover.
-    display.fill_rect(0, TEXT_Y, config.DISPLAY_WIDTH, 16, config.DISPLAY_BLACK)
-    display.text(config.DISPLAY_FONT, text, x, TEXT_Y,
-                 config.DISPLAY_WHITE, config.DISPLAY_BLACK)
-    last_label = text
+    display.fill_rect(0, y, config.DISPLAY_WIDTH, 16, config.DISPLAY_BLACK)
+    display.text(config.DISPLAY_FONT, text, x, y, color, config.DISPLAY_BLACK)
+
+
+def show_title(text):
+    global last_title
+    if text == last_title:
+        return
+    _draw_centered_row(TITLE_Y, text, config.DISPLAY_WHITE)
+    last_title = text
 
 
 def read_volume():
@@ -174,7 +182,7 @@ VOLUME_DEADBAND = 0.01    # skip the scaling loop entirely this close to
 
 
 def play_wav(path, label):
-    show_label(label)
+    show_title(label)
     with open(path, "rb") as f:
         channels, sample_rate, bits_per_sample, data_size = find_data_chunk(f)
         if (channels, sample_rate, bits_per_sample) != (1, SAMPLE_RATE_HZ, BITS):
@@ -218,14 +226,22 @@ def play_wav(path, label):
             audio_out.write(samples)
 
             remaining -= n
-    show_label("Ready")
+    # No show_title("Ready") here on purpose - the title stays on screen
+    # as the last sound played, so a student has time to read it instead
+    # of it flashing back to "Ready" the instant a 1-3 second clip ends.
 
 
 sound_files = sorted(name for name in os.listdir(SOUND_DIR) if name.endswith(".wav"))
 if not sound_files:
     raise RuntimeError("no .wav files found in " + SOUND_DIR)
 
-show_label("Ready")
+# sounds/metadata.json maps each filename to a Title Case display name
+# (e.g. "r2d2-unsure.wav" -> "R2D2 Unsure") - falls back to the raw
+# filename for any .wav not listed there.
+sound_titles = config.load_sound_titles()
+
+show_title("Press button")
+_draw_centered_row(STATUS_Y, "Ready", config.DISPLAY_WHITE)  # drawn once - static
 update_gauge(read_volume())
 
 print("Loaded {} sound(s) from {}.".format(len(sound_files), SOUND_DIR))
@@ -246,8 +262,9 @@ try:
             if button.value() == 0:
                 name = sound_files[sound_index]
                 sound_index = (sound_index + 1) % len(sound_files)
-                print("Playing", name)
-                play_wav(SOUND_DIR + "/" + name, name[:-4])  # strip ".wav"
+                title = sound_titles.get(name, name)
+                print("Playing", title)
+                play_wav(SOUND_DIR + "/" + name, title)
                 while button.value() == 0:  # wait for release before re-arming
                     time.sleep_ms(10)
 

@@ -3,13 +3,15 @@
 # the GC9A01 display driver + font in lib/, every numbered script, and the
 # R2D2 sound clips used by 03-play-sounds-on-button.py.
 #
-# The .wav files live in the separate robot-media repo, not in
-# stem-robots - SOUND_SOURCE_DIR below points at a local checkout of it.
+# The .wav files live in $PROJECT_HOME/sounds - part of this repo, not a
+# separate checkout - so anyone who clones stem-robots has everything
+# this kit needs with no extra setup.
 set -e
 
 PORT=/dev/cu.usbmodem14201
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SOUND_SOURCE_DIR="/Users/dan/Documents/ws/robot-media/wav-8k"
+PROJECT_HOME="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+SOUND_SOURCE_DIR="$PROJECT_HOME/sounds"
 
 echo "Uploading to $PORT ..."
 
@@ -31,7 +33,7 @@ done
 
 if [ -d "$SOUND_SOURCE_DIR" ]; then
     mpremote connect "$PORT" fs mkdir :sounds >/dev/null 2>&1 || true
-    for f in "$SOUND_SOURCE_DIR"/*.wav; do
+    for f in "$SOUND_SOURCE_DIR"/*.wav "$SOUND_SOURCE_DIR"/metadata.json; do
         name="$(basename "$f")"
         echo "  sounds/$name"
         mpremote connect "$PORT" fs cp "$f" ":sounds/$name"
