@@ -41,6 +41,19 @@ CHUNK_BYTES = 4096     # streaming buffer size - keep this large; a too-small
                         # buffer written in a tight loop was the likely cause
                         # of audible static during early tone testing
 
+
+def load_sound_titles():
+    """Load sounds/metadata.json: {filename -> Title Case display name}.
+
+    Falls back to an empty dict if the file is missing, so callers should
+    look up with titles.get(filename, filename) rather than titles[...]."""
+    import json
+    try:
+        with open(SOUND_DIR + "/metadata.json") as f:
+            return json.load(f)
+    except OSError:
+        return {}
+
 # ---------------------------------------------------------------------------
 # GC9A01 round display (240x240, SPI)
 # ---------------------------------------------------------------------------
