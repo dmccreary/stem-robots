@@ -1,27 +1,27 @@
 # TODO: confirm which GPIO pins the MAX98357A amp can run on
 
-Currently documented/working pins (bare Raspberry Pi Pico only):
-BCLK=GPIO2, LRC=GPIO3, DIN=GPIO4, GAIN=GPIO5, SD=GPIO6.
+Confirmed working pins (bare Raspberry Pi Pico): both BCLK=2/LRC=3/DIN=4/
+GAIN=5/SD=6 **and** BCLK=11/LRC=12/DIN=13/GAIN=14/SD=15.
 
-This pin choice was never fully explained - GPIO11-15 (BCLK=11, LRC=12,
-DIN=13, GAIN=14, SD=15) produced total silence on two separate bare Pico
-boards with no software error, and moving to GPIO2-6 fixed it, but we
-never confirmed *why* GPIO11-15 failed on hardware with no onboard
-peripherals on those pins. The tests below are meant to close that gap
-and build a real map of which pins work, not just one pin set that
-happens to work.
+## 1. RESOLVED: the original "GPIO11-15 is silent" mystery
 
-## 1. Re-test the original failing pins (isolate wiring vs. hardware/software)
+GPIO11-15 initially produced clean I2S execution but total silence on two
+separate bare Pico boards, which looked like a real pin problem. Root
+cause, confirmed: it was a **testing artifact, not a pin fault**. The
+isolated single-file test (`04-play-one-file-test.py`) played a ~0.44s
+clip almost immediately after enabling the amp (`shutdown.value(1)`),
+while the working button test (`03`) always had a real delay before its
+first play (waiting for a button press) and used longer clips (0.7-2.6s).
+The MAX98357A likely mutes briefly after coming out of shutdown to
+suppress power-on pop; a very short clip played too soon can be entirely
+swallowed by that window. Adding a 200ms `SETTLE_MS` delay after
+`shutdown.value(1)` (now in all four scripts) and testing with a longer
+file confirmed this - GPIO11-15 works fine.
 
-- [ ] Re-wire BCLK=11, LRC=12, DIN=13, GAIN=14, SD=15 very carefully
-      (double/triple-check each jumper against the Pico pinout diagram,
-      not by counting header holes) and re-run `01-sine-wave-test.py`.
-- [ ] If it now works: the original failure was a wiring mistake, not a
-      pin problem - document that conclusion and stop worrying about
-      GPIO11-15 on a bare Pico.
-- [ ] If it still fails silently: try swapping only DIN to a known-good
-      pin (e.g. GPIO4) while keeping BCLK=11/LRC=12, to isolate whether
-      the clock pair or the data pin is the actual problem.
+**Lesson for future pin tests on this kit**: always test a new pin group
+with a clip of at least ~1-2 seconds and the settle delay in place. A
+short clip with no delay can look exactly like a hardware/pin failure
+when the pins are actually fine.
 
 ## 2. Test on the Cytron Maker Pi RP2040 (this project's primary board)
 
@@ -33,11 +33,14 @@ platform (see repo CLAUDE.md), which has NOT been tested at all yet.
       RP2040 and confirm it still produces clean audio there.
 - [ ] Deliberately wire to GPIO8-11 (BCLK=8, LRC=9 - note this breaks the
       ws=sck+1 rule as-is, so pick an in-range pair like BCLK=10,LRC=11)
-      and GPIO12-15 for DIN/GAIN/SD, run the test, and confirm it fails
-      or degrades - this would be the first *empirical* confirmation
-      that the Cytron board's onboard motor driver/servo headers really
-      do interfere with I2S signals there (currently this is only a
-      datasheet-based prediction, never actually tested).
+      and GPIO12-15 for DIN/GAIN/SD, run the test with `SETTLE_MS` in
+      place and a clip of at least a second or two (per #1 above - a
+      short clip with no delay can look like a pin failure that isn't
+      one), and confirm it fails or degrades - this would be the first
+      *empirical* confirmation that the Cytron board's onboard motor
+      driver/servo headers really do interfere with I2S signals there
+      (currently this is only a datasheet-based prediction, never
+      actually tested).
 - [ ] Run `03-play-sounds-on-button.py` on the Cytron board with the
       button on GPIO15 - GPIO15 is a servo header pin on that board, so
       confirm whether the button still reads correctly there or needs to
@@ -45,8 +48,9 @@ platform (see repo CLAUDE.md), which has NOT been tested at all yet.
 
 ## 3. Build a broader known-good pin map (bare Pico)
 
-Only GPIO2-6 has been confirmed. Test at least one more free Grove-port
-pin group to confirm the fix generalizes and isn't specific to GPIO2-6:
+GPIO2-6 and GPIO11-15 are both confirmed now. Test at least one more free
+Grove-port pin group - remember the settle-delay lesson from #1 above, or
+a false negative here is easy:
 
 - [ ] BCLK=16, LRC=17, DIN=18 (or another free pin), GAIN/SD on any other
       free pins - run `01-sine-wave-test.py` with these pins temporarily

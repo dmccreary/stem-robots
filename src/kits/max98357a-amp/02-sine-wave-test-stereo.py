@@ -2,6 +2,7 @@ import math
 import struct
 import time
 from machine import Pin, I2S
+import config
 
 # Diagnostic variant of 01-sine-wave-test.py: uses STEREO format with the
 # same sample duplicated into both L and R slots explicitly, instead of
@@ -9,23 +10,27 @@ from machine import Pin, I2S
 # Also louder (0.8 amplitude) and a higher, more speaker-friendly pitch
 # (1kHz) to rule out "too quiet to notice" as an explanation.
 #
-# Pins: see 01-sine-wave-test.py for why GPIO2-6 (not 11-15) are used.
-BCLK_PIN = 2
-LRC_PIN = 3
-DIN_PIN = 4
-GAIN_PIN = 5
-SD_PIN = 6
+# Pins: see config.py - see 01-sine-wave-test.py for the GPIO11-15 vs
+# GPIO2-6 history (both work; GPIO11-15's earlier "silence" was a
+# too-short-clip/no-settle-delay testing artifact, not a pin problem).
+BCLK_PIN = config.BCLK_PIN
+LRC_PIN = config.LRC_PIN
+DIN_PIN = config.DIN_PIN
+GAIN_PIN = config.GAIN_PIN
+SD_PIN = config.SD_PIN
 
-I2S_ID = 0
+I2S_ID = config.I2S_ID
 SAMPLE_RATE_HZ = 16000
 TONE_HZ = 1000
 AMPLITUDE = 0.8
 DURATION_S = 5
+SETTLE_MS = 200  # let the amp's power-on mute clear before real audio
 
 gain = Pin(GAIN_PIN, Pin.IN)
 
 shutdown = Pin(SD_PIN, Pin.OUT)
 shutdown.value(1)
+time.sleep_ms(SETTLE_MS)
 
 audio_out = I2S(
     I2S_ID,

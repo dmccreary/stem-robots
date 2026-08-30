@@ -18,7 +18,8 @@ It is designed to be used with 4-8 ohm speakers and it is rated at 3W.
   rest of the board; on 3V3 this amp browned out and audio cut off after
   about 1.2 seconds of playback.
 
-This pin choice satisfies two constraints:
+This pin choice satisfies one hard constraint and one board-specific
+caution:
 
 1. MicroPython's `machine.I2S` driver on the RP2040 requires the `ws`
    (LRC) pin to be exactly one GPIO number higher than the `sck` (BCLK)
@@ -30,10 +31,15 @@ This pin choice satisfies two constraints:
    so those pins aren't safe to reuse for I2S there. GPIO 2-6 are free
    Grove-port pins on that board too, so this wiring works on either.
 
-Note: this kit was bench-tested on a plain Raspberry Pi Pico (no onboard
-motor/servo/NeoPixel hardware), where GPIO 11-15 have no special function.
-An earlier version of this page wired BCLK/LRC/DIN/GAIN/SD to GPIO 11-15
-and got no sound on two separate Pico boards; moving to GPIO 2-6 fixed it,
-but the actual cause on a plain Pico was never confirmed (most likely a
-wiring mistake on the original pin range, since nothing on a bare Pico
-should make GPIO 11-15 behave differently from GPIO 2-6).
+GPIO 2-6 is not the *only* pin group that works on a plain Pico, though -
+GPIO 11-15 (BCLK=11, LRC=12, DIN=13, GAIN=14, SD=15) works fine there too.
+It initially looked broken (clean I2S execution, but no sound on two
+separate Pico boards), which led to real doubt about whether those pins
+were somehow bad. That turned out to be a testing artifact, not a pin
+problem: a very short audio clip (~0.44s) played with almost no delay
+after enabling the amp, likely swallowed by the amp's own brief power-on
+mute. Adding a ~200ms delay after enabling the amp (before sending real
+audio) resolved it - see `SETTLE_MS` in the kit's scripts. The lesson:
+always test a new pin group with a clip of at least a second or two and a
+short settle delay, not the shortest file available, or you can easily
+mistake a playback-timing artifact for a wiring/pin fault.

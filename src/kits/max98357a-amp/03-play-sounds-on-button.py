@@ -3,46 +3,52 @@ import random
 import struct
 import time
 from machine import Pin, I2S
+import config
 
 # MAX98357A I2S amplifier wiring (tested on a plain Raspberry Pi Pico):
-#   BCLK -> GPIO2, LRC -> GPIO3, DIN -> GPIO4, GAIN -> GPIO5, SD -> GPIO6
-#   GND  -> Pico GND
-#   VIN  -> Pico VBUS (5V) - NOT the 3V3 OUT pin. The onboard 3.3V
-#   regulator only supplies ~300mA shared with the whole board; on 3V3
-#   this amp browned out and audio cut off after about 1.2s.
+#   GND -> Pico GND, VIN -> Pico VBUS (5V) - NOT the 3V3 OUT pin. The
+#   onboard 3.3V regulator only supplies ~300mA shared with the whole
+#   board; on 3V3 this amp browned out and audio cut off after about 1.2s.
+#   BCLK/LRC/DIN/GAIN/SD/BUTTON pins live in config.py - edit them there
+#   to try the amp/button on different GPIOs, see TODO.md for the pin
+#   tests to run.
 #
-# Momentary push button:
-#   One leg -> GPIO15, other leg -> GND. PULL_UP holds the pin HIGH when
-#   open; pressing it pulls the pin LOW.
-BCLK_PIN = 2
-LRC_PIN = 3
-DIN_PIN = 4
-GAIN_PIN = 5
-SD_PIN = 6
-BUTTON_PIN = 15
+# Momentary push button: one leg -> BUTTON_PIN, other leg -> GND. PULL_UP
+# holds the pin HIGH when open; pressing it pulls the pin LOW.
+BCLK_PIN = config.BCLK_PIN
+LRC_PIN = config.LRC_PIN
+DIN_PIN = config.DIN_PIN
+GAIN_PIN = config.GAIN_PIN
+SD_PIN = config.SD_PIN
+BUTTON_PIN = config.BUTTON_PIN
 
-I2S_ID = 0
-SOUND_DIR = "/sounds"
+I2S_ID = config.I2S_ID
+SOUND_DIR = config.SOUND_DIR
 
 # Every file in SOUND_DIR is mono/16-bit/8000Hz (checked on the desktop
 # before upload), so I2S is configured once for that format up front
 # instead of re-deriving it per file. If you add a file with a different
 # rate/bit depth/channel count, play_wav() below will print a warning and
 # skip it rather than reinitializing I2S mid-run.
-SAMPLE_RATE_HZ = 8000
-BITS = 16
+SAMPLE_RATE_HZ = config.SAMPLE_RATE_HZ
+BITS = config.BITS
 FORMAT = I2S.MONO
 
 # Streaming chunk size for file -> I2S playback. Much bigger than the
 # single-cycle buffer used by 01/02's tone tests on purpose: writing tiny
 # buffers in a tight loop is a likely cause of the audible static heard
 # during tone testing (buffer underruns between writes).
-CHUNK_BYTES = 4096
+CHUNK_BYTES = config.CHUNK_BYTES
+
+SETTLE_MS = 200  # let the amp's power-on mute clear before real audio -
+                  # matters most for a short first clip played right after
+                  # boot with little/no button-wait delay
 
 gain = Pin(GAIN_PIN, Pin.IN)
 
 shutdown = Pin(SD_PIN, Pin.OUT)
 shutdown.value(1)
+time.sleep_ms(SETTLE_MS)
 
 button = Pin(BUTTON_PIN, Pin.IN, Pin.PULL_UP)
 
