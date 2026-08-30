@@ -1,4 +1,8 @@
-# The MAX98357A I2S Amplifier
+# The MAX98357A I2S Amplifier Project Kit
+
+![](./max98357a-top.png)
+
+![](./max98357a-bottom.png)
 
 ![](max98357a-amp-project-box.jpg)
 
