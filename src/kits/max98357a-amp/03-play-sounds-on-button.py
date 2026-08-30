@@ -1,5 +1,4 @@
 import os
-import random
 import struct
 import time
 from machine import Pin, I2S
@@ -119,14 +118,20 @@ if not sound_files:
     raise RuntimeError("no .wav files found in " + SOUND_DIR)
 
 print("Loaded {} sound(s) from {}.".format(len(sound_files), SOUND_DIR))
-print("Press the button (GPIO{}) to play a random one. Ctrl-C to stop.".format(BUTTON_PIN))
+print("Press the button (GPIO{}) to play the next one in order. Ctrl-C to stop.".format(BUTTON_PIN))
+
+# Cycle through every sound in order (wrapping back to the start) rather
+# than picking randomly, so a student hears the whole set with no
+# repeats before anything plays twice.
+sound_index = 0
 
 try:
     while True:
         if button.value() == 0:
             time.sleep_ms(20)  # debounce
             if button.value() == 0:
-                name = sound_files[random.randint(0, len(sound_files) - 1)]
+                name = sound_files[sound_index]
+                sound_index = (sound_index + 1) % len(sound_files)
                 print("Playing", name)
                 play_wav(SOUND_DIR + "/" + name)
                 while button.value() == 0:  # wait for release before re-arming

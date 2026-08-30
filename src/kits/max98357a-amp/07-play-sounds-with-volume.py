@@ -1,6 +1,5 @@
 import math
 import os
-import random
 import struct
 import time
 from array import array
@@ -230,8 +229,13 @@ show_label("Ready")
 update_gauge(read_volume())
 
 print("Loaded {} sound(s) from {}.".format(len(sound_files), SOUND_DIR))
-print("Turn the pot to set volume, press the button (GPIO{}) to play a random one.".format(BUTTON_PIN))
+print("Turn the pot to set volume, press the button (GPIO{}) to play the next one in order.".format(BUTTON_PIN))
 print("Ctrl-C to stop.")
+
+# Cycle through every sound in order (wrapping back to the start) rather
+# than picking randomly, so a student hears the whole set with no
+# repeats before anything plays twice.
+sound_index = 0
 
 try:
     while True:
@@ -240,7 +244,8 @@ try:
         if button.value() == 0:
             time.sleep_ms(20)  # debounce
             if button.value() == 0:
-                name = sound_files[random.randint(0, len(sound_files) - 1)]
+                name = sound_files[sound_index]
+                sound_index = (sound_index + 1) % len(sound_files)
                 print("Playing", name)
                 play_wav(SOUND_DIR + "/" + name, name[:-4])  # strip ".wav"
                 while button.value() == 0:  # wait for release before re-arming
