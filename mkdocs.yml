@@ -175,6 +175,19 @@ nav:
     - IMU/MPU6050 Kit: kits/imu-mpu6050/index.md
     - 9-DOF IMU Kit: kits/9-dof-imu/index.md
 
+    - Smartwatch Compass Kit:
+      - Introduction: kits/smartwatch-compass-hmc5883l/index.md
+      - "Lab 1: Meet the Pico": kits/smartwatch-compass-hmc5883l/01-probe-pico.md
+      - "Lab 2: Blink the Onboard LED": kits/smartwatch-compass-hmc5883l/02-blink-onboard-led.md
+      - "Lab 3: Find the Compass on the Bus": kits/smartwatch-compass-hmc5883l/03-i2c-scanner.md
+      - "Lab 4: Read the Compass Once": kits/smartwatch-compass-hmc5883l/04-get-compass-values.md
+      - "Lab 5: Say Hello on the Screen": kits/smartwatch-compass-hmc5883l/05-display-hello.md
+      - "Lab 6: Show the Numbers": kits/smartwatch-compass-hmc5883l/06-display-compass-values.md
+      - "Lab 7: Watch It Live": kits/smartwatch-compass-hmc5883l/07-continuous-display.md
+      - "Lab 8: How Fast Is a Line?": kits/smartwatch-compass-hmc5883l/08-drawing-lines.md
+      - "Lab 9: Draw Bar Graphs": kits/smartwatch-compass-hmc5883l/09-draw-bars.md
+      - "Lab 10: Build a Real Compass": kits/smartwatch-compass-hmc5883l/10-draw-compass.md
+
     - MAX98357A Amp Kit:
       - Introduction: kits/max98357a-amp/index.md
       - "Lab 1: Meet Your Kit": kits/max98357a-amp/01-meet-your-kit.md

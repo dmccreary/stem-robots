@@ -84,6 +84,15 @@ a Pico, a sensor and a display mounted on a breadboard.
 
 [Digital Compass Kit](./compass-hmc5883l/index.md)
 
+## Smartwatch Compass Kit
+
+This kit pairs the same low-cost digital compass with a round,
+smartwatch-style color screen, so the compass needle draws right on the
+watch face. Like the Digital Compass Kit, it's not a complete robot —
+it's a bench build of a Pico, a sensor, and a display on a breadboard.
+
+[Smartwatch Compass Kit](./smartwatch-compass-hmc5883l/index.md)
+
 ## Motion Sensor Kit
 
 This kit demonstrates how sensitive accelerometers and gyroscopes work
