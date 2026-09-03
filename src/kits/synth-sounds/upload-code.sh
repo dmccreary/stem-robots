@@ -22,6 +22,27 @@ fi
 
 echo "Uploading to $PORT ..."
 
+# The max98357a-amp kit puts a directory named  sounds/  full of .wav clips on
+# the Pico.  This kit uploads a module named  sounds.py .  MicroPython's
+# importer looks for a DIRECTORY before it looks for a .py file, and it imports
+# a directory with no __init__.py as an empty module - so a leftover sounds/
+# silently shadows sounds.py and Lesson 4 dies with:
+#
+#     AttributeError: 'module' object has no attribute 'ALL'
+#
+# Nothing is lost by deleting it: the .wav files live in this repo under
+# sounds/, and the amp kit's own upload-code.sh copies them back.
+mpremote connect "$PORT" exec "
+import os
+try:
+    for f in os.listdir('sounds'):
+        os.remove('sounds/' + f)
+    os.rmdir('sounds')
+    print('  removed a stale sounds/ directory left by the max98357a-amp kit')
+except OSError:
+    pass
+"
+
 for name in config.py r2d2.py sounds.py main.py; do
     echo "  $name"
     mpremote connect "$PORT" fs cp "$SCRIPT_DIR/$name" ":$name"

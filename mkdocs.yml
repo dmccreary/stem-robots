@@ -197,6 +197,15 @@ nav:
       - "Lab 5: Turn the Dial": kits/max98357a-amp/05-turn-the-dial.md
       - "Lab 6: Volume Control Lab": kits/max98357a-amp/06-volume-control-lab.md
 
+    - Synth Sounds Kit:
+      - Introduction: kits/synth-sounds/index.md
+      - "Lab 1: Build the Sound Circuit": kits/synth-sounds/01-build-the-sound-circuit.md
+      - "Lab 2: Sliding Pitches": kits/synth-sounds/02-sliding-pitches.md
+      - "Lab 3: Shaping the Volume": kits/synth-sounds/03-shaping-the-volume.md
+      - "Lab 4: Sounds From Measurements": kits/synth-sounds/04-sounds-from-measurements.md
+      - "Lab 5: Add the Button": kits/synth-sounds/05-add-the-button.md
+      - "Lab 6: The Sound Jukebox": kits/synth-sounds/06-the-sound-jukebox.md
+
     - Swarm Bot:
       - Build Plan: kits/swarm-bot/plan.md
 

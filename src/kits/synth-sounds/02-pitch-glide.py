@@ -21,10 +21,12 @@ time.sleep_ms(300)
 # The real recorded "sad" sound is almost exactly this: start near 460 Hz,
 # lift slightly, then sag away to 380 Hz while fading out. We measured those
 # numbers from the recording; you are hearing the measurement played back.
+# This is sounds.SAD boiled down from eight segments to three - the same
+# shape, with the small wobbles smoothed out.
 print("The measured sad sound")
-r2d2.glide(458, 477, 130, 30, 58)
-r2d2.glide(477, 380, 380, 58, 27)
-r2d2.glide(380, 386, 105, 27, 7)
+r2d2.glide(462, 477, 140, 14, 100)   # rise a little, growing louder
+r2d2.glide(477, 409, 255, 100, 36)   # the long sag downward
+r2d2.glide(409, 388, 220, 36, 7)     # settle and fade away
 
 r2d2.end()
 print("Done.")
