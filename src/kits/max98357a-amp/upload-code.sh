@@ -28,6 +28,21 @@ SOUND_SOURCE_DIR="$PROJECT_HOME/sounds"
 
 echo "Uploading to $PORT ..."
 
+# Mirror of the guard in the synth-sounds kit.  That kit uploads a module named
+# sounds.py ; this kit needs a DIRECTORY named  sounds/  for the .wav clips.
+# Both can sit on flash at once, but the leftover module is 30 KB of dead weight
+# on a board that also has to hold ~430 KB of audio - and the moment a student
+# goes back to the synth kit, the directory created below shadows sounds.py.
+# Clear the module out now.  It is re-uploaded by synth-sounds/upload-code.sh.
+mpremote connect "$PORT" exec "
+import os
+try:
+    os.remove('sounds.py')
+    print('  removed a stale sounds.py left by the synth-sounds kit')
+except OSError:
+    pass
+"
+
 echo "  config.py"
 mpremote connect "$PORT" fs cp "$SCRIPT_DIR/config.py" :config.py
 

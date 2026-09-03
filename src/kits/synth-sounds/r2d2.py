@@ -47,12 +47,20 @@ def begin(pin=None):
 
 
 def end():
-    """Silence the pin and hand it back. Call this when your program exits."""
+    """
+    Silence the pin and hand it back. Call this when your program exits.
+
+    After deinit() the pin would be left floating, and a floating wire into a
+    high-gain amplifier acts as an aerial - you hear hiss and mains buzz out
+    of a robot that is supposed to be silent. So we drive the pin firmly LOW
+    on the way out, which gives the amplifier a steady, quiet input.
+    """
     global _pwm
     if _pwm is not None:
         _pwm.duty_u16(0)
         _pwm.deinit()
         _pwm = None
+    Pin(config.AUDIO_PIN, Pin.OUT, value=0)
 
 
 def set_volume(percent):
