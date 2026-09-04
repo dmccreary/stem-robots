@@ -30,11 +30,11 @@ gyro `0x6B`, accelerometer `0x19`, magnetometer `0x1E`, BMP180 `0x77`.
 
 ### Display (GC9B72, SPI0)
 
-Same board/wiring/driver as the
+Same driver as the
 [sw-gc9b72 kit](https://github.com/dmccreary/robot-faces/tree/main/src/kits/sw-gc9b72)
-in the `robot-faces` repo — confirmed working on real hardware there. It
-shares no pins with the sensor wiring above, so both halves can be wired at
-once.
+in the `robot-faces` repo, wired almost the same way — confirmed working on
+this kit's own hardware via `display-hello-test.py`. It shares no pins with
+the sensor wiring above, so both halves can be wired at once.
 
 | Module pin | Pico pin | Notes |
 |------------|----------|-------|
@@ -43,10 +43,15 @@ once.
 | RST | GPIO4 | Reset |
 | DC | GPIO5 | Data/command |
 | CS | GPIO6 | Chip select |
-| BL | GPIO7 | Backlight — drive high to enable |
+| BL | 3V3 | Tied straight to power, not GPIO-switched — the backlight is always on |
 | VCC | 3V3 | **3.3V only**, no onboard regulator |
 | GND | GND | |
 | SDO, TE | *(not connected)* | Read-back and frame-sync, unused by this driver |
+
+**This kit wires BL differently from the sw-gc9b72 kit**, which drives it
+from a GPIO so the backlight can be switched off in software. Here it goes
+straight to 3V3 instead, so there's no `set_backlight()` — the backlight is
+always on whenever the board has power.
 
 There was no public MicroPython driver for the GC9B72 controller — a GC9A01
 init sequence will not work on it, they are different chips despite both
@@ -79,6 +84,7 @@ else.
 | `02-test-stream.py` | Streams live gyro (deg/s), accelerometer (g), and magnetometer (gauss) readings using the shared drivers below. |
 | `03-plot-test-stream.py` | Same 9 axes, rescaled to 0-100 per channel (each with its own running min/max) so every signal stays visible on one graph — feed it to the Thonny Plotter. |
 | `04-display-imu.py` | Same live readings as `02-test-stream.py`, drawn on the GC9B72 round display instead of the console. |
+| `05-display-bars.py` | The same 9 channels as 9 horizontal bars growing left/right from a centerline — sign and rough magnitude at a glance instead of reading numbers. |
 | `display-hello-test.py` | Display-only smoke test — no I2C, no sensor drivers. Draws "Hello World!" on screen. Run this first if the display isn't showing anything, to rule the sensor half in or out. |
 | `board-info-test.py` | General Pico diagnostics unrelated to the sensor — processor, MicroPython version, unique ID, RAM, flash, and a full file listing. Useful any time you want to sanity-check the board itself. |
 | `config.py` | Every pin assignment, I2C address, identity-register constant, and display init helper, in one place. |
@@ -86,14 +92,14 @@ else.
 | `lib/gc9b72.py` | GC9B72 display driver (no frame buffer — every drawing call streams straight over SPI). |
 | `lib/vga1_8x16.py`, `lib/vga1_bold_16x32.py` | Bitmap fonts for `display.text()` — this driver has no built-in font. |
 
-`01-probe.py`, `02-test-stream.py`, `03-plot-test-stream.py`, and
-`04-display-imu.py` carry numeric prefixes — they're the graduated sequence
-(confirm wiring, trust the data, visualize it, then put it on screen).
-`i2c-scanner-test.py`, `board-info-test.py`, and `display-hello-test.py` are
-standalone diagnostic tools you can reach for at any point, not lesson steps
-in order, so they're deliberately left unnumbered. There's no combined
-`main.py`: with no motors to combine in, `04-display-imu.py` already *is*
-the combined program.
+`01-probe.py`, `02-test-stream.py`, `03-plot-test-stream.py`,
+`04-display-imu.py`, and `05-display-bars.py` carry numeric prefixes —
+they're the graduated sequence (confirm wiring, trust the data, visualize
+it, put it on screen as numbers, then as bars). `i2c-scanner-test.py`,
+`board-info-test.py`, and `display-hello-test.py` are standalone diagnostic
+tools you can reach for at any point, not lesson steps in order, so they're
+deliberately left unnumbered. There's no combined `main.py`: with no motors
+to combine in, `05-display-bars.py` already *is* the combined program.
 
 Every script prints its own filename and a version number as the first
 line of output when it starts, e.g. `04-display-imu.py v0.1`. Paste that
@@ -135,13 +141,11 @@ Troubleshooting checklist, in the order we'd actually check them:
 | Gyro reads a large, steady non-zero value at rest | Expected — a real zero-rate bias, not a bug. A future calibration lesson (like `08-calibrate-gyro.py` in the IMU/MPU6050 kit) is how you'd remove it. |
 | Accelerometer magnitude noticeably below 1g at rest | The board isn't sitting level — this isn't a code problem. |
 | `04-display-imu.py` shows nothing on screen | Run `display-hello-test.py` first — it drops the sensor out of the picture entirely, so you know whether the problem is the display or the sensor init. If that also shows nothing: check the five signal wires (SCL, SDA, RST, DC, CS) against the display wiring table above — a swapped SCL/SDA is the single most common mistake. Confirm `lib/gc9b72.py`, `lib/vga1_8x16.py`, and `lib/vga1_bold_16x32.py` all landed in `/lib` on the board, not the root. Confirm the display's VCC is on 3.3V, not 5V. |
-| Screen stays dark even though wiring and files check out | The backlight (BL, GPIO7) may not be enabled — try `config.set_backlight(True)` from the REPL. |
+| Screen stays completely dark, no backlight glow at all | BL should be wired straight to 3V3 on this kit (see above) — check that connection and the display's VCC/GND before suspecting the driver. |
 
-**Note:** this kit's sensor half and display half have each been confirmed
-working on real hardware separately — the sensor here in the original
-[9-dof-imu kit](../9-dof-imu/README.md), the display in the
-[sw-gc9b72 kit](https://github.com/dmccreary/robot-faces/tree/main/src/kits/sw-gc9b72) —
-but the two have not yet been tested wired up together on one board. Since
-they use entirely disjoint pins, wiring conflicts aren't expected, but treat
-`04-display-imu.py` as unverified until it's run on a board with both
-modules attached.
+**Note:** the display half is confirmed working on this kit's real
+hardware via `display-hello-test.py`. The sensor half was already confirmed
+in the original [9-dof-imu kit](../9-dof-imu/README.md). The two have not
+yet been confirmed running *together* via `04-display-imu.py` — since they
+use entirely disjoint pins, wiring conflicts aren't expected, but treat
+that combination as the last thing still to verify.
