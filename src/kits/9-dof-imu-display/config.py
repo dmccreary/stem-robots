@@ -44,23 +44,26 @@ BMP180_CHIP_ID = 0x55
 # ---------------------------------------------------------------------------
 # Display: GC9B72 2.1" 360x360 round SPI panel (sw-gc9b72 kit)
 # ---------------------------------------------------------------------------
-# This is the same board/wiring/driver as the sw-gc9b72 kit, confirmed
-# working on real hardware there. It shares no pins with the IMU wiring
-# above (I2C0 on GPIO0/1, interrupts on GPIO11-15), so both halves of this
-# kit can be wired at once with no conflicts.
+# Confirmed working on this kit's real hardware via display-hello-test.py.
+# Wiring differs from the sw-gc9b72 kit in one place: BL goes straight to
+# 3V3 here instead of a GPIO, so the backlight is always on and there is
+# no software control of it (no set_backlight() - there's nothing to
+# switch). Everything else shares no pins with the IMU wiring above (I2C0
+# on GPIO0/1, interrupts on GPIO11-15), so both halves of this kit can be
+# wired at once with no conflicts.
 #
 # The 10-pad breakout reads (left to right): GND VCC SDA SCL RST DC CS BL
-# SDO TE. Only 8 of those are wired -- SDO (read-back) and TE (frame
-# tearing sync) are not used by this driver and left unconnected.
+# SDO TE. SDO (read-back) and TE (frame tearing sync) are not used by this
+# driver and left unconnected.
 #
-#   Module pin   Pico pin
-#   ----------   --------
-#   SCL / CLK    GP2
-#   SDA / MOSI   GP3
-#   RST          GP4
-#   DC           GP5
-#   CS           GP6
-#   BL           GP7
+#   Module pin   Pico pin   Wire color
+#   ----------   --------   ----------
+#   SCL / CLK    GP2        orange
+#   SDA / MOSI   GP3        yellow
+#   RST          GP4        green
+#   DC           GP5        blue
+#   CS           GP6        purple
+#   BL           3V3        (always on, not GPIO-switched)
 #   VCC          3V3
 #   GND          GND
 from machine import Pin, SPI
@@ -73,15 +76,12 @@ DISPLAY_WIDTH = 360
 DISPLAY_HEIGHT = 360
 DISPLAY_SPI_ID = 0
 
-# Double Check thses
-DISPLAY_SCK_PIN = 2 # Orange
-DISPLAY_MOSI_PIN = 3 # Yellow
-DISPLAY_RST_PIN = 4 # Green
-DISPLAY_DC_PIN = 5 # Blue
-# GND Pin
-DISPLAY_CS_PIN = 6 # Purple
-
-# The Backlight Pin BL is tied to 3.3OUT
+DISPLAY_SCK_PIN = 2
+DISPLAY_MOSI_PIN = 3
+DISPLAY_RST_PIN = 4
+DISPLAY_DC_PIN = 5
+DISPLAY_CS_PIN = 6
+# No DISPLAY_BL_PIN - BL is wired straight to 3V3 on this board, not a GPIO.
 
 # THE NUMBER YOU ASK FOR IS ALMOST NEVER THE NUMBER YOU GET: the RP2040
 # derives its SPI clock by dividing the peripheral clock and MicroPython
@@ -111,15 +111,13 @@ DISPLAY_CENTER_X = DISPLAY_WIDTH // 2   # 180
 DISPLAY_CENTER_Y = DISPLAY_HEIGHT // 2  # 180
 DISPLAY_SAFE_RADIUS = 168
 
-_backlight = None
-
-
 def init_display():
     """Start the SPI bus and the GC9B72. Returns the display object.
 
     There is no frame buffer on this driver - every drawing call goes
-    straight to the glass, and there is no show() to call afterwards."""
-    global _backlight
+    straight to the glass, and there is no show() to call afterwards.
+    No backlight Pin is passed - BL is wired straight to 3V3 on this
+    board, so there's nothing for software to switch."""
     spi = SPI(DISPLAY_SPI_ID, baudrate=DISPLAY_BAUDRATE,
               sck=Pin(DISPLAY_SCK_PIN), mosi=Pin(DISPLAY_MOSI_PIN))
     return gc9b72.GC9B72(
@@ -127,6 +125,5 @@ def init_display():
         dc=Pin(DISPLAY_DC_PIN, Pin.OUT),
         cs=Pin(DISPLAY_CS_PIN, Pin.OUT),
         reset=Pin(DISPLAY_RST_PIN, Pin.OUT),
-        backlight=_backlight,
         rotation=0)
 
