@@ -1249,7 +1249,7 @@ def ping():
     return distance
 
 while True:
-    print(&quot;Distance:&quot;, ping(), &quot;cm&quot;)
+    print("Distance:", ping(), "cm")
     utime.sleep(.25)
 </code></pre></div></td></tr></table></div>
 <p>More advanced version with sound</p>
@@ -1344,9 +1344,9 @@ def ping():
 
 while True:
     dist=round(ping())
-    print(&quot;Distance:&quot;, dist, &quot;cm&quot;)
+    print("Distance:", dist, "cm")
     if dist &lt; 20:
-        print(&quot;Panic&quot;)
+        print("Panic")
         playtone(350)
         # Beep faster the closer you get
         utime.sleep(.05/(20/dist))

@@ -2098,7 +2098,7 @@ protecting WiFi credentials.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
 
 <span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
 <span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>   <span class="c1"># power on the WiFi chip</span>
@@ -2107,7 +2107,7 @@ protecting WiFi credentials.</p>
 <p>An <strong>access point</strong> (AP) is the router or WiFi hotspot the robot connects to. Your school's WiFi network is an access point. To connect, call <code>wlan.connect()</code> with the network name (SSID) and password:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">secrets</span> <span class="kn">import</span> <span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">secrets</span><span class="w"> </span><span class="kn">import</span> <span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span>
 
 <span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2126,18 +2126,18 @@ protecting WiFi credentials.</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span><span class="p">,</span> <span class="n">sleep</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span><span class="p">,</span> <span class="n">sleep</span>
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
 <span class="k">while</span> <span class="ow">not</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">ticks_ms</span><span class="p">(),</span> <span class="n">start</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10000</span><span class="p">:</span>   <span class="c1"># 10 second timeout</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WiFi connection failed!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"WiFi connection failed!"</span><span class="p">)</span>
         <span class="k">break</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
     <span class="n">ip</span> <span class="o">=</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connected! IP address: </span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Connected! IP address: </span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>The <strong>IP address retrieval</strong> uses <code>wlan.ifconfig()</code>, which returns a tuple of four values: <code>(ip, subnet_mask, gateway, dns_server)</code>. We take index <code>[0]</code> for the IP address — something like <code>192.168.1.105</code>.</p>
 <h3 id="ping-test">Ping Test</h3>
@@ -2151,12 +2151,12 @@ protecting WiFi credentials.</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Simple connectivity test — try connecting to a known address</span>
-<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s2">&quot;google.com&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DNS working — network is connected:&quot;</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
+    <span class="n">addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s2">"google.com"</span><span class="p">,</span> <span class="mi">80</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"DNS working — network is connected:"</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Network issue:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Network issue:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <hr />
 <h2 id="building-a-web-server">Building a Web Server</h2>
@@ -2199,8 +2199,8 @@ protecting WiFi credentials.</p>
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">html_page</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;Ready&quot;</span><span class="p">):</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;HTTP/1.1 200 OK</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">html_page</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">"Ready"</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"""HTTP/1.1 200 OK</span>
 <span class="s2">Content-Type: text/html</span>
 
 <span class="s2">&lt;!DOCTYPE html&gt;</span>
@@ -2209,16 +2209,16 @@ protecting WiFi credentials.</p>
 <span class="s2">&lt;body&gt;</span>
 <span class="s2">&lt;h1&gt;Sparky Robot Control&lt;/h1&gt;</span>
 <span class="s2">&lt;p&gt;Status: </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">&lt;/p&gt;</span>
-<span class="s2">&lt;form method=&quot;POST&quot;&gt;</span>
-<span class="s2">  &lt;button name=&quot;cmd&quot; value=&quot;forward&quot;&gt;Forward&lt;/button&gt;</span>
-<span class="s2">  &lt;button name=&quot;cmd&quot; value=&quot;back&quot;&gt;Back&lt;/button&gt;&lt;br&gt;</span>
-<span class="s2">  &lt;button name=&quot;cmd&quot; value=&quot;left&quot;&gt;Left&lt;/button&gt;</span>
-<span class="s2">  &lt;button name=&quot;cmd&quot; value=&quot;right&quot;&gt;Right&lt;/button&gt;&lt;br&gt;</span>
-<span class="s2">  &lt;button name=&quot;cmd&quot; value=&quot;stop&quot;&gt;Stop&lt;/button&gt;</span>
+<span class="s2">&lt;form method="POST"&gt;</span>
+<span class="s2">  &lt;button name="cmd" value="forward"&gt;Forward&lt;/button&gt;</span>
+<span class="s2">  &lt;button name="cmd" value="back"&gt;Back&lt;/button&gt;&lt;br&gt;</span>
+<span class="s2">  &lt;button name="cmd" value="left"&gt;Left&lt;/button&gt;</span>
+<span class="s2">  &lt;button name="cmd" value="right"&gt;Right&lt;/button&gt;&lt;br&gt;</span>
+<span class="s2">  &lt;button name="cmd" value="stop"&gt;Stop&lt;/button&gt;</span>
 <span class="s2">&lt;/form&gt;</span>
 <span class="s2">&lt;/body&gt;</span>
 <span class="s2">&lt;/html&gt;</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 </code></pre></div></td></tr></table></div>
 <h4 id="diagram-web-server-request-response-flow">Diagram: Web Server Request-Response Flow</h4>
 <iframe src="../../sims/http-request-response-flow/main.html" width="100%" height="720px" scrolling="no"></iframe>
@@ -2324,11 +2324,11 @@ protecting WiFi credentials.</p>
 <span class="normal">72</span>
 <span class="normal">73</span>
 <span class="normal">74</span>
-<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span><span class="o">,</span> <span class="nn">socket</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">secrets</span> <span class="kn">import</span> <span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">network</span><span class="o">,</span><span class="w"> </span><span class="nn">socket</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">secrets</span><span class="w"> </span><span class="kn">import</span> <span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="c1"># WiFi setup</span>
 <span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
@@ -2339,7 +2339,7 @@ protecting WiFi credentials.</p>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
 <span class="n">ip</span> <span class="o">=</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Server running at http://</span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Server running at http://</span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="s2">/"</span><span class="p">)</span>
 
 <span class="c1"># Motor setup (from Chapter 7)</span>
 <span class="n">right_fwd</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_FORWARD_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
@@ -2349,42 +2349,42 @@ protecting WiFi credentials.</p>
 
 <span class="n">FULL</span> <span class="o">=</span> <span class="mi">65535</span>
 
-<span class="k">def</span> <span class="nf">set_speed</span><span class="p">(</span><span class="n">pf</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">speed</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_speed</span><span class="p">(</span><span class="n">pf</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">speed</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">speed</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>   <span class="n">pf</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">speed</span><span class="p">);</span> <span class="n">pr</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">speed</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">pf</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>     <span class="n">pr</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="o">-</span><span class="n">speed</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>           <span class="n">pf</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>     <span class="n">pr</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">go_forward</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">go_forward</span><span class="p">():</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">FULL</span><span class="p">)</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">FULL</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">stop_motors</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stop_motors</span><span class="p">():</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">handle_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s2">&quot;forward&quot;</span><span class="p">:</span> <span class="n">go_forward</span><span class="p">()</span>
-    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s2">&quot;stop&quot;</span><span class="p">:</span>  <span class="n">stop_motors</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s2">"forward"</span><span class="p">:</span> <span class="n">go_forward</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s2">"stop"</span><span class="p">:</span>  <span class="n">stop_motors</span><span class="p">()</span>
     <span class="c1"># add back, left, right as needed</span>
 
 <span class="c1"># Socket server</span>
-<span class="n">addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s2">"0.0.0.0"</span><span class="p">,</span> <span class="mi">80</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
 <span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
 <span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;Ready&quot;</span>
+<span class="n">status</span> <span class="o">=</span> <span class="s2">"Ready"</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">conn</span><span class="p">,</span> <span class="n">client</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
         <span class="n">request</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
 
-        <span class="c1"># Parse cmd from POST body: &quot;cmd=forward&quot;</span>
-        <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-        <span class="k">if</span> <span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
-            <span class="n">body</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">body</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;cmd=&quot;</span><span class="p">):</span>
+        <span class="c1"># Parse cmd from POST body: "cmd=forward"</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="s2">""</span>
+        <span class="k">if</span> <span class="s2">"</span><span class="se">\r\n\r\n</span><span class="s2">"</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
+            <span class="n">body</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"</span><span class="se">\r\n\r\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">body</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"cmd="</span><span class="p">):</span>
                 <span class="n">cmd</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
                 <span class="n">handle_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
                 <span class="n">status</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
@@ -2398,7 +2398,7 @@ protecting WiFi credentials.</p>
 <span class="k">finally</span><span class="p">:</span>
     <span class="n">stop_motors</span><span class="p">()</span>
     <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Server stopped.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Server stopped."</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <hr />
 <h2 id="javascript-fetch-api-asynchronous-control">JavaScript Fetch API — Asynchronous Control</h2>
@@ -2414,12 +2414,12 @@ protecting WiFi credentials.</p>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// JavaScript inside the HTML page (inside &lt;script&gt; tags)</span>
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sendCmd</span><span class="p">(</span><span class="nx">cmd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/action&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cmd=&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">cmd</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/action'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'POST'</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">'cmd='</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">cmd</span>
 <span class="w">    </span><span class="p">});</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">).</span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">text</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'status'</span><span class="p">).</span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">text</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p>This turns the robot controller into a real-time interface — press Forward, robot starts moving immediately. Press Stop, it stops. No page reload between commands.</p>
@@ -2435,8 +2435,8 @@ Think about what just happened: a $35 microcontroller is accepting HTTP connecti
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># secrets.py — NEVER commit to version control</span>
-<span class="n">WIFI_SSID</span>     <span class="o">=</span> <span class="s2">&quot;SchoolRobotics&quot;</span>
-<span class="n">WIFI_PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;your-password-here&quot;</span>
+<span class="n">WIFI_SSID</span>     <span class="o">=</span> <span class="s2">"SchoolRobotics"</span>
+<span class="n">WIFI_PASSWORD</span> <span class="o">=</span> <span class="s2">"your-password-here"</span>
 </code></pre></div></td></tr></table></div>
 <p>Your <code>.gitignore</code> must include <code>secrets.py</code>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>secrets.py

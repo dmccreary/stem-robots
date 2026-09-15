@@ -2296,22 +2296,22 @@ I had to tweak these by hand.</p>
 <span class="kd">function</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createCanvas</span><span class="p">(</span><span class="nx">canvasWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasHeight</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// uncomment if you are placing in an HTML page</span>
-<span class="w">  </span><span class="c1">// canvas.parent(&#39;canvas-container&#39;);</span>
+<span class="w">  </span><span class="c1">// canvas.parent('canvas-container');</span>
 <span class="w">  </span><span class="nx">textSize</span><span class="p">(</span><span class="mf">16</span><span class="p">);</span>
 
 <span class="w">  </span><span class="nx">dutyCycleSlider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createSlider</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">);</span><span class="w"> </span><span class="c1">// Range from 0 to 1, default value 0.5, step size 0.01</span>
 <span class="w">  </span><span class="nx">dutyCycleSlider</span><span class="p">.</span><span class="nx">position</span><span class="p">(</span><span class="nx">leftSliderMargin</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasHeight</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">35</span><span class="p">);</span><span class="w"> </span><span class="c1">// Position slider</span>
-<span class="w">  </span><span class="nx">dutyCycleSlider</span><span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">leftSliderMargin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;px&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set width of slider</span>
+<span class="w">  </span><span class="nx">dutyCycleSlider</span><span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">'width'</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">leftSliderMargin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'px'</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set width of slider</span>
 <span class="p">}</span>
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">draw</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">background</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">background</span><span class="p">(</span><span class="s1">'black'</span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// Update duty cycle</span>
 <span class="w">  </span><span class="nx">dutyCycle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dutyCycleSlider</span><span class="p">.</span><span class="nx">value</span><span class="p">();</span>
 
 <span class="w">  </span><span class="c1">// Set stroke for waveform</span>
-<span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="s1">&#39;limegreen&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="s1">'limegreen'</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// disable the fill in the waveform</span>
 <span class="w">  </span><span class="nx">noFill</span><span class="p">();</span>
 <span class="w">  </span><span class="c1">// make the line be double wide</span>
@@ -2334,10 +2334,10 @@ I had to tweak these by hand.</p>
 <span class="w">  </span><span class="nx">endShape</span><span class="p">();</span>
 
 <span class="w">  </span><span class="c1">// Display duty cycle</span>
-<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">'white'</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">noStroke</span><span class="p">();</span>
 <span class="w">  </span><span class="c1">// Display duty cycle as percentage</span>
-<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Duty Cycle: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nf</span><span class="p">(</span><span class="nx">dutyCycle</span><span class="o">*</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;%&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">20</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s2">"Duty Cycle: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nf</span><span class="p">(</span><span class="nx">dutyCycle</span><span class="o">*</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"%"</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">20</span><span class="p">);</span><span class="w"> </span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="key-learnings-from-the-simulation">Key Learnings from the Simulation</h2>

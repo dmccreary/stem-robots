@@ -1925,7 +1925,7 @@
 <p>Students will explain the difference between a digital input pin and a digital output pin, and correctly map HIGH/LOW states to voltage levels and MicroPython boolean values.</p>
 <p><strong>Bloom's Taxonomy level:</strong> Understand (L2) — Explain how GPIO pins switch between input and output modes and how HIGH/LOW states map to voltage.</p>
 <p>You can embed this MicroSim in your own course page with the following <code>iframe</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/stem-robots/sims/gpio-pin-explorer/main.html&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;412&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/stem-robots/sims/gpio-pin-explorer/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"412"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="lesson-plan">Lesson Plan</h2>
 <p><strong>Learning objective:</strong> Students will explain the difference between a digital input pin and a digital output pin, and correctly map HIGH/LOW states to voltage levels and MicroPython boolean values.</p>
@@ -2003,24 +2003,24 @@ Canvas layout:
 - Right 45%: Control panel with mode selector and data display
 
 Visual elements:
-- Schematic shows: an &quot;RP2040&quot; microcontroller block, a wire from GP15 to an LED and resistor, a wire from GP14 to a push button
+- Schematic shows: an "RP2040" microcontroller block, a wire from GP15 to an LED and resistor, a wire from GP14 to a push button
 - LED glows yellow when HIGH; is gray when LOW
-- Button shows &quot;pressed&quot; vs &quot;released&quot; state visually (depressed outline vs raised)
+- Button shows "pressed" vs "released" state visually (depressed outline vs raised)
 - Voltage bar on each wire: 0.0 V to 3.3 V scale with animated fill
-- Current mode label above each pin: &quot;OUTPUT&quot; or &quot;INPUT&quot;
+- Current mode label above each pin: "OUTPUT" or "INPUT"
 
 Interactive controls (right panel):
-- Dropdown: &quot;Select Pin Mode&quot; — Output or Input
-- Toggle button: &quot;Set HIGH / Set LOW&quot; (active in Output mode)
-- Toggle button: &quot;Press Button / Release Button&quot; (active in Input mode)
+- Dropdown: "Select Pin Mode" — Output or Input
+- Toggle button: "Set HIGH / Set LOW" (active in Output mode)
+- Toggle button: "Press Button / Release Button" (active in Input mode)
 - Data display: Pin Mode, Voltage reading, MicroPython value (True / False)
 
 Data Visibility Requirements:
 Stage 1: Output mode, LOW — LED off, 0.0 V, value = False
-Stage 2: Click &quot;Set HIGH&quot; — LED lights yellow, 3.3 V, value = True
+Stage 2: Click "Set HIGH" — LED lights yellow, 3.3 V, value = True
 Stage 3: Switch dropdown to Input — controls change to button toggle
-Stage 4: Click &quot;Press Button&quot; — 3.3 V, value = True (pull-up keeps line high when pressed)
-Stage 5: Click &quot;Release Button&quot; — 0.0 V, value = False
+Stage 4: Click "Press Button" — 3.3 V, value = True (pull-up keeps line high when pressed)
+Stage 5: Click "Release Button" — 0.0 V, value = False
 
 Default parameters:
 - Mode: Output

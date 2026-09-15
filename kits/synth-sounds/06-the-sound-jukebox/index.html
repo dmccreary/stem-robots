@@ -2329,7 +2329,7 @@ that adapts on its own is code you won't have to fix later.</p>
 <p>Look for these two lines after the sound plays:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">while</span> <span class="n">button</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>    <span class="c1"># still holding it down?</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>         <span class="c1"># wait right here until it&#39;s let go</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>         <span class="c1"># wait right here until it's let go</span>
 </code></pre></div></td></tr></table></div>
 <p>This does nothing until you release the button. Without it, holding the
 button down would fire press after press, and all sixteen sounds would

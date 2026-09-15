@@ -2233,8 +2233,8 @@ event-driven robot responses.</p>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="c1"># Set up PWM for the right motor forward pin</span>
 <span class="n">right_fwd</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_FORWARD_PIN</span><span class="p">))</span>
@@ -2271,9 +2271,9 @@ event-driven robot responses.</p>
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="c1"># Create PWM objects for both motor direction pins</span>
 <span class="n">right_fwd</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_FORWARD_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
@@ -2281,10 +2281,10 @@ event-driven robot responses.</p>
 <span class="n">left_fwd</span>  <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">LEFT_FORWARD_PIN</span><span class="p">),</span>  <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">left_rev</span>  <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">LEFT_REVERSE_PIN</span><span class="p">),</span>  <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">set_speed</span><span class="p">(</span><span class="n">pwm_fwd</span><span class="p">,</span> <span class="n">pwm_rev</span><span class="p">,</span> <span class="n">speed</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set motor speed. Positive = forward, negative = reverse, 0 = stop.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_speed</span><span class="p">(</span><span class="n">pwm_fwd</span><span class="p">,</span> <span class="n">pwm_rev</span><span class="p">,</span> <span class="n">speed</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Set motor speed. Positive = forward, negative = reverse, 0 = stop.</span>
 <span class="sd">    speed is -65535 to 65535.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">speed</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">pwm_fwd</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span>
         <span class="n">pwm_rev</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -2343,13 +2343,13 @@ Call <code>set_speed(..., 0)</code> on both motors in your <code>finally</code> 
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">spin_left</span><span class="p">(</span><span class="n">speed</span><span class="o">=</span><span class="mi">32767</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Spin in place to the left.&quot;&quot;&quot;</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">spin_left</span><span class="p">(</span><span class="n">speed</span><span class="o">=</span><span class="mi">32767</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Spin in place to the left."""</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">speed</span><span class="p">)</span>    <span class="c1"># right wheel forward</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="o">-</span><span class="n">speed</span><span class="p">)</span>   <span class="c1"># left wheel backward</span>
 
-<span class="k">def</span> <span class="nf">turn_gradual_left</span><span class="p">(</span><span class="n">speed</span><span class="o">=</span><span class="mi">32767</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gentle left curve — right faster, left slower.&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_gradual_left</span><span class="p">(</span><span class="n">speed</span><span class="o">=</span><span class="mi">32767</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Gentle left curve — right faster, left slower."""</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">speed</span><span class="p">)</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">speed</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2393,8 +2393,8 @@ Call <code>set_speed(..., 0)</code> on both motors in your <code>finally</code> 
 <p><strong>Linear range mapping</strong> is a formula to convert an angle (0–180) to a duty cycle value (min_duty to max_duty). Before the code, here is the math: we scale the input angle proportionally across the output duty cycle range.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">angle_to_duty</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">min_duty</span><span class="o">=</span><span class="mi">3276</span><span class="p">,</span> <span class="n">max_duty</span><span class="o">=</span><span class="mi">6553</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert servo angle (0-180) to 16-bit duty cycle value.&quot;&quot;&quot;</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">angle_to_duty</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">min_duty</span><span class="o">=</span><span class="mi">3276</span><span class="p">,</span> <span class="n">max_duty</span><span class="o">=</span><span class="mi">6553</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Convert servo angle (0-180) to 16-bit duty cycle value."""</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">min_duty</span> <span class="o">+</span> <span class="p">(</span><span class="n">angle</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">max_duty</span> <span class="o">-</span> <span class="n">min_duty</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="servo-sweep-code">Servo Sweep Code</h3>
@@ -2423,13 +2423,13 @@ Call <code>set_speed(..., 0)</code> on both motors in your <code>finally</code> 
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="n">servo</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SERVO_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">set_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
     <span class="n">duty</span> <span class="o">=</span> <span class="n">angle_to_duty</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
     <span class="n">servo</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
 
@@ -2472,14 +2472,14 @@ Call <code>set_speed(..., 0)</code> on both motors in your <code>finally</code> 
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BUZZER_PIN</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Play a tone at the given frequency (Hz) for duration seconds.&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Play a tone at the given frequency (Hz) for duration seconds."""</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32767</span><span class="p">)</span>   <span class="c1"># 50% duty cycle for maximum volume</span>
     <span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
@@ -2511,12 +2511,12 @@ Sensors are inputs. Motors and displays are outputs. The buzzer is also an outpu
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
 
 <span class="n">button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">button_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Button pressed!&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">button_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Button pressed!"</span><span class="p">)</span>
 
 <span class="n">button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">button_pressed</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2540,18 +2540,18 @@ Sensors are inputs. Motors and displays are outputs. The buzzer is also an outpu
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
 
 <span class="n">button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
 <span class="n">last_press_time</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">def</span> <span class="nf">button_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">button_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">last_press_time</span>
     <span class="n">now</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">last_press_time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">:</span>    <span class="c1"># 150 ms debounce</span>
         <span class="n">last_press_time</span> <span class="o">=</span> <span class="n">now</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Button press registered!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Button press registered!"</span><span class="p">)</span>
 
 <span class="n">button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">button_pressed</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2608,9 +2608,9 @@ Interrupt handler functions (like <code>button_pressed</code>) run in a special 
 <span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="c1"># Set up motors</span>
 <span class="n">right_fwd</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_FORWARD_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
@@ -2622,7 +2622,7 @@ Interrupt handler functions (like <code>button_pressed</code>) run in a special 
 <span class="n">button_flag</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">last_press</span>  <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">def</span> <span class="nf">on_button</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_button</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">button_flag</span><span class="p">,</span> <span class="n">last_press</span>
     <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">ticks_ms</span><span class="p">(),</span> <span class="n">last_press</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">:</span>
         <span class="n">last_press</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
@@ -2631,7 +2631,7 @@ Interrupt handler functions (like <code>button_pressed</code>) run in a special 
 <span class="n">button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
 <span class="n">button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">on_button</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">beep</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">440</span><span class="p">,</span> <span class="n">dur</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">beep</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">440</span><span class="p">,</span> <span class="n">dur</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">freq</span><span class="p">);</span> <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32767</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="n">dur</span><span class="p">);</span> <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
@@ -2642,7 +2642,7 @@ Interrupt handler functions (like <code>button_pressed</code>) run in a special 
         <span class="k">if</span> <span class="n">button_flag</span><span class="p">:</span>
             <span class="n">button_flag</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="n">beep</span><span class="p">(</span><span class="mi">880</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Button pressed!&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Button pressed!"</span><span class="p">)</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
 
 <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
@@ -2652,7 +2652,7 @@ Interrupt handler functions (like <code>button_pressed</code>) run in a special 
     <span class="n">right_fwd</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">right_rev</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">left_fwd</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>  <span class="n">left_rev</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Motors and buzzer off.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Motors and buzzer off."</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <hr />
 <h2 id="key-takeaways">Key Takeaways</h2>

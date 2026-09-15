@@ -2064,8 +2064,8 @@ also be run directly from Thonny, or headlessly with:</p>
 <h2 id="secrets-file">Secrets File</h2>
 <p>Our WiFi connection stores the local wireless network name and password in a file called <code>secrets.py</code>.  It has the following format:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">SSID</span> <span class="o">=</span> <span class="s2">&quot;MY_WIFI_NETWORK_NAME&quot;</span>
-<span class="n">PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;MY_WIFI_PASSWORD&quot;</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">SSID</span> <span class="o">=</span> <span class="s2">"MY_WIFI_NETWORK_NAME"</span>
+<span class="n">PASSWORD</span> <span class="o">=</span> <span class="s2">"MY_WIFI_PASSWORD"</span>
 </code></pre></div></td></tr></table></div>
 <p>Note that you should take steps to make sure the <code>secrets.py</code> file is not checked into public GitHub repositories.
 The best way to do this is to add the following line to your .gitignore file:</p>
@@ -2092,25 +2092,25 @@ The best way to do this is to add the following line to your .gitignore file:</p
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
-<span class="kn">import</span> <span class="nn">secrets</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connecting to WiFi Network Name:&#39;</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Connecting to WiFi Network Name:'</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">)</span>
 <span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
 <span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># power up the WiFi chip</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Waiting for wifi chip to power up...&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Waiting for wifi chip to power up...'</span><span class="p">)</span>
 <span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># wait three seconds for the chip to power up and initialize</span>
 
 <span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">PASSWORD</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Waiting for access point to log us in.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Waiting for access point to log us in.'</span><span class="p">)</span>
 <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Success! We have connected to your access point!&#39;</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Try to ping the device at&#39;</span><span class="p">,</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Success! We have connected to your access point!'</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Try to ping the device at'</span><span class="p">,</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 <span class="k">else</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failure! We have not connected to your access point!  Check your secrets.py file for errors.&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Failure! We have not connected to your access point!  Check your secrets.py file for errors.'</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Here is the Thonny console log when that prgram is running.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>

@@ -2305,7 +2305,7 @@ continuously forever.</p>
 <h2 id="step-2-read-the-measurement">Step 2: Read the Measurement</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">HMC5883L_ADDRESS</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">DATA_START</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;hhh&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">"&gt;hhh"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p><code>readfrom_mem()</code> grabs 6 raw bytes back from the chip — two bytes for
 each of the three axes. <code>struct.unpack("&gt;hhh", data)</code> is a tool that

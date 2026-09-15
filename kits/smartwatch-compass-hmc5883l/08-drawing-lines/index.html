@@ -2278,13 +2278,13 @@ surprising about how this screen actually works.</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">draw_grid</span><span class="p">():</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">draw_grid</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">WIDTH</span><span class="p">,</span> <span class="n">GRID_SPACING</span><span class="p">):</span>
         <span class="n">display</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">HEIGHT</span><span class="p">,</span> <span class="n">WHITE</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">HEIGHT</span><span class="p">,</span> <span class="n">GRID_SPACING</span><span class="p">):</span>
         <span class="n">display</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">WIDTH</span><span class="p">,</span> <span class="n">WHITE</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">draw_spokes</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_spokes</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">SPOKE_COUNT</span><span class="p">):</span>
         <span class="n">angle</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="mi">360</span> <span class="o">*</span> <span class="n">i</span> <span class="o">/</span> <span class="n">SPOKE_COUNT</span><span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span>
@@ -2305,9 +2305,9 @@ point into an angle).</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">ticks_us</span><span class="p">,</span> <span class="n">ticks_diff</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticks_us</span><span class="p">,</span> <span class="n">ticks_diff</span>
 
-<span class="k">def</span> <span class="nf">time_drawing</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="n">repeats</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">time_drawing</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="n">repeats</span><span class="p">):</span>
     <span class="n">draw</span><span class="p">()</span>                              <span class="c1"># warm-up, not counted</span>
     <span class="n">started</span> <span class="o">=</span> <span class="n">ticks_us</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">repeats</span><span class="p">):</span>

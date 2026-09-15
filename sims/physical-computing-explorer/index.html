@@ -1930,7 +1930,7 @@ bloom_level: TBD</p>
 <p>Students will <em>identify</em> (Bloom L1: Remember) the three layers of a physical computing system — inputs, processor, and outputs — and <em>explain</em> (Bloom L2: Understand) how information flows through the sense → decide → act loop.</p>
 <p><strong>Bloom's Taxonomy level:</strong> TBD</p>
 <p>You can embed this MicroSim in your own course page with the following <code>iframe</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/stem-robots/sims/physical-computing-explorer/main.html&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;422&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/stem-robots/sims/physical-computing-explorer/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"422"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="lesson-plan">Lesson Plan</h2>
 <p><strong>Learning objective:</strong> Students will <em>identify</em> (Bloom L1: Remember) the three layers of a physical computing system — inputs, processor, and outputs — and <em>explain</em> (Bloom L2: Understand) how information flows through the sense → decide → act loop.</p>
@@ -1989,17 +1989,17 @@ bloom_level: TBD</p>
 
 **Layout:** Three vertical columns separated by animated flowing arrows:
 
-Left column — **Inputs**: Three sensor icons stacked vertically with labels: &quot;Distance Sensor (ToF)&quot;, &quot;Line Sensors (IR)&quot;, &quot;Bump Sensor&quot;. Each icon is drawn as a simple geometric shape with a colored border. All three connect via dashed animated lines flowing rightward.
+Left column — **Inputs**: Three sensor icons stacked vertically with labels: "Distance Sensor (ToF)", "Line Sensors (IR)", "Bump Sensor". Each icon is drawn as a simple geometric shape with a colored border. All three connect via dashed animated lines flowing rightward.
 
-Center column — **Processor**: A rounded rectangle labeled &quot;Cytron Maker Pi RP2040&quot; with &quot;MicroPython Code&quot; in smaller text inside and a blinking cursor. Color: navy (#1a237e). Animated dashed lines flow in from the left and out to the right.
+Center column — **Processor**: A rounded rectangle labeled "Cytron Maker Pi RP2040" with "MicroPython Code" in smaller text inside and a blinking cursor. Color: navy (#1a237e). Animated dashed lines flow in from the left and out to the right.
 
-Right column — **Outputs**: Three output icons with labels: &quot;DC Motors&quot;, &quot;NeoPixel LEDs&quot;, &quot;OLED Display&quot;. Each icon uses the appropriate visual metaphor (spinning wheel, colored dot grid, small screen).
+Right column — **Outputs**: Three output icons with labels: "DC Motors", "NeoPixel LEDs", "OLED Display". Each icon uses the appropriate visual metaphor (spinning wheel, colored dot grid, small screen).
 
 **Interactions:**
-- Clicking any input icon highlights it yellow (#f9a825) and opens a tooltip popup stating: the sensor name, what physical phenomenon it measures, and an example reading (e.g., &quot;Time-of-flight sensor: measures reflected infrared light. Example: 24 cm to nearest obstacle.&quot;).
-- Clicking the center processor box shows: &quot;The microcontroller reads every input, executes your MicroPython code, and decides what outputs to trigger — all in milliseconds.&quot;
-- Clicking any output icon shows: the output name, what physical action it produces, and an example value (e.g., &quot;DC Motors: spin the wheels. Example: speed=75 means 75% of full power.&quot;).
-- A &quot;Play Loop&quot; button (bottom-center, created with p5&#39;s `createButton()`) starts an animation where orange (#e65100) particles travel along the wire paths from left to right, illustrating the sense → decide → act cycle in motion. Clicking again pauses the animation.
+- Clicking any input icon highlights it yellow (#f9a825) and opens a tooltip popup stating: the sensor name, what physical phenomenon it measures, and an example reading (e.g., "Time-of-flight sensor: measures reflected infrared light. Example: 24 cm to nearest obstacle.").
+- Clicking the center processor box shows: "The microcontroller reads every input, executes your MicroPython code, and decides what outputs to trigger — all in milliseconds."
+- Clicking any output icon shows: the output name, what physical action it produces, and an example value (e.g., "DC Motors: spin the wheels. Example: speed=75 means 75% of full power.").
+- A "Play Loop" button (bottom-center, created with p5's `createButton()`) starts an animation where orange (#e65100) particles travel along the wire paths from left to right, illustrating the sense → decide → act cycle in motion. Clicking again pauses the animation.
 
 **Visual style:** Bold flat illustration, thick black outlines, transparent background. Tooltips appear as navy (#1a237e) rounded rectangles with white text, positioned adjacent to the clicked element.
 

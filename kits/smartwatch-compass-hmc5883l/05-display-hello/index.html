@@ -2364,7 +2364,7 @@ middle.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
-<span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BIG_FONT</span><span class="p">,</span> <span class="s2">&quot;Hello World!&quot;</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">104</span><span class="p">,</span>
+<span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BIG_FONT</span><span class="p">,</span> <span class="s2">"Hello World!"</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">104</span><span class="p">,</span>
              <span class="n">config</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p><code>display.fill(config.BLACK)</code> clears the whole screen to black first.
@@ -2392,8 +2392,8 @@ or move it closer to the middle.</p>
 <h2 id="step-4-two-fonts-one-screen">Step 4: Two Fonts, One Screen</h2>
 <p>Open <code>config.py</code> and find these two lines:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">vga1_8x16</span> <span class="k">as</span> <span class="nn">FONT</span>           <span class="c1"># small: 8x16 pixels per letter</span>
-<span class="kn">import</span> <span class="nn">vga1_bold_16x32</span> <span class="k">as</span> <span class="nn">BIG_FONT</span>  <span class="c1"># big: 16x32 pixels per letter</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">vga1_8x16</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">FONT</span>           <span class="c1"># small: 8x16 pixels per letter</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">vga1_bold_16x32</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">BIG_FONT</span>  <span class="c1"># big: 16x32 pixels per letter</span>
 </code></pre></div></td></tr></table></div>
 <p>This display has <strong>no built-in font</strong> — unlike some screens, it doesn't
 come with letters baked in, so every program has to import a font file

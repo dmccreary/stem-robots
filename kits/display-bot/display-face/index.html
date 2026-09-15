@@ -2019,11 +2019,11 @@ direction as a number between -25 (left) to 25 (right).</p>
 <span class="normal">68</span>
 <span class="normal">69</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Display face with eye with gaze movement</span>
 
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
-<span class="kn">import</span> <span class="nn">VL53L0X</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">VL53L0X</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">NeoPixel</span>
 
 <span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">128</span>
 <span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">64</span>
@@ -2055,7 +2055,7 @@ direction as a number between -25 (left) to 25 (right).</p>
 <span class="n">mouth_vpos</span> <span class="o">=</span> <span class="mi">45</span>
 <span class="n">mouth_width</span> <span class="o">=</span> <span class="mi">40</span>
 
-<span class="k">def</span> <span class="nf">display_face_eye</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">display_face_eye</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="c1"># left eye</span>

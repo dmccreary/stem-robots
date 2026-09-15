@@ -2270,14 +2270,14 @@
 <span class="c1"># Perhaps derived from here: https://github.com/uceeatz/VL53L0X/blob/master/VL53L0X.py</span>
 
 <span class="c1"># This demo makes the blue LEDs show the distance and prints the distance on the console</span>
-<span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">VL53L0X</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">VL53L0X</span>
 
 <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># row one on our standard Pico breadboard</span>
 <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># row two on our standard Pico breadboard</span>
 <span class="n">i2c</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">sda</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">scl</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
-<span class="c1"># print(&quot;Device found at decimal&quot;, i2c.scan())</span>
+<span class="c1"># print("Device found at decimal", i2c.scan())</span>
 
 <span class="c1"># The Maker Pi RP2040 has 13 fantastic blue GPIO status LEDs which we can use 11</span>
 <span class="c1"># The distance scale is non linear</span>
@@ -2302,7 +2302,7 @@
 
 
 <span class="c1"># get the normalized time-of-flight distance</span>
-<span class="k">def</span> <span class="nf">get_distance</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_distance</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">ZERO_DIST</span>
     <span class="n">tof_distance</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">tof_distance</span> <span class="o">&gt;</span> <span class="n">MAX_DIST</span><span class="p">:</span>
@@ -2313,7 +2313,7 @@
     <span class="k">return</span>  <span class="nb">int</span><span class="p">((</span><span class="n">tof_distance</span> <span class="o">-</span> <span class="n">ZERO_DIST</span><span class="p">)</span> <span class="o">*</span> <span class="n">SCALE_DIST</span><span class="p">)</span>
 
 <span class="c1"># use the dist_scale to turn on LEDs</span>
-<span class="k">def</span> <span class="nf">led_show_dist</span><span class="p">(</span><span class="n">in_distance</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">led_show_dist</span><span class="p">(</span><span class="n">in_distance</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">number_leds</span>
     <span class="k">for</span> <span class="n">led_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_leds</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">in_distance</span> <span class="o">&gt;</span> <span class="n">dist_scale</span><span class="p">[</span><span class="n">led_index</span><span class="p">]:</span>
@@ -2321,7 +2321,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">led_ports</span><span class="p">[</span><span class="n">led_index</span><span class="p">]</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Using&#39;</span><span class="p">,</span> <span class="n">number_leds</span><span class="p">,</span> <span class="s1">&#39; blue leds to show distance.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Using'</span><span class="p">,</span> <span class="n">number_leds</span><span class="p">,</span> <span class="s1">' blue leds to show distance.'</span><span class="p">)</span>
 
 <span class="c1"># blue up</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_leds</span><span class="p">):</span>

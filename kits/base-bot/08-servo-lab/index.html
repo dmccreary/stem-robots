@@ -1277,12 +1277,12 @@
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># This will take in integers of range in (min and max) return a integer in the output range (min and max)</span>
 <span class="c1"># Used to convert one range of values into another using a linear function like the Arduino map() function</span>
-<span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">in_min</span><span class="p">,</span> <span class="n">in_max</span><span class="p">,</span> <span class="n">out_min</span><span class="p">,</span> <span class="n">out_max</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">in_min</span><span class="p">,</span> <span class="n">in_max</span><span class="p">,</span> <span class="n">out_min</span><span class="p">,</span> <span class="n">out_max</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">in_min</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">out_max</span> <span class="o">-</span> <span class="n">out_min</span><span class="p">)</span> <span class="o">//</span> <span class="p">(</span><span class="n">in_max</span> <span class="o">-</span> <span class="n">in_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">out_min</span>
 
 <span class="n">angle</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">duty</span> <span class="o">=</span> <span class="n">convert</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="n">SERVO_MIN_DUTY</span><span class="p">,</span> <span class="n">SERVO_MAX_DUTY</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For angle: &#39;</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="s1">&#39; the duty is: &#39;</span><span class="p">,</span> <span class="n">duty</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'For angle: '</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="s1">' the duty is: '</span><span class="p">,</span> <span class="n">duty</span><span class="p">)</span>
 <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="checking-your-servo-calibration-with-buttons">Checking your Servo Calibration with Buttons</h2>
@@ -1344,8 +1344,8 @@
 <span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Maker Pi RP2040 program to check the limits of a 180 degree servo such as a SG90 micro servo</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="n">BUTTON_1_PIN</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># increment the angle</span>
 <span class="n">BUTTON_2_PIN</span> <span class="o">=</span> <span class="mi">21</span> <span class="c1"># decrement the angle</span>
@@ -1367,7 +1367,7 @@
 <span class="c1">#  return int( ( (0.0015*SERVO_FREQ_HZ) + ((angle/90) * (0.0005*SERVO_FREQ_HZ)) ) * 65535 )</span>
 <span class="c1"># This will take in integers of range in (min and max) return a integer in the output range (min and max)</span>
 <span class="c1"># Used to convert one range of values into another using a linear function like the Arduino map() function</span>
-<span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">in_min</span><span class="p">,</span> <span class="n">in_max</span><span class="p">,</span> <span class="n">out_min</span><span class="p">,</span> <span class="n">out_max</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">in_min</span><span class="p">,</span> <span class="n">in_max</span><span class="p">,</span> <span class="n">out_min</span><span class="p">,</span> <span class="n">out_max</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">in_min</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">out_max</span> <span class="o">-</span> <span class="n">out_min</span><span class="p">)</span> <span class="o">//</span> <span class="p">(</span><span class="n">in_max</span> <span class="o">-</span> <span class="n">in_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">out_min</span>
 
 <span class="c1"># globals</span>
@@ -1375,13 +1375,13 @@
 <span class="n">last_time</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># the last time we pressed the button</span>
 
 <span class="c1"># if the pin is 20 then increment, else decement</span>
-<span class="k">def</span> <span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">angle</span><span class="p">,</span> <span class="n">last_time</span>
     <span class="n">new_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
     <span class="c1"># if it has been more that 1/5 of a second since the last event, we have a new event</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">new_time</span> <span class="o">-</span> <span class="n">last_time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">:</span>
         <span class="c1"># this should be pin.id but it does not work</span>
-        <span class="k">if</span> <span class="s1">&#39;20&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">'20'</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
             <span class="n">angle</span> <span class="o">+=</span><span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">angle</span> <span class="o">-=</span><span class="mi">1</span>
@@ -1397,7 +1397,7 @@
     <span class="c1"># only print on change in the button_presses value</span>
     <span class="k">if</span> <span class="n">angle</span> <span class="o">!=</span> <span class="n">old_angle</span><span class="p">:</span>
         <span class="n">duty</span> <span class="o">=</span> <span class="n">convert</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="n">SERVO_MIN_DUTY</span><span class="p">,</span> <span class="n">SERVO_MAX_DUTY</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;new angle:&#39;</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="s1">&#39;duty: &#39;</span><span class="p">,</span> <span class="n">duty</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'new angle:'</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="s1">'duty: '</span><span class="p">,</span> <span class="n">duty</span><span class="p">)</span>
         <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
         <span class="n">old_angle</span> <span class="o">=</span> <span class="n">angle</span>
 </code></pre></div></td></tr></table></div>
@@ -1468,8 +1468,8 @@
 <span class="normal">64</span>
 <span class="normal">65</span>
 <span class="normal">66</span>
-<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="n">BUTTON_1_PIN</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">BUTTON_2_PIN</span> <span class="o">=</span> <span class="mi">21</span>
@@ -1494,13 +1494,13 @@
 <span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
 <span class="n">last_time</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># the last time we pressed the button</span>
 
-<span class="k">def</span> <span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">angle</span><span class="p">,</span> <span class="n">last_time</span>
     <span class="n">new_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
     <span class="c1"># if it has been more that 1/5 of a second since the last event, we have a new event</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">new_time</span> <span class="o">-</span> <span class="n">last_time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">:</span>
         <span class="c1"># this should be pin.id but it does not work</span>
-        <span class="k">if</span> <span class="s1">&#39;20&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">'20'</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
             <span class="n">angle</span> <span class="o">+=</span><span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">angle</span> <span class="o">-=</span><span class="mi">1</span>
@@ -1513,7 +1513,7 @@
 
 <span class="c1"># Thisw will take in integers of range in (min and max) return a integer in the output range (min and max)</span>
 <span class="c1"># Used to convert one range of values into another using a linear function like the Arduino map() function</span>
-<span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">in_min</span><span class="p">,</span> <span class="n">in_max</span><span class="p">,</span> <span class="n">out_min</span><span class="p">,</span> <span class="n">out_max</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">in_min</span><span class="p">,</span> <span class="n">in_max</span><span class="p">,</span> <span class="n">out_min</span><span class="p">,</span> <span class="n">out_max</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">in_min</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">out_max</span> <span class="o">-</span> <span class="n">out_min</span><span class="p">)</span> <span class="o">//</span> <span class="p">(</span><span class="n">in_max</span> <span class="o">-</span> <span class="n">in_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">out_min</span>
 
 <span class="c1"># -90 should generate 1725</span>
@@ -1525,13 +1525,13 @@
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">):</span>
         <span class="n">duty</span> <span class="o">=</span> <span class="n">convert</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="n">SERVO_MIN_DUTY</span><span class="p">,</span> <span class="n">SERVO_MAX_DUTY</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;angle:&#39;</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="s1">&#39;duty: &#39;</span><span class="p">,</span> <span class="n">duty</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'angle:'</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="s1">'duty: '</span><span class="p">,</span> <span class="n">duty</span><span class="p">)</span>
         <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
         <span class="n">old_angle</span> <span class="o">=</span> <span class="n">angle</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">.01</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         <span class="n">duty</span> <span class="o">=</span> <span class="n">convert</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="n">SERVO_MIN_DUTY</span><span class="p">,</span> <span class="n">SERVO_MAX_DUTY</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;angle:&#39;</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="s1">&#39;duty: &#39;</span><span class="p">,</span> <span class="n">duty</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'angle:'</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="s1">'duty: '</span><span class="p">,</span> <span class="n">duty</span><span class="p">)</span>
         <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
         <span class="n">old_angle</span> <span class="o">=</span> <span class="n">angle</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">.01</span><span class="p">)</span>
@@ -1549,17 +1549,17 @@
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="n">SERVO_1_PIN</span> <span class="o">=</span> <span class="mi">12</span>
 <span class="n">SERVO_2_PIN</span> <span class="o">=</span> <span class="mi">13</span>
 <span class="n">SERVO_3_PIN</span> <span class="o">=</span> <span class="mi">14</span>
 <span class="n">SERVO_4_PIN</span> <span class="o">=</span> <span class="mi">15</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shutting down all servos!&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'shutting down all servos!'</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Servo&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;shutting down&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Servo'</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">'shutting down'</span><span class="p">)</span>
     <span class="n">pwm1</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">SERVO_1_PIN</span><span class="p">))</span>
     <span class="n">pwm1</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1576,17 +1576,17 @@
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">stop_all_servos</span><span class="p">():</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">stop_all_servos</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="p">(</span><span class="n">SERVO_1_PIN</span><span class="p">,</span> <span class="n">SERVO_2_PIN</span><span class="p">,</span> <span class="n">SERVO_3_PIN</span><span class="p">,</span> <span class="n">SERVO_4_PIN</span><span class="p">):</span>
         <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">pin</span><span class="p">))</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Got ctrl-c&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Got ctrl-c'</span><span class="p">)</span>
 <span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cleaning up&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Powering down all servos now.&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Cleaning up'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Powering down all servos now.'</span><span class="p">)</span>
     <span class="n">stop_all_servos</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="references">References</h2>

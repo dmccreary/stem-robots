@@ -2652,7 +2652,7 @@ accelerometer and gyroscope readings straight to the console, six numbers
 per line:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">MPU6050_ADDRESS_LOW</span><span class="p">,</span> <span class="n">ACCEL_XOUT_H</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">az</span><span class="p">,</span> <span class="n">_temp</span><span class="p">,</span> <span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">,</span> <span class="n">gz</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;hhhhhhh&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">az</span><span class="p">,</span> <span class="n">_temp</span><span class="p">,</span> <span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">,</span> <span class="n">gz</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">"&gt;hhhhhhh"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>That one <code>readfrom_mem</code> call grabs all 14 bytes the sensor needs in a single
 trip across the wire — accelerometer X/Y/Z, a temperature reading we don't
@@ -2668,7 +2668,7 @@ completely separate from whether the MPU6050 works:</p>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">oled</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">init_display</span><span class="p">()</span>
 <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
-<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
 <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="4-04-display-accel-barspy-feeling-gravity">4. <code>04-display-accel-bars.py</code> — Feeling Gravity</h3>
@@ -2689,7 +2689,7 @@ level a carpenter uses. A dot drifts away from the center of a circle as you
 tilt the board, and the screen prints "LEVEL" once you get it flat:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">LEVEL_TOLERANCE_G</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ay</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">LEVEL_TOLERANCE_G</span><span class="p">:</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;LEVEL&quot;</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s2">"LEVEL"</span>
 </code></pre></div></td></tr></table></div>
 <p>Under the hood, it turns the X and Y acceleration into <strong>roll</strong> and <strong>pitch</strong>
 angles (in degrees) using <code>atan2</code> — the same trigonometry a robot uses to
@@ -2850,8 +2850,8 @@ mode</strong>:</p>
     <span class="n">next_name</span><span class="p">,</span> <span class="n">_draw</span><span class="p">,</span> <span class="n">_on_enter</span> <span class="o">=</span> <span class="n">MODES</span><span class="p">[</span><span class="n">next_index</span><span class="p">]</span>
 
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">WHITE</span><span class="p">)</span>
-    <span class="n">center_text</span><span class="p">(</span><span class="s2">&quot;Shake Detected&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">)</span>
-    <span class="n">center_text</span><span class="p">(</span><span class="s2">&quot;Changing Mode&quot;</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">)</span>
+    <span class="n">center_text</span><span class="p">(</span><span class="s2">"Shake Detected"</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">)</span>
+    <span class="n">center_text</span><span class="p">(</span><span class="s2">"Changing Mode"</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">)</span>
     <span class="n">center_text</span><span class="p">(</span><span class="n">next_name</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">)</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="n">SHAKE_MESSAGE_MS</span><span class="p">)</span>

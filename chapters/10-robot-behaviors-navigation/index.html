@@ -2173,10 +2173,10 @@ Think about riding a bicycle. You don't look at your hands once, set the handleb
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 
-<span class="k">def</span> <span class="nf">pick_random_turn</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pick_random_turn</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"left"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="the-complete-collision-avoidance-algorithm">The Complete Collision Avoidance Algorithm</h3>
 <p>Now let's build the full collision avoidance behavior. Before the code, here is the overall structure: we have five movement functions (<code>go_forward</code>, <code>go_slow</code>, <code>stop_motors</code>, <code>turn_left</code>, <code>turn_right</code>). The main loop reads the sensor, decides the response, and calls the appropriate function.</p>
@@ -2255,9 +2255,9 @@ Think about riding a bicycle. You don't look at your hands once, set the handleb
 <span class="normal">73</span>
 <span class="normal">74</span>
 <span class="normal">75</span>
-<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">vl53l0x</span><span class="o">,</span> <span class="nn">config</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="o">,</span><span class="w"> </span><span class="nn">vl53l0x</span><span class="o">,</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="c1"># Set up motors (same as Chapter 7)</span>
 <span class="n">right_fwd</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">RIGHT_FORWARD_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
@@ -2268,7 +2268,7 @@ Think about riding a bicycle. You don't look at your hands once, set the handleb
 <span class="n">FULL</span> <span class="o">=</span> <span class="mi">65535</span>
 <span class="n">HALF</span> <span class="o">=</span> <span class="mi">32767</span>
 
-<span class="k">def</span> <span class="nf">set_speed</span><span class="p">(</span><span class="n">pf</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">speed</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_speed</span><span class="p">(</span><span class="n">pf</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">speed</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">speed</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">pf</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">speed</span><span class="p">);</span> <span class="n">pr</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">speed</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -2276,24 +2276,24 @@ Think about riding a bicycle. You don't look at your hands once, set the handleb
     <span class="k">else</span><span class="p">:</span>
         <span class="n">pf</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">pr</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">go_forward</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">go_forward</span><span class="p">():</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">FULL</span><span class="p">)</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">FULL</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">go_slow</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">go_slow</span><span class="p">():</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">HALF</span><span class="p">)</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">HALF</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">stop_motors</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stop_motors</span><span class="p">():</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_left</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.4</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_left</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.4</span><span class="p">):</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">FULL</span><span class="p">)</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="o">-</span><span class="n">FULL</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_right</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.4</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_right</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.4</span><span class="p">):</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="o">-</span><span class="n">FULL</span><span class="p">)</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="n">FULL</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
@@ -2317,8 +2317,8 @@ Think about riding a bicycle. You don't look at your hands once, set the handleb
         <span class="k">else</span><span class="p">:</span>
             <span class="n">stop_motors</span><span class="p">()</span>
             <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-            <span class="n">direction</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">])</span>
-            <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="s2">&quot;left&quot;</span><span class="p">:</span>
+            <span class="n">direction</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"left"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="s2">"left"</span><span class="p">:</span>
                 <span class="n">turn_left</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">turn_right</span><span class="p">()</span>
@@ -2330,7 +2330,7 @@ Think about riding a bicycle. You don't look at your hands once, set the handleb
 
 <span class="k">finally</span><span class="p">:</span>
     <span class="n">stop_motors</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stopped.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Stopped."</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>This is a complete, production-quality collision avoidance program. The constants <code>STOP_DIST_CM</code> and <code>SLOW_DIST_CM</code> are easy to tune without touching the logic. The <code>finally</code> block guarantees the motors stop.</p>
 <div class="admonition mascot-tip">
@@ -2405,7 +2405,7 @@ The 20 cm and 50 cm values are starting points, not magic numbers. Run the robot
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">adjust_motors</span><span class="p">(</span><span class="n">left_val</span><span class="p">,</span> <span class="n">right_val</span><span class="p">):</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">adjust_motors</span><span class="p">(</span><span class="n">left_val</span><span class="p">,</span> <span class="n">right_val</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">left_val</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">right_val</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="c1"># Left sensor on line — slow left, keep right fast (turn right)</span>
         <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">FULL</span><span class="p">)</span>
@@ -2480,27 +2480,27 @@ Bright sunlight or fluorescent flicker can confuse IR sensors. Test your line fo
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
-<span class="k">def</span> <span class="nf">spin</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">spin</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="n">FULL</span><span class="p">)</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="o">-</span><span class="n">FULL</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">back</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">back</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">right_fwd</span><span class="p">,</span> <span class="n">right_rev</span><span class="p">,</span> <span class="o">-</span><span class="n">FULL</span><span class="p">)</span>
     <span class="n">set_speed</span><span class="p">(</span><span class="n">left_fwd</span><span class="p">,</span>  <span class="n">left_rev</span><span class="p">,</span>  <span class="o">-</span><span class="n">FULL</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
 
 <span class="c1"># A simple 8-beat dance at 120 BPM (0.5s per beat)</span>
-<span class="k">def</span> <span class="nf">dance</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dance</span><span class="p">():</span>
     <span class="n">go_forward</span><span class="p">();</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>      <span class="c1"># beat 1</span>
-    <span class="n">spin</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">);</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>      <span class="c1"># beat 2</span>
-    <span class="n">spin</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">);</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>     <span class="c1"># beat 3</span>
+    <span class="n">spin</span><span class="p">(</span><span class="s2">"left"</span><span class="p">);</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>      <span class="c1"># beat 2</span>
+    <span class="n">spin</span><span class="p">(</span><span class="s2">"right"</span><span class="p">);</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>     <span class="c1"># beat 3</span>
     <span class="n">back</span><span class="p">();</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>            <span class="c1"># beat 4</span>
     <span class="n">go_forward</span><span class="p">();</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>      <span class="c1"># beats 5–6</span>
-    <span class="n">spin</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">);</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>     <span class="c1"># beat 7 (half beat)</span>
-    <span class="n">spin</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">);</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>    <span class="c1"># beat 7 (half beat)</span>
+    <span class="n">spin</span><span class="p">(</span><span class="s2">"left"</span><span class="p">);</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>     <span class="c1"># beat 7 (half beat)</span>
+    <span class="n">spin</span><span class="p">(</span><span class="s2">"right"</span><span class="p">);</span> <span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>    <span class="c1"># beat 7 (half beat)</span>
     <span class="n">stop_motors</span><span class="p">()</span>                 <span class="c1"># beat 8 — end</span>
 </code></pre></div></td></tr></table></div>
 <p>Encourage creativity here: try adding buzzer tones, NeoPixel color changes, and OLED face changes synchronized with motor moves. A robot that blinks, beeps, and dances is memorable.</p>
@@ -2567,11 +2567,11 @@ Bright sunlight or fluorescent flicker can confuse IR sensors. Test your line fo
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># secrets.py — NEVER commit this file to git!</span>
-<span class="n">WIFI_SSID</span>     <span class="o">=</span> <span class="s2">&quot;SchoolRobotics&quot;</span>
-<span class="n">WIFI_PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;your-password-here&quot;</span>
+<span class="n">WIFI_SSID</span>     <span class="o">=</span> <span class="s2">"SchoolRobotics"</span>
+<span class="n">WIFI_PASSWORD</span> <span class="o">=</span> <span class="s2">"your-password-here"</span>
 </code></pre></div></td></tr></table></div>
 <p>In <code>main.py</code>, import only what you need:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">secrets</span> <span class="kn">import</span> <span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">secrets</span><span class="w"> </span><span class="kn">import</span> <span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="gitignore-file">Gitignore File</h3>
 <p>The <code>.gitignore</code> file in your project root prevents <code>secrets.py</code> (and other unwanted files) from being committed:</p>

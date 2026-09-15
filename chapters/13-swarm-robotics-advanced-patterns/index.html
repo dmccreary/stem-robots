@@ -2450,14 +2450,14 @@ the main program continues on to its next line without waiting.</p>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">_thread</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">_thread</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
-<span class="k">def</span> <span class="nf">watch_distance_sensor</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">watch_distance_sensor</span><span class="p">():</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">distance</span> <span class="o">=</span> <span class="n">read_distance</span><span class="p">()</span>   <span class="c1"># from Chapter 8&#39;s ToF driver</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="n">read_distance</span><span class="p">()</span>   <span class="c1"># from Chapter 8's ToF driver</span>
         <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">:</span>
-            <span class="n">avoid_flag</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>          <span class="c1"># signal the main loop, don&#39;t call motors directly</span>
+            <span class="n">avoid_flag</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>          <span class="c1"># signal the main loop, don't call motors directly</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 
 <span class="n">_thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">watch_distance_sensor</span><span class="p">,</span> <span class="p">())</span>
@@ -2480,14 +2480,14 @@ point where this task lets another task run.</p>
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">uasyncio</span> <span class="k">as</span> <span class="nn">asyncio</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">uasyncio</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">asyncio</span>
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">blink_status_led</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">blink_status_led</span><span class="p">():</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
         <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>   <span class="c1"># pause here — other tasks run during this pause</span>
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">blink_status_led</span><span class="p">())</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">check_ble_messages</span><span class="p">()</span>
@@ -2613,11 +2613,11 @@ pattern from Chapter 6:</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
 
 <span class="n">encoder_ticks</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">def</span> <span class="nf">count_tick</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">count_tick</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">encoder_ticks</span>
     <span class="n">encoder_ticks</span> <span class="o">+=</span> <span class="mi">1</span>   <span class="c1"># one tick = one fixed distance traveled</span>
 
@@ -2637,12 +2637,12 @@ watching it live.</p>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">log_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;heading_log.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">log_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"heading_log.csv"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">log_heading</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">actual</span><span class="p">):</span>
-    <span class="n">row</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">actual</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">log_heading</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">actual</span><span class="p">):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">actual</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
     <span class="n">log_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-    <span class="n">log_file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>   <span class="c1"># write to flash now, don&#39;t wait for a possible crash</span>
+    <span class="n">log_file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>   <span class="c1"># write to flash now, don't wait for a possible crash</span>
 </code></pre></div></td></tr></table></div>
 <p>Later, you can open <code>heading_log.csv</code> on your laptop and plot target vs. actual heading
 over time — the exact same step-response curve the PID tuner MicroSim above simulates,
@@ -2711,14 +2711,14 @@ are, before trusting any of its data.</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
 
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
 <span class="n">found</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Devices found:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">found</span><span class="p">])</span>   <span class="c1"># expect two addresses, not one</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Devices found:"</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">found</span><span class="p">])</span>   <span class="c1"># expect two addresses, not one</span>
 
 <span class="n">gyro_id</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="mh">0x6B</span><span class="p">,</span> <span class="mh">0x0F</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># WHO_AM_I register</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gyro chip ID:&quot;</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">gyro_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>     <span class="c1"># expect 0xD4 or 0xD7</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Gyro chip ID:"</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">gyro_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>     <span class="c1"># expect 0xD4 or 0xD7</span>
 </code></pre></div></td></tr></table></div>
 <p>The full driver code for both chips — with all the register constants — is in the
 <a href="../../kits/swarm-bot/plan/">Swarm Robot Build Plan</a>, written for the exact module
@@ -2803,14 +2803,14 @@ number in degrees that the rest of the swarm code can rely on.</p>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
-<span class="k">class</span> <span class="nc">HeadingFilter</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.98</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HeadingFilter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.98</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">heading</span> <span class="o">=</span> <span class="mf">0.0</span>
 
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gyro_z_dps</span><span class="p">,</span> <span class="n">mag_x</span><span class="p">,</span> <span class="n">mag_y</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gyro_z_dps</span><span class="p">,</span> <span class="n">mag_x</span><span class="p">,</span> <span class="n">mag_y</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
         <span class="n">gyro_estimate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">heading</span> <span class="o">+</span> <span class="n">gyro_z_dps</span> <span class="o">*</span> <span class="n">dt</span>
         <span class="n">compass_estimate</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">mag_y</span><span class="p">,</span> <span class="n">mag_x</span><span class="p">))</span> <span class="o">%</span> <span class="mi">360</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">heading</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">gyro_estimate</span>
@@ -2903,9 +2903,9 @@ from its <em>own</em> sensors, and steers to close the gap between the two.</p>
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span><span class="o">,</span> <span class="nn">socket</span><span class="o">,</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">time</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">network</span><span class="o">,</span><span class="w"> </span><span class="nn">socket</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
 
-<span class="k">def</span> <span class="nf">start_ap</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">start_ap</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
     <span class="n">ap</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">AP_IF</span><span class="p">)</span>
     <span class="n">ap</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
     <span class="n">ap</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -2913,12 +2913,12 @@ from its <em>own</em> sensors, and steers to close the gap between the two.</p>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ap</span>
 
-<span class="k">def</span> <span class="nf">broadcast_loop</span><span class="p">(</span><span class="n">get_heading</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">broadcast_loop</span><span class="p">(</span><span class="n">get_heading</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">):</span>
     <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
     <span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_BROADCAST</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;heading&quot;</span><span class="p">:</span> <span class="n">get_heading</span><span class="p">()})</span>
-        <span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">payload</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="p">(</span><span class="s2">&quot;192.168.4.255&quot;</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>   <span class="c1"># AP broadcast address</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">"heading"</span><span class="p">:</span> <span class="n">get_heading</span><span class="p">()})</span>
+        <span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">payload</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="p">(</span><span class="s2">"192.168.4.255"</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>   <span class="c1"># AP broadcast address</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.02</span><span class="p">)</span>   <span class="c1"># 50 Hz</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>UDP follower steering code</strong> joins that network, listens for the heading, and steers
@@ -2930,10 +2930,10 @@ using the same proportional-only control introduced earlier in this chapter:</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">heading_error</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">heading_error</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">target</span> <span class="o">-</span> <span class="n">current</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span> <span class="o">-</span> <span class="mi">180</span>   <span class="c1"># shortest turn direction, -180..+180</span>
 
-<span class="k">def</span> <span class="nf">steer</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">base_speed</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">steer</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">base_speed</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
     <span class="n">turn</span> <span class="o">=</span> <span class="n">Kp</span> <span class="o">*</span> <span class="n">error</span>
     <span class="n">left</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">base_speed</span> <span class="o">+</span> <span class="n">turn</span><span class="p">))</span>
     <span class="n">right</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">base_speed</span> <span class="o">-</span> <span class="n">turn</span><span class="p">))</span>

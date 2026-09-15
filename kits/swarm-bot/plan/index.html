@@ -2433,7 +2433,7 @@ src/kits/swarm/
 
 <span class="c1"># Swarm networking</span>
 <span class="n">UDP_PORT</span> <span class="o">=</span> <span class="mi">8000</span>
-<span class="n">BROADCAST_ADDR</span> <span class="o">=</span> <span class="s2">&quot;192.168.4.255&quot;</span>  <span class="c1"># Pico W AP default subnet</span>
+<span class="n">BROADCAST_ADDR</span> <span class="o">=</span> <span class="s2">"192.168.4.255"</span>  <span class="c1"># Pico W AP default subnet</span>
 <span class="n">LOOP_HZ</span> <span class="o">=</span> <span class="mi">50</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="5-step-by-step-build-order">5. Step-by-Step Build Order</h2>
@@ -2453,10 +2453,10 @@ src/kits/swarm/
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
 <span class="n">found</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Devices found:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">found</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Devices found:"</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">found</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
 <p>Expect two addresses: the gyro at <code>0x6B</code> (or <code>0x6A</code> if its <code>SDO</code> pin is grounded
    on this particular clone) and the accel/mag at <code>0x1D</code> (or <code>0x1E</code>). Record whatever
@@ -2488,24 +2488,24 @@ in <code>src/lib/VL53L0X.py</code> (<code>const()</code> addresses, <code>readfr
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># l3gd20.py</span>
-<span class="kn">from</span> <span class="nn">micropython</span> <span class="kn">import</span> <span class="n">const</span>
-<span class="kn">import</span> <span class="nn">ustruct</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">micropython</span><span class="w"> </span><span class="kn">import</span> <span class="n">const</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ustruct</span>
 
 <span class="n">_WHO_AM_I</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x0F</span><span class="p">)</span>
 <span class="n">_CTRL_REG1</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x20</span><span class="p">)</span>
 <span class="n">_CTRL_REG4</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x23</span><span class="p">)</span>
 <span class="n">_OUT_X_L</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x28</span> <span class="o">|</span> <span class="mh">0x80</span><span class="p">)</span>  <span class="c1"># 0x80 bit auto-increments across X/Y/Z</span>
 
-<span class="k">class</span> <span class="nc">L3GD20</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i2c</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="mh">0x6B</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">L3GD20</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i2c</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="mh">0x6B</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span> <span class="o">=</span> <span class="n">i2c</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">address</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_CTRL_REG1</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x0F</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># normal mode, XYZ on, 95 Hz</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_CTRL_REG4</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># 250 dps full scale</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_CTRL_REG1</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\x0F</span><span class="s1">'</span><span class="p">)</span>  <span class="c1"># normal mode, XYZ on, 95 Hz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_CTRL_REG4</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\x00</span><span class="s1">'</span><span class="p">)</span>  <span class="c1"># 250 dps full scale</span>
 
-    <span class="k">def</span> <span class="nf">read_dps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">read_dps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_OUT_X_L</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ustruct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;&lt;hhh&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ustruct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'&lt;hhh'</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="n">sensitivity</span> <span class="o">=</span> <span class="mf">0.00875</span>  <span class="c1"># dps per LSB at 250 dps full scale</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">sensitivity</span><span class="p">,</span> <span class="n">y</span> <span class="o">*</span> <span class="n">sensitivity</span><span class="p">,</span> <span class="n">z</span> <span class="o">*</span> <span class="n">sensitivity</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2540,8 +2540,8 @@ in <code>src/lib/VL53L0X.py</code> (<code>const()</code> addresses, <code>readfr
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># lsm303d.py</span>
-<span class="kn">from</span> <span class="nn">micropython</span> <span class="kn">import</span> <span class="n">const</span>
-<span class="kn">import</span> <span class="nn">ustruct</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">micropython</span><span class="w"> </span><span class="kn">import</span> <span class="n">const</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ustruct</span>
 
 <span class="n">_CTRL1</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x20</span><span class="p">)</span>
 <span class="n">_CTRL5</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x24</span><span class="p">)</span>
@@ -2550,24 +2550,24 @@ in <code>src/lib/VL53L0X.py</code> (<code>const()</code> addresses, <code>readfr
 <span class="n">_OUT_X_L_A</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x28</span> <span class="o">|</span> <span class="mh">0x80</span><span class="p">)</span>
 <span class="n">_OUT_X_L_M</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x08</span> <span class="o">|</span> <span class="mh">0x80</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">LSM303D</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i2c</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="mh">0x1D</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LSM303D</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i2c</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="mh">0x1D</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span> <span class="o">=</span> <span class="n">i2c</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">address</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_CTRL1</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x57</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># 100 Hz, XYZ accel on</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_CTRL5</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x64</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># high-res mag, 50 Hz</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_CTRL6</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x20</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># +/-4 gauss</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_CTRL7</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># continuous-conversion mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_CTRL1</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\x57</span><span class="s1">'</span><span class="p">)</span>  <span class="c1"># 100 Hz, XYZ accel on</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_CTRL5</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\x64</span><span class="s1">'</span><span class="p">)</span>  <span class="c1"># high-res mag, 50 Hz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_CTRL6</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\x20</span><span class="s1">'</span><span class="p">)</span>  <span class="c1"># +/-4 gauss</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_CTRL7</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\x00</span><span class="s1">'</span><span class="p">)</span>  <span class="c1"># continuous-conversion mode</span>
 
-    <span class="k">def</span> <span class="nf">read_accel_g</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">read_accel_g</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_OUT_X_L_A</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ustruct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;&lt;hhh&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ustruct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'&lt;hhh'</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="n">sensitivity</span> <span class="o">=</span> <span class="mf">0.061</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># g per LSB at +/-2g</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">sensitivity</span><span class="p">,</span> <span class="n">y</span> <span class="o">*</span> <span class="n">sensitivity</span><span class="p">,</span> <span class="n">z</span> <span class="o">*</span> <span class="n">sensitivity</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">read_mag_gauss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">read_mag_gauss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">_OUT_X_L_M</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ustruct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;&lt;hhh&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ustruct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'&lt;hhh'</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="n">sensitivity</span> <span class="o">=</span> <span class="mf">0.16</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># gauss per LSB at +/-4 gauss</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">sensitivity</span><span class="p">,</span> <span class="n">y</span> <span class="o">*</span> <span class="n">sensitivity</span><span class="p">,</span> <span class="n">z</span> <span class="o">*</span> <span class="n">sensitivity</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2619,18 +2619,18 @@ demos fail — don't skip it.</p>
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
-<span class="k">class</span> <span class="nc">HeadingFilter</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.98</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HeadingFilter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.98</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">heading</span> <span class="o">=</span> <span class="mf">0.0</span>
 
-    <span class="k">def</span> <span class="nf">mag_heading</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mag_x</span><span class="p">,</span> <span class="n">mag_y</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mag_heading</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mag_x</span><span class="p">,</span> <span class="n">mag_y</span><span class="p">):</span>
         <span class="n">heading</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">mag_y</span><span class="p">,</span> <span class="n">mag_x</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">heading</span> <span class="o">%</span> <span class="mi">360</span>
 
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gyro_z_dps</span><span class="p">,</span> <span class="n">mag_x</span><span class="p">,</span> <span class="n">mag_y</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gyro_z_dps</span><span class="p">,</span> <span class="n">mag_x</span><span class="p">,</span> <span class="n">mag_y</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
         <span class="n">gyro_estimate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">heading</span> <span class="o">+</span> <span class="n">gyro_z_dps</span> <span class="o">*</span> <span class="n">dt</span>
         <span class="n">compass_estimate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mag_heading</span><span class="p">(</span><span class="n">mag_x</span><span class="p">,</span> <span class="n">mag_y</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">heading</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">gyro_estimate</span>
@@ -2671,27 +2671,27 @@ Access-Point mode broadcasting UDP instead of Station mode serving a TCP web pag
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
-<span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">secrets</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
-<span class="k">def</span> <span class="nf">start_ap</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">start_ap</span><span class="p">():</span>
     <span class="n">ap</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">AP_IF</span><span class="p">)</span>
     <span class="n">ap</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="n">secrets</span><span class="o">.</span><span class="n">AP_SSID</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">secrets</span><span class="o">.</span><span class="n">AP_PASSWORD</span><span class="p">)</span>
     <span class="n">ap</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">ap</span><span class="o">.</span><span class="n">active</span><span class="p">():</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AP up:&quot;</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"AP up:"</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">ap</span>
 
-<span class="k">def</span> <span class="nf">broadcast_loop</span><span class="p">(</span><span class="n">get_heading</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">broadcast_loop</span><span class="p">(</span><span class="n">get_heading</span><span class="p">):</span>
     <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
     <span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_BROADCAST</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;heading&quot;</span><span class="p">:</span> <span class="n">get_heading</span><span class="p">(),</span> <span class="s2">&quot;speed&quot;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">})</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">"heading"</span><span class="p">:</span> <span class="n">get_heading</span><span class="p">(),</span> <span class="s2">"speed"</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">})</span>
         <span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">payload</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BROADCAST_ADDR</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">UDP_PORT</span><span class="p">))</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">config</span><span class="o">.</span><span class="n">LOOP_HZ</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2723,29 +2723,29 @@ Access-Point mode broadcasting UDP instead of Station mode serving a TCP web pag
 <span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
-<span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">secrets</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
-<span class="k">def</span> <span class="nf">join_ap</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">join_ap</span><span class="p">():</span>
     <span class="n">sta</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
     <span class="n">sta</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">sta</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">AP_SSID</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">AP_PASSWORD</span><span class="p">)</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">sta</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Joined AP:&quot;</span><span class="p">,</span> <span class="n">sta</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Joined AP:"</span><span class="p">,</span> <span class="n">sta</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">sta</span>
 
-<span class="k">def</span> <span class="nf">open_listener</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">open_listener</span><span class="p">():</span>
     <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
-    <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">UDP_PORT</span><span class="p">))</span>
-    <span class="n">sock</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># don&#39;t block the control loop waiting on a dropped packet</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">'0.0.0.0'</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">UDP_PORT</span><span class="p">))</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># don't block the control loop waiting on a dropped packet</span>
     <span class="k">return</span> <span class="n">sock</span>
 
-<span class="k">def</span> <span class="nf">receive_target</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">last_target</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">receive_target</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">last_target</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -2763,11 +2763,11 @@ Access-Point mode broadcasting UDP instead of Station mode serving a TCP web pag
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">heading_error</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">heading_error</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
     <span class="n">error</span> <span class="o">=</span> <span class="p">(</span><span class="n">target</span> <span class="o">-</span> <span class="n">current</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span> <span class="o">-</span> <span class="mi">180</span>
     <span class="k">return</span> <span class="n">error</span>  <span class="c1"># -180..+180, positive = turn right</span>
 
-<span class="k">def</span> <span class="nf">steer</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">base_speed</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">steer</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">base_speed</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
     <span class="n">turn</span> <span class="o">=</span> <span class="n">Kp</span> <span class="o">*</span> <span class="n">error</span>
     <span class="n">left</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">base_speed</span> <span class="o">+</span> <span class="n">turn</span><span class="p">))</span>
     <span class="n">right</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">base_speed</span> <span class="o">-</span> <span class="n">turn</span><span class="p">))</span>

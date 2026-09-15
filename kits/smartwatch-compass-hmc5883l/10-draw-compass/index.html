@@ -2290,7 +2290,7 @@ with a needle that tracks true north. Let's finish this!</p>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">raw_heading_degrees</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">raw_heading_degrees</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">heading_rad</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">heading_rad</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">heading_rad</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
@@ -2356,7 +2356,7 @@ wraparound correctly. This trick is called a <strong>circular mean</strong>.</p>
 <p>Every reading after that subtracts this measured offset, so 0 really
 does mean "pointing at true north":</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">heading_degrees</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">heading_degrees</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">raw_heading_degrees</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">MOUNTING_OFFSET_DEGREES</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Try it now:</strong> when the screen says "Point the board due north," aim
@@ -2381,7 +2381,7 @@ needs its own flicker-avoidance trick:</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">draw_needle</span><span class="p">(</span><span class="n">heading</span><span class="p">):</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">draw_needle</span><span class="p">(</span><span class="n">heading</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">prev_needle_x</span><span class="p">,</span> <span class="n">prev_needle_y</span>
     <span class="n">needle_x</span> <span class="o">=</span> <span class="n">CENTER_X</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">NEEDLE_LENGTH</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">heading_rad</span><span class="p">))</span>
     <span class="n">needle_y</span> <span class="o">=</span> <span class="n">CENTER_Y</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">NEEDLE_LENGTH</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">heading_rad</span><span class="p">))</span>

@@ -2131,8 +2131,8 @@ that follows.</p>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">distance_cm</span> <span class="o">=</span> <span class="mi">15</span>
 
 <span class="k">if</span> <span class="n">distance_cm</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Obstacle detected!&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stopping motors.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Obstacle detected!"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Stopping motors."</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Notice the colon after the condition and the four-space indent on the block. Both are required. Leave out the colon and Python gives you a <code>SyntaxError</code>. Remove the indent and the print statement no longer belongs to the if block.</p>
 <h3 id="adding-elif-and-else">Adding elif and else</h3>
@@ -2147,11 +2147,11 @@ that follows.</p>
 <span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">distance_cm</span> <span class="o">=</span> <span class="mi">35</span>
 
 <span class="k">if</span> <span class="n">distance_cm</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Too close — stop!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Too close — stop!"</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">distance_cm</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Getting close — slow down.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Getting close — slow down."</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Path clear — full speed ahead!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Path clear — full speed ahead!"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Python checks conditions from top to bottom. The moment one is <code>True</code>, it runs that block and skips the rest. Only one branch ever runs.</p>
 <p>The table below shows how distance ranges map to robot responses:</p>
@@ -2206,14 +2206,14 @@ that follows.</p>
 <p>A <strong>for loop</strong> repeats a block of code a fixed number of times, or once for each item in a sequence. Before the code example, here is what the key piece does: <code>range(5)</code> produces the sequence <code>[0, 1, 2, 3, 4]</code> — five values starting at 0. The loop variable <code>i</code> takes each value in turn.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Blink number:&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Blink number:"</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>This prints five lines, counting from 0 to 4. You can also loop over a list:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setting LED to:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Setting LED to:"</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Use <code>for</code> loops when you know exactly how many repetitions you need.</p>
 <h3 id="the-while-loop">The while Loop</h3>
@@ -2222,7 +2222,7 @@ that follows.</p>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Run forever until the program is stopped</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Checking sensors...&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Checking sensors..."</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p><code>while True</code> runs forever. This is the standard way to write the main loop of a robot program. We stop it by pressing Ctrl+C in Thonny, which we handle in the exception section below.</p>
 <p>You can also use a condition that eventually becomes <code>False</code>:</p>
@@ -2233,7 +2233,7 @@ that follows.</p>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">distance_cm</span> <span class="o">=</span> <span class="mi">100</span>
 
 <span class="k">while</span> <span class="n">distance_cm</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moving forward. Distance:&quot;</span><span class="p">,</span> <span class="n">distance_cm</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Moving forward. Distance:"</span><span class="p">,</span> <span class="n">distance_cm</span><span class="p">)</span>
     <span class="n">distance_cm</span> <span class="o">-=</span> <span class="mi">5</span>    <span class="c1"># simulate getting closer to a wall</span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition mascot-thinking">
@@ -2249,7 +2249,7 @@ that follows.</p>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Blink 3 different colors, 4 times each</span>
 <span class="k">for</span> <span class="n">color_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">blink</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Color&quot;</span><span class="p">,</span> <span class="n">color_index</span><span class="p">,</span> <span class="s2">&quot;blink&quot;</span><span class="p">,</span> <span class="n">blink</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Color"</span><span class="p">,</span> <span class="n">color_index</span><span class="p">,</span> <span class="s2">"blink"</span><span class="p">,</span> <span class="n">blink</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>The outer loop runs 3 times (colors 0, 1, 2). For each outer step, the inner loop runs 4 times. Total iterations: 3 × 4 = 12.</p>
 <p>Be careful with nested loops: adding one nesting level multiplies the total iterations. A triple-nested loop over <code>range(100)</code> would run a million times — likely too slow for a real-time robot control loop.</p>
@@ -2259,8 +2259,8 @@ that follows.</p>
 <h3 id="defining-a-function">Defining a Function</h3>
 <p>The keyword <code>def</code> defines a function. Give it a name, a pair of parentheses, and a colon. Indent the body.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">stop_motors</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Motors stopped.&quot;</span><span class="p">)</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">stop_motors</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Motors stopped."</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Now <code>stop_motors()</code> can be called anywhere in your program. The function body runs each time it is called.</p>
 <h3 id="parameters-and-return-values">Parameters and Return Values</h3>
@@ -2270,8 +2270,8 @@ that follows.</p>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">move_forward</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moving at speed&quot;</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="s2">&quot;for&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="s2">&quot;seconds.&quot;</span><span class="p">)</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">move_forward</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Moving at speed"</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="s2">"for"</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="s2">"seconds."</span><span class="p">)</span>
     <span class="c1"># Motor control code goes here in Chapter 7</span>
 
 <span class="n">move_forward</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>     <span class="c1"># speed=75, duration=2 seconds</span>
@@ -2283,12 +2283,12 @@ that follows.</p>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">apply_scale</span><span class="p">(</span><span class="n">raw_value</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">apply_scale</span><span class="p">(</span><span class="n">raw_value</span><span class="p">):</span>
     <span class="n">distance_cm</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">*</span> <span class="mf">0.092</span>   <span class="c1"># scale factor converts raw to cm</span>
     <span class="k">return</span> <span class="n">distance_cm</span>
 
 <span class="n">dist</span> <span class="o">=</span> <span class="n">apply_scale</span><span class="p">(</span><span class="mi">1500</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distance:&quot;</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="s2">&quot;cm&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Distance:"</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition mascot-tip">
 <p class="admonition-title">Functions are your robot's vocabulary</p>
@@ -2302,7 +2302,7 @@ Name your functions like actions: <code>move_forward()</code>, <code>stop_motors
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">compute_speed</span><span class="p">(</span><span class="n">raw_value</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">compute_speed</span><span class="p">(</span><span class="n">raw_value</span><span class="p">):</span>
     <span class="n">scaled</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">*</span> <span class="mf">0.5</span>    <span class="c1"># local variable — only lives here</span>
     <span class="k">return</span> <span class="n">scaled</span>
 
@@ -2322,13 +2322,13 @@ Name your functions like actions: <code>move_forward()</code>, <code>stop_motors
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">is_moving</span> <span class="o">=</span> <span class="kc">False</span>    <span class="c1"># global variable</span>
 
-<span class="k">def</span> <span class="nf">start_motors</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">start_motors</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">is_moving</span>    <span class="c1"># tell Python we want the global one</span>
     <span class="n">is_moving</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Motors on. is_moving =&quot;</span><span class="p">,</span> <span class="n">is_moving</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Motors on. is_moving ="</span><span class="p">,</span> <span class="n">is_moving</span><span class="p">)</span>
 
 <span class="n">start_motors</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After call:&quot;</span><span class="p">,</span> <span class="n">is_moving</span><span class="p">)</span>    <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"After call:"</span><span class="p">,</span> <span class="n">is_moving</span><span class="p">)</span>    <span class="c1"># True</span>
 </code></pre></div></td></tr></table></div>
 <p>Without <code>global</code>, Python would create a new local <code>is_moving</code> inside <code>start_motors()</code> instead of changing the global one. Always use <code>global</code> when a function needs to modify a global variable.</p>
 <p>In robot programs, global variables are common for state flags: <code>is_moving</code>, <code>obstacle_detected</code>, <code>current_speed</code>. Keep the list short — too many globals make code hard to follow.</p>
@@ -2347,15 +2347,15 @@ Name your functions like actions: <code>move_forward()</code>, <code>stop_motors
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting main loop...&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Starting main loop..."</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running...&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Running..."</span><span class="p">)</span>
 
 <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ctrl+C pressed — shutting down.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Ctrl+C pressed — shutting down."</span><span class="p">)</span>
 
 <span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cleanup: stopping motors.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Cleanup: stopping motors."</span><span class="p">)</span>
     <span class="c1"># Motor stop code goes here in Chapter 7</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="keyboardinterrupt-handling">KeyboardInterrupt Handling</h3>
@@ -2374,19 +2374,19 @@ Name your functions like actions: <code>move_forward()</code>, <code>stop_motors
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Robot started. Press Ctrl+C to stop.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Robot started. Press Ctrl+C to stop."</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># Main robot logic goes here</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
 <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stopping.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Stopping."</span><span class="p">)</span>
 
 <span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Motors off. Goodbye!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Motors off. Goodbye!"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Memorize this pattern. Every robot program you write in this course uses it.</p>
 <div class="admonition mascot-warning">
@@ -2399,12 +2399,12 @@ Forgetting the <code>finally</code> block means your motors could keep running a
 <p>MicroPython comes with many built-in tools called <strong>modules</strong>. A <strong>module</strong> is a file of ready-made functions and objects. Before you can use a module's features, you must <strong>import</strong> it.</p>
 <p>Two import styles exist. The first imports the whole module:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># call sleep() from the time module</span>
 </code></pre></div></td></tr></table></div>
 <p>The second imports only what you need:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>        <span class="c1"># shorter — no module prefix needed</span>
 </code></pre></div></td></tr></table></div>
 <p>The second style is more common in short robot programs because it makes code less verbose.</p>
@@ -2455,7 +2455,7 @@ Forgetting the <code>finally</code> block means your motors could keep running a
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>        <span class="c1"># pause for 2 seconds</span>
 <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>      <span class="c1"># pause for 500 milliseconds</span>
@@ -2467,12 +2467,12 @@ Forgetting the <code>finally</code> block means your motors could keep running a
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
 <span class="c1"># ... do some work here ...</span>
 <span class="n">elapsed</span> <span class="o">=</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">ticks_ms</span><span class="p">(),</span> <span class="n">start</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elapsed:&quot;</span><span class="p">,</span> <span class="n">elapsed</span><span class="p">,</span> <span class="s2">&quot;ms&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Elapsed:"</span><span class="p">,</span> <span class="n">elapsed</span><span class="p">,</span> <span class="s2">"ms"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Always use <code>ticks_diff()</code> instead of plain subtraction when measuring time. Plain subtraction fails when the counter wraps around after about 12 days of uptime.</p>
 <h4 id="diagram-robot-main-loop-with-timing">Diagram: Robot Main Loop with Timing</h4>
@@ -2536,30 +2536,30 @@ Forgetting the <code>finally</code> block means your motors could keep running a
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="c1"># Global state</span>
 <span class="n">is_running</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="c1"># Functions</span>
-<span class="k">def</span> <span class="nf">check_obstacle</span><span class="p">(</span><span class="n">distance</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_obstacle</span><span class="p">(</span><span class="n">distance</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;stop&quot;</span>
+        <span class="k">return</span> <span class="s2">"stop"</span>
     <span class="k">elif</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;slow&quot;</span>
+        <span class="k">return</span> <span class="s2">"slow"</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;go&quot;</span>
+        <span class="k">return</span> <span class="s2">"go"</span>
 
-<span class="k">def</span> <span class="nf">respond</span><span class="p">(</span><span class="n">action</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;stop&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stopping!&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;slow&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slowing down.&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">respond</span><span class="p">(</span><span class="n">action</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"stop"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Stopping!"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"slow"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Slowing down."</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moving forward.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Moving forward."</span><span class="p">)</span>
 
 <span class="c1"># Main program</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Robot starting...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Robot starting..."</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -2569,10 +2569,10 @@ Forgetting the <code>finally</code> block means your motors could keep running a
         <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
 <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ctrl+C received.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Ctrl+C received."</span><span class="p">)</span>
 
 <span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Motors off. Program ended.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Motors off. Program ended."</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Run this in Thonny. Change <code>distance_cm</code> to <code>15</code> and re-run. Change it to <code>45</code>. Watch how the output changes. You now have a working decision-making loop.</p>
 <hr />

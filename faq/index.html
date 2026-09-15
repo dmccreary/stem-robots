@@ -3368,7 +3368,7 @@ run cleanup code even when something goes wrong:
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="n">run_robot</span><span class="p">()</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Error:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
 <span class="k">finally</span><span class="p">:</span>
     <span class="n">stop_motors</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -3778,14 +3778,14 @@ main loop executes the behavior for the current state:
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">&quot;DRIVING&quot;</span><span class="p">:</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">"DRIVING"</span><span class="p">:</span>
     <span class="n">drive_forward</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">THRESHOLD</span><span class="p">:</span>
-        <span class="n">state</span> <span class="o">=</span> <span class="s2">&quot;AVOIDING&quot;</span>
-<span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">&quot;AVOIDING&quot;</span><span class="p">:</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="s2">"AVOIDING"</span>
+<span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">"AVOIDING"</span><span class="p">:</span>
     <span class="n">stop_motors</span><span class="p">()</span>
     <span class="n">turn_random</span><span class="p">()</span>
-    <span class="n">state</span> <span class="o">=</span> <span class="s2">&quot;DRIVING&quot;</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="s2">"DRIVING"</span>
 </code></pre></div></td></tr></table></div>
 State machines make complex behaviors easier to reason about, test, and extend.
 See <a href="../chapters/13-swarm-robotics-advanced-patterns/">Chapter 13</a>.</p>

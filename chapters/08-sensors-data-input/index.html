@@ -2193,16 +2193,16 @@ understanding of hardware communication.</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">vl53l0x</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">vl53l0x</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span>
              <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span>
              <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
 
 <span class="n">tof</span> <span class="o">=</span> <span class="n">vl53l0x</span><span class="o">.</span><span class="n">VL53L0X</span><span class="p">(</span><span class="n">i2c</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ToF sensor ready&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"ToF sensor ready"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="tof-distance-reading">ToF Distance Reading</h3>
 <p>To read a distance, call the sensor's <code>read()</code> method. It returns a raw value in millimeters:</p>
@@ -2210,7 +2210,7 @@ understanding of hardware communication.</p>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">raw_mm</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">distance_cm</span> <span class="o">=</span> <span class="n">raw_mm</span> <span class="o">/</span> <span class="mi">10</span>    <span class="c1"># convert mm to cm</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance: </span><span class="si">{</span><span class="n">distance_cm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Distance: </span><span class="si">{</span><span class="n">distance_cm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="zero-distance-calibration-and-scale-factor">Zero Distance Calibration and Scale Factor</h3>
 <p>No sensor is perfect. The VL53L0X has two calibration sources of error: a <strong>zero distance offset</strong> and a <strong>scale factor</strong> error.</p>
@@ -2230,13 +2230,13 @@ understanding of hardware communication.</p>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">MAX_RANGE_MM</span> <span class="o">=</span> <span class="mi">1500</span>   <span class="c1"># treat anything over 150 cm as &quot;out of range&quot;</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">MAX_RANGE_MM</span> <span class="o">=</span> <span class="mi">1500</span>   <span class="c1"># treat anything over 150 cm as "out of range"</span>
 
 <span class="n">raw_mm</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">raw_mm</span> <span class="o">&gt;</span> <span class="n">MAX_RANGE_MM</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Out of range&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Out of range"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance: </span><span class="si">{</span><span class="n">raw_mm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Distance: </span><span class="si">{</span><span class="n">raw_mm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <hr />
 <h2 id="ultrasonic-sensor">Ultrasonic Sensor</h2>
@@ -2265,13 +2265,13 @@ understanding of hardware communication.</p>
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep_us</span><span class="p">,</span> <span class="n">ticks_us</span><span class="p">,</span> <span class="n">ticks_diff</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep_us</span><span class="p">,</span> <span class="n">ticks_us</span><span class="p">,</span> <span class="n">ticks_diff</span>
 
 <span class="n">trigger</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">ULTRASONIC_TRIGGER_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
 <span class="n">echo</span>    <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">ULTRASONIC_ECHO_PIN</span><span class="p">,</span>    <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">read_ultrasonic_cm</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_ultrasonic_cm</span><span class="p">():</span>
     <span class="n">trigger</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
     <span class="n">sleep_us</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">trigger</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
@@ -2325,7 +2325,7 @@ understanding of hardware communication.</p>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">bump</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">BUMP_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">bump</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>    <span class="c1"># LOW = bumped</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contact detected — reversing!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Contact detected — reversing!"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition mascot-tip">
 <p class="admonition-title">Bump switches as a backup</p>
@@ -2343,7 +2343,7 @@ The ToF sensor usually prevents collisions before they happen. But the bump swit
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
 
 <span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">POT_PIN</span><span class="p">))</span>
 
@@ -2351,7 +2351,7 @@ The ToF sensor usually prevents collisions before they happen. But the bump swit
 <span class="n">voltage</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span>
 <span class="n">angle_pct</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">/</span> <span class="mi">65535</span> <span class="o">*</span> <span class="mi">100</span>   <span class="c1"># convert to percentage</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pot: </span><span class="si">{</span><span class="n">angle_pct</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% (</span><span class="si">{</span><span class="n">voltage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> V)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Pot: </span><span class="si">{</span><span class="n">angle_pct</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% (</span><span class="si">{</span><span class="n">voltage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> V)"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Potentiometers are useful for manually adjusting parameters — like setting the collision threshold distance without editing code, or controlling robot speed with a dial.</p>
 <hr />
@@ -2400,7 +2400,7 @@ The ToF sensor usually prevents collisions before they happen. But the bump swit
 <span class="normal">6</span>
 <span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">readings</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">def</span> <span class="nf">filtered_distance</span><span class="p">(</span><span class="n">new_reading</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">filtered_distance</span><span class="p">(</span><span class="n">new_reading</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="n">readings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_reading</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">window</span><span class="p">:</span>
         <span class="n">readings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>        <span class="c1"># remove oldest reading</span>
@@ -2412,7 +2412,7 @@ The ToF sensor usually prevents collisions before they happen. But the bump swit
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">median_distance</span><span class="p">(</span><span class="n">new_reading</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">median_distance</span><span class="p">(</span><span class="n">new_reading</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="n">readings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_reading</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">window</span><span class="p">:</span>
         <span class="n">readings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -2428,8 +2428,8 @@ The ToF sensor usually prevents collisions before they happen. But the bump swit
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">obstacle_detected</span><span class="p">(</span><span class="n">tof_cm</span><span class="p">,</span> <span class="n">ir_value</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if an obstacle is confirmed by two sensors.&quot;&quot;&quot;</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">obstacle_detected</span><span class="p">(</span><span class="n">tof_cm</span><span class="p">,</span> <span class="n">ir_value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return True if an obstacle is confirmed by two sensors."""</span>
     <span class="n">tof_close</span> <span class="o">=</span> <span class="n">tof_cm</span> <span class="o">&lt;</span> <span class="mi">20</span>        <span class="c1"># ToF says close</span>
     <span class="n">ir_detected</span> <span class="o">=</span> <span class="n">ir_value</span> <span class="o">==</span> <span class="mi">0</span>    <span class="c1"># IR says detected (active LOW)</span>
     <span class="k">return</span> <span class="n">tof_close</span> <span class="ow">and</span> <span class="n">ir_detected</span>
@@ -2453,17 +2453,17 @@ Requiring two sensors to agree before taking action is called <strong>fault tole
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span>
              <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span>
              <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
 
 <span class="n">devices</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">devices</span><span class="p">)</span><span class="si">}</span><span class="s2"> I2C device(s):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">devices</span><span class="p">)</span><span class="si">}</span><span class="s2"> I2C device(s):"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">addr</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Address: </span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Address: </span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Run this before using a new sensor. If the device doesn't show up:</p>
 <ol>

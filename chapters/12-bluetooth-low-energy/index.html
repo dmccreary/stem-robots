@@ -2212,14 +2212,14 @@ BLE advertising has a clever use: you can send data WITHOUT ever connecting. A f
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">bluetooth</span>
-<span class="kn">import</span> <span class="nn">struct</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bluetooth</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
 
 <span class="c1"># UUID for our custom robot command service</span>
-<span class="n">_SERVICE_UUID</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;12345678-1234-5678-1234-56789abcdef0&quot;</span><span class="p">)</span>
+<span class="n">_SERVICE_UUID</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">"12345678-1234-5678-1234-56789abcdef0"</span><span class="p">)</span>
 
 <span class="c1"># UUID for the command characteristic (writable by central)</span>
-<span class="n">_CMD_UUID</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;12345678-1234-5678-1234-56789abcdef1&quot;</span><span class="p">)</span>
+<span class="n">_CMD_UUID</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">"12345678-1234-5678-1234-56789abcdef1"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <hr />
 <h2 id="central-and-peripheral-roles">Central and Peripheral Roles</h2>
@@ -2297,19 +2297,19 @@ BLE advertising has a clever use: you can send data WITHOUT ever connecting. A f
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">bluetooth</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bluetooth</span>
 
 <span class="n">ble</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">BLE</span><span class="p">()</span>
 <span class="n">ble</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">bt_irq</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handle all BLE events.&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bt_irq</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Handle all BLE events."""</span>
     <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>    <span class="c1"># _IRQ_CENTRAL_CONNECT</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Central connected!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Central connected!"</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># _IRQ_CENTRAL_DISCONNECT</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Central disconnected.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Central disconnected."</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>  <span class="c1"># _IRQ_GATTS_WRITE</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data written to characteristic.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Data written to characteristic."</span><span class="p">)</span>
 
 <span class="n">ble</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">bt_irq</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2368,17 +2368,17 @@ BLE advertising has a clever use: you can send data WITHOUT ever connecting. A f
 <span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span>
-<span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">bluetooth</span><span class="o">,</span> <span class="nn">struct</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">micropython</span> <span class="kn">import</span> <span class="n">const</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bluetooth</span><span class="o">,</span><span class="w"> </span><span class="nn">struct</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">micropython</span><span class="w"> </span><span class="kn">import</span> <span class="n">const</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="n">_IRQ_CENTRAL_CONNECT</span>    <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">_IRQ_CENTRAL_DISCONNECT</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">_IRQ_GATTS_WRITE</span>        <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
-<span class="n">_SERVICE_UUID</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;12345678-1234-5678-1234-56789abcdef0&quot;</span><span class="p">)</span>
-<span class="n">_CMD_UUID</span>     <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;12345678-1234-5678-1234-56789abcdef1&quot;</span><span class="p">)</span>
+<span class="n">_SERVICE_UUID</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">"12345678-1234-5678-1234-56789abcdef0"</span><span class="p">)</span>
+<span class="n">_CMD_UUID</span>     <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">"12345678-1234-5678-1234-56789abcdef1"</span><span class="p">)</span>
 <span class="n">_FLAG_WRITE</span>   <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x0008</span><span class="p">)</span>
 
 <span class="n">ble</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">BLE</span><span class="p">()</span>
@@ -2393,11 +2393,11 @@ BLE advertising has a clever use: you can send data WITHOUT ever connecting. A f
 
 <span class="n">conn_handle</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">bt_irq</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bt_irq</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">conn_handle</span>
     <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">_IRQ_CENTRAL_CONNECT</span><span class="p">:</span>
         <span class="n">conn_handle</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">data</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Leader connected!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Leader connected!"</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="n">_IRQ_CENTRAL_DISCONNECT</span><span class="p">:</span>
         <span class="n">conn_handle</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">advertise</span><span class="p">()</span>   <span class="c1"># start advertising again</span>
@@ -2409,15 +2409,15 @@ BLE advertising has a clever use: you can send data WITHOUT ever connecting. A f
 
 <span class="n">ble</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">bt_irq</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">advertise</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;RobotFollower&quot;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">advertise</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"RobotFollower"</span><span class="p">):</span>
     <span class="n">payload</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
     <span class="n">name_bytes</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
     <span class="n">payload</span> <span class="o">+=</span> <span class="nb">bytes</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">name_bytes</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mh">0x09</span><span class="p">])</span> <span class="o">+</span> <span class="n">name_bytes</span>
     <span class="n">ble</span><span class="o">.</span><span class="n">gap_advertise</span><span class="p">(</span><span class="mi">100_000</span><span class="p">,</span> <span class="n">adv_data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Advertising as &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;...&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Advertising as '</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">'..."</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">execute_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Command received:&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">execute_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Command received:"</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span>
     <span class="c1"># Motor control calls go here — same functions as Chapter 10</span>
 
 <span class="n">advertise</span><span class="p">()</span>
@@ -2480,17 +2480,17 @@ BLE advertising has a clever use: you can send data WITHOUT ever connecting. A f
 <span class="normal">54</span>
 <span class="normal">55</span>
 <span class="normal">56</span>
-<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">bluetooth</span><span class="o">,</span> <span class="nn">struct</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">micropython</span> <span class="kn">import</span> <span class="n">const</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bluetooth</span><span class="o">,</span><span class="w"> </span><span class="nn">struct</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">micropython</span><span class="w"> </span><span class="kn">import</span> <span class="n">const</span>
 
 <span class="n">_IRQ_SCAN_RESULT</span>         <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">_IRQ_PERIPHERAL_CONNECT</span>  <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
 <span class="n">_IRQ_PERIPHERAL_DISCONNECT</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="n">_IRQ_GATTC_WRITE_DONE</span>    <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
 
-<span class="n">_SERVICE_UUID</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;12345678-1234-5678-1234-56789abcdef0&quot;</span><span class="p">)</span>
+<span class="n">_SERVICE_UUID</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">"12345678-1234-5678-1234-56789abcdef0"</span><span class="p">)</span>
 
 <span class="n">ble</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="n">BLE</span><span class="p">()</span>
 <span class="n">ble</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -2499,44 +2499,44 @@ BLE advertising has a clever use: you can send data WITHOUT ever connecting. A f
 <span class="n">value_handle</span>  <span class="o">=</span> <span class="kc">None</span>
 <span class="n">target_found</span>  <span class="o">=</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">bt_irq</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bt_irq</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">conn_handle</span><span class="p">,</span> <span class="n">target_found</span>
     <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">_IRQ_SCAN_RESULT</span><span class="p">:</span>
         <span class="n">addr_type</span><span class="p">,</span> <span class="n">addr</span><span class="p">,</span> <span class="n">adv_type</span><span class="p">,</span> <span class="n">rssi</span><span class="p">,</span> <span class="n">adv_data</span> <span class="o">=</span> <span class="n">data</span>
-        <span class="k">if</span> <span class="sa">b</span><span class="s2">&quot;RobotFollower&quot;</span> <span class="ow">in</span> <span class="n">adv_data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="sa">b</span><span class="s2">"RobotFollower"</span> <span class="ow">in</span> <span class="n">adv_data</span><span class="p">:</span>
             <span class="n">target_found</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="n">ble</span><span class="o">.</span><span class="n">gap_scan</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>   <span class="c1"># stop scanning</span>
             <span class="n">ble</span><span class="o">.</span><span class="n">gap_connect</span><span class="p">(</span><span class="n">addr_type</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found follower — connecting...&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Found follower — connecting..."</span><span class="p">)</span>
 
     <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="n">_IRQ_PERIPHERAL_CONNECT</span><span class="p">:</span>
         <span class="n">conn_handle</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">data</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connected to follower!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Connected to follower!"</span><span class="p">)</span>
 
     <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="n">_IRQ_PERIPHERAL_DISCONNECT</span><span class="p">:</span>
         <span class="n">conn_handle</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Follower disconnected.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Follower disconnected."</span><span class="p">)</span>
 
 <span class="n">ble</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">bt_irq</span><span class="p">)</span>
 <span class="n">ble</span><span class="o">.</span><span class="n">gap_scan</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>   <span class="c1"># scan for 5 seconds</span>
 
-<span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">send_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">conn_handle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">value_handle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ble</span><span class="o">.</span><span class="n">gattc_write</span><span class="p">(</span><span class="n">conn_handle</span><span class="p">,</span> <span class="n">value_handle</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sent: </span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sent: </span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># After connecting, discover services and find the write handle</span>
 <span class="c1"># Then in the main loop:</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">send_command</span><span class="p">(</span><span class="s2">&quot;FORWARD&quot;</span><span class="p">)</span>
+        <span class="n">send_command</span><span class="p">(</span><span class="s2">"FORWARD"</span><span class="p">)</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">send_command</span><span class="p">(</span><span class="s2">&quot;STOP&quot;</span><span class="p">)</span>
+        <span class="n">send_command</span><span class="p">(</span><span class="s2">"STOP"</span><span class="p">)</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">conn_handle</span><span class="p">:</span>
         <span class="n">ble</span><span class="o">.</span><span class="n">gap_disconnect</span><span class="p">(</span><span class="n">conn_handle</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Done."</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition mascot-encourage">
 <p class="admonition-title">BLE code is longer — that's okay</p>

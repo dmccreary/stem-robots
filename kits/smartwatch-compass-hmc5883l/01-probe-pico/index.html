@@ -2371,9 +2371,9 @@ text appear in the Shell at the bottom of Thonny.</p>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">u</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">uname</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sysname :&quot;</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">sysname</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;release :&quot;</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">release</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;machine :&quot;</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">machine</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"sysname :"</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">sysname</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"release :"</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">release</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"machine :"</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">machine</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p><code>os.uname()</code> asks the Pico's operating system — MicroPython — to
 describe itself. <code>sysname</code> is the family of chip (<code>rp2</code>, for the RP2040
@@ -2386,7 +2386,7 @@ free:</p>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
 <span class="n">free</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">mem_free</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RAM free : </span><span class="si">{}</span><span class="s2"> bytes&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">free</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"RAM free : </span><span class="si">{}</span><span class="s2"> bytes"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">free</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>RAM</strong> is the Pico's short-term memory — it holds whatever your program
 is doing <em>right now</em>, and it empties out every time the Pico loses
@@ -2398,7 +2398,7 @@ measuring how much space is left gives you a more honest number.</p>
 memory, which keeps your programs saved even after you unplug it:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">fs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">statvfs</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">fs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">statvfs</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
 <span class="n">flash_total</span> <span class="o">=</span> <span class="n">fs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">fs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">flash_free</span> <span class="o">=</span> <span class="n">fs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">fs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>

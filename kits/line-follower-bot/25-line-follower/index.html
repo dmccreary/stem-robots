@@ -2043,8 +2043,8 @@ the battery wires up to the power header of the board.</p>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="n">RIGHT_SENSOR_PIN</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">LEFT_SENSOR_PIN</span> <span class="o">=</span> <span class="mi">4</span>
@@ -2055,11 +2055,11 @@ the battery wires up to the power header of the board.</p>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">right_sensor</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
     <span class="n">l</span> <span class="o">=</span> <span class="n">left_sensor</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="s2">&quot;l=&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="s2">"l="</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;right over white&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"right over white"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;left over white&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"left over white"</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">.2</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="full-source-code">Full Source Code</h2>
@@ -2156,8 +2156,8 @@ the battery wires up to the power header of the board.</p>
 <span class="normal">91</span>
 <span class="normal">92</span>
 <span class="normal">93</span>
-<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="c1"># sensor setup</span>
 <span class="n">RIGHT_SENSOR_PIN</span> <span class="o">=</span> <span class="mi">2</span>
@@ -2190,20 +2190,20 @@ the battery wires up to the power header of the board.</p>
 <span class="n">BOOST_LEVEL</span> <span class="o">=</span> <span class="mi">15000</span>
 
 <span class="c1"># while True:</span>
-<span class="k">def</span> <span class="nf">spin_wheel</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">spin_wheel</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
     <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">SLOW_DRIVE_POWER</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">forward</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">():</span>
     <span class="n">right_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">SLOW_DRIVE_POWER</span><span class="p">)</span>
     <span class="n">right_reverse</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">left_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">SLOW_DRIVE_POWER</span><span class="p">)</span>
     <span class="n">left_reverse</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">right</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">right</span><span class="p">():</span>
     <span class="n">right_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">SLOW_DRIVE_POWER</span> <span class="o">-</span> <span class="n">BOOST_LEVEL</span><span class="p">)</span>
     <span class="n">right_reverse</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">left_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">SLOW_DRIVE_POWER</span> <span class="o">+</span> <span class="n">BOOST_LEVEL</span><span class="p">)</span>
@@ -2211,7 +2211,7 @@ the battery wires up to the power header of the board.</p>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">800</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">left</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">left</span><span class="p">():</span>
     <span class="n">right_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">SLOW_DRIVE_POWER</span> <span class="o">+</span> <span class="n">BOOST_LEVEL</span><span class="p">)</span>
     <span class="n">right_reverse</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">left_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">SLOW_DRIVE_POWER</span> <span class="o">-</span> <span class="n">BOOST_LEVEL</span><span class="p">)</span>
@@ -2219,22 +2219,22 @@ the battery wires up to the power header of the board.</p>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">stop</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">():</span>
     <span class="n">right_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">right_reverse</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">left_forward</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">left_reverse</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">right_sensor</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
         <span class="n">l</span> <span class="o">=</span> <span class="n">left_sensor</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">l</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;right over white - turning right&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"right over white - turning right"</span><span class="p">)</span>
             <span class="n">right</span><span class="p">()</span>
         <span class="k">elif</span> <span class="n">l</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;left over white - turning left&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"left over white - turning left"</span><span class="p">)</span>
             <span class="n">left</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">forward</span><span class="p">()</span>
@@ -2244,11 +2244,11 @@ the battery wires up to the power header of the board.</p>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Got ctrl-c&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Got ctrl-c'</span><span class="p">)</span>
 <span class="k">finally</span><span class="p">:</span>
     <span class="c1"># Cleanup code</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cleaning up&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Powering down all motors now.&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Cleaning up'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Powering down all motors now.'</span><span class="p">)</span>
     <span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 

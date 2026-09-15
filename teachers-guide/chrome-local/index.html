@@ -1241,7 +1241,7 @@ New security checks called Insecure Private Network Requests</p>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="s2">&quot;/Applications/Google Chrome.app/Contents/MacOS/Google Chrome&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="s2">"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"</span><span class="w"> </span><span class="se">\</span>
 --disable-features<span class="o">=</span>BlockInsecurePrivateNetworkRequests,PrivateNetworkAccessChecks,IsolateOrigins,site-per-process,NetworkServiceInProcess,UseDNSHttpsSvcb<span class="w"> </span><span class="se">\</span>
 --disable-network-service<span class="w"> </span><span class="se">\</span>
 --user-data-dir<span class="o">=</span>/tmp/test-profile
@@ -1254,10 +1254,10 @@ New security checks called Insecure Private Network Requests</p>
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>--disable-features=BlockInsecurePrivateNetworkRequests    # Allows HTTP to local IPs
 --disable-features=PrivateNetworkAccessChecks            # Disables network access checks  
---disable-network-service                                 # Bypasses Chrome&#39;s network filtering
+--disable-network-service                                 # Bypasses Chrome's network filtering
 --disable-web-security                                    # Allows mixed content
 --allow-running-insecure-content                         # Permits HTTP on local network
---user-data-dir=&quot;/tmp/profile&quot;                          # Uses temporary profile
+--user-data-dir="/tmp/profile"                          # Uses temporary profile
 </code></pre></div></td></tr></table></div>
 <p><strong>Excellent work!</strong> You found the perfect solution! Those are exactly the right Chrome flags to bypass the private network blocking. Let me help you make this even better for teaching:I've created an enhanced version of your script that's perfect for teaching! Here's what I added:</p>
 <h2 id="key-improvements-for-students"><strong>Key Improvements for Students:</strong></h2>
@@ -1281,10 +1281,10 @@ New security checks called Insecure Private Network Requests</p>
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>--disable-features<span class="o">=</span>BlockInsecurePrivateNetworkRequests<span class="w">    </span><span class="c1"># Allows HTTP to local IPs</span>
 --disable-features<span class="o">=</span>PrivateNetworkAccessChecks<span class="w">            </span><span class="c1"># Disables network access checks  </span>
---disable-network-service<span class="w">                                 </span><span class="c1"># Bypasses Chrome&#39;s network filtering</span>
+--disable-network-service<span class="w">                                 </span><span class="c1"># Bypasses Chrome's network filtering</span>
 --disable-web-security<span class="w">                                    </span><span class="c1"># Allows mixed content</span>
 --allow-running-insecure-content<span class="w">                         </span><span class="c1"># Permits HTTP on local network</span>
---user-data-dir<span class="o">=</span><span class="s2">&quot;/tmp/profile&quot;</span><span class="w">                          </span><span class="c1"># Uses temporary profile</span>
+--user-data-dir<span class="o">=</span><span class="s2">"/tmp/profile"</span><span class="w">                          </span><span class="c1"># Uses temporary profile</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="for-your-curriculum"><strong>For Your Curriculum:</strong></h2>
 <p><strong>Create a simple instruction sheet:</strong></p>

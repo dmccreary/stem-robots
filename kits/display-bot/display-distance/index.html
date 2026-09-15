@@ -2027,11 +2027,11 @@ for this chart.</p>
 <span class="normal">79</span>
 <span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Display Time of Flight Distance Chart On OLED Display</span>
 
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
-<span class="kn">import</span> <span class="nn">VL53L0X</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">VL53L0X</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">NeoPixel</span>
 
 <span class="n">TOF_DATA_PIN</span> <span class="o">=</span> <span class="mi">26</span>
 <span class="n">TOF_CLOCK_PIN</span> <span class="o">=</span> <span class="mi">27</span>
@@ -2064,7 +2064,7 @@ for this chart.</p>
 <span class="n">tof</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
 <span class="c1"># get the normalized time-of-flight distance</span>
-<span class="k">def</span> <span class="nf">get_distance</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_distance</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">zero_dist</span><span class="p">,</span> <span class="n">scale_factor</span>
     <span class="n">tof_distance</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">tof_distance</span> <span class="o">&gt;</span> <span class="n">max_dist</span><span class="p">:</span>
@@ -2075,14 +2075,14 @@ for this chart.</p>
     <span class="k">return</span>  <span class="nb">int</span><span class="p">((</span><span class="n">tof_distance</span> <span class="o">-</span> <span class="n">zero_dist</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale_factor</span><span class="p">)</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">def</span> <span class="nf">update_distance_chart</span><span class="p">(</span><span class="n">distance</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_distance_chart</span><span class="p">(</span><span class="n">distance</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">x</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
     <span class="c1"># put any values above 63</span>
     <span class="k">if</span> <span class="n">distance</span> <span class="o">&gt;</span> <span class="mi">63</span><span class="p">:</span>
         <span class="n">distance</span> <span class="o">=</span> <span class="mi">63</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">HEIGHT</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="c1"># don&#39;t scroll until we get 61 samples</span>
+    <span class="c1"># don't scroll until we get 61 samples</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">WIDTH</span> <span class="o">-</span> <span class="mi">3</span><span class="p">:</span>
         <span class="n">oled</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -2090,20 +2090,20 @@ for this chart.</p>
     <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># loop forever</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">distance</span> <span class="o">=</span> <span class="n">get_distance</span><span class="p">()</span>
         <span class="n">update_distance_chart</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
 
 <span class="c1"># This allows us to stop the sound by doing a Stop or Control-C which is a keyboard interrupt</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Running Collision Avoidence with Time-of-Flight Sensor Version 3.0&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Running Collision Avoidence with Time-of-Flight Sensor Version 3.0'</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Got ctrl-c&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Got ctrl-c'</span><span class="p">)</span>
 <span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;turning off time-of-flight sensor&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'turning off time-of-flight sensor'</span><span class="p">)</span>
     <span class="n">tof</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 

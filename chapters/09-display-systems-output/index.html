@@ -2208,9 +2208,9 @@ with the sensors and motors from prior chapters.</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">neopixel</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">neopixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="n">np</span> <span class="o">=</span> <span class="n">neopixel</span><span class="o">.</span><span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">config</span><span class="o">.</span><span class="n">NEOPIXEL_COUNT</span><span class="p">)</span>
 
@@ -2242,10 +2242,10 @@ with the sensors and motors from prior chapters.</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">neopixel</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">neopixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="n">np</span> <span class="o">=</span> <span class="n">neopixel</span><span class="o">.</span><span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">config</span><span class="o">.</span><span class="n">NEOPIXEL_COUNT</span><span class="p">)</span>
 
@@ -2281,7 +2281,7 @@ with the sensors and motors from prior chapters.</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_status_color</span><span class="p">(</span><span class="n">distance_cm</span><span class="p">):</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_status_color</span><span class="p">(</span><span class="n">distance_cm</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">distance_cm</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
         <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="c1"># green — clear</span>
     <span class="k">elif</span> <span class="n">distance_cm</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
@@ -2311,9 +2311,9 @@ with the sensors and motors from prior chapters.</p>
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span>
              <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span>
@@ -2333,8 +2333,8 @@ with the sensors and motors from prior chapters.</p>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>              <span class="c1"># clear the screen (0 = black)</span>
-<span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># top-left corner</span>
-<span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Distance: 25cm&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Hello!"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># top-left corner</span>
+<span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Distance: 25cm"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 <span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="drawing-lines-circles-and-rectangles">Drawing Lines, Circles, and Rectangles</h3>
@@ -2395,7 +2395,7 @@ Always call <code>display.fill(0)</code> before redrawing the screen in a loop. 
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">draw_distance_bar</span><span class="p">(</span><span class="n">distance_cm</span><span class="p">,</span> <span class="n">max_cm</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">draw_distance_bar</span><span class="p">(</span><span class="n">distance_cm</span><span class="p">,</span> <span class="n">max_cm</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
     <span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">bar_height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">distance_cm</span> <span class="o">/</span> <span class="n">max_cm</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
     <span class="n">bar_height</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">bar_height</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>   <span class="c1"># clamp to 50 max</span>
@@ -2404,8 +2404,8 @@ Always call <code>display.fill(0)</code> before redrawing the screen in a loop. 
     <span class="n">display</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">63</span> <span class="o">-</span> <span class="n">bar_height</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">bar_height</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># Label</span>
-    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">distance_cm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">cm&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
-    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Distance&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">distance_cm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">cm"</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Distance"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="distance-meter-display">Distance Meter Display</h3>
@@ -2416,11 +2416,11 @@ Always call <code>display.fill(0)</code> before redrawing the screen in a loop. 
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">draw_meter</span><span class="p">(</span><span class="n">distance_cm</span><span class="p">):</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">draw_meter</span><span class="p">(</span><span class="n">distance_cm</span><span class="p">):</span>
     <span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;DISTANCE&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">distance_cm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
-    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;cm&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"DISTANCE"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">distance_cm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"cm"</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
     <span class="n">display</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># horizontal separator line</span>
     <span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -2440,15 +2440,15 @@ Always call <code>display.fill(0)</code> before redrawing the screen in a loop. 
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">draw_face</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s2">&quot;happy&quot;</span><span class="p">):</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">draw_face</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s2">"happy"</span><span class="p">):</span>
     <span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">&quot;happy&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">"happy"</span><span class="p">:</span>
         <span class="c1"># Eyes — two medium circles</span>
         <span class="n">display</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">display</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="mi">88</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="c1"># Smile — arc approximated with a rect</span>
         <span class="n">display</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">&quot;alert&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">"alert"</span><span class="p">:</span>
         <span class="c1"># Wide eyes</span>
         <span class="n">display</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">display</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="mi">88</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -2491,11 +2491,11 @@ Always call <code>display.fill(0)</code> before redrawing the screen in a loop. 
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">draw_servo_meter</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw a gauge for servo angle (0-180 degrees).&quot;&quot;&quot;</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">draw_servo_meter</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Draw a gauge for servo angle (0-180 degrees)."""</span>
     <span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Servo Angle&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">angle</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> deg&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">48</span><span class="p">)</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Servo Angle"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">angle</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> deg"</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">48</span><span class="p">)</span>
 
     <span class="c1"># Draw gauge bar background</span>
     <span class="n">display</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -2551,11 +2551,11 @@ Always call <code>display.fill(0)</code> before redrawing the screen in a loop. 
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
-<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">neopixel</span><span class="o">,</span> <span class="nn">ssd1306</span>
-<span class="kn">import</span> <span class="nn">vl53l0x</span>
-<span class="kn">import</span> <span class="nn">config</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">neopixel</span><span class="o">,</span><span class="w"> </span><span class="nn">ssd1306</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">vl53l0x</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
 <span class="c1"># Set up display</span>
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span>
@@ -2566,7 +2566,7 @@ Always call <code>display.fill(0)</code> before redrawing the screen in a loop. 
 <span class="c1"># Set up NeoPixels</span>
 <span class="n">np</span> <span class="o">=</span> <span class="n">neopixel</span><span class="o">.</span><span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">config</span><span class="o">.</span><span class="n">NEOPIXEL_COUNT</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">set_status</span><span class="p">(</span><span class="n">dist_cm</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_status</span><span class="p">(</span><span class="n">dist_cm</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">dist_cm</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
         <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">dist_cm</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
@@ -2583,7 +2583,7 @@ Always call <code>display.fill(0)</code> before redrawing the screen in a loop. 
         <span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">bar</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">dist_cm</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span> <span class="o">/</span> <span class="mi">150</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
         <span class="n">display</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">63</span> <span class="o">-</span> <span class="n">bar</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">bar</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dist_cm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">cm&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+        <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">dist_cm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">cm"</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
         <span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 
@@ -2593,7 +2593,7 @@ Always call <code>display.fill(0)</code> before redrawing the screen in a loop. 
 <span class="k">finally</span><span class="p">:</span>
     <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span> <span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
     <span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Display and LEDs off.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Display and LEDs off."</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition mascot-thinking">
 <p class="admonition-title">Frame rate matters</p>
