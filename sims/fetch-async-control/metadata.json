@@ -1,0 +1,96 @@
+{
+  "title": "Fetch vs. Form Page Reload",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A p5.js comparison of two simulated robot controller pages. The form page reloads after every click and loses clicks made during the reload; the fetch() page only updates its status text. A timeline shows request time, blank-page time, robot start times, and missed clicks, while sliders change network delay and page size.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "fetch-async-control",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Robotics and Computer Science",
+    "topic": "Asynchronous robot control with the JavaScript Fetch API",
+    "learningObjectives": [
+      "Compare a form submission that reloads the whole page with a fetch() call that updates part of the page",
+      "Explain why clicks made during a page reload are lost",
+      "Explain how page size and network delay affect each approach",
+      "Explain why fetch() makes robot control smoother and safer"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomVerb": "Compare",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "HTTP POST, HTML page generation, and the Fetch API from Chapter 11",
+      "Functions and events from Chapter 4"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 547
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorAndTextLabels": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "canvas click", "label": "Page buttons (Forward, Back, Left, Right, Stop)", "purpose": "Send a command from one simulated page"},
+      {"type": "select", "label": "Command", "options": ["Forward", "Back", "Left", "Right", "Stop"]},
+      {"type": "button", "label": "Click both", "purpose": "Press the chosen command on both pages at once"},
+      {"type": "button", "label": "Fast clicks", "purpose": "Press Forward, Left, Stop, Forward within one second on both pages"},
+      {"type": "button", "label": "Reset", "purpose": "Clear counters and the timeline"},
+      {"type": "slider", "label": "Network delay (ms)", "range": [20, 500], "default": 100},
+      {"type": "slider", "label": "Page size (KB)", "range": [1, 50], "default": 5}
+    ]
+  },
+  "simulation": {
+    "modelType": "Discrete-event timing model",
+    "variables": ["network delay (ms)", "page size (KB)", "page loads", "clicks registered", "clicks missed"],
+    "equations": [
+      "form: busy time per click = network delay + page size x 8 ms",
+      "fetch: time per click = network delay + about 5 ms for the status text",
+      "robot starts moving at click time + network delay / 2"
+    ],
+    "assumptions": [
+      "A click on the form page while it is loading is lost",
+      "fetch() requests are small (about 10 bytes), so page size does not matter"
+    ],
+    "limitations": [
+      "Does not model browser caching or HTTP keep-alive",
+      "The robot server is assumed fast enough to answer every request"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Side-by-side comparison with a controlled experiment",
+    "interactionPattern": "Clickable simulated pages with a live timeline and parameter sliders",
+    "keyQuestions": [
+      "What happens to a click made while the form page is reloading?",
+      "Why does page size matter for the form page but not for fetch()?",
+      "Which lines of sendCmd() run while the request is in flight?",
+      "Why is fetch() safer for a Stop button?"
+    ],
+    "commonMisconceptions": [
+      "fetch() makes the network faster (the request takes the same time; the page just does not reload)",
+      "The robot's server code must change to support fetch()",
+      "A page reload is instant, so it cannot cause problems"
+    ],
+    "assessmentOpportunities": [
+      "Table of reload time versus page size",
+      "Count of registered and missed clicks during Fast clicks",
+      "Exit ticket explaining an unreliable Stop button"
+    ]
+  },
+  "chapter": "11-wireless-networking-web-servers"
+}

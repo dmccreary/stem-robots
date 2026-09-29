@@ -1,0 +1,89 @@
+{
+  "title": "Button Bounce Timeline",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A slow-motion timeline that shows how one button press on pin 20 makes many falling edges, and how a debounce window decides which edges the interrupt handler counts as presses.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/button-bounce-timeline/",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing and Robotics",
+    "topic": "Button debouncing and GPIO falling-edge interrupts",
+    "learningObjectives": [
+      "Explain why one mechanical button press produces several falling edges and therefore several IRQ handler calls.",
+      "Trace how the test ticks_diff(now, last_press_time) > window accepts or ignores each falling edge.",
+      "Select a debounce window that is longer than the contact bounce but shorter than the gap between two real presses."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomVerb": "Analyze",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "GPIO HIGH and LOW levels and pull-up resistors (Chapter 6)",
+      "if statements and ticks_ms()/ticks_diff() timing (Chapter 4)",
+      "GPIO interrupts and the IRQ falling edge trigger (Chapter 7)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 500
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "screenReaderDescription": true,
+      "keyboardNavigable": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Press", "purpose": "Simulate one press with a new random bounce pattern."},
+      {"type": "button", "label": "Press twice quickly", "purpose": "Simulate two real presses 100 ms apart."},
+      {"type": "button", "label": "Reset counters", "purpose": "Clear the timeline and set both counters to 0."},
+      {"type": "checkbox", "label": "Show code", "purpose": "Show the button_pressed() handler with the live window value."},
+      {"type": "slider", "label": "Bounce length", "range": "0-30 ms", "default": 12, "purpose": "How long the contacts bounce."},
+      {"type": "slider", "label": "Debounce window", "range": "0-300 ms", "default": 150, "purpose": "The number in the > 150 test."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Discrete event timeline",
+    "equations": ["accept edge if (t_edge - t_last_accepted) > window"],
+    "assumptions": [
+      "Each press makes 3 to 12 bounces spread across the bounce length, then settles LOW.",
+      "Button releases are drawn as one clean rising edge."
+    ],
+    "limitations": [
+      "Real releases also bounce and can add falling edges.",
+      "Time is continuous; real ticks_ms() counts whole milliseconds."
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-observe-explain with guided parameter search",
+    "interactionPattern": "Slow-motion replay followed by live re-evaluation of the same edges as the window slider moves",
+    "keyQuestions": [
+      "How many times does the interrupt handler run for one press?",
+      "Why is the second of two quick presses sometimes missed?",
+      "What two limits must a good debounce window fall between?"
+    ],
+    "commonMisconceptions": [
+      "One press always makes exactly one interrupt.",
+      "A longer debounce window is always safer.",
+      "The release of the button fires IRQ_FALLING."
+    ],
+    "assessmentOpportunities": [
+      "Exit question: choose a working and a failing window for a 20 ms bounce and 250 ms press spacing.",
+      "Read an edge tooltip aloud using the words falling edge, window, and ignored.",
+      "Find the largest window that still counts both quick presses."
+    ]
+  },
+  "chapter": "07-pwm-motor-speed-actuators"
+}

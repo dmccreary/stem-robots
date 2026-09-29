@@ -1,0 +1,15 @@
+{
+  "sim_id": "imu-chip-layout-diagram",
+  "diagram_name": "9-DOF IMU Chip Layout",
+  "chapter_number": 13,
+  "chapter_title": "Swarm Robotics and Advanced Engineering Patterns",
+  "chapter_dir": "13-swarm-robotics-advanced-patterns",
+  "chapter_rel_dir": "chapters/13-swarm-robotics-advanced-patterns",
+  "library": "Mermaid",
+  "bloom_level": "Understand",
+  "bloom_verb": "explain",
+  "learning_objective": "Explain that a \"9-DOF IMU module\" is really two separate I2C sensor chips sharing one bus, each with its own address, rather than one combined chip.",
+  "completion_status": "specified",
+  "extracted_date": "2026-09-29",
+  "specification": "Type: diagram\n**sim-id:** imu-chip-layout-diagram<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\nDiagram Name: 9-DOF IMU Chip Layout\n\nBloom Taxonomy: Understand\n\nBloom Taxonomy Verb: explain\n\nLearning objective: Explain that a \"9-DOF IMU module\" is really two separate I2C sensor chips sharing one bus, each with its own address, rather than one combined chip.\n\nCreate a Mermaid flowchart (graph LR). Node \"Pico W GPIO16/17 (I2C0)\" connects with two labeled edges to two chip nodes: \"L3GD20 Gyroscope (addr 0x6B)\" and \"LSM303D Accel + Mag (addr 0x1D)\". Each chip node has a smaller child node beneath it: L3GD20 connects down to \"3-axis rotation rate (deg/s)\"; LSM303D connects down to two children, \"3-axis acceleration (g)\" and \"3-axis magnetic field (gauss)\".\n\nEvery node has a click directive with an infobox: the I2C bus node explains \"one shared SDA/SCL pair, same as the ToF sensor and OLED display from earlier chapters — I2C allows multiple devices as long as addresses differ.\" The gyroscope node explains what a gyroscope measures and that it drifts slowly over time. The accel/mag node explains that acceleration senses gravity/tilt and magnetic field acts as a compass, and that motors nearby distort the magnetic reading. The three data-type leaf nodes each explain their unit and typical use.\n\nColor scheme: I2C bus node DodgerBlue (SENSOR taxonomy color), chip nodes white with black outline, data leaf nodes light gray. Canvas responsive to container width."
+}

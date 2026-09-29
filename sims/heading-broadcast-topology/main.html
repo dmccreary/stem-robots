@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Heading Broadcast Network Topology using Mermaid</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; overflow: hidden; font-family: Arial, Helvetica, sans-serif; }
+        main { display: block; width: 100%; height: 440px; border: 1px solid silver; }
+        .toolbar { height: 46px; display: flex; align-items: center; gap: 6px; padding: 0 8px;
+                   background: white; border-bottom: 1px solid silver; flex-wrap: nowrap; }
+        .toolbar .lbl { font-size: 15px; font-weight: bold; margin-right: 2px; white-space: nowrap; }
+        .toolbar button { font-size: 14px; padding: 5px 9px; border: 1px solid #999; border-radius: 4px;
+                          background: whitesmoke; cursor: pointer; white-space: nowrap; }
+        .toolbar button.active { background: darkorchid; color: white; border-color: indigo; }
+        .toolbar label { font-size: 14px; margin-left: auto; white-space: nowrap; cursor: pointer; }
+        .row { display: flex; height: calc(100% - 46px); }
+        .diagram-panel { width: 67%; height: 100%; background: aliceblue; padding: 6px;
+                         display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .diagram-panel svg { max-width: 100%; max-height: 100%; height: auto; }
+        .info-panel { width: 33%; height: 100%; background: #f8f9fa; border-left: 1px solid silver;
+                      padding: 8px 10px; overflow: hidden; }
+        .card { background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 7px 9px; margin-bottom: 8px; }
+        .card h3 { font-size: 15px; color: indigo; margin-bottom: 4px; }
+        .card table { border-collapse: collapse; width: 100%; font-size: 13px; }
+        .card td { padding: 2px 3px; vertical-align: top; border-top: 1px solid #eee; }
+        .card td:first-child { color: #555; width: 44%; }
+        .card td:last-child { font-weight: bold; color: #222; }
+        #details { font-size: 14px; line-height: 1.4; color: #333; }
+        #details b { color: indigo; }
+        .node, .edgeLabel, .flowchart-link, .cluster { cursor: pointer; }
+        .node.picked rect, .node.picked polygon, .node.picked circle { stroke: gold !important; stroke-width: 4px !important; }
+        .flowchart-link.picked { stroke: gold !important; stroke-width: 5px !important; }
+        @media (max-width: 620px) {
+            .toolbar { gap: 4px; padding: 0 4px; }
+            .toolbar .lbl { display: none; }
+            .toolbar button { font-size: 12px; padding: 4px 5px; }
+            .toolbar label { font-size: 12px; }
+            .row { flex-direction: column; }
+            .diagram-panel { width: 100%; height: 56%; }
+            .info-panel { width: 100%; height: 44%; border-left: none; border-top: 1px solid silver;
+                          padding: 5px 6px; display: flex; gap: 6px; }
+            .info-panel .card { flex: 1; margin-bottom: 0; }
+            .card { padding: 5px 6px; }
+            .card h3 { font-size: 13px; }
+            .card table { font-size: 11px; }
+            #details { font-size: 12px; line-height: 1.3; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script src="heading-broadcast-topology.js"></script>
+</head>
+<body>
+    <main></main>
+</body>
+</html>

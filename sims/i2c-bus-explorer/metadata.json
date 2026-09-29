@@ -1,0 +1,75 @@
+{
+  "title": "I2C Bus Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "An RP2040 controller shares the SDA and SCL wires with a VL53L0X distance sensor (0x29) and an SSD1306 OLED display (0x3C). Students step through a write transaction on a bit-level timing diagram, see which device answers with ACK, trigger a NACK with a missing address, and scan the bus.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Engineering and Electronics",
+    "topic": "I2C bus transactions: START, address, ACK, data, STOP",
+    "learningObjectives": [
+      "Trace the parts of an I2C write transaction in order: START, address, R/W, ACK, data, ACK, STOP.",
+      "Decode a 7-bit I2C address from hexadecimal to the bits sent on SDA.",
+      "Explain how addresses let two devices share the same two wires.",
+      "Explain why a missing address produces a NACK and an EIO error."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Trace",
+    "duration": "20 minutes",
+    "prerequisites": [
+      "Binary and hexadecimal numbers",
+      "GPIO pins and config.py pin names",
+      "The I2C bus, SDA, SCL, and addresses"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 530
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Bit-by-bit step-through of a protocol transaction with a running log",
+    "interactionPattern": "Students choose the target device, clock speed, and data byte, then Step one bit at a time or Send the whole transaction; Scan bus probes every usable address.",
+    "keyQuestions": [
+      "How does the sensor know a message is meant for it?",
+      "Which device drives SDA during the ACK bit?",
+      "What happens on the ACK bit when no device has the address?",
+      "How long does one write take at 100 kHz and at 400 kHz?"
+    ],
+    "commonMisconceptions": [
+      "Each I2C device needs its own pair of wires.",
+      "The controller sends the ACK bit.",
+      "All devices on the bus answer every message.",
+      "i2c.scan() checks the wiring, not the addresses."
+    ],
+    "assessmentOpportunities": [
+      "Decode 0x29 to binary and check it against the address bits.",
+      "Challenge: explain the NACK when sending to 0x50, then confirm the scan result.",
+      "Exit ticket: predict the problem when two devices share one address."
+    ]
+  },
+  "chapter": "06-electronics-motors-protocols"
+}

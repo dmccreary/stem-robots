@@ -1,0 +1,77 @@
+{
+  "title": "Sensor Dictionary Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "The robot dictionary from Chapter 5 drawn as a cabinet of labeled drawers. Students read, update, and add entries by key, see each action as a line of MicroPython with its printed output, and trigger a KeyError for a missing key.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Dictionaries: reading, updating, and adding key-value pairs",
+    "learningObjectives": [
+      "Read a dictionary value with its key, such as robot[\"speed\"].",
+      "Update an existing value and add a new key with the same assignment syntax.",
+      "Predict a KeyError when code reads a key that is not in the dictionary.",
+      "Explain why named keys can be easier to read than list indexes."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Apply",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Strings, integers, floats, and booleans",
+      "Lists and indexing",
+      "Reading MicroPython error messages"
+    ],
+    "standards": [
+      "CSTA 2-AP-11: Create clearly named variables that represent different data types and perform operations on their values"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 520
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Guided practice with immediate feedback and an error-first challenge",
+    "interactionPattern": "Students choose a key and a value, then press Read, Update value, or Add new key; the matching MicroPython line, printed output, and a plain-language explanation appear.",
+    "keyQuestions": [
+      "How do you read the robot's speed from the dictionary?",
+      "What happens when you read a key that does not exist?",
+      "Why does robot[\"battery_pct\"] = 85 add a key instead of causing an error?",
+      "Which is easier to understand: robot_list[1] or robot[\"speed\"]?"
+    ],
+    "commonMisconceptions": [
+      "Reading a missing key returns None or 0 instead of raising a KeyError.",
+      "Dictionaries are read by position, like robot[1].",
+      "Adding a new key needs a special method instead of a normal assignment.",
+      "Updating a value changes the key's name."
+    ],
+    "assessmentOpportunities": [
+      "Record the value and data type for each starting key.",
+      "Challenge: fix a KeyError without changing the read line.",
+      "Exit ticket: write one update line and one add line for the robot dictionary."
+    ]
+  },
+  "chapter": "05-data-structures-modular-code"
+}

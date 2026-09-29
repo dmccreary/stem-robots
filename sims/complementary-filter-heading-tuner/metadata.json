@@ -1,0 +1,98 @@
+{
+  "title": "Complementary Filter Heading Tuner",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A compass dial shows four needles at once: the true heading, a drifting gyro-only estimate, a jittery magnetometer-only estimate, and the fused complementary-filter estimate from the chapter's HeadingFilter code. Students move the alpha slider and read live and 5-second-average errors to see which sensor the fused estimate trusts.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "complementary-filter-heading-tuner",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing / Sensors",
+    "topic": "Complementary filter sensor fusion for heading estimation",
+    "learningObjectives": [
+      "Compare gyro-only, magnetometer-only, and fused heading estimates against a true heading.",
+      "Explain why an integrated gyroscope heading drifts and a magnetometer heading jitters.",
+      "Attribute fused-estimate drift to an alpha that is too high and jitter to an alpha that is too low.",
+      "Predict how the best alpha changes when gyro drift or magnetometer noise changes."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "Analyze",
+    "duration": "20-25 minutes",
+    "prerequisites": [
+      "Sensor fusion and noisy readings (Chapter 8)",
+      "The 9-DOF IMU and calibration sections (Chapter 13)",
+      "Percentages and weighted averages"
+    ],
+    "standards": [
+      "NGSS HS-ETS1-3: Evaluate a solution to a complex real-world problem based on prioritized criteria and trade-offs."
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive (max 800)",
+      "height": 505
+    },
+    "responsive": true,
+    "dependencies": [
+      "https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "slider", "label": "Alpha", "range": "0.80 to 0.999", "default": 0.98},
+      {"type": "slider", "label": "Gyro drift (deg/s)", "range": "0 to 2", "default": 0.5},
+      {"type": "slider", "label": "Mag noise (deg)", "range": "0 to 15", "default": 5},
+      {"type": "button", "label": "Start Turn", "purpose": "Turn the true heading 90 degrees over 2 seconds, then hold."},
+      {"type": "button", "label": "Reset", "purpose": "Restore defaults, zero all estimates, and clear the chart."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Discrete-time sensor fusion at 50 Hz",
+    "equations": [
+      "gyro_z = true turn rate + drift + noise",
+      "gyro-only heading += gyro_z * dt (never corrected)",
+      "compass = true heading + Gaussian noise (standard deviation = Mag noise)",
+      "fused = alpha * (fused + gyro_z * dt) + (1 - alpha) * compass, with the compass difference measured the short way around the circle"
+    ],
+    "assumptions": [
+      "The magnetometer is already hard-iron calibrated, so it has noise but no offset.",
+      "dt = 0.02 s, matching the build plan's 50 Hz loop."
+    ],
+    "limitations": [
+      "Tilt, magnetic disturbances from motors, and gyro scale-factor error are not modeled.",
+      "The true heading is known to the simulation only, never to the robot."
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Simultaneous comparison against ground truth with quantified error",
+    "interactionPattern": "Live four-needle dial, error table with 5-second averages, and a strip chart, driven by parameter sliders",
+    "keyQuestions": [
+      "Which estimate drifts, which jitters, and which stays closest to the truth?",
+      "What happens to the fused needle when alpha is 0.999? When it is 0.80?",
+      "Why does the best alpha drop when the gyroscope drifts more?"
+    ],
+    "commonMisconceptions": [
+      "The magnetometer alone is good enough because it never drifts.",
+      "A higher alpha is always better because it trusts the smooth sensor more.",
+      "The fused estimate is an equal 50/50 average of the two sensors."
+    ],
+    "assessmentOpportunities": [
+      "Alpha sweep table and U-shaped error sketch.",
+      "Predict the best alpha for high drift and for high noise, then test.",
+      "Exit ticket: diagnose a fused heading that creeps while the robot is still."
+    ]
+  },
+  "chapter": "13-swarm-robotics-advanced-patterns"
+}

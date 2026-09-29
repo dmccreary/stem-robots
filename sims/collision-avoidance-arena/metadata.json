@@ -1,0 +1,96 @@
+{
+  "title": "Collision Avoidance Arena",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A top-down p5.js simulation of a robot running the Chapter 10 collision avoidance program in a walled arena with three boxes. Students tune STOP_DIST_CM, SLOW_DIST_CM, full speed, and the turn strategy, then observe the path, motor duty, turn count, floor coverage, and wall touches.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "collision-avoidance-arena",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Robotics and Computer Science",
+    "topic": "Collision avoidance with distance thresholds",
+    "learningObjectives": [
+      "Adjust STOP_DIST_CM and SLOW_DIST_CM and predict how the robot's path, speed, and number of turns will change",
+      "Explain how the three zones (FORWARD, SLOW, TURN) map to go_forward(), go_slow(), and the stop-and-turn branch",
+      "Explain why a small stop distance at high speed causes wall touches, using loop delay and stopping distance",
+      "Compare random turns with always-left turns in terms of floor coverage and repeated paths"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Apply",
+    "duration": "20-25 minutes",
+    "prerequisites": [
+      "Chapter 10 collision avoidance program",
+      "Reading the VL53L0X time-of-flight sensor (Chapter 8)",
+      "Motor duty values with duty_u16 (Chapter 7)",
+      "if/elif/else decisions (Chapter 4)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 550
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorAndTextLabels": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Run / Pause", "purpose": "Start or pause the simulation"},
+      {"type": "button", "label": "Reset", "purpose": "Return the robot to the center and clear counters, keeping slider settings"},
+      {"type": "button", "label": "Clear Path", "purpose": "Erase the path trace and covered-floor squares"},
+      {"type": "select", "label": "Turn choice", "options": ["Random (real code)", "Always left", "Always right"]},
+      {"type": "slider", "label": "Stop distance (cm)", "range": [5, 40], "default": 20, "purpose": "STOP_DIST_CM"},
+      {"type": "slider", "label": "Slow distance (cm)", "range": [20, 100], "default": 50, "purpose": "SLOW_DIST_CM, kept at least 5 cm above the stop distance"},
+      {"type": "slider", "label": "Full-duty speed (cm/s)", "range": [20, 100], "default": 60, "purpose": "Robot speed at duty 65535"},
+      {"type": "canvas click", "label": "Drop robot", "purpose": "Place the robot on the floor with a random heading"}
+    ]
+  },
+  "simulation": {
+    "modelType": "Agent-based kinematic simulation",
+    "variables": ["distance reading (cm)", "zone", "motor duty", "turn count", "floor covered (%)", "wall touches"],
+    "equations": ["speed (cm/s) = duty / 65535 x full-duty speed", "control loop every 0.05 s", "turn = 0.4 s spin of about 90 degrees"],
+    "assumptions": [
+      "The ToF sensor reports the nearest object in a 10 degree cone with about 1 cm of noise",
+      "Wheel speed changes with a short lag (0.08 s time constant) instead of instantly",
+      "Arena is 360 x 240 cm with three fixed boxes"
+    ],
+    "limitations": [
+      "No wheel slip, battery sag, or motor mismatch",
+      "The sensor never misreads dark or shiny surfaces"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-observe-explain with parameter tuning",
+    "interactionPattern": "Parameter sliders with a running simulation and live readouts",
+    "keyQuestions": [
+      "What happens to the number of turns when you raise STOP_DIST_CM?",
+      "Why does the robot touch walls when the stop distance is 5 cm at 100 cm/s?",
+      "Why does Always left stop finding new floor after a while?",
+      "Which threshold pair would you copy into config.py for your classroom floor, and why?"
+    ],
+    "commonMisconceptions": [
+      "The robot stops exactly at the stop distance (it keeps rolling during the loop delay and while the wheels slow down)",
+      "A smaller stop distance is always better because the robot gets closer to things",
+      "The sensor sees everything in front of the robot (it only sees a narrow cone straight ahead)"
+    ],
+    "assessmentOpportunities": [
+      "Data table of turns, coverage, and wall touches for three stop distances",
+      "Exit ticket explaining two fixes for a robot that bumps into boxes",
+      "Written comparison of random and always-left turn strategies"
+    ]
+  },
+  "chapter": "10-robot-behaviors-navigation"
+}

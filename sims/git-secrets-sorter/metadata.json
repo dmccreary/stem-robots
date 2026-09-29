@@ -1,0 +1,80 @@
+{
+  "title": "Commit or Ignore Sorter",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A p5.js drag-and-drop sorting activity. Students place ten robot project files into a Commit to git bin or an Add to .gitignore bin, get a check or an X with a one-sentence reason after every drop, and watch a live .gitignore preview build from their choices.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "git-secrets-sorter",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Robotics and Computer Science",
+    "topic": "Version control hygiene: config, secrets, and .gitignore",
+    "learningObjectives": [
+      "Classify project files as belonging in version control or in .gitignore",
+      "Explain why secrets.py must never be committed and why a committed secret stays in git history",
+      "Explain why rebuilt files such as __pycache__/ and *.pyc are ignored",
+      "Explain why config.py, libraries, README.md, and .gitignore itself are committed"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomVerb": "Classify",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Git basics from Chapter 5",
+      "Config, secrets, and .gitignore file patterns from Chapter 10"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 500
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorAndTextLabels": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "drag and drop", "label": "File cards", "purpose": "Move a file into the Commit to git bin, the Add to .gitignore bin, or back to the pile"},
+      {"type": "button", "label": "Commit selected", "purpose": "Keyboard-friendly way to place the selected card in the commit bin"},
+      {"type": "button", "label": "Add selected to .gitignore", "purpose": "Keyboard-friendly way to place the selected card in the ignore bin"},
+      {"type": "button", "label": "Check All", "purpose": "Color every sorted card and summarize right, wrong, and unsorted"},
+      {"type": "button", "label": "Show Answers", "purpose": "Move every card to its correct bin"},
+      {"type": "button", "label": "Reset", "purpose": "Return all cards to the pile"},
+      {"type": "keyboard", "label": "Up/Down, C, I", "purpose": "Select a card and place it without a mouse"}
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Classification with immediate explanatory feedback",
+    "interactionPattern": "Drag-and-drop sorting into two bins with a live .gitignore preview",
+    "keyQuestions": [
+      "Which file holds your WiFi password, and what happens if you commit it?",
+      "Why do we ignore __pycache__/ and *.pyc files?",
+      "Why is it safe to commit config.py?",
+      "Why should the .gitignore file itself be committed?"
+    ],
+    "commonMisconceptions": [
+      "Adding a file to .gitignore after committing it removes it from history",
+      "config.py is secret because it contains numbers",
+      ".gitignore itself should be ignored",
+      "Library files like lib/vl53l0x.py do not need to be committed because they are not your code"
+    ],
+    "assessmentOpportunities": [
+      "Score of 10 out of 10 with written reasons",
+      "Grouping ignored files by reason (secret, rebuilt, operating-system clutter)",
+      "Exit ticket about a secret that was already committed"
+    ]
+  },
+  "chapter": "10-robot-behaviors-navigation"
+}

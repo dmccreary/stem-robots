@@ -1,0 +1,78 @@
+{
+  "title": "Sleep vs Timer Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Two timelines on a shared 0-3000 ms axis compare a robot that blinks an LED with sleep() against one that uses a ticks_ms() timer. Students drop an obstacle and measure how long each version takes to detect it and how far the robot travels in that time.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Blocking sleep() delays versus non-blocking ticks_ms() timers",
+    "learningObjectives": [
+      "Compare the obstacle-detection delay of a sleep() loop and a ticks_ms() timer loop.",
+      "Explain why a robot that sleeps cannot read its sensor during the sleep.",
+      "Relate the worst-case detection delay to the sleep interval and to the sensor check period.",
+      "Convert a detection delay into distance traveled at a given robot speed."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomVerb": "Compare",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "while True main loops",
+      "if statements",
+      "sleep(), ticks_ms(), and ticks_diff() from the time module",
+      "Speed as distance per unit of time"
+    ],
+    "standards": [
+      "CSTA 3A-AP-15: Justify the selection of specific control structures when tradeoffs involve implementation, readability, and program performance"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 515
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Side-by-side comparison with measurement: predict, drop an obstacle, measure the delay, and vary one setting at a time",
+    "interactionPattern": "Play/Pause sweeps a NOW cursor across two timelines; a button drops an obstacle; sliders change the blink interval and the sensor check period.",
+    "keyQuestions": [
+      "Why can version A only see the obstacle when it wakes up?",
+      "What is the longest possible detection delay for version A with a 500 ms sleep?",
+      "How does version B keep the LED blinking on time without sleeping?",
+      "How many centimeters does the robot travel during each version's delay at 40 cm/s?"
+    ],
+    "commonMisconceptions": [
+      "The robot keeps reading its sensor while sleep() runs.",
+      "A shorter blink interval is the only way to make the robot react faster.",
+      "A non-blocking loop cannot blink the LED at a steady rate.",
+      "Plain subtraction of ticks_ms() values is always safe (ticks_diff() handles wrap-around)."
+    ],
+    "assessmentOpportunities": [
+      "Record detection delays for several obstacle times in a table and find version A's worst case.",
+      "Challenge: compute the distance traveled when the obstacle appears just after a 500 ms sleep starts (about 20 cm).",
+      "Exit ticket: rewrite a sleep-based blink loop to use ticks_ms() and ticks_diff()."
+    ]
+  },
+  "chapter": "04-control-flow-functions"
+}

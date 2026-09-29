@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Clean Shutdown Flow using Mermaid</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; overflow: hidden; font-family: Arial, Helvetica, sans-serif; }
+        main { display: block; width: 100%; height: 520px; border: 1px solid silver; }
+        #simArea { display: flex; width: 100%; height: 450px; background: aliceblue; }
+        #flowPanel { width: 50%; height: 450px; padding: 6px; display: flex; justify-content: center; align-items: center; border-right: 1px solid silver; }
+        #flowPanel svg { max-width: 100%; max-height: 438px; }
+        #rightPanel { width: 50%; height: 450px; display: flex; flex-direction: column; }
+        #robotCanvas { display: block; width: 100%; height: 200px; }
+        #message { height: 80px; padding: 6px 10px; font-size: 15px; line-height: 1.3; color: #102a43; background: white; border-top: 1px solid silver; border-bottom: 1px solid silver; overflow: hidden; }
+        #message b { color: #0d47a1; }
+        #console { height: 170px; background: black; color: #69f0ae; font-family: "Courier New", Courier, monospace; font-size: 14px; line-height: 1.35; padding: 6px 8px; overflow: hidden; }
+        #console .prompt { color: #9e9e9e; }
+        #console .err { color: #ff5252; }
+        #controls { height: 68px; background: white; border-top: 1px solid silver; display: flex; flex-wrap: wrap; align-content: center; align-items: center; gap: 6px 8px; padding: 4px 8px; }
+        #controls button { font-size: 14px; padding: 4px 10px; cursor: pointer; }
+        #controls button:disabled { cursor: default; }
+        #controls label { font-size: 14px; display: flex; align-items: center; gap: 4px; cursor: pointer; }
+        /* Mermaid node states */
+        #flowPanel .node { cursor: pointer; transition: filter 0.3s; }
+        #flowPanel .node.pending { filter: grayscale(1) opacity(0.7); }
+        #flowPanel .node.active rect, #flowPanel .node.active path, #flowPanel .node.active polygon {
+            stroke: gold !important; stroke-width: 6px !important;
+        }
+        #flowPanel .checkmark { fill: #2e7d32; font-size: 22px; font-weight: bold; }
+        @media (max-width: 560px) {
+            #message { font-size: 13px; }
+            #console { font-size: 12px; }
+            #controls button, #controls label { font-size: 13px; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script src="clean-shutdown-flow.js" defer></script>
+</head>
+<body>
+    <main>
+        <div id="simArea">
+            <div id="flowPanel" aria-label="Flowchart of try, except, and finally"></div>
+            <div id="rightPanel">
+                <canvas id="robotCanvas" role="img" aria-label="Top-down robot with two wheels and a motor status tag"></canvas>
+                <div id="message" aria-live="polite"></div>
+                <div id="console" aria-live="polite"></div>
+            </div>
+        </div>
+        <div id="controls">
+            <button id="startBtn">Start robot</button>
+            <button id="ctrlcBtn" disabled>Press Ctrl+C</button>
+            <button id="errorBtn" disabled>Cause a sensor error</button>
+            <label><input type="checkbox" id="finallyBox" checked> Include finally block</label>
+            <button id="resetBtn">Reset</button>
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

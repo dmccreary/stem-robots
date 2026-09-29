@@ -1,0 +1,106 @@
+{
+  "title": "Cooperative Multitasking Timeline",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Two stacked timelines of one robot thread compare a blocking MicroPython loop that calls time.sleep() with three uasyncio tasks that pause at await. Students drop BLE messages and obstacles onto the timeline and see which program handles each event on time or late.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "cooperative-multitasking-timeline",
+  "source": "Adapted from https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/blocking-vs-nonblocking",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science / Physical Computing",
+    "topic": "Multithreading and asynchronous programming with uasyncio",
+    "learningObjectives": [
+      "Compare a blocking loop that uses time.sleep() with cooperative uasyncio tasks that use await asyncio.sleep().",
+      "Explain why await lets the event loop run other ready tasks while one task waits.",
+      "Predict which outside events a blocking program will handle late and estimate the worst-case delay.",
+      "Recognize that a long job with no await blocks every other task, even in uasyncio."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "Compare",
+    "duration": "20-25 minutes",
+    "prerequisites": [
+      "while loops, functions, and time.sleep() (Chapter 4)",
+      "Reading a distance sensor (Chapter 8)",
+      "Checking for BLE messages (Chapter 12)",
+      "The uasyncio example in Chapter 13"
+    ],
+    "standards": [
+      "CSTA 3A-CS-02: Compare levels of abstraction and interactions between application software, system software, and hardware layers."
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive (max 800)",
+      "height": 560
+    },
+    "responsive": true,
+    "dependencies": [
+      "https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Play / Pause", "purpose": "Start or stop the simulated clock."},
+      {"type": "button", "label": "Reset", "purpose": "Clear the timeline and events and return the clock to 0 s."},
+      {"type": "button", "label": "BLE message", "purpose": "Drop a BLE message event at the current time."},
+      {"type": "button", "label": "Obstacle", "purpose": "Drop an obstacle event at the current time."},
+      {"type": "button", "label": "Random events", "purpose": "Toggle a new random event every 0.3 to 1 s."},
+      {"type": "slider", "label": "Blink period (s)", "range": "0.1 to 1.0", "default": 0.5},
+      {"type": "slider", "label": "BLE poll period (s)", "range": "0.01 to 0.2", "default": 0.02},
+      {"type": "slider", "label": "Sensor read time (ms)", "range": "5 to 100", "default": 20},
+      {"type": "checkbox", "label": "Long time.sleep() in Panel A", "default": true}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Discrete-event scheduling timeline",
+    "assumptions": [
+      "led.toggle() and check_ble_messages() each take 1 ms; read_distance() takes the Sensor read time.",
+      "Panel B's event loop runs whichever ready task has waited longest.",
+      "An event is handled when the matching job next starts after the event arrives; within 50 ms counts as on time.",
+      "The sensor task awaits 0.02 s between reads."
+    ],
+    "limitations": [
+      "Real uasyncio scheduling overhead and interrupt latency are not modeled.",
+      "Only one thread is shown; true _thread concurrency on the second RP2040 core is not simulated."
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-observe-explain comparison of two programs on a shared timeline",
+    "interactionPattern": "Side-by-side comparison with student-triggered events and live counters",
+    "keyQuestions": [
+      "How can a thread be idle 95% of the time and still handle events late?",
+      "Which single line of code sets the worst-case delay in each panel?",
+      "Why does a 100 ms sensor read with no await make Panel B late too?"
+    ],
+    "commonMisconceptions": [
+      "uasyncio runs tasks at the same time on different threads (it uses one thread and switches only at await).",
+      "time.sleep() only pauses the task that calls it (it pauses the whole thread).",
+      "A thread that is idle is always ready to respond (a sleeping thread is idle but stuck)."
+    ],
+    "assessmentOpportunities": [
+      "Record and explain the worst-case lateness for both panels.",
+      "Exit ticket: predict the effect of time.sleep(0.2) inside a uasyncio task.",
+      "Mark every line in the chapter's uasyncio example where a task switch can happen."
+    ]
+  },
+  "chapter": "13-swarm-robotics-advanced-patterns"
+}

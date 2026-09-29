@@ -1,0 +1,86 @@
+{
+  "title": "Distance to Display Mapper",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Turn one distance reading into an OLED bar chart, an OLED meter, and a NeoPixel status color, and see how int(), min(bar_height, 50), and the 50 cm and 20 cm thresholds shape each output.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/distance-display-mapper/",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing and Robotics",
+    "topic": "Mapping sensor readings to display outputs",
+    "learningObjectives": [
+      "Predict the OLED bar height int(distance / max_cm * 50) for any distance and max_cm.",
+      "Predict the NeoPixel status color from the 50 cm and 20 cm thresholds.",
+      "Explain why min(bar_height, 50) keeps the bar inside its drawing area."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Apply",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Linear range mapping and int() (Chapter 7)",
+      "if/elif/else (Chapter 4)",
+      "OLED drawing calls and NeoPixel colors (Chapter 9)",
+      "ToF distance readings (Chapter 8)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 420
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "screenReaderDescription": true,
+      "keyboardNavigable": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Sweep / Stop", "purpose": "Move the distance from 300 cm to 0 and back at 60 cm per second."},
+      {"type": "checkbox", "label": "Use min(bar_height, 50) clamp", "default": true, "purpose": "Turn the clamp in draw_distance_bar() on or off."},
+      {"type": "slider", "label": "Distance", "range": "0-300 cm", "default": 100, "purpose": "The distance reading fed to all three outputs."},
+      {"type": "slider", "label": "max_cm", "range": "100-300 cm, step 10", "default": 200, "purpose": "The distance that fills the 50-pixel bar."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Pixel-accurate display rendering of chapter code",
+    "equations": [
+      "bar_height = int(distance_cm / max_cm * 50)",
+      "bar_height = min(bar_height, 50) when the clamp is on",
+      "status = green if distance > 50, yellow if distance > 20, else red"
+    ],
+    "assumptions": ["The OLED is 128 x 64 pixels and each character is 8 x 8 pixels."],
+    "limitations": ["Glyphs come from a public-domain 8 x 8 font and may differ slightly from the MicroPython framebuf font."]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict, then check with a filled-in worked formula",
+    "interactionPattern": "One slider drives three linked outputs and a formula box; optional sweep",
+    "keyQuestions": [
+      "How tall is the bar at 50 cm, and why is it not 12.5?",
+      "Why is 50 cm yellow instead of green?",
+      "What would happen on the real OLED without min(bar_height, 50)?"
+    ],
+    "commonMisconceptions": [
+      "int() rounds to the nearest whole number.",
+      "A distance of exactly 50 cm counts as greater than 50.",
+      "A bar can never be drawn past the edge of its area."
+    ],
+    "assessmentOpportunities": [
+      "Find the green-to-yellow distance and the bar height there.",
+      "Explain the bar overflow at 250 cm with max_cm 100 and no clamp.",
+      "Change a threshold so the LED is red at 25 cm."
+    ]
+  },
+  "chapter": "09-display-systems-output"
+}

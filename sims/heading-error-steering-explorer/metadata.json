@@ -1,0 +1,101 @@
+{
+  "title": "Heading Error and Steering Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A compass dial, a step-by-step calculation panel, and two motor bars show how a heading-swarm follower computes the shortest-turn error with (target - current + 180) % 360 - 180 and turns it into clipped left and right motor speeds with steer(). A replay shows the robot turning, and oscillating when Kp is too high.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "heading-error-steering-explorer",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Computer Science / Robotics",
+    "topic": "Wrap-around heading error and proportional steering",
+    "learningObjectives": [
+      "Calculate the shortest-turn heading error with wrap-around using (target - current + 180) % 360 - 180.",
+      "Decide the turn direction from the sign of the error.",
+      "Predict the left and right motor values that steer() returns, including clipping to 0..1.",
+      "Identify a Kp value that makes the follower oscillate."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "Apply",
+    "duration": "20-25 minutes",
+    "prerequisites": [
+      "Arithmetic operators including % and functions with return values (Chapter 4)",
+      "PWM duty cycle and motor speed (Chapter 7)",
+      "Proportional (P-only) control (Chapter 13)"
+    ],
+    "standards": [
+      "CSTA 3A-AP-13: Create prototypes that use algorithms to solve computational problems by leveraging prior student knowledge and personal interests."
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive (max 800)",
+      "height": 560
+    },
+    "responsive": true,
+    "dependencies": [
+      "https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "slider", "label": "Current heading (degrees)", "range": "0 to 359", "default": 350},
+      {"type": "slider", "label": "Target heading (degrees)", "range": "0 to 359", "default": 20},
+      {"type": "slider", "label": "Base speed", "range": "0 to 1.0, step 0.05", "default": 0.5},
+      {"type": "slider", "label": "Kp", "range": "0.005 to 0.1, step 0.005", "default": 0.02},
+      {"type": "checkbox", "label": "Show naive error (no wrap-around)", "default": true},
+      {"type": "button", "label": "Play turn", "purpose": "Replay the robot turning with the shown motor speeds until the error is under 2 degrees."},
+      {"type": "button", "label": "Reset", "purpose": "Restore the default headings, base speed, and Kp."},
+      {"type": "drag", "label": "Compass arrows", "purpose": "Drag the green (current) or purple (target) arrow to set a heading."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Discrete-time proportional steering",
+    "equations": [
+      "error = (target - current + 180) mod 360 - 180 (floored modulo, as in Python)",
+      "turn = Kp * error",
+      "left = clamp(base + turn, 0, 1); right = clamp(base - turn, 0, 1)",
+      "each 50 ms tick: heading += (left - right) * 20 degrees"
+    ],
+    "assumptions": [
+      "The robot turns in place at a rate proportional to the motor speed difference.",
+      "Heading measurements are exact (no sensor noise)."
+    ],
+    "limitations": [
+      "Wheel slip, motor dead band, and battery sag are not modeled.",
+      "The replay is shown at half speed so each tick is visible."
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Worked example with live, step-by-step intermediate values",
+    "interactionPattern": "Direct manipulation (sliders and draggable arrows) with immediate calculation feedback and a replay",
+    "keyQuestions": [
+      "Why is the error for current 350 and target 20 equal to +30 instead of -330?",
+      "Which motor is faster when the error is positive, and why?",
+      "At what Kp does the follower start swinging back and forth?"
+    ],
+    "commonMisconceptions": [
+      "The heading error is simply target - current (this sends the robot the long way around north).",
+      "Python's % works like JavaScript's % on negative numbers (Python's result is never negative for % 360).",
+      "A larger Kp always makes the robot line up faster (too large a Kp clips the motors and causes oscillation)."
+    ],
+    "assessmentOpportunities": [
+      "Hand-calculate three wrap-around errors and verify them in the panel.",
+      "Predict clipped motor values for a given error and Kp.",
+      "Find the smallest Kp that makes the replay oscillate."
+    ]
+  },
+  "chapter": "13-swarm-robotics-advanced-patterns"
+}

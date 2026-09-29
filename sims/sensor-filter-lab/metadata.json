@@ -1,0 +1,98 @@
+{
+  "title": "Sensor Filter Lab",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Compare a moving average and a median filter on the same noisy ToF readings, with spikes and a sudden change in distance, and judge which filter is better and how window size trades smoothness against lag.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/sensor-filter-lab/",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing and Robotics",
+    "topic": "Filtering noisy sensor data",
+    "learningObjectives": [
+      "Evaluate whether a moving average or a median filter is the better choice for noisy or spiky distance readings.",
+      "Explain how the window size trades smoothness (lower error) against lag (slower reaction).",
+      "Justify a filter and window choice for a robot task using measured error and lag."
+    ],
+    "bloomsTaxonomy": "Evaluate",
+    "bloomVerb": "Evaluate",
+    "duration": "20-25 minutes",
+    "prerequisites": [
+      "Lists, append(), pop(), sum(), and sorted() (Chapter 5)",
+      "Writing functions with parameters (Chapter 4)",
+      "ToF distance readings (Chapter 8)",
+      "Mean and median"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "Chart.js",
+    "version": "4.4.4",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 500
+    },
+    "responsive": true,
+    "dependencies": ["Chart.js 4.4.4 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "screenReaderDescription": true,
+      "keyboardNavigable": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Start / Pause", "purpose": "Stream a new reading every 100 ms, or pause to study the chart."},
+      {"type": "button", "label": "Person walks in / Person walks away", "purpose": "Step the true distance from 150 cm to 40 cm (or back) and measure each filter's lag."},
+      {"type": "button", "label": "Reset", "purpose": "New readings at 150 cm, paused."},
+      {"type": "checkbox", "label": "Show average", "default": true, "purpose": "Show the moving average line."},
+      {"type": "checkbox", "label": "Show median", "default": true, "purpose": "Show the median filter line."},
+      {"type": "slider", "label": "Window size", "range": "1-15, odd numbers", "default": 5, "purpose": "The window parameter in the filter code."},
+      {"type": "slider", "label": "Noise", "range": "0-10 cm, step 0.5", "default": 3, "purpose": "Random noise added to each reading."},
+      {"type": "slider", "label": "Spike chance", "range": "0-20%", "default": 5, "purpose": "Chance that a reading jumps 40 to 80 cm away from the truth."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Stochastic signal with digital filters",
+    "equations": [
+      "raw = max(0, true + u * noise + spike), u uniform in [-1, 1]",
+      "moving average = sum(last window readings) / count",
+      "median = sorted(last window readings)[count // 2]",
+      "error = mean(|output - true|) over the last 100 readings",
+      "lag = readings after a step until |output - new true| <= 10 cm"
+    ],
+    "assumptions": [
+      "Each reading stores its random draws, so slider changes re-filter the same data.",
+      "The chart starts paused with 100 readings already filled in."
+    ],
+    "limitations": [
+      "Noise is uniform, not bell-shaped.",
+      "Spikes are 40 to 80 cm, much smaller than a real 8190 out-of-range reading."
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Evidence-based comparison with quantitative scoring",
+    "interactionPattern": "Side-by-side filter outputs on shared data with live error and lag metrics; optional streaming",
+    "keyQuestions": [
+      "Why does one spike move the average but not the median?",
+      "What does a bigger window gain, and what does it cost?",
+      "Which filter would you trust to stop a robot before a wall?"
+    ],
+    "commonMisconceptions": [
+      "A bigger filter window is always better.",
+      "The moving average removes spikes.",
+      "Filtering makes the robot react faster."
+    ],
+    "assessmentOpportunities": [
+      "Compare average and median error at 15% spike chance.",
+      "Measure lag for windows 3, 7, and 15.",
+      "Write and defend a filter recommendation for a given robot speed."
+    ]
+  },
+  "chapter": "08-sensors-data-input"
+}

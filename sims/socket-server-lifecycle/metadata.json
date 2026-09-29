@@ -1,0 +1,94 @@
+{
+  "title": "Socket Server Lifecycle",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A p5.js step-through of the Chapter 11 robot web server. A two-column lifecycle shows the browser (client) and the Pico W server calls socket, bind, listen, accept, recv, handle_cmd, send, and close, with a blocking indicator on accept(), a listen(1) queue for one waiting browser, refused connections, and motors that run after a POST cmd=forward.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "socket-server-lifecycle",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Robotics and Computer Science",
+    "topic": "Socket programming for a microcontroller web server",
+    "learningObjectives": [
+      "Order the socket calls a web server makes: socket, bind, listen, accept, recv, send, close",
+      "Explain that accept() blocks until a browser connects and returns a new socket for that browser",
+      "Explain why listen(1) lets only one browser wait and refuses extra connections",
+      "Explain why s.close() belongs in a finally block"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Sequence",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "HTTP GET and POST and socket programming from Chapter 11",
+      "while loops and try/finally from Chapter 4",
+      "Motor functions from Chapter 7"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 545
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorAndTextLabels": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Next Step", "purpose": "Run the next server call"},
+      {"type": "button", "label": "Auto Play", "purpose": "Step automatically, pausing while accept() is blocked"},
+      {"type": "button", "label": "Reset", "purpose": "Restart the server program (a second Reset after an error unplugs and replugs the robot)"},
+      {"type": "select", "label": "Request type", "options": ["GET /", "POST cmd=forward", "POST cmd=stop"], "default": "GET /"},
+      {"type": "button", "label": "Browser A connects", "purpose": "A browser opens a connection to port 80"},
+      {"type": "button", "label": "Browser B connects", "purpose": "A second browser connects, possibly while the server is busy"},
+      {"type": "checkbox", "label": "Add s.close() at the end", "default": true, "purpose": "Include the finally: s.close() cleanup"}
+    ]
+  },
+  "simulation": {
+    "modelType": "Step-through state machine of a single-threaded socket server",
+    "variables": ["step (1-9)", "current browser", "queue (max 1)", "refused browsers", "motor state"],
+    "equations": [],
+    "assumptions": [
+      "listen(1) holds one waiting connection; extra connections are refused",
+      "The server handles one browser completely before calling accept() again",
+      "Without s.close(), restarting the program leaves port 80 in use until the board is reset"
+    ],
+    "limitations": [
+      "Does not model TCP handshakes, timeouts, or partial reads",
+      "Real network stacks may queue slightly more connections than the listen() number"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Worked example with step-through and what-if events",
+    "interactionPattern": "Next Step / Auto Play lifecycle diagram with browser event buttons",
+    "keyQuestions": [
+      "Which call makes the robot stop and wait?",
+      "What does accept() give back, and how is conn different from s?",
+      "What happens to a third browser while the robot is busy?",
+      "Why does forgetting s.close() cause an error on the next run?"
+    ],
+    "commonMisconceptions": [
+      "The server socket s is used to talk to the browser (a new socket conn is used)",
+      "The robot can serve many browsers at the same time",
+      "The robot keeps working on other tasks while it waits in accept()"
+    ],
+    "assessmentOpportunities": [
+      "Ordering the nine steps before and after the sim",
+      "Explaining the fate of each browser in the queue experiment",
+      "Exit ticket about three simultaneous browsers"
+    ]
+  },
+  "chapter": "11-wireless-networking-web-servers"
+}

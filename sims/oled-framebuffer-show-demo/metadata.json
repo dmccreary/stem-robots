@@ -1,0 +1,86 @@
+{
+  "title": "OLED Framebuffer and show()",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Run display.fill(0), text(), ellipse(), rect(), and show() one step at a time to see that drawing changes only the framebuffer in memory and show() copies it to the OLED screen.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/oled-framebuffer-show-demo/",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing and Robotics",
+    "topic": "OLED framebuffer and display.show()",
+    "learningObjectives": [
+      "Explain that drawing calls change only the framebuffer in memory.",
+      "Explain that display.show() copies the whole framebuffer to the OLED screen in one step.",
+      "Predict what the screen shows when fill(0) or show() is left out or out of order."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomVerb": "Explain",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "while loops and functions (Chapter 4)",
+      "Pixels and screen coordinates with (0, 0) at the top left",
+      "The OLED display and SSD1306 sections (Chapter 9)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 500
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "screenReaderDescription": true,
+      "keyboardNavigable": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "buttons", "label": "1. fill(0), 2. text(), 3. ellipse(), 4. rect(), 5. show()", "purpose": "Run one display call at a time."},
+      {"type": "button", "label": "Run all in order", "purpose": "Run the five calls 600 ms apart, highlighting each line."},
+      {"type": "button", "label": "Reset", "purpose": "Clear both panels."},
+      {"type": "button", "label": "Loop mode: move the ellipse / Stop loop", "purpose": "Each 500 ms pass clears, draws the ellipse 8 pixels further right, and shows."},
+      {"type": "checkbox", "label": "Skip fill(0) in loop mode", "default": false, "purpose": "Leave out fill(0) to see the smeared trail."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "State model of display memory",
+    "equations": [
+      "drawing calls: framebuffer pixels = 1",
+      "fill(0): all framebuffer pixels = 0",
+      "show(): screen = copy of framebuffer"
+    ],
+    "assumptions": ["The display is 128 x 64 pixels, 1 bit per pixel.", "Text uses a public-domain 8 x 8 font."],
+    "limitations": ["show() is instant here; the real transfer over I2C or SPI takes a few milliseconds."]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Step-through worked example with prediction",
+    "interactionPattern": "One button per code line, side-by-side memory and screen panels, highlighted code, and a status line",
+    "keyQuestions": [
+      "Why does the screen stay blank after display.text() runs?",
+      "What does display.fill(0) change, and what does it not change?",
+      "Why do old drawings pile up in a loop without fill(0)?"
+    ],
+    "commonMisconceptions": [
+      "Drawing calls change the screen right away.",
+      "fill(0) clears the screen immediately.",
+      "show() must be called after every single drawing call."
+    ],
+    "assessmentOpportunities": [
+      "Predict the screen after text() and before show().",
+      "Explain and fix the smeared trail in loop mode.",
+      "Debug a loop that calls show() before the drawing calls."
+    ]
+  },
+  "chapter": "09-display-systems-output"
+}

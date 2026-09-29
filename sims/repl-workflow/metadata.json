@@ -1,0 +1,93 @@
+{
+  "title": "REPL and Save Workflow",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Test lines in a mock Thonny REPL, copy the ones that work into the Editor, save them to the board as main.py or test.py, and power-cycle to see what runs by itself.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/repl-workflow/",
+  "source": "Adapted from https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/repl-workflow",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Computer Science",
+    "topic": "MicroPython REPL versus saved programs and the main.py boot convention",
+    "learningObjectives": [
+      "Decide when to test an idea in the REPL and when to save it in a file",
+      "Move working REPL lines into the Editor and save them to the board",
+      "Predict what runs after a power cycle with main.py or test.py saved",
+      "Explain why REPL variables disappear when the board loses power"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "Apply",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "The REPL and uploading programs with Thonny (Chapter 3)",
+      "Flash memory versus RAM (Chapter 2: Storing Your Programs)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 500
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "input", "label": ">>> Shell line", "purpose": "Type one line and press Enter"},
+      {"type": "button", "label": "Enter", "purpose": "Run the typed line"},
+      {"type": "button-group", "label": "Quick lines", "options": ["print(\"Hello, robot!\")", "print(\"Ready to roll!\")", "3 + 4", "10 / 3", "speed = 50", "speed * 2"]},
+      {"type": "button", "label": "Copy REPL lines into Editor", "purpose": "Copy the lines that worked"},
+      {"type": "button", "label": "Clear Editor", "purpose": "Empty the Editor"},
+      {"type": "select", "label": "Save as", "options": ["main.py", "test.py"], "default": "main.py"},
+      {"type": "button", "label": "Save to board", "purpose": "Store the Editor in the Flash list"},
+      {"type": "button", "label": "Unplug and replug", "purpose": "Power-cycle: clear RAM, then run main.py if present"}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Mock REPL and boot sequence for a MicroPython board",
+    "assumptions": [
+      "The Shell understands print of a string, 3 + 4, 10 / 3, simple assignments, and speed * 2",
+      "At power-up the board runs only main.py",
+      "A saved program shows output only from print(); expressions run silently"
+    ],
+    "limitations": [
+      "Only a few kinds of lines are understood; other input returns NameError or SyntaxError",
+      "boot.py and running files manually from Thonny are not modeled"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Guided workflow with a visible checklist and prediction before power-cycling",
+    "interactionPattern": "Mock IDE with Shell input, file save, and power-cycle",
+    "keyQuestions": [
+      "Why does speed * 2 fail before you type speed = 50?",
+      "What happens to REPL variables when the board is unplugged?",
+      "Why does test.py not run by itself after a power cycle?",
+      "Why does 3 + 4 show 7 in the REPL but nothing when main.py runs?"
+    ],
+    "commonMisconceptions": [
+      "Code typed in the REPL is saved on the board",
+      "Any saved .py file runs at power-up",
+      "A saved program prints every result the way the REPL does"
+    ],
+    "assessmentOpportunities": [
+      "Written prediction of the Shell output after a power cycle",
+      "Challenge: test.py does not print; main.py prints Ready to roll!",
+      "Exit ticket listing the three steps from REPL test to auto-run"
+    ]
+  },
+  "chapter": "03-micropython-dev-environment"
+}

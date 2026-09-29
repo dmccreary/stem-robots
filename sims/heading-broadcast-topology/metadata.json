@@ -1,0 +1,82 @@
+{
+  "title": "Heading Broadcast Network Topology",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Interactive Mermaid network diagram of a master robot that hosts a WiFi access point and sends UDP heading packets to many followers. A toolbar switches to Chapter 12's one-to-one BLE pairing and Chapter 11's router-hosted WiFi, and a Compare card shows what the sender must change when a follower is added.",
+  "date": "2026-09-29",
+  "type": "Interactive Diagram",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "heading-broadcast-topology",
+  "canvasHeight": 440,
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Computer Science / Networking",
+    "topic": "UDP broadcast topology for heading synchronization",
+    "learningObjectives": [
+      "Differentiate a one-to-many UDP broadcast topology from one-to-one BLE pairing and router-hosted WiFi.",
+      "Identify which device hosts the network in each topology.",
+      "Explain why adding a follower requires no change to a UDP broadcast master but does require a new BLE connection.",
+      "Explain why a dropped UDP heading packet is not a failure for a follower."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "differentiate",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Station-mode WiFi and TCP web servers (Chapter 11)",
+      "BLE central and peripheral roles (Chapter 12)",
+      "WiFi access point host mode and UDP broadcast (Chapter 13)"
+    ],
+    "standards": [
+      "CSTA 3A-NI-04: Evaluate the scalability and reliability of networks, by describing the relationship between routers, switches, servers, topology, and addressing."
+    ]
+  },
+  "technical": {
+    "framework": "Mermaid",
+    "version": "11",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 440
+    },
+    "responsive": true,
+    "dependencies": [
+      "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "clickAndHoverEquivalent": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "UDP broadcast", "purpose": "Show the master-hosted broadcast topology (default)."},
+      {"type": "button", "label": "BLE pairing", "purpose": "Show Chapter 12's one-to-one leader/follower connections."},
+      {"type": "button", "label": "Router WiFi", "purpose": "Show Chapter 11's router-hosted network with TCP connections."},
+      {"type": "checkbox", "label": "Add Follower 4", "purpose": "Add a fourth follower to the swarm views and update the Compare card."}
+    ],
+    "hoverTargets": "Every node, every arrow and arrow label, and the dashed network outline show an explanation in the Details card on hover or click."
+  },
+  "pedagogical": {
+    "teachingStrategy": "Contrasting cases: the same four comparison facts shown for three network topologies",
+    "interactionPattern": "Topology switcher with hover/click explanations and a live comparison card",
+    "keyQuestions": [
+      "Who hosts the network in each topology?",
+      "How many sends does the leader make per update with four followers in each topology?",
+      "What must change on the master to add a fifth follower?"
+    ],
+    "commonMisconceptions": [
+      "The master must send a separate packet to each follower (one broadcast packet reaches all of them).",
+      "A lost UDP packet breaks the swarm (the next heading packet arrives about 20 ms later).",
+      "All WiFi projects need a router (the Pico W can host its own access point)."
+    ],
+    "assessmentOpportunities": [
+      "Three-column comparison table of host, links, sends per update, and scaling cost.",
+      "Claim-evidence-reasoning paragraph on the best topology for a 10-robot swarm.",
+      "Exit ticket: list the master-side changes needed for a fifth follower."
+    ]
+  },
+  "chapter": "13-swarm-robotics-advanced-patterns"
+}

@@ -1,0 +1,89 @@
+{
+  "title": "Robot Decomposition Tree",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Split a big robot goal such as \"Avoid the wall\" into smaller tasks, and keep splitting until every piece is small enough to write as a line or two of MicroPython.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/robot-decomposition-tree/",
+  "source": "Adapted from https://github.com/dmccreary/moving-rainbow/tree/main/docs/sims/decomposition-in-action",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Computer Science",
+    "topic": "Decomposition of robot goals into codable sub-tasks",
+    "learningObjectives": [
+      "Break a robot goal into two or three smaller sub-tasks",
+      "Keep splitting sub-tasks until each one is small enough to write as code",
+      "Recognize when a task still hides more than one action",
+      "Connect each finished piece to a one-line MicroPython idea"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "Apply",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "The four pillars of computational thinking (Chapter 1: What Is Computational Thinking?)",
+      "The three-task breakdown of avoiding a wall (Chapter 1: Decomposition)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 520
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "select", "label": "Robot goal", "options": ["Avoid the wall", "Follow a line", "Show distance on the OLED"], "default": "Avoid the wall"},
+      {"type": "canvas-click", "label": "Tree box", "purpose": "Select a task in the tree"},
+      {"type": "button", "label": "Split it", "purpose": "Break the selected task into smaller tasks"},
+      {"type": "button", "label": "Small enough to code?", "purpose": "Mark the selected task green if it is ready to code"},
+      {"type": "button", "label": "Reset", "purpose": "Return to the single goal node"}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Fixed answer-bank tree that grows on demand",
+    "assumptions": [
+      "Each goal has one agreed decomposition in the answer bank",
+      "A task with no further sub-tasks in the bank is small enough to code"
+    ],
+    "limitations": [
+      "Real problems can be decomposed in more than one correct way",
+      "Code ideas are short sketches, not complete runnable programs"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Guided practice with immediate feedback on the stopping rule",
+    "interactionPattern": "Click-to-select tree builder with Split and Check buttons",
+    "keyQuestions": [
+      "How do you know when a task is small enough to code?",
+      "Why is 'If distance is under 20 cm, stop and turn' still too big?",
+      "Which pieces of 'Follow a line' also appear in 'Avoid the wall'?",
+      "How many green pieces does a full decomposition of 'Avoid the wall' have?"
+    ],
+    "commonMisconceptions": [
+      "A task that fits in one sentence is automatically small enough to code",
+      "Decomposition means writing the whole program in one long list",
+      "There is only one correct way to decompose a problem"
+    ],
+    "assessmentOpportunities": [
+      "Challenge answer: 5 green pieces, using decomposition",
+      "Compare a paper decomposition with the MicroSim's answer bank",
+      "Exit ticket: two-level tree for a new robot goal with codable leaves circled"
+    ]
+  },
+  "chapter": "01-intro-computational-thinking"
+}

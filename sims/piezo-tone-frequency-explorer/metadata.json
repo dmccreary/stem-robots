@@ -1,0 +1,95 @@
+{
+  "title": "Piezo Tone Frequency Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Play a PWM tone and see how the frequency passed to buzzer.freq() sets the pitch, the period of the wave, and the piano note, and why a 50% duty cycle is the loudest setting.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/piezo-tone-frequency-explorer/",
+  "source": "https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/piano-tone-generator",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing and Robotics",
+    "topic": "Piezo buzzer tone frequency and PWM duty cycle",
+    "learningObjectives": [
+      "Relate the PWM frequency passed to buzzer.freq() to the pitch that is heard.",
+      "Calculate the period of a tone as 1000 / frequency milliseconds.",
+      "Explain why a 50% duty cycle gives the loudest tone and why 0% and 100% duty are silent."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomVerb": "Relate",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "PWM duty cycle and 16-bit duty values (Chapter 7)",
+      "GPIO HIGH and LOW levels (Chapter 6)",
+      "Calling functions with arguments (Chapter 4)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 475
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)", "p5.sound 1.0.1 add-on (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "screenReaderDescription": true,
+      "keyboardNavigable": true,
+      "worksWithoutSound": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Play / Stop", "purpose": "Start or stop a steady tone. Audio starts only after this click."},
+      {"type": "button", "label": "Startup melody", "purpose": "Play 440 Hz for 0.2 s, 523 Hz for 0.2 s, then 659 Hz for 0.3 s."},
+      {"type": "slider", "label": "Frequency", "range": "100-2000 Hz", "default": 440, "purpose": "The value passed to buzzer.freq()."},
+      {"type": "slider", "label": "Duty", "range": "0-100% in 5% steps", "default": 50, "purpose": "The duty cycle, shown with its 16-bit duty_u16() value."},
+      {"type": "canvas keys", "label": "Piano keys C4 to C5", "purpose": "Set the frequency to a note and play it briefly."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Signal visualization with audio synthesis",
+    "equations": [
+      "period_ms = 1000 / frequency",
+      "duty_u16 = int(duty_percent / 100 * 65535)",
+      "loudness = 1 - |duty_percent - 50| / 50",
+      "nearest note = round(69 + 12 * log2(frequency / 440)) as a MIDI note"
+    ],
+    "assumptions": [
+      "The buzzer is driven by a square wave from a PWM pin.",
+      "Loudness follows the simple duty rule above."
+    ],
+    "limitations": [
+      "The audio is always a 50% square wave; only its volume follows the duty slider.",
+      "A real piezo is louder near its resonant frequency."
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-observe-explain with concrete numeric readouts",
+    "interactionPattern": "Static wave view with live readouts; audio plays only on a user click",
+    "keyQuestions": [
+      "What happens to the period when the frequency doubles?",
+      "Which duty cycle gives the loudest tone, and why?",
+      "Why is the buzzer silent at 0% and at 100% duty?"
+    ],
+    "commonMisconceptions": [
+      "Duty cycle controls pitch.",
+      "100% duty is the loudest because the pin is on all the time.",
+      "Frequency and period both get bigger together."
+    ],
+    "assessmentOpportunities": [
+      "Find the frequency and period of E5.",
+      "Name the duty_u16 values that make the buzzer silent.",
+      "Record loudness at 0%, 25%, 50%, 75%, and 100% duty and describe the pattern."
+    ]
+  },
+  "chapter": "07-pwm-motor-speed-actuators"
+}

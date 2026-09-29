@@ -1,0 +1,92 @@
+{
+  "title": "Ultrasonic Echo Timing Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "See the HC-SR04 trigger pulse, the sound's round trip, and the Echo pin on one timeline, and convert the echo time in microseconds to centimeters with duration / 58.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/ultrasonic-echo-timing-explorer/",
+  "source": "https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/ultrasonic-ranging",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing and Robotics",
+    "topic": "Ultrasonic distance sensing with the HC-SR04",
+    "learningObjectives": [
+      "Convert an echo pulse duration in microseconds into a distance in centimeters with duration_us / 58.",
+      "Explain that 58 comes from the round trip (2x) divided by the speed of sound, 0.0343 cm per microsecond.",
+      "Explain why a missing echo requires a timeout in read_ultrasonic_cm()."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Apply",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "while loops and ticks_us()/ticks_diff() timing (Chapter 4)",
+      "GPIO input and output pins (Chapter 6)",
+      "Converting meters to centimeters and seconds to microseconds"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 480
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "screenReaderDescription": true,
+      "keyboardNavigable": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Fire sensor", "purpose": "Replay one measurement in slow motion."},
+      {"type": "select", "label": "Air temperature", "options": ["0 C (331 m/s)", "20 C (343 m/s)", "30 C (349 m/s)"], "default": "20 C", "purpose": "Set the speed of sound."},
+      {"type": "checkbox", "label": "Soft surface (weak echo)", "default": false, "purpose": "Weaken the echo; past 250 cm it is lost."},
+      {"type": "slider", "label": "Distance", "range": "2-450 cm", "default": 20, "purpose": "Distance to the wall. The wall can also be dragged."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Physics-based timing model",
+    "equations": [
+      "round_trip_us = 2 * distance_cm / speed_cm_per_us",
+      "speed_cm_per_us = speed_m_per_s / 10000",
+      "code_distance_cm = duration_us / 58"
+    ],
+    "assumptions": [
+      "Echo rises after the 200 microsecond, 8-cycle burst and stays HIGH for the round-trip time.",
+      "Valid echoes return from 2 to 400 cm, or up to 250 cm from a soft surface."
+    ],
+    "limitations": [
+      "Some modules drop Echo LOW after about 38 ms with no echo; the sim keeps it HIGH.",
+      "Wall angle and size are not modeled."
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Linked representations: scene, pin timeline, and filled-in formula",
+    "interactionPattern": "Static timeline and math for the current distance, with an optional slow-motion replay",
+    "keyQuestions": [
+      "Why does the formula divide by 58 instead of by the speed of sound?",
+      "What does the Echo pin do while the sound is flying?",
+      "What happens to read_ultrasonic_cm() if the echo never comes back?"
+    ],
+    "commonMisconceptions": [
+      "The echo time is for a one-way trip.",
+      "The Echo pin pulses only when the sound returns.",
+      "The speed of sound is the same at every temperature."
+    ],
+    "assessmentOpportunities": [
+      "Convert a 2900 microsecond echo into centimeters.",
+      "Derive 58 from 343 m/s and the round trip.",
+      "Explain the 0 C error and propose a timeout for missing echoes."
+    ]
+  },
+  "chapter": "08-sensors-data-input"
+}

@@ -1,0 +1,92 @@
+{
+  "title": "Voltage and Current Water Analogy",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A water loop and a robot circuit side by side show that voltage works like water pressure and current works like water flow, using the rule current = voltage / resistance.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/voltage-current-water-analogy/",
+  "source": "Loop animation adapted from https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/ohms-law-calculator",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Science and Electronics",
+    "topic": "Voltage, current, and resistance through the water analogy",
+    "learningObjectives": [
+      "Explain voltage as the push that moves charge, like water pressure",
+      "Explain current as the rate of flow of charge, like water flow",
+      "Predict how current changes when voltage or resistance changes",
+      "Explain why an open loop stops all current"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerb": "Explain",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Voltage as pressure and current as flow (Chapter 1: Voltage and Current)",
+      "Four 1.5 V AA batteries in series make 6 V (Chapter 1: Voltage and Current)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 445
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "slider", "label": "Voltage (batteries in series)", "range": "1-4 batteries (1.5-6.0 V)", "step": 1, "default": 4},
+      {"type": "slider", "label": "Motor resistance (load)", "range": "5-30 ohms", "step": 1, "default": 12},
+      {"type": "button", "label": "Break the loop / Fix the loop", "purpose": "Open or close the circuit"}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Ohm's law with a hydraulic analogy",
+    "equations": [
+      "voltage = batteries * 1.5",
+      "current = voltage / resistance (0 when the loop is open)",
+      "dot speed proportional to current, maximum at 1.2 A"
+    ],
+    "assumptions": [
+      "The motor behaves like a fixed resistor",
+      "Battery voltage does not sag under load"
+    ],
+    "limitations": [
+      "Real motors draw more current when starting and less when spinning",
+      "Water leaks from a broken pipe, but charge does not spill from a broken wire"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-observe-explain with dual representations",
+    "interactionPattern": "Linked sliders driving two matching loops, meters, and a formula line",
+    "keyQuestions": [
+      "What happens to the current if you remove two batteries?",
+      "What happens to the current if the motor resistance doubles?",
+      "Why do the dots stop everywhere when the loop breaks in one place?",
+      "Which settings give exactly 0.30 A?"
+    ],
+    "commonMisconceptions": [
+      "Voltage and current are the same thing",
+      "Current gets used up as it goes around the loop",
+      "A battery pushes the same current no matter what is connected to it"
+    ],
+    "assessmentOpportunities": [
+      "Written predictions compared with observed results",
+      "Challenge: find settings that give 0.30 A",
+      "Exit ticket: two water-analogy reasons a robot's motors run slowly"
+    ]
+  },
+  "chapter": "01-intro-computational-thinking"
+}

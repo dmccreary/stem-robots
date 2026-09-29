@@ -1,0 +1,105 @@
+{
+  "title": "Swarm Collective Behaviors",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A top-down swarm of up to eight robots on a 480 cm by 320 cm field. A menu swaps the single local rule every follower runs (convoy following, collective obstacle avoidance, or leader broadcast), and sliders change the target gap, follower gain Kp, sensor range, and number of robots so students can connect one rule and its settings to the group pattern that emerges.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "swarm-collective-behaviors",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Computer Science / Robotics",
+    "topic": "Swarm robotics, local rules, and emergent behavior",
+    "learningObjectives": [
+      "Connect a single local rule and its settings to the group pattern it produces.",
+      "Explain why no robot in a swarm needs to know the overall plan.",
+      "Analyze how the follower gain Kp trades reaction speed against oscillation in a convoy.",
+      "Compare a purely local rule (convoy) with a rule that uses shared information (wall alerts, leader broadcast)."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "Analyze",
+    "duration": "25-30 minutes",
+    "prerequisites": [
+      "Time-of-flight distance sensing (Chapter 8)",
+      "Closed-loop proportional feedback (Chapter 10)",
+      "The BLE leader-follower pattern (Chapter 12)"
+    ],
+    "standards": [
+      "CSTA 3B-AP-08: Describe how artificial intelligence drives many software and physical systems.",
+      "NGSS HS-ETS1-4: Use a computer simulation to model the impact of proposed solutions to a complex real-world problem."
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive (max 800)",
+      "height": 600
+    },
+    "responsive": true,
+    "dependencies": [
+      "https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": false
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "select", "label": "Behavior", "options": ["Convoy following", "Collective obstacle avoidance", "Leader broadcast (all steer to leader)"], "default": "Convoy following"},
+      {"type": "slider", "label": "Target gap (cm)", "range": "15 to 80", "default": 30},
+      {"type": "slider", "label": "Follower gain Kp", "range": "0.005 to 0.1", "default": 0.03},
+      {"type": "slider", "label": "Sensor range (cm)", "range": "20 to 100", "default": 60},
+      {"type": "slider", "label": "Number of robots", "range": "3 to 8", "default": 6},
+      {"type": "checkbox", "label": "Share wall alerts", "default": false},
+      {"type": "button", "label": "Run / Pause"},
+      {"type": "button", "label": "Scatter robots"},
+      {"type": "button", "label": "Reset", "purpose": "Return the robots to a line and pause, keeping the settings."},
+      {"type": "drag", "label": "Leader robot and wall", "purpose": "Drag the leader to steer it or drag the gray wall into the robots' path."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Agent-based model with local rules",
+    "equations": [
+      "Convoy speed = clamp(0.5 + Kp * (gap - target gap), 0, 1) * 30 cm/s",
+      "Leader broadcast turn = clamp(Kp * heading error, -1, 1), up to 200 degrees per second",
+      "Gap error = average of |gap - target gap| over following robots"
+    ],
+    "assumptions": [
+      "Each follower updates its distance reading and speed command every 0.6 s, and its motors reach a new speed with a 0.6 s lag.",
+      "The leader slows down briefly near each corner of its loop.",
+      "A robot turns 90 degrees away when the wall is closer than 20 cm; shared alerts reach robots within 200 cm.",
+      "The simulation clock runs twice as fast as real time."
+    ],
+    "limitations": [
+      "Robots are points with a simple overlap push; wheel slip and sensor noise are not modeled.",
+      "The field edge acts as a perfect bouncing wall."
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Guided inquiry: change one parameter of a local rule and observe the emergent group pattern",
+    "interactionPattern": "Agent-based simulation with rule menu, parameter sliders, and live readouts",
+    "keyQuestions": [
+      "Where does the convoy's shape come from if no robot's code describes it?",
+      "Why does a high Kp make the chain stretch and squeeze like an accordion?",
+      "How does sharing wall alerts change how many robots must sense the wall themselves?"
+    ],
+    "commonMisconceptions": [
+      "The leader controls every robot in the convoy (each follower only reacts to the robot ahead).",
+      "A higher gain is always better (too high a gain makes the chain oscillate).",
+      "Swarm behavior requires a central plan or map."
+    ],
+    "assessmentOpportunities": [
+      "Record gap error for Kp = 0.005, 0.03, and 0.1 and explain the pattern.",
+      "Exit ticket: write a local rule that spreads robots evenly across the field.",
+      "Compare collisions with the wall with Share wall alerts off and on."
+    ]
+  },
+  "chapter": "13-swarm-robotics-advanced-patterns"
+}
