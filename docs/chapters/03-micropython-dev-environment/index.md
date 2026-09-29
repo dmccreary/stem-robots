@@ -180,6 +180,53 @@ That's your first MicroPython output. Let's try some math:
 
 The REPL evaluates each expression and prints the result immediately. This is how engineers explore new hardware — try small things, see what happens, build up from there.
 
+You now have two ways to run code: the REPL for quick tests and a saved file for programs that run on their own. The simulation below shows how the two fit together in one workflow, from an idea to a robot that runs `main.py`.
+
+#### Diagram: REPL and Save Workflow
+
+<iframe src="../../sims/repl-workflow/main.html" width="100%" height="502px" scrolling="no"></iframe>
+[Run REPL and Save Workflow Fullscreen](../../sims/repl-workflow/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Try one line in a simulated REPL, then save it into main.py and power-cycle the board</summary>
+Type: microsim
+**sim-id:** repl-workflow<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** learning-micropython/repl-workflow (https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/repl-workflow). Keep the REPL-to-file flow; limit the allowed commands to the ones below and add the power-cycle step.
+
+Learning objective: Apply (Bloom L3) — decide when to test an idea in the REPL and when to save it in `main.py`, and predict what runs after a power cycle.
+
+Canvas layout: 700 px wide (responsive), 500 px tall. Left 50%: a mock Thonny window with an Editor pane on top and a Shell pane below. Right 50%: a board picture with a "Board flash" file list and a workflow bar of four steps. Total iframe height 502 px.
+
+Visual elements:
+- Mock Thonny window: Editor pane (white, line numbers, syntax colors) and Shell pane (dark navy #1a237e, white text, `>>>` prompt with a blinking cursor).
+- Board picture with a green power LED, a reset button, and a file list inside a box labeled "Flash: saved files".
+- Workflow bar with four numbered chips: "1 Try in REPL", "2 Write in Editor", "3 Save to board as main.py", "4 Power-cycle". The active chip is orange (#e65100); finished chips are green with a check.
+
+Interactive controls:
+- Shell text input: the student types a line and presses Enter. Allowed lines: `print("Hello, robot!")`, `3 + 4`, `10 / 3`, `speed = 50`, `speed * 2`. Any other text returns a simple error such as `NameError: name 'x' isn't defined` or `SyntaxError: invalid syntax`, with a hint line "That is OK. Errors are information."
+- Quick buttons under the Shell that paste each allowed line.
+- Button "Copy REPL lines into Editor" copies all accepted lines into the Editor.
+- Dropdown "Save as": "main.py" (default) or "test.py".
+- Button "Save to board" adds the file to the Flash list.
+- Button "Unplug and replug" runs the power-cycle animation.
+
+Behavior:
+- Results: `print("Hello, robot!")` prints `Hello, robot!`; `3 + 4` prints `7`; `10 / 3` prints `3.3333333333333`; `speed = 50` prints nothing and stores the variable; `speed * 2` prints `100` only if speed was set, else `NameError: name 'speed' isn't defined`.
+- The REPL variables vanish when the board is power-cycled; the Flash files remain.
+- After "Unplug and replug": if `main.py` is in Flash, the Shell prints its output automatically; if the file is `test.py`, nothing runs and the Shell says "No main.py found. Run test.py from Thonny yourself."
+- A "Sparky says" line under the workflow bar explains each step in one sentence.
+
+Default state: empty Editor, Shell with `>>>` prompt, Flash empty, chip 1 active.
+
+Assessment/Challenge: Save a file named `test.py` with the line `print("Ready to roll!")`, then power-cycle. Does it print? (Answer: No. Only `main.py` runs automatically.) Now save it as `main.py` and repeat. (Answer: It prints.)
+
+Responsive: redraw on window resize. On narrow screens the board picture moves below the Thonny window.
+</details>
+
+Use the REPL whenever you are unsure what a line will do. When the idea works, copy it into a file and save it as `main.py` on the board. That two-step habit will help you in every lab.
+
 !!! mascot-encourage "This feels simple — and that's the point."
     ![Sparky encouraging](../../img/mascot/encouraging.png){ class="mascot-admonition-img" }
     The REPL might feel too simple right now — like a fancy calculator. But every expert programmer uses it to test ideas before writing a full program. When something isn't working later in the course, we'll come back to the REPL and test one line at a time. That habit will save you hours of frustration.
@@ -327,6 +374,52 @@ The table below summarizes the four data types:
 | `str` | `"Sparky"`, `"GO"` | Display text, WiFi SSID, status messages |
 | `bool` | `True`, `False` | Flags, conditionals, sensor states |
 
+Python can tell you a value's type with the `type()` function. In the simulation below, you type or pick a value and see which of the four types it is and why. Mixing up types is a common source of bugs, so this is a good place to practice.
+
+#### Diagram: Data Type Explorer
+
+<iframe src="../../sims/python-data-type-explorer/main.html" width="100%" height="432px" scrolling="no"></iframe>
+[Run Data Type Explorer Fullscreen](../../sims/python-data-type-explorer/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Enter robot values and see whether MicroPython treats them as int, float, str, or bool</summary>
+Type: microsim
+**sim-id:** python-data-type-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** learning-micropython/python-data-type-explorer (https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/python-data-type-explorer). Limit to the four chapter types and use robot example values.
+
+Learning objective: Classify (Bloom L2) — identify the data type of a value and explain how a small change, such as a decimal point or quotes, changes its type.
+
+Canvas layout: 700 px wide (responsive), 430 px tall. Top strip (90 px): input row. Middle (200 px): four type "bins" side by side. Bottom (140 px): a result panel with the `type()` output and a plain-English reason. Total iframe height 432 px.
+
+Visual elements:
+- Four bins with color and label: `int` blue (#1976d2), `float` green (#43a047), `str` orange (#e65100), `bool` purple (#7b1fa2). Each bin shows a small sample: `255`, `0.92`, `"Sparky"`, `True`.
+- The typed value appears as a token that slides into the matching bin.
+- Result panel shows the REPL-style line, for example `>>> type(15)` and `<class 'int'>`, then a sentence such as "15 has no decimal point and no quotes, so it is an int."
+
+Interactive controls:
+- Text field "Type a value" (default `15`).
+- Preset buttons for robot values: `15` (distance_cm), `30.5` (distance_cm), `"Sparky"`, `'All systems go!'`, `65535`, `0.92`, `True`, `False`, `"15"`, `true`.
+- Button "Check type".
+- Toggle "Show what `value + 1` does" that displays the result or an error for the current value.
+
+Behavior:
+- Classification rules: digits only (optional leading minus) is `int`; digits with one decimal point is `float`; text in matching single or double quotes is `str`; exactly `True` or `False` is `bool`.
+- Anything else, including `true`, `TRUE`, or `12 cm`, shows `NameError` or `SyntaxError` with the hint "Check capital letters and quotes."
+- The `value + 1` toggle shows: `15` gives `16`; `30.5` gives `31.5`; `"Sparky"` gives `TypeError: unsupported types for __add__: 'str', 'int'`; `True` gives `2`; `"15"` gives the same `TypeError`.
+- The note for `"15"` always reads: "It looks like a number, but the quotes make it a string."
+- The note for `True + 1` reads: "A bool acts like 1 or 0 in math, but it is still a bool."
+
+Default state: value `15` shown in the `int` bin with its result panel filled.
+
+Assessment/Challenge: Predict the type of each: `0.92`, `"65535"`, `False`, `20`. Then check. (Answers: float, str, bool, int.) Which one changed type because of quotes? (Answer: `"65535"`.)
+
+Responsive: redraw on window resize. Bins wrap to a 2 x 2 grid on narrow screens.
+</details>
+
+Robot programs use all four types together. A distance reading might be a float, a motor speed an int, a status message a string, and an obstacle check a boolean. Knowing the type tells you what you can safely do with the value.
+
 ---
 
 ## Arithmetic Operators
@@ -354,6 +447,52 @@ Before the table, here is a plain-language explanation of each one:
 | Exponentiation | `**` | `2 ** 8` | `256` |
 
 Try a few of these in the REPL right now. The REPL is the perfect place to test arithmetic before you embed it in a program.
+
+Division and modulo often surprise beginners. The simulation below shows the same two numbers going through every operator so you can see the patterns side by side.
+
+#### Diagram: Arithmetic Operator Playground
+
+<iframe src="../../sims/arithmetic-operator-playground/main.html" width="100%" height="462px" scrolling="no"></iframe>
+[Run Arithmetic Operator Playground Fullscreen](../../sims/arithmetic-operator-playground/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Change two numbers and see the result of every arithmetic operator, with a picture for division and remainder</summary>
+Type: microsim
+**sim-id:** arithmetic-operator-playground<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** moving-rainbow/python-operator-playground (https://github.com/dmccreary/moving-rainbow/tree/main/docs/sims/python-operator-playground). Keep the operator table; add the block-grouping picture for `//` and `%` and the robot examples below.
+
+Learning objective: Apply (Bloom L3) — predict the result of `+`, `-`, `*`, `/`, `//`, `%`, and `**` for two numbers, and choose the right operator for a robot task.
+
+Canvas layout: 700 px wide (responsive), 460 px tall. Top strip (80 px): two number inputs and a preset dropdown. Left 55%: a result table with seven rows. Right 45%: a picture panel. Total iframe height 462 px.
+
+Visual elements:
+- Result table with columns "Operator", "Code", "Result", "Type". For example with a = 7 and b = 2: `+` gives `a + b` = `9` int; `-` gives `5`; `*` gives `14`; `/` gives `3.5` float; `//` gives `3` int; `%` gives `1` int; `**` gives `49` int.
+- The `/` row is highlighted blue when both inputs are integers to remind the student that the result is a float.
+- Picture panel: `a` drawn as a row of small squares (one square per unit, up to 30). Squares are grouped into blocks of size `b`. Complete blocks are green (#43a047), counted as the `//` answer. Leftover squares are orange (#e65100), counted as the `%` answer.
+- Under the picture, a sentence: "7 squares make 3 full groups of 2, with 1 left over."
+
+Interactive controls:
+- Number field "a" (integer 0 to 30, default 7) and number field "b" (integer 1 to 10, default 2).
+- Dropdown "Robot example" that loads preset values: "Whole groups of 10 cm: 27 // 10 (a=27, b=10)", "Every 5th loop: loop_count % 5 (a=23, b=5)", "Split a speed of 30 in half: 30 / 2 (a=30, b=2)", "Average of two readings: (30 + 34) / 2 (shown as a=64, b=2 with `/`)".
+- Checkbox "Use decimal a (a = 7.5)" that makes a a float.
+
+Behavior:
+- Division by zero is blocked because b has a minimum of 1; the b field shows "b cannot be 0" if the student types 0.
+- With a float `a`, results follow Python: `7.5 // 2` gives `3.0`, `7.5 % 2` gives `1.5`, and the Type column shows float.
+- For values above 30, the picture switches to a bar with a label "Picture scaled: each square = 10".
+- Preset "Every 5th loop" shows the sentence: "`loop_count % 5 == 0` is True every 5th loop, when the remainder is 0."
+- Type column always matches Python rules: only `/` always returns float; `+ - * // % **` return int for int inputs.
+
+Default state: a = 7, b = 2, integer mode, table filled, picture shows 3 green groups and 1 orange square.
+
+Assessment/Challenge: Set a = 23 and b = 5. What are `//` and `%`? (Answers: 4 and 3.) Then use `%` to decide when a robot should beep every 5th loop. (Answer: beep when `loop_count % 5 == 0`.)
+
+Responsive: redraw on window resize. The picture panel moves below the table on narrow screens.
+</details>
+
+The remainder operator is a favorite trick in robot code, because it lets a program do something every Nth time through a loop. Integer division is handy when you turn a big number, like a 16-bit duty value, into a smaller, friendlier one.
 
 ---
 
@@ -421,6 +560,55 @@ if (distance_cm < 20) and (motor_speed > 0):
 ```
 
 Parentheses make the intent clear and prevent bugs from subtle operator order surprises.
+
+A truth table lists every combination of true and false inputs and the answer each one gives. The simulation below builds one live for your robot's emergency-stop rule. You flip the inputs and watch the rule decide.
+
+#### Diagram: Robot Logic Truth Table
+
+<iframe src="../../sims/robot-logic-truth-table/main.html" width="100%" height="482px" scrolling="no"></iframe>
+[Run Robot Logic Truth Table Fullscreen](../../sims/robot-logic-truth-table/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Flip robot condition switches and see which rows of the and, or, and not truth tables light up</summary>
+Type: microsim
+**sim-id:** robot-logic-truth-table<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** learning-python/boolean-logic-lab (https://github.com/dmccreary/learning-python/tree/main/docs/sims/boolean-logic-lab) and moving-rainbow/python-operator-playground (https://github.com/dmccreary/moving-rainbow/tree/main/docs/sims/python-operator-playground). Use the lab's truth-table layout and replace the generic inputs with the robot conditions below.
+
+Learning objective: Apply (Bloom L3) — evaluate `and`, `or`, and `not` expressions for robot conditions and predict when the robot will stop.
+
+Canvas layout: 700 px wide (responsive), 480 px tall. Top 40%: robot scene with two switches. Middle 15%: the expression selector. Bottom 45%: a truth table. Total iframe height 482 px.
+
+Visual elements:
+- Robot scene: a small robot top view with two toggle switches drawn beside it. Switch A is "obstacle_close (distance under 20 cm)". Switch B is "robot_moving". Each switch is green (True) or gray (False), with the word True or False.
+- A big output lamp labeled "Emergency stop?" that is red when the expression is True and dark when False.
+- Code line at the center showing the current expression in monospace, for example `if obstacle_close and robot_moving:` with the live values filled in below it: `True and True -> True`.
+- Truth table with columns A, B, Result and 4 rows (A/B combinations: False/False, False/True, True/False, True/True). The row that matches the current switches is highlighted yellow (#fff59d) and the Result cell is bold.
+- For `not`, a two-row table (A only).
+
+Interactive controls:
+- Two toggle switches A and B, each clickable, default A = True, B = True.
+- Expression selector (radio buttons): `A and B` (default), `A or B`, `not A`, `not A and B`, `(not A) or B`.
+- Checkbox "Show parentheses order" that draws numbered circles above each part: 1 for `not`, 2 for `and`, 3 for `or`.
+- Button "Show all rows" that fills every Result cell; otherwise only the highlighted row shows its answer, and the others show "?".
+- Button "Test my prediction": the student clicks a Result cell and picks True or False for it, and the sim says "Correct!" or "Not yet, look at the rule."
+
+Behavior:
+- `and` is True only when A and B are both True. `or` is True when at least one is True. `not A` flips A.
+- Order for `not A and B` is `(not A) and B`, so it is True only when A is False and B is True. The order circles show `not` first, then `and`.
+- The lamp and the highlighted row update immediately after any switch or selector change.
+- "Show all rows" with `not A and B` shows the results F, T, F, F for rows FF, FT, TF, TT respectively.
+- The message line states the robot behavior in plain words, for example "Both are True: the robot stops!" for `A and B` at True, True, and "Only one is True: the robot keeps moving." for True, False.
+
+Default state: expression `A and B`, both switches True, lamp red, row True/True highlighted.
+
+Assessment/Challenge: With `A or B`, find the one row where the lamp stays dark. (Answer: A False and B False.) Then choose the expression that stops the robot only when it is moving and NOT close to an obstacle. (Answer: `not A and B`.)
+
+Responsive: redraw on window resize. The truth table drops below the robot scene on narrow screens.
+</details>
+
+Every decision your robot makes comes down to conditions like these. When you write `if obstacle_close and robot_moving:`, you are building one row of this table. Checking all the rows before you upload can save you from a robot that stops at the wrong time.
 
 ---
 

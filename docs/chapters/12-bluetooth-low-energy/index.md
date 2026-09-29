@@ -152,6 +152,52 @@ After scanning, a scanner can choose to **connect** to an advertiser. Once conne
 
 **BLE power** is the technology's strongest advantage for battery-powered devices. In advertising mode, the Pico W consumes about 1–2 mA. While connected and idle (no data being sent), it drops below 1 mA. Compare this to WiFi at 80–150 mA during active data transfer. For a robot running on a battery pack, BLE extends battery life dramatically.
 
+#### Diagram: BLE Advertising and Scanning
+
+This simulation shows a follower robot sending out advertising packets and a leader robot listening for them. You can move the robots apart, change how often the follower advertises, and see when the leader hears it.
+
+<iframe src="../../sims/ble-advertising-scanner/main.html" width="100%" height="582px" scrolling="no"></iframe>
+[Run BLE Advertising and Scanning Fullscreen](../../sims/ble-advertising-scanner/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Watch advertising packets travel to a scanner and change interval, distance, and scan time</summary>
+Type: microsim
+**sim-id:** ble-advertising-scanner<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design
+
+Learning objective: Explain (Bloom L2) — describe how an advertising interval, a scan window, and distance decide whether a scanner hears a BLE device, and how the advertising interval affects power use.
+
+Canvas layout: total width responsive (max 800 px), height 580 px. The top 380 px is a floor view. The bottom 200 px has a timeline and a readout panel.
+
+Visual elements:
+- Floor view: a follower robot on the left (labeled "RobotFollower", peripheral) and a leader robot on the right (labeled "Leader", central). The follower can be dragged left and right. A distance ruler in meters runs along the bottom.
+- Advertising packets: small rings that expand from the follower each time it advertises, in three quick pulses (blue, green, orange) for the three advertising channels. Rings fade at 50 m (open air).
+- Range zones: soft shaded arcs at 5 m (green, "near-perfect"), 20 m (yellow, "indoor limit"), and 50 m (red, "open-air limit") using the numbers from the chapter.
+- Scan window: on the leader, a bar under the robot shows "Scanning" (highlighted for the scan window) and "Sleeping" (gray) when the radio is off.
+- Timeline: two rows. Row 1 shows each advertising event as a tick. Row 2 shows the scan window as a wide bar. A tick that falls inside the bar and inside the range is marked with a green dot "heard". Other ticks get a gray dot "missed".
+- Readout panel: "Packets sent", "Packets heard", "First heard at: __ ms", "Follower current: __ mA" (about 1 to 2 mA), and "Battery life on 1000 mAh: __ hours".
+- Scan results list (like a phone app): shows "RobotFollower, RSSI -62 dBm" once heard. RSSI gets weaker with distance.
+
+Interactive controls:
+- Draggable follower robot, or slider "Distance (m)": 1 to 60, default 3.
+- Slider "Advertising interval (ms)": 100 to 1000, step 50, default 100 (matches `ble.gap_advertise(100_000, ...)`, which is in microseconds).
+- Slider "Scan window (ms)": 50 to 5000, default 5000 (matches `ble.gap_scan(5000)`).
+- Dropdown "Environment": "Open air" (range 50 m), "Classroom" (range 20 m, default), "Metal shelves in the way" (range 8 m).
+- Button "Start scan", button "Reset".
+
+Behavior: each advertising event happens every interval, plus a random delay of 0 to 10 ms. A packet is heard if the scanner radio is on at that moment and the distance is under the environment range. Beyond 80 percent of the range, each packet has a 50 percent chance of being lost, and beyond 100 percent it is always lost. Current in mA for advertising = 1.0 + 100 / interval (so about 2 mA at 100 ms and about 1.1 mA at 1000 ms). WiFi active is shown as a gray reference bar at 80 to 150 mA. Battery life = 1000 / current. When the scan ends (scan window time is up) and nothing was heard, show "Scan finished — no devices found" and suggest moving closer.
+
+Default state: follower 3 m away, Classroom, interval 100 ms, scan 5000 ms, scan not started.
+
+Assessment/Challenge: Put the follower at 15 m in the Classroom and press Start scan. Why does the leader sometimes take longer to hear it? Then set the interval to 1000 ms. What do you gain and what do you lose? (Answer: at 15 m some packets are lost, so the leader needs more tries. A longer interval saves battery but makes the first hear slower.)
+
+Responsive: redraw on window resize.
+</details>
+
+The follower's `advertise()` function sets the interval, and the leader's `ble.gap_scan(5000)` sets the scan time. Advertising more slowly saves battery, but the leader needs more time to find it. If your robots do not find each other, move them closer and look at the range zones in the sim before you look at your code.
+
 !!! mascot-thinking "Advertising without connecting"
     ![Sparky thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
     BLE advertising has a clever use: you can send data WITHOUT ever connecting. A fitness tracker broadcasts your heart rate in its advertising packet. Any compatible receiver can read it — no connection, no pairing. For robots that need to broadcast their position or status to everyone nearby, this is powerful. You'll see this used in swarm robotics in Chapter 13.
@@ -188,6 +234,49 @@ _SERVICE_UUID = bluetooth.UUID("12345678-1234-5678-1234-56789abcdef0")
 # UUID for the command characteristic (writable by central)
 _CMD_UUID = bluetooth.UUID("12345678-1234-5678-1234-56789abcdef1")
 ```
+
+#### Diagram: GATT Hierarchy Explorer
+
+This simulation shows the follower robot's data as a tree: the device holds a service, the service holds a characteristic, and the characteristic holds a value. You can click the parts, and act as the leader to read, write, or subscribe.
+
+<iframe src="../../sims/gatt-hierarchy-explorer/main.html" width="100%" height="582px" scrolling="no"></iframe>
+[Run GATT Hierarchy Explorer Fullscreen](../../sims/gatt-hierarchy-explorer/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Explore a device, service, characteristic tree and try read, write, and notify</summary>
+Type: microsim
+**sim-id:** gatt-hierarchy-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design
+
+Learning objective: Classify (Bloom L2) — identify the device, service, characteristic, UUID, and property in a GATT tree, and predict which operations a characteristic allows.
+
+Canvas layout: total width responsive (max 800 px), height 580 px. Left 400 px is the tree. Right 400 px has a detail panel (top 260 px) and a "Leader actions" panel with a message log (bottom 300 px).
+
+Visual elements:
+- Tree, drawn as nested boxes with lines: Level 0 "Device: RobotFollower" (OliveDrab). Level 1 "Service: Robot Command Service" with the UUID `12345678-1234-5678-1234-56789abcdef0` (blue). Level 1 "Service: Battery Service" (gray, marked "extra example, not in our code"). Level 2 under the robot service: "Characteristic: Command" with UUID `...abcdef1` (orange) and "Characteristic: Status" (orange, marked "optional, not in our code").
+- Under each characteristic, a small value box, e.g. `b"FORWARD"`. Property badges show WRITE, READ, or NOTIFY. The Command characteristic has only WRITE (`_FLAG_WRITE = 0x0008`). The Status characteristic has READ and NOTIFY.
+- Detail panel: shows the name, the type (device, service, or characteristic), the UUID, the properties, and the plain-English sentence "A category" or "A single data slot". Long UUIDs are shown in two lines.
+- Message log: monospace lines such as `Central -> WRITE Command "FORWARD"` and `Peripheral IRQ: _IRQ_GATTS_WRITE`.
+- A small follower robot icon that moves its wheels when a valid FORWARD write arrives.
+
+Interactive controls:
+- Click any box to select it and show details.
+- Text input "Value" (default FORWARD) plus buttons "Read", "Write", and "Subscribe (notify)". Buttons are grayed out when the selected item does not allow that property.
+- Dropdown "Command value": FORWARD, STOP, LEFT, RIGHT, or a custom text.
+- Button "Reset".
+
+Behavior: choose the Command characteristic and press Write. The log shows the write, the peripheral fires `_IRQ_GATTS_WRITE` (event 3), reads the value with `gatts_read`, and the robot icon runs the matching motor action. Press Read on Command: it is refused with "Not permitted: Command has no READ property." Choose Status and Subscribe: the peripheral then sends a notification every 2 s, with values like "OK" or "BUSY". Press Write on Status: refused with "Not permitted". Clicking a service or the device shows Read, Write, and Subscribe grayed out, with a note "Data lives in characteristics". A wrong UUID typed in a small "Look up UUID" field returns "No such attribute".
+
+Default state: tree fully expanded, Command characteristic selected, log empty.
+
+Assessment/Challenge: Which box holds the data that says "FORWARD"? Which UUID would the leader look for to find it? (Answer: the Command characteristic, `...abcdef1`, inside the service with UUID `...abcdef0`.) Also, why can you not read the Command characteristic? (Answer: it only has the WRITE property.)
+
+Responsive: redraw on window resize.
+</details>
+
+The tree matches `gatts_register_services()` in the follower code. The service is the outer list. Each characteristic is an item inside the list with its own UUID and flags. The leader must find the right UUID before it can write.
 
 ---
 
@@ -237,6 +326,51 @@ The sequence:
 5. The connection is established. Central can now read/write characteristics.
 
 The `bluetooth` module in MicroPython uses an **IRQ callback** (interrupt handler) to handle BLE events — connection, disconnection, write notifications. You register one callback function, and it receives all BLE events, distinguished by an event code.
+
+#### Diagram: BLE Connection Lifecycle
+
+This simulation follows the leader and follower robots from the first advertising packet to disconnect. Each step shows the event code that fires and what each robot does with it.
+
+<iframe src="../../sims/ble-connection-lifecycle/main.html" width="100%" height="602px" scrolling="no"></iframe>
+[Run BLE Connection Lifecycle Fullscreen](../../sims/ble-connection-lifecycle/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Step through advertising, scanning, connecting, writing, and disconnecting with the IRQ event codes</summary>
+Type: microsim
+**sim-id:** ble-connection-lifecycle<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** dmccreary/moving-rainbow `state-machine-diagram` — https://github.com/dmccreary/moving-rainbow/tree/main/docs/sims/state-machine-diagram. Keep its state circles, highlighted current state, and clickable transitions. Replace the states with the two BLE robots, and add the event code panel and the message log.
+
+Learning objective: Sequence (Bloom L3) — put the BLE connection steps in order and match each step to the IRQ event code and the function call in the leader and follower code.
+
+Canvas layout: total width responsive (max 800 px), height 600 px. Two state machine columns of 300 px each: "Follower (peripheral)" and "Leader (central)". A 200 px middle column shows the radio link. A 160 px strip at the bottom shows the event log and code.
+
+Visual elements:
+- Follower states (circles): ADVERTISING, CONNECTED, EXECUTING. Leader states: SCANNING, CONNECTING, CONNECTED, SENDING. The active state on each side is gold. Other states are gray.
+- Middle column: arrows that show the packets: "Advertising packet", "Connect request", "Write command", "Disconnect". A dashed radio wave drawn between the robots when a packet is on the air.
+- Event badge above each robot: shows the code that just fired. Follower: `_IRQ_CENTRAL_CONNECT` (1), `_IRQ_GATTS_WRITE` (3), `_IRQ_CENTRAL_DISCONNECT` (2). Leader: `_IRQ_SCAN_RESULT` (5), `_IRQ_PERIPHERAL_CONNECT` (7), `_IRQ_GATTC_WRITE_DONE` (17), `_IRQ_PERIPHERAL_DISCONNECT` (8).
+- Code strip: the exact call for the current step, for example `ble.gap_advertise(100_000, adv_data=payload)`, `ble.gap_connect(addr_type, addr)`, `ble.gattc_write(conn_handle, value_handle, b"FORWARD", 1)`, `ble.gap_disconnect(conn_handle)`.
+- Log: time-stamped text lines like `[0.4 s] Found follower — connecting...`.
+- Robot icons at the top of each column. The follower's wheels turn during EXECUTING.
+
+Interactive controls:
+- Button "Next Step", button "Auto Play" (1.5 s per step), button "Reset".
+- Buttons "Send FORWARD" and "Send STOP" (enabled when both are connected).
+- Toggle "Walk out of range" — the link drops.
+- Toggle "Follower advertising name": "RobotFollower" (default) or "Robot2". With "Robot2", the leader's check `b"RobotFollower" in adv_data` fails.
+- Click any state circle to read a plain-language definition.
+
+Behavior: the normal path is: (1) follower calls `advertise()` and enters ADVERTISING. (2) Leader calls `gap_scan(5000)` and enters SCANNING. (3) Leader gets `_IRQ_SCAN_RESULT`, finds the name, stops the scan with `gap_scan(None)`, calls `gap_connect()`, and enters CONNECTING. (4) Both get a connect event (follower 1, leader 7). Follower enters CONNECTED, leader enters CONNECTED. (5) Leader calls `gattc_write()`. Follower gets `_IRQ_GATTS_WRITE` (3), reads the value, and enters EXECUTING, then returns to CONNECTED. (6) Disconnect: both get a disconnect event (follower 2, leader 8). The follower's `bt_irq` calls `advertise()` again, so it goes back to ADVERTISING. The leader goes to SCANNING only if the code restarts the scan. Show a note that the chapter's leader code does not restart it. If the name does not match, the leader stays in SCANNING until 5 s, then the log says "Scan finished — follower not found". "Walk out of range" removes the connection after 3 s with a disconnect event on both robots. Event badges and the log use exactly the constants from the chapter.
+
+Default state: both robots in their first state (follower ADVERTISING, leader idle), step 0, empty log.
+
+Assessment/Challenge: After a disconnect, which robot starts advertising again by itself, and which line of code does it? (Answer: the follower, because `bt_irq` calls `advertise()` when it gets `_IRQ_CENTRAL_DISCONNECT`.) Then use the "Robot2" toggle to find why the leader never connects.
+
+Responsive: redraw on window resize.
+</details>
+
+Each state change in the sim is an event that reaches your `bt_irq` function. Read the sim next to the follower and leader code. Then you can find which branch of `bt_irq` runs at each step, and add a `print()` there to debug a real connection.
 
 ---
 

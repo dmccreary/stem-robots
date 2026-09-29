@@ -140,6 +140,53 @@ BLE leader/follower plumbing you already have:
 | Synchronized dance | A shared timing beat | Runs its part of a choreographed sequence on-beat |
 | Heading synchronization *(this chapter, Part 2)* | A shared compass heading | Steers to match the broadcast heading |
 
+#### Diagram: Swarm Collective Behaviors
+
+This simulation shows a group of small robots on a field. Each robot follows one simple local rule, and you can switch between rules to see convoy following, collective obstacle avoidance, and a leader-follower group appear on their own.
+
+<iframe src="../../sims/swarm-collective-behaviors/main.html" width="100%" height="602px" scrolling="no"></iframe>
+[Run Swarm Collective Behaviors Fullscreen](../../sims/swarm-collective-behaviors/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Change one local rule for every robot and watch a convoy or swarm pattern emerge</summary>
+Type: microsim
+**sim-id:** swarm-collective-behaviors<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design. It is inspired by boids-style flocking, but limited to the behaviors in this chapter.
+
+Learning objective: Analyze (Bloom L4) — connect a single local rule and its settings to the group pattern it produces, and explain why no robot needs to know the whole plan.
+
+Canvas layout: total width responsive (max 800 px), height 600 px. Top 480 px is the field. Bottom 120 px is the control strip.
+
+Visual elements:
+- Field: light gray floor with a dark border. Scale 1 cm = 1.5 px, so the field is 480 cm x 320 cm.
+- Robots: 6 small triangles pointing in their heading. The leader is DarkOrchid (#9932CC) with a crown mark. Followers are OliveDrab (#6B8E23). Each has a faint circle showing its sensor range (default 60 cm).
+- Wall obstacle: one draggable gray bar. Robots that see it turn Crimson (#DC143C) for a moment (the AVOID state).
+- Lines: thin gray lines from each follower to the robot it is following (the nearest robot ahead), so the chain is visible.
+- Trails: 40-frame fading trails behind each robot.
+- Readouts: "Mode", "Average gap to robot ahead (cm)", "Gap error (cm)", "Robots in AVOID".
+
+Interactive controls:
+- Dropdown "Behavior": "Convoy following" (default), "Collective obstacle avoidance", "Leader broadcast (all steer to leader)". Changing the dropdown swaps the same single rule for every robot.
+- Slider "Target gap (cm)": 15 to 80, default 30. Used in convoy mode.
+- Slider "Follower gain Kp": 0.005 to 0.1, default 0.03. Speed correction per cm of gap error.
+- Slider "Sensor range (cm)": 20 to 100, default 60.
+- Slider "Number of robots": 3 to 8, default 6.
+- Checkbox "Share wall alerts": when on, a robot that sees the wall tells all others, as in collective obstacle avoidance. Default off.
+- Buttons "Run / Pause", "Scatter robots", "Reset". The leader can be dragged with the mouse to steer it.
+
+Behavior: robot speed limit is 30 cm/s. Convoy mode: each follower finds the nearest robot within its sensor range that is ahead of it. Its speed = 30 + Kp x (gap - target gap), limited to 0 to 30 cm/s. It turns toward that robot. If nothing is in range, it wanders slowly (state SEARCH, gray). The leader drives a slow loop around the field. Collective avoidance mode: every robot drives in a straight line and bounces off walls. A robot that measures distance below 20 cm to the wall turns 90 degrees. With "Share wall alerts" on, all robots within 200 cm of that robot also turn away at once. Leader broadcast mode: every follower steers with proportional control toward the leader's heading, `turn = Kp x heading error`. Display "no robot has the plan" text in a small note. The gap error readout = average of |gap - target gap|. Follower rules never use the leader's position except in leader broadcast mode.
+
+Default state: Convoy following, 6 robots in a scattered line, gap 30 cm, Kp 0.03, paused.
+
+Assessment/Challenge: In Convoy mode, raise Kp to 0.1 and watch the gap error. What do you see? Then lower it to 0.005. Which value keeps the convoy tight but calm? (Answer: high Kp makes the chain stretch and squeeze like an accordion. Low Kp is slow to catch up. A middle value near 0.03 works best.)
+
+Responsive: redraw on window resize.
+</details>
+
+The follower rule in convoy mode is the one from the table: keep a fixed distance to the robot in front using the time-of-flight sensor. The sensor range slider matches how far the real sensor can see. Watch how one robot slowing down passes a wave back along the chain, even though no robot sends that message.
+
 ---
 
 ## Organizing Multi-Behavior Code with a State Machine
@@ -276,6 +323,51 @@ compares them now that both have been explained in prose.
 | Where it pauses | Anywhere, unpredictably | Only at an explicit `await` |
 | Risk of two tasks fighting over the same variable | Higher — needs care | Lower — tasks never interrupt mid-line |
 | Typical use in this course | A sensor-reading loop that must never stall | Multiple lightweight tasks (blink, poll, log) |
+
+#### Diagram: Cooperative Multitasking Timeline
+
+This simulation shows a timeline of what a robot's single thread does over time. You can compare a program that blocks with `sleep()` against one that shares time with `await` and see which one misses events.
+
+<iframe src="../../sims/cooperative-multitasking-timeline/main.html" width="100%" height="562px" scrolling="no"></iframe>
+[Run Cooperative Multitasking Timeline Fullscreen](../../sims/cooperative-multitasking-timeline/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Compare blocking sleep() with cooperative await tasks on a shared timeline</summary>
+Type: microsim
+**sim-id:** cooperative-multitasking-timeline<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** dmccreary/learning-micropython `blocking-vs-nonblocking` — https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/blocking-vs-nonblocking. Keep its lane timeline and blocked/free coloring. Rename the tasks to the robot's three jobs (blink status LED, poll BLE, read distance sensor), and add the event-arrival markers and the missed-event counter.
+
+Learning objective: Compare (Bloom L4) — explain how `await asyncio.sleep()` lets other tasks run while `time.sleep()` blocks them, and predict which events a blocking program will miss.
+
+Canvas layout: total width responsive (max 800 px), height 560 px. Two timeline panels stacked, each 220 px tall, and a 100 px control strip. Time axis runs 0 to 4 seconds with a moving playhead.
+
+Visual elements:
+- Panel A "Blocking (time.sleep)": one lane showing a single thread. Colors: blue for "blink LED work", green for "check BLE messages", orange for "read distance sensor", and a wide red-striped block for `sleep()` where the whole thread is stuck.
+- Panel B "Cooperative (uasyncio)": three lanes, one per task, plus a fourth "Event loop" lane. Each task shows short colored work blocks and thin dashed gray lines for the `await` pauses. Only one task block is active at a time (one thread), and an arrow shows the hand-off to the next task.
+- Event markers: white triangles under each panel for events that arrive from outside: "BLE message" (green) and "obstacle appears" (red). A marker that arrives while the thread is stuck in a sleep gets a red X with "missed or late".
+- Counters per panel: "Events handled on time", "Events late (ms)", "Thread idle time (%)".
+- Code snippet on the right of each panel: the 6 matching lines, with the running line highlighted.
+
+Interactive controls:
+- Slider "Blink period (s)": 0.1 to 1.0, step 0.1, default 0.5 (the `await asyncio.sleep(0.5)` in the chapter).
+- Slider "BLE poll period (s)": 0.01 to 0.2, default 0.02 (the `await asyncio.sleep(0.02)` in the chapter).
+- Slider "Sensor read time (ms)": 5 to 100, default 20.
+- Button "Drop a BLE message" and button "Obstacle appears" (each puts an event at the current time). Button "Random events" (a new event every 0.3 to 1 s).
+- Button "Play / Pause", button "Reset".
+- Toggle "Use a long time.sleep(0.5)" (Panel A only). When on, the blink task uses a blocking half-second sleep. Default on.
+
+Behavior: in Panel A the loop runs in order: blink, check BLE, read sensor, then `time.sleep(blink period)`. During the sleep, no other work happens, so an event that arrives waits until the sleep ends. In Panel B, each task runs for its work time (blink 1 ms, BLE poll 1 ms, sensor read as set by the slider) and then awaits. While one task waits, the event loop runs another ready task. An event is handled when the matching task next runs, so the delay is at most the poll period. Lateness in ms is shown next to each X. Total work is the same on both panels, so the difference is only the idle sleeping. Show a note under Panel B: "One thread, but nobody sleeps while others wait." Also show a small warning if the sensor read time exceeds 50 ms: "A long task with no await still blocks everyone."
+
+Default state: both panels paused at time 0, blink 0.5 s, BLE poll 0.02 s, sensor 20 ms, long sleep toggle on.
+
+Assessment/Challenge: Press "Random events" and run for 10 seconds. How many events does Panel A handle late, and how many does Panel B? Then set Sensor read time to 100 ms. What happens to Panel B, and why? (Answer: Panel B is almost always on time, and A is often late by up to 0.5 s. A 100 ms sensor read with no `await` blocks the other tasks, so Panel B gets late events too.)
+
+Responsive: redraw on window resize.
+</details>
+
+Panel A is the robot that stops listening every time it calls `time.sleep()`. Panel B is the `main()` function from the async example, where each task pauses at an `await`. This shows why the swarm robot can blink, poll BLE messages, and read its sensor without one job freezing the others.
 
 !!! mascot-warning "Don't touch the motors from two places at once"
     ![Sparky warning](../../img/mascot/warning.png){ class="mascot-admonition-img" }
@@ -714,6 +806,52 @@ def steer(error, base_speed, Kp=0.02):
     right = max(0, min(1, base_speed - turn))
     return left, right
 ```
+
+#### Diagram: Heading Error and Steering Explorer
+
+This simulation shows a follower robot from above with a broadcast target heading. It draws the two possible turns and shows why `heading_error()` always picks the shorter one, then shows how `steer()` turns that error into left and right motor speeds.
+
+<iframe src="../../sims/heading-error-steering-explorer/main.html" width="100%" height="562px" scrolling="no"></iframe>
+[Run Heading Error and Steering Explorer Fullscreen](../../sims/heading-error-steering-explorer/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Set a current and target heading and see the wrap-around error and the motor speeds from steer()</summary>
+Type: microsim
+**sim-id:** heading-error-steering-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design. It does not repeat `complementary-filter-heading-tuner`, which is about estimating the heading. This sim is about using the heading to steer.
+
+Learning objective: Apply (Bloom L3) — calculate the shortest-turn heading error with wrap-around, and predict the left and right motor speeds that `steer()` returns for a given error and `Kp`.
+
+Canvas layout: total width responsive (max 800 px), height 560 px. Left 380 px is a compass dial. Right 420 px has the calculation panel (top 300 px) and the motor bars (bottom 260 px).
+
+Visual elements:
+- Compass dial: a circle with N (0), E (90), S (180), and W (270) marks. A green arrow shows the follower's current heading. A purple arrow shows the target heading from the master's broadcast. A small robot icon sits in the center, rotated to the current heading.
+- Turn arcs: a solid arc for the shorter turn (blue) and a dashed gray arc for the long way around. The arc label shows the degrees, for example "+30" and "-330".
+- Calculation panel: shows each step with live numbers: `target - current`, `+ 180`, `% 360`, `- 180`, and the final `error`. For example current 350, target 20: 20 - 350 = -330, + 180 = -150, % 360 = 210, - 180 = 30, so error = +30 (turn right). A plain sentence says "Turn right 30 degrees" or "Turn left 30 degrees".
+- Naive comparison: a gray line "Without wrap-around: target - current = -330, the robot would turn the long way". It is red when it differs from the correct error.
+- Motor bars: two vertical bars for the left and right motors, each 0 to 1 (0 to 65535 duty on the robot). Bars are green, and clip to gray at the ends 0 and 1. The turn amount `Kp x error` is shown.
+- A simple top-down replay: when Play is pressed, the robot turns using the shown motor speeds until the error is under 2 degrees.
+
+Interactive controls:
+- Slider "Current heading (degrees)": 0 to 359, default 350. The green arrow can also be dragged.
+- Slider "Target heading (degrees)": 0 to 359, default 20. The purple arrow can also be dragged.
+- Slider "Base speed": 0 to 1.0, step 0.05, default 0.5.
+- Slider "Kp": 0.005 to 0.1, step 0.005, default 0.02.
+- Checkbox "Show naive error (no wrap-around)", default on.
+- Buttons "Play turn" and "Reset".
+
+Behavior: error = (target - current + 180) % 360 - 180, with the result from -180 to +180 (use a true mathematical modulo so negative values wrap). turn = Kp x error. left = clamp(base + turn, 0, 1). right = clamp(base - turn, 0, 1). A positive error means turn right, so the left motor is faster. Example with defaults: error +30, turn 0.6, left = clamp(1.1) = 1.0, right = clamp(-0.1) = 0.0. The bars show the clipping, and a note explains "Kp is too high: the robot pivots hard". In Play mode, each 50 ms tick changes the heading by (left - right) x 20 degrees and recalculates the error. With Kp above 0.05 and a 20 Hz update, the replay overshoots and swings back and forth, which matches the follower oscillation symptom in the checklist. If the error is exactly 180, show "Either way is the same length".
+
+Default state: current 350, target 20, base speed 0.5, Kp 0.02, naive error shown. The correct error is +30 and the naive error is -330.
+
+Assessment/Challenge: Set current to 10 and target to 350. What is the error, and does the robot turn left or right? (Answer: -20, so it turns left through north, not 340 degrees right.) Then raise Kp until the replay oscillates. About what value does that happen? (Answer: around 0.05 to 0.06.)
+
+Responsive: redraw on window resize.
+</details>
+
+The compass dial shows why we need the `% 360` line: headings wrap from 359 back to 0. The motor bars are the values `steer()` returns before they go to the PWM pins in `config.py`. A robot that swings back and forth is the sign that `Kp` is too high, as in the checklist below.
 
 The full master and follower scripts — WiFi joining, the non-blocking receive loop, and
 wiring `steer()`'s output into the motor pins from `config.py` — are written out

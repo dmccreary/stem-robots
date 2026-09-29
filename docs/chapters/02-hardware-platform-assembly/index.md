@@ -225,6 +225,56 @@ Flash memory keeps your programs even when power is off. The moment you power th
 
 You do not need to manage flash memory yourself. The IDE (development tool) you use handles it automatically when you save files to the board. Just know that the 2 MB limit means you should keep program files small and text-based — large audio files or images would fill the storage too quickly.
 
+The difference between flash and RAM is easier to see than to read about. The simulation below lets you save a program, change a variable, and then cut the power to see what survives.
+
+#### Diagram: Flash Memory vs RAM Power Cycle
+
+<iframe src="../../sims/flash-vs-ram-power-cycle/main.html" width="100%" height="422px" scrolling="no"></iframe>
+[Run Flash Memory vs RAM Power Cycle Fullscreen](../../sims/flash-vs-ram-power-cycle/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Two memory boxes, flash and RAM, that react differently when you unplug and replug the power</summary>
+Type: microsim
+**sim-id:** flash-vs-ram-power-cycle<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design
+
+Learning objective: Explain (Bloom L2) — predict which data stays in the board after power is removed and which data disappears.
+
+Canvas layout: 700 px wide (responsive), 420 px tall. Left 30%: a USB plug and battery icon with a power switch. Center 35%: the RP2040 board with two memory blocks inside. Right 35%: a "What the board is doing" log. Total iframe height 422 px.
+
+Visual elements:
+- Flash block: a blue (#1976d2) box labeled "Flash (2 MB) - permanent". It lists saved files, starting with "main.py".
+- RAM block: an orange (#e65100) box labeled "RAM (264 KB) - temporary". It lists running variables, empty at first.
+- A power switch icon that is green when ON and gray when OFF. When OFF the whole board is dimmed and a "No power" tag appears.
+- A small file meter under Flash: "Used: 4 KB of 2048 KB".
+- When power turns on, an animated arrow copies the program from Flash to RAM ("Boot: reading main.py") and then a "Running" tag appears.
+
+Interactive controls:
+- Button "Save main.py to Flash" (adds the file "main.py, 1 KB"; can be pressed once, then becomes "Saved").
+- Button "Run program" (needs power; adds the variables `speed = 50` and `distance_cm = 32` to RAM).
+- Button "Change speed to 80" (updates the variable in RAM only; Flash is unchanged).
+- Button "Power OFF / Power ON" toggle.
+- Button "Add a 2 MB picture file" (tries to save a file that is too large; Flash meter turns red and the log says "Not enough space. Keep files small.").
+- "Reset" button.
+
+Behavior:
+- Power OFF clears every variable in RAM. Flash files stay exactly as they were.
+- Power ON with a saved main.py starts the boot animation, then places `speed = 50` and `distance_cm = 32` back into RAM (the original values, not the changed one).
+- Power ON without a saved main.py shows an empty RAM and the log line "No main.py found. Nothing to run."
+- The log gives one plain sentence for every action, for example "Power off: RAM lost speed = 80. Flash still has main.py."
+- The picture-file button always fails, because 2 MB is larger than the free space.
+
+Default state: power ON, Flash empty, RAM empty, log reads "Board is on. Nothing saved yet."
+
+Assessment/Challenge: Save main.py, run it, change speed to 80, then turn the power off and on. What is the value of speed now? (Answer: 50, because the change to 80 was only in RAM.) Which memory kept main.py? (Answer: Flash.)
+
+Responsive: redraw on window resize. The log moves below the board on narrow screens.
+</details>
+
+This is why your robot restarts and runs `main.py` every time you plug it in. The saved program lives in flash, and everything the program is doing at the moment lives in RAM. RAM starts fresh at each power-up.
+
 ## Connectors: Wiring Without Soldering
 
 One reason this course requires no soldering is the Cytron board's selection of connectors. A **connector** is a standardized physical interface that lets you attach and detach wires safely and repeatedly. Three connector types appear on your board, and knowing all three prevents wiring mistakes.
@@ -248,6 +298,52 @@ Here is a summary of all three connector types:
 Two more fundamental electronics tools appear in early labs: resistors and breadboards. Let's define each one before you encounter them on the workbench.
 
 A **resistor** is a tiny electronic component that limits how much electric current can flow through a wire. It looks like a small cylinder with colored stripes and two metal leads. In robotics labs, resistors do three main jobs. They protect LEDs from burning out by limiting current. They create stable HIGH or LOW voltages on input pins when nothing is connected. And they set signal levels for some sensors. The colored stripes encode the resistor's value in **ohms (Ω)** — the unit of electrical resistance.
+
+Reading those stripes is a skill you can learn in a few minutes. In the simulation below, you pick the stripe colors and see the resistor's value. You can also type a value and see which colors match.
+
+#### Diagram: Resistor Color Code Calculator
+
+<iframe src="../../sims/resistor-color-code-calculator/main.html" width="100%" height="452px" scrolling="no"></iframe>
+[Run Resistor Color Code Calculator Fullscreen](../../sims/resistor-color-code-calculator/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Pick four stripe colors to read a resistor's value, or enter a value to see its stripes</summary>
+Type: microsim
+**sim-id:** resistor-color-code-calculator<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** learning-micropython/resistor-color-code-calculator (https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/resistor-color-code-calculator). Reuse directly; add the "LED protector" example row and the challenge below.
+
+Learning objective: Apply (Bloom L3) — read a four-band resistor's value in ohms from its colors, and choose stripe colors for a target value.
+
+Canvas layout: 700 px wide (responsive), 450 px tall. Top 45%: a large horizontal resistor drawing with four stripes. Middle: four dropdowns, one per stripe. Bottom: the value readout and a table of example resistors. Total iframe height 452 px.
+
+Visual elements:
+- A tan (#d7b98e) resistor body with wire leads on both sides and four vertical stripes. Stripe 1 and 2 are digits, stripe 3 is the multiplier, stripe 4 is the tolerance.
+- Stripe colors and digits: black 0, brown 1, red 2, orange 3, yellow 4, green 5, blue 6, violet 7, gray 8, white 9. Multiplier stripe: same colors give x1, x10, x100, x1k, x10k, x100k, x1M, x10M; gold gives x0.1 and silver gives x0.01. Tolerance: gold 5%, silver 10%, brown 1%.
+- A big readout, for example "330 ohms, 5% tolerance", with the math shown below: "33 x 10 = 330".
+- Example table with three rows: "LED protector: 330 ohms (orange, orange, brown, gold)", "Pull-down for a button input: 10k ohms (brown, black, orange, gold)", "Pull-up: 4.7k ohms (yellow, violet, red, gold)".
+
+Interactive controls:
+- Four dropdowns "Stripe 1", "Stripe 2", "Stripe 3 (multiplier)", "Stripe 4 (tolerance)". Each option shows a color chip and its name.
+- A number field "Enter a value (ohms)" with an "Show stripes" button that sets the colors to the closest standard match.
+- Clicking any row in the example table loads it into the resistor.
+- "Random resistor" button loads a random resistor and hides the readout until the student clicks "Reveal" (quiz mode).
+
+Behavior:
+- Value = (10 x digit1 + digit2) x multiplier. Display values of 1000 or more as k (kilo-ohms) and 1,000,000 or more as M.
+- Stripe 1 cannot be black; hide that option.
+- Tolerance range is shown as a min-max, for example 330 ohms at 5% is "313.5 to 346.5 ohms".
+- Entering a value that cannot be made with two digits and a multiplier shows "Closest match: ...".
+
+Default state: orange, orange, brown, gold = 330 ohms, 5% tolerance.
+
+Assessment/Challenge: Use quiz mode on three random resistors and read each one. Then build 10,000 ohms with stripes. (Answer: brown, black, orange.)
+
+Responsive: redraw on window resize. Dropdowns stack in two rows on narrow screens.
+</details>
+
+Resistors show up in the early labs, so this skill pays off fast. When a lab says to use a 330 ohm resistor with an LED, you can now pick the right one from the parts bin by its colors.
 
 A **breadboard** is a rectangular plastic board covered in tiny spring-loaded holes. It lets you build temporary circuits by pushing wires and components into the holes — no soldering required. Inside the breadboard, rows of holes are electrically connected to each other. Two long rails along the edges carry power (+) and ground (−). Horizontal rows of five holes in the middle all connect across each row. You use a breadboard to prototype circuits quickly, test different wiring ideas, and check components before committing to a permanent design.
 
@@ -416,6 +512,54 @@ Before you decide a component is broken, work through this checklist:
 - **Do the onboard LEDs tell you anything?** The Cytron board has 13 LEDs that light up when their GPIO pin goes HIGH. If your code sets a pin HIGH and the LED stays dark, the program is not running as expected.
 
 Hardware troubleshooting is the same **debugging fundamentals** you learned in Chapter 1 — form a hypothesis, test it, observe the result. Work through one hypothesis at a time. Changing two things at once makes it impossible to know which change fixed the problem.
+
+Now try the checklist on some broken robots. The simulation below gives you a robot with a hidden problem. You choose which checks to run, and the fewer checks you need, the better your hypotheses are.
+
+#### Diagram: Hardware Troubleshooting Detective
+
+<iframe src="../../sims/hardware-troubleshooting-detective/main.html" width="100%" height="482px" scrolling="no"></iframe>
+[Run Hardware Troubleshooting Detective Fullscreen](../../sims/hardware-troubleshooting-detective/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Pick checks from the troubleshooting list to find the hidden fault in a broken robot</summary>
+Type: microsim
+**sim-id:** hardware-troubleshooting-detective<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** computer-science/debugging-flowchart (https://github.com/dmccreary/computer-science/tree/main/docs/sims/debugging-flowchart) for the check-and-branch style; the fault scenarios below are a new design.
+
+Learning objective: Analyze (Bloom L4) — use the six troubleshooting checks to narrow down a hardware fault, and justify which check to run first.
+
+Canvas layout: 700 px wide (responsive), 480 px tall. Left 55%: a top view of the robot (Cytron board, two motors, battery pack, Grove sensor cable, USB cable). Right 45%: a checklist of six buttons and a results log. Total iframe height 482 px.
+
+Visual elements:
+- Robot drawing with labeled parts. Parts are drawn in neutral colors until a check inspects them.
+- Six check buttons matching the chapter checklist: "Is it powered?", "Is the program uploaded?", "Are all wires seated?", "Is anything reversed?", "Is the correct Grove port in use?", "Do the onboard LEDs tell you anything?"
+- When a check runs, the related part on the robot gets a highlight ring: green ring for "looks fine", red ring for "found the problem".
+- A "Checks used" counter and a "Hypothesis" dropdown.
+
+Interactive controls:
+- Button "New broken robot" picks a random fault from the list below (never the same twice in a row).
+- Six check buttons (each can be used once per robot).
+- Dropdown "My hypothesis" with the six fault names plus "Not sure yet", and a "Submit hypothesis" button.
+- "Show hint" button that costs one point from the score.
+
+Behavior:
+- Faults (one is active per robot): (1) charge-only USB cable, so no power or data; (2) program saved on the laptop, not on the board; (3) motor wire loose in the M2 terminal; (4) battery pack plugged in with reversed polarity; (5) sensor cable in the wrong Grove port instead of GP16/GP17; (6) code never sets the pin HIGH (onboard LED stays dark).
+- Each check gives a text result. For example, with fault 3: "Are all wires seated?" reports "The right motor wire pulls out with a gentle tug. Found it!" and "Is it powered?" reports "Green LED is on. Power is fine."
+- A check unrelated to the fault always reports "Looks fine."
+- Score starts at 100. Each check used costs 10 points, each wrong hypothesis costs 20, each hint costs 10. Minimum 0.
+- After a correct hypothesis, show the fix in one sentence, for example "Loosen the M2 screw, reinsert the wire, tighten, and tug to test."
+- A wrong hypothesis shows "Not this one. What did the checks tell you?"
+
+Default state: robot with an unknown fault, no checks used, score 100.
+
+Assessment/Challenge: Solve three robots in a row with a score of 60 or more each. Which check would you run first for "motors do not spin at all" and why? (Sample answer: "Is it powered?", because it is quick and rules out a whole group of faults.)
+
+Responsive: redraw on window resize. Check buttons move under the robot drawing on narrow screens.
+</details>
+
+Good troubleshooting is about asking the best question first. The simulation shows how one check at a time can shrink the list of suspects. Your real robot will fail in exactly these ways, and now you have a plan.
 
 ## What You Built
 

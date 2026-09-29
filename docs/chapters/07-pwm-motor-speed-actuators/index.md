@@ -272,6 +272,54 @@ The **servo angle range** (0°–180°) maps to PWM pulse widths (1–2 ms). Sin
 - 1 ms pulse = 1/20 = 5% duty cycle = `0.05 * 65535 ≈ 3276`
 - 2 ms pulse = 2/20 = 10% duty cycle = `0.10 * 65535 ≈ 6553`
 
+Before you calibrate anything, it helps to see how a servo reads its command. The MicroSim below draws the 20 ms PWM cycle as a timeline and shows the servo arm at the same time. Drag the angle slider and watch the HIGH pulse grow and shrink between 1 ms and 2 ms. The pulse width sets the angle. The cycle length stays the same.
+
+#### Diagram: Servo Pulse Width Explorer
+
+<iframe src="../../sims/servo-pulse-width-explorer/main.html" width="100%" height="482px" scrolling="no"></iframe>
+[Run Servo Pulse Width Explorer Fullscreen](../../sims/servo-pulse-width-explorer/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Interactive MicroSim linking servo angle, pulse width, and 16-bit duty value</summary>
+Type: microsim
+**sim-id:** servo-pulse-width-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** learning-micropython / servo-pwm-explorer (https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/servo-pwm-explorer). Keep the pulse-versus-angle idea. Change the labels to the robot's `config.SERVO_PIN`, add the 16-bit duty readout, and add the calibration sliders.
+
+Learning objective: Explain (Bloom L2) — the student can explain how a servo angle from 0° to 180° maps to a pulse width from 1 ms to 2 ms and to a duty value from about 3276 to 6553 at 50 Hz.
+
+Canvas layout: Width fills the page (up to 700 px). Height 480 px. The top 45% shows the servo arm view. The middle 30% shows the PWM timeline. The bottom 25% holds the controls and readouts.
+
+Visual elements:
+- Servo view: a gray rounded-rectangle servo body with a blue half-circle scale from 0° (left) to 180° (right). Tick marks and labels sit every 45°. A thick orange arm rotates from the servo shaft to point at the current angle.
+- Timeline: two full 20 ms cycles drawn as a square wave. The HIGH pulse is orange, the LOW time is light gray. A double-arrow labels "Pulse: 1.50 ms". A second arrow labels "Period: 20 ms". A vertical dotted line marks the end of each period.
+- A faint ghost pulse at 1 ms and another at 2 ms show the two ends of the range.
+- Readout panel with three lines: "Angle: 90°", "Pulse: 1.50 ms", "duty_u16: 4914".
+
+Interactive controls:
+- Angle slider, 0 to 180, step 1, default 90. Changing it moves the arm and redraws the pulse.
+- "Min duty" slider, 2500 to 4000, step 10, default 3276 (the 0° value).
+- "Max duty" slider, 5500 to 7500, step 10, default 6553 (the 180° value).
+- Button "Sweep" toggles an automatic 0° to 180° to 0° sweep in 5° steps every 20 ms, like the Servo Sweep Code below.
+- Button "Reset calibration" restores the default min and max duty.
+
+Behavior:
+- duty = int(min_duty + (angle / 180) * (max_duty - min_duty)). This matches `angle_to_duty()`.
+- pulse_ms = duty / 65535 * 20.
+- Drawn pulse width on the timeline = pulse_ms / 20 of the period length.
+- If the calibration sliders cross (min_duty >= max_duty), show a red message "Min must be smaller than max" and freeze the arm.
+- While "Sweep" runs, the angle slider follows the sweep and is disabled.
+
+Default state: Angle 90°, default calibration, sweep off. The readout shows "Pulse: 1.50 ms" and "duty_u16: 4914".
+
+Assessment/Challenge: Set the angle to 45°. What pulse width and duty value do you see? (Answer: about 1.25 ms and duty 4095 with the default calibration.) Then raise "Max duty" to 7000. What is the new duty at 180°? (Answer: 7000.)
+
+Responsive: redraw on window resize.
+</details>
+
+The servo on your robot reads the same kind of pulse. Your code sets `servo.duty_u16(duty)`, and the servo turns the pulse width into an angle. If your real servo stops short of 180°, use the calibration sliders to find the duty values that fit your servo.
+
 ### Servo PWM Calibration
 
 **Servo PWM calibration** means finding the exact duty cycle values for 0° and 180° on your specific servo. Manufacturers allow some variation, so the actual 0° position might be at 3000 or 3500 duty cycle units, not exactly 3276. Calibrate by setting a value, observing the actual angle, and adjusting until it matches.
@@ -285,6 +333,54 @@ def angle_to_duty(angle, min_duty=3276, max_duty=6553):
     """Convert servo angle (0-180) to 16-bit duty cycle value."""
     return int(min_duty + (angle / 180) * (max_duty - min_duty))
 ```
+
+This same idea shows up again and again in robotics. You will use it to turn a distance into a bar height and a knob position into a speed. The MicroSim below lets you see the formula work with any input range and any output range.
+
+#### Diagram: Range Mapping Explorer
+
+<iframe src="../../sims/range-mapping-explorer/main.html" width="100%" height="452px" scrolling="no"></iframe>
+[Run Range Mapping Explorer Fullscreen](../../sims/range-mapping-explorer/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Interactive MicroSim showing how a linear map converts an input range into an output range</summary>
+Type: microsim
+**sim-id:** range-mapping-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design
+
+Learning objective: Apply (Bloom L3) — the student can pick input and output ranges and predict the mapped value with `out_min + (x - in_min) / (in_max - in_min) * (out_max - out_min)`.
+
+Canvas layout: Width fills the page (up to 700 px). Height 450 px. The top 55% shows two parallel number lines (input on top, output below) joined by a slanted connector line. The bottom 45% holds a preset menu, the sliders, and the formula readout.
+
+Visual elements:
+- Input number line: horizontal bar with the in_min and in_max labels at the ends, and a blue marker for the current input x.
+- Output number line: horizontal bar with the out_min and out_max labels, and an orange marker for the mapped value.
+- A dashed line joins the two markers. Thin gray lines join in_min to out_min and in_max to out_max, so the student sees the two ranges lined up.
+- A live formula box that fills in the real numbers, for example "3276 + (90 - 0) / (180 - 0) * (6553 - 3276) = 4914".
+- If x is outside the input range, the orange marker turns red and shows the note "Outside range - clamp it!"
+
+Interactive controls:
+- Dropdown "Preset" with four choices. "Servo angle to duty" sets input 0 to 180 and output 3276 to 6553. "ToF distance to bar height" sets input 0 to 200 cm and output 0 to 50 pixels. "Pot to speed" sets input 0 to 65535 and output 0 to 100 percent. "Custom" unlocks the four range boxes.
+- Four number boxes: in_min, in_max, out_min, out_max. They are editable only in "Custom" mode.
+- Input slider from in_min - 20% of the range up to in_max + 20% of the range, default at the middle of the range.
+- Checkbox "Clamp output", off by default. When on, the mapped value is limited to the output range.
+- Checkbox "Round to integer", on by default.
+
+Behavior:
+- mapped = out_min + (x - in_min) / (in_max - in_min) * (out_max - out_min).
+- If in_max equals in_min, show "Input range cannot be zero" and stop the math.
+- Reversed output ranges (out_min larger than out_max) are allowed. The connector lines cross to show the flip.
+- Round to integer uses int(), which drops the decimal part, like the `angle_to_duty()` code above.
+
+Default state: Preset "Servo angle to duty", input 90, "Round to integer" on, clamp off. The readout shows 4914.
+
+Assessment/Challenge: Choose "ToF distance to bar height" and set the input to 150 cm. What bar height do you get? (Answer: 37 pixels.) Now set the input to 250 cm. What happens with clamp off and with clamp on? (Answer: 62 pixels with clamp off, which is taller than the 50-pixel bar area. 50 pixels with clamp on.)
+
+Responsive: redraw on window resize.
+</details>
+
+This formula turns one range of numbers into another. Your servo code uses it to turn an angle into a duty value. The same idea can turn a knob position into a speed. The clamp option shows why robot code often limits a result with `min()` and `max()`.
 
 ### Servo Sweep Code
 
@@ -352,6 +448,54 @@ play_tone(523, 0.2)    # C5
 play_tone(659, 0.3)    # E5
 ```
 
+Numbers like 440 and 659 are hard to picture. The MicroSim below shows a frequency as a wave and as a note on a piano keyboard. Click a key or drag the frequency slider, then compare how the wave changes.
+
+#### Diagram: Piezo Tone Frequency Explorer
+
+<iframe src="../../sims/piezo-tone-frequency-explorer/main.html" width="100%" height="472px" scrolling="no"></iframe>
+[Run Piezo Tone Frequency Explorer Fullscreen](../../sims/piezo-tone-frequency-explorer/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Interactive MicroSim that plays a PWM tone and shows its frequency, wave, and piano note</summary>
+Type: microsim
+**sim-id:** piezo-tone-frequency-explorer<br/>
+**Library:** p5.js (with the p5.sound oscillator for audio)<br/>
+**Status:** Specified<br/>
+**Reuse:** learning-micropython / piano-tone-generator (https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/piano-tone-generator). Keep the keyboard and the oscillator. Add the frequency slider, the wave view, the "Duty" control, and the MicroPython code box.
+
+Learning objective: Relate (Bloom L2) — the student can relate the PWM frequency passed to `buzzer.freq()` to the pitch they hear, and can explain why 50% duty is the loudest setting.
+
+Canvas layout: Width fills the page (up to 700 px). Height 470 px. The top 30% is a one-octave piano keyboard (C4 to C5, 13 keys). The middle 35% is the wave view. The bottom 35% holds controls and a code box.
+
+Visual elements:
+- Keyboard: white and black keys. The active key turns orange. Each key shows its note name (C4, D4, and so on).
+- Wave view: a square wave with 3 to 12 cycles visible, scaled so higher frequencies show more cycles. The HIGH part is orange and the LOW part is light gray. A label reads "Frequency: 440 Hz" and "Period: 2.27 ms".
+- A small speaker icon that pulses in time with the sound. It is dimmer at low duty cycles.
+- Code box (monospace, light gray) showing `buzzer.freq(440)` and `buzzer.duty_u16(32767)`, updated live.
+
+Interactive controls:
+- Frequency slider, 100 to 2000 Hz, step 1, default 440.
+- Duty slider, 0% to 100%, step 5, default 50%. It shows the matching 16-bit value, for example "50% = 32767".
+- Piano keys: clicking a key sets the frequency to that note's frequency (C4 262, D4 294, E4 330, F4 349, G4 392, A4 440, B4 494, C5 523, with black keys at their standard frequencies).
+- Button "Play / Stop" toggles the sound. The sound starts only after the first click, because browsers block audio until then.
+- Button "Startup melody" plays 440 Hz for 0.2 s, 523 Hz for 0.2 s, then 659 Hz for 0.3 s, matching the code above.
+
+Behavior:
+- Period in ms = 1000 / frequency.
+- The nearest note name shows below the frequency, for example "Nearest note: A4".
+- The oscillator plays a square wave at the chosen frequency. Its loudness is scaled by how close the duty is to 50%: volume = 1 - abs(duty - 50) / 50. At 0% and 100% duty the volume is 0 (silent), because the pin never changes state.
+- The wave view uses the duty setting for the HIGH width of each cycle.
+- If audio is not available, the sim still animates and shows the message "Sound is off in this browser".
+
+Default state: Frequency 440 Hz (A4 highlighted), duty 50%, sound stopped.
+
+Assessment/Challenge: Find the frequency that plays E5 in the startup melody. (Answer: 659 Hz.) Then set the duty to 0%. What do you hear, and why? (Answer: Nothing. A pin that stays LOW never vibrates the piezo element.)
+
+Responsive: redraw on window resize.
+</details>
+
+On the robot, `play_tone()` sets the buzzer pin's frequency and duty in the same way. Try the startup melody in the sim first. Then match its three notes in your own code and hear the same tune from your robot.
+
 ### Sound Feedback
 
 **Sound feedback** is a useful user experience pattern — play a tone when the robot starts up, when it detects an obstacle, or when a button is pressed. It communicates state without requiring the student to watch the OLED display.
@@ -417,6 +561,58 @@ button.irq(trigger=Pin.IRQ_FALLING, handler=button_pressed)
 ```
 
 The `ticks_diff()` function handles timer rollover correctly, just as in Chapter 4.
+
+The bounce happens in a few thousandths of a second, so you cannot see it. The MicroSim below slows time down so you can watch it. Press the virtual button, look at the noisy signal, and see how the debounce window changes the number of presses your code counts.
+
+#### Diagram: Button Bounce Timeline
+
+<iframe src="../../sims/button-bounce-timeline/main.html" width="100%" height="502px" scrolling="no"></iframe>
+[Run Button Bounce Timeline Fullscreen](../../sims/button-bounce-timeline/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Interactive MicroSim showing contact bounce, falling-edge interrupts, and the debounce window</summary>
+Type: microsim
+**sim-id:** button-bounce-timeline<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design
+
+Learning objective: Analyze (Bloom L4) — the student can explain why one press causes many falling edges, and can choose a debounce time that counts each press once without missing real presses.
+
+Canvas layout: Width fills the page (up to 700 px). Height 500 px. Three stacked strips share one time axis (0 to 200 ms) in the top 65%. The bottom 35% holds the controls and counters.
+
+Visual elements:
+- Strip 1, "Pin 20 signal": a step waveform. It rests HIGH at 3.3 V (pull-up) and drops to LOW 0 V when the button closes. During the bounce it flips between HIGH and LOW several times before settling LOW.
+- Strip 2, "Falling edges (IRQ fires)": a red arrow at each HIGH-to-LOW transition, numbered 1, 2, 3, and so on.
+- Strip 3, "Presses counted": a green check mark at each edge that the handler accepts. A gray "ignored" mark shows at each edge inside the debounce window.
+- A shaded blue band starts at the first accepted edge and runs for the debounce time, labeled "Debounce window: 150 ms".
+- A large button graphic at the bottom left. It shows pressed (dark) or released (light).
+- Two counters: "Falling edges seen: N" and "Presses counted: N".
+
+Interactive controls:
+- Button "Press" simulates one press. It builds a new bounce pattern and plays it across the timeline.
+- Button "Press twice quickly" simulates two real presses 100 ms apart.
+- Slider "Bounce length", 0 to 30 ms, step 1, default 12. It is how long the contacts bounce.
+- Slider "Debounce window", 0 to 300 ms, step 10, default 150. It matches the `> 150` test in the code.
+- Checkbox "Show code" reveals the `button_pressed()` handler with the line `if ticks_diff(now, last_press_time) > 150:` updated to the slider value.
+- Button "Reset counters".
+
+Behavior:
+- On "Press", generate 3 to 12 random bounces inside the bounce length. Each bounce is a short LOW pulse of 0.2 to 2 ms, alternating with HIGH gaps of 0.2 to 2 ms, followed by a final settle to LOW. With a bounce length of 0, there is one clean edge.
+- Every HIGH-to-LOW transition is an IRQ event.
+- The handler follows the code: accept an event only if the time since the last accepted event is greater than the debounce window. Otherwise, ignore it.
+- With a debounce window of 0, every edge is counted, so one press can count 3 to 12 times.
+- "Press twice quickly" uses two presses 100 ms apart. With a 150 ms window the second press is ignored. Show the note "A real press was missed!" when a real press lands inside the window.
+- The timeline runs at slow motion (about 1 s of screen time for 200 ms) so students can follow it.
+
+Default state: Bounce length 12 ms, debounce window 150 ms, counters at 0, waveform resting HIGH.
+
+Assessment/Challenge: Set the debounce window to 0 and press once. How many presses were counted? (Answer: usually more than one, equal to the number of falling edges.) Now use "Press twice quickly". What is the largest window that still counts both presses? (Answer: any window under 100 ms, for example 50 ms, when the bounce is short.)
+
+Responsive: redraw on window resize.
+</details>
+
+Your robot's button on pin 20 behaves like this virtual one. The 150 ms window in the `button_pressed()` handler is a trade-off. A short window may count one press twice. A long window may miss a fast second press.
 
 !!! mascot-warning "Keep interrupt handlers short"
     ![Sparky warning](../../img/mascot/warning.png){ class="mascot-admonition-img" }

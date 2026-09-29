@@ -159,6 +159,53 @@ for pin in motor_pins:
 print("First pin:", motor_pins[0])
 ```
 
+
+#### Diagram: Tuple vs List Mutability
+
+This MicroSim puts a list and a tuple side by side and lets you try to change both. You see the list accept your change and the tuple refuse with a `TypeError`. It helps you choose the right container for robot data.
+
+<iframe src="../../sims/tuple-list-mutability-explorer/main.html" width="100%" height="422px" scrolling="no"></iframe>
+[Run Tuple vs List Mutability Fullscreen](../../sims/tuple-list-mutability-explorer/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Try to change a list and a tuple and see which one allows it</summary>
+Type: microsim
+**sim-id:** tuple-list-mutability-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** computer-science / tuple-vs-list-mutability (https://github.com/dmccreary/computer-science/tree/main/docs/sims/tuple-vs-list-mutability). Keep the side-by-side mutation test. Replace the generic data with `motor_pins`, an RGB color, and the OLED `board_size`.
+
+Learning objective: Distinguish (Bloom L2-L4) — the student can predict which operations work on a list and which raise a `TypeError` on a tuple, and pick the right one for fixed hardware values.
+
+Canvas layout: 700 px wide (responsive), 420 px tall. Top strip (70 px): data set selector. Two equal panels below, left "List [ ]" and right "Tuple ( )", each 340 px wide and 250 px tall. Bottom strip (80 px): results console.
+
+Visual elements:
+- Each panel shows its container as a row of boxes with the index above and value inside. Lists use blue boxes with square-bracket ends. Tuples use gray boxes with round-bracket ends and a small padlock icon above them.
+- Below each row, the Python code for the current attempt in monospace.
+- A green check bubble ("Worked!") or a red X bubble with the text "TypeError: 'tuple' object doesn't support item assignment" appears next to each panel after an attempt.
+- When a list change works, the changed box flashes yellow and the new value appears. When a tuple change fails, the padlock shakes for half a second.
+
+Interactive controls:
+- Dropdown "Data set": "motor_pins = 6, 7, 8, 9" (default), "rgb_red = 255, 0, 0", "board_size = 128, 64".
+- Dropdown "Operation": "Change item 0 to 5" (default), "Append a value", "Remove the last item", "Read item 0", "Loop over all items".
+- "Try it on both" button. "Reset" button.
+- Text field "New value" (integer 0 to 255, default 5) used by the change and append operations.
+
+Behavior:
+- Read item 0 and Loop over all items work on both and print the same result.
+- Change item 0, Append, and Remove work on the list only. The list changes on screen. The tuple stays the same and shows the TypeError (for Append or Remove the message is `AttributeError: 'tuple' object has no attribute 'append'`).
+- The results console counts "List: N changes worked, Tuple: N changes blocked" and keeps a running tally.
+- A hint line names the rule: "Use a tuple when the values must never change, like pin numbers."
+
+Default state: motor_pins data set loaded, "Change item 0 to 5" selected, no attempt made yet.
+
+Assessment/Challenge: You need to store the two OLED dimensions (128, 64) and a list of the last ten distance readings. Which is a tuple and which is a list? Answer: the dimensions are a tuple because they never change, and the readings are a list because new readings keep being added. The student checks by trying "Append" on each data set.
+
+Responsive: redraw on window resize.
+</details>
+
+Your `config.py` file from the next section stores pin numbers as fixed values. This sim shows why a tuple is a good choice for those values: nobody can change them by accident while the robot runs. Use a list for anything that grows, like a log of sensor readings.
+
 ---
 
 ## Dictionaries — Key-Value Stores
@@ -207,6 +254,56 @@ The table below compares the three data structures:
 !!! mascot-thinking "Which container should I use?"
     ![Sparky thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
     Ask yourself: "Do I need to change the values? Are the values named or numbered?" If the values are fixed, use a tuple. If they're numbered in order, use a list. If they're named properties of one thing (like a robot's stats), use a dictionary. Getting this right makes your code easier to read and harder to break.
+
+
+#### Diagram: Sensor Dictionary Explorer
+
+This MicroSim shows a `robot` dictionary as a set of labeled drawers. You look up a key, change a value, add a new key, and see what happens when a key does not exist. Each action shows the matching line of MicroPython.
+
+<iframe src="../../sims/sensor-dictionary-explorer/main.html" width="100%" height="522px" scrolling="no"></iframe>
+[Run Sensor Dictionary Explorer Fullscreen](../../sims/sensor-dictionary-explorer/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Look up, update, and add keys in a robot dictionary</summary>
+Type: microsim
+**sim-id:** sensor-dictionary-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** learning-python / dictionary-key-lookup (https://github.com/dmccreary/learning-python/tree/main/docs/sims/dictionary-key-lookup) and computer-science / dictionary-structure (https://github.com/dmccreary/computer-science/tree/main/docs/sims/dictionary-structure). Keep the key-to-value drawer metaphor. Use the `robot` dictionary from this chapter (name, speed, is_moving, distance_cm) plus sensor readings.
+
+Learning objective: Apply (Bloom L3) — the student can read, update, and add dictionary entries with keys and can predict a `KeyError` for a missing key.
+
+Canvas layout: 700 px wide (responsive), 520 px tall. Left panel (400 px): the dictionary drawn as a cabinet of drawers. Right panel (rest): code and output. Bottom strip (90 px): controls.
+
+Visual elements:
+- Cabinet: one row per key. Each row has a colored key label tab on the left (teal, 14 px bold) and a value box on the right (white with a dark outline). Starting rows: "name" -> "Sparky", "speed" -> 75, "is_moving" -> True, "distance_cm" -> 30.5.
+- A yellow pointer arrow slides from the code panel to the key tab that is being looked up. The value box glows green when read successfully.
+- A red drawer with a lock icon appears for a missing key, with the label "KeyError: 'battery_pct'".
+- A new row slides in from the bottom with a blue outline when a new key is added.
+- Right panel: the line of MicroPython for the current action (monospace) and, below it, the printed output in a black console box.
+- A toggle panel "Compare to a list" shows the same values as `[ "Sparky", 75, True, 30.5 ]` with indexes 0 to 3, so students see "which is easier to read: robot[1] or robot["speed"]".
+
+Interactive controls:
+- Dropdown "Key": name, speed, is_moving, distance_cm, battery_pct (missing key).
+- Buttons: "Read", "Update value", "Add new key", "Reset".
+- Text field "New value" for Update and Add (default 50 for speed, 85 for battery_pct).
+- Checkbox "Compare to a list" (default off).
+
+Behavior:
+- Read: pointer moves to the key, the value is printed, e.g. `print(robot["speed"])` prints 75. For a missing key, the KeyError drawer appears and the output shows the error line.
+- Update value: changes the value box (flash yellow) with `robot["speed"] = 50`.
+- Add new key: for a key that is not in the dictionary, `robot["battery_pct"] = 85` adds a row. Adding an existing key just updates it.
+- The number of keys is shown as `len(robot)` in the corner and updates live.
+- Reset restores the four starting rows.
+
+Default state: four rows shown, "name" selected, code panel shows `print(robot["name"])`, output empty.
+
+Assessment/Challenge: Read `battery_pct` first and get the KeyError. Then fix the error without changing the code line. Answer: use "Add new key" to set `battery_pct` to 85, then read it again and see 85.
+
+Responsive: redraw on window resize.
+</details>
+
+Robot programs are full of named values like speed, distance, and battery level. A dictionary keeps them together in one place, so `robot["speed"]` reads like plain English. Later chapters use dictionaries to hold sensor readings and settings, so try the KeyError case here where it is safe.
 
 ---
 
@@ -315,6 +412,56 @@ motors.stop_all()
 ```
 
 This is exactly how the course's library files (`vl53l0x.py`, `ssd1306.py`) work. They are modules you import to get sensor and display functionality without writing those drivers yourself.
+
+
+#### Diagram: Module Import Flow
+
+This MicroSim shows three files on the robot: `config.py`, `motors.py`, and `main.py`. You change one pin number in `config.py` and watch the change flow into the other two files through `import config`. It shows why the `config.py` pattern saves you time.
+
+<iframe src="../../sims/module-import-flow/main.html" width="100%" height="502px" scrolling="no"></iframe>
+[Run Module Import Flow Fullscreen](../../sims/module-import-flow/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Edit one pin in config.py and watch it flow through the imports</summary>
+Type: microsim
+**sim-id:** module-import-flow<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design
+
+Learning objective: Explain (Bloom L2-L3) — the student can explain how `import` links files together and can predict which files change behavior when one value in `config.py` changes.
+
+Canvas layout: 700 px wide (responsive), 500 px tall. Three file cards arranged in a triangle: `config.py` at the top center, `motors.py` bottom left, `main.py` bottom right. A strip on the left shows a small robot picture. A console box (700 x 100 px) sits along the bottom.
+
+Visual elements:
+- Each file card is a rounded rectangle (200 x 130 px) with a title tab and 3 to 5 lines of code in monospace 12 px. config.py is blue, motors.py is green, main.py is orange.
+- config.py shows `RIGHT_FORWARD_PIN = 11`, `RIGHT_REVERSE_PIN = 10`, `LEFT_FORWARD_PIN = 9`, `LEFT_REVERSE_PIN = 8`.
+- motors.py starts with `import config` and uses `config.RIGHT_FORWARD_PIN` in a line such as `right_fwd = Pin(config.RIGHT_FORWARD_PIN)`.
+- main.py starts with `import config` and `import motors`, then calls `motors.stop_all()`.
+- Arrows: motors.py to config.py and main.py to config.py labeled "import config". main.py to motors.py labeled "import motors". Arrows pulse once when the import runs.
+- Wherever `config.RIGHT_FORWARD_PIN` appears in a file, it is highlighted in yellow and shows the current value in a small badge.
+- A tiny robot picture with four labeled wire pins (GP8, GP9, GP10, GP11) shows which pin the right forward motor wire is plugged into.
+
+Interactive controls:
+- Dropdown "RIGHT_FORWARD_PIN" with choices 11 (default), 12, 13, 14, 15 (the pin used in config.py).
+- Toggle "Hard-code pins instead (no config.py)" (default off).
+- "Run main.py" button plays the import order with animation.
+- "Reset" button.
+
+Behavior:
+- On "Run main.py", the console prints in order: "main.py: import config", "config.py loaded", "main.py: import motors", "motors.py: import config (already loaded)", "Right forward pin: 11" (or the current value).
+- Changing the pin dropdown edits only the one line in config.py. All yellow-highlighted spots in main.py and motors.py update at once and the wire on the robot picture moves to the new GP pin. The console shows "1 line changed, 0 other files edited".
+- When "Hard-code pins instead" is on, the pin number appears typed as a raw number in 5 places across main.py and motors.py. Changing the dropdown then only updates the config.py line, and the other places stay at 11. The console shows "Pin mismatch! motors.py still uses 11" and the robot picture shows the motor wire not connected.
+- The counter "Lines to edit: 1" (with config.py) or "Lines to edit: 5" (hard-coded) is always shown.
+
+Default state: config.py pattern on, pin 11, nothing run yet.
+
+Assessment/Challenge: You move the right forward motor wire from pin 11 to pin 13. How many lines must you edit with the `config.py` pattern and how many with hard-coded pins? Answer: 1 line with `config.py`, 5 lines when hard-coded (the student checks the "Lines to edit" counter).
+
+Responsive: redraw on window resize.
+</details>
+
+This is why every kit in this course has a `config.py` file. When you rewire a motor, you change one line and every file that imports `config` follows along. The same idea lets `main.py` use `motors.stop_all()` without knowing how the motors work inside.
 
 ---
 
@@ -461,6 +608,52 @@ The `secrets.py` file stores your WiFi network name and password. If you commit 
 !!! mascot-warning "Never commit secrets.py"
     ![Sparky warning](../../img/mascot/warning.png){ class="mascot-admonition-img" }
     WiFi passwords and API keys should never be in a Git repository. Add `secrets.py` to `.gitignore` before your first commit. If you accidentally commit credentials, consider them compromised — change the password immediately. This is a real-world security principle, not just a class rule.
+
+
+#### Diagram: What Goes in Git Sorting Activity
+
+This MicroSim is a sorting game. You drag project files into two bins: "Commit to Git" and "Put in .gitignore". The sim checks your answers and shows what is at risk when a secret file ends up in the wrong bin.
+
+<iframe src="../../sims/git-what-to-commit-sorter/main.html" width="100%" height="482px" scrolling="no"></iframe>
+[Run What Goes in Git Sorting Activity Fullscreen](../../sims/git-what-to-commit-sorter/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Drag robot project files into the commit or ignore bin</summary>
+Type: microsim
+**sim-id:** git-what-to-commit-sorter<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design
+
+Learning objective: Classify (Bloom L2-L4) — the student can decide which robot project files belong in a Git repository and which belong in `.gitignore`, and can explain why.
+
+Canvas layout: 700 px wide (responsive), 480 px tall. Left column (260 px): a pile of file cards. Right side: two large bins side by side, "Commit to Git" (green outline) and "Put in .gitignore" (red outline), each 200 px wide and 300 px tall. Bottom strip (80 px): feedback message and buttons.
+
+Visual elements:
+- Ten file cards, each a small rounded rectangle with a file icon and file name in monospace: `main.py`, `config.py`, `motors.py`, `vl53l0x.py`, `secrets.py`, `__pycache__/`, `notes.pyc`, `.DS_Store`, `README.md`, `wifi_password.txt`.
+- Cards are draggable. A card snaps into a bin when dropped over it and returns to the pile if dropped elsewhere.
+- After "Check answers", correct cards get a green check and wrong cards get a red X and shake. Clicking a wrong card shows a one-sentence reason in the feedback strip.
+- A "Repository preview" box under the commit bin lists what would be public on GitHub. If `secrets.py` or `wifi_password.txt` is in the commit bin, this box turns red with a lock icon and the words "Your WiFi password is now public!".
+
+Interactive controls:
+- Drag and drop for each card.
+- "Check answers" button, "Reset" button.
+- Toggle "Show hints" (default off): adds a one-line hint under each card name, for example "Your code" or "Holds your WiFi password".
+
+Behavior:
+- Correct answers: Commit: `main.py`, `config.py`, `motors.py`, `vl53l0x.py`, `README.md`. Ignore: `secrets.py`, `__pycache__/`, `notes.pyc`, `.DS_Store`, `wifi_password.txt`.
+- Reasons shown on wrong cards: `secrets.py` and `wifi_password.txt` — "holds passwords; anyone can read a public repo". `__pycache__/` and `notes.pyc` — "made automatically; can be rebuilt". `.DS_Store` — "junk file from macOS". `vl53l0x.py` — "a library your robot needs, so others need it too".
+- A score shows "N of 10 correct". A "Generated .gitignore" panel builds live from the ignore bin, one line per file name, so students see the file they would create.
+- The "Repository preview" updates every drop, before checking.
+
+Default state: all ten cards in the pile, both bins empty, score hidden.
+
+Assessment/Challenge: Sort all ten cards with no hints and get a score of 10 of 10. Then answer: what happens if you commit `secrets.py` before adding it to `.gitignore`? Answer: the password is stored in the repository history, so the student should change the password right away.
+
+Responsive: redraw on window resize.
+</details>
+
+The `.gitignore` file you just built in the sim is the same one from this chapter. Use this checklist before your first commit: code and docs go in, passwords and auto-made files stay out. It takes one minute and protects your WiFi network.
 
 ---
 

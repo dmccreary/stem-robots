@@ -187,6 +187,54 @@ def read_ultrasonic_cm():
 
 The constant 58 comes from: speed of sound ≈ 343 m/s = 0.0343 cm/µs. Round trip distance = duration × 0.0343, so one-way distance = duration / 58.
 
+Sound is fast, but it is slow enough to time. The MicroSim below shows the trigger pulse, the sound burst, and the echo pin on one timeline. Move the obstacle and watch the echo pulse get longer or shorter.
+
+#### Diagram: Ultrasonic Echo Timing Explorer
+
+<iframe src="../../sims/ultrasonic-echo-timing-explorer/main.html" width="100%" height="482px" scrolling="no"></iframe>
+[Run Ultrasonic Echo Timing Explorer Fullscreen](../../sims/ultrasonic-echo-timing-explorer/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Interactive MicroSim showing the trigger pulse, sound travel, echo pulse, and distance math</summary>
+Type: microsim
+**sim-id:** ultrasonic-echo-timing-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** learning-micropython / ultrasonic-ranging (https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/ultrasonic-ranging). Keep the trigger, echo, and distance idea. Add the pin-level timeline, the `duration_us / 58` math, and the out-of-range cases for the robot's HC-SR04.
+
+Learning objective: Apply (Bloom L3) — the student can convert an echo pulse duration in microseconds into a distance in centimeters, and can explain why the constant 58 appears in `read_ultrasonic_cm()`.
+
+Canvas layout: Width fills the page (up to 700 px). Height 480 px. The top 40% is a side view of the robot and an obstacle. The middle 35% is a timeline with two signal rows. The bottom 25% holds the controls and the math readout.
+
+Visual elements:
+- Side view: a small robot on the left with two round HC-SR04 "eyes". A wall on the right is dragged left or right. Curved blue arcs travel from the robot to the wall (outgoing) and orange arcs travel back (echo). The arcs animate in slow motion.
+- Timeline row "Trigger pin": a 10 µs HIGH pulse at the start, labeled "10 µs trigger".
+- Timeline row "Echo pin": stays LOW, then goes HIGH when the echo returns and stays HIGH for the round trip time, labeled "Echo HIGH: 1166 µs".
+- Math readout, filled with real numbers: "duration_us = 1166", "distance_cm = 1166 / 58 = 20.1 cm".
+- A note under the math: "58 comes from 2 x 1 / 0.0343 cm per µs".
+
+Interactive controls:
+- Distance slider, 2 to 450 cm, step 1, default 20. Dragging the wall changes it too.
+- Dropdown "Air temperature": 0 C, 20 C, 30 C. It sets the speed of sound to 331 m/s, 343 m/s, and 349 m/s. Default 20 C.
+- Checkbox "Soft surface (weak echo)". It makes the echo fade and can cause a missed echo.
+- Button "Fire sensor" replays one full measurement.
+
+Behavior:
+- Round-trip time in µs = 2 x distance_cm / speed_cm_per_us. At 343 m/s, speed = 0.0343 cm/µs.
+- The code always uses distance = duration_us / 58, so a second line shows "True distance" next to "Code says". At 30 C sound is faster, so the echo is shorter and the code underestimates by about 2 percent. At 0 C it overestimates by about 3 percent. The sim shows that difference.
+- If the distance is under 2 cm or over 400 cm, the Echo row shows no HIGH pulse. The readout says "No valid echo - your code would wait forever! Add a timeout."
+- With "Soft surface" checked and distance over 250 cm, the echo is lost in the same way.
+- The animation slows the sound to a visible speed, and a label says "Slowed down about 1,000,000 times".
+
+Default state: Wall at 20 cm, 20 C, soft surface off. The Echo pulse is about 1166 µs, and the readout says 20.1 cm.
+
+Assessment/Challenge: The echo pin stays HIGH for 2900 µs. How far away is the wall? (Answer: 2900 / 58 = 50 cm.) Then move the wall to 500 cm. What happens, and what code would protect the robot? (Answer: No echo comes back. A timeout in the `while echo.value() == 0` loops stops the robot from hanging.)
+
+Responsive: redraw on window resize.
+</details>
+
+The Trigger and Echo rows in the sim match the two GPIO pins in `config.py`. When the robot reads a distance, `read_ultrasonic_cm()` waits for the Echo row to go HIGH and times how long it stays HIGH. If the sim shows no echo, your real code needs a timeout too.
+
 ---
 
 ## Infrared Sensor
@@ -213,6 +261,54 @@ IR sensors are sensitive to surface color and ambient light. A white surface ref
 
 Test with the robot over a white surface, then a black surface. Note the ADC reading (if your module has an analog output) or the distance at which the digital output switches. Adjust the sensor's sensitivity trimmer potentiometer (the small dial on the sensor module) until it switches cleanly at the desired distance.
 
+An IR sensor turns a smooth signal into a yes-or-no answer. The MicroSim below shows how. It draws how much light bounces back from different surfaces, and where the threshold line turns that into 0 or 1.
+
+#### Diagram: IR Reflectance Threshold Explorer
+
+<iframe src="../../sims/ir-reflectance-threshold-explorer/main.html" width="100%" height="472px" scrolling="no"></iframe>
+[Run IR Reflectance Threshold Explorer Fullscreen](../../sims/ir-reflectance-threshold-explorer/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Interactive MicroSim showing how surface color, distance, and a threshold decide the IR digital output</summary>
+Type: microsim
+**sim-id:** ir-reflectance-threshold-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design
+
+Learning objective: Predict (Bloom L3) — the student can predict whether an active-LOW IR sensor reads 0 or 1 for a given surface and distance, and can set the trimmer threshold so the sensor switches at a chosen distance.
+
+Canvas layout: Width fills the page (up to 700 px). Height 470 px. The left 40% is a side view of the sensor above a surface. The right 60% is a graph. The bottom strip holds the controls and the output readout.
+
+Visual elements:
+- Side view: a small IR sensor module with an emitter (red dot) and a detector. Dotted red rays go down to the surface and bounce back. The surface is a rectangle whose color matches the choice (white, gray, black).
+- Graph: the X axis is "Distance to surface (cm)" from 0 to 15. The Y axis is "Reflected IR (0 to 100)". One curve per surface: white (blue), gray (green), black (dark gray). The active surface curve is drawn thick.
+- A horizontal orange line is the threshold. A dot on the active curve marks the current reading.
+- Output box: "Sensor output: 0 (surface detected)" in green, or "Sensor output: 1 (nothing detected)" in red.
+- The area of the graph above the threshold is shaded light green, labeled "Detected".
+
+Interactive controls:
+- Surface buttons: "White", "Gray", "Black". Default White.
+- Distance slider, 0 to 15 cm, step 0.5, default 4.
+- Threshold slider (the trimmer dial), 5 to 95, step 1, default 40.
+- Checkbox "Bright room" adds 15 points of ambient IR to every reading, capped at 100.
+- Button "Auto-calibrate" places the threshold halfway between the black reading and the white reading at the current distance.
+
+Behavior:
+- Reflected IR = peak x 100 / (1 + (distance / 4)^2), where peak is 1.0 for white, 0.55 for gray, and 0.15 for black. Add 15 in a bright room, then cap at 100.
+- Output = 0 (LOW, detected) if reflected IR >= threshold. Otherwise output = 1. This matches the active-LOW rule.
+- Show a "Reads" line with the matching MicroPython: `ir_left.value()` returns 0 or 1.
+- Show a warning "Black and white give the same answer here" when the two surfaces produce the same output at the current distance. This teaches why calibration matters.
+
+Default state: White surface, 4 cm, threshold 40. The reading is 50 and the output is 0 (detected).
+
+Assessment/Challenge: With a white surface, find the largest distance where the sensor still reads 0 at threshold 40. (Answer: about 4.9 cm.) Then switch to black at 4 cm. What is the output, and what threshold would let you tell black from white at 4 cm? (Answer: Output 1 with reflected IR 7.5. Any threshold above 7.5 and up to 50 separates them, such as 30.)
+
+Responsive: redraw on window resize.
+</details>
+
+The threshold slider is the small trimmer dial on your real IR module. When a line-following robot misbehaves on a new floor, this is the setting you turn. Try white and black at your robot's real sensor height, then set the threshold between them.
+
 ---
 
 ## Bump Switch
@@ -238,6 +334,55 @@ if bump.value() == 0:    # LOW = bumped
 !!! mascot-tip "Bump switches as a backup"
     ![Sparky pointing up](../../img/mascot/tip.png){ class="mascot-admonition-img" }
     The ToF sensor usually prevents collisions before they happen. But the bump switch catches the rare case where the ToF missed something — a transparent object, a low obstacle, or an unexpected side hit. Having both is good engineering: use the ToF for prevention, the bump switch for detection.
+
+Each sensor sees the world in its own way. Some see far and narrow. Some see wide and short. The MicroSim below shows a top-down view of your robot with the sensing area of every distance sensor from this chapter. Place an obstacle and see which sensors notice it.
+
+#### Diagram: Sensor Coverage Comparison
+
+<iframe src="../../sims/sensor-coverage-comparison/main.html" width="100%" height="522px" scrolling="no"></iframe>
+[Run Sensor Coverage Comparison Fullscreen](../../sims/sensor-coverage-comparison/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Interactive top-down MicroSim comparing ToF, ultrasonic, IR, and bump switch coverage and blind spots</summary>
+Type: microsim
+**sim-id:** sensor-coverage-comparison<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** linear-algebra / lidar-point-cloud (https://github.com/dmccreary/linear-algebra/tree/main/docs/sims/lidar-point-cloud). Borrow only the top-down "rays hit an object" drawing style. The sensor shapes and controls are new.
+
+Learning objective: Compare (Bloom L4) — the student can compare the range, beam width, and blind spots of the ToF, ultrasonic, IR, and bump sensors, and can choose which sensors to combine for a task.
+
+Canvas layout: Width fills the page (up to 700 px). Height 520 px. A top-down play area fills the top 80%, with the robot at the bottom center facing up. A control row fills the bottom 20%. Scale: 1 cm = 2 px, so the play area shows about 200 cm of depth.
+
+Visual elements:
+- Robot: a blue rounded rectangle about 12 cm wide, with wheels on the sides.
+- ToF: a narrow green wedge, 25 degrees wide, reaching 200 cm. A dotted extension marks "3 cm minimum" near the robot.
+- Ultrasonic: a wider purple cone, 30 degrees wide, reaching 400 cm (the play area edge is 200 cm, so the cone runs off the top). It has a small dead zone under 2 cm.
+- IR (left and right): two tiny orange rectangles at the front corners, each reaching 10 cm straight ahead.
+- Bump switch: a red bar across the front edge, reach 0 cm (contact only).
+- A legend with the four colors and the ranges from the table above.
+- A draggable obstacle: a gray circle, 12 cm across. Sensors that see it light up their wedge and show a distance label. Sensors that miss it stay pale.
+
+Interactive controls:
+- Drag the obstacle anywhere in the play area.
+- Four checkboxes to turn each sensor on or off: "ToF", "Ultrasonic", "IR", "Bump". All on by default.
+- Dropdown "Obstacle type": "Hard wall", "Soft cloth", "Thin table leg", "Glass". Default "Hard wall".
+- Button "Drive forward": the robot moves up at 10 cm per second until the bump switch touches the obstacle, then stops.
+
+Behavior:
+- A sensor detects the obstacle when the obstacle center is inside its wedge or its range. Use circle-versus-wedge overlap.
+- "Soft cloth" hides the obstacle from the ultrasonic sensor, because sound is absorbed. "Glass" hides it from the ToF sensor, because the laser passes through. "Thin table leg" can slip between the narrow ToF wedge and the IR sensors, and only the ultrasonic cone sees it if it is inside the cone.
+- Each detecting sensor shows a label such as "ToF: 42 cm". Show "no reading" when nothing is detected.
+- A status line says "Detected by N of 4 sensors". If the count is 0 while the obstacle is closer than 30 cm, show "Blind spot!".
+
+Default state: Hard wall obstacle at 80 cm straight ahead. ToF and ultrasonic show a reading. IR and bump show nothing.
+
+Assessment/Challenge: Place the obstacle 8 cm straight ahead of the left front corner, well outside the ToF and ultrasonic wedges. Which sensor notices it? (Answer: The left IR sensor.) Then choose "Glass". Which sensor still works at 50 cm? (Answer: The ultrasonic sensor.)
+
+Responsive: redraw on window resize.
+</details>
+
+This is why the robot uses more than one sensor. The ToF sensor watches far ahead. The IR sensors and bump switch cover the short distance and the sides. Later in this chapter you will combine sensors, and this picture shows which combinations cover each other's blind spots.
 
 ---
 
@@ -336,6 +481,56 @@ def median_distance(new_reading, window=5):
 ```
 
 The median filter is better for rejecting single bad readings (spikes). The moving average is smoother but reacts more slowly to real changes. Choose based on your application.
+
+The best way to feel the difference is to try both filters on the same noisy data. The MicroSim below feeds a noisy distance signal into a moving average and a median filter. Change the window size and add spikes to see which filter copes better.
+
+#### Diagram: Sensor Filter Lab
+
+<iframe src="../../sims/sensor-filter-lab/main.html" width="100%" height="502px" scrolling="no"></iframe>
+[Run Sensor Filter Lab Fullscreen](../../sims/sensor-filter-lab/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Interactive MicroSim comparing raw, moving average, and median filtered ToF readings</summary>
+Type: microsim
+**sim-id:** sensor-filter-lab<br/>
+**Library:** Chart.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design
+
+Learning objective: Evaluate (Bloom L5) — the student can judge when a moving average or a median filter is the better choice, and can explain how window size trades smoothness against lag.
+
+Canvas layout: Width fills the page (up to 700 px). Height 500 px. A line chart fills the top 70%. A control panel fills the bottom 30%. The chart shows the last 100 readings. The X axis is "Reading number" and the Y axis is "Distance (cm)" from 0 to 200.
+
+Visual elements:
+- Gray dots: raw ToF readings.
+- Orange line: moving average output (`filtered_distance()`).
+- Blue line: median filter output (`median_distance()`).
+- A dashed green line: the true distance the sensor is measuring.
+- A shaded band over the last N readings shows the current window.
+- Legend and a live readout: "Raw noise: 3.1 cm", "Average error: 0.9 cm", "Median error: 0.7 cm", "Lag: 2 readings" for each filter. Error is the average distance from the true value over the last 100 readings.
+
+Interactive controls:
+- Slider "Window size", 1 to 15, step 2 (odd numbers only), default 5. It is `window` in the code.
+- Slider "Noise", 0 to 10 cm, step 0.5, default 3. Each reading gets random noise within plus or minus this value.
+- Slider "Spike chance", 0% to 20%, step 1, default 5. A spike is a reading that jumps 40 to 80 cm away from the true value, like the 8190 out-of-range reading.
+- Buttons "Person walks in": the true distance drops from 150 cm to 40 cm in one step. "Reset".
+- Checkbox "Show average", checkbox "Show median". Both on by default.
+
+Behavior:
+- The chart adds one new reading every 100 ms (10 readings a second).
+- True distance starts at 150 cm and stays constant until "Person walks in" changes it to 40 cm.
+- Moving average = mean of the last `window` readings. Median = the middle value of the sorted last `window` readings. Both match the chapter's code. With fewer readings than the window, use all readings so far.
+- After "Person walks in", measure the number of readings until each filter output is within 10 cm of 40 and show it as "Lag: N readings".
+- With window size 1, both filters equal the raw signal.
+
+Default state: Window 5, noise 3 cm, spike chance 5%, true distance 150 cm. The median line stays flat when a spike appears. The average line jumps.
+
+Assessment/Challenge: Set the spike chance to 15% and the window to 5. Which filter stays closer to 150 cm? (Answer: The median filter.) Now set the window to 15 and press "Person walks in". What happens to the lag? (Answer: The lag grows to about 8 readings, so the robot reacts more slowly.)
+
+Responsive: redraw on window resize.
+</details>
+
+Your collision code reads the ToF sensor many times a second. A single spike can fool a robot into stopping for no reason. A long window makes it slow to notice a real obstacle. The sim helps you pick a window size that is smooth enough and quick enough for your robot's speed.
 
 ---
 

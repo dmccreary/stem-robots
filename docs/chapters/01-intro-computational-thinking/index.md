@@ -107,6 +107,53 @@ Before we continue, let's see how all four pillars work together as a team.
 | **Pattern Recognition** | Find and reuse what repeats | The sense → decide → act loop appears in every behavior |
 | **Algorithm Design** | Write the exact steps to solve the problem | Write the stop-reverse-turn sequence as runnable code |
 
+Decomposition is easiest to learn by doing it. The tree below starts with one big goal, "Avoid the wall." You split it into smaller tasks, and then split those again, until each piece is small enough to write as a few lines of code.
+
+#### Diagram: Robot Decomposition Tree
+
+<iframe src="../../sims/robot-decomposition-tree/main.html" width="100%" height="522px" scrolling="no"></iframe>
+[Run Robot Decomposition Tree Fullscreen](../../sims/robot-decomposition-tree/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Split a big robot goal into smaller tasks until each one is simple enough to code</summary>
+Type: microsim
+**sim-id:** robot-decomposition-tree<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** moving-rainbow/decomposition-in-action (https://github.com/dmccreary/moving-rainbow/tree/main/docs/sims/decomposition-in-action). Replace the LED-strip goal with the robot goals below and add the "small enough to code" check.
+
+Learning objective: Apply (Bloom L3) — break a robot goal into sub-tasks and decide when a task is small enough to write as code.
+
+Canvas layout: 700 px wide (responsive), 520 px tall. Left 68%: the tree, with the goal at the top and children below. Right 32%: a "Goal Picker" panel and a status panel. Total iframe height 522 px.
+
+Visual elements:
+- Tree nodes are rounded rectangles with a label. Unsplit nodes are light blue (#bbdefb). Nodes marked "small enough" are green (#a5d6a7) with a small check mark. The selected node has an orange (#e65100) outline.
+- Lines connect each parent to its children.
+- A "pieces" counter in the status panel shows how many green (ready-to-code) leaf nodes exist, for example "3 of 3 pieces ready".
+- A text bubble under each green node shows a one-line MicroPython idea, such as `motor_forward(75)`.
+
+Interactive controls:
+- Dropdown "Robot goal" with three choices: "Avoid the wall" (default), "Follow a line", "Show distance on the OLED".
+- Click any blue node, then click the "Split it" button. The node grows 2 to 3 children from a fixed answer bank for that goal.
+- "Small enough to code?" button, active when a node is selected. It marks a node green if it is a leaf in the answer bank, or shows the hint "Still too big. Can you split it more?" if not.
+- "Reset" button clears the tree back to the single goal node.
+
+Behavior:
+- Answer bank for "Avoid the wall": Goal splits into (1) "Spin the motors forward", (2) "Read the distance sensor every 0.1 s", (3) "If distance is under 20 cm, stop and turn". Node 3 splits again into "Stop both motors", "Reverse for 1 s", "Turn left or right". All leaf nodes are "small enough".
+- Answer bank for "Follow a line": Goal splits into "Read the left and right line sensors", "Decide: is the line left, center, or right?", "Steer the motors to match". The middle node splits into "Left sensor sees dark", "Right sensor sees dark".
+- Answer bank for "Show distance on the OLED": Goal splits into "Read the distance sensor", "Turn the number into text", "Draw the text on the OLED".
+- A node marked "small enough" cannot be split again. Splitting a green node shows "Already small. Time to code it!"
+- When every leaf is green, the status panel shows "Fully decomposed! Each piece is ready to code." and the tree glows softly.
+
+Default state: "Avoid the wall" selected, only the goal node shown, no node selected, counter reads "0 pieces ready".
+
+Assessment/Challenge: Fully decompose "Avoid the wall". How many green pieces do you end up with? (Answer: 5.) Then say which pillar you just used. (Answer: decomposition.)
+
+Responsive: redraw on window resize. On narrow screens the right panel stacks below the tree.
+</details>
+
+Notice how each green piece is small enough to test on its own. That is what makes robot code easier to write and debug. In the labs, you will write each piece as its own function, such as one function for reading the sensor and one for turning.
+
 !!! mascot-thinking "Hmm, think about this for a second…"
     ![Sparky thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
     Next time you do something in daily life — making breakfast, finding your way around school, packing a bag — try to catch yourself using one of the four pillars. You will be surprised how often your brain already thinks computationally. We're just giving those habits names so we can use them on purpose.
@@ -142,6 +189,52 @@ Before you use the debugging checklist below, here is one mindset shift that wil
 | **Check the obvious** | Any typos, wrong indentation, missing colons? | Compare to a working example |
 | **Add a print statement** | What is the value of each variable? | Print variables at key points to trace the problem |
 | **Undo the last change** | Did the code work before your last edit? | Revert that one change and test again |
+
+A checklist is helpful, but real bugs come with real symptoms. The flowchart below lets you pick a robot problem and follow the questions an engineer would ask, one step at a time.
+
+#### Diagram: Robot Debugging Flowchart
+
+<iframe src="../../sims/robot-debugging-flowchart/main.html" width="100%" height="542px" scrolling="no"></iframe>
+[Run Robot Debugging Flowchart Fullscreen](../../sims/robot-debugging-flowchart/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Walk through yes/no debugging questions for common robot symptoms</summary>
+Type: microsim
+**sim-id:** robot-debugging-flowchart<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** computer-science/debugging-flowchart (https://github.com/dmccreary/computer-science/tree/main/docs/sims/debugging-flowchart). Replace the generic software questions with the robot symptoms and questions below.
+
+Learning objective: Apply (Bloom L3) — use a step-by-step debugging path to decide whether a robot problem comes from hardware or code, and to choose one thing to change.
+
+Canvas layout: 700 px wide (responsive), 540 px tall. Top strip (60 px): symptom dropdown and Restart button. Main area: a vertical flowchart of diamonds (questions) and rectangles (actions). Bottom strip (60 px): a "What I have learned" log. Total iframe height 542 px.
+
+Visual elements:
+- Question nodes are yellow diamonds (#fff59d). Action nodes are light blue rectangles (#bbdefb). Final "fix" nodes are green (#a5d6a7).
+- The current node has an orange (#e65100) outline and pulses gently. Nodes already visited turn gray with a small check.
+- The flow line from visited nodes to the current node is drawn thick navy (#1a237e).
+- The log strip lists each answer as text, for example "Error message read: yes".
+
+Interactive controls:
+- Dropdown "Symptom": "Nothing happens when I power on" (default), "Error message in Thonny", "Robot spins instead of going straight", "Robot runs but does the wrong thing".
+- "Yes" and "No" buttons under the current question node.
+- "Restart" button returns to the first question for the selected symptom.
+
+Behavior:
+- Each symptom has its own path of 4 to 6 nodes. Example for "Robot spins instead of going straight": Q1 "Did it work before your last change?" Yes leads to action "Undo the last change and test again". No leads to Q2 "Are both motor wires firmly in M1 and M2?" No leads to fix "Reseat the wires, tighten screws". Yes leads to Q3 "Are both motors given the same speed in code?" No leads to fix "Set both speeds to the same value". Yes leads to action "Add a print statement for each speed".
+- Example for "Error message in Thonny": Q1 "Did you read the error word by word?" No leads to action "Read it now". Yes leads to Q2 "Does it say SyntaxError?" Yes leads to fix "Check colons, quotes, and indentation on the named line". No leads to fix "It is a logic or name error. Print your variables."
+- Example for "Nothing happens": Q1 "Is the green power LED on?" then Q2 "Are the batteries fresh?" then Q3 "Was the program saved as main.py on the board?"
+- Every path ends in exactly one green fix node and a Sparky-style message: "Change only that one thing, then test again."
+- The log records every answer so the student can see their own reasoning trail.
+
+Default state: symptom "Nothing happens when I power on", first question shown, log empty.
+
+Assessment/Challenge: Choose "Robot spins instead of going straight" and answer No, No, Yes. What is the last action node? (Answer: "Add a print statement for each speed".) Which debugging table step is that? (Answer: "Add a print statement".)
+
+Responsive: redraw on window resize. Diamonds shrink but keep a minimum 44 px tap target for the Yes and No buttons.
+</details>
+
+Debugging is a skill, not luck. Each question in the flowchart matches a step from the table above, and each path ends with one small change you can test on your robot. Trying the flowchart on a real bug in your first lab will feel much less scary.
 
 ### Testing and Iteration: Improve Every Time
 
@@ -240,6 +333,55 @@ Now imagine the amount of water actually flowing through the pipe. **Current** i
 
 Your robot gets its voltage from AA batteries. Each AA battery provides 1.5 volts. Four batteries connected end to end — called a **series** connection — give you 6 volts total. That 6 volts powers your microcontroller, your motors, and your sensors.
 
+Water is a good picture for voltage and current, but it is easier to feel when you can turn the knobs yourself. In the simulation below, a pump pushes water around a loop of pipe. A battery pushes charge around a loop of wire in the same way.
+
+#### Diagram: Voltage and Current Water Analogy
+
+<iframe src="../../sims/voltage-current-water-analogy/main.html" width="100%" height="422px" scrolling="no"></iframe>
+[Run Voltage and Current Water Analogy Fullscreen](../../sims/voltage-current-water-analogy/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Side-by-side water pipe loop and electric circuit that respond to the same voltage and resistance sliders</summary>
+Type: microsim
+**sim-id:** voltage-current-water-analogy<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** circuits/water-flow-analogy (https://github.com/dmccreary/circuits/tree/main/docs/sims/water-flow-analogy) and learning-micropython/ohms-law-calculator (https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/ohms-law-calculator). Keep the two-panel analogy; use the calculator's current readout and set the load to a robot motor.
+
+Learning objective: Explain (Bloom L2) — describe how voltage acts like water pressure and current acts like water flow, and predict what happens when either one changes.
+
+Canvas layout: 700 px wide (responsive), 420 px tall. Left half: "Water Loop". Right half: "Robot Circuit". Bottom strip (90 px): two sliders and a readout row. Total iframe height 422 px.
+
+Visual elements:
+- Left panel: a rectangular pipe loop with a pump on the left side (labeled "Pump = Battery"), a narrow section on the right (labeled "Narrow pipe = Motor"), and blue dots that flow around the loop. Dot speed shows flow.
+- Right panel: the same loop drawn as wire, with a battery symbol on the left (labeled "Battery pack") and a motor circle with "M" on the right. Yellow dots (charge) flow around the wire at the same speed as the blue dots.
+- A pressure gauge under the pump and a voltage label under the battery show matching values.
+- The wire and pipe colors: pipe steel blue (#1976d2), wire navy (#1a237e), motor circle orange (#e65100).
+- If the loop is broken (see the switch below), the dots stop and a red "Open circuit: no flow" banner appears.
+
+Interactive controls:
+- Slider "Voltage (batteries in series)": 1 to 4 batteries, step 1, default 4. Each battery adds 1.5 V, so the label shows "6.0 V" at 4.
+- Slider "Motor resistance (load)": 5 to 30 ohms, step 1, default 12.
+- Toggle button "Break the loop" that opens the circuit; it becomes "Fix the loop" when open.
+- Readout row: "Voltage = X V", "Resistance = Y ohms", "Current = Z A".
+
+Behavior:
+- Current = Voltage / Resistance. At the defaults, 6.0 V / 12 ohms = 0.50 A.
+- Dot speed on both sides is proportional to current, from stopped at 0 A to a maximum at 1.2 A (6.0 V across 5 ohms).
+- Pump pressure gauge height is proportional to voltage.
+- The pipe gets visibly narrower as resistance goes up.
+- Open loop sets current to 0 A and stops all dots. Closing the loop restores the flow.
+- Formula text under the sliders shows the math, for example "6.0 V / 12 ohms = 0.50 A".
+
+Default state: 4 batteries, 12 ohms, loop closed, dots flowing at medium speed.
+
+Assessment/Challenge: Set the sliders so the current is exactly 0.30 A. (Answer: 3 batteries at 4.5 V with 15 ohms gives 0.30 A. 2 batteries at 3.0 V with 10 ohms also works.) Then explain in one sentence why the dots stop when you break the loop.
+
+Responsive: redraw on window resize. On narrow screens the two panels stack, water on top.
+</details>
+
+Your robot is the same idea in a smaller package. The battery pack is the pump, the wires are the pipes, and the motors are the narrow section that does the work. When the loop breaks, or the batteries push too weakly, the robot slows or stops.
+
 ### Basic Circuits
 
 A **circuit** is a complete loop for electricity to travel through. Electricity needs a continuous path from the positive terminal of a power source, through the components, and back to the negative terminal. If the path breaks anywhere — a loose wire, a disconnected plug — no current flows and nothing works.
@@ -255,6 +397,55 @@ Think of a circuit like a circular racetrack. The electrons can only keep moving
 **AA batteries** are small, cylindrical cells that store chemical energy and convert it to electrical energy. Your battery holder holds four AA alkaline batteries — the standard type found at any grocery store. Four batteries in series gives you 6 volts total to power the entire robot.
 
 When your robot starts acting sluggish or the code behaves strangely, check your batteries first. A nearly-dead battery delivers less voltage than it should. Less voltage means motors spin slower, sensors read incorrectly, and the microcontroller may crash or reset unexpectedly. Fresh batteries fix a surprising number of "mysterious" problems.
+
+You can see this for yourself in the simulation below. It lets you wear down the batteries and watch the robot get slower, then start acting strangely.
+
+#### Diagram: Battery Pack Health Explorer
+
+<iframe src="../../sims/battery-pack-health-explorer/main.html" width="100%" height="442px" scrolling="no"></iframe>
+[Run Battery Pack Health Explorer Fullscreen](../../sims/battery-pack-health-explorer/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Four AA batteries in series, with a charge slider that shows how weak batteries change motor speed and reset risk</summary>
+Type: microsim
+**sim-id:** battery-pack-health-explorer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** intro-to-physics-course/series-parallel (https://github.com/dmccreary/intro-to-physics-course/tree/main/docs/sims/series-parallel). Keep the series battery drawing; remove the parallel option and add the robot health readouts below.
+
+Learning objective: Analyze (Bloom L4) — connect the voltage of a four-battery pack to motor speed and to the risk that the microcontroller resets.
+
+Canvas layout: 700 px wide (responsive), 440 px tall. Top 55%: the battery pack drawing and a robot top view. Bottom 45%: control strip and readouts. Total iframe height 442 px.
+
+Visual elements:
+- Four AA battery shapes in a row, connected end to end (+ to -), each labeled with its own voltage, for example "1.5 V". Battery fill color runs from green (#43a047) at full charge to yellow (#fdd835) to red (#e53935) when weak.
+- A total voltage bar: horizontal, 0 to 6 V, with a green zone from 4.8 to 6 V, a yellow zone from 4.0 to 4.8 V, and a red zone below 4.0 V.
+- A small top-view robot with two wheels. Wheel spin animation speed matches the motor speed.
+- A status lamp labeled "Brain (RP2040)": green when OK, blinking red when "Reset risk".
+- A text bubble from Sparky: "Fresh batteries!", "Getting sluggish...", or "Try new batteries!"
+
+Interactive controls:
+- Slider "Battery charge": 100% down to 0%, step 5%, default 100%.
+- Radio buttons "Program command": "Full speed (duty 65535)" (default) and "Half speed (duty 32768)".
+- Button "Swap in fresh batteries" sets charge back to 100%.
+- Toggle "Wear down over time" starts a slow auto-drain of 1% per second until the student turns it off or reaches 0%.
+
+Behavior:
+- Each battery voltage = 0.9 + 0.6 x (charge / 100) volts. At 100% each is 1.5 V (total 6.0 V). At 0% each is 0.9 V (total 3.6 V).
+- Pack voltage = 4 x per-battery voltage.
+- Motor speed shown = (pack voltage / 6.0) x commanded duty. At 100% charge and full duty this reads 100% speed. At 50% charge the pack is 4.8 V, so full duty gives 80% speed.
+- Status lamp: green when pack voltage is 4.5 V or higher; blinking red when below 4.5 V, with the message "The board may reset or read sensors wrong."
+- Readouts: "Pack voltage", "Motor speed (% of best)", "Board status".
+- Half speed always shows half of whatever the full-speed value is.
+
+Default state: 100% charge, full speed, all batteries green, lamp green, "6.0 V", "100%".
+
+Assessment/Challenge: Find the highest charge percent at which the board first shows "Reset risk". (Answer: 35%. The lamp turns red below 4.5 V, which happens at a charge of 37.5%, and the slider moves in 5% steps, so 40% is still green and 35% is red.) Then say what you would check first if your real robot drives slowly.
+
+Responsive: redraw on window resize. On narrow screens the robot view moves below the battery row.
+</details>
+
+The values in this simulation are simplified, but the lesson is real. Weak batteries lower the voltage, and lower voltage means slower motors and strange behavior. Before you blame your code, put in a fresh pack.
 
 ## Meet Your Robot: The Smart Car Chassis
 

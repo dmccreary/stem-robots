@@ -141,6 +141,49 @@ except Exception as e:
     print("Network issue:", e)
 ```
 
+#### Diagram: WiFi Connect Sequence
+
+This simulation walks through the steps your robot takes to join a WiFi network, one call at a time. You can make the connection succeed or fail and see what the code prints in each case.
+
+<iframe src="../../sims/wifi-connect-sequence/main.html" width="100%" height="582px" scrolling="no"></iframe>
+[Run WiFi Connect Sequence Fullscreen](../../sims/wifi-connect-sequence/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Step through the WLAN connect calls, with a 10 second timeout and failure paths</summary>
+Type: microsim
+**sim-id:** wifi-connect-sequence<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design. A Mermaid sequence diagram would also work, but p5.js lets the timeout clock run.
+
+Learning objective: Sequence (Bloom L3) — put the WiFi connection calls in the right order and explain what the robot does when the network is missing, the password is wrong, or the timeout runs out.
+
+Canvas layout: total width responsive (max 800 px), height 580 px. Left 480 px is a sequence diagram with two lifelines: "Robot (MicroPython)" and "Access Point (router)". A 100 px strip at the bottom shows the code. The right 320 px shows a status panel with a timeout bar.
+
+Visual elements:
+- Two vertical lifelines. Arrows between them for each step: `WLAN(STA_IF)`, `active(True)`, `connect(SSID, PASSWORD)`, "Authentication", "IP address (DHCP)", `isconnected()`, `ifconfig()`. Arrows for the robot-only calls (`WLAN`, `active`) loop back on the robot's lifeline.
+- Active step is highlighted gold. Finished steps are green. A failed step is red.
+- Code strip: the chapter's `while not wlan.isconnected()` loop with the current line highlighted.
+- Status panel: "wlan.status()" text, the elapsed-time bar from 0 to 10 s (the `ticks_diff() > 10000` check), and a serial console box that prints exactly what the robot would print, such as `Connected! IP address: 192.168.1.105` or `WiFi connection failed!`.
+- A small robot icon whose NeoPixel-style LED is amber while connecting, green when connected, and red on failure.
+
+Interactive controls:
+- Button "Next Step" and button "Auto Play" (one step per 1.2 s). Button "Reset".
+- Dropdown "Scenario": "Success" (default), "Wrong password", "Network out of range", "Slow router (connects at 8 s)", "Slow router (connects at 12 s)".
+- Slider "Timeout (s)": 2 to 20, default 10.
+- Toggle "Use secrets.py" (default on). When off, the code strip shows the SSID and password typed directly in main.py, with a red tag "Would be committed to git!".
+
+Behavior: the order is fixed. Steps 1 and 2 finish at once. Step 3 (`connect`) returns immediately and does not wait. Then the loop polls `isconnected()` every 0.1 s and the bar fills. Success: connects at 3 s, the DHCP arrow appears, `ifconfig()` returns a 4-tuple `('192.168.1.105', '255.255.255.0', '192.168.1.1', '192.168.1.1')`, and the console prints the IP. Wrong password: the authentication arrow returns a red X, `isconnected()` stays False until the timeout, then the console prints `WiFi connection failed!`. Out of range: no reply arrow at all, same timeout. Slow router: connects at the given time. It succeeds only if that time is below the timeout slider. After a failure, show a hint box: "Check the SSID, the password in secrets.py, and that the network is 2.4 GHz."
+
+Default state: scenario Success, timeout 10 s, step 0, empty console.
+
+Assessment/Challenge: Choose "Slow router (connects at 12 s)" with the default timeout. The robot reports a failure even though the router would have worked. Fix it using only the timeout slider. (Answer: set the timeout to 15 s or more.)
+
+Responsive: redraw on window resize.
+</details>
+
+The connect call does not wait for the router. That is why our code polls `isconnected()` in a loop with a timeout. If you see `WiFi connection failed!`, use the scenarios in the sim to check the usual causes before you change your code.
+
 ---
 
 ## Building a Web Server
@@ -173,6 +216,50 @@ A **socket** is a software endpoint for sending and receiving data over a networ
 Before the code, here is the flow: `socket.socket()` creates a socket object. `bind()` assigns it an address and port. `listen(1)` tells it to accept connections (up to 1 queued at a time). `accept()` blocks (waits) until a client connects, then returns a new socket and the client's address.
 
 **Port 80** is the default port for HTTP. When you type a URL without a port number, the browser automatically uses port 80. This is why we bind to port 80 — no need to type `:8080` in the URL.
+
+#### Diagram: Socket Server Lifecycle
+
+This simulation shows the life of your robot's web server socket, from `socket()` to `close()`. You watch a browser connect and see which calls wait and which return right away.
+
+<iframe src="../../sims/socket-server-lifecycle/main.html" width="100%" height="602px" scrolling="no"></iframe>
+[Run Socket Server Lifecycle Fullscreen](../../sims/socket-server-lifecycle/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Follow the server socket calls bind, listen, accept, recv, send, and close</summary>
+Type: microsim
+**sim-id:** socket-server-lifecycle<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** dmccreary/networking `socket-lifecycle-diagram` — https://github.com/dmccreary/networking/tree/main/docs/sims/socket-lifecycle-diagram. Keep its two-column client/server lifecycle layout. Change the server column to the Pico W web server calls in this chapter, rename the client column "Browser", and add the blocking indicator and the "second browser" button.
+
+Learning objective: Sequence (Bloom L3) — order the socket calls a web server makes and explain which call blocks and why the robot handles one browser at a time.
+
+Canvas layout: total width responsive (max 800 px), height 600 px. Two columns of 340 px: "Browser (client)" on the left and "Robot (server, Pico W)" on the right. A 60 px bar at the bottom shows the code line for the current step. A 100 px strip at the bottom shows a queue.
+
+Visual elements:
+- Server column, top to bottom: `s = socket.socket()`, `s.bind(addr)` (port 80), `s.listen(1)`, then a loop box containing `conn, client = s.accept()`, `request = conn.recv(1024)`, `conn.send(html_page())`, `conn.close()`. An arrow returns from `close()` to `accept()`.
+- Browser column: "connect to 192.168.1.105:80", "send GET / or POST cmd=forward", "receive HTML", "close".
+- Horizontal arrows between the columns for the network messages. Active step is gold, finished steps are green.
+- Blocking indicator: when the server sits at `accept()` waiting, show a pulsing red "WAITING (blocked)" tag and a stopwatch. This shows that `accept()` blocks until someone connects.
+- Queue strip: a box holding up to 1 waiting browser (from `listen(1)`), drawn as a small browser icon.
+- Motors panel: a small robot that spins its wheels while `go_forward()` runs after a POST with `cmd=forward`.
+
+Interactive controls:
+- Button "Next Step". Button "Auto Play". Button "Reset".
+- Button "Browser A connects" and button "Browser B connects". Both can be pressed at any time.
+- Dropdown "Request type": GET / (default), POST cmd=forward, POST cmd=stop.
+- Toggle "Add s.close() at the end" (default on). When off, the port shows "Address already in use" on the next restart.
+
+Behavior: the server always starts at `socket()` and ends the setup part at `listen(1)`. After that it sits at `accept()` until a browser connects. When A connects, `accept()` returns a NEW socket `conn` and the client address, and the server moves to `recv`. If B connects during that time, it goes into the queue strip (one slot). A second waiting browser beyond that is refused, drawn with a red X and "Connection refused". When the server finishes `close()` and returns to `accept()`, it takes B from the queue. For "POST cmd=forward" the server calls `go_forward()` before `send`. For "GET /" it only sends the page. The step counter shows "Step n of 9".
+
+Default state: server at the top of the list before `socket()`, no browsers, queue empty, request type GET.
+
+Assessment/Challenge: Press "Browser A connects" and "Browser B connects" and "Browser B connects" again before the server finishes. What happens to the second B, and what number in the code controls this? (Answer: it is refused, because `listen(1)` queues only one waiting browser.)
+
+Responsive: redraw on window resize.
+</details>
+
+Every line in the diagram is a line in the complete web server program. Because `accept()` blocks and the loop handles one browser at a time, your robot cannot do other work while it waits. That is why the controller page must be small and quick.
 
 ### HTML Page Generation
 
@@ -344,6 +431,51 @@ async function sendCmd(cmd) {
 ```
 
 This turns the robot controller into a real-time interface — press Forward, robot starts moving immediately. Press Stop, it stops. No page reload between commands.
+
+#### Diagram: Fetch vs. Form Page Reload
+
+This simulation puts two controller pages side by side. The left page uses the form buttons from earlier in the chapter. The right page uses `fetch()`. You click the same buttons on both and watch what the browser does.
+
+<iframe src="../../sims/fetch-async-control/main.html" width="100%" height="562px" scrolling="no"></iframe>
+[Run Fetch vs. Form Page Reload Fullscreen](../../sims/fetch-async-control/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Compare a form POST that reloads the page with a fetch() call that only updates the status text</summary>
+Type: microsim
+**sim-id:** fetch-async-control<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design
+
+Learning objective: Compare (Bloom L4) — describe why a `fetch()` call updates only part of a page while a form submit reloads the whole page, and how that makes robot control smoother.
+
+Canvas layout: total width responsive (max 800 px), height 560 px. Two browser windows side by side, each 380 px wide and 300 px tall: "Form buttons (page reload)" and "fetch() buttons (no reload)". Under them, a 160 px timeline strip and a 60 px robot row.
+
+Visual elements:
+- Each browser window has a title bar, a heading "Sparky Robot Control", a line "Status: __", and five buttons: Forward, Back, Left, Right, Stop.
+- Form window: on click, the whole window goes white for 400 ms with a spinning wheel in the tab, and the page contents redraw. A "Page loads: n" counter goes up.
+- Fetch window: on click, the pressed button stays in place and only the status text flashes yellow and changes. The counter stays at 1.
+- Timeline strip: for each window, a horizontal bar that shows time. A blue block is "request in flight" (round trip time), a white block is "page blank while reloading", a green tick is "robot starts moving". The form bar has both blue and white blocks. The fetch bar has only a small blue block.
+- Robot row: a small robot with wheels that turn after the command arrives at the robot. Two robots, one under each window.
+- Code panel (right of the timeline): the 8 lines of `sendCmd(cmd)` with the active line highlighted (`fetch`, `await response.text()`, `innerText = text`).
+
+Interactive controls:
+- Click any of the five buttons in either window (or press the "Click both" button to press the same button in both).
+- Slider "Network delay (ms)": 20 to 500, step 10, default 100.
+- Slider "Page size (KB)": 1 to 50, default 5. Bigger pages take longer to reload.
+- Button "Fast clicks" — presses Forward, Left, Stop, Forward in 1 s in both windows.
+- Button "Reset".
+
+Behavior: the form window time per click = network delay + page size x 8 ms (reload). A click during the reload is lost, which shows a red "Click missed" tag. The fetch window time per click = network delay + about 5 ms for the status text. Each command is a small message (about 10 bytes), so page size does not matter. The robot starts moving when the request arrives (after half the network delay). Show the "Status" text update in the fetch window after the full round trip. Also show that the button press to robot motion is faster on the fetch side, especially for a large page.
+
+Default state: both windows show "Status: Ready", counters at 1, delay 100 ms, page size 5 KB.
+
+Assessment/Challenge: Set page size to 50 KB and press "Fast clicks". How many clicks does each window register? Which one would you rather use to drive a robot toward a wall? (Answer: the form window misses clicks, and the fetch window registers all 4, so fetch is safer.)
+
+Responsive: redraw on window resize.
+</details>
+
+The `sendCmd()` function runs in the browser, not on the robot. The robot still sees a normal POST request and answers it the same way. The only change is that the page stays put, so the Stop button is always ready when you need it.
 
 !!! mascot-thinking "Your robot is now a web server"
     ![Sparky thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }

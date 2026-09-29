@@ -245,6 +245,52 @@ This is a complete, production-quality collision avoidance program. The constant
     ![Sparky pointing up](../../img/mascot/tip.png){ class="mascot-admonition-img" }
     The 20 cm and 50 cm values are starting points, not magic numbers. Run the robot on your actual test surface, observe where it stops, and adjust. A robot on carpet needs different thresholds than one on tile. A competition arena is different from a classroom floor. Tuning is part of the engineering process — expect to iterate.
 
+#### Diagram: Collision Avoidance Arena
+
+This simulation shows a top-down view of a small robot driving around a walled arena with a few boxes in it. The robot runs the same rules as our program: full speed above 50 cm, half speed from 20 to 50 cm, and stop and turn below 20 cm. You can change the thresholds and watch the path the robot leaves behind.
+
+<iframe src="../../sims/collision-avoidance-arena/main.html" width="100%" height="602px" scrolling="no"></iframe>
+[Run Collision Avoidance Arena Fullscreen](../../sims/collision-avoidance-arena/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Drive a virtual robot around an arena and tune its stop and slow distances</summary>
+Type: microsim
+**sim-id:** collision-avoidance-arena<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design. This one is spatial and behavioral. It must not repeat the flowchart in `collision-decision-flow` (Chapter 4), which only shows the decision logic.
+
+Learning objective: Apply (Bloom L3) — adjust `STOP_DIST_CM` and `SLOW_DIST_CM` and predict how the robot's path, speed, and number of turns will change.
+
+Canvas layout: total width responsive (max 800 px), height 600 px. The arena fills the top 500 px. A control strip fills the bottom 100 px. Scale is 1 cm = 2 px, so a 360 cm x 240 cm arena is drawn at 720 x 480 px.
+
+Visual elements:
+- Arena: light gray floor (#EEEEEE) with a dark gray 4 px wall border. Place 3 fixed box obstacles (rectangles, 40 x 40 cm to 60 x 30 cm) in tan (#D2B48C).
+- Robot: a 20 x 16 cm rounded rectangle in OliveDrab (#6B8E23) with a white triangle showing the heading. Two small dark rectangles show the wheels.
+- ToF beam: a thin line and translucent cone (10 degrees wide) from the front of the robot, colored by zone: green above 50 cm, amber from 20 to 50 cm, red below 20 cm. The beam ends at the first wall or box it hits.
+- Two dashed arcs in front of the robot at the slow and stop distances, labeled "50 cm" and "20 cm" (they update with the sliders).
+- Path trace: a fading blue polyline of the last 20 seconds of robot positions. Turn spots are marked with small orange dots.
+- Readout panel (top-right of the arena): "Distance: __ cm", "Zone: FORWARD / SLOW / TURN", "Speed: __ duty" (65535, 32767, or 0), "Turns: __", "Last turn: LEFT / RIGHT".
+
+Interactive controls:
+- Slider "Stop distance (cm)": 5 to 40, step 1, default 20. Sets `STOP_DIST_CM`.
+- Slider "Slow distance (cm)": 20 to 100, step 5, default 50. Sets `SLOW_DIST_CM`. It cannot go below the stop distance plus 5.
+- Slider "Speed (cm/s at full duty)": 20 to 100, default 60.
+- Dropdown "Turn choice": "Random (real code)", "Always left", "Always right". Default Random.
+- Button "Run / Pause". Button "Reset". Button "Clear Path".
+- Click in the arena to drop the robot at that spot with a random heading.
+
+Behavior: each frame (60 fps) the sim computes the ToF distance by casting a ray from the robot front to the nearest wall or box. Then it uses the same rules as the chapter code. If distance > slow, speed is 65535 (full, 60 cm/s by default). If stop < distance <= slow, speed is 32767 (half). If distance <= stop, speed is 0 for 0.1 s, then the robot spins in place for 0.4 s (about 90 degrees) in the chosen direction, and the turn counter goes up by 1. Speed in cm/s is duty / 65535 times the speed slider. Add 1 cm of random noise to the distance reading. If the robot ever has to turn 6 times in 10 seconds, show a small banner "Stuck in a corner?" With "Always left", it is easy to make the robot circle a box, which shows why random turns help.
+
+Default state: robot in the arena center heading right, paused, thresholds 20 and 50, Turn choice Random, empty path.
+
+Assessment/Challenge: Set the slider to "Always left" and press Run for 60 seconds. Then switch to "Random" and run 60 seconds again. Which mode covers more of the arena, and which gets stuck more often? Also set stop distance to 5 cm at 100 cm/s. The robot should now touch a wall. Explain why. (Answer: the robot needs time to react, so it moves too far before the next sensor reading.)
+
+Responsive: redraw on window resize.
+</details>
+
+The arena uses the same three-zone logic as the `while True` loop in our program. The stop and slow sliders are the `STOP_DIST_CM` and `SLOW_DIST_CM` constants in `config.py`. Try values in the sim first. Then copy the ones that work into your robot and tune them on the real floor.
+
 ---
 
 ## Line Following
@@ -318,6 +364,50 @@ finally:
     ![Sparky warning](../../img/mascot/warning.png){ class="mascot-admonition-img" }
     Bright sunlight or fluorescent flicker can confuse IR sensors. Test your line follower in the same lighting conditions you'll use for the actual run. If the robot misbehaves in a specific area, check for shadows, shiny surfaces, or light reflections — not always the code's fault.
 
+#### Diagram: Line Follower Simulator
+
+This simulation shows a top-down view of a robot with two IR sensors following a black line on a white floor. You can change the speed and how hard the robot steers, then watch how those settings change the way it tracks the line.
+
+<iframe src="../../sims/line-follower-simulator/main.html" width="100%" height="602px" scrolling="no"></iframe>
+[Run Line Follower Simulator Fullscreen](../../sims/line-follower-simulator/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Tune a two-sensor line follower on an oval, figure-8, or zigzag track</summary>
+Type: microsim
+**sim-id:** line-follower-simulator<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design. It may borrow the animation loop and slider panel style from https://github.com/dmccreary/control-systems/tree/main/docs/sims/feedback-loop-simulator. The track, sensors, and motor model are new.
+
+Learning objective: Analyze (Bloom L4) — explain how the four IR sensor states and the fast/slow motor speeds make the robot steer, and predict what happens when speed is too high or the correction is too weak.
+
+Canvas layout: total width responsive (max 800 px), height 600 px. Left 600 px is the track view. Right 200 px is the control panel. Under the track view, a 40 px strip shows the sensor state table.
+
+Visual elements:
+- Track: white background, black line 4 cm wide (drawn 8 px wide at 1 cm = 2 px). Three tracks: "Oval", "Figure-8", "Zigzag".
+- Robot: a 16 x 12 cm rounded rectangle in OliveDrab (#6B8E23) with two wheels. Two small circles mark the IR sensors at the front corners, 4 cm apart. Each circle is filled black when it reads LOW (over the line, value 0) and light yellow when HIGH (over white, value 1).
+- Path trace: thin blue polyline from the robot center. Faded after 15 seconds.
+- State strip: the four-row table from the chapter (HIGH/HIGH, LOW/HIGH, HIGH/LOW, LOW/LOW) with the active row highlighted in gold and the action text next to it ("Drive straight", "Turn right", "Turn left", "Line lost").
+- Live readouts: "Left IR: 0/1", "Right IR: 0/1", "Left motor: duty", "Right motor: duty", "Time on line: __ %".
+
+Interactive controls:
+- Slider "Fast speed (duty)": 20000 to 65535, step 1000, default 65535 (`FULL`).
+- Slider "Slow speed (duty)": 0 to 60000, step 1000, default 32767 (`HALF`). Cannot exceed the fast speed.
+- Slider "Update rate (Hz)": 5 to 100, default 50 (the `sleep(0.02)` in the chapter code).
+- Dropdown "Track": Oval (default), Figure-8, Zigzag.
+- Button "Run / Pause", button "Reset robot", button "Clear path".
+
+Behavior: at each update tick (rate slider), read both sensors by checking whether the sensor point is within 2 cm of the line center. Then apply the exact rules from `adjust_motors()`. Left LOW and right HIGH: left motor gets slow duty, right motor gets fast duty (turn right). Left HIGH and right LOW: right motor gets slow duty, left gets fast (turn left). Both LOW or both HIGH: both motors fast (drive straight). Between updates the motors keep their last duty. Every 1/60 s move the robot with differential drive: forward speed = (left + right) / 2 / 65535 x 80 cm/s, turn rate = (right - left) / 65535 x 80 / 12 rad/s (wheel spacing 12 cm). "Time on line" is the share of frames where at least one sensor reads LOW. If both sensors read HIGH for more than 2 seconds, stop the robot and show "Line lost!" in red. Note that both-HIGH drives straight in the chapter code, so on sharp curves the robot will lose the line. This is a good discussion point.
+
+Default state: Oval track, robot on the line facing along it, paused, fast 65535, slow 32767, 50 Hz.
+
+Assessment/Challenge: On the Zigzag track, find the largest fast speed where the robot still stays on the line for 30 seconds (Time on line above 90 percent). Then lower the update rate to 10 Hz. What happens? (Answer: the robot reacts too slowly and leaves the line, so a fast loop matters as much as fast motors.)
+
+Responsive: redraw on window resize.
+</details>
+
+The two circles on the robot match the two IR sensors on `IR_LEFT_PIN` (28) and `IR_RIGHT_PIN` (27). The fast and slow duty values are the `FULL` and `HALF` constants in `adjust_motors()`. If the simulated robot loses the line at a speed, your real robot probably will too, so slow it down or shorten the `sleep()` time.
+
 ---
 
 ## Robot Dance Sequence
@@ -352,6 +442,50 @@ def dance():
 ```
 
 Encourage creativity here: try adding buzzer tones, NeoPixel color changes, and OLED face changes synchronized with motor moves. A robot that blinks, beeps, and dances is memorable.
+
+#### Diagram: Dance Beat Sequencer
+
+This simulation shows a beat timeline for a robot dance. You pick a tempo, place moves on the beats, and watch a small robot perform them. The timeline also shows the exact `sleep()` time each move needs.
+
+<iframe src="../../sims/dance-beat-sequencer/main.html" width="100%" height="502px" scrolling="no"></iframe>
+[Run Dance Beat Sequencer Fullscreen](../../sims/dance-beat-sequencer/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Build an 8-beat robot dance on a BPM timeline and preview it</summary>
+Type: microsim
+**sim-id:** dance-beat-sequencer<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design
+
+Learning objective: Apply (Bloom L3) — convert a tempo in BPM into seconds per beat and arrange timed open-loop moves into a dance that fits the beats.
+
+Canvas layout: total width responsive (max 800 px), height 500 px. Top 120 px is the control bar. Middle 200 px is the timeline grid. Bottom 180 px is a stage showing the robot and the generated code.
+
+Visual elements:
+- Timeline: 8 columns (beats 1 to 8), each with a half-beat split so moves can be 0.5 or 1 or 2 beats long. Each move is a colored block: Forward (green), Back (orange), Spin left (blue), Spin right (purple), Stop (gray).
+- Beat ruler across the top with numbers 1 to 8. A vertical red playhead sweeps across during playback.
+- Stage: a top-down 300 x 150 px floor with a small OliveDrab robot that moves and spins as blocks play. A trail shows where it has been.
+- Code box: the dance() function that matches the timeline, with lines like `go_forward(); sleep(0.5)  # beat 1`. The line for the active move is highlighted.
+- Metronome: a circle that flashes on every beat.
+
+Interactive controls:
+- Slider "Tempo (BPM)": 60 to 180, step 5, default 120. Shows "Seconds per beat = 60 / BPM = 0.50".
+- Palette of 5 move buttons. Click a move, then click a beat cell to place it. Click a placed block to remove it.
+- Dropdown "Block length": half beat (0.5), one beat (1), two beats (2). Default 1.
+- Button "Play", button "Stop", button "Clear", button "Load Chapter Dance" (fills in the 8-beat example from the chapter).
+- Checkbox "Metronome click" (default on).
+
+Behavior: seconds per beat = 60 / BPM. A block that lasts N beats runs for N x (60 / BPM) seconds. Total length is shown as "Dance length: __ s". Playback moves the robot: forward and back move it 30 px per beat, spin turns it 90 degrees per 0.5 beat. If the total blocks add up to more than 8 beats, show a red message "Too long for 8 beats". If a gap is left, fill it with Stop and show a gray block. Note that a dance is open-loop, so add a small "Drift" slider (0 to 10 percent, default 0) that makes each move slightly off. After a few repeats the robot ends far from where it started. This shows why open-loop dances drift.
+
+Default state: the chapter's 8-beat dance loaded at 120 BPM, stopped, playhead at beat 1.
+
+Assessment/Challenge: How many seconds long is the chapter's dance at 120 BPM? At 90 BPM? (Answers: 4 s at 120 BPM, and 5.33 s at 90 BPM.) Then set Drift to 5 percent and repeat the dance 4 times. Where does the robot end up compared with the start?
+
+Responsive: redraw on window resize.
+</details>
+
+Each block in the sequencer is one line of the `dance()` function, and the `sleep()` number is the block length in beats times the seconds per beat. Change the BPM to see how one dance works for many songs. The drift slider reminds us why an open-loop dance needs a reset spot on the floor.
 
 ---
 
@@ -422,6 +556,47 @@ __pycache__/
 ```
 
 With these three files in place (`config.py`, `secrets.py`, `.gitignore`), your project follows professional engineering standards: hardware facts are separated from logic, credentials are protected, and your repository is clean.
+
+#### Diagram: Commit or Ignore Sorter
+
+This simulation shows a list of files from a robot project. You drag each file into a "Commit to git" bin or an "Add to .gitignore" bin, and the sim tells you why the choice is right or wrong.
+
+<iframe src="../../sims/git-secrets-sorter/main.html" width="100%" height="502px" scrolling="no"></iframe>
+[Run Commit or Ignore Sorter Fullscreen](../../sims/git-secrets-sorter/main.html){ .md-button }
+
+<details markdown="1">
+<summary>Sort project files into commit or .gitignore and see the resulting .gitignore file</summary>
+Type: microsim
+**sim-id:** git-secrets-sorter<br/>
+**Library:** p5.js<br/>
+**Status:** Specified<br/>
+**Reuse:** None — new design. It is a sorting quiz in the style of a concept classifier.
+
+Learning objective: Classify (Bloom L2) — decide which project files belong in version control and which belong in `.gitignore`, and explain the reason for each.
+
+Canvas layout: total width responsive (max 800 px), height 500 px. Left 260 px is a "file pile" of cards. The middle 300 px has two large drop bins stacked vertically. The right 240 px shows a live `.gitignore` preview and the feedback panel.
+
+Visual elements:
+- 10 file cards, each with a file icon and name: `main.py`, `config.py`, `secrets.py`, `.gitignore`, `__pycache__/`, `notes.pyc`, `.DS_Store`, `README.md`, `lib/vl53l0x.py`, `heading_log.csv`.
+- Bin 1 (green border): "Commit to git". Bin 2 (red border): "Add to .gitignore".
+- Feedback panel: after a drop, the card gets a green check or red X and one plain sentence of feedback, for example "secrets.py holds your WiFi password. Anyone who sees your repo would see it."
+- Live `.gitignore` preview: a monospace box that lists every file placed in the red bin, one per line.
+- Score: "Correct: __ / 10".
+
+Interactive controls:
+- Drag and drop each card into a bin (or click a card and press a bin button for keyboard use). A card can be moved again after a wrong drop.
+- Button "Check All" (colors every card), button "Reset", and button "Show Answers".
+
+Behavior: the correct answers are: Commit: `main.py`, `config.py`, `.gitignore`, `README.md`, `lib/vl53l0x.py`. Ignore: `secrets.py`, `__pycache__/`, `notes.pyc` (matches `*.pyc`), `.DS_Store`. The tenth card, `heading_log.csv`, is a discussion card: either bin is accepted, and the feedback says "Small logs can be committed for a class project. Large or private logs should be ignored." Feedback text for each file explains its reason: config.py has pin numbers (hardware facts, safe to share); pycache and .pyc are files Python rebuilds; .DS_Store is a Mac folder file with no use in the project. If `secrets.py` is placed in Commit, flash the bin red and show "Once a secret is committed, it stays in git history. You would need to change the password." Accept a match for `*.pyc` in the preview by showing the pattern rather than the file name.
+
+Default state: all cards in the pile, empty bins, empty preview, score 0 / 10.
+
+Assessment/Challenge: Place all files, press Check All, and get 10 of 10. Then compare the preview with the chapter's example `.gitignore`. Which line protects your WiFi password? (Answer: `secrets.py`.)
+
+Responsive: redraw on window resize.
+</details>
+
+The red bin builds the same `.gitignore` file you saw above. Your robot code, `config.py`, and libraries are safe to share, but `secrets.py` never is. Sort the files a few times until the choice feels automatic. Then check your own project folder for the same file types.
 
 ---
 
