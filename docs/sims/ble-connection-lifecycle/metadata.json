@@ -1,0 +1,95 @@
+{
+  "title": "BLE Connection Lifecycle",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A p5.js step-through of a Bluetooth Low Energy connection between a leader (central) and a follower (peripheral) robot. Two state machines highlight the current state in gold, a middle column shows the radio packet on the air, event badges show IRQ codes, a code strip shows the MicroPython call for each step, and a log shows what each robot prints. Students can send commands, walk out of range, or change the advertising name.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "ble-connection-lifecycle",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Robotics and Computer Science",
+    "topic": "BLE connection lifecycle and IRQ event handling",
+    "learningObjectives": [
+      "Put the BLE connection steps in order: advertise, scan, connect, write, disconnect",
+      "Match each step to the IRQ event code that fires on the leader or the follower",
+      "Match each step to the MicroPython call in the leader and follower code",
+      "Explain why a wrong advertising name or walking out of range stops the connection"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Sequence",
+    "duration": "20-25 minutes",
+    "prerequisites": [
+      "Central and peripheral roles, IRQ callbacks, and the leader and follower code from Chapter 12",
+      "BLE advertising and scanning",
+      "if/elif branches and functions from Chapter 4"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 544
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorAndTextLabels": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Next Step", "purpose": "Advance the connection by one step"},
+      {"type": "button", "label": "Auto Play", "purpose": "Advance one step every 1.5 seconds"},
+      {"type": "button", "label": "Reset", "purpose": "Start over with the follower advertising and the leader idle"},
+      {"type": "button", "label": "Send FORWARD", "purpose": "Write b\"FORWARD\" when both robots are connected"},
+      {"type": "button", "label": "Send STOP", "purpose": "Write b\"STOP\" when both robots are connected"},
+      {"type": "checkbox", "label": "Walk out of range", "default": false, "purpose": "Drop the link after 3 seconds"},
+      {"type": "select", "label": "Follower advertising name", "options": ["RobotFollower", "Robot2"], "default": "RobotFollower"},
+      {"type": "canvas click", "label": "State circles", "purpose": "Show a plain-language definition of a state"}
+    ]
+  },
+  "simulation": {
+    "modelType": "Two coupled finite-state machines driven by BLE events",
+    "variables": ["follower state", "leader state", "last IRQ event on each robot", "packet on the air", "command"],
+    "equations": [],
+    "assumptions": [
+      "Event codes match the constants in the Chapter 12 code: 1, 2, 3 on the follower and 5, 7, 8, 17 on the leader",
+      "The leader connects only if the advertising data contains b\"RobotFollower\"",
+      "The leader code does not restart scanning after a disconnect, as in the chapter"
+    ],
+    "limitations": [
+      "Service discovery (finding value_handle) is not shown",
+      "Timing values in the log are illustrative"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Worked example with step-through and failure cases",
+    "interactionPattern": "Next Step / Auto Play state machines with clickable states and event buttons",
+    "keyQuestions": [
+      "Why do the leader and follower get different event codes for the same connection?",
+      "Which event makes the follower start advertising again?",
+      "Why does the leader never connect to Robot2?",
+      "Where would you add code so the leader reconnects after a disconnect?"
+    ],
+    "commonMisconceptions": [
+      "Both robots get the same event code when they connect",
+      "The leader automatically scans again after a disconnect",
+      "The follower reads commands by polling instead of through the _IRQ_GATTS_WRITE event"
+    ],
+    "assessmentOpportunities": [
+      "Annotated leader and follower code with step numbers",
+      "Event code table for both robots",
+      "Exit ticket ordering four events with their codes"
+    ]
+  },
+  "chapter": "12-bluetooth-low-energy"
+}

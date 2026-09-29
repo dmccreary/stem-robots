@@ -153,7 +153,7 @@ The table below compares the two power options:
 
 This MicroSim helps you estimate how long your robot runs on one set of batteries. You pick a battery type, choose how hard the motors work, and see the runtime and a draining battery gauge.
 
-<iframe src="../../sims/battery-runtime-estimator/main.html" width="100%" height="462px" scrolling="no"></iframe>
+<iframe src="../../sims/battery-runtime-estimator/main.html" width="100%" height="472px" scrolling="no"></iframe>
 [Run Battery Runtime Estimator Fullscreen](../../sims/battery-runtime-estimator/main.html){ .md-button }
 
 <details markdown="1">
@@ -404,7 +404,7 @@ This should print something like `['0x29', '0x3c']` if both the distance sensor 
 
 This MicroSim shows how one microcontroller shares two wires with two devices. You send a message to the distance sensor or the OLED display and watch the address, the ACK reply, and the data bits move along SDA and SCL.
 
-<iframe src="../../sims/i2c-bus-explorer/main.html" width="100%" height="542px" scrolling="no"></iframe>
+<iframe src="../../sims/i2c-bus-explorer/main.html" width="100%" height="532px" scrolling="no"></iframe>
 [Run I2C Bus Explorer Fullscreen](../../sims/i2c-bus-explorer/main.html){ .md-button }
 
 <details markdown="1">
@@ -483,7 +483,7 @@ In this course, we primarily use I2C. The OLED display supports both I2C and SPI
 
 This MicroSim wires the same set of devices two ways. You add sensors to an I2C bus and to an SPI bus and count the wires and pins each choice uses. It helps you see when I2C's simplicity or SPI's speed is the better choice.
 
-<iframe src="../../sims/i2c-vs-spi-wiring/main.html" width="100%" height="482px" scrolling="no"></iframe>
+<iframe src="../../sims/i2c-vs-spi-wiring/main.html" width="100%" height="502px" scrolling="no"></iframe>
 [Run I2C vs SPI Wiring Comparison Fullscreen](../../sims/i2c-vs-spi-wiring/main.html){ .md-button }
 
 <details markdown="1">

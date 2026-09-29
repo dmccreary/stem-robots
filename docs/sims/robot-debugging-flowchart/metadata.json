@@ -1,0 +1,88 @@
+{
+  "title": "Robot Debugging Flowchart",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Pick a robot symptom and answer yes-or-no questions one step at a time to decide whether the problem is hardware or code and find one thing to change.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/robot-debugging-flowchart/",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Computer Science and Engineering",
+    "topic": "Systematic debugging of robot hardware and code",
+    "learningObjectives": [
+      "Apply a one-question-at-a-time debugging procedure to a robot symptom",
+      "Classify the likely cause of a robot problem as hardware or code",
+      "Select a single change to test at the end of a debugging path",
+      "Match flowchart steps to the rows of the chapter's debugging table"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "Apply",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "The five-step problem-solving strategy (Chapter 1: A Strategy for Hard Problems)",
+      "Syntax errors versus logic errors and the debugging table (Chapter 1: Debugging)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 540
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true,
+      "minimumTapTarget": "44 px Yes and No buttons"
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "select", "label": "Symptom", "options": ["Nothing happens when I power on", "Error message in Thonny", "Robot spins instead of going straight", "Robot runs but does the wrong thing"], "default": "Nothing happens when I power on"},
+      {"type": "button", "label": "Yes", "purpose": "Answer yes to the current question"},
+      {"type": "button", "label": "No", "purpose": "Answer no to the current question"},
+      {"type": "button", "label": "Restart", "purpose": "Return to the first question for the selected symptom"}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Binary decision tree (one spine of questions per symptom)",
+    "assumptions": [
+      "Each question has one answer that continues and one answer that ends at a fix or action",
+      "Intermittent faults usually point to hardware; repeatable faults usually point to code"
+    ],
+    "limitations": [
+      "Covers four common beginner symptoms, not every possible robot fault",
+      "Real faults can have more than one cause at the same time"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Worked decision path with a visible reasoning trail",
+    "interactionPattern": "Step-through decision tree with Yes/No buttons",
+    "keyQuestions": [
+      "Is this problem more likely in the hardware or in the code?",
+      "Which question rules out the most causes with the least effort?",
+      "Why should each path end with only one thing to change?",
+      "Answer No, No, Yes for the spinning robot. Which debugging table step do you reach?"
+    ],
+    "commonMisconceptions": [
+      "Every robot problem is a bug in the code",
+      "Changing several things at once is faster than changing one thing",
+      "An error message means the whole program is wrong"
+    ],
+    "assessmentOpportunities": [
+      "Recorded log trails for each symptom",
+      "Challenge answer: Add a print statement for each speed",
+      "Exit ticket: write the first two questions for a new symptom and tag each as hardware or code"
+    ]
+  },
+  "chapter": "01-intro-computational-thinking"
+}

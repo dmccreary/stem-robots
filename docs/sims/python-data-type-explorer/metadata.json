@@ -1,0 +1,91 @@
+{
+  "title": "Data Type Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Type a value or pick a robot value and watch it slide into the int, float, str, or bool bin, with a REPL-style type() check and a plain-English reason.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/python-data-type-explorer/",
+  "source": "Adapted from https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/python-data-type-explorer",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Computer Science",
+    "topic": "MicroPython data types: int, float, str, bool",
+    "learningObjectives": [
+      "Classify a value as int, float, str, or bool",
+      "Explain how a decimal point, quotes, or a capital letter changes a value's type",
+      "Recognize values that cause NameError or SyntaxError",
+      "Predict which types can be used in math such as value + 1"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerb": "Classify",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Variables and assignment (Chapter 3: Variables and Assignment)",
+      "The four core data types (Chapter 3: The Four Core Data Types)",
+      "The REPL prompt (Chapter 3: The REPL)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 430
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "input", "label": "Type a value", "default": "15"},
+      {"type": "button", "label": "Check type", "purpose": "Classify the typed value"},
+      {"type": "checkbox", "label": "Show what value + 1 does", "default": false},
+      {"type": "button-group", "label": "Robot value presets", "options": ["15", "30.5", "\"Sparky\"", "'All systems go!'", "65535", "0.92", "True", "False", "\"15\"", "true"]},
+      {"type": "canvas-click", "label": "Type bin", "purpose": "Predict the type before checking"}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Rule-based literal classifier matching Python syntax",
+    "assumptions": [
+      "Digits only (optional minus) is int; digits with one decimal point is float",
+      "Text in matching single or double quotes is str; exactly True or False is bool",
+      "Other words are variable names (NameError); anything else is a SyntaxError"
+    ],
+    "limitations": [
+      "Scientific notation, lists, and other types are not covered",
+      "Error messages follow MicroPython wording, which differs slightly from desktop Python"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-then-check classification with minimal pairs",
+    "interactionPattern": "Type or pick a value, optional bin prediction, animated sort, REPL-style explanation",
+    "keyQuestions": [
+      "What is the one feature that makes 15.0 a float instead of an int?",
+      "Why is \"15\" a string even though it looks like a number?",
+      "Why does true cause an error but True does not?",
+      "Which types can you add 1 to?"
+    ],
+    "commonMisconceptions": [
+      "A value's type depends on what it means, not how it is written",
+      "Numbers in quotes can still be used in math",
+      "true and True are the same in Python"
+    ],
+    "assessmentOpportunities": [
+      "Prediction tally for the ten robot values",
+      "Challenge: 0.92 float, \"65535\" str, False bool, 20 int",
+      "Exit ticket about a sensor value that arrives as text"
+    ]
+  },
+  "chapter": "03-micropython-dev-environment"
+}

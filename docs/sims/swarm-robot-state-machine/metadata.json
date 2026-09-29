@@ -1,0 +1,82 @@
+{
+  "title": "Swarm Robot State Machine",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Interactive Mermaid state machine for a swarm robot with SEARCH, FOLLOW, DANCE, and AVOID states. Event buttons step the robot through transitions (or show that a state ignores an event), dashed arrows show that AVOID can interrupt any state, and a quiz asks students to classify robot situations by state.",
+  "date": "2026-09-29",
+  "type": "Interactive Diagram",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "swarm-robot-state-machine",
+  "canvasHeight": 470,
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Computer Science / Robotics",
+    "topic": "State machine pattern for multi-behavior robots",
+    "learningObjectives": [
+      "Explain how a state machine organizes a robot's competing behaviors into named states and transitions.",
+      "Classify robot situations into the SEARCH, FOLLOW, DANCE, or AVOID state.",
+      "Trace the state changes produced by a sequence of events, including events a state ignores.",
+      "Explain why the AVOID transition must be reachable from every other state."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerb": "classify",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "if/elif decisions and loops (Chapter 4)",
+      "The sense-decide-act feedback loop (Chapter 10)",
+      "BLE advertising and connections (Chapter 12)"
+    ],
+    "standards": [
+      "CSTA 3A-AP-15: Justify the selection of specific control structures when tradeoffs involve implementation, readability, and program performance."
+    ]
+  },
+  "technical": {
+    "framework": "Mermaid",
+    "version": "11",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 470
+    },
+    "responsive": true,
+    "dependencies": [
+      "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "clickAndHoverEquivalent": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Explore events", "purpose": "Send events and watch the current state follow the arrows (default)."},
+      {"type": "button", "label": "Classify quiz", "purpose": "Read a robot situation and click the matching state."},
+      {"type": "button", "label": "Restart", "purpose": "Return the robot to SEARCH and restart the quiz."},
+      {"type": "button", "label": "Event buttons", "purpose": "leader signal found, signal lost, dance beat received, routine finished, obstacle too close, path clear."}
+    ],
+    "hoverTargets": "Every state box and every transition arrow or label shows a plain-language explanation on hover or click."
+  },
+  "pedagogical": {
+    "teachingStrategy": "Step-through worked example followed by a classification quiz",
+    "interactionPattern": "Event-driven step-through with highlighted current state and fired transition, plus click-to-classify quiz with feedback",
+    "keyQuestions": [
+      "What happens when a state receives an event it has no arrow for?",
+      "Why does every state have an arrow to AVOID?",
+      "Which state is the robot in when it has just lost the leader's signal?"
+    ],
+    "commonMisconceptions": [
+      "The robot runs all four behaviors in order every loop (only the current state's code runs).",
+      "Every event changes the state (a state ignores events it has no transition for).",
+      "AVOID is just another step in the routine (it is a safety interrupt reachable from every state)."
+    ],
+    "assessmentOpportunities": [
+      "Classify quiz score (10 situations).",
+      "Trace the state path for a given list of events.",
+      "Exit ticket: design the arrows for a new CHARGE state."
+    ]
+  },
+  "chapter": "13-swarm-robotics-advanced-patterns"
+}

@@ -1,0 +1,87 @@
+{
+  "title": "IR Reflectance Threshold Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "See how surface color, distance, and the trimmer threshold decide whether an active-LOW IR sensor reads 0 (surface detected) or 1 (nothing detected).",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/ir-reflectance-threshold-explorer/",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing and Robotics",
+    "topic": "IR reflectance sensors, thresholds, and active-LOW outputs",
+    "learningObjectives": [
+      "Predict whether an active-LOW IR sensor reads 0 or 1 for a given surface and distance.",
+      "Set the trimmer threshold so the sensor switches at a chosen distance.",
+      "Choose a threshold that separates a black surface from a white surface."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Predict",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "GPIO input pins and HIGH/LOW logic (Chapter 6)",
+      "if statements and comparison operators (Chapter 4)",
+      "Reading a line graph"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 470
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "screenReaderDescription": true,
+      "keyboardNavigable": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "buttons", "label": "White / Gray / Black", "default": "White", "purpose": "Choose the surface under the sensor."},
+      {"type": "button", "label": "Auto-calibrate", "purpose": "Set the threshold halfway between the black and white readings at the current distance."},
+      {"type": "checkbox", "label": "Bright room", "default": false, "purpose": "Add 15 points of ambient IR to every reading, capped at 100."},
+      {"type": "slider", "label": "Distance", "range": "0-15 cm, step 0.5", "default": 4, "purpose": "Height of the sensor above the surface."},
+      {"type": "slider", "label": "Threshold", "range": "5-95", "default": 40, "purpose": "The trimmer dial setting."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Empirical sensor response model",
+    "equations": [
+      "reflected = min(100, peak * 100 / (1 + (distance / 4)^2) + ambient)",
+      "peak = 1.0 (white), 0.55 (gray), 0.15 (black); ambient = 15 in a bright room, else 0",
+      "output = 0 if reflected >= threshold else 1",
+      "switch distance = 4 * sqrt(peak * 100 / (threshold - ambient) - 1)"
+    ],
+    "assumptions": ["The sensor output is active LOW.", "Reflection falls off smoothly with distance."],
+    "limitations": ["Real modules have a minimum range and depend on surface texture and angle."]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict, then check against a graph with a live threshold",
+    "interactionPattern": "Parameter exploration with a marked switch point and a calibration button",
+    "keyQuestions": [
+      "Why does a white surface make the sensor read 0?",
+      "Where does the output switch from 0 to 1, and how does the threshold move that point?",
+      "Why can a bright room make black and white look the same?"
+    ],
+    "commonMisconceptions": [
+      "An output of 1 means a surface was detected.",
+      "A black surface reflects more IR because it looks darker.",
+      "One threshold works in every room and at every height."
+    ],
+    "assessmentOpportunities": [
+      "Find the largest distance where white still reads 0 at threshold 40.",
+      "Name a threshold that separates black from white at 4 cm.",
+      "Predict 0 or 1 for three given surface, distance, and threshold cases."
+    ]
+  },
+  "chapter": "08-sensors-data-input"
+}

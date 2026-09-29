@@ -1,0 +1,15 @@
+{
+  "sim_id": "heading-broadcast-topology",
+  "diagram_name": "Heading Broadcast Network Topology",
+  "chapter_number": 13,
+  "chapter_title": "Swarm Robotics and Advanced Engineering Patterns",
+  "chapter_dir": "13-swarm-robotics-advanced-patterns",
+  "chapter_rel_dir": "chapters/13-swarm-robotics-advanced-patterns",
+  "library": "Mermaid",
+  "bloom_level": "Analyze",
+  "bloom_verb": "differentiate",
+  "learning_objective": "Differentiate a one-to-many UDP broadcast topology (this section) from the one-to-one BLE pairing topology used earlier in the chapter, and from the router-based WiFi topology from Chapter 11.",
+  "completion_status": "specified",
+  "extracted_date": "2026-09-29",
+  "specification": "Type: diagram\n**sim-id:** heading-broadcast-topology<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\nDiagram Name: Heading Broadcast Network Topology\n\nBloom Taxonomy: Analyze\n\nBloom Taxonomy Verb: differentiate\n\nLearning objective: Differentiate a one-to-many UDP broadcast topology (this section) from the one-to-one BLE pairing topology used earlier in the chapter, and from the router-based WiFi topology from Chapter 11.\n\nCreate a Mermaid flowchart (graph TD). A single node \"Master Robot (hosts WiFi AP + broadcasts UDP)\" connects with three identically-labeled edges, each labeled \"UDP heading packet\", to three follower nodes: \"Follower 1\", \"Follower 2\", \"Follower 3\". Add a dashed box around all four nodes labeled \"Same WiFi network, master-hosted — no internet router\".\n\nEvery node has a click directive with an infobox: the master node explains it both hosts the access point and sends the broadcast, unlike Chapter 11's setup where the Pico W joined someone else's router. Each follower node explains it only listens — it never sends anything back, and a dropped packet is not a failure since the next one is a fraction of a second away. Every edge has a click directive noting that this same edge is physically identical to the other two — this is what makes adding a fourth follower free of any code change on the master.\n\nColor scheme: master node DarkOrchid (NET taxonomy color), follower nodes lighter shade of the same hue, dashed boundary box gray. Canvas responsive."
+}

@@ -156,7 +156,7 @@ After scanning, a scanner can choose to **connect** to an advertiser. Once conne
 
 This simulation shows a follower robot sending out advertising packets and a leader robot listening for them. You can move the robots apart, change how often the follower advertises, and see when the leader hears it.
 
-<iframe src="../../sims/ble-advertising-scanner/main.html" width="100%" height="582px" scrolling="no"></iframe>
+<iframe src="../../sims/ble-advertising-scanner/main.html" width="100%" height="552px" scrolling="no"></iframe>
 [Run BLE Advertising and Scanning Fullscreen](../../sims/ble-advertising-scanner/main.html){ .md-button }
 
 <details markdown="1">
@@ -239,7 +239,7 @@ _CMD_UUID = bluetooth.UUID("12345678-1234-5678-1234-56789abcdef1")
 
 This simulation shows the follower robot's data as a tree: the device holds a service, the service holds a characteristic, and the characteristic holds a value. You can click the parts, and act as the leader to read, write, or subscribe.
 
-<iframe src="../../sims/gatt-hierarchy-explorer/main.html" width="100%" height="582px" scrolling="no"></iframe>
+<iframe src="../../sims/gatt-hierarchy-explorer/main.html" width="100%" height="522px" scrolling="no"></iframe>
 [Run GATT Hierarchy Explorer Fullscreen](../../sims/gatt-hierarchy-explorer/main.html){ .md-button }
 
 <details markdown="1">
@@ -331,7 +331,7 @@ The `bluetooth` module in MicroPython uses an **IRQ callback** (interrupt handle
 
 This simulation follows the leader and follower robots from the first advertising packet to disconnect. Each step shows the event code that fires and what each robot does with it.
 
-<iframe src="../../sims/ble-connection-lifecycle/main.html" width="100%" height="602px" scrolling="no"></iframe>
+<iframe src="../../sims/ble-connection-lifecycle/main.html" width="100%" height="546px" scrolling="no"></iframe>
 [Run BLE Connection Lifecycle Fullscreen](../../sims/ble-connection-lifecycle/main.html){ .md-button }
 
 <details markdown="1">

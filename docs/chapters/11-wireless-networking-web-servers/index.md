@@ -145,7 +145,7 @@ except Exception as e:
 
 This simulation walks through the steps your robot takes to join a WiFi network, one call at a time. You can make the connection succeed or fail and see what the code prints in each case.
 
-<iframe src="../../sims/wifi-connect-sequence/main.html" width="100%" height="582px" scrolling="no"></iframe>
+<iframe src="../../sims/wifi-connect-sequence/main.html" width="100%" height="502px" scrolling="no"></iframe>
 [Run WiFi Connect Sequence Fullscreen](../../sims/wifi-connect-sequence/main.html){ .md-button }
 
 <details markdown="1">
@@ -221,7 +221,7 @@ Before the code, here is the flow: `socket.socket()` creates a socket object. `b
 
 This simulation shows the life of your robot's web server socket, from `socket()` to `close()`. You watch a browser connect and see which calls wait and which return right away.
 
-<iframe src="../../sims/socket-server-lifecycle/main.html" width="100%" height="602px" scrolling="no"></iframe>
+<iframe src="../../sims/socket-server-lifecycle/main.html" width="100%" height="547px" scrolling="no"></iframe>
 [Run Socket Server Lifecycle Fullscreen](../../sims/socket-server-lifecycle/main.html){ .md-button }
 
 <details markdown="1">
@@ -436,7 +436,7 @@ This turns the robot controller into a real-time interface — press Forward, ro
 
 This simulation puts two controller pages side by side. The left page uses the form buttons from earlier in the chapter. The right page uses `fetch()`. You click the same buttons on both and watch what the browser does.
 
-<iframe src="../../sims/fetch-async-control/main.html" width="100%" height="562px" scrolling="no"></iframe>
+<iframe src="../../sims/fetch-async-control/main.html" width="100%" height="549px" scrolling="no"></iframe>
 [Run Fetch vs. Form Page Reload Fullscreen](../../sims/fetch-async-control/main.html){ .md-button }
 
 <details markdown="1">

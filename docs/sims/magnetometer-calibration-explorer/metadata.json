@@ -1,0 +1,98 @@
+{
+  "title": "Magnetometer Calibration Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Students rotate a simulated magnetometer through a full turn and watch the raw X/Y readings trace a circle shifted away from the origin by hard-iron distortion. They compute offset = (max + min) / 2 on each axis, apply it, and see the corrected circle re-center on the origin and the compass heading error shrink.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "magnetometer-calibration-explorer",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing / Sensors",
+    "topic": "Magnetometer hard-iron calibration",
+    "learningObjectives": [
+      "Collect magnetometer readings through a full rotation.",
+      "Compute hard-iron offsets with offset = (max + min) / 2 on each axis.",
+      "Apply the offsets to re-center the readings on the origin.",
+      "Explain how hard-iron distortion changes the compass heading from atan2(mag_y, mag_x)."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "Apply",
+    "duration": "20 minutes",
+    "prerequisites": [
+      "Coordinate planes and midpoints",
+      "Reading I2C sensor data (Chapter 8)",
+      "The 9-DOF IMU and LSM303D magnetometer (Chapter 13)"
+    ],
+    "standards": [
+      "CCSS.MATH.CONTENT.HSG.GPE.B.6: Find the point on a directed line segment between two given points (midpoint).",
+      "NGSS HS-ETS1-4: Use a computer simulation to model the impact of proposed solutions to a complex real-world problem."
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive (max 800)",
+      "height": 480
+    },
+    "responsive": true,
+    "dependencies": [
+      "https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "slider", "label": "Rotate robot", "range": "0 to 360 degrees", "default": 0, "purpose": "Adds one raw reading every 4 degrees of rotation."},
+      {"type": "button", "label": "Auto-rotate", "purpose": "Turn the robot a full 360 degrees automatically."},
+      {"type": "button", "label": "Compute Calibration", "purpose": "Enabled after a full rotation; computes the offsets, marks the center, and overlays corrected readings."},
+      {"type": "button", "label": "Reset", "purpose": "Clear the readings and return to the default offset (35, -20)."},
+      {"type": "button", "label": "New robot", "purpose": "Start over with a random hidden hard-iron offset for more practice."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Geometric sensor model",
+    "equations": [
+      "mag_x = 200*cos(heading) + offset_x + noise, mag_y = 200*sin(heading) + offset_y + noise",
+      "offset = (max + min) / 2 on each axis",
+      "heading = atan2(mag_y, mag_x) in degrees, modulo 360"
+    ],
+    "assumptions": [
+      "Default hard-iron offset (35, -20) raw units, field radius 200, noise standard deviation 3.",
+      "The robot rotates flat, so only X and Y matter."
+    ],
+    "limitations": [
+      "Soft-iron distortion (an oval instead of a circle) is not modeled.",
+      "Tilt compensation with the accelerometer is not modeled."
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Procedure practice on a simulated sensor before doing it on hardware",
+    "interactionPattern": "Guided four-step procedure with live min/max readouts and before/after comparison",
+    "keyQuestions": [
+      "Why is the raw circle not centered on the origin?",
+      "Why does (max + min) / 2 find the center?",
+      "How much heading error does the offset cause, and at which headings?"
+    ],
+    "commonMisconceptions": [
+      "The magnetometer error is a single fixed angle (it depends on the heading).",
+      "Calibration only needs to be done once, forever (it must be redone after remounting the sensor).",
+      "Half a rotation is enough to find the offsets."
+    ],
+    "assessmentOpportunities": [
+      "Compute offsets by hand and verify with Compute Calibration.",
+      "Record raw versus corrected heading error at four headings.",
+      "Exit ticket: compute offsets and correct a reading from given min and max values."
+    ]
+  },
+  "chapter": "13-swarm-robotics-advanced-patterns"
+}

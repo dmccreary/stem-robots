@@ -1,0 +1,77 @@
+{
+  "title": "What Goes in Git Sorting Activity",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A drag-and-drop sorting activity with ten robot project files. Students decide which files to commit to Git and which to put in .gitignore, while a live repository preview warns when a password file would become public and a generated .gitignore builds from the ignore bin.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Version control: choosing files to commit and files to ignore",
+    "learningObjectives": [
+      "Classify robot project files as belonging in a Git repository or in .gitignore.",
+      "Explain why files that hold passwords must never be committed.",
+      "Explain why automatically generated files such as __pycache__ and .pyc files are ignored.",
+      "Recognize that library files the robot needs, such as vl53l0x.py, should be committed."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomVerb": "Classify",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "The git add and git commit workflow",
+      "The config.py pattern and module files",
+      "The purpose of secrets.py"
+    ],
+    "standards": [
+      "CSTA 3A-NI-06: Recommend security measures to address various scenarios based on factors such as efficiency, feasibility, and ethical impacts"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 520
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Classification activity with delayed feedback and on-demand explanations",
+    "interactionPattern": "Students drag file cards into two bins, watch the repository preview and generated .gitignore update live, then check answers and click cards to read the reasons.",
+    "keyQuestions": [
+      "Which files would a teammate need to run your robot?",
+      "Which files hold secrets that must stay private?",
+      "Which files does your computer make automatically?",
+      "What should you do if you already committed a password?"
+    ],
+    "commonMisconceptions": [
+      "Library files like vl53l0x.py should be ignored because you did not write them.",
+      "config.py holds secrets and must be ignored (it only holds pin numbers).",
+      "Deleting a password file in a later commit removes it from the repository history.",
+      "Every file in the project folder belongs in the repository."
+    ],
+    "assessmentOpportunities": [
+      "Score 10 of 10 without hints.",
+      "Challenge: explain what to do after committing secrets.py by mistake.",
+      "Exit ticket: name one file that must never be committed and one that must always be committed."
+    ]
+  },
+  "chapter": "05-data-structures-modular-code"
+}

@@ -1,0 +1,93 @@
+{
+  "title": "Battery Pack Health Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Wear down four AA batteries in series and see how the falling pack voltage slows the robot's motors and puts the RP2040 board at risk of resetting.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/battery-pack-health-explorer/",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing and Electronics",
+    "topic": "Battery voltage, motor speed, and microcontroller brownout",
+    "learningObjectives": [
+      "Calculate the voltage of four AA cells connected in series from the voltage of one cell",
+      "Analyze how a falling pack voltage lowers motor speed for a fixed PWM duty command",
+      "Identify the pack voltage below which the RP2040 board is at risk of resetting",
+      "Decide what to check first when a physical robot drives slowly or restarts unexpectedly"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "Analyze",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Voltage as the push that moves electric charge (Chapter 1: Voltage and Current)",
+      "Four 1.5 V AA batteries in series make 6 V (Chapter 1: Your Battery Pack)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 450
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "slider", "label": "Battery charge", "range": "0-100%", "step": 5, "default": 100},
+      {"type": "radio", "label": "Program command", "options": ["Full speed (duty 65535)", "Half speed (duty 32768)"], "default": "Full speed (duty 65535)"},
+      {"type": "button", "label": "Swap in fresh batteries", "purpose": "Reset the charge to 100%"},
+      {"type": "checkbox", "label": "Wear down over time", "purpose": "Drain the batteries by 1% per second"}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Simplified linear battery model",
+    "equations": [
+      "cellVoltage = 0.9 + 0.6 * (charge / 100)",
+      "packVoltage = 4 * cellVoltage",
+      "motorSpeedPercent = (packVoltage / 6.0) * dutyFraction * 100",
+      "resetRisk = packVoltage < 4.5"
+    ],
+    "assumptions": [
+      "Cell voltage falls linearly with charge",
+      "Motor speed is proportional to the voltage the motor driver receives"
+    ],
+    "limitations": [
+      "Real alkaline discharge curves are not linear",
+      "The exact reset threshold depends on the board's voltage regulator"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-observe-explain with a quantitative challenge",
+    "interactionPattern": "Parameter exploration with linked readouts",
+    "keyQuestions": [
+      "If each battery drops to 1.2 V, what is the pack voltage and how fast does the robot drive?",
+      "What is the highest charge at which the board first shows Reset risk?",
+      "Why does the half-speed command halve the speed but not change the reset risk?",
+      "Your real robot drives slowly and sometimes restarts. What do you check first?"
+    ],
+    "commonMisconceptions": [
+      "Batteries are either full or dead, with nothing in between",
+      "A slow robot always means a bug in the code",
+      "Lowering the PWM duty cycle protects the board from low-battery resets"
+    ],
+    "assessmentOpportunities": [
+      "Record pack voltage, motor speed and board status at 20% charge intervals",
+      "Find and justify the 35% reset-risk threshold using the formula",
+      "Exit ticket linking voltage, motor speed and resets"
+    ]
+  },
+  "chapter": "01-intro-computational-thinking"
+}

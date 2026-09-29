@@ -1,0 +1,77 @@
+{
+  "title": "Clean Shutdown Flow",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "An interactive flowchart and robot scene that traces a MicroPython main loop through try, except KeyboardInterrupt, and finally when the user presses Ctrl+C or a sensor error occurs, showing that only the finally block reliably stops the motors.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Exception handling and clean shutdown with try, except, and finally",
+    "learningObjectives": [
+      "Trace the path a MicroPython program takes through try, except KeyboardInterrupt, and finally when the user presses Ctrl+C.",
+      "Trace the path the program takes when an error that is not a KeyboardInterrupt occurs inside the try block.",
+      "Explain why motor shutdown code belongs in the finally block instead of the except block."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Trace",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Writing a while True main loop",
+      "Reading indented code blocks and if/elif/else logic",
+      "Running and stopping a program in Thonny"
+    ],
+    "standards": [
+      "CSTA 2-AP-17: Systematically test and refine programs using a range of test cases"
+    ]
+  },
+  "technical": {
+    "framework": "Mermaid",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 520
+    },
+    "responsive": true,
+    "dependencies": [
+      "mermaid@10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "ariaLiveRegions": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Event-triggered step-through tracing with predict-observe-explain",
+    "interactionPattern": "Students trigger Ctrl+C or a sensor error; the highlight walks the flowchart one node at a time while the console and robot scene update.",
+    "keyQuestions": [
+      "Which blocks run when you press Ctrl+C?",
+      "Which blocks run when a ValueError happens inside the try block?",
+      "Why does 'Motors off. Goodbye!' print before the error message?",
+      "What happens to the motors when there is no finally block?"
+    ],
+    "commonMisconceptions": [
+      "An except block catches every kind of error, not just the one it names.",
+      "When a program stops, the motors stop automatically.",
+      "The finally block only runs when there was no error.",
+      "Motor stop code in the except block is just as safe as motor stop code in finally."
+    ],
+    "assessmentOpportunities": [
+      "Predict which blocks run before triggering each event, then compare with the highlighted path.",
+      "Challenge: with the finally block removed, cause a sensor error and describe what the robot does.",
+      "Exit ticket: identify which event still leaves the motors running if the stop code moves into except."
+    ]
+  },
+  "chapter": "04-control-flow-functions"
+}

@@ -91,33 +91,87 @@ nav:
 
   - MicroSims:
     - List of MicroSims: sims/index.md
+    - 9-DOF IMU Chip Layout: sims/imu-chip-layout-diagram/index.md
     - Analog vs Digital Signal Comparison: sims/analog-digital-signals/index.md
+    - Arithmetic Operator Playground: sims/arithmetic-operator-playground/index.md
+    - Battery Pack Health Explorer: sims/battery-pack-health-explorer/index.md
+    - Battery Runtime Estimator: sims/battery-runtime-estimator/index.md
+    - BLE Advertising and Scanning: sims/ble-advertising-scanner/index.md
+    - BLE Connection Lifecycle: sims/ble-connection-lifecycle/index.md
     - Breadboard Layout Explorer: sims/breadboard-layout-explorer/index.md
+    - Button Bounce Timeline: sims/button-bounce-timeline/index.md
+    - Clean Shutdown Flow: sims/clean-shutdown-flow/index.md
+    - Collision Avoidance Arena: sims/collision-avoidance-arena/index.md
     - Collision Avoidance Decision Flow: sims/collision-decision-flow/index.md
     - Collision Avoidance Robot: sims/collision-avoidance/index.md
+    - Commit or Ignore Sorter: sims/git-secrets-sorter/index.md
+    - Complementary Filter Heading Tuner: sims/complementary-filter-heading-tuner/index.md
     - Concept Graph Viewer: sims/learning-graph/index.md
+    - Cooperative Multitasking Timeline: sims/cooperative-multitasking-timeline/index.md
     - Cytron Maker Pi RP2040 Board Explorer: sims/cytron-board-explorer/index.md
+    - Dance Beat Sequencer: sims/dance-beat-sequencer/index.md
+    - Data Type Explorer: sims/python-data-type-explorer/index.md
     - Differential Drive Turn Simulator: sims/differential-drive-simulator/index.md
+    - Distance to Display Mapper: sims/distance-display-mapper/index.md
+    - Fetch vs. Form Page Reload: sims/fetch-async-control/index.md
+    - Flash Memory vs RAM Power Cycle: sims/flash-vs-ram-power-cycle/index.md
+    - GATT Hierarchy Explorer: sims/gatt-hierarchy-explorer/index.md
     - Git Commit Workflow: sims/git-commit-workflow/index.md
     - GPIO Pin Explorer: sims/gpio-pin-explorer/index.md
     - H-Bridge Circuit: sims/h-bridge/index.md
     - H-Bridge Switch States: sims/h-bridge-simulator/index.md
+    - Hardware Troubleshooting Detective: sims/hardware-troubleshooting-detective/index.md
+    - Heading Broadcast Network Topology: sims/heading-broadcast-topology/index.md
+    - Heading Error and Steering Explorer: sims/heading-error-steering-explorer/index.md
+    - I2C Bus Explorer: sims/i2c-bus-explorer/index.md
+    - I2C vs SPI Wiring Comparison: sims/i2c-vs-spi-wiring/index.md
+    - IR Reflectance Threshold Explorer: sims/ir-reflectance-threshold-explorer/index.md
     - Learning Graph Viewer: sims/graph-viewer/index.md
+    - Line Follower Simulator: sims/line-follower-simulator/index.md
     - List Index Explorer: sims/list-index-explorer/index.md
+    - Local vs Global Scope Explorer: sims/scope-local-global-explorer/index.md
+    - Magnetometer Calibration Explorer: sims/magnetometer-calibration-explorer/index.md
     - MAX98357A Amplifier Pinout: sims/max98357a-amp-pinout/index.md
     - MicroPython in the Stack: sims/micropython-stack-diagram/index.md
-    - MicroSim Template: sims/template/index.md
+    - Module Import Flow: sims/module-import-flow/index.md
+    - NeoPixel RGB Color Mixer: sims/neopixel-rgb-color-mixer/index.md
     - OLED Coordinate System Explorer: sims/oled-coordinate-explorer/index.md
+    - OLED Framebuffer and show(): sims/oled-framebuffer-show-demo/index.md
     - Open-Loop vs. Closed-Loop Control: sims/open-closed-loop-comparison/index.md
     - Physical Computing Explorer: sims/physical-computing-explorer/index.md
+    - PID Feedback Loop Tuner: sims/pid-feedback-loop-tuner/index.md
+    - Piezo Tone Frequency Explorer: sims/piezo-tone-frequency-explorer/index.md
     - Pulse-Width Modulation: sims/pwm/index.md
     - PWM Duty Cycle Explorer: sims/pwm-duty-cycle-explorer/index.md
+    - Range Mapping Explorer: sims/range-mapping-explorer/index.md
+    - REPL and Save Workflow: sims/repl-workflow/index.md
+    - Resistor Color Code Calculator: sims/resistor-color-code-calculator/index.md
     - Robot Assembly Workflow: sims/robot-assembly-workflow/index.md
+    - Robot Debugging Flowchart: sims/robot-debugging-flowchart/index.md
+    - Robot Decomposition Tree: sims/robot-decomposition-tree/index.md
+    - Robot Logic Truth Table: sims/robot-logic-truth-table/index.md
+    - Robot Loop Pattern Explorer: sims/robot-loop-pattern-explorer/index.md
     - Robot Main Loop with Timing: sims/robot-main-loop-timing/index.md
     - Sensor Calibration Two-Point Process: sims/sensor-calibration-explorer/index.md
+    - Sensor Coverage Comparison: sims/sensor-coverage-comparison/index.md
+    - Sensor Dictionary Explorer: sims/sensor-dictionary-explorer/index.md
+    - Sensor Filter Lab: sims/sensor-filter-lab/index.md
+    - Servo Pulse Width Explorer: sims/servo-pulse-width-explorer/index.md
+    - Sleep vs Timer Explorer: sims/sleep-vs-ticks-explorer/index.md
+    - Socket Server Lifecycle: sims/socket-server-lifecycle/index.md
+    - Swarm Collective Behaviors: sims/swarm-collective-behaviors/index.md
+    - Swarm Robot State Machine: sims/swarm-robot-state-machine/index.md
+    - Transistor Switch Explorer: sims/transistor-switch-explorer/index.md
+    - Tuple vs List Mutability: sims/tuple-list-mutability-explorer/index.md
+    - Ultrasonic Echo Timing Explorer: sims/ultrasonic-echo-timing-explorer/index.md
     - Variable Assignment Interactive Explorer: sims/variable-assignment-explorer/index.md
+    - Voltage and Current Water Analogy: sims/voltage-current-water-analogy/index.md
     - Web Server Request-Response Flow: sims/http-request-response-flow/index.md
+    - What Goes in Git Sorting Activity: sims/git-what-to-commit-sorter/index.md
+    - WiFi Connect Sequence: sims/wifi-connect-sequence/index.md
     - WiFi vs BLE Communication Topology: sims/wifi-vs-ble-topology/index.md
+
+
 
   - Posters:
     - List of Posters: posters/index.md

@@ -1,0 +1,99 @@
+{
+  "title": "PID Feedback Loop Tuner",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A 10-second strip chart shows a simulated robot turning from 0 to 90 degrees under PID control. Students adjust Kp, Ki, and Kd independently, compare each new curve with the previous one, and read live overshoot, settling time, final error, and P, I, and D term values.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "pid-feedback-loop-tuner",
+  "source": "Extends the proportional step-response idea of https://github.com/dmccreary/control-systems/tree/main/docs/sims/feedback-loop-simulator",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Engineering / Control Systems",
+    "topic": "PID control of a robot's heading",
+    "learningObjectives": [
+      "Apply the PID formula by adjusting Kp, Ki, and Kd independently.",
+      "Describe how raising Kp speeds up the approach but increases overshoot and oscillation.",
+      "Describe how Kd damps overshoot and how Ki removes a steady-state error.",
+      "Measure overshoot, settling time, and final error from a step-response curve."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "Apply",
+    "duration": "25-30 minutes",
+    "prerequisites": [
+      "Closed-loop proportional feedback (Chapter 10)",
+      "Reading line graphs of a value over time",
+      "The PID section of Chapter 13"
+    ],
+    "standards": [
+      "NGSS HS-ETS1-4: Use a computer simulation to model the impact of proposed solutions to a complex real-world problem."
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive (max 900)",
+      "height": 475
+    },
+    "responsive": true,
+    "dependencies": [
+      "https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "slider", "label": "Kp", "range": "0 to 1.0", "default": 0.2},
+      {"type": "slider", "label": "Ki", "range": "0 to 0.2", "default": 0.0},
+      {"type": "slider", "label": "Kd", "range": "0 to 0.5", "default": 0.0},
+      {"type": "button", "label": "Step Target", "purpose": "Replay the 0 to 90 degree target jump in real time with the current gains."},
+      {"type": "button", "label": "Reset", "purpose": "Restore Kp = 0.2, Ki = 0, Kd = 0 and clear the comparison curve."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Discrete-time PID control of a second-order heading model",
+    "equations": [
+      "output = Kp*e + Ki*(sum of e*dt) - Kd*(d heading/dt), limited to +/-30",
+      "turn rate approaches 6*(output + drag) with a 0.4 s time constant",
+      "heading reading is delayed by 0.1 s; control loop runs at 50 Hz"
+    ],
+    "assumptions": [
+      "One wheel drags while driving, adding a constant -1.5 to the controller output.",
+      "The integral stops growing while the output is at its limit (anti-windup).",
+      "The derivative is taken from the heading, so the target jump does not cause a spike."
+    ],
+    "limitations": [
+      "Heading wrap-around is not needed because the target only moves from 0 to 90 degrees.",
+      "Sensor noise is not modeled."
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Parameter exploration with immediate, quantified feedback and before/after comparison",
+    "interactionPattern": "Three gain sliders, a comparison ghost curve, and live metric and term readouts",
+    "keyQuestions": [
+      "Why does P-only control stop short of the target?",
+      "Which gain removes overshoot, and what happens if it is too large?",
+      "Why does a large Ki cause a big overshoot?"
+    ],
+    "commonMisconceptions": [
+      "A larger Kp always gives a better result.",
+      "The I term makes the robot faster (it removes leftover error, and too much adds overshoot).",
+      "Overshoot means the code has a bug (it is a normal consequence of gain and delay)."
+    ],
+    "assessmentOpportunities": [
+      "Record overshoot, settling time, and final error for several Kp values.",
+      "Find the smallest Kd that removes overshoot at Kp = 1.0.",
+      "Tuning challenge: under 10% overshoot, under 2 s settling, under 1 degree final error."
+    ]
+  },
+  "chapter": "13-swarm-robotics-advanced-patterns"
+}

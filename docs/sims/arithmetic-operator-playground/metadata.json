@@ -1,0 +1,93 @@
+{
+  "title": "Arithmetic Operator Playground",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Enter two numbers and see all seven MicroPython arithmetic operators side by side, with a block picture that shows what integer division and remainder really mean.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/arithmetic-operator-playground/",
+  "source": "Adapted from https://github.com/dmccreary/moving-rainbow/tree/main/docs/sims/python-operator-playground",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Computer Science",
+    "topic": "MicroPython arithmetic operators and result types",
+    "learningObjectives": [
+      "Predict the result of +, -, *, /, //, % and ** for two numbers",
+      "Predict whether each result is an int or a float",
+      "Explain integer division and remainder as full groups and leftovers",
+      "Choose the right operator for a robot task such as beeping every 5th loop"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "Apply",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Integers and floats (Chapter 3: The Four Core Data Types)",
+      "Evaluating expressions in the REPL (Chapter 3: The REPL)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 460
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "input", "label": "a", "range": "whole number 0-100", "default": 7},
+      {"type": "input", "label": "b", "range": "whole number 1-10", "default": 2},
+      {"type": "checkbox", "label": "Use decimal a (a = 7.5)", "default": false},
+      {"type": "select", "label": "Robot example", "options": ["Whole groups of 10 cm: 27 // 10", "Every 5th loop: loop_count % 5", "Split a speed of 30 in half: 30 / 2", "Average of two readings: (30 + 34) / 2"]}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Python 3 arithmetic evaluation with a grouping picture",
+    "equations": [
+      "a // b = floor(a / b)",
+      "a % b = a - b * floor(a / b)",
+      "a / b always returns a float"
+    ],
+    "assumptions": [
+      "b is a whole number from 1 to 10, so division by zero cannot happen",
+      "Integer powers are computed exactly, like Python ints"
+    ],
+    "limitations": [
+      "Negative numbers are not included",
+      "Very long results are shortened in the table"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-then-check with a concrete grouping model",
+    "interactionPattern": "Number inputs and presets driving a full results table and picture",
+    "keyQuestions": [
+      "Why does 6 / 2 give 3.0 instead of 3?",
+      "What do the green groups and orange leftovers stand for?",
+      "What are 23 // 5 and 23 % 5?",
+      "How can % make a robot beep on every 5th loop?"
+    ],
+    "commonMisconceptions": [
+      "Dividing two ints with / gives an int",
+      "% means percent",
+      "// rounds to the nearest whole number instead of counting full groups"
+    ],
+    "assessmentOpportunities": [
+      "Prediction sheet for all seven operators",
+      "Challenge: 23 // 5 = 4 and 23 % 5 = 3, beep when loop_count % 5 == 0",
+      "Exit ticket: write a % condition and compare 30 / 2 with 30 // 2"
+    ]
+  },
+  "chapter": "03-micropython-dev-environment"
+}

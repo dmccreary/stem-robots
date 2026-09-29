@@ -1,0 +1,76 @@
+{
+  "title": "Robot Loop Pattern Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A step-through explorer for MicroPython for loops, while loops, and nested loops. Students predict how many times each loop body runs, then watch a robot blink its NeoPixels or drive toward a wall while a counter tracks every iteration.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "for loops, while loops, and nested loops in robot programs",
+    "learningObjectives": [
+      "Predict how many times a for loop body runs for range(n) and the last value of the loop variable.",
+      "Predict how many times a while loop runs for a given start distance and step size.",
+      "Predict the total iterations of a nested loop as outer times inner.",
+      "Choose a for loop or a while loop for a given robot task."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Predict",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Variables and comparison operators",
+      "The if statement and indented code blocks"
+    ],
+    "standards": [
+      "CSTA 2-AP-12: Design and iteratively develop programs that combine control structures, including nested loops and compound conditionals"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 600
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-then-step: students record a prediction, then step through the loop one iteration at a time",
+    "interactionPattern": "Tabs select the loop type; number inputs set the loop bounds; Step, Run, and Reset control execution while a counter tracks iterations.",
+    "keyQuestions": [
+      "How many times does for i in range(5) run, and what is the last value of i?",
+      "Why does the while loop stop when distance_cm reaches 20?",
+      "What happens if the loop body never changes distance_cm?",
+      "How does adding a nested loop change the total number of iterations?"
+    ],
+    "commonMisconceptions": [
+      "range(5) produces the numbers 1 through 5.",
+      "A while loop with distance_cm > 20 still runs when distance_cm equals 20.",
+      "A while loop will stop on its own even if nothing in the body changes the condition.",
+      "A nested loop adds the inner and outer counts instead of multiplying them."
+    ],
+    "assessmentOpportunities": [
+      "Challenge: predict the total for outer = 4 and inner = 5 (answer: 20).",
+      "Challenge: predict the while-loop iterations for start 60 and step 10 (answer: 4).",
+      "Exit ticket: choose for or while for three robot tasks and justify the choice."
+    ]
+  },
+  "chapter": "04-control-flow-functions"
+}

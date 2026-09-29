@@ -1,0 +1,75 @@
+{
+  "title": "I2C vs SPI Wiring Comparison",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Side-by-side panels wire the robot's devices (VL53L0X sensor, SSD1306 OLED, SD card, fast color display) to an I2C bus and to an SPI bus. Students count wires and GPIO pins as devices are added, compare 400 kHz with 10 MHz, and choose the better bus for each task.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Engineering and Electronics",
+    "topic": "Comparing the I2C and SPI communication buses",
+    "learningObjectives": [
+      "Count the wires and GPIO pins that I2C and SPI need as devices are added.",
+      "State the pin-count rule for each bus: I2C always 2, SPI 3 plus one per device.",
+      "Compare the data rates of I2C at 400 kHz and SPI at 10 MHz using the time to move 1 KB.",
+      "Justify which bus fits a given device or task."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomVerb": "Compare",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "The I2C bus, SDA, SCL, and addresses",
+      "The SPI bus wires MOSI, MISO, SCK, and CS",
+      "GPIO pins on the Maker Pi RP2040"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 500
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Side-by-side comparison with a live summary table and task verdicts",
+    "interactionPattern": "Students check devices to add them to both buses, choose a task, and press Send data to compare speeds while the pin badges and summary table update.",
+    "keyQuestions": [
+      "Why does I2C always need only 2 wires?",
+      "Why does each SPI device need its own CS wire?",
+      "How many GPIO pins does SPI use with n devices?",
+      "Which tasks move enough data to make SPI worth the extra pins?"
+    ],
+    "commonMisconceptions": [
+      "SPI and I2C use the same number of pins.",
+      "Every device can use either bus.",
+      "Faster is always better, even when a task moves only a few bytes.",
+      "Adding a device to an I2C bus needs another pair of wires."
+    ],
+    "assessmentOpportunities": [
+      "Record pin counts as each device is added and write the rule for each bus.",
+      "Challenge: count SPI and I2C pins with all four devices checked (SPI 6, I2C 2).",
+      "Exit ticket: write the SPI pin rule for n devices."
+    ]
+  },
+  "chapter": "06-electronics-motors-protocols"
+}

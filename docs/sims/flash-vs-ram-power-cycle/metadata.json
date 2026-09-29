@@ -1,0 +1,91 @@
+{
+  "title": "Flash Memory vs RAM Power Cycle",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Save main.py, run it, change a variable, and cut the power to see that Flash memory keeps your files while RAM forgets everything.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/flash-vs-ram-power-cycle/",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Computer Science and Physical Computing",
+    "topic": "Non-volatile flash storage versus volatile RAM on a microcontroller",
+    "learningObjectives": [
+      "Explain that Flash memory keeps saved files when power is removed",
+      "Explain that RAM holds running variables only while the board has power",
+      "Predict the value of a variable after a power cycle",
+      "Explain why large files do not fit in 2 MB of flash storage"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomsVerb": "Explain",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Flash memory stores programs on the board (Chapter 2: Storing Your Programs)",
+      "A variable is a named value a program uses and can change"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 420
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Save main.py to Flash", "purpose": "Store main.py (1 KB) in flash; becomes Saved"},
+      {"type": "button", "label": "Run program", "purpose": "Put speed = 50 and distance_cm = 32 in RAM"},
+      {"type": "button", "label": "Change speed to 80", "purpose": "Change the variable in RAM only"},
+      {"type": "button", "label": "Power OFF / Power ON", "purpose": "Cut or restore power; power on re-runs main.py"},
+      {"type": "button", "label": "Add a 2 MB picture file", "purpose": "Try to save a file that is too large"},
+      {"type": "button", "label": "Reset", "purpose": "Return to the default state"}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Discrete state machine of a microcontroller's memory",
+    "variables": ["powerOn", "mainSaved", "running", "ram"],
+    "assumptions": [
+      "main.py sets speed = 50 and distance_cm = 32 when it starts",
+      "The board runs main.py automatically at power-on",
+      "MicroPython uses 640 KB of the 2048 KB flash, leaving 1408 KB for files"
+    ],
+    "limitations": [
+      "Real RAM also holds the MicroPython interpreter and other objects",
+      "Files can be written to flash from a running program; this model does not show that"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-observe-explain with a step-through state machine",
+    "interactionPattern": "One button per action with a plain-sentence log",
+    "keyQuestions": [
+      "After you change speed to 80 and cycle the power, what is speed?",
+      "Which memory kept main.py when the power was off?",
+      "Why does the board run main.py again when the power comes back?",
+      "Why can a 2 MB picture not be saved on the board?"
+    ],
+    "commonMisconceptions": [
+      "Changing a variable while the program runs also changes the saved file",
+      "Turning the power off erases the saved program",
+      "The board's full 2 MB is free for your own files"
+    ],
+    "assessmentOpportunities": [
+      "Written prediction of speed after a power cycle",
+      "Challenge: speed returns to 50 and Flash kept main.py",
+      "Exit ticket naming one Flash item and one RAM item"
+    ]
+  },
+  "chapter": "02-hardware-platform-assembly"
+}

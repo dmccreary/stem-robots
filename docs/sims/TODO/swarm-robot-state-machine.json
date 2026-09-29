@@ -1,0 +1,15 @@
+{
+  "sim_id": "swarm-robot-state-machine",
+  "diagram_name": "Swarm Robot State Machine",
+  "chapter_number": 13,
+  "chapter_title": "Swarm Robotics and Advanced Engineering Patterns",
+  "chapter_dir": "13-swarm-robotics-advanced-patterns",
+  "chapter_rel_dir": "chapters/13-swarm-robotics-advanced-patterns",
+  "library": "Mermaid",
+  "bloom_level": "Understand",
+  "bloom_verb": "classify",
+  "learning_objective": "Explain how a state machine organizes a robot's competing behaviors (search, follow, avoid) into a single clear structure, and how a transition can interrupt any state.",
+  "completion_status": "specified",
+  "extracted_date": "2026-09-29",
+  "specification": "Type: diagram\n**sim-id:** swarm-robot-state-machine<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\nDiagram Name: Swarm Robot State Machine\n\nBloom Taxonomy: Understand\n\nBloom Taxonomy Verb: classify\n\nLearning objective: Explain how a state machine organizes a robot's competing behaviors (search, follow, avoid) into a single clear structure, and how a transition can interrupt any state.\n\nCreate a Mermaid flowchart (graph TD) with four rounded-rectangle nodes: SEARCH, FOLLOW, AVOID, and DANCE. Directed edges: SEARCH -> FOLLOW labeled \"leader signal found\", FOLLOW -> SEARCH labeled \"signal lost\", FOLLOW -> DANCE labeled \"dance beat received\", DANCE -> FOLLOW labeled \"routine finished\". From every one of SEARCH, FOLLOW, and DANCE, draw a dashed edge to AVOID labeled \"obstacle too close\", and one dashed edge from AVOID back to FOLLOW labeled \"path clear\".\n\nEvery node has a click directive opening an infobox with a plain-language definition: SEARCH — \"robot is scanning for the leader's advertising signal, motors idle.\" FOLLOW — \"robot is connected to the leader and executing convoy or command logic.\" AVOID — \"robot's own time-of-flight sensor reported an obstacle — this state can interrupt any other state.\" DANCE — \"robot is executing a timed choreography step synced to the leader's beat.\" Every edge also has a click directive that shows the transition condition in plain language.\n\nColor scheme: SEARCH gray, FOLLOW OliveDrab (matches the ROBOT taxonomy color), AVOID Crimson (matches MOTOR/warning color), DANCE MediumPurple. Canvas responsive to container width, minimum 700px wide before scaling down."
+}

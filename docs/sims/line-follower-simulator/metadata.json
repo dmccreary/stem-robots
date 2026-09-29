@@ -1,0 +1,99 @@
+{
+  "title": "Line Follower Simulator",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A p5.js top-down simulation of a two-sensor line-following robot running the Chapter 10 adjust_motors() rules on oval, figure-8, and zigzag tracks. Students tune the fast duty, slow duty, and update rate, watch the active sensor state in a four-row table, and measure time on the line and the tightest turn radius.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "line-follower-simulator",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Robotics and Computer Science",
+    "topic": "Line following with dual IR sensors and motor differential adjust",
+    "learningObjectives": [
+      "Explain how each of the four IR sensor states maps to left and right motor duties",
+      "Explain why slowing the wheel on the line side steers the robot back onto the line",
+      "Predict what happens when the slow duty is too close to the fast duty (weak correction)",
+      "Predict what happens when the fast speed is too high for the update rate"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomVerb": "Analyze",
+    "duration": "25-30 minutes",
+    "prerequisites": [
+      "Chapter 10 dual IR sensor reading and adjust_motors()",
+      "Digital input with Pin.value() (Chapter 8)",
+      "Motor duty and differential drive (Chapter 7)",
+      "if/elif/else decisions (Chapter 4)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 550
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorAndTextLabels": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Run / Pause", "purpose": "Start or pause the robot"},
+      {"type": "button", "label": "Reset robot", "purpose": "Put the robot back on the start of the line and clear the statistics"},
+      {"type": "button", "label": "Clear path", "purpose": "Erase the path trace"},
+      {"type": "select", "label": "Track", "options": ["Oval", "Figure-8", "Zigzag"], "default": "Oval"},
+      {"type": "slider", "label": "Fast speed (duty)", "range": [20000, 65535], "default": 65535, "purpose": "FULL in adjust_motors(); snaps to steps of 1000"},
+      {"type": "slider", "label": "Slow speed (duty)", "range": [0, 60000], "default": 32767, "purpose": "HALF in adjust_motors(); never above the fast speed"},
+      {"type": "slider", "label": "Update rate (Hz)", "range": [5, 100], "default": 50, "purpose": "How often the loop reads the sensors (1 / sleep time)"}
+    ]
+  },
+  "simulation": {
+    "modelType": "Kinematic differential-drive simulation with sampled sensors",
+    "variables": ["left IR value", "right IR value", "left duty", "right duty", "time on line (%)", "tightest turn radius (cm)"],
+    "equations": [
+      "forward speed = (left + right) / 2 / 65535 x 80 cm/s",
+      "turn rate = (right - left) / 65535 x 80 / 12 rad/s",
+      "tightest turn radius = 6 x (fast + slow) / (fast - slow) cm"
+    ],
+    "assumptions": [
+      "The line is 4 cm wide and the sensors are 4 cm apart on the front edge",
+      "A sensor reads LOW when it is within 2 cm of the line center",
+      "Motors keep their last duty between updates"
+    ],
+    "limitations": [
+      "No wheel slip, motor mismatch, or sensor noise",
+      "Sensors are perfectly calibrated for the floor and lighting"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Guided inquiry with controlled experiments",
+    "interactionPattern": "Running simulation with parameter sliders, live state table, and readouts",
+    "keyQuestions": [
+      "When the left sensor reads LOW, which wheel slows down and which way does the robot turn?",
+      "Why does the robot lose the zigzag track with the default slow speed?",
+      "How far does the robot travel between sensor readings at 10 Hz?",
+      "What should the robot do when both sensors read HIGH?"
+    ],
+    "commonMisconceptions": [
+      "Lowering the fast speed always helps (it can weaken the turn if the slow speed stays the same)",
+      "The robot steers toward the side of the faster wheel",
+      "The loop rate does not matter if the motors are fast"
+    ],
+    "assessmentOpportunities": [
+      "Data table of slow speed, tightest turn, and time on line",
+      "Largest working fast speed at 50, 20, and 10 Hz",
+      "Exit ticket proposing two fixes for a robot that loses sharp corners"
+    ]
+  },
+  "chapter": "10-robot-behaviors-navigation"
+}

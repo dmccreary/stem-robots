@@ -210,7 +210,7 @@ was doing.
 
 #### Diagram: Swarm Robot State Machine
 
-<iframe src="../../sims/swarm-robot-state-machine/main.html" width="100%" height="420px" scrolling="no"></iframe>
+<iframe src="../../sims/swarm-robot-state-machine/main.html" width="100%" height="472px" scrolling="no"></iframe>
 
 [Run the Swarm Robot State Machine Fullscreen](../../sims/swarm-robot-state-machine/main.html){ .md-button }
 
@@ -397,7 +397,9 @@ from Chapter 10 — only ever used the P term. That's called **proportional-only
 control**, and it's often good enough. You'll use exactly that P-only idea again later
 in this chapter, when a follower robot steers to match a broadcast heading.
 
-<iframe src="../../sims/pid-feedback-loop-tuner/main.html" width="100%" height="480px" scrolling="no"></iframe>
+#### Diagram: PID Feedback Loop Tuner
+
+<iframe src="../../sims/pid-feedback-loop-tuner/main.html" width="100%" height="477px" scrolling="no"></iframe>
 
 [Run the PID Feedback Loop Tuner Fullscreen](../../sims/pid-feedback-loop-tuner/main.html){ .md-button }
 
@@ -523,7 +525,7 @@ writing two small drivers, one per chip, not one.
 
 #### Diagram: 9-DOF IMU Chip Layout
 
-<iframe src="../../sims/imu-chip-layout-diagram/main.html" width="100%" height="380px" scrolling="no"></iframe>
+<iframe src="../../sims/imu-chip-layout-diagram/main.html" width="100%" height="422px" scrolling="no"></iframe>
 
 [Run the 9-DOF IMU Chip Layout Diagram Fullscreen](../../sims/imu-chip-layout-diagram/main.html){ .md-button }
 
@@ -590,7 +592,9 @@ directions, called **hard-iron distortion**. Left uncorrected, the compass headi
 computes will be consistently wrong by some fixed angle, no matter which way the robot
 actually faces.
 
-<iframe src="../../sims/magnetometer-calibration-explorer/main.html" width="100%" height="480px" scrolling="no"></iframe>
+#### Diagram: Magnetometer Calibration Explorer
+
+<iframe src="../../sims/magnetometer-calibration-explorer/main.html" width="100%" height="482px" scrolling="no"></iframe>
 
 [Run the Magnetometer Calibration Explorer Fullscreen](../../sims/magnetometer-calibration-explorer/main.html){ .md-button }
 
@@ -674,7 +678,9 @@ class HeadingFilter:
         return self.heading
 ```
 
-<iframe src="../../sims/complementary-filter-heading-tuner/main.html" width="100%" height="480px" scrolling="no"></iframe>
+#### Diagram: Complementary Filter Heading Tuner
+
+<iframe src="../../sims/complementary-filter-heading-tuner/main.html" width="100%" height="507px" scrolling="no"></iframe>
 
 [Run the Complementary Filter Heading Tuner Fullscreen](../../sims/complementary-filter-heading-tuner/main.html){ .md-button }
 
@@ -731,7 +737,7 @@ of a second later.
 
 #### Diagram: Heading Broadcast Network Topology
 
-<iframe src="../../sims/heading-broadcast-topology/main.html" width="100%" height="380px" scrolling="no"></iframe>
+<iframe src="../../sims/heading-broadcast-topology/main.html" width="100%" height="442px" scrolling="no"></iframe>
 
 [Run the Heading Broadcast Network Topology Fullscreen](../../sims/heading-broadcast-topology/main.html){ .md-button }
 

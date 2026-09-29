@@ -1,0 +1,87 @@
+{
+  "title": "Range Mapping Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Pick an input range and an output range, move the input value, and see the linear mapping formula fill in with real numbers, including clamping and int() rounding.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/range-mapping-explorer/",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing and Robotics",
+    "topic": "Linear range mapping",
+    "learningObjectives": [
+      "Apply out_min + (x - in_min) / (in_max - in_min) * (out_max - out_min) to predict a mapped value.",
+      "Choose input and output ranges for a robot task such as servo angle to duty or distance to bar height.",
+      "Predict how clamping and int() truncation change a mapped value."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Apply",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Variables, integers, and arithmetic operators (Chapter 3)",
+      "Writing and calling functions (Chapter 4)",
+      "Servo angle range and duty values (Chapter 7)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 450
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "screenReaderDescription": true,
+      "keyboardNavigable": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "select", "label": "Preset", "options": ["Servo angle to duty", "ToF distance to bar height", "Pot to speed", "Custom"], "purpose": "Load a robot example or unlock the range boxes."},
+      {"type": "number inputs", "label": "in_min, in_max, out_min, out_max", "purpose": "The two ranges. Editable only in Custom mode."},
+      {"type": "checkbox", "label": "Clamp output", "default": false, "purpose": "Limit the result to the output range."},
+      {"type": "checkbox", "label": "Round to integer", "default": true, "purpose": "Drop the decimal part, like Python's int()."},
+      {"type": "slider", "label": "Input x", "range": "25% below in_min to 25% above in_max", "purpose": "The value being mapped."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Mathematical function visualization",
+    "equations": [
+      "t = (x - in_min) / (in_max - in_min)",
+      "result = out_min + t * (out_max - out_min)",
+      "clamped = min(max(result, low_out), high_out)",
+      "rounded = int(result)"
+    ],
+    "assumptions": ["The mapping is linear.", "int() truncates toward zero."],
+    "limitations": ["An input range of zero width cannot be mapped; the sim shows a warning instead."]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict, then check with a live worked formula",
+    "interactionPattern": "Parameter exploration with presets, editable ranges, and a filled-in formula",
+    "keyQuestions": [
+      "What fraction of the input range is x, and where is that same fraction in the output range?",
+      "What happens to the result when x is outside the input range?",
+      "Why might robot code clamp a mapped value?"
+    ],
+    "commonMisconceptions": [
+      "A mapped value always lands inside the output range.",
+      "int() rounds to the nearest whole number.",
+      "An output range must go from small to large."
+    ],
+    "assessmentOpportunities": [
+      "Predict the duty value for 45 degrees before moving the slider.",
+      "Find the ToF bar height for 150 cm and for 250 cm with and without clamping.",
+      "Design a custom mapping for a new sensor-to-actuator task."
+    ]
+  },
+  "chapter": "07-pwm-motor-speed-actuators"
+}

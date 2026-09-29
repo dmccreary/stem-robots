@@ -1,0 +1,15 @@
+{
+  "sim_id": "pid-feedback-loop-tuner",
+  "diagram_name": "PID Feedback Loop Tuner",
+  "chapter_number": 13,
+  "chapter_title": "Swarm Robotics and Advanced Engineering Patterns",
+  "chapter_dir": "13-swarm-robotics-advanced-patterns",
+  "chapter_rel_dir": "chapters/13-swarm-robotics-advanced-patterns",
+  "library": "p5.js",
+  "bloom_level": "Apply",
+  "bloom_verb": "Apply",
+  "learning_objective": "Apply (Bloom L3) — adjust Kp, Ki, and Kd independently and observe how each changes a simulated robot's approach to a target heading, including overshoot and settling time.",
+  "completion_status": "specified",
+  "extracted_date": "2026-09-29",
+  "specification": "Type: microsim\n**sim-id:** pid-feedback-loop-tuner<br/>\n**Library:** p5.js<br/>\n**Status:** Specified<br/>\n**Template:** https://github.com/dmccreary/control-systems/tree/main/docs/sims/feedback-loop-simulator\n\nLearning objective: Apply (Bloom L3) — adjust Kp, Ki, and Kd independently and observe how each changes a simulated robot's approach to a target heading, including overshoot and settling time.\n\nCanvas layout:\n- Left 500px: a strip-chart plot, target heading as a flat dashed line, actual heading as a solid animated line updating in real time\n- Right 200px: control panel\n\nVisual elements:\n- Time-series plot, x-axis = time (seconds), y-axis = heading error in degrees\n- A single simulated follower robot's heading value updated each frame using the PID formula against a step-change target\n\nInteractive controls:\n- Slider: Kp (0 to 1.0, default 0.2)\n- Slider: Ki (0 to 0.2, default 0.0)\n- Slider: Kd (0 to 0.5, default 0.0)\n- Button: \"Step Target\" — jumps the target heading by 90 degrees\n- Button: \"Reset\"\n\nDefault parameters: Kp=0.2, Ki=0.0, Kd=0.0, so the sim starts in the same proportional-only mode already used elsewhere in this chapter.\n\nBehavior: raising Kp alone should visibly speed up the approach but eventually cause oscillation around the target; adding Kd should visibly damp that oscillation; adding Ki should visibly eliminate any small steady-state offset left over. Label the current Kp/Ki/Kd values and the live error value numerically next to the sliders so the connection between slider position and plotted behavior stays visible (Data Visibility Requirement).\n\nInstructional Rationale: this is an Apply-level objective, so the sim uses direct parameter manipulation with an immediately visible, labeled numeric readout rather than a passive animation — the learner must be able to connect a specific slider position to a specific change in the plotted curve.\n\nImplementation notes: adapt the referenced template's proportional-gain step-response simulator to this course's heading/degrees framing instead of a generic plant/setpoint framing, and add the Ki/Kd sliders and plot terms the template does not yet include."
+}

@@ -614,7 +614,7 @@ The `secrets.py` file stores your WiFi network name and password. If you commit 
 
 This MicroSim is a sorting game. You drag project files into two bins: "Commit to Git" and "Put in .gitignore". The sim checks your answers and shows what is at risk when a secret file ends up in the wrong bin.
 
-<iframe src="../../sims/git-what-to-commit-sorter/main.html" width="100%" height="482px" scrolling="no"></iframe>
+<iframe src="../../sims/git-what-to-commit-sorter/main.html" width="100%" height="522px" scrolling="no"></iframe>
 [Run What Goes in Git Sorting Activity Fullscreen](../../sims/git-what-to-commit-sorter/main.html){ .md-button }
 
 <details markdown="1">

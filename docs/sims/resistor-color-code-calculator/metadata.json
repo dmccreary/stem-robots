@@ -1,0 +1,97 @@
+{
+  "title": "Resistor Color Code Calculator",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Pick four stripe colors to read a resistor's value in ohms, type a value to see its stripes, load common robot-lab resistors, and quiz yourself on random resistors.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/resistor-color-code-calculator/",
+  "source": "Adapted from https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/resistor-color-code-calculator",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Electronics",
+    "topic": "Four-band resistor color code",
+    "learningObjectives": [
+      "Read a four-band resistor's value in ohms from its stripe colors",
+      "Choose stripe colors for a target resistance value",
+      "Compute the tolerance range for a resistor",
+      "Recognize values that two digits and a multiplier cannot make exactly"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "Apply",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "What a resistor does in a circuit (Chapter 2: Resistors and Breadboards)",
+      "Multiplying by powers of ten"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 450
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "select", "label": "Stripe 1", "purpose": "First digit (no black option)"},
+      {"type": "select", "label": "Stripe 2", "purpose": "Second digit"},
+      {"type": "select", "label": "Stripe 3 (multiplier)", "purpose": "Power-of-ten multiplier, x0.01 to x10M"},
+      {"type": "select", "label": "Stripe 4 (tolerance)", "purpose": "Gold 5%, silver 10%, brown 1%"},
+      {"type": "input", "label": "Enter a value (ohms)", "purpose": "Target value such as 330, 4.7k or 1M"},
+      {"type": "button", "label": "Show stripes", "purpose": "Set the stripes to the closest two-digit match"},
+      {"type": "button", "label": "Random resistor", "purpose": "Start a quiz with the answer hidden"},
+      {"type": "button", "label": "Reveal", "purpose": "Show the quiz answer"},
+      {"type": "canvas-click", "label": "Example table row", "purpose": "Load a common lab resistor"}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Deterministic encoding and decoding of the four-band color code",
+    "equations": [
+      "value = (10 * digit1 + digit2) * multiplier",
+      "range = value * (1 - tolerance) to value * (1 + tolerance)"
+    ],
+    "assumptions": [
+      "Four-band resistors with two significant digits",
+      "Tolerance colors limited to gold, silver and brown"
+    ],
+    "limitations": [
+      "Five-band and six-band precision resistors are not shown",
+      "Closest match rounds to two significant digits, not to the E12 or E24 standard series"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Worked decoding followed by retrieval practice",
+    "interactionPattern": "Dropdown encoder/decoder with a quiz mode and example table",
+    "keyQuestions": [
+      "What do the first two stripes tell you, and what does the third one do?",
+      "Which stripes make 10,000 ohms?",
+      "Why can 475 ohms not be made with a four-band resistor?",
+      "What range of real values can a 330-ohm, 5% resistor have?"
+    ],
+    "commonMisconceptions": [
+      "The third stripe is a third digit",
+      "The tolerance stripe changes the value",
+      "Any value can be made exactly with four stripes"
+    ],
+    "assessmentOpportunities": [
+      "Three correct quiz readings in a row",
+      "Challenge: build 10,000 ohms (brown, black, orange)",
+      "Exit ticket: stripes for 4.7k ohms and the range for 330 ohms at 5%"
+    ]
+  },
+  "chapter": "02-hardware-platform-assembly"
+}

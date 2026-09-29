@@ -1,0 +1,98 @@
+{
+  "title": "Dance Beat Sequencer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A p5.js beat sequencer for robot dances. Students set a tempo in BPM, see seconds per beat = 60 / BPM, place Forward, Back, Spin, and Stop blocks on an 8-beat timeline, watch a robot perform the dance on a small stage, and read the matching dance() code with sleep() times. A drift slider shows why open-loop dances wander.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "dance-beat-sequencer",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Robotics and Computer Science",
+    "topic": "Timed open-loop motor patterns and robot dance sequences",
+    "learningObjectives": [
+      "Convert a tempo in BPM into seconds per beat using 60 / BPM",
+      "Compute the sleep() time for moves that last half a beat, one beat, or two beats",
+      "Arrange timed open-loop moves into an 8-beat dance with no gaps or overlaps",
+      "Explain why repeating an open-loop dance makes the robot drift from its start spot"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Apply",
+    "duration": "20-30 minutes",
+    "prerequisites": [
+      "Chapter 10 robot dance sequence and timed motor patterns",
+      "Calling functions and sleep() (Chapter 4)",
+      "Motor functions go_forward() and stop_motors() (Chapter 7)",
+      "Open-loop versus closed-loop control (Chapter 10)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 530
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)", "Web Audio API for the optional metronome click"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorAndTextLabels": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Forward / Back / Spin left / Spin right / Stop motors", "purpose": "Pick the move to place on the timeline"},
+      {"type": "canvas click", "label": "Timeline cell", "purpose": "Place the selected move, or remove a block by clicking it"},
+      {"type": "select", "label": "Block length", "options": ["half beat (0.5)", "one beat (1)", "two beats (2)"], "default": "one beat (1)"},
+      {"type": "button", "label": "Play", "purpose": "Perform the dance from the robot's current spot"},
+      {"type": "button", "label": "Stop", "purpose": "Stop playback and return the playhead to beat 1"},
+      {"type": "button", "label": "Clear", "purpose": "Remove every block"},
+      {"type": "button", "label": "Load Chapter Dance", "purpose": "Fill in the 8-beat dance from Chapter 10"},
+      {"type": "button", "label": "Home", "purpose": "Return the robot to its start spot and erase the trail"},
+      {"type": "checkbox", "label": "Metronome click", "default": true},
+      {"type": "slider", "label": "Tempo (BPM)", "range": [60, 180], "default": 120},
+      {"type": "slider", "label": "Drift (%)", "range": [0, 10], "default": 0}
+    ]
+  },
+  "simulation": {
+    "modelType": "Timed sequence with kinematic robot preview",
+    "variables": ["tempo (BPM)", "seconds per beat", "block length (beats)", "sleep time (s)", "dance length (s)", "drift (%)"],
+    "equations": ["seconds per beat = 60 / BPM", "sleep time = beats x (60 / BPM)", "dance length = 8 x (60 / BPM)"],
+    "assumptions": [
+      "Forward and Back move 30 px per beat; a spin turns 90 degrees per half beat",
+      "Drift makes straight moves curve slightly and spins over- or under-turn"
+    ],
+    "limitations": [
+      "Does not model wheel slip or battery voltage",
+      "Moves start and stop instantly"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Worked example followed by guided construction",
+    "interactionPattern": "Timeline builder with tempo slider, live code, and animated preview",
+    "keyQuestions": [
+      "How long is one beat at 120 BPM? At 90 BPM?",
+      "What sleep() value does a half-beat move need at 150 BPM?",
+      "Which numbers in dance() change when the tempo changes?",
+      "Why does the robot end up away from the dashed outline after several repeats?"
+    ],
+    "commonMisconceptions": [
+      "A higher BPM makes each beat longer (it makes each beat shorter)",
+      "The sleep() value equals the number of beats",
+      "An open-loop dance always returns the robot to the same spot"
+    ],
+    "assessmentOpportunities": [
+      "Compute sleep() values for several tempos and block lengths",
+      "Exit ticket: write one dance() line for a given BPM",
+      "Sketch and explain the drifted path after four repeats"
+    ]
+  },
+  "chapter": "10-robot-behaviors-navigation"
+}

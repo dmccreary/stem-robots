@@ -249,7 +249,7 @@ This is a complete, production-quality collision avoidance program. The constant
 
 This simulation shows a top-down view of a small robot driving around a walled arena with a few boxes in it. The robot runs the same rules as our program: full speed above 50 cm, half speed from 20 to 50 cm, and stop and turn below 20 cm. You can change the thresholds and watch the path the robot leaves behind.
 
-<iframe src="../../sims/collision-avoidance-arena/main.html" width="100%" height="602px" scrolling="no"></iframe>
+<iframe src="../../sims/collision-avoidance-arena/main.html" width="100%" height="552px" scrolling="no"></iframe>
 [Run Collision Avoidance Arena Fullscreen](../../sims/collision-avoidance-arena/main.html){ .md-button }
 
 <details markdown="1">
@@ -368,7 +368,7 @@ finally:
 
 This simulation shows a top-down view of a robot with two IR sensors following a black line on a white floor. You can change the speed and how hard the robot steers, then watch how those settings change the way it tracks the line.
 
-<iframe src="../../sims/line-follower-simulator/main.html" width="100%" height="602px" scrolling="no"></iframe>
+<iframe src="../../sims/line-follower-simulator/main.html" width="100%" height="552px" scrolling="no"></iframe>
 [Run Line Follower Simulator Fullscreen](../../sims/line-follower-simulator/main.html){ .md-button }
 
 <details markdown="1">
@@ -447,7 +447,7 @@ Encourage creativity here: try adding buzzer tones, NeoPixel color changes, and 
 
 This simulation shows a beat timeline for a robot dance. You pick a tempo, place moves on the beats, and watch a small robot perform them. The timeline also shows the exact `sleep()` time each move needs.
 
-<iframe src="../../sims/dance-beat-sequencer/main.html" width="100%" height="502px" scrolling="no"></iframe>
+<iframe src="../../sims/dance-beat-sequencer/main.html" width="100%" height="532px" scrolling="no"></iframe>
 [Run Dance Beat Sequencer Fullscreen](../../sims/dance-beat-sequencer/main.html){ .md-button }
 
 <details markdown="1">

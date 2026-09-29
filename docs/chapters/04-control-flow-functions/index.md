@@ -560,7 +560,7 @@ Responsive: redraw on window resize. Canvas min-width: 400px.
 
 The earlier timing sim showed one loop. This one compares two ways to wait. With `sleep()`, the robot does nothing else while it waits. With `ticks_ms()` and `ticks_diff()`, the robot keeps checking its sensor while the LED blinks on a schedule.
 
-<iframe src="../../sims/sleep-vs-ticks-explorer/main.html" width="100%" height="442px" scrolling="no"></iframe>
+<iframe src="../../sims/sleep-vs-ticks-explorer/main.html" width="100%" height="517px" scrolling="no"></iframe>
 [Run Sleep vs Timer Explorer Fullscreen](../../sims/sleep-vs-ticks-explorer/main.html){ .md-button }
 
 <details markdown="1">

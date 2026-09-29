@@ -1,0 +1,76 @@
+{
+  "title": "Local vs Global Scope Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A step-through MicroSim that draws the global scope and a function's local scope as nested boxes. Students watch local variables appear and vanish, see a NameError when a local name is used after its function returns, and compare a function with and without the global keyword.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Variable scope: local variables, global variables, and the global keyword",
+    "learningObjectives": [
+      "Explain why a local variable disappears after its function returns.",
+      "Explain why reading a local variable outside its function causes a NameError.",
+      "Explain why the global keyword is needed to change a global variable inside a function."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomVerb": "Explain",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Defining and calling functions with def",
+      "Function parameters and return values",
+      "Assigning and printing variables"
+    ],
+    "standards": [
+      "CSTA 2-AP-14: Create procedures with parameters to organize code and make it easier to reuse"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 560
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Worked-example step-through with one plain-language explanation per line",
+    "interactionPattern": "Students choose an example and press Step to run one line at a time; a checkbox toggles the global keyword to compare working and buggy code.",
+    "keyQuestions": [
+      "Where does a variable made inside a function live?",
+      "What happens to local variables when a function returns?",
+      "Why does print(scaled) cause a NameError?",
+      "What does the line global is_moving tell Python?"
+    ],
+    "commonMisconceptions": [
+      "A variable made inside a function can be used anywhere after the function runs.",
+      "Assigning to a variable inside a function always changes the global variable with the same name.",
+      "Two functions that both use a variable named speed share the same variable.",
+      "The global keyword is needed just to read a global variable."
+    ],
+    "assessmentOpportunities": [
+      "Predict whether print(scaled) will work before stepping through example 1.",
+      "Challenge: find the one-line fix for example 3.",
+      "Exit ticket: diagnose a flag that never changes because global is missing."
+    ]
+  },
+  "chapter": "04-control-flow-functions"
+}

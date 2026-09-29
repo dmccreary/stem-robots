@@ -1,0 +1,99 @@
+{
+  "title": "BLE Advertising and Scanning",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A p5.js simulation of a follower robot advertising over Bluetooth Low Energy and a leader robot scanning for it. Students change distance, environment, advertising interval, and scan window, then read a timeline that marks every packet heard or missed, the first-heard time, the follower current, battery life, and a comparison with WiFi current.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "ble-advertising-scanner",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Robotics and Computer Science",
+    "topic": "Bluetooth Low Energy advertising, scanning, range, and power",
+    "learningObjectives": [
+      "Explain that a scanner hears a packet only while its radio is scanning and the advertiser is in range",
+      "Explain how distance and obstacles cause packet loss near the edge of the range",
+      "Explain how the advertising interval changes how quickly the scanner finds the advertiser",
+      "Explain how the advertising interval changes current draw and battery life compared with WiFi"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomVerb": "Explain",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "BLE advertising, scanning, range, and power from Chapter 12",
+      "WiFi current figures from Chapter 11",
+      "Milliseconds and microseconds"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 550
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorAndTextLabels": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Start scan", "purpose": "Run one ble.gap_scan() and record every advertising packet"},
+      {"type": "button", "label": "Reset", "purpose": "Return to 3 m, Classroom, 100 ms interval, 5000 ms scan"},
+      {"type": "select", "label": "Environment", "options": ["Open air (50 m)", "Classroom (20 m)", "Metal shelves in the way (8 m)"], "default": "Classroom"},
+      {"type": "drag", "label": "Follower robot", "purpose": "Drag left or right to change the distance"},
+      {"type": "slider", "label": "Distance (m)", "range": [1, 60], "default": 3},
+      {"type": "slider", "label": "Advertising interval (ms)", "range": [100, 1000], "default": 100},
+      {"type": "slider", "label": "Scan window (ms)", "range": [50, 5000], "default": 5000}
+    ]
+  },
+  "simulation": {
+    "modelType": "Stochastic event timeline",
+    "variables": ["distance (m)", "environment range (m)", "advertising interval (ms)", "scan window (ms)", "packets sent", "packets heard", "first heard time (ms)", "current (mA)"],
+    "equations": [
+      "advertising events every interval plus a random 0 to 10 ms delay",
+      "advertising current (mA) = 1.0 + 100 / interval (ms)",
+      "battery life (hours) = 1000 mAh / current",
+      "RSSI (dBm) = -59 - 20 log10(distance in m)"
+    ],
+    "assumptions": [
+      "No packets are lost within half the room's range; loss rises to about 50 percent at 80 percent of the range and 100 percent beyond it",
+      "The scan window is the whole gap_scan() duration",
+      "The scan starts at a random point in the advertising cycle"
+    ],
+    "limitations": [
+      "Does not model scan interval versus scan window within a scan, or interference from other devices",
+      "Current numbers are approximate classroom figures from Chapter 12"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Controlled experiments with a concrete per-packet record",
+    "interactionPattern": "One scan per button press, with a timeline of heard and missed packets and live power readouts",
+    "keyQuestions": [
+      "Why is a packet sent inside the scan window sometimes still missed?",
+      "What happens to packets sent after the scan window ends?",
+      "Why does a longer advertising interval make the first hear slower?",
+      "How many hours longer does the battery last at 1000 ms than at 100 ms?"
+    ],
+    "commonMisconceptions": [
+      "A scanner hears every packet from any device in the same room",
+      "The advertising interval in gap_advertise() is in milliseconds (it is in microseconds)",
+      "BLE and WiFi use about the same power"
+    ],
+    "assessmentOpportunities": [
+      "Data table from the three one-variable experiments",
+      "Battery-life calculation for two intervals",
+      "Exit ticket proposing changes for more reliable discovery"
+    ]
+  },
+  "chapter": "12-bluetooth-low-energy"
+}

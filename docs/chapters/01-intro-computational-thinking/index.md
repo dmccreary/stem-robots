@@ -337,7 +337,7 @@ Water is a good picture for voltage and current, but it is easier to feel when y
 
 #### Diagram: Voltage and Current Water Analogy
 
-<iframe src="../../sims/voltage-current-water-analogy/main.html" width="100%" height="422px" scrolling="no"></iframe>
+<iframe src="../../sims/voltage-current-water-analogy/main.html" width="100%" height="447px" scrolling="no"></iframe>
 [Run Voltage and Current Water Analogy Fullscreen](../../sims/voltage-current-water-analogy/main.html){ .md-button }
 
 <details markdown="1">
@@ -402,7 +402,7 @@ You can see this for yourself in the simulation below. It lets you wear down the
 
 #### Diagram: Battery Pack Health Explorer
 
-<iframe src="../../sims/battery-pack-health-explorer/main.html" width="100%" height="442px" scrolling="no"></iframe>
+<iframe src="../../sims/battery-pack-health-explorer/main.html" width="100%" height="452px" scrolling="no"></iframe>
 [Run Battery Pack Health Explorer Fullscreen](../../sims/battery-pack-health-explorer/main.html){ .md-button }
 
 <details markdown="1">

@@ -1,0 +1,96 @@
+{
+  "title": "Hardware Troubleshooting Detective",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Solve broken-robot cases by choosing which of the six hardware checks to run, reading the clues, and naming the hidden fault with as few checks as possible.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/hardware-troubleshooting-detective/",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Engineering and Physical Computing",
+    "topic": "Systematic hardware fault isolation on a robot",
+    "learningObjectives": [
+      "Analyze a robot symptom to list the most likely hardware faults",
+      "Select the troubleshooting check that best separates the suspects",
+      "Interpret partial evidence (clues) that points toward a fault",
+      "Justify which check to run first based on speed and how much it rules out"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomsVerb": "Analyze",
+    "duration": "20 minutes",
+    "prerequisites": [
+      "The six-item hardware troubleshooting checklist (Chapter 2: Hardware Troubleshooting)",
+      "Changing one thing at a time while debugging (Chapter 1: A Strategy for Hard Problems)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 480
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Is it powered?", "purpose": "Inspect the USB cable and power LED"},
+      {"type": "button", "label": "Is the program uploaded?", "purpose": "Inspect the files on the board"},
+      {"type": "button", "label": "Are all wires seated?", "purpose": "Tug-test the motor wires"},
+      {"type": "button", "label": "Is anything reversed?", "purpose": "Inspect battery polarity"},
+      {"type": "button", "label": "Is the correct Grove port in use?", "purpose": "Inspect the sensor cable port"},
+      {"type": "button", "label": "Do the onboard LEDs tell you anything?", "purpose": "Inspect the pin LEDs"},
+      {"type": "select", "label": "My hypothesis", "options": ["Not sure yet", "USB cable not plugged in all the way", "Program saved on the laptop, not the board", "Motor wire loose in M2", "Battery pack plugged in backward", "Sensor cable in the wrong Grove port", "Code never sets the LED pin HIGH"]},
+      {"type": "button", "label": "Submit hypothesis", "purpose": "Check the chosen fault"},
+      {"type": "button", "label": "Show hint (-10)", "purpose": "Show a hint for 10 points"},
+      {"type": "button", "label": "New broken robot", "purpose": "Start a new case with a different fault"}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Hidden-fault diagnostic game with scored evidence gathering",
+    "equations": [
+      "score = 100 - 10 * checks - 20 * wrongHypotheses - 10 * hints (minimum 0)"
+    ],
+    "assumptions": [
+      "Exactly one fault is active per robot",
+      "Each check reports fine, a clue, or the fault itself"
+    ],
+    "limitations": [
+      "Real robots can have more than one fault at a time",
+      "Six faults cover common beginner problems, not every possible failure"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Case-based diagnostic reasoning with cost feedback",
+    "interactionPattern": "Choose checks, interpret colored rings and log results, submit a hypothesis",
+    "keyQuestions": [
+      "Which faults could cause this symptom?",
+      "Which check separates those suspects fastest?",
+      "What does an amber clue tell you even though it is not the fault?",
+      "If the motors do not spin at all, which check do you run first and why?"
+    ],
+    "commonMisconceptions": [
+      "Running every check in list order is the best strategy",
+      "If the code has no errors, the problem cannot be in the program",
+      "A wire that looks connected must be fully seated"
+    ],
+    "assessmentOpportunities": [
+      "Recorder sheets listing symptom, check order, and result",
+      "Three solved cases in a row with a score of 60 or more",
+      "Written justification of the first check for a new symptom"
+    ]
+  },
+  "chapter": "02-hardware-platform-assembly"
+}

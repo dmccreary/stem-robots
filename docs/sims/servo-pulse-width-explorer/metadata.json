@@ -1,0 +1,86 @@
+{
+  "title": "Servo Pulse Width Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Move a servo arm from 0 to 180 degrees and see how the angle sets a 1 to 2 ms pulse inside a 20 ms PWM period and a duty_u16 value from about 3276 to 6553.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/servo-pulse-width-explorer/",
+  "source": "https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/servo-pwm-explorer",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing and Robotics",
+    "topic": "Servo motor control with PWM pulse width",
+    "learningObjectives": [
+      "Explain how a servo angle from 0 to 180 degrees maps to a pulse width from 1 ms to 2 ms.",
+      "Explain why the 20 ms period stays the same while the pulse width changes.",
+      "Convert a servo angle to a duty_u16 value with int(min_duty + (angle / 180) * (max_duty - min_duty))."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomVerb": "Explain",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "PWM duty cycle, frequency, and 16-bit duty values (Chapter 7)",
+      "GPIO output pins (Chapter 6)",
+      "Fractions, percentages, and milliseconds"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 480
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "screenReaderDescription": true,
+      "keyboardNavigable": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Sweep / Stop sweep", "purpose": "Sweep 0 to 180 to 0 degrees in 5 degree steps every 20 ms, like the Servo Sweep Code."},
+      {"type": "button", "label": "Reset calibration", "purpose": "Restore min duty 3276 and max duty 6553."},
+      {"type": "slider", "label": "Angle", "range": "0-180 degrees", "default": 90, "purpose": "The servo angle to command."},
+      {"type": "slider", "label": "Min duty (0 degrees)", "range": "2500-4000", "default": 3276, "purpose": "Calibration value for 0 degrees."},
+      {"type": "slider", "label": "Max duty (180 degrees)", "range": "5500-7500", "default": 6553, "purpose": "Calibration value for 180 degrees."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Signal and mechanism visualization",
+    "equations": [
+      "duty = int(min_duty + (angle / 180) * (max_duty - min_duty))",
+      "pulse_ms = duty / 65535 * 20"
+    ],
+    "assumptions": ["The servo reads a 50 Hz PWM signal.", "The servo angle is linear in pulse width between the calibration points."],
+    "limitations": ["The arm eases toward the target angle; real servo speed depends on the motor and load."]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Multiple linked representations with concrete numeric readouts",
+    "interactionPattern": "Direct manipulation of the angle with synchronized arm, readout, gauge, and timeline; optional sweep demonstration",
+    "keyQuestions": [
+      "Which part of the PWM signal tells the servo its angle?",
+      "Why does the period stay at 20 ms for every angle?",
+      "Why might two servos need different min and max duty values?"
+    ],
+    "commonMisconceptions": [
+      "A bigger duty cycle makes a servo spin faster, like a DC motor.",
+      "The servo angle is set by the PWM frequency.",
+      "Every servo reaches exactly 0 and 180 degrees at 3276 and 6553."
+    ],
+    "assessmentOpportunities": [
+      "Record pulse width and duty for 0, 45, 90, 135, and 180 degrees.",
+      "Find the duty at 45 degrees (4095) and at 180 degrees with max duty 7000.",
+      "Explain in writing how the robot points the servo straight up."
+    ]
+  },
+  "chapter": "07-pwm-motor-speed-actuators"
+}

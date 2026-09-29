@@ -452,7 +452,7 @@ Numbers like 440 and 659 are hard to picture. The MicroSim below shows a frequen
 
 #### Diagram: Piezo Tone Frequency Explorer
 
-<iframe src="../../sims/piezo-tone-frequency-explorer/main.html" width="100%" height="472px" scrolling="no"></iframe>
+<iframe src="../../sims/piezo-tone-frequency-explorer/main.html" width="100%" height="477px" scrolling="no"></iframe>
 [Run Piezo Tone Frequency Explorer Fullscreen](../../sims/piezo-tone-frequency-explorer/main.html){ .md-button }
 
 <details markdown="1">

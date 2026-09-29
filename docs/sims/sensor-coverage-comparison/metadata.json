@@ -1,0 +1,95 @@
+{
+  "title": "Sensor Coverage Comparison",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A top-down view of the robot that compares the range, beam width, and blind spots of the ToF, ultrasonic, IR, and bump sensors as students drag an obstacle around.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/sensor-coverage-comparison/",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing and Robotics",
+    "topic": "Comparing robot distance and contact sensors",
+    "learningObjectives": [
+      "Compare the range, beam width, and minimum range of the ToF, ultrasonic, IR, and bump sensors.",
+      "Identify blind spots where no sensor detects an obstacle.",
+      "Explain which materials fool which sensors (glass and ToF, soft cloth and ultrasonic).",
+      "Choose a combination of sensors that covers a given robot task."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "bloomVerb": "Compare",
+    "duration": "20 minutes",
+    "prerequisites": [
+      "ToF, ultrasonic, IR, and bump switch sections (Chapter 8)",
+      "Driving forward and stopping with PWM motor control (Chapter 7)",
+      "Reading angles and distances on a diagram"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 520
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "screenReaderDescription": true,
+      "keyboardNavigable": false,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "drag", "label": "Obstacle", "purpose": "Drag the obstacle anywhere in the play area."},
+      {"type": "checkboxes", "label": "ToF, Ultrasonic, IR, Bump", "default": "all on", "purpose": "Turn each sensor on or off."},
+      {"type": "select", "label": "Obstacle", "options": ["Hard wall", "Soft cloth", "Thin table leg", "Glass"], "default": "Hard wall", "purpose": "Change what the obstacle is made of."},
+      {"type": "button", "label": "Drive forward", "purpose": "Drive at 10 cm per second until the bump switch touches the obstacle."},
+      {"type": "checkbox", "label": "Zoom in near robot", "default": false, "purpose": "Switch from 2 px per cm (about 200 cm deep) to 6 px per cm (about 60 cm deep)."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Geometric coverage model",
+    "equations": [
+      "ToF: wedge 25 degrees wide, 3-200 cm",
+      "Ultrasonic: wedge 30 degrees wide, 2-400 cm",
+      "IR: two 2 cm wide strips reaching 10 cm from the front corners",
+      "Bump: contact with the front edge",
+      "detected if the obstacle circle overlaps the zone and is not closer than the minimum range"
+    ],
+    "assumptions": [
+      "Glass is invisible to the ToF laser; soft cloth is invisible to the ultrasonic sensor.",
+      "Readings are the distance from the sensor to the nearest edge of the obstacle."
+    ],
+    "limitations": [
+      "Real beams have soft edges and shorter ranges for small, dark, or angled targets.",
+      "Bright light and surface texture are not modeled."
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Comparison through exploration and a design task",
+    "interactionPattern": "Drag-to-explore coverage map with lit zones, a readings legend, and a drive-forward test",
+    "keyQuestions": [
+      "Which sensor sees farthest, and which sees widest?",
+      "Where are the blind spots around the robot?",
+      "Which sensors would you combine to avoid glass doors and soft furniture?"
+    ],
+    "commonMisconceptions": [
+      "One distance sensor can see everything around the robot.",
+      "A sensor can measure an obstacle that is touching it.",
+      "Every sensor detects every material."
+    ],
+    "assessmentOpportunities": [
+      "Find the sensor that notices an obstacle just ahead of the left front corner.",
+      "Find the sensor that still works when the obstacle is glass at 50 cm.",
+      "Choose and justify a sensor combination for a given task."
+    ]
+  },
+  "chapter": "08-sensors-data-input"
+}

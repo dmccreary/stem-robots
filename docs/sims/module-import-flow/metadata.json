@@ -1,0 +1,77 @@
+{
+  "title": "Module Import Flow",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Three file cards (config.py, motors.py, main.py) linked by import arrows. Changing RIGHT_FORWARD_PIN in config.py updates every file that imports config, while a hard-coded version leaves five stale numbers and a disconnected motor wire.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Modules, import, and the config.py pattern",
+    "learningObjectives": [
+      "Explain how import links config.py, motors.py, and main.py.",
+      "Describe the order in which modules load when main.py runs, including that a module loads only once.",
+      "Predict which files change behavior when one value in config.py changes.",
+      "Compare the number of edits needed with the config.py pattern and with hard-coded pin numbers."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomVerb": "Explain",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Importing built-in modules",
+      "Defining and calling functions",
+      "Variables and constants"
+    ],
+    "standards": [
+      "CSTA 3A-AP-17: Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 500
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Cause-and-effect demonstration with a contrasting counter-example (hard-coded pins)",
+    "interactionPattern": "Students run main.py to see the import order step by step, change the pin in config.py to see it propagate, and toggle hard-coded pins to see what breaks.",
+    "keyQuestions": [
+      "Which files import config.py?",
+      "Why does config.py load only once when two files import it?",
+      "Which lines change when you edit RIGHT_FORWARD_PIN in config.py?",
+      "What goes wrong when the pin number is typed by hand in five places?"
+    ],
+    "commonMisconceptions": [
+      "Each file needs its own copy of the pin numbers.",
+      "Changing config.py also changes numbers typed directly into other files.",
+      "A module that is imported twice runs twice.",
+      "import copies the code into the file instead of linking to the module."
+    ],
+    "assessmentOpportunities": [
+      "Write down the console order after Run main.py and explain it.",
+      "Challenge: count the lines to edit with and without config.py when a wire moves to pin 13.",
+      "Exit ticket: explain the risk of editing a pin in motors.py instead of config.py."
+    ]
+  },
+  "chapter": "05-data-structures-modular-code"
+}

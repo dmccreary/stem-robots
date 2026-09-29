@@ -1,0 +1,98 @@
+{
+  "title": "Robot Logic Truth Table",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Flip two robot conditions, pick an and, or, or not rule, and watch the Emergency stop lamp and a live truth table show exactly when the robot stops.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/robot-logic-truth-table/",
+  "source": "Logic evaluation adapted from https://github.com/dmccreary/moving-rainbow/tree/main/docs/sims/python-operator-playground",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Computer Science",
+    "topic": "Logical operators and truth tables for robot conditions",
+    "learningObjectives": [
+      "Evaluate and, or, and not expressions for two robot conditions",
+      "Apply operator precedence: not first, then and, then or",
+      "Complete a truth table by predicting each row",
+      "Choose the logical rule that matches a described robot behavior"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomsVerb": "Apply",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Booleans True and False (Chapter 3: Booleans)",
+      "Comparison and logical operators (Chapter 3)",
+      "Reading a simple if statement"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 480
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "checkbox", "label": "A: obstacle_close", "default": true},
+      {"type": "checkbox", "label": "B: robot_moving", "default": true},
+      {"type": "checkbox", "label": "Show parentheses order", "default": false},
+      {"type": "radio", "label": "Rule", "options": ["A and B", "A or B", "not A", "not A and B", "(not A) or B"], "default": "A and B"},
+      {"type": "button", "label": "Show all rows", "purpose": "Reveal every Result cell"},
+      {"type": "button", "label": "Test my prediction", "purpose": "Pick a hidden cell and predict True or False"},
+      {"type": "button", "label": "True / False", "purpose": "Submit a prediction for the chosen cell"},
+      {"type": "canvas-click", "label": "Switches and table rows", "purpose": "Flip a switch or jump to a row"}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Boolean expression evaluator with a truth table",
+    "equations": [
+      "A and B is True only when both are True",
+      "A or B is True when at least one is True",
+      "not A flips A; not A and B means (not A) and B"
+    ],
+    "assumptions": [
+      "obstacle_close is True when the distance is under 20 cm",
+      "The lamp shows whether the chosen rule would trigger an emergency stop"
+    ],
+    "limitations": [
+      "Only two inputs and five fixed rules are included",
+      "Short-circuit evaluation is not shown"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Prediction practice on an exhaustive truth table",
+    "interactionPattern": "Switches and rule selector with a live lamp, code line, and hidden-row predictions",
+    "keyQuestions": [
+      "With A or B, which row keeps the lamp dark?",
+      "Why is not A and B the same as (not A) and B?",
+      "Which rule stops the robot only when it is moving and not close to an obstacle?",
+      "How many rows does a truth table with two inputs need?"
+    ],
+    "commonMisconceptions": [
+      "or means exactly one, not at least one",
+      "not A and B means not (A and B)",
+      "Checking one example proves a rule is right"
+    ],
+    "assessmentOpportunities": [
+      "Prediction accuracy in Test my prediction mode",
+      "Challenge: dark row is False, False; the rule is not A and B",
+      "Exit ticket: full truth table for not A or B"
+    ]
+  },
+  "chapter": "03-micropython-dev-environment"
+}

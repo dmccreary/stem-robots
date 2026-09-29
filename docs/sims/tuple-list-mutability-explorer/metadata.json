@@ -1,0 +1,76 @@
+{
+  "title": "Tuple vs List Mutability",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A side-by-side mutation test that runs the same operation on a list and a tuple holding the same robot data (motor pins, an RGB color, or the OLED size). Changes work on the list, while the tuple refuses with the real MicroPython TypeError or AttributeError.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Mutable lists versus immutable tuples",
+    "learningObjectives": [
+      "Distinguish the operations that work on both lists and tuples (reading and looping) from those that work only on lists (changing, appending, removing).",
+      "Predict the TypeError or AttributeError a tuple raises when code tries to change it.",
+      "Choose a tuple for fixed hardware values and a list for data that grows."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomVerb": "Distinguish",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Creating lists and reading items by index",
+      "for loops",
+      "Reading MicroPython error messages"
+    ],
+    "standards": [
+      "CSTA 2-AP-11: Create clearly named variables that represent different data types and perform operations on their values"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 420
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-then-test comparison with immediate feedback",
+    "interactionPattern": "Students choose a data set and an operation, then run it on a list and a tuple at the same time and compare the two results.",
+    "keyQuestions": [
+      "Which operations work on both a list and a tuple?",
+      "What error do you get when you try to change a tuple?",
+      "Why is a tuple a good choice for motor pin numbers?",
+      "Which robot data should be a list instead?"
+    ],
+    "commonMisconceptions": [
+      "Tuples cannot be read or looped over because they cannot be changed.",
+      "Tuples and lists are interchangeable.",
+      "A tuple can be changed with append() like a list.",
+      "Whether data can change depends on the values stored, not the type of container."
+    ],
+    "assessmentOpportunities": [
+      "Prediction table for five operations on a list and a tuple.",
+      "Challenge: choose tuple or list for the OLED size and the last ten distance readings.",
+      "Exit ticket: explain why fixed values in config.py benefit from being unchangeable."
+    ]
+  },
+  "chapter": "05-data-structures-modular-code"
+}

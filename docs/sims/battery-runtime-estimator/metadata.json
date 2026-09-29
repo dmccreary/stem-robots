@@ -1,0 +1,77 @@
+{
+  "title": "Battery Runtime Estimator",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A calculator that estimates robot runtime as usable battery capacity divided by total current. Students choose a 4 x AA alkaline or 2S LiPo pack, set motor duty and battery health, switch the OLED and NeoPixels on or off, and watch a battery gauge drain.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Engineering and Electronics",
+    "topic": "Battery capacity, current draw, and runtime",
+    "learningObjectives": [
+      "Calculate battery runtime as usable capacity (mAh) divided by total current (mA).",
+      "Add the robot's individual loads to find the total current.",
+      "Apply the alkaline high-current derating and the LiPo 80 percent limit to find usable capacity.",
+      "Explain how motor duty changes the runtime."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Calculate",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Battery packs and LiPo cells",
+      "Multiplying and dividing decimals",
+      "Converting hours to minutes"
+    ],
+    "standards": [
+      "CCSS.MATH.CONTENT.6.RP.A.3: Use ratio and rate reasoning to solve real-world and mathematical problems"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 470
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Calculator with a live worked formula so students can check hand calculations",
+    "interactionPattern": "Students choose a battery, adjust motor duty and battery health sliders, toggle loads, and read the runtime and the formula strip; Run drains the gauge at 1 simulated hour per second.",
+    "keyQuestions": [
+      "Which load uses the most current?",
+      "Why does a LiPo pack only use 80 percent of its rated capacity?",
+      "What happens to the runtime when you halve the motor duty?",
+      "Which pack lasts longer at 100 percent motor duty, and why?"
+    ],
+    "commonMisconceptions": [
+      "A higher-voltage pack always runs longer.",
+      "mAh and mA measure the same thing.",
+      "All of a battery's rated capacity can be used at any current.",
+      "The display and LEDs use as much current as the motors."
+    ],
+    "assessmentOpportunities": [
+      "Verify the default runtime by hand calculation.",
+      "Challenge: compare the AA pack and the 1000 mAh LiPo at 100 percent duty.",
+      "Exit ticket: estimate runtime for a 250 mA load on a 2000 mAh LiPo."
+    ]
+  },
+  "chapter": "06-electronics-motors-protocols"
+}

@@ -1,0 +1,86 @@
+{
+  "title": "NeoPixel RGB Color Mixer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "Mix red, green, and blue values from 0 to 255 on the robot's two NeoPixels, see the glow, and copy the matching np[0] = (r, g, b) line of MicroPython.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY 4.0",
+  "identifier": "https://dmccreary.github.io/stem-robots/sims/neopixel-rgb-color-mixer/",
+  "source": "https://github.com/dmccreary/learning-micropython/tree/main/docs/sims/neopixel-color-mixer",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Physical Computing and Robotics",
+    "topic": "RGB color mixing on NeoPixel LEDs",
+    "learningObjectives": [
+      "Choose R, G, and B values from 0 to 255 to produce a target color.",
+      "Write the matching np[0] = (r, g, b) and np.write() lines for one or both LEDs.",
+      "Scale RGB values for a brightness percentage and round down to whole numbers."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Apply",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Tuples and lists (Chapter 5)",
+      "Integers and multiplication (Chapter 3)",
+      "The Maker Pi RP2040 board layout (Chapter 2)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 505
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "screenReaderDescription": true,
+      "keyboardNavigable": true,
+      "colorIndependentCues": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "slider + number box", "label": "Red, Green, Blue", "range": "0-255", "default": "255, 80, 0", "purpose": "Set each color channel."},
+      {"type": "slider", "label": "Brightness", "range": "0-100% in 5% steps", "default": 100, "purpose": "Scale all three channels."},
+      {"type": "radio", "label": "Edit: LED 0 / LED 1 / Both", "default": "Both", "purpose": "Choose which NeoPixel the sliders change."},
+      {"type": "buttons", "label": "Red, Green, Blue, Yellow, White, Orange, Off", "purpose": "Load a row of the chapter's color table."},
+      {"type": "buttons", "label": "Clear, Caution, Stop, Standby", "purpose": "Load a status color: green, yellow, red, or blue."}
+    ]
+  },
+  "simulationModel": {
+    "modelType": "Additive color model",
+    "equations": [
+      "shown value = floor(slider value * brightness / 100)",
+      "closest name = table color with the smallest RGB distance; Custom color if the distance is over 60"
+    ],
+    "assumptions": ["Each channel is 0 to 255, as in the MicroPython neopixel module."],
+    "limitations": ["A screen cannot show how bright a real LED looks at full power."]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Direct manipulation with live code generation",
+    "interactionPattern": "Sliders and number boxes drive glowing LEDs, a swatch, a closest-name match, and a code box",
+    "keyQuestions": [
+      "What color do full red and full green make?",
+      "Which line of code changes only the second LED?",
+      "What happens to each number when brightness drops to 20%?"
+    ],
+    "commonMisconceptions": [
+      "Red plus green light makes brown, as with paint.",
+      "Changing np[0] updates the LED without np.write().",
+      "Brightness is a separate setting inside the NeoPixel."
+    ],
+    "assessmentOpportunities": [
+      "Make the chapter's yellow and report its values.",
+      "Report the code values for yellow at 20% brightness.",
+      "Write the code for a red LED 0 and a blue LED 1."
+    ]
+  },
+  "chapter": "09-display-systems-output"
+}

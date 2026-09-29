@@ -1,0 +1,93 @@
+{
+  "title": "WiFi Connect Sequence",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A p5.js step-through sequence diagram of the Chapter 11 Pico W WiFi connect code. Students step through WLAN(STA_IF), active(True), connect(), authentication, DHCP, the isconnected() polling loop, and ifconfig(), and compare success, wrong password, network out of range, and slow router scenarios against an adjustable timeout.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "wifi-connect-sequence",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Robotics and Computer Science",
+    "topic": "Connecting a microcontroller to WiFi with a timeout",
+    "learningObjectives": [
+      "Put the WiFi connection calls in the correct order",
+      "Explain why connect() is followed by a loop that polls isconnected()",
+      "Explain what the robot does when the password is wrong, the network is out of range, or the timeout runs out",
+      "Choose a timeout that works for a slow router and explain the trade-off"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "bloomVerb": "Sequence",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "WLAN object and isconnected() from Chapter 11",
+      "ticks_ms() and ticks_diff() from Chapter 4",
+      "The secrets.py pattern from Chapter 5"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 500
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorAndTextLabels": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "button", "label": "Next Step", "purpose": "Run the next call (disabled while the loop is waiting)"},
+      {"type": "button", "label": "Auto Play", "purpose": "Run one step every 1.2 seconds"},
+      {"type": "button", "label": "Reset", "purpose": "Return to step 0"},
+      {"type": "select", "label": "Scenario", "options": ["Success", "Wrong password", "Network out of range", "Slow router (connects at 8 s)", "Slow router (connects at 12 s)"], "default": "Success"},
+      {"type": "checkbox", "label": "Use secrets.py", "default": true, "purpose": "Show the password imported from secrets.py or typed into main.py"},
+      {"type": "slider", "label": "Timeout (s)", "range": [2, 20], "default": 10}
+    ]
+  },
+  "simulation": {
+    "modelType": "Step-through sequence diagram with a timed polling loop",
+    "variables": ["step", "wlan.status()", "elapsed time (s)", "timeout (s)", "isconnected() call count"],
+    "equations": ["loop ends when isconnected() is True or ticks_diff(ticks_ms(), start) > timeout x 1000"],
+    "assumptions": [
+      "The loop polls isconnected() every 0.1 s",
+      "A normal router connects about 3 s after connect()",
+      "The waiting clock runs at 2x real time to save class time"
+    ],
+    "limitations": [
+      "Does not model WiFi channel, signal strength, or reconnects after a drop",
+      "Status code values follow the Raspberry Pi Pico W port"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Worked example with step-through and failure scenarios",
+    "interactionPattern": "Next Step / Auto Play sequence diagram with scenario dropdown and timeout slider",
+    "keyQuestions": [
+      "Is the robot connected when connect() returns?",
+      "Why do a wrong password and a missing network print the same message?",
+      "What timeout would you choose, and what does a longer timeout cost?",
+      "What would be exposed if the password were typed into main.py?"
+    ],
+    "commonMisconceptions": [
+      "connect() waits until the robot is connected",
+      "A failed connection always means the password is wrong",
+      "A longer timeout has no downside"
+    ],
+    "assessmentOpportunities": [
+      "Ordering the seven calls before and after the sim",
+      "Failure-analysis table with status codes and console output",
+      "Exit ticket listing three causes of a failed connection"
+    ]
+  },
+  "chapter": "11-wireless-networking-web-servers"
+}

@@ -90,7 +90,7 @@ Tables of numbers are hard to picture. The MicroSim below lets you mix a color y
 
 #### Diagram: NeoPixel RGB Color Mixer
 
-<iframe src="../../sims/neopixel-rgb-color-mixer/main.html" width="100%" height="452px" scrolling="no"></iframe>
+<iframe src="../../sims/neopixel-rgb-color-mixer/main.html" width="100%" height="507px" scrolling="no"></iframe>
 [Run NeoPixel RGB Color Mixer Fullscreen](../../sims/neopixel-rgb-color-mixer/main.html){ .md-button }
 
 <details markdown="1">
@@ -389,7 +389,7 @@ The bar chart, the meter, and the status colors all start from one distance numb
 
 #### Diagram: Distance to Display Mapper
 
-<iframe src="../../sims/distance-display-mapper/main.html" width="100%" height="472px" scrolling="no"></iframe>
+<iframe src="../../sims/distance-display-mapper/main.html" width="100%" height="422px" scrolling="no"></iframe>
 [Run Distance to Display Mapper Fullscreen](../../sims/distance-display-mapper/main.html){ .md-button }
 
 <details markdown="1">

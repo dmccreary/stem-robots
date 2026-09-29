@@ -1,0 +1,75 @@
+{
+  "title": "Transistor Switch Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "An N-channel MOSFET circuit in which an RP2040 GPIO pin drives the gate through a 220 ohm resistor and the MOSFET switches a DC motor powered by a 6 V battery pack. Meters compare the tiny GPIO current with the large motor current, and a direct-connection option shows why a GPIO pin cannot power a motor.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Engineering and Electronics",
+    "topic": "Transistors as electronic switches for motor control",
+    "learningObjectives": [
+      "Explain how a small voltage on a MOSFET's gate switches a large current from drain to source.",
+      "Identify the gate threshold voltage at which the motor starts to turn.",
+      "Compare the GPIO control current with the motor current and describe their ratio.",
+      "Explain why a DC motor cannot be powered directly from a GPIO pin."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomVerb": "Explain",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "GPIO pins and HIGH/LOW outputs",
+      "Voltage and current as basic ideas",
+      "Motors need more power than LEDs"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 480
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Guided exploration of a simplified circuit model with numeric meters",
+    "interactionPattern": "Students toggle the GPIO pin or drag the gate voltage slider, change the motor load, and bypass the transistor while meters and a ratio line update.",
+    "keyQuestions": [
+      "At what gate voltage does the MOSFET turn on?",
+      "Where does the motor current come from: the GPIO pin or the battery?",
+      "About how many times larger is the motor current than the GPIO current?",
+      "What happens when the motor is wired straight to the GPIO pin?"
+    ],
+    "commonMisconceptions": [
+      "The motor current flows out of the GPIO pin.",
+      "Any voltage above 0 V on the gate turns the transistor fully on.",
+      "A GPIO pin can power a small motor if the program sets it HIGH.",
+      "The transistor creates the extra current, instead of switching current that comes from the battery."
+    ],
+    "assessmentOpportunities": [
+      "Record the threshold voltage found with the slider.",
+      "Challenge: explain why the direct GPIO connection fails.",
+      "Exit ticket: label gate, drain, and source and trace the motor current path."
+    ]
+  },
+  "chapter": "06-electronics-motors-protocols"
+}

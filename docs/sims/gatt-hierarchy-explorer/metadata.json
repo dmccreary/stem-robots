@@ -1,0 +1,96 @@
+{
+  "title": "GATT Hierarchy Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A p5.js explorer of the follower robot's GATT tree: the RobotFollower device, the Robot Command Service, the WRITE-only Command characteristic, an optional READ and NOTIFY Status characteristic, and an example Battery Service. Students click boxes to see type, UUID, and properties, then act as the leader to read, write, subscribe, and look up UUIDs, with a message log that shows IRQ events and refusals.",
+  "date": "2026-09-29",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "gatt-hierarchy-explorer",
+  "educational": {
+    "gradeLevel": ["8", "9", "10", "11", "12"],
+    "subjectArea": "Robotics and Computer Science",
+    "topic": "BLE GATT services, characteristics, UUIDs, and properties",
+    "learningObjectives": [
+      "Identify the device, services, and characteristics in a GATT tree",
+      "Identify the UUID that the leader uses to find the Command characteristic",
+      "Predict which operations (read, write, notify) a characteristic allows from its properties",
+      "Explain that data lives in characteristics, not in services or the device"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomVerb": "Classify",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "GATT protocol, services, characteristics, and UUIDs from Chapter 12",
+      "Central and peripheral roles from Chapter 12",
+      "Hexadecimal constants"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.11.10",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 520
+    },
+    "responsive": true,
+    "dependencies": ["p5.js 1.11.10 (jsDelivr CDN)"],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "screenReaderDescription": true,
+      "colorAndTextLabels": true
+    }
+  },
+  "userInterface": {
+    "controls": [
+      {"type": "canvas click", "label": "Tree boxes", "purpose": "Select the device, a service, or a characteristic"},
+      {"type": "select", "label": "Value", "options": ["FORWARD", "STOP", "LEFT", "RIGHT", "custom..."], "default": "FORWARD"},
+      {"type": "input", "label": "Value text", "purpose": "The value to write (editable for custom text)"},
+      {"type": "button", "label": "Read", "purpose": "Leader reads the selected characteristic"},
+      {"type": "button", "label": "Write", "purpose": "Leader writes the value to the selected characteristic"},
+      {"type": "button", "label": "Subscribe (notify)", "purpose": "Leader subscribes to notifications, or unsubscribes"},
+      {"type": "input", "label": "Look up UUID", "purpose": "Find an attribute by its UUID"},
+      {"type": "button", "label": "Look up", "purpose": "Run the UUID search"},
+      {"type": "button", "label": "Reset", "purpose": "Clear the log and values"}
+    ]
+  },
+  "simulation": {
+    "modelType": "Interactive data-model explorer with rule-based responses",
+    "variables": ["selected attribute", "Command value", "Status value", "subscription state", "motor action"],
+    "equations": [],
+    "assumptions": [
+      "Command has only the WRITE property (_FLAG_WRITE = 0x0008), as in the Chapter 12 follower code",
+      "Status (READ and NOTIFY) and the Battery Service are extra examples not in the chapter code",
+      "Notifications arrive every 2 seconds and report OK when stopped or BUSY when the motors run"
+    ],
+    "limitations": [
+      "Attribute handles, descriptors, and service discovery are not shown",
+      "Writes always succeed instantly"
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-test-explain classification",
+    "interactionPattern": "Clickable tree with a detail panel and action buttons that succeed or explain the refusal",
+    "keyQuestions": [
+      "Which box holds the value FORWARD?",
+      "Which UUID does the leader need to find the Command characteristic?",
+      "Why is Read refused on Command?",
+      "What would you change so the leader could read the last command?"
+    ],
+    "commonMisconceptions": [
+      "Services hold the data (characteristics do)",
+      "Every characteristic can be read and written",
+      "Any similar-looking UUID will find the characteristic"
+    ],
+    "assessmentOpportunities": [
+      "Labeling the five boxes before clicking",
+      "Prediction table for read, write, and subscribe",
+      "Exit ticket about adding _FLAG_READ"
+    ]
+  },
+  "chapter": "12-bluetooth-low-energy"
+}
