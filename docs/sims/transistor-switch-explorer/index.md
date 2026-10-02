@@ -1,12 +1,13 @@
 ---
-title: Transistor Switch Explorer
-description: Raise and lower the voltage on a MOSFET's gate from an RP2040 GPIO pin and watch a tiny control current switch a motor current thousands of times larger.
+title: "Transistor Switch Explorer"
+description: "Raise and lower the voltage on a MOSFET's gate from an RP2040 GPIO pin and watch a tiny control current switch a motor current thousands of times larger."
 image: /sims/transistor-switch-explorer/transistor-switch-explorer.png
 og:image: /sims/transistor-switch-explorer/transistor-switch-explorer.png
 twitter:image: /sims/transistor-switch-explorer/transistor-switch-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Transistor Switch Explorer

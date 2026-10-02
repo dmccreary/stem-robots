@@ -1,12 +1,13 @@
 ---
-title: Battery Pack Health Explorer
-description: Wear down four AA batteries in series and see how the falling pack voltage slows the robot's motors and puts the RP2040 board at risk of resetting.
+title: "Battery Pack Health Explorer"
+description: "Wear down four AA batteries in series and see how the falling pack voltage slows the robot's motors and puts the RP2040 board at risk of resetting."
 image: /sims/battery-pack-health-explorer/battery-pack-health-explorer.png
 og:image: /sims/battery-pack-health-explorer/battery-pack-health-explorer.png
 twitter:image: /sims/battery-pack-health-explorer/battery-pack-health-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Battery Pack Health Explorer

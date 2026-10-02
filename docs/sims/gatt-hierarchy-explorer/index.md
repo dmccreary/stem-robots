@@ -1,12 +1,13 @@
 ---
-title: GATT Hierarchy Explorer
-description: Explore the follower robot's GATT tree of device, services, and characteristics, then act as the leader robot to read, write, or subscribe and see which operations each characteristic allows.
+title: "GATT Hierarchy Explorer"
+description: "Explore the follower robot's GATT tree of device, services, and characteristics, then act as the leader robot to read, write, or subscribe and see which operations each characteristic allows."
 image: /sims/gatt-hierarchy-explorer/gatt-hierarchy-explorer.png
 og:image: /sims/gatt-hierarchy-explorer/gatt-hierarchy-explorer.png
 twitter:image: /sims/gatt-hierarchy-explorer/gatt-hierarchy-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # GATT Hierarchy Explorer

@@ -1,6 +1,6 @@
 ---
-title: GPIO Pin Explorer
-description: Students will explain the difference between a digital input pin and a digital output pin, and correctly map HIGH/LOW states to voltage levels and MicroPython boolean values.
+title: "GPIO Pin Explorer"
+description: "Students will explain the difference between a digital input pin and a digital output pin, and correctly map HIGH/LOW states to voltage levels and MicroPython boolean values."
 image: /sims/gpio-pin-explorer/gpio-pin-explorer.png
 og:image: /sims/gpio-pin-explorer/gpio-pin-explorer.png
 twitter:image: /sims/gpio-pin-explorer/gpio-pin-explorer.png

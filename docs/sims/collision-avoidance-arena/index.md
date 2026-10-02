@@ -1,12 +1,13 @@
 ---
-title: Collision Avoidance Arena
-description: A top-down robot arena where students tune STOP_DIST_CM and SLOW_DIST_CM and watch how the robot's path, speed, turns, and wall touches change.
+title: "Collision Avoidance Arena"
+description: "A top-down robot arena where students tune STOP_DIST_CM and SLOW_DIST_CM and watch how the robot's path, speed, turns, and wall touches change."
 image: /sims/collision-avoidance-arena/collision-avoidance-arena.png
 og:image: /sims/collision-avoidance-arena/collision-avoidance-arena.png
 twitter:image: /sims/collision-avoidance-arena/collision-avoidance-arena.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Collision Avoidance Arena

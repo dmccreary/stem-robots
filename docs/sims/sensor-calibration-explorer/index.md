@@ -1,6 +1,6 @@
 ---
-title: Sensor Calibration Two-Point Process
-description: Type: MicroSim **sim-id:** sensor-calibration-explorer<br/> **Library:** p5.js<br/> **Status:** Specified  Create a p5.js MicroSim with a 700 × 400 canvas.
+title: "Sensor Calibration Two-Point Process"
+description: "Adjust the offset and scale of a sensor that reads wrong, then press Calibrate to line its readings up with the true distance."
 image: /sims/sensor-calibration-explorer/sensor-calibration-explorer.png
 og:image: /sims/sensor-calibration-explorer/sensor-calibration-explorer.png
 twitter:image: /sims/sensor-calibration-explorer/sensor-calibration-explorer.png

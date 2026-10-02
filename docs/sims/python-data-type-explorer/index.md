@@ -1,12 +1,13 @@
 ---
-title: Data Type Explorer
-description: Type a value or pick a robot value and watch it slide into the int, float, str, or bool bin, with a REPL-style type() check and a plain-English reason.
+title: "Data Type Explorer"
+description: "Type a value or pick a robot value and watch it slide into the int, float, str, or bool bin, with a REPL-style type() check and a plain-English reason."
 image: /sims/python-data-type-explorer/python-data-type-explorer.png
 og:image: /sims/python-data-type-explorer/python-data-type-explorer.png
 twitter:image: /sims/python-data-type-explorer/python-data-type-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Data Type Explorer

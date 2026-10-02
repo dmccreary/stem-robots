@@ -1,6 +1,6 @@
 ---
-title: Breadboard Layout Explorer
-description: Students will explain which holes on a breadboard are electrically connected to each other, and correctly trace a circuit path from the power rail through a component to ground.
+title: "Breadboard Layout Explorer"
+description: "Students will explain which holes on a breadboard are electrically connected to each other, and correctly trace a circuit path from the power rail through a component to ground."
 image: /sims/breadboard-layout-explorer/breadboard-layout-explorer.png
 og:image: /sims/breadboard-layout-explorer/breadboard-layout-explorer.png
 twitter:image: /sims/breadboard-layout-explorer/breadboard-layout-explorer.png

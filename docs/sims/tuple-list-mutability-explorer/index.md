@@ -1,12 +1,13 @@
 ---
-title: Tuple vs List Mutability
-description: Run the same operation on a list and a tuple that hold the same robot data, see which changes work and which raise a TypeError, and choose the right container for fixed hardware values.
+title: "Tuple vs List Mutability"
+description: "Run the same operation on a list and a tuple that hold the same robot data, see which changes work and which raise a TypeError, and choose the right container for fixed hardware values."
 image: /sims/tuple-list-mutability-explorer/tuple-list-mutability-explorer.png
 og:image: /sims/tuple-list-mutability-explorer/tuple-list-mutability-explorer.png
 twitter:image: /sims/tuple-list-mutability-explorer/tuple-list-mutability-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Tuple vs List Mutability

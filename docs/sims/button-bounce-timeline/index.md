@@ -1,12 +1,13 @@
 ---
-title: Button Bounce Timeline
-description: A slow-motion timeline that shows how one button press on pin 20 makes many falling edges, and how a debounce window decides which edges count as presses.
+title: "Button Bounce Timeline"
+description: "A slow-motion timeline that shows how one button press on pin 20 makes many falling edges, and how a debounce window decides which edges count as presses."
 image: /sims/button-bounce-timeline/button-bounce-timeline.png
 og:image: /sims/button-bounce-timeline/button-bounce-timeline.png
 twitter:image: /sims/button-bounce-timeline/button-bounce-timeline.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Button Bounce Timeline

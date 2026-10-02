@@ -1,6 +1,6 @@
 ---
-title: Differential Drive Turn Simulator
-description: Type: MicroSim **sim-id:** differential-drive-simulator<br/> **Library:** p5.js<br/> **Status:** Specified  Create a p5.js MicroSim with a 700 × 450 canvas.
+title: "Differential Drive Turn Simulator"
+description: "Set the left and right wheel speeds and watch a top-down robot drive, spin, and curve. See how the difference between two wheels steers the robot."
 image: /sims/differential-drive-simulator/differential-drive-simulator.png
 og:image: /sims/differential-drive-simulator/differential-drive-simulator.png
 twitter:image: /sims/differential-drive-simulator/differential-drive-simulator.png

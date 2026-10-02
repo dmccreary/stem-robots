@@ -1,12 +1,13 @@
 ---
-title: PID Feedback Loop Tuner
-description: Adjust Kp, Ki, and Kd one at a time and watch a simulated robot turn to a new heading, with live overshoot, settling time, final error, and P, I, and D term readouts.
+title: "PID Feedback Loop Tuner"
+description: "Adjust Kp, Ki, and Kd one at a time and watch a simulated robot turn to a new heading, with live overshoot, settling time, final error, and P, I, and D term readouts."
 image: /sims/pid-feedback-loop-tuner/pid-feedback-loop-tuner.png
 og:image: /sims/pid-feedback-loop-tuner/pid-feedback-loop-tuner.png
 twitter:image: /sims/pid-feedback-loop-tuner/pid-feedback-loop-tuner.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # PID Feedback Loop Tuner

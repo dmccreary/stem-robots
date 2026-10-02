@@ -25,6 +25,13 @@ NUMBER_NEOPIXELS = 2
 SPEAKER_PIN = 22
 
 # ---------------------------------------------------------------------------
+# Servo (optional) - Maker Pi RP2040 servo header 1. The base-bot labs don't
+# use a servo; this is the pin the textbook's servo examples expect.
+# The board's four servo headers are GP12-GP15.
+# ---------------------------------------------------------------------------
+SERVO_PIN = 12
+
+# ---------------------------------------------------------------------------
 # I2C bus 0 - VL53L0X time-of-flight distance sensor
 # ---------------------------------------------------------------------------
 I2C_BUS = 0

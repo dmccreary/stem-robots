@@ -60,7 +60,7 @@ as a motor-driven platform.
 All sensor types used in the course: time-of-flight (VL53L0X), ultrasonic, infrared, bump
 switches, and potentiometer. Includes I2C sensor setup, calibration (zero distance, scale
 factor), data filtering, and sensor fusion concepts. Extends into 9-DOF inertial measurement
-units (IMUs) for the swarm robotics capstone: the L3GD20 gyroscope and LSM303D
+units (IMUs) for the swarm robotics capstone: the L3GD20 gyroscope and LSM303DLHC
 accelerometer/magnetometer, per-robot gyroscope and magnetometer (hard-iron) calibration,
 and the complementary filter that fuses gyro and compass readings into a stable heading
 estimate.

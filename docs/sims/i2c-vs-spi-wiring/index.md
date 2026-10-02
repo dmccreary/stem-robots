@@ -1,12 +1,13 @@
 ---
-title: I2C vs SPI Wiring Comparison
-description: Wire the robot's devices to an I2C bus and to an SPI bus side by side, count the wires and GPIO pins each one uses, and decide which bus fits each task.
+title: "I2C vs SPI Wiring Comparison"
+description: "Wire the robot's devices to an I2C bus and to an SPI bus side by side, count the wires and GPIO pins each one uses, and decide which bus fits each task."
 image: /sims/i2c-vs-spi-wiring/i2c-vs-spi-wiring.png
 og:image: /sims/i2c-vs-spi-wiring/i2c-vs-spi-wiring.png
 twitter:image: /sims/i2c-vs-spi-wiring/i2c-vs-spi-wiring.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # I2C vs SPI Wiring Comparison

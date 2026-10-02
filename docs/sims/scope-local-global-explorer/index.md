@@ -1,12 +1,13 @@
 ---
-title: Local vs Global Scope Explorer
-description: Step through three short robot programs one line at a time and watch local variables appear and vanish inside a function, and see what the global keyword changes.
+title: "Local vs Global Scope Explorer"
+description: "Step through three short robot programs one line at a time and watch local variables appear and vanish inside a function, and see what the global keyword changes."
 image: /sims/scope-local-global-explorer/scope-local-global-explorer.png
 og:image: /sims/scope-local-global-explorer/scope-local-global-explorer.png
 twitter:image: /sims/scope-local-global-explorer/scope-local-global-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Local vs Global Scope Explorer

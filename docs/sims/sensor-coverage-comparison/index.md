@@ -1,12 +1,13 @@
 ---
-title: Sensor Coverage Comparison
-description: A top-down view of the robot that compares the range, beam width, and blind spots of the ToF, ultrasonic, IR, and bump sensors as you drag an obstacle around.
+title: "Sensor Coverage Comparison"
+description: "A top-down view of the robot that compares the range, beam width, and blind spots of the ToF, ultrasonic, IR, and bump sensors as you drag an obstacle around."
 image: /sims/sensor-coverage-comparison/sensor-coverage-comparison.png
 og:image: /sims/sensor-coverage-comparison/sensor-coverage-comparison.png
 twitter:image: /sims/sensor-coverage-comparison/sensor-coverage-comparison.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Sensor Coverage Comparison

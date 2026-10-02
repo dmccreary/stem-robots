@@ -1,12 +1,13 @@
 ---
-title: Swarm Robot State Machine
-description: Interactive state machine for a swarm robot's SEARCH, FOLLOW, DANCE, and AVOID modes, with event buttons that step the robot through transitions and a quiz that asks students to classify robot situations by state.
+title: "Swarm Robot State Machine"
+description: "Interactive state machine for a swarm robot's SEARCH, FOLLOW, DANCE, and AVOID modes, with event buttons that step the robot through transitions and a quiz that asks students to classify robot situations by state."
 image: /sims/swarm-robot-state-machine/swarm-robot-state-machine.png
 og:image: /sims/swarm-robot-state-machine/swarm-robot-state-machine.png
 twitter:image: /sims/swarm-robot-state-machine/swarm-robot-state-machine.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Swarm Robot State Machine

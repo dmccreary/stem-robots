@@ -157,14 +157,15 @@ An **ultrasonic sensor** measures distance by emitting a burst of sound (above h
 
 ### Ultrasonic Trigger-Echo Operation
 
-The **trigger-echo** protocol controls the HC-SR04. Before the code, here is what each step does: you send a brief HIGH pulse on the Trigger pin (10 microseconds). The sensor emits 8 sound pulses. When the echo returns, the Echo pin goes HIGH for a duration proportional to the distance. You measure that duration and convert it to distance.
+The **trigger-echo** protocol controls the HC-SR04. Before the code, here is what each step does: you send a brief HIGH pulse on the Trigger pin (10 microseconds). The sensor emits 8 sound pulses and sets the Echo pin HIGH. When the echo returns, the Echo pin goes back LOW. So the time Echo stays HIGH is the round-trip time: out to the object and back. You measure that time and convert it to distance.
 
 ```python
 from machine import Pin
 from time import sleep_us, ticks_us, ticks_diff
+import config
 
-trigger = Pin(config.ULTRASONIC_TRIGGER_PIN, Pin.OUT)
-echo    = Pin(config.ULTRASONIC_ECHO_PIN,    Pin.IN)
+trigger = Pin(config.TRIGGER_PIN, Pin.OUT)
+echo    = Pin(config.ECHO_PIN,    Pin.IN)
 
 def read_ultrasonic_cm():
     trigger.low()
@@ -173,11 +174,11 @@ def read_ultrasonic_cm():
     sleep_us(10)          # 10 µs trigger pulse
     trigger.low()
 
-    while echo.value() == 0:   # wait for echo to start
+    while echo.value() == 0:   # wait for the sound to go out (Echo goes HIGH)
         pass
     start = ticks_us()
 
-    while echo.value() == 1:   # wait for echo to end
+    while echo.value() == 1:   # wait for the echo to come back (Echo goes LOW)
         pass
     duration_us = ticks_diff(ticks_us(), start)
 
@@ -209,7 +210,7 @@ Canvas layout: Width fills the page (up to 700 px). Height 480 px. The top 40% i
 Visual elements:
 - Side view: a small robot on the left with two round HC-SR04 "eyes". A wall on the right is dragged left or right. Curved blue arcs travel from the robot to the wall (outgoing) and orange arcs travel back (echo). The arcs animate in slow motion.
 - Timeline row "Trigger pin": a 10 µs HIGH pulse at the start, labeled "10 µs trigger".
-- Timeline row "Echo pin": stays LOW, then goes HIGH when the echo returns and stays HIGH for the round trip time, labeled "Echo HIGH: 1166 µs".
+- Timeline row "Echo pin": goes HIGH when the sound burst is sent and drops LOW when the echo returns, so it stays HIGH for the round trip time, labeled "Echo HIGH: 1166 µs".
 - Math readout, filled with real numbers: "duration_us = 1166", "distance_cm = 1166 / 58 = 20.1 cm".
 - A note under the math: "58 comes from 2 x 1 / 0.0343 cm per µs".
 
@@ -239,21 +240,24 @@ The Trigger and Echo rows in the sim match the two GPIO pins in `config.py`. Whe
 
 ## Infrared Sensor
 
-An **infrared sensor** (IR sensor) detects nearby surfaces by emitting infrared light and detecting the reflection. It outputs a digital signal: LOW when a surface is detected (within ~1–10 cm), HIGH when nothing is detected.
+An **infrared sensor** (IR sensor) detects nearby surfaces by emitting infrared light and detecting the reflection. It outputs a digital signal: LOW when a surface is detected (within ~1–10 cm), HIGH when nothing is detected. A black surface soaks up most of the light, so the sensor reads it the same as "nothing there".
 
 ### IR Digital Output
 
 The IR sensor connects to a regular GPIO input pin, not an I2C bus:
 
 ```python
-ir_left  = Pin(config.IR_LEFT_PIN,  Pin.IN)
-ir_right = Pin(config.IR_RIGHT_PIN, Pin.IN)
+from machine import Pin
+import config
 
-left_detected  = ir_left.value()   # 0 = detected, 1 = not detected
-right_detected = ir_right.value()
+ir_left  = Pin(config.LEFT_SENSOR_PIN,  Pin.IN)
+ir_right = Pin(config.RIGHT_SENSOR_PIN, Pin.IN)
+
+left_value  = ir_left.value()   # 0 = detected (white), 1 = not detected (black or nothing)
+right_value = ir_right.value()
 ```
 
-Note: most IR sensors are **active LOW** — they output 0 (LOW) when detecting a surface, not 1. This is counterintuitive — check your sensor's datasheet.
+Note: most IR sensors are **active LOW** — they output 0 (LOW) when detecting a surface, not 1. This is counterintuitive — check your sensor's datasheet. On a line-following robot, this means a sensor reads 0 over a white floor and 1 over a black line.
 
 ### IR Sensor Calibration
 

@@ -1,6 +1,6 @@
 ---
 title: Swarm Robotics and Advanced Engineering Patterns
-description: Extend leader/follower swarm robotics into collective behaviors and professional software patterns, then build a second swarm using a 9-DOF IMU (L3GD20 gyroscope + LSM303D accelerometer/magnetometer) for WiFi-based heading synchronization.
+description: Extend leader/follower swarm robotics into collective behaviors and professional software patterns, then build a second swarm using a 9-DOF IMU (L3GD20 gyroscope + LSM303DLHC accelerometer/magnetometer) for WiFi-based heading synchronization.
 generated_by: claude skill chapter-content-generator
 date: 2026-08-11 08:07:14
 version: 0.09
@@ -20,7 +20,7 @@ dance routines, all organized with a state machine. Along the way, students lear
 software patterns professional robotics teams rely on — project planning, multithreading,
 asynchronous programming, PID control, encoder feedback, and data logging. The chapter
 then introduces a second, independent path to swarm coordination: a 9-DOF inertial
-measurement unit (the L3GD20 gyroscope and LSM303D accelerometer/magnetometer) that each
+measurement unit (the L3GD20 gyroscope and LSM303DLHC accelerometer/magnetometer) that each
 robot calibrates and fuses into a stable heading estimate, broadcast over a WiFi access
 point using UDP so every follower in the swarm can steer to match it — no pairing, no
 per-robot connection, and no limit on how many robots can listen in.
@@ -49,7 +49,7 @@ This chapter covers the following 30 concepts from the learning graph:
 18. Data Logging
 19. 9-DOF IMU Overview
 20. L3GD20 Gyroscope
-21. LSM303D Accelerometer Magnetometer
+21. LSM303DLHC Accelerometer Magnetometer
 22. Gyroscope Calibration
 23. Magnetometer Hard Iron Calibration
 24. Complementary Filter Sensor Fusion
@@ -507,7 +507,7 @@ harder sensing problem than anything earlier in this course.
 
 ---
 
-## Meet the 9-DOF IMU: L3GD20 + LSM303D
+## Meet the 9-DOF IMU: L3GD20 + LSM303DLHC
 
 A **9-DOF IMU overview**: "9-DOF" stands for nine degrees of freedom — three axes each
 from a gyroscope, an accelerometer, and a magnetometer. A **gyroscope** measures
@@ -519,9 +519,13 @@ which way a robot is facing and how it's moving, far more precisely than the sin
 time-of-flight sensor from Chapter 8.
 
 The module used in this course packs these onto two separate chips on one small board:
-the **L3GD20 gyroscope** and the **LSM303D accelerometer/magnetometer**. Each chip has
-its own I2C address on the same I2C bus from Chapter 6 — so reading this module means
-writing two small drivers, one per chip, not one.
+the **L3GD20 gyroscope** and the **LSM303DLHC accelerometer/magnetometer**. Both sit on
+the same I2C bus from Chapter 6. The gyroscope answers at address `0x6B`. The LSM303DLHC
+answers at *two* addresses — `0x19` for its accelerometer and `0x1E` for its
+magnetometer — because inside, it acts like two separate devices. The board also
+carries a bonus BMP180 temperature and pressure chip at `0x77` that we don't use. So a
+scan finds four addresses, and reading the module means writing two small drivers, one
+per chip, not one.
 
 #### Diagram: 9-DOF IMU Chip Layout
 
@@ -542,9 +546,9 @@ Bloom Taxonomy: Understand
 
 Bloom Taxonomy Verb: explain
 
-Learning objective: Explain that a "9-DOF IMU module" is really two separate I2C sensor chips sharing one bus, each with its own address, rather than one combined chip.
+Learning objective: Explain that a "9-DOF IMU module" is really two separate I2C sensor chips sharing one bus, each answering at its own address or addresses, rather than one combined chip.
 
-Create a Mermaid flowchart (graph LR). Node "Pico W GPIO16/17 (I2C0)" connects with two labeled edges to two chip nodes: "L3GD20 Gyroscope (addr 0x6B)" and "LSM303D Accel + Mag (addr 0x1D)". Each chip node has a smaller child node beneath it: L3GD20 connects down to "3-axis rotation rate (deg/s)"; LSM303D connects down to two children, "3-axis acceleration (g)" and "3-axis magnetic field (gauss)".
+Create a Mermaid flowchart (graph LR). Node "Pico W GPIO16/17 (I2C0)" connects with labeled edges to two chip nodes: "L3GD20 Gyroscope (addr 0x6B)" and "LSM303DLHC Accel + Mag (0x19 + 0x1E)", plus a dashed edge to a muted "BMP180 bonus chip (not used)" node labeled "addr 0x77". Each sensor chip node has a smaller child node beneath it: L3GD20 connects down to "3-axis rotation rate (deg/s)"; LSM303DLHC connects down to two children, "3-axis acceleration (g)" on an edge labeled "0x19" and "3-axis magnetic field (gauss)" on an edge labeled "0x1E".
 
 Every node has a click directive with an infobox: the I2C bus node explains "one shared SDA/SCL pair, same as the ToF sensor and OLED display from earlier chapters — I2C allows multiple devices as long as addresses differ." The gyroscope node explains what a gyroscope measures and that it drifts slowly over time. The accel/mag node explains that acceleration senses gravity/tilt and magnetic field acts as a compass, and that motors nearby distort the magnetic reading. The three data-type leaf nodes each explain their unit and typical use.
 
@@ -553,24 +557,29 @@ Color scheme: I2C bus node DodgerBlue (SENSOR taxonomy color), chip nodes white 
 
 Reading either chip means talking to its registers over I2C — the same `readfrom_mem`
 pattern you used for the time-of-flight sensor in Chapter 8, just with different
-register addresses. Before the code: `WHO_AM_I` is a fixed register every ST sensor
-chip has, and reading it back confirms you're actually talking to the chip you think you
-are, before trusting any of its data.
+register addresses. Before the code: `WHO_AM_I` is a fixed register that many ST sensor
+chips have, including the L3GD20 gyroscope. Reading it back confirms you're actually
+talking to the chip you think you are, before trusting any of its data.
 
 ```python
 import machine
+import config
 
-i2c = machine.I2C(0, sda=machine.Pin(16), scl=machine.Pin(17), freq=400000)
+# SoftI2C, not machine.I2C: on this IMU board the hardware I2C block
+# could scan but failed on real reads (see the 9-DOF IMU Kit)
+i2c = machine.SoftI2C(sda=machine.Pin(config.I2C_SDA_PIN),
+                      scl=machine.Pin(config.I2C_SCL_PIN), freq=100000)
 found = i2c.scan()
-print("Devices found:", [hex(d) for d in found])   # expect two addresses, not one
+print("Devices found:", [hex(d) for d in found])   # expect 0x19, 0x1e, 0x6b, 0x77
 
 gyro_id = i2c.readfrom_mem(0x6B, 0x0F, 1)   # WHO_AM_I register
 print("Gyro chip ID:", hex(gyro_id[0]))     # expect 0xD4 or 0xD7
 ```
 
-The full driver code for both chips — with all the register constants — is in the
-[Swarm Robot Build Plan](../../kits/swarm-bot/plan.md), written for the exact module
-this course uses.
+This code scans the bus, prints every address it finds, and then asks the gyroscope
+for its ID. The full driver code for both chips — with all the register constants — is
+in the shared `l3gd20.py` and `lsm303dlhc.py` drivers, tested on this exact module in
+the [9-DOF IMU Kit](../../kits/9-dof-imu/index.md).
 
 ---
 
@@ -673,10 +682,19 @@ class HeadingFilter:
     def update(self, gyro_z_dps, mag_x, mag_y, dt):
         gyro_estimate = self.heading + gyro_z_dps * dt
         compass_estimate = math.degrees(math.atan2(mag_y, mag_x)) % 360
-        self.heading = (self.alpha * gyro_estimate
-                         + (1 - self.alpha) * compass_estimate) % 360
+        # How far the compass is from the gyro, the short way around (-180 to +180)
+        diff = ((compass_estimate - gyro_estimate + 180) % 360) - 180
+        # Move a small step, (1 - alpha), of the way toward the compass
+        self.heading = (gyro_estimate + (1 - self.alpha) * diff) % 360
         return self.heading
 ```
+
+Why the `diff` line? Headings wrap around like a clock face: 359° and 1° are only 2°
+apart, and both point almost exactly north. If we plugged those two raw numbers into the
+formula above, we would get about 352° — pointing the wrong way! So the code first finds
+how far the compass is from the gyro the *short way* around the circle. That gives a
+number from −180 to +180 (here, +2). Then it moves a small step toward the compass. It is
+the same blend as the formula, just measured the short way, so it works at every heading.
 
 #### Diagram: Complementary Filter Heading Tuner
 
@@ -870,7 +888,7 @@ off the most common problems:
 
 | Symptom | Likely cause |
 |---|---|
-| I2C scan finds only one address | One chip's wiring or solder joint failed — check the side that's missing |
+| I2C scan is missing an address (expect `0x19`, `0x1e`, `0x6b`, `0x77`) | One chip's wiring or solder joint failed — check the side that's missing |
 | Heading drifts while the robot sits still | Re-run magnetometer calibration |
 | Heading jumps only while driving | IMU mounted too close to a motor — add a standoff, recalibrate |
 | Follower never turns | Confirm it joined the master's access point, and that both sides use the same UDP port |
@@ -894,7 +912,7 @@ off the most common problems:
 - **PID control** generalizes closed-loop feedback into proportional, integral, and
   derivative terms; **encoder motor feedback** gives it a more precise input signal;
   **data logging** lets you review a tuning run after the fact
-- A **9-DOF IMU** — here, the **L3GD20 gyroscope** and **LSM303D accelerometer/
+- A **9-DOF IMU** — here, the **L3GD20 gyroscope** and **LSM303DLHC accelerometer/
   magnetometer** — needs **gyroscope calibration** and **magnetometer hard-iron
   calibration** before its readings mean anything
 - A **complementary filter** fuses gyro and compass into a stable **heading estimate**

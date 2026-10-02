@@ -1,3 +1,13 @@
+---
+title: "Pulse-Width Modulation"
+description: "Drag the slider to change the duty cycle of a PWM waveform drawn like a green oscilloscope trace."
+image: /sims/pwm/pwm.png
+og:image: /sims/pwm/pwm.png
+twitter:image: /sims/pwm/pwm.png
+social:
+   cards: false
+status: implemented
+---
 # Pulse-Width Modulation
 
 ![PWM](./pwm.png)

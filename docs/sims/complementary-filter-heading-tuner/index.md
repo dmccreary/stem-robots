@@ -1,12 +1,13 @@
 ---
-title: Complementary Filter Heading Tuner
-description: Compare gyro-only, magnetometer-only, and complementary-filter heading estimates against the true heading on one compass dial, and use the alpha slider to see which sensor the fused estimate trusts.
+title: "Complementary Filter Heading Tuner"
+description: "Compare gyro-only, magnetometer-only, and complementary-filter heading estimates against the true heading on one compass dial, and use the alpha slider to see which sensor the fused estimate trusts."
 image: /sims/complementary-filter-heading-tuner/complementary-filter-heading-tuner.png
 og:image: /sims/complementary-filter-heading-tuner/complementary-filter-heading-tuner.png
 twitter:image: /sims/complementary-filter-heading-tuner/complementary-filter-heading-tuner.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Complementary Filter Heading Tuner
@@ -43,8 +44,8 @@ chapter, running 50 times a second:
 ```python
 gyro_estimate = self.heading + gyro_z_dps * dt
 compass_estimate = math.degrees(math.atan2(mag_y, mag_x)) % 360
-self.heading = (self.alpha * gyro_estimate
-                + (1 - self.alpha) * compass_estimate) % 360
+diff = ((compass_estimate - gyro_estimate + 180) % 360) - 180
+self.heading = (gyro_estimate + (1 - self.alpha) * diff) % 360
 ```
 
 The one number **alpha** (α) sets the blend. With α = 0.98, each update keeps 98% of the
@@ -55,11 +56,12 @@ The panel on the right shows each estimate's error now and averaged over the las
 seconds. The best average is shown in bold. The orange and green bar shows how much each
 update trusts each sensor, and the chart shows the three errors over the last 20 seconds.
 
-!!! note "One small change from the chapter code"
-    The chapter's formula blends two raw numbers from 0 to 359. Near north, that can go
-    wrong: blending 359° and 1° gives about 351°, not 0°. This MicroSim measures the
-    compass correction the short way around the circle, the same trick used by
-    `heading_error()`. Everywhere else, the result is exactly the chapter formula.
+!!! note "Why the short way around?"
+    Headings wrap from 359° back to 0°. If you blended the two raw numbers, 359° and 1°
+    would give about 352°, pointing the wrong way. So the `diff` line finds how far the
+    compass is from the gyro the short way around the circle (here, +2°), and the filter
+    moves a small step toward it. This MicroSim runs exactly that chapter code, so the
+    fused needle stays steady even when the robot points north.
 
 This MicroSim goes with
 [Chapter 13: Swarm Robotics and Advanced Engineering Patterns](../../chapters/13-swarm-robotics-advanced-patterns/index.md),

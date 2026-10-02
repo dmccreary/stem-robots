@@ -1,12 +1,13 @@
 ---
-title: REPL and Save Workflow
-description: Test lines in a mock Thonny REPL, copy the ones that work into the Editor, save them to the board as main.py or test.py, and power-cycle to see what runs by itself.
+title: "REPL and Save Workflow"
+description: "Test lines in a mock Thonny REPL, copy the ones that work into the Editor, save them to the board as main.py or test.py, and power-cycle to see what runs by itself."
 image: /sims/repl-workflow/repl-workflow.png
 og:image: /sims/repl-workflow/repl-workflow.png
 twitter:image: /sims/repl-workflow/repl-workflow.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # REPL and Save Workflow

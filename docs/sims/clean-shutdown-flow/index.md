@@ -1,12 +1,13 @@
 ---
-title: Clean Shutdown Flow
-description: Trace a robot program through try, except, and finally as you press Ctrl+C or cause a sensor error, and see why the motor stop code belongs in finally.
+title: "Clean Shutdown Flow"
+description: "Trace a robot program through try, except, and finally as you press Ctrl+C or cause a sensor error, and see why the motor stop code belongs in finally."
 image: /sims/clean-shutdown-flow/clean-shutdown-flow.png
 og:image: /sims/clean-shutdown-flow/clean-shutdown-flow.png
 twitter:image: /sims/clean-shutdown-flow/clean-shutdown-flow.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Clean Shutdown Flow

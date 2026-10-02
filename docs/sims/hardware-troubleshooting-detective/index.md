@@ -1,12 +1,13 @@
 ---
-title: Hardware Troubleshooting Detective
-description: Solve broken-robot cases by choosing which of the six hardware checks to run, reading the clues, and naming the hidden fault with as few checks as possible.
+title: "Hardware Troubleshooting Detective"
+description: "Solve broken-robot cases by choosing which of the six hardware checks to run, reading the clues, and naming the hidden fault with as few checks as possible."
 image: /sims/hardware-troubleshooting-detective/hardware-troubleshooting-detective.png
 og:image: /sims/hardware-troubleshooting-detective/hardware-troubleshooting-detective.png
 twitter:image: /sims/hardware-troubleshooting-detective/hardware-troubleshooting-detective.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Hardware Troubleshooting Detective

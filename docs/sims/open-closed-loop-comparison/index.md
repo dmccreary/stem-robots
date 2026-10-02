@@ -1,6 +1,6 @@
 ---
-title: Open-Loop vs. Closed-Loop Control
-description: Type: diagram **sim-id:** open-closed-loop-comparison<br/> **Library:** Mermaid<br/> **Status:** Specified  Create two Mermaid flowcharts side by side (use subgraph):  Left subgraph "Open-Loop": Controller → Actuator (Motors) → Output (R...
+title: "Open-Loop vs. Closed-Loop Control"
+description: "Compare open-loop and closed-loop control side by side. Hover over each part to see how a sensor and an error value let the robot correct itself."
 image: /sims/open-closed-loop-comparison/open-closed-loop-comparison.png
 og:image: /sims/open-closed-loop-comparison/open-closed-loop-comparison.png
 twitter:image: /sims/open-closed-loop-comparison/open-closed-loop-comparison.png

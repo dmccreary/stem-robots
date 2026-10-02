@@ -1,6 +1,6 @@
 ---
-title: Variable Assignment Interactive Explorer
-description: Type: MicroSim **sim-id:** variable-assignment-explorer<br/> **Library:** p5.js<br/> **Status:** Specified  Create a p5.js MicroSim with a 700 × 350 canvas.
+title: "Variable Assignment Interactive Explorer"
+description: "Type a name and a value, press Assign, and watch the value get stored in a labeled memory box. Assignment stores a value; it does not mean equal."
 image: /sims/variable-assignment-explorer/variable-assignment-explorer.png
 og:image: /sims/variable-assignment-explorer/variable-assignment-explorer.png
 twitter:image: /sims/variable-assignment-explorer/variable-assignment-explorer.png

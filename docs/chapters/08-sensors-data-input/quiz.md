@@ -52,7 +52,7 @@ Test your understanding of sensor types, calibration, data filtering, sensor fus
 
 ---
 
-#### 4. An infrared sensor outputs a LOW (0) signal when the robot is over a black line. What does this design pattern mean for reading the sensor?
+#### 4. An infrared sensor outputs a LOW (0) signal over a white surface and a HIGH (1) signal over a black line. What does this design pattern mean for reading the sensor?
 
 <div class="upper-alpha" markdown>
 1. LOW means the sensor is malfunctioning and needs to be replaced
@@ -62,7 +62,7 @@ Test your understanding of sensor types, calibration, data filtering, sensor fus
 </div>
 
 ??? question "Show Answer"
-    The correct answer is **C**. Most infrared sensors are "active LOW" — they output 0 (LOW) when they detect a surface and 1 (HIGH) when they don't. This is counterintuitive to beginners who expect "detected = 1." Understanding this convention is critical for writing correct line-following logic. The note in the chapter specifically warns: "0 = detected, 1 = not detected" — check your sensor's datasheet to confirm.
+    The correct answer is **C**. Most infrared sensors are "active LOW" — they output 0 (LOW) when they detect a surface and 1 (HIGH) when they don't. This is counterintuitive to beginners who expect "detected = 1." A white surface reflects the infrared light, so the sensor reads 0; a black line absorbs it, so the sensor reads 1 as if nothing were there. Understanding this convention is critical for writing correct line-following logic. The note in the chapter specifically warns: "0 = detected, 1 = not detected" — check your sensor's datasheet to confirm.
 
     **Concept Tested:** IR Digital Output
 

@@ -1,6 +1,6 @@
 ---
-title: H-Bridge Switch States
-description: Type: MicroSim **sim-id:** h-bridge-simulator<br/> **Library:** p5.js<br/> **Status:** Specified  Create a p5.js MicroSim with a 700 × 400 canvas.
+title: "H-Bridge Switch States"
+description: "Press Forward, Reverse, or Stop to flip the four switches of an H-bridge and watch the current flow change which way the motor spins."
 image: /sims/h-bridge-simulator/h-bridge-simulator.png
 og:image: /sims/h-bridge-simulator/h-bridge-simulator.png
 twitter:image: /sims/h-bridge-simulator/h-bridge-simulator.png
@@ -62,7 +62,7 @@ Type: MicroSim
 
 Create a p5.js MicroSim with a 700 × 400 canvas. Draw an H-bridge circuit schematically:
 
-- Four switch symbols at the four corners of an "H" shape (SW1 top-left, SW2 bottom-left, SW3 top-right, SW4 bottom-right).
+- Four switch symbols at the four corners of an "H" shape (SW1 top-left, SW2 top-right, SW3 bottom-left, SW4 bottom-right — numbered in reading order).
 - A motor symbol (circle with M) in the horizontal center bar.
 - Power supply (V+) at top, Ground at bottom.
 - Current flow shown as animated dots moving along the wire when switches are in a valid state.

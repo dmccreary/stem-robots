@@ -434,7 +434,7 @@ Earth's magnetic field. Just like a compass needle, it points toward
 magnetic north no matter how the sensor is spinning. Add a magnetometer to
 this kit's accelerometer and gyroscope, and you get a full **9-DOF** sensor
 — nine degrees of freedom, three sensors, three axes each. That's exactly
-the [L3GD20 gyroscope + LSM303D accelerometer/magnetometer combo](../../chapters/13-swarm-robotics-advanced-patterns/index.md)
+the [L3GD20 gyroscope + LSM303DLHC accelerometer/magnetometer combo](../../chapters/13-swarm-robotics-advanced-patterns/index.md)
 used later in this course to build a real swarm.
 
 The magnetometer isn't a free lunch, though. Motors, batteries, and nearby

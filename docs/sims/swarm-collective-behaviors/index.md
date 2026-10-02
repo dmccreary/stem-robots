@@ -1,12 +1,13 @@
 ---
-title: Swarm Collective Behaviors
-description: Change the one local rule that every robot runs and watch a convoy, collective obstacle avoidance, or a leader-broadcast group emerge, with live gap and AVOID readouts.
+title: "Swarm Collective Behaviors"
+description: "Change the one local rule that every robot runs and watch a convoy, collective obstacle avoidance, or a leader-broadcast group emerge, with live gap and AVOID readouts."
 image: /sims/swarm-collective-behaviors/swarm-collective-behaviors.png
 og:image: /sims/swarm-collective-behaviors/swarm-collective-behaviors.png
 twitter:image: /sims/swarm-collective-behaviors/swarm-collective-behaviors.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Swarm Collective Behaviors

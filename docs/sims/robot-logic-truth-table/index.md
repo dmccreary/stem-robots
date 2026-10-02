@@ -1,12 +1,13 @@
 ---
-title: Robot Logic Truth Table
-description: Flip two robot conditions, pick an and, or, or not rule, and watch the Emergency stop lamp and a live truth table show exactly when the robot stops.
+title: "Robot Logic Truth Table"
+description: "Flip two robot conditions, pick an and, or, or not rule, and watch the Emergency stop lamp and a live truth table show exactly when the robot stops."
 image: /sims/robot-logic-truth-table/robot-logic-truth-table.png
 og:image: /sims/robot-logic-truth-table/robot-logic-truth-table.png
 twitter:image: /sims/robot-logic-truth-table/robot-logic-truth-table.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Robot Logic Truth Table

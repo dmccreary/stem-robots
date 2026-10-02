@@ -1,12 +1,13 @@
 ---
-title: Voltage and Current Water Analogy
-description: A water loop and a robot circuit side by side show that voltage works like water pressure and current works like water flow, using the rule current = voltage / resistance.
+title: "Voltage and Current Water Analogy"
+description: "A water loop and a robot circuit side by side show that voltage works like water pressure and current works like water flow, using the rule current = voltage / resistance."
 image: /sims/voltage-current-water-analogy/voltage-current-water-analogy.png
 og:image: /sims/voltage-current-water-analogy/voltage-current-water-analogy.png
 twitter:image: /sims/voltage-current-water-analogy/voltage-current-water-analogy.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Voltage and Current Water Analogy

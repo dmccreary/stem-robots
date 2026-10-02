@@ -1,12 +1,13 @@
 ---
-title: What Goes in Git Sorting Activity
-description: Drag ten robot project files into "Commit to Git" or "Put in .gitignore", watch the repository preview and the generated .gitignore update, and check which files keep your WiFi password safe.
+title: "What Goes in Git Sorting Activity"
+description: 'Drag ten robot project files into "Commit to Git" or "Put in .gitignore", watch the repository preview and the generated .gitignore update, and check which files keep your WiFi password safe.'
 image: /sims/git-what-to-commit-sorter/git-what-to-commit-sorter.png
 og:image: /sims/git-what-to-commit-sorter/git-what-to-commit-sorter.png
 twitter:image: /sims/git-what-to-commit-sorter/git-what-to-commit-sorter.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # What Goes in Git Sorting Activity

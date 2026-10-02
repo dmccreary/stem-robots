@@ -1,12 +1,13 @@
 ---
-title: NeoPixel RGB Color Mixer
-description: Mix red, green, and blue values from 0 to 255 on the robot's two NeoPixels, see the glow, and copy the matching np[0] = (r, g, b) line of MicroPython.
+title: "NeoPixel RGB Color Mixer"
+description: "Mix red, green, and blue values from 0 to 255 on the robot's two NeoPixels, see the glow, and copy the matching np[0] = (r, g, b) line of MicroPython."
 image: /sims/neopixel-rgb-color-mixer/neopixel-rgb-color-mixer.png
 og:image: /sims/neopixel-rgb-color-mixer/neopixel-rgb-color-mixer.png
 twitter:image: /sims/neopixel-rgb-color-mixer/neopixel-rgb-color-mixer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # NeoPixel RGB Color Mixer

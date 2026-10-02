@@ -1,12 +1,13 @@
 ---
-title: Robot Debugging Flowchart
-description: Pick a robot symptom and answer yes-or-no questions one step at a time to decide whether the problem is hardware or code and find one thing to change.
+title: "Robot Debugging Flowchart"
+description: "Pick a robot symptom and answer yes-or-no questions one step at a time to decide whether the problem is hardware or code and find one thing to change."
 image: /sims/robot-debugging-flowchart/robot-debugging-flowchart.png
 og:image: /sims/robot-debugging-flowchart/robot-debugging-flowchart.png
 twitter:image: /sims/robot-debugging-flowchart/robot-debugging-flowchart.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Robot Debugging Flowchart

@@ -1,12 +1,13 @@
 ---
-title: Heading Broadcast Network Topology
-description: Interactive network diagram that compares the heading swarm's one-to-many UDP broadcast with one-to-one BLE pairing and router-hosted WiFi, and shows what the sender must change to add a follower.
+title: "Heading Broadcast Network Topology"
+description: "Interactive network diagram that compares the heading swarm's one-to-many UDP broadcast with one-to-one BLE pairing and router-hosted WiFi, and shows what the sender must change to add a follower."
 image: /sims/heading-broadcast-topology/heading-broadcast-topology.png
 og:image: /sims/heading-broadcast-topology/heading-broadcast-topology.png
 twitter:image: /sims/heading-broadcast-topology/heading-broadcast-topology.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Heading Broadcast Network Topology

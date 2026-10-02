@@ -1,12 +1,13 @@
 ---
-title: BLE Connection Lifecycle
-description: Step through how a leader and follower robot find each other, connect, send a command, and disconnect over Bluetooth Low Energy, with the IRQ event code and MicroPython call for every step.
+title: "BLE Connection Lifecycle"
+description: "Step through how a leader and follower robot find each other, connect, send a command, and disconnect over Bluetooth Low Energy, with the IRQ event code and MicroPython call for every step."
 image: /sims/ble-connection-lifecycle/ble-connection-lifecycle.png
 og:image: /sims/ble-connection-lifecycle/ble-connection-lifecycle.png
 twitter:image: /sims/ble-connection-lifecycle/ble-connection-lifecycle.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # BLE Connection Lifecycle

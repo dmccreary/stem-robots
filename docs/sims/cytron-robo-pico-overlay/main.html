@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+  <title>Cytron Robo Pico Board Explorer - Interactive Infographic</title>
+  <link rel="stylesheet" href="../shared-libs/hover-overlay.css">
+</head>
+<body>
+<main>
+  <h1 id="sim-title">Cytron Robo Pico Board Explorer</h1>
+
+  <div id="image-wrapper">
+    <img id="board-img" alt="Pinout diagram of the Cytron Robo Pico robotics board" draggable="false">
+    <div id="hotspot-layer"></div>
+  </div>
+
+  <div id="controls">
+    <button class="mode-btn active" id="btn-explore">Explore</button>
+    <button class="mode-btn" id="btn-quiz">Quiz Me</button>
+    <label><input type="checkbox" id="chk-hotspots"> Show hotspots</label>
+    <span id="quiz-score" style="display:none"></span>
+  </div>
+
+  <div id="info-panel" aria-live="polite">
+    <div id="info-prompt">
+      <p id="prompt-text"></p>
+      <div id="part-chips" aria-label="Parts on this board"></div>
+    </div>
+    <div id="info-content">
+      <div id="info-header">
+        <h2 id="info-label"></h2>
+        <span id="info-note"></span>
+      </div>
+      <div id="info-body">
+        <div id="info-text">
+          <p id="info-summary"></p>
+          <ul id="info-facts"></ul>
+          <p id="info-tip"></p>
+        </div>
+        <div id="info-side">
+          <table id="info-table"></table>
+        </div>
+      </div>
+    </div>
+    <div id="quiz-box"></div>
+  </div>
+
+  <div id="edit-panel">
+    <div><strong>Edit mode.</strong> Hold Shift and drag on the image to measure a rectangle (percent of image).</div>
+    <div id="edit-coords">Move the pointer over the image.</div>
+    <textarea id="edit-output" readonly spellcheck="false"></textarea>
+  </div>
+</main>
+
+<script src="../shared-libs/hover-overlay.js"></script>
+</body>
+</html>

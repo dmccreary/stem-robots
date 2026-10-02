@@ -433,7 +433,7 @@ from machine import PWM, Pin
 from time import sleep
 import config
 
-buzzer = PWM(Pin(config.BUZZER_PIN))
+buzzer = PWM(Pin(config.SPEAKER_PIN))
 
 def play_tone(frequency, duration):
     """Play a tone at the given frequency (Hz) for duration seconds."""
@@ -634,7 +634,7 @@ right_fwd = PWM(Pin(config.RIGHT_FORWARD_PIN), freq=50)
 right_rev = PWM(Pin(config.RIGHT_REVERSE_PIN), freq=50)
 left_fwd  = PWM(Pin(config.LEFT_FORWARD_PIN),  freq=50)
 left_rev  = PWM(Pin(config.LEFT_REVERSE_PIN),  freq=50)
-buzzer    = PWM(Pin(config.BUZZER_PIN))
+buzzer    = PWM(Pin(config.SPEAKER_PIN))
 
 button_flag = False
 last_press  = 0

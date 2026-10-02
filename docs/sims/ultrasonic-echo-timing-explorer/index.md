@@ -1,12 +1,13 @@
 ---
-title: Ultrasonic Echo Timing Explorer
-description: See the HC-SR04 trigger pulse, the sound's round trip, and the Echo pin on one timeline, and convert the echo time in microseconds to centimeters with duration / 58.
+title: "Ultrasonic Echo Timing Explorer"
+description: "See the HC-SR04 trigger pulse, the sound's round trip, and the Echo pin on one timeline, and convert the echo time in microseconds to centimeters with duration / 58."
 image: /sims/ultrasonic-echo-timing-explorer/ultrasonic-echo-timing-explorer.png
 og:image: /sims/ultrasonic-echo-timing-explorer/ultrasonic-echo-timing-explorer.png
 twitter:image: /sims/ultrasonic-echo-timing-explorer/ultrasonic-echo-timing-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Ultrasonic Echo Timing Explorer

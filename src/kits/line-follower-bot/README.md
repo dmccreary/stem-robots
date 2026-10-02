@@ -10,8 +10,8 @@ All pin assignments live in [`config.py`](config.py): motors on GP8-GP11
 (right forward on GP11, right reverse on GP10, left forward on GP8, left
 reverse on GP9 - a different pin layout than the other kits' chassis), the
 speaker on GP22, and the two IR line sensors on GP2 (right) and GP4 (left).
-Each sensor reads `0` when it's over a dark/black line and `1` over a light
-surface.
+Each sensor is active LOW: it reads `0` over a light/white surface (the IR
+bounces back) and `1` over a dark/black line (the IR is absorbed).
 
 ## Files
 

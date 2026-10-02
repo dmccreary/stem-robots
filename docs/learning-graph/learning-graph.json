@@ -1318,7 +1318,7 @@
     },
     {
       "id": 243,
-      "label": "LSM303D Accelerometer Magnetometer",
+      "label": "LSM303DLHC Accelerometer Magnetometer",
       "group": "SENSOR"
     },
     {

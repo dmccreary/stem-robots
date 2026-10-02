@@ -1,3 +1,13 @@
+---
+title: "Collision Avoidance Robot"
+description: "Press Start to watch a simulated robot drive forward, back up, and turn whenever it gets close to the wall of a circular arena."
+image: /sims/collision-avoidance/collision-avoidance.png
+og:image: /sims/collision-avoidance/collision-avoidance.png
+twitter:image: /sims/collision-avoidance/collision-avoidance.png
+social:
+   cards: false
+status: implemented
+---
 # Collision Avoidance Robot
 
 <figure markdown>

@@ -1,12 +1,13 @@
 ---
-title: Commit or Ignore Sorter
-description: A drag-and-drop sorting activity where students decide which robot project files to commit to git and which to add to .gitignore, with a reason for every choice.
+title: "Commit or Ignore Sorter"
+description: "A drag-and-drop sorting activity where students decide which robot project files to commit to git and which to add to .gitignore, with a reason for every choice."
 image: /sims/git-secrets-sorter/git-secrets-sorter.png
 og:image: /sims/git-secrets-sorter/git-secrets-sorter.png
 twitter:image: /sims/git-secrets-sorter/git-secrets-sorter.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Commit or Ignore Sorter

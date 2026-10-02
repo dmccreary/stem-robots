@@ -1,12 +1,13 @@
 ---
-title: Distance to Display Mapper
-description: Turn one distance reading into an OLED bar chart, an OLED meter, and a NeoPixel status color, and see how int(), min(bar_height, 50), and the 50 cm and 20 cm thresholds shape each output.
+title: "Distance to Display Mapper"
+description: "Turn one distance reading into an OLED bar chart, an OLED meter, and a NeoPixel status color, and see how int(), min(bar_height, 50), and the 50 cm and 20 cm thresholds shape each output."
 image: /sims/distance-display-mapper/distance-display-mapper.png
 og:image: /sims/distance-display-mapper/distance-display-mapper.png
 twitter:image: /sims/distance-display-mapper/distance-display-mapper.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Distance to Display Mapper

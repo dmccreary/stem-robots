@@ -7,8 +7,9 @@ display so the live readings show on screen instead of only in the console.
 No chassis: this kit's only job is to prove the sensor works before it
 becomes the compass for the
 [swarm robot build plan](../../../docs/kits/swarm-bot/plan.md). It's a copy
-of the [9-dof-imu kit](../9-dof-imu/README.md) with the display bolted on —
-see that kit's README for the sensor-only version.
+of the [9-dof-imu kit](../9-dof-imu/README.md) with the display bolted on and
+the sensor's I2C moved from GPIO0/1 to GPIO12/13 — see that kit's README for the
+sensor-only version.
 
 ## Wiring
 
@@ -16,13 +17,9 @@ see that kit's README for the sensor-only version.
 |------------|----------|-------|
 | VIN | 3.3V OUT | Power in — **not** `3Vo` (see below) |
 | GND | GND | |
-| SDA | GPIO0 | I2C data |
-| SCL | GPIO1 | I2C clock |
-| GINT | GPIO11 | Gyro interrupt — wired, not read by these lessons yet |
-| GRDY | GPIO12 | Gyro data-ready — wired, not read by these lessons yet |
-| LIN1 | GPIO13 | Accel/mag interrupt 1 — wired, not read by these lessons yet |
-| LIN2 | GPIO14 | Accel/mag interrupt 2 — wired, not read by these lessons yet |
-| LRDY | GPIO15 | Accel/mag data-ready — wired, not read by these lessons yet |
+| SDA | GPIO12 | I2C data (`I2C_SDA_PIN` in `config.py`) |
+| SCL | GPIO13 | I2C clock (`I2C_SCL_PIN` in `config.py`) |
+| GINT, GRDY, LIN1, LIN2, LRDY | *(not connected)* | Interrupt/data-ready pins. These lessons poll the sensors instead. The sensor-only 9-dof-imu kit wires them to GPIO11-15, but GPIO12/13 carry I2C here. |
 | 3Vo | *(not connected)* | A regulated 3.3V **output** from the board's own regulator, not a power input |
 
 I2C addresses (in `config.py`, confirmed by `01-probe.py` on real hardware):

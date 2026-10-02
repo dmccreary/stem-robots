@@ -1,12 +1,13 @@
 ---
-title: BLE Advertising and Scanning
-description: A follower robot advertises over Bluetooth Low Energy while a leader robot scans, so students can see how distance, advertising interval, and scan window decide which packets are heard and how much power advertising uses.
+title: "BLE Advertising and Scanning"
+description: "A follower robot advertises over Bluetooth Low Energy while a leader robot scans, so students can see how distance, advertising interval, and scan window decide which packets are heard and how much power advertising uses."
 image: /sims/ble-advertising-scanner/ble-advertising-scanner.png
 og:image: /sims/ble-advertising-scanner/ble-advertising-scanner.png
 twitter:image: /sims/ble-advertising-scanner/ble-advertising-scanner.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # BLE Advertising and Scanning

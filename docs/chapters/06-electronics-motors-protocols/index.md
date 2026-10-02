@@ -287,16 +287,18 @@ The four switches are transistors (usually MOSFETs). Before examining the switch
 
 ### H-Bridge Switch States
 
-The four switches in an H-bridge are often labeled SW1 (top-left), SW2 (bottom-right), SW3 (top-right), and SW4 (bottom-left). The motor connects between the midpoints. Let's trace three states:
+We number the four switches in reading order, just like words on a page. SW1 is top-left and SW2 is top-right. SW3 is bottom-left and SW4 is bottom-right. The motor connects across the middle bar of the H. Let's trace four states:
 
 | State | SW1 | SW2 | SW3 | SW4 | Motor |
 |-------|-----|-----|-----|-----|-------|
-| Forward | ON | ON | OFF | OFF | Spins CW |
-| Reverse | OFF | OFF | ON | ON | Spins CCW |
+| Forward | ON | OFF | OFF | ON | Spins CW |
+| Reverse | OFF | ON | ON | OFF | Spins CCW |
 | Stop (coast) | OFF | OFF | OFF | OFF | Free-spinning |
-| Stop (brake) | ON | OFF | ON | OFF | Braked (locked) |
+| Stop (brake) | OFF | OFF | ON | ON | Braked (stops fast) |
 
-**Never close SW1 and SW3 at the same time, or SW2 and SW4 at the same time.** This creates a short circuit — direct path from positive to negative — that can damage or destroy the transistors. This condition is called a **shoot-through** or **H-bridge fault**. Motor driver ICs include built-in protection against this.
+Forward and reverse each use a diagonal pair of switches. To brake, we close both bottom switches (SW3 + SW4), as the table shows. Closing both top switches (SW1 + SW2) brakes the motor too. Either way, both motor wires sit at the same voltage, so the battery can't push current through the motor.
+
+**Never close SW1 and SW3 at the same time, or SW2 and SW4 at the same time.** Each of these pairs sits on the same side of the H, one above the other. Closing both creates a short circuit — a direct path from positive to negative that skips the motor. It can damage or destroy the transistors. This condition is called a **shoot-through** or **H-bridge fault**. Motor driver ICs include built-in protection against this.
 
 ### A DPDT Switch as an Analogy
 
@@ -319,7 +321,7 @@ Type: MicroSim
 
 Create a p5.js MicroSim with a 700 × 400 canvas. Draw an H-bridge circuit schematically:
 
-- Four switch symbols at the four corners of an "H" shape (SW1 top-left, SW2 bottom-left, SW3 top-right, SW4 bottom-right).
+- Four switch symbols at the four corners of an "H" shape (SW1 top-left, SW2 top-right, SW3 bottom-left, SW4 bottom-right — numbered in reading order).
 - A motor symbol (circle with M) in the horizontal center bar.
 - Power supply (V+) at top, Ground at bottom.
 - Current flow shown as animated dots moving along the wire when switches are in a valid state.

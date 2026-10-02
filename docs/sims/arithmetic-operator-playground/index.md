@@ -1,12 +1,13 @@
 ---
-title: Arithmetic Operator Playground
-description: Enter two numbers and see all seven MicroPython arithmetic operators side by side, with a block picture that shows what integer division and remainder really mean.
+title: "Arithmetic Operator Playground"
+description: "Enter two numbers and see all seven MicroPython arithmetic operators side by side, with a block picture that shows what integer division and remainder really mean."
 image: /sims/arithmetic-operator-playground/arithmetic-operator-playground.png
 og:image: /sims/arithmetic-operator-playground/arithmetic-operator-playground.png
 twitter:image: /sims/arithmetic-operator-playground/arithmetic-operator-playground.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Arithmetic Operator Playground

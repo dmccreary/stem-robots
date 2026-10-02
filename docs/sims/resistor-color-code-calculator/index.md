@@ -1,12 +1,13 @@
 ---
-title: Resistor Color Code Calculator
-description: Pick four stripe colors to read a resistor's value in ohms, type a value to see its stripes, load common robot-lab resistors, and quiz yourself on random resistors.
+title: "Resistor Color Code Calculator"
+description: "Pick four stripe colors to read a resistor's value in ohms, type a value to see its stripes, load common robot-lab resistors, and quiz yourself on random resistors."
 image: /sims/resistor-color-code-calculator/resistor-color-code-calculator.png
 og:image: /sims/resistor-color-code-calculator/resistor-color-code-calculator.png
 twitter:image: /sims/resistor-color-code-calculator/resistor-color-code-calculator.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Resistor Color Code Calculator

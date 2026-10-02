@@ -1,3 +1,13 @@
+---
+title: "Concept Graph Viewer"
+description: "Pan, zoom, and drag the nodes of the STEM Robots learning graph to see how each concept depends on the ones before it."
+image: /sims/learning-graph/learning-graph.png
+og:image: /sims/learning-graph/learning-graph.png
+twitter:image: /sims/learning-graph/learning-graph.png
+social:
+   cards: false
+status: implemented
+---
 # Concept Graph Viewer
 
 A learning graph is a network graph data structure where each vertex is

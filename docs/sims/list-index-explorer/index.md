@@ -1,6 +1,6 @@
 ---
-title: List Index Explorer
-description: Type: MicroSim **sim-id:** list-index-explorer<br/> **Library:** p5.js<br/> **Status:** Specified  Create a p5.js MicroSim with a 700 × 300 canvas.
+title: "List Index Explorer"
+description: "Pick an index with the slider or press Iterate to see how positive and negative indexes find items in a MicroPython list."
 image: /sims/list-index-explorer/list-index-explorer.png
 og:image: /sims/list-index-explorer/list-index-explorer.png
 twitter:image: /sims/list-index-explorer/list-index-explorer.png

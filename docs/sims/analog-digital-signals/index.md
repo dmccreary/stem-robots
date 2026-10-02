@@ -1,6 +1,6 @@
 ---
-title: Analog vs Digital Signal Comparison
-description: Type: MicroSim **sim-id:** analog-digital-signals<br/> **Library:** p5.js<br/> **Status:** Specified  Create a p5.js MicroSim with a 700 × 350 canvas split into two panels side by side.  Left panel — "Analog Signal": - Shows a smooth sin...
+title: "Analog vs Digital Signal Comparison"
+description: "Move your mouse across a smooth analog wave and a sharp digital square wave to see how a signal that can be any voltage differs from one that is only HIGH or LOW."
 image: /sims/analog-digital-signals/analog-digital-signals.png
 og:image: /sims/analog-digital-signals/analog-digital-signals.png
 twitter:image: /sims/analog-digital-signals/analog-digital-signals.png

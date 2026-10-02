@@ -146,7 +146,7 @@ After completing this course, students will be able to:
 - **Configure** a Raspberry Pi Pico W as a BLE peripheral that advertises a custom service and accepts commands from a central device.
 - **Program** a BLE central device to scan for, connect to, and send movement commands to a BLE peripheral robot.
 - **Execute** the Swarm Robots lab: pair two Pico W robots over BLE and demonstrate a leader/follower or coordinated stop behavior.
-- **Read** raw gyroscope and accelerometer/magnetometer values from an L3GD20 + LSM303D IMU module over I2C and confirm sane readings (near-zero gyro at rest, ~1 g accelerometer magnitude while still).
+- **Read** raw gyroscope and accelerometer/magnetometer values from an L3GD20 + LSM303DLHC IMU module over I2C and confirm sane readings (near-zero gyro at rest, ~1 g accelerometer magnitude while still).
 - **Calibrate** a magnetometer by rotating the robot through a full turn, recording the min/max readings, and computing the hard-iron offset.
 - **Implement** a complementary filter in MicroPython that fuses gyroscope and calibrated magnetometer readings into a stable compass heading.
 - **Configure** a Raspberry Pi Pico W as its own WiFi access point and broadcast UDP packets to every connected follower.

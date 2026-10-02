@@ -1,12 +1,13 @@
 ---
-title: Sensor Filter Lab
-description: Compare a moving average and a median filter on the same noisy ToF readings, with spikes and a sudden change, and judge which filter is better and how window size trades smoothness against lag.
+title: "Sensor Filter Lab"
+description: "Compare a moving average and a median filter on the same noisy ToF readings, with spikes and a sudden change, and judge which filter is better and how window size trades smoothness against lag."
 image: /sims/sensor-filter-lab/sensor-filter-lab.png
 og:image: /sims/sensor-filter-lab/sensor-filter-lab.png
 twitter:image: /sims/sensor-filter-lab/sensor-filter-lab.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Sensor Filter Lab

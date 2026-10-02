@@ -14,10 +14,10 @@
         "Named 'H-bridge' because the circuit diagram looks like the letter H",
         "Four switches (S1–S4) connect motor terminals to power and ground",
         "Forward: close S1 (top-left) + S4 (bottom-right); current flows left to right through motor",
-        "Reverse: close S2 (bottom-left) + S3 (top-right); current flows right to left through motor",
+        "Reverse: close S2 (top-right) + S3 (bottom-left); current flows right to left through motor",
         "Coast (free-wheel): open all four switches — motor spins down on its own",
-        "Brake: close both bottom switches (S2+S4) — short-circuits motor terminals to GND, stops quickly",
-        "Shoot-through danger: NEVER close S1+S2 or S3+S4 simultaneously — this short-circuits the power supply directly to ground",
+        "Brake: close both bottom switches (S3+S4) — short-circuits motor terminals to GND, stops quickly",
+        "Shoot-through danger: NEVER close S1+S3 or S2+S4 simultaneously — this short-circuits the power supply directly to ground",
         "In real circuits, BJT or MOSFET transistors replace the mechanical switches",
         "A DPDT (double-pole double-throw) mechanical switch implements a manual H-bridge",
         "Motor driver ICs implement this concept in silicon with built-in protection",
@@ -85,7 +85,7 @@
     {
       "question": "Which method risks a short circuit (shoot-through) if switches on the same leg are closed at the same time?",
       "correct_zone": "h-bridge",
-      "explanation": "In an H-bridge, closing S1+S2 (or S3+S4) simultaneously connects the power supply directly to ground — called shoot-through. This destroys transistors and can damage the power supply. Motor driver ICs have built-in dead-time logic to prevent this."
+      "explanation": "In an H-bridge, closing S1+S3 (or S2+S4) simultaneously connects the power supply directly to ground — called shoot-through. This destroys transistors and can damage the power supply. Motor driver ICs have built-in dead-time logic to prevent this."
     },
     {
       "question": "Which method requires adding an external flyback diode across the motor terminals to prevent damage from back-EMF spikes?",

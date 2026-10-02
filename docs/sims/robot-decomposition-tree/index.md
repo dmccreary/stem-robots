@@ -1,12 +1,13 @@
 ---
-title: Robot Decomposition Tree
-description: Split a big robot goal such as "Avoid the wall" into smaller tasks, and keep splitting until every piece is small enough to write as a line or two of MicroPython.
+title: "Robot Decomposition Tree"
+description: 'Split a big robot goal such as "Avoid the wall" into smaller tasks, and keep splitting until every piece is small enough to write as a line or two of MicroPython.'
 image: /sims/robot-decomposition-tree/robot-decomposition-tree.png
 og:image: /sims/robot-decomposition-tree/robot-decomposition-tree.png
 twitter:image: /sims/robot-decomposition-tree/robot-decomposition-tree.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Robot Decomposition Tree

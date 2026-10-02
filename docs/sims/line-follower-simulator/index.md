@@ -1,12 +1,13 @@
 ---
-title: Line Follower Simulator
-description: A two-sensor line-following robot that runs the Chapter 10 adjust_motors() rules on oval, figure-8, and zigzag tracks, with sliders for fast speed, slow speed, and update rate.
+title: "Line Follower Simulator"
+description: "A two-sensor line-following robot that runs the Chapter 10 adjust_motors() rules on oval, figure-8, and zigzag tracks, with sliders for fast speed, slow speed, and update rate."
 image: /sims/line-follower-simulator/line-follower-simulator.png
 og:image: /sims/line-follower-simulator/line-follower-simulator.png
 twitter:image: /sims/line-follower-simulator/line-follower-simulator.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Line Follower Simulator
@@ -19,18 +20,23 @@ quality_score: 100
 
 This MicroSim shows a robot with two infrared (IR) sensors following a black line on a white floor.
 The two circles on the front of the robot are the sensors.
-A sensor circle turns **black** when it is over the line. That reading is **LOW** (0).
-It turns **light yellow** when it is over the white floor. That reading is **HIGH** (1).
+A sensor circle turns **black** when it is over the line. That reading is **HIGH** (1).
+It turns **light yellow** when it is over the white floor. That reading is **LOW** (0).
+The sensors are *active LOW*: the white floor bounces the infrared light back, so the
+sensor reads 0. The black line soaks the light up, so the sensor reads 1.
 
 Two sensors give four possible states. The robot uses the same rules as `adjust_motors()` in
 [Chapter 10](../../chapters/10-robot-behaviors-navigation/index.md):
 
-| Left IR | Right IR | What the motors do |
-|---------|----------|--------------------|
-| LOW | HIGH | left motor slow, right motor fast |
-| HIGH | LOW | left motor fast, right motor slow |
-| LOW | LOW | both motors fast |
-| HIGH | HIGH | both motors fast |
+| Left IR | Right IR | What the motors do | Which way the robot goes |
+|---------|----------|--------------------|--------------------------|
+| HIGH | LOW | left motor slow, right motor fast | turns left, back toward the line |
+| LOW | HIGH | left motor fast, right motor slow | turns right, back toward the line |
+| HIGH | HIGH | both motors fast | straight |
+| LOW | LOW | both motors fast | straight (the line is lost) |
+
+When only the left sensor sees the line, the line is under the robot's left side.
+That means the robot has drifted to the right, so it must turn left to get back.
 
 The table on the right side of the sim lights up the state the robot is in right now.
 The readouts show both sensor values, both motor duties, and how much of the time at least one sensor is on the line.
@@ -85,21 +91,21 @@ Grades 8–12
 
 ### Instructor Note on Turn Direction
 
-In the chapter's `adjust_motors()`, the state *left LOW, right HIGH* sets the left motor to `HALF` and the right motor to `FULL`. With differential drive, a faster right wheel turns the robot **left**, toward the side where the line was detected, which is the correct correction. The chapter's table and code comments describe this case as "turn right"; the simulation shows the physically correct motion. Activity 2 is designed to surface this discrepancy as an analysis task rather than to hide it.
+In the chapter's `adjust_motors()`, the state *left HIGH, right LOW* sets the left motor to `HALF` and the right motor to `FULL`. With differential drive, a faster right wheel turns the robot **left**, toward the side where the line was detected, which is the correct correction because the robot has drifted right. Two student misconceptions are common here: that the robot should steer *away* from the sensor that sees the line, and that a robot turns toward its faster wheel. Activity 2 is designed to surface that misconception: students predict the turn direction first, then confirm it against the motion in the simulation and the comments in the chapter code.
 
 ### Activities
 
 1. **Observe the four states (5 min).** On the Oval track at default settings, students pause the sim several times and record the sensor values, the highlighted table row, and the motor duties. They should find that the robot spends most of its time alternating between the two "one sensor on the line" states.
-2. **Explain the steering (5 min).** Students answer: "When the left sensor reads LOW, which wheel slows down, which way does the robot turn, and why does that recenter it?" Pairs compare their answer with the comment in the chapter code and decide which description matches the motion.
+2. **Explain the steering (5 min).** Students answer: "When the left sensor reads HIGH, which wheel slows down, which way does the robot turn, and why does that recenter it?" Pairs check their answer against the motion in the sim and the comments in the chapter's `adjust_motors()` code.
 3. **Correction strength (7 min).** On the Zigzag track, students hold fast speed at 65535 and lower the slow speed in steps (32767, 20000, 10000, 0), recording Tightest turn and Time on line. They identify the threshold where the robot starts to stay on the line.
 4. **Speed versus loop rate (8 min).** With slow speed 0, students find the largest fast speed that keeps Time on line above 90 % for 30 s at 50 Hz, 20 Hz, and 10 Hz. They explain the pattern using distance traveled between sensor readings (speed / update rate).
-5. **Design discussion (5 min).** The class discusses why the HIGH/HIGH state drives straight in the chapter code and proposes a better behavior (for example, remembering the last turn direction).
+5. **Design discussion (5 min).** The class discusses why the LOW/LOW state drives straight in the chapter code and proposes a better behavior (for example, remembering the last turn direction).
 
 ### Assessment
 
 - **Formative:** During Activity 4, ask each pair to compute how far the robot travels between readings at 80 cm/s and 10 Hz (8 cm, twice the line width) and to explain why that loses the line.
 - **Exit ticket:** "Your real robot follows the oval but loses the line at sharp corners. Give two different changes to the code constants that could fix it, and explain what each one changes."
-- **Rubric (4-point):** *Exemplary* — correctly explains all four states, identifies weak correction and slow updates as separate causes with data, and proposes a justified improvement for HIGH/HIGH. *Proficient* — explains the steering direction correctly and supports one cause with data. *Developing* — describes what happens on screen without linking it to the motor duties or loop rate. *Beginning* — cannot connect sensor states to motor actions.
+- **Rubric (4-point):** *Exemplary* — correctly explains all four states, identifies weak correction and slow updates as separate causes with data, and proposes a justified improvement for LOW/LOW. *Proficient* — explains the steering direction correctly and supports one cause with data. *Developing* — describes what happens on screen without linking it to the motor duties or loop rate. *Beginning* — cannot connect sensor states to motor actions.
 
 ## References
 

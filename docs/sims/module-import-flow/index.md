@@ -1,12 +1,13 @@
 ---
-title: Module Import Flow
-description: Change one pin number in config.py and watch it flow into motors.py and main.py through import, then compare how many lines you would edit with hard-coded pins.
+title: "Module Import Flow"
+description: "Change one pin number in config.py and watch it flow into motors.py and main.py through import, then compare how many lines you would edit with hard-coded pins."
 image: /sims/module-import-flow/module-import-flow.png
 og:image: /sims/module-import-flow/module-import-flow.png
 twitter:image: /sims/module-import-flow/module-import-flow.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Module Import Flow

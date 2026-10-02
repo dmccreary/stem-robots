@@ -16,13 +16,11 @@
 I2C_SDA_PIN = 12 # Data on even pins
 I2C_SCL_PIN = 13
 
-# Interrupt / data-ready pins - wired up but not read by these lessons yet.
-# Interrupt-driven reads are a stretch goal (see swarm-bot plan.md Phase 12).
-# GYRO_INT_PIN = 11         # GINT (gyro interrupt)
-# GYRO_DRDY_PIN = 12        # GRDY (gyro data-ready)
-# ACCEL_MAG_INT1_PIN = 13   # LIN1 (accel/mag interrupt 1)
-# ACCEL_MAG_INT2_PIN = 14   # LIN2 (accel/mag interrupt 2)
-# ACCEL_MAG_DRDY_PIN = 15   # LRDY (accel/mag data-ready)
+# Interrupt / data-ready pins (GINT, GRDY, LIN1, LIN2, LRDY) are NOT connected
+# on this kit: SDA/SCL moved to GPIO12/13, which the sensor-only 9-dof-imu kit
+# uses for GRDY/LIN1, so there are no GPIO*_PIN constants for them here. These
+# lessons poll the sensors and never read them anyway. Interrupt-driven reads
+# are a stretch goal (see swarm-bot plan.md Phase 12).
 
 # I2C addresses - confirmed by 01-probe.py. Clone boards vary depending on
 # how the SA0/SDO address-select pin is tied, so don't assume these without
@@ -48,9 +46,9 @@ BMP180_CHIP_ID = 0x55
 # Wiring differs from the sw-gc9b72 kit in one place: BL goes straight to
 # 3V3 here instead of a GPIO, so the backlight is always on and there is
 # no software control of it (no set_backlight() - there's nothing to
-# switch). Everything else shares no pins with the IMU wiring above (I2C0
-# on GPIO0/1, interrupts on GPIO11-15), so both halves of this kit can be
-# wired at once with no conflicts.
+# switch). Everything else shares no pins with the IMU wiring above (I2C
+# on GPIO12/13, interrupt pins not connected), so both halves of this kit can
+# be wired at once with no conflicts.
 #
 # The 10-pad breakout reads (left to right): GND VCC SDA SCL RST DC CS BL
 # SDO TE. SDO (read-back) and TE (frame tearing sync) are not used by this

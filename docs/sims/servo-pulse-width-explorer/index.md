@@ -1,12 +1,13 @@
 ---
-title: Servo Pulse Width Explorer
-description: Move a servo arm from 0 to 180 degrees and see how the angle sets a 1 to 2 ms pulse inside a 20 ms PWM period and a duty_u16 value from 3276 to 6553.
+title: "Servo Pulse Width Explorer"
+description: "Move a servo arm from 0 to 180 degrees and see how the angle sets a 1 to 2 ms pulse inside a 20 ms PWM period and a duty_u16 value from 3276 to 6553."
 image: /sims/servo-pulse-width-explorer/servo-pulse-width-explorer.png
 og:image: /sims/servo-pulse-width-explorer/servo-pulse-width-explorer.png
 twitter:image: /sims/servo-pulse-width-explorer/servo-pulse-width-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Servo Pulse Width Explorer

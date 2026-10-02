@@ -109,6 +109,8 @@ nav:
     - Concept Graph Viewer: sims/learning-graph/index.md
     - Cooperative Multitasking Timeline: sims/cooperative-multitasking-timeline/index.md
     - Cytron Maker Pi RP2040 Board Explorer: sims/cytron-board-explorer/index.md
+    - Cytron Maker Pi RP2040 Board Explorer: sims/cytron-maker-pi-rp2040-overlay/index.md
+    - Cytron Robo Pico Board Explorer: sims/cytron-robo-pico-overlay/index.md
     - Dance Beat Sequencer: sims/dance-beat-sequencer/index.md
     - Data Type Explorer: sims/python-data-type-explorer/index.md
     - Differential Drive Turn Simulator: sims/differential-drive-simulator/index.md
@@ -338,6 +340,19 @@ extra:
   textbook_name: STEM Robots
   textbook_version: "1.0"
   generator: false
+
+  # MicroSim build-status indicators shown next to nav entries.
+  # The status value is set per-page in the index.md frontmatter:
+  #   status: scaffold | built | implemented | instrumented | approved
+  # Colors are defined as CSS custom properties in docs/css/extra.css.
+  # Do not add theme.icon.status -- it is Insiders-only and silently ignored.
+  status:
+    scaffold: Scaffold — placeholder, not yet implemented
+    built: Built — implementation complete, awaiting review
+    implemented: Implemented — the MicroSim works
+    instrumented: Instrumented — the MicroSim emits xAPI events; add ?xapi=teaching to the URL to see them
+    approved: Approved — tested and approved
+
   analytics:
     provider: google
     # https://analytics.google.com/analytics/web/#/a1420179p349994530/admin/streams/table/4433129821

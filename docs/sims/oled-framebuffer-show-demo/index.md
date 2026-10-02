@@ -1,12 +1,13 @@
 ---
-title: OLED Framebuffer and show()
-description: Run display.fill(0), text(), ellipse(), rect(), and show() one step at a time to see that drawing changes only the framebuffer in memory and show() copies it to the OLED screen.
+title: "OLED Framebuffer and show()"
+description: "Run display.fill(0), text(), ellipse(), rect(), and show() one step at a time to see that drawing changes only the framebuffer in memory and show() copies it to the OLED screen."
 image: /sims/oled-framebuffer-show-demo/oled-framebuffer-show-demo.png
 og:image: /sims/oled-framebuffer-show-demo/oled-framebuffer-show-demo.png
 twitter:image: /sims/oled-framebuffer-show-demo/oled-framebuffer-show-demo.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # OLED Framebuffer and show()

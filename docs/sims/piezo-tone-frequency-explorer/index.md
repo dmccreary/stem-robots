@@ -1,12 +1,13 @@
 ---
-title: Piezo Tone Frequency Explorer
-description: Play a PWM tone and see how the frequency passed to buzzer.freq() sets the pitch, the period of the wave, and the piano note, and why 50% duty is the loudest.
+title: "Piezo Tone Frequency Explorer"
+description: "Play a PWM tone and see how the frequency passed to buzzer.freq() sets the pitch, the period of the wave, and the piano note, and why 50% duty is the loudest."
 image: /sims/piezo-tone-frequency-explorer/piezo-tone-frequency-explorer.png
 og:image: /sims/piezo-tone-frequency-explorer/piezo-tone-frequency-explorer.png
 twitter:image: /sims/piezo-tone-frequency-explorer/piezo-tone-frequency-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Piezo Tone Frequency Explorer

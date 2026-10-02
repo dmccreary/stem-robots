@@ -1,6 +1,6 @@
 ---
-title: OLED Coordinate System Explorer
-description: Type: MicroSim **sim-id:** oled-coordinate-explorer<br/> **Library:** p5.js<br/> **Status:** Specified  Create a p5.js MicroSim with a 700 × 400 canvas.
+title: "OLED Coordinate System Explorer"
+description: "Hover over a magnified 128 by 64 OLED screen to read pixel coordinates, then draw text, lines, circles, and boxes and see the matching ssd1306 code."
 image: /sims/oled-coordinate-explorer/oled-coordinate-explorer.png
 og:image: /sims/oled-coordinate-explorer/oled-coordinate-explorer.png
 twitter:image: /sims/oled-coordinate-explorer/oled-coordinate-explorer.png

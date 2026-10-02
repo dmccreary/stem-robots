@@ -3,10 +3,9 @@
 // Bloom L4 (Analyze): compare a gyro-only heading, a magnetometer-only heading, and
 // the fused complementary-filter heading against the true heading, and connect the
 // alpha slider to which sensor dominates. The fused needle uses the chapter's
-//   HeadingFilter.update(): heading = alpha*(heading + gyro_z*dt) + (1 - alpha)*compass
-// run 50 times a second (dt = 0.02 s). One small change: the compass correction is
-// measured the short way around the circle, like heading_error(), so a heading near
-// north (359 vs 1 degree) does not jump.
+//   HeadingFilter.update(): heading = gyro_est + (1 - alpha) * diff(compass, gyro_est)
+// run 50 times a second (dt = 0.02 s). diff() is the signed short-way difference
+// (-180..+180), so a heading near north (359 vs 1 degree) does not jump.
 
 let canvasWidth = 800;
 let drawHeight = 420;

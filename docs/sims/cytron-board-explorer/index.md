@@ -1,6 +1,6 @@
 ---
-title: Cytron Maker Pi RP2040 Board Explorer
-description: Students will identify each major component on the Cytron Maker Pi RP2040 board and state its function in the robot system.
+title: "Cytron Maker Pi RP2040 Board Explorer"
+description: "Students will identify each major component on the Cytron Maker Pi RP2040 board and state its function in the robot system."
 image: /sims/cytron-board-explorer/cytron-board-explorer.png
 og:image: /sims/cytron-board-explorer/cytron-board-explorer.png
 twitter:image: /sims/cytron-board-explorer/cytron-board-explorer.png

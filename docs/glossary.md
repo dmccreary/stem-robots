@@ -692,9 +692,9 @@ The mechanism by which a Python script gains access to functions, classes, and c
 
 #### Infrared Sensor
 
-A short-range proximity or line-detection sensor that emits infrared light and detects the reflected intensity from a nearby surface. IR sensors used in this course produce a digital output: high when insufficient light reflects back (no surface or white surface) and low when high reflection occurs (dark line or close obstacle).
+A short-range proximity or line-detection sensor that emits infrared light and detects the reflected intensity from a nearby surface. IR sensors used in this course produce an active-low digital output: low when strong reflection occurs (white surface or close obstacle) and high when insufficient light reflects back (no surface, or a dark line that absorbs the light).
 
-**Example:** Placing the IR sensor module over a black line on white paper causes its output to go low, signaling the line.
+**Example:** Placing the IR sensor module over a black line on white paper causes its output to go high, signaling the line; over the white paper it reads low.
 
 #### Integer Data Type
 

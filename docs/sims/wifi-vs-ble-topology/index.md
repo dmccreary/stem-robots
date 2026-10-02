@@ -1,6 +1,6 @@
 ---
-title: WiFi vs BLE Communication Topology
-description: Type: diagram **sim-id:** wifi-vs-ble-topology<br/> **Library:** Mermaid<br/> **Status:** Specified  Create a side-by-side Mermaid graph showing two network topologies:  Left subgraph "WiFi (via router)": Browser -- HTTP --> Router -- Wi...
+title: "WiFi vs BLE Communication Topology"
+description: "Compare a WiFi network that talks through a router with a direct Bluetooth Low Energy link between two robots. Hover over each part to learn its role."
 image: /sims/wifi-vs-ble-topology/wifi-vs-ble-topology.png
 og:image: /sims/wifi-vs-ble-topology/wifi-vs-ble-topology.png
 twitter:image: /sims/wifi-vs-ble-topology/wifi-vs-ble-topology.png

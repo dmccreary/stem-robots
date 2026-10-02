@@ -1,12 +1,13 @@
 ---
-title: Flash Memory vs RAM Power Cycle
-description: Save main.py, run it, change a variable, and cut the power to see that Flash memory keeps your files while RAM forgets everything.
+title: "Flash Memory vs RAM Power Cycle"
+description: "Save main.py, run it, change a variable, and cut the power to see that Flash memory keeps your files while RAM forgets everything."
 image: /sims/flash-vs-ram-power-cycle/flash-vs-ram-power-cycle.png
 og:image: /sims/flash-vs-ram-power-cycle/flash-vs-ram-power-cycle.png
 twitter:image: /sims/flash-vs-ram-power-cycle/flash-vs-ram-power-cycle.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Flash Memory vs RAM Power Cycle

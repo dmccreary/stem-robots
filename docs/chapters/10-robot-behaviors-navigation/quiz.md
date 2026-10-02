@@ -57,7 +57,7 @@ Test your understanding of open-loop and closed-loop control, collision avoidanc
 <div class="upper-alpha" markdown>
 1. Stop both motors immediately and wait for the sensors to re-detect the line
 2. Spin left in place to find the center of the line
-3. Slow the left motor and keep the right motor at full speed to turn right toward the center
+3. Slow the left motor and keep the right motor at full speed to turn left toward the center
 4. Increase both motor speeds to drive through the error quickly
 </div>
 
@@ -132,17 +132,17 @@ Test your understanding of open-loop and closed-loop control, collision avoidanc
 
 ---
 
-#### 9. The line-following sensor table shows that when both IR sensors read LOW simultaneously, the robot should drive straight. Why might this state occur on a thick black line?
+#### 9. The line-following sensor table shows that when both IR sensors read HIGH simultaneously, the robot should drive straight. Why might this state occur on a thick black line?
 
 <div class="upper-alpha" markdown>
-1. Both sensors have failed and are stuck in the LOW state
+1. Both sensors have failed and are stuck in the HIGH state
 2. The thick line covers both sensors simultaneously, so both detect the line and the robot is centered
 3. The robot has driven off the track entirely and both sensors are reading ground reflection
-4. The I2C bus is saturated and both sensors are returning default LOW values
+4. The I2C bus is saturated and both sensors are returning default HIGH values
 </div>
 
 ??? question "Show Answer"
-    The correct answer is **B**. When both IR sensors read LOW (both detecting the line), the robot is positioned over the center of a thick line — both sensors are simultaneously over the black surface. The correct response is to drive straight since the robot is well-centered. This is different from both reading HIGH (both off the line — line is lost), which requires a recovery action.
+    The correct answer is **B**. When both IR sensors read HIGH (both over the line), the robot is positioned over the center of a thick line — both sensors are simultaneously over the black surface, which absorbs the infrared light. The correct response is to drive straight since the robot is well-centered. This is different from both reading LOW (both over the white floor — line is lost), which requires a recovery action.
 
     **Concept Tested:** Line Following / Dual IR Sensor Reading
 

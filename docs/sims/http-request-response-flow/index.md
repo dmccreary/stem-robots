@@ -1,6 +1,6 @@
 ---
-title: Web Server Request-Response Flow
-description: Type: diagram **sim-id:** http-request-response-flow<br/> **Library:** Mermaid<br/> **Status:** Specified  Create a Mermaid sequence diagram (sequenceDiagram) showing:  Participants: Browser, WiFi Network, Robot (Pico W)  Sequence: 1.
+title: "Web Server Request-Response Flow"
+description: "Step through the messages a web browser and a Pico W robot send over WiFi, from loading the control page to clicking the Forward button."
 image: /sims/http-request-response-flow/http-request-response-flow.png
 og:image: /sims/http-request-response-flow/http-request-response-flow.png
 twitter:image: /sims/http-request-response-flow/http-request-response-flow.png

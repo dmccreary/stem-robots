@@ -1,6 +1,6 @@
 ---
-title: MAX98357A Amplifier Pinout
-description: Students will identify each pin and component on the MAX98357A I2S amplifier breakout board and explain what it does in the audio circuit.
+title: "MAX98357A Amplifier Pinout"
+description: "Students will identify each pin and component on the MAX98357A I2S amplifier breakout board and explain what it does in the audio circuit."
 image: /sims/max98357a-amp-pinout/max98357a-amp-pinout.png
 og:image: /sims/max98357a-amp-pinout/max98357a-amp-pinout.png
 twitter:image: /sims/max98357a-amp-pinout/max98357a-amp-pinout.png

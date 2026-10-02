@@ -1,12 +1,13 @@
 ---
-title: Sensor Dictionary Explorer
-description: Read, update, and add entries in the robot dictionary by key, see each action as a line of MicroPython, and predict the KeyError for a key that does not exist yet.
+title: "Sensor Dictionary Explorer"
+description: "Read, update, and add entries in the robot dictionary by key, see each action as a line of MicroPython, and predict the KeyError for a key that does not exist yet."
 image: /sims/sensor-dictionary-explorer/sensor-dictionary-explorer.png
 og:image: /sims/sensor-dictionary-explorer/sensor-dictionary-explorer.png
 twitter:image: /sims/sensor-dictionary-explorer/sensor-dictionary-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Sensor Dictionary Explorer

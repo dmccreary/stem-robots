@@ -1,12 +1,13 @@
 ---
-title: Battery Runtime Estimator
-description: Estimate how long your robot runs on one battery pack by dividing usable capacity by total current, and see how motor duty, the display, NeoPixels, and battery health change the answer.
+title: "Battery Runtime Estimator"
+description: "Estimate how long your robot runs on one battery pack by dividing usable capacity by total current, and see how motor duty, the display, NeoPixels, and battery health change the answer."
 image: /sims/battery-runtime-estimator/battery-runtime-estimator.png
 og:image: /sims/battery-runtime-estimator/battery-runtime-estimator.png
 twitter:image: /sims/battery-runtime-estimator/battery-runtime-estimator.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Battery Runtime Estimator

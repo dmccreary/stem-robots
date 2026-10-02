@@ -1,12 +1,13 @@
 ---
-title: Socket Server Lifecycle
-description: A step-by-step view of the robot web server's socket calls, showing that accept() blocks, that listen(1) queues one browser, and why the robot serves one browser at a time.
+title: "Socket Server Lifecycle"
+description: "A step-by-step view of the robot web server's socket calls, showing that accept() blocks, that listen(1) queues one browser, and why the robot serves one browser at a time."
 image: /sims/socket-server-lifecycle/socket-server-lifecycle.png
 og:image: /sims/socket-server-lifecycle/socket-server-lifecycle.png
 twitter:image: /sims/socket-server-lifecycle/socket-server-lifecycle.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Socket Server Lifecycle

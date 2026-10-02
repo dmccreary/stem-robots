@@ -1,6 +1,6 @@
 ---
-title: Robot Assembly Workflow
-description: Students will sequence the eight assembly steps in the correct order and explain the mechanical reason each step precedes the next (e.g., why standoffs must be installed before the board is mounted).
+title: "Robot Assembly Workflow"
+description: "Students will sequence the eight assembly steps in the correct order and explain the mechanical reason each step precedes the next (e.g., why standoffs must be installed before the board is mounted)."
 image: /sims/robot-assembly-workflow/robot-assembly-workflow.png
 og:image: /sims/robot-assembly-workflow/robot-assembly-workflow.png
 twitter:image: /sims/robot-assembly-workflow/robot-assembly-workflow.png

@@ -1,12 +1,13 @@
 ---
-title: Dance Beat Sequencer
-description: An 8-beat timeline where students convert BPM into seconds per beat, arrange timed robot moves, preview the dance, and see the matching dance() code.
+title: "Dance Beat Sequencer"
+description: "An 8-beat timeline where students convert BPM into seconds per beat, arrange timed robot moves, preview the dance, and see the matching dance() code."
 image: /sims/dance-beat-sequencer/dance-beat-sequencer.png
 og:image: /sims/dance-beat-sequencer/dance-beat-sequencer.png
 twitter:image: /sims/dance-beat-sequencer/dance-beat-sequencer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Dance Beat Sequencer
@@ -29,7 +30,7 @@ This MicroSim has three parts:
 
 - **Timeline.** Eight beats, each split into two half-beat cells. Every colored block is one move. The block shows how many seconds its `sleep()` needs at the current tempo. Empty cells become gray "rest" blocks, which means `stop_motors()`.
 - **Stage.** A top view of a small robot that performs the dance. Forward and Back move it 30 pixels per beat. A spin turns it 90 degrees every half beat.
-- **Code box.** The `dance()` function that matches the timeline, in the same style as the dance in [Chapter 10](../../chapters/10-robot-behaviors-navigation/index.md). The line for the move that is playing lights up.
+- **Code box.** The `dance()` function that matches the timeline, in the same style as the dance in [Chapter 10](../../chapters/10-robot-behaviors-navigation/index.md). Each move function, such as `spin_left()`, only starts the motors. The `sleep()` on the same line sets how long the move lasts. The line for the move that is playing lights up.
 
 A dance is **open-loop**, which means the robot never checks where it is.
 The **Drift** slider makes one motor a little stronger than the other, like a real robot.

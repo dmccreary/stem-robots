@@ -1,6 +1,6 @@
 ---
-title: Physical Computing Explorer
-description: Students will *identify* (Bloom L1: Remember) the three layers of a physical computing system — inputs, processor, and outputs — and *explain* (Bloom L2: Understand) how information flows through the sense → decide → act loop.
+title: "Physical Computing Explorer"
+description: "Press Play Loop to watch information flow from a robot's sensors, through its processor, and out to its motors in the sense, decide, act loop."
 image: /sims/physical-computing-explorer/physical-computing-explorer.png
 og:image: /sims/physical-computing-explorer/physical-computing-explorer.png
 twitter:image: /sims/physical-computing-explorer/physical-computing-explorer.png

@@ -1,6 +1,6 @@
 ---
-title: MicroPython in the Stack
-description: Type: diagram **sim-id:** micropython-stack-diagram<br/> **Library:** Mermaid<br/> **Status:** Specified  Create a vertical stack diagram using Mermaid showing the four layers of the system:  Layer 1 (top): "Your Code (the program you wr...
+title: "MicroPython in the Stack"
+description: "See how your code, the MicroPython interpreter, the firmware, and the RP2040 hardware stack up to run your robot. Hover over each layer to learn its job."
 image: /sims/micropython-stack-diagram/micropython-stack-diagram.png
 og:image: /sims/micropython-stack-diagram/micropython-stack-diagram.png
 twitter:image: /sims/micropython-stack-diagram/micropython-stack-diagram.png

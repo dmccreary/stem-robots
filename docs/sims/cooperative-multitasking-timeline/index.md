@@ -1,12 +1,13 @@
 ---
-title: Cooperative Multitasking Timeline
-description: Compare a blocking robot loop that calls time.sleep() with uasyncio tasks that pause at await, and see which BLE messages and obstacles each program handles late.
+title: "Cooperative Multitasking Timeline"
+description: "Compare a blocking robot loop that calls time.sleep() with uasyncio tasks that pause at await, and see which BLE messages and obstacles each program handles late."
 image: /sims/cooperative-multitasking-timeline/cooperative-multitasking-timeline.png
 og:image: /sims/cooperative-multitasking-timeline/cooperative-multitasking-timeline.png
 twitter:image: /sims/cooperative-multitasking-timeline/cooperative-multitasking-timeline.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Cooperative Multitasking Timeline

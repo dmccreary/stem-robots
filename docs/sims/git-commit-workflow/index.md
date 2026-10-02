@@ -1,6 +1,6 @@
 ---
-title: Git Commit Workflow
-description: Type: diagram **sim-id:** git-commit-workflow<br/> **Library:** Mermaid<br/> **Status:** Specified  Create a Mermaid flowchart (graph LR, left to right) showing the four Git areas:  1.
+title: "Git Commit Workflow"
+description: "See how your code moves from the working directory to the staging area, your local repository, and GitHub. Hover over each box and arrow to learn what git add, commit, and push do."
 image: /sims/git-commit-workflow/git-commit-workflow.png
 og:image: /sims/git-commit-workflow/git-commit-workflow.png
 twitter:image: /sims/git-commit-workflow/git-commit-workflow.png

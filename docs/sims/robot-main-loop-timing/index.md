@@ -1,6 +1,6 @@
 ---
-title: Robot Main Loop with Timing
-description: Type: MicroSim **sim-id:** robot-main-loop-timing<br/> **Library:** p5.js<br/> **Status:** Specified  Create a p5.js MicroSim with a 700 × 400 canvas.
+title: "Robot Main Loop with Timing"
+description: "Watch a timeline of the robot's main loop as it reads the sensor, decides, moves the motors, and sleeps. See where each pass through the loop spends its time."
 image: /sims/robot-main-loop-timing/robot-main-loop-timing.png
 og:image: /sims/robot-main-loop-timing/robot-main-loop-timing.png
 twitter:image: /sims/robot-main-loop-timing/robot-main-loop-timing.png

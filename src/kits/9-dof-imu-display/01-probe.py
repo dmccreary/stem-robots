@@ -7,13 +7,10 @@ import config
 # 9-DOF IMU (L3GD20 gyro + LSM303DLHC accel/mag) wiring under test:
 #   VCC  -> Pico 3.3V OUT
 #   GND  -> Pico GND
-#   SDA  -> GPIO0 (I2C0 SDA)
-#   SCL  -> GPIO1 (I2C0 SCL)
-#   GINT -> GPIO11 (gyro interrupt, not read by these lessons yet)
-#   GRDY -> GPIO12 (gyro data-ready, not read by these lessons yet)
-#   LIN1 -> GPIO13 (accel/mag interrupt 1, not read by these lessons yet)
-#   LIN2 -> GPIO14 (accel/mag interrupt 2, not read by these lessons yet)
-#   LRDY -> GPIO15 (accel/mag data-ready, not read by these lessons yet)
+#   SDA  -> GPIO12 (I2C0 SDA)
+#   SCL  -> GPIO13 (I2C0 SCL)
+#   GINT, GRDY, LIN1, LIN2, LRDY -> not connected (interrupt pins, unused)
+# The pins actually used come from config.py - this comment is just a map.
 
 NAME = "01-probe.py"
 VERSION = "0.1"

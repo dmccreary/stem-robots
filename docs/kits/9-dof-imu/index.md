@@ -30,7 +30,7 @@ This lab covers the following concepts from the learning graph:
 2. I2C Scanner Tool
 3. 9-DOF IMU Overview
 4. L3GD20 Gyroscope
-5. LSM303D Accelerometer Magnetometer
+5. LSM303DLHC Accelerometer Magnetometer
 
 ## Prerequisites
 

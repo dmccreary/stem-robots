@@ -1,12 +1,13 @@
 ---
-title: Heading Error and Steering Explorer
-description: Set a follower robot's current and target headings, watch heading_error() pick the shorter turn step by step, and see the left and right motor speeds that steer() returns for a given Kp.
+title: "Heading Error and Steering Explorer"
+description: "Set a follower robot's current and target headings, watch heading_error() pick the shorter turn step by step, and see the left and right motor speeds that steer() returns for a given Kp."
 image: /sims/heading-error-steering-explorer/heading-error-steering-explorer.png
 og:image: /sims/heading-error-steering-explorer/heading-error-steering-explorer.png
 twitter:image: /sims/heading-error-steering-explorer/heading-error-steering-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Heading Error and Steering Explorer

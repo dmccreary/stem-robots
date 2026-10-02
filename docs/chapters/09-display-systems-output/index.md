@@ -143,7 +143,7 @@ import neopixel
 from machine import Pin
 import config
 
-np = neopixel.NeoPixel(Pin(config.NEOPIXEL_PIN), config.NEOPIXEL_COUNT)
+np = neopixel.NeoPixel(Pin(config.NEOPIXEL_PIN), config.NUMBER_NEOPIXELS)
 
 # Set LED 0 to red, LED 1 to blue
 np[0] = (255, 0, 0)
@@ -163,7 +163,7 @@ import neopixel
 from machine import Pin
 import config
 
-np = neopixel.NeoPixel(Pin(config.NEOPIXEL_PIN), config.NEOPIXEL_COUNT)
+np = neopixel.NeoPixel(Pin(config.NEOPIXEL_PIN), config.NUMBER_NEOPIXELS)
 
 colors = [(255,0,0), (0,255,0), (0,0,255), (255,200,0), (0,200,255)]
 
@@ -523,7 +523,7 @@ display = ssd1306.SSD1306_I2C(128, 64, i2c)
 tof = vl53l0x.VL53L0X(i2c)
 
 # Set up NeoPixels
-np = neopixel.NeoPixel(Pin(config.NEOPIXEL_PIN), config.NEOPIXEL_COUNT)
+np = neopixel.NeoPixel(Pin(config.NEOPIXEL_PIN), config.NUMBER_NEOPIXELS)
 
 def set_status(dist_cm):
     if dist_cm > 50:

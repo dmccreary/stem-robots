@@ -299,22 +299,25 @@ The arena uses the same three-zone logic as the `while True` loop in our program
 
 ### Dual IR Sensor Reading
 
-Line-following robots use two infrared sensors mounted at the front, spaced about the width of the line apart. The sensors point down at the surface. When a sensor is over the black line, it reads LOW (line detected). When over the white surface, it reads HIGH (no line).
+Line-following robots use two infrared sensors mounted at the front, spaced about the width of the line apart. The sensors point down at the surface. Remember from Chapter 8 that these sensors are active LOW. The white floor bounces the infrared light back, so a sensor over white reads LOW (0). The black line soaks up the light, so a sensor over the line reads HIGH (1).
 
 This dual-sensor arrangement gives four possible states:
 
 | Left IR | Right IR | Meaning | Action |
 |---------|----------|---------|--------|
-| HIGH | HIGH | Both off the line | Turn — line is lost |
-| LOW | HIGH | Left on line, right off | Turn right to center |
-| HIGH | LOW | Right on line, left off | Turn left to center |
-| LOW | LOW | Both on line (wide line) | Drive straight |
+| LOW | LOW | Both off the line | Turn — line is lost |
+| HIGH | LOW | Left on line, right off (robot drifted right) | Turn left to center |
+| LOW | HIGH | Right on line, left off (robot drifted left) | Turn right to center |
+| HIGH | HIGH | Both on line (wide line) | Drive straight |
 
 ```python
-ir_left  = Pin(config.IR_LEFT_PIN,  Pin.IN)
-ir_right = Pin(config.IR_RIGHT_PIN, Pin.IN)
+from machine import Pin
+import config
 
-left_val  = ir_left.value()
+ir_left  = Pin(config.LEFT_SENSOR_PIN,  Pin.IN)
+ir_right = Pin(config.RIGHT_SENSOR_PIN, Pin.IN)
+
+left_val  = ir_left.value()    # 1 = over the black line, 0 = over white
 right_val = ir_right.value()
 ```
 
@@ -322,16 +325,16 @@ right_val = ir_right.value()
 
 **Motor differential adjust** means running one motor faster than the other to steer back onto the line. Rather than making sharp turns, we adjust speed gradually — smoother tracking.
 
-For example, when the left sensor detects the line and the right doesn't (robot drifted left), we need to turn right. We slow the left motor and keep the right at full speed:
+For example, say the left sensor detects the line and the right one doesn't. The line is under the robot's left side, so the robot has drifted right. We need to turn left, back toward the line. We slow the left motor and keep the right at full speed. The faster right wheel swings the robot to the left:
 
 ```python
 def adjust_motors(left_val, right_val):
-    if left_val == 0 and right_val == 1:
-        # Left sensor on line — slow left, keep right fast (turn right)
+    if left_val == 1 and right_val == 0:
+        # Left sensor on line — slow left, keep right fast (turn left)
         set_speed(right_fwd, right_rev, FULL)
         set_speed(left_fwd,  left_rev,  HALF)
-    elif left_val == 1 and right_val == 0:
-        # Right sensor on line — keep left fast, slow right (turn left)
+    elif left_val == 0 and right_val == 1:
+        # Right sensor on line — keep left fast, slow right (turn right)
         set_speed(right_fwd, right_rev, HALF)
         set_speed(left_fwd,  left_rev,  FULL)
     else:
@@ -343,8 +346,8 @@ def adjust_motors(left_val, right_val):
 ### The Complete Line Following Program
 
 ```python
-ir_left  = Pin(config.IR_LEFT_PIN,  Pin.IN)
-ir_right = Pin(config.IR_RIGHT_PIN, Pin.IN)
+ir_left  = Pin(config.LEFT_SENSOR_PIN,  Pin.IN)
+ir_right = Pin(config.RIGHT_SENSOR_PIN, Pin.IN)
 
 try:
     while True:
@@ -385,9 +388,9 @@ Canvas layout: total width responsive (max 800 px), height 600 px. Left 600 px i
 
 Visual elements:
 - Track: white background, black line 4 cm wide (drawn 8 px wide at 1 cm = 2 px). Three tracks: "Oval", "Figure-8", "Zigzag".
-- Robot: a 16 x 12 cm rounded rectangle in OliveDrab (#6B8E23) with two wheels. Two small circles mark the IR sensors at the front corners, 4 cm apart. Each circle is filled black when it reads LOW (over the line, value 0) and light yellow when HIGH (over white, value 1).
+- Robot: a 16 x 12 cm rounded rectangle in OliveDrab (#6B8E23) with two wheels. Two small circles mark the IR sensors at the front corners, 4 cm apart. Each circle is filled black when it reads HIGH (over the line, value 1) and light yellow when LOW (over white, value 0).
 - Path trace: thin blue polyline from the robot center. Faded after 15 seconds.
-- State strip: the four-row table from the chapter (HIGH/HIGH, LOW/HIGH, HIGH/LOW, LOW/LOW) with the active row highlighted in gold and the action text next to it ("Drive straight", "Turn right", "Turn left", "Line lost").
+- State strip: the four-row table from the chapter (LOW/LOW, HIGH/LOW, LOW/HIGH, HIGH/HIGH) with the active row highlighted in gold and the action text next to it, in the same row order ("Line lost", "Turn left", "Turn right", "Drive straight").
 - Live readouts: "Left IR: 0/1", "Right IR: 0/1", "Left motor: duty", "Right motor: duty", "Time on line: __ %".
 
 Interactive controls:
@@ -397,7 +400,7 @@ Interactive controls:
 - Dropdown "Track": Oval (default), Figure-8, Zigzag.
 - Button "Run / Pause", button "Reset robot", button "Clear path".
 
-Behavior: at each update tick (rate slider), read both sensors by checking whether the sensor point is within 2 cm of the line center. Then apply the exact rules from `adjust_motors()`. Left LOW and right HIGH: left motor gets slow duty, right motor gets fast duty (turn right). Left HIGH and right LOW: right motor gets slow duty, left gets fast (turn left). Both LOW or both HIGH: both motors fast (drive straight). Between updates the motors keep their last duty. Every 1/60 s move the robot with differential drive: forward speed = (left + right) / 2 / 65535 x 80 cm/s, turn rate = (right - left) / 65535 x 80 / 12 rad/s (wheel spacing 12 cm). "Time on line" is the share of frames where at least one sensor reads LOW. If both sensors read HIGH for more than 2 seconds, stop the robot and show "Line lost!" in red. Note that both-HIGH drives straight in the chapter code, so on sharp curves the robot will lose the line. This is a good discussion point.
+Behavior: at each update tick (rate slider), read both sensors by checking whether the sensor point is within 2 cm of the line center. Then apply the exact rules from `adjust_motors()`. Left HIGH and right LOW: left motor gets slow duty, right motor gets fast duty (turn left, toward the line). Left LOW and right HIGH: right motor gets slow duty, left gets fast (turn right, toward the line). Both HIGH or both LOW: both motors fast (drive straight). Between updates the motors keep their last duty. Every 1/60 s move the robot with differential drive: forward speed = (left + right) / 2 / 65535 x 80 cm/s, turn rate = (right - left) / 65535 x 80 / 12 rad/s (wheel spacing 12 cm). "Time on line" is the share of frames where at least one sensor reads HIGH. If both sensors read LOW for more than 2 seconds, stop the robot and show "Line lost!" in red. Note that both-LOW drives straight in the chapter code, so on sharp curves the robot will lose the line. This is a good discussion point.
 
 Default state: Oval track, robot on the line facing along it, paused, fast 65535, slow 32767, 50 Hz.
 
@@ -406,7 +409,7 @@ Assessment/Challenge: On the Zigzag track, find the largest fast speed where the
 Responsive: redraw on window resize.
 </details>
 
-The two circles on the robot match the two IR sensors on `IR_LEFT_PIN` (28) and `IR_RIGHT_PIN` (27). The fast and slow duty values are the `FULL` and `HALF` constants in `adjust_motors()`. If the simulated robot loses the line at a speed, your real robot probably will too, so slow it down or shorten the `sleep()` time.
+The two circles on the robot match the two IR sensors on `LEFT_SENSOR_PIN` (28) and `RIGHT_SENSOR_PIN` (27). The fast and slow duty values are the `FULL` and `HALF` constants in `adjust_motors()`. If the simulated robot loses the line at a speed, your real robot probably will too, so slow it down or shorten the `sleep()` time.
 
 ---
 
@@ -419,27 +422,33 @@ A **robot dance sequence** is a choreographed series of timed motor patterns. Un
 ```python
 from time import sleep
 
-def spin(duration=0.5):
-    set_speed(right_fwd, right_rev, FULL)
-    set_speed(left_fwd,  left_rev,  -FULL)
-    sleep(duration)
+# These moves use set_speed(), go_forward(), and stop_motors() from above.
+# Each move only starts the motors. It does not sleep.
+def spin_left():
+    set_speed(right_fwd, right_rev, FULL)    # right wheel forward
+    set_speed(left_fwd,  left_rev,  -FULL)   # left wheel backward
 
-def back(duration=0.5):
+def spin_right():
+    set_speed(right_fwd, right_rev, -FULL)   # right wheel backward
+    set_speed(left_fwd,  left_rev,  FULL)    # left wheel forward
+
+def back():
     set_speed(right_fwd, right_rev, -FULL)
     set_speed(left_fwd,  left_rev,  -FULL)
-    sleep(duration)
 
-# A simple 8-beat dance at 120 BPM (0.5s per beat)
+# A simple 8-beat dance at 120 BPM (0.5 s per beat, 4 s in all)
 def dance():
-    go_forward(); sleep(0.5)      # beat 1
-    spin("left"); sleep(0.5)      # beat 2
-    spin("right"); sleep(0.5)     # beat 3
-    back(); sleep(0.5)            # beat 4
-    go_forward(); sleep(1.0)      # beats 5–6
-    spin("left"); sleep(0.25)     # beat 7 (half beat)
-    spin("right"); sleep(0.25)    # beat 7 (half beat)
-    stop_motors()                 # beat 8 — end
+    go_forward(); sleep(0.5)   # beat 1
+    spin_left(); sleep(0.5)    # beat 2
+    spin_right(); sleep(0.5)   # beat 3
+    back(); sleep(0.5)         # beat 4
+    go_forward(); sleep(1.0)   # beats 5-6
+    spin_left(); sleep(0.25)   # beat 7 (1st half)
+    spin_right(); sleep(0.25)  # beat 7 (2nd half)
+    stop_motors(); sleep(0.5)  # beat 8
 ```
+
+Each line of `dance()` starts one move, and the `sleep()` on that line decides how long it lasts. That is why our move functions have no `sleep()` inside, unlike `turn_left()` in the collision avoidance program. If they did, every move would last longer than its beat. Add up the `sleep()` times and you get 8 beats x 0.5 s = 4 seconds, with the robot resting on beat 8.
 
 Encourage creativity here: try adding buzzer tones, NeoPixel color changes, and OLED face changes synchronized with motor moves. A robot that blinks, beeps, and dances is memorable.
 
@@ -509,17 +518,17 @@ LEFT_REVERSE_PIN  = 8
 # Sensors
 I2C_SDA_PIN         = 16
 I2C_SCL_PIN         = 17
-IR_LEFT_PIN         = 28
-IR_RIGHT_PIN        = 27
+LEFT_SENSOR_PIN     = 28   # IR line sensors
+RIGHT_SENSOR_PIN    = 27
 BUMP_PIN            = 26
-ULTRASONIC_TRIG_PIN = 3
-ULTRASONIC_ECHO_PIN = 2
+TRIGGER_PIN         = 3    # ultrasonic HC-SR04
+ECHO_PIN            = 2
 
 # Outputs
-NEOPIXEL_PIN   = 18
-NEOPIXEL_COUNT = 2
-BUZZER_PIN     = 22
-SERVO_PIN      = 12
+NEOPIXEL_PIN     = 18
+NUMBER_NEOPIXELS = 2
+SPEAKER_PIN      = 22   # piezo buzzer
+SERVO_PIN        = 12   # servo header 1
 
 # Tuning constants
 STOP_DIST_CM = 20

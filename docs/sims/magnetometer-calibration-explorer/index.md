@@ -1,12 +1,13 @@
 ---
-title: Magnetometer Calibration Explorer
-description: Rotate a simulated magnetometer through a full turn, watch the raw X/Y readings trace an off-center circle, then compute the hard-iron offset from min and max values and see the corrected circle and heading snap back into place.
+title: "Magnetometer Calibration Explorer"
+description: "Rotate a simulated magnetometer through a full turn, watch the raw X/Y readings trace an off-center circle, then compute the hard-iron offset from min and max values and see the corrected circle and heading snap back into place."
 image: /sims/magnetometer-calibration-explorer/magnetometer-calibration-explorer.png
 og:image: /sims/magnetometer-calibration-explorer/magnetometer-calibration-explorer.png
 twitter:image: /sims/magnetometer-calibration-explorer/magnetometer-calibration-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Magnetometer Calibration Explorer
@@ -91,7 +92,7 @@ Grades 8–12
 - Coordinate planes and the idea of an average (midpoint)
 - Reading I2C sensor data from
   [Chapter 8: Sensors and Data Input](../../chapters/08-sensors-data-input/index.md)
-- The 9-DOF IMU section of Chapter 13 (what the LSM303D magnetometer measures)
+- The 9-DOF IMU section of Chapter 13 (what the LSM303DLHC magnetometer measures)
 
 ### Activities
 
@@ -134,7 +135,8 @@ Grades 8–12
    distortion on a robot.
 3. [atan2 (Wikipedia)](https://en.wikipedia.org/wiki/Atan2) — the function that turns
    the X and Y readings into a heading angle.
-4. [Pololu MinIMU-9 v3 (L3GD20H and LSM303D carrier)](https://www.pololu.com/product/2468) —
-   an IMU board with the same LSM303D magnetometer used in this course.
+4. [LSM303DLHC accelerometer/magnetometer datasheet (STMicroelectronics)](https://www.st.com/resource/en/datasheet/lsm303dlhc.pdf) —
+   the magnetometer chip on this course's 9-DOF IMU module, including its measurement
+   ranges and output registers.
 5. [Swarm Robot Build Plan](../../kits/swarm-bot/plan.md) — Phase 4, the magnetometer
    calibration script for the real robot.

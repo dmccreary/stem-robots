@@ -1,12 +1,13 @@
 ---
-title: Sleep vs Timer Explorer
-description: Compare a robot that blinks its LED with sleep() against one that uses a ticks_ms() timer, drop an obstacle, and measure how long each one takes to notice it.
+title: "Sleep vs Timer Explorer"
+description: "Compare a robot that blinks its LED with sleep() against one that uses a ticks_ms() timer, drop an obstacle, and measure how long each one takes to notice it."
 image: /sims/sleep-vs-ticks-explorer/sleep-vs-ticks-explorer.png
 og:image: /sims/sleep-vs-ticks-explorer/sleep-vs-ticks-explorer.png
 twitter:image: /sims/sleep-vs-ticks-explorer/sleep-vs-ticks-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Sleep vs Timer Explorer

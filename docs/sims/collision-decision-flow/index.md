@@ -1,6 +1,6 @@
 ---
-title: Collision Avoidance Decision Flow
-description: Type: diagram **sim-id:** collision-decision-flow<br/> **Library:** Mermaid<br/> **Status:** Specified  Create a Mermaid flowchart (graph TD) showing: - Start node: "Read distance sensor" - Diamond: "distance_cm < 20?" — Yes branch leads...
+title: "Collision Avoidance Decision Flow"
+description: "Follow the robot's decision steps as it reads its distance sensor and chooses to stop, slow down, or drive full speed. Hover over any step to see what it does."
 image: /sims/collision-decision-flow/collision-decision-flow.png
 og:image: /sims/collision-decision-flow/collision-decision-flow.png
 twitter:image: /sims/collision-decision-flow/collision-decision-flow.png

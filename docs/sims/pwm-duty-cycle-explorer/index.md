@@ -1,6 +1,6 @@
 ---
-title: PWM Duty Cycle Explorer
-description: Type: MicroSim **sim-id:** pwm-duty-cycle-explorer<br/> **Library:** p5.js<br/> **Status:** Specified  Create a p5.js MicroSim with a 700 × 400 canvas split into two sections:  Top section (60% height): PWM waveform display. - Draw a squ...
+title: "PWM Duty Cycle Explorer"
+description: "Drag the duty cycle slider to reshape a PWM square wave and see how it changes the average voltage and the speed of a spinning motor."
 image: /sims/pwm-duty-cycle-explorer/pwm-duty-cycle-explorer.png
 og:image: /sims/pwm-duty-cycle-explorer/pwm-duty-cycle-explorer.png
 twitter:image: /sims/pwm-duty-cycle-explorer/pwm-duty-cycle-explorer.png

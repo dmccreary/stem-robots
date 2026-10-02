@@ -1,12 +1,13 @@
 ---
-title: IR Reflectance Threshold Explorer
-description: See how surface color, distance, and the trimmer threshold decide whether an active-LOW IR sensor reads 0 (surface detected) or 1 (nothing detected).
+title: "IR Reflectance Threshold Explorer"
+description: "See how surface color, distance, and the trimmer threshold decide whether an active-LOW IR sensor reads 0 (surface detected) or 1 (nothing detected)."
 image: /sims/ir-reflectance-threshold-explorer/ir-reflectance-threshold-explorer.png
 og:image: /sims/ir-reflectance-threshold-explorer/ir-reflectance-threshold-explorer.png
 twitter:image: /sims/ir-reflectance-threshold-explorer/ir-reflectance-threshold-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # IR Reflectance Threshold Explorer
@@ -124,8 +125,11 @@ switches at a chosen distance and separates black from white.
 
 - The curve shape, reflected IR = peak × 100 / (1 + (d / 4)²), is a simple
   model. Real modules also have a minimum range and depend on the surface texture.
-- Some line-sensor modules invert their output. Always test yours over black
-  and white before you trust the numbers.
+- The line sensors on this course's robot follow the active-LOW rule shown
+  here: 0 over the white floor and 1 over the black line, as in
+  [Chapter 10](../../chapters/10-robot-behaviors-navigation/index.md#dual-ir-sensor-reading).
+  A few modules invert their output, so always test yours over black and white
+  before you trust the numbers.
 
 ## References
 

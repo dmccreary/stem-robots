@@ -1,13 +1,13 @@
-# Swarm Robot Build Plan — L3GD20 + LSM303D IMU on Cytron ROBO-PICO
+# Swarm Robot Build Plan — L3GD20 + LSM303DLHC IMU on Cytron ROBO-PICO
 
 This is the concrete build plan for the heading-follower swarm concept described in
 [Swarm Robotics Cluster — Design Report](../../appendices/swarm-robots/index.md). That
 report compared IMU options in the abstract; this plan is scoped to the parts already
 on hand: the **Cytron ROBO-PICO** board running a **Raspberry Pi Pico W**, and the
-**L3GD20 + LSM303D 9-DOF module** shown below.
+**L3GD20 + LSM303DLHC 9-DOF module** shown below.
 
-![9-axis IMU module: L3GD20 gyroscope + LSM303D accelerometer/magnetometer, purchased for $5.96](9-dof-imu.png)
-*The purchased module. Two separate ST chips on one board — a gyroscope (L3GD20) and a combined accelerometer/magnetometer (LSM303D) — each with its own I2C address.*
+![9-axis IMU module: L3GD20 gyroscope + LSM303DLHC accelerometer/magnetometer, purchased for $5.96](9-dof-imu.png)
+*The purchased module. Two separate ST chips on one board — a gyroscope (L3GD20) and a combined accelerometer/magnetometer (LSM303DLHC, which answers at two I2C addresses) — plus a bonus BMP180 pressure sensor that this project doesn't use.*
 
 ## 1. What Changes From the Design Report
 
@@ -21,7 +21,7 @@ and already used by other kits in this repo (`src/kits/wi-fi-bot/config.py`,
 |---|---|
 | [Cytron ROBO-PICO](https://www.cytron.io/p-robo-pico-simplifying-robotics-with-raspberry-pi-pico) board | On hand (existing kits use it) |
 | Raspberry Pi Pico W | On hand |
-| L3GD20 + LSM303D 9-DOF module | **Purchased** ($5.96) |
+| L3GD20 + LSM303DLHC 9-DOF module ("10 DOF" silkscreen, bonus BMP180) | **Purchased** ($5.96), bench-tested in [`9-dof-imu`](../9-dof-imu/index.md) |
 | Two DC gear motors + wheels + caster + chassis | On hand (existing kit chassis) |
 | LiPo battery | On hand |
 | 10-pin male header (to solder onto the IMU) | Included loose with the module — must be soldered before wiring |
@@ -34,12 +34,15 @@ normal first step, not a blocker.
 ## 2. IMU Identification and Pinout
 
 The module's silkscreen pin labels (top row, left to right): `VIN, GND, SDA, GRDY, LIN2`.
-Bottom row: `3Vo, SCL, GINT, LIN1, LRDY`. That layout — a regulated 3.3V output broken
-out separately from `VIN`, plus gyro/accel-mag data-ready and interrupt pins — matches
-the well-documented **Pololu MinIMU-9 v3** pin arrangement (L3GD20H gyro + LSM303D
-accel/mag), so its public register maps and wiring notes are a reliable reference if
-you get stuck. The board silkscreen also prints X/Y/Z axis arrows — use those, not
-guesswork, to decide which physical edge is "front" when you mount it.
+Bottom row: `3Vo, SCL, GINT, LIN1, LRDY`. The back of the board lists its chips: an
+**L3GD20** gyro, an **LSM303DLHC** accel/mag, and a bonus **BMP180** temperature/pressure
+sensor (hence "10 DOF" on the silkscreen). An earlier draft of this plan assumed the
+newer **LSM303D**, which has a single address (`0x1D`) and a different register map; the
+bench probe (`src/kits/9-dof-imu/01-probe.py`) confirmed the LSM303DLHC, whose
+accelerometer (`0x19`) and magnetometer (`0x1E`) are separate I2C sub-devices. Use the
+LSM303DLHC datasheet, not LSM303D references, when you get stuck. The board silkscreen
+also prints X/Y/Z axis arrows — use those, not guesswork, to decide which physical edge
+is "front" when you mount it.
 
 We only need four of the ten pins for the first build. The `GRDY`, `LIN2`, `GINT`,
 `LIN1`, and `LRDY` interrupt/data-ready pins are a stretch goal (Section 5, Phase 12) —
@@ -60,6 +63,14 @@ this module presents two.
 | `SCL` | `GPIO17` | Shared with existing `I2C_SCL_PIN` |
 | `GRDY`, `LIN2`, `GINT`, `LIN1`, `LRDY` | unconnected | Reserved for interrupt-driven reads (stretch goal) |
 
+The bench-test kits wire this same module to a bare Pico on different pins —
+`src/kits/9-dof-imu` uses GPIO0/1 and `src/kits/9-dof-imu-display` uses GPIO12/13 —
+because they have no Grove bus to share. The chip, addresses, and drivers are identical;
+only `I2C_SDA_PIN`/`I2C_SCL_PIN` in each kit's `config.py` differ. Use `machine.SoftI2C`
+rather than `machine.I2C` for this module: on the bench, the hardware I2C0 peripheral
+scanned all four chips but threw `OSError: EIO` on every real read, while `SoftI2C` on the
+same pins worked at every frequency tested.
+
 Mount the module **away from the DC motors** — motor magnets distort the
 magnetometer, and this is the single most common cause of a heading that drifts or
 jumps only while driving. A small standoff on the rear deck, away from both motors,
@@ -71,8 +82,8 @@ Follow the numbering convention already used in `src/kits/base-bot/` and `src/ki
 Proposed new files:
 
 ```
-src/lib/l3gd20.py           # gyroscope driver
-src/lib/lsm303d.py          # accelerometer + magnetometer driver
+src/lib/l3gd20.py           # gyroscope driver (exists, bench-tested)
+src/lib/lsm303dlhc.py       # accelerometer + magnetometer driver (exists, bench-tested)
 src/lib/heading_filter.py   # complementary filter: gyro + mag -> heading
 src/kits/swarm/config.py    # extends the standard config.py with IMU + AP settings
 src/kits/swarm/secrets.py   # AP_SSID / AP_PASSWORD, gitignored like wi-fi/secrets.py
@@ -91,9 +102,11 @@ src/kits/swarm/
 Add to `config.py`:
 
 ```py
-# IMU I2C addresses (confirm in Phase 1 — clone boards vary)
-GYRO_I2C_ADDRESS = 0x6B   # L3GD20, SDO/SA0 pulled high
-ACCEL_MAG_I2C_ADDRESS = 0x1D  # LSM303D, SDO/SA0 pulled high
+# IMU I2C addresses (confirm in Phase 1 — clone boards vary). Same names as
+# src/kits/9-dof-imu/config.py, where 01-probe.py confirmed them on real hardware.
+GYRO_I2C_ADDRESS = 0x6B    # L3GD20, SDO/SA0 pulled high
+ACCEL_I2C_ADDRESS = 0x19   # LSM303DLHC accelerometer sub-device
+MAG_I2C_ADDRESS = 0x1E     # LSM303DLHC magnetometer sub-device
 
 # Swarm networking
 UDP_PORT = 8000
@@ -118,84 +131,48 @@ LOOP_HZ = 50
 
    ```py
    import machine
-   i2c = machine.I2C(0, sda=machine.Pin(16), scl=machine.Pin(17), freq=400000)
+   i2c = machine.SoftI2C(sda=machine.Pin(16), scl=machine.Pin(17), freq=100000)
    found = i2c.scan()
    print("Devices found:", [hex(d) for d in found])
    ```
 
-   Expect two addresses: the gyro at `0x6B` (or `0x6A` if its `SDO` pin is grounded
-   on this particular clone) and the accel/mag at `0x1D` (or `0x1E`). Record whatever
-   you actually see and update `config.py` — don't assume the datasheet default.
-3. Confirm chip identity by reading the `WHO_AM_I` register (`0x0F`) from each address:
-   gyro should read `0xD4` (L3GD20) or `0xD7` (L3GD20H); accel/mag should read `0x49`.
-   A mismatch means the wrong address or a wiring fault, not a bad filter later on.
+   Expect four addresses (plus the ToF sensor's, if it's on the same bus): the gyro at
+   `0x6B` (or `0x6A` if its `SDO` pin is grounded on this particular clone), the
+   LSM303DLHC accelerometer at `0x19` and magnetometer at `0x1E`, and the unused BMP180
+   at `0x77`. Record whatever you actually see and update `config.py` — don't assume
+   the datasheet default.
+3. Confirm chip identity — `src/kits/9-dof-imu/01-probe.py` already does all three:
+   the gyro's `WHO_AM_I` register (`0x0F`) should read `0xD4` (L3GD20) or `0xD7`
+   (L3GD20H); the magnetometer's identification registers `0x0A`–`0x0C` should spell
+   `"H43"`; the accelerometer has no identity register, so write `CTRL_REG1_A` (`0x20`)
+   and confirm it reads back. A mismatch means the wrong address or a wiring fault, not
+   a bad filter later on.
 
-### Phase 2 — Minimal drivers
+### Phase 2 — Drivers (already written)
 
-Write `l3gd20.py` and `lsm303d.py` following the register-constant style already used
-in `src/lib/VL53L0X.py` (`const()` addresses, `readfrom_mem`/`writeto_mem`). Skeleton:
-
-```py
-# l3gd20.py
-from micropython import const
-import ustruct
-
-_WHO_AM_I = const(0x0F)
-_CTRL_REG1 = const(0x20)
-_CTRL_REG4 = const(0x23)
-_OUT_X_L = const(0x28 | 0x80)  # 0x80 bit auto-increments across X/Y/Z
-
-class L3GD20:
-    def __init__(self, i2c, address=0x6B):
-        self.i2c = i2c
-        self.address = address
-        self.i2c.writeto_mem(self.address, _CTRL_REG1, b'\x0F')  # normal mode, XYZ on, 95 Hz
-        self.i2c.writeto_mem(self.address, _CTRL_REG4, b'\x00')  # 250 dps full scale
-
-    def read_dps(self):
-        data = self.i2c.readfrom_mem(self.address, _OUT_X_L, 6)
-        x, y, z = ustruct.unpack('<hhh', data)
-        sensitivity = 0.00875  # dps per LSB at 250 dps full scale
-        return (x * sensitivity, y * sensitivity, z * sensitivity)
-```
+The shared drivers `src/lib/l3gd20.py` and `src/lib/lsm303dlhc.py` already exist,
+follow the register-constant style of `src/lib/VL53L0X.py` (`const()` addresses,
+`readfrom_mem`/`writeto_mem`), and were bench-tested on this exact module in the
+[`9-dof-imu`](../9-dof-imu/index.md) kit. The swarm kit's `upload-code.sh` should copy
+them into `lib/` on each robot, the same way the bench kit does:
 
 ```py
-# lsm303d.py
-from micropython import const
-import ustruct
+from l3gd20 import L3GD20
+from lsm303dlhc import LSM303DLHC
 
-_CTRL1 = const(0x20)
-_CTRL5 = const(0x24)
-_CTRL6 = const(0x25)
-_CTRL7 = const(0x26)
-_OUT_X_L_A = const(0x28 | 0x80)
-_OUT_X_L_M = const(0x08 | 0x80)
+gyro = L3GD20(i2c, config.GYRO_I2C_ADDRESS)
+accel_mag = LSM303DLHC(i2c, config.ACCEL_I2C_ADDRESS, config.MAG_I2C_ADDRESS)
 
-class LSM303D:
-    def __init__(self, i2c, address=0x1D):
-        self.i2c = i2c
-        self.address = address
-        self.i2c.writeto_mem(self.address, _CTRL1, b'\x57')  # 100 Hz, XYZ accel on
-        self.i2c.writeto_mem(self.address, _CTRL5, b'\x64')  # high-res mag, 50 Hz
-        self.i2c.writeto_mem(self.address, _CTRL6, b'\x20')  # +/-4 gauss
-        self.i2c.writeto_mem(self.address, _CTRL7, b'\x00')  # continuous-conversion mode
-
-    def read_accel_g(self):
-        data = self.i2c.readfrom_mem(self.address, _OUT_X_L_A, 6)
-        x, y, z = ustruct.unpack('<hhh', data)
-        sensitivity = 0.061 / 1000  # g per LSB at +/-2g
-        return (x * sensitivity, y * sensitivity, z * sensitivity)
-
-    def read_mag_gauss(self):
-        data = self.i2c.readfrom_mem(self.address, _OUT_X_L_M, 6)
-        x, y, z = ustruct.unpack('<hhh', data)
-        sensitivity = 0.16 / 1000  # gauss per LSB at +/-4 gauss
-        return (x * sensitivity, y * sensitivity, z * sensitivity)
+gx, gy, gz = gyro.read_dps()            # deg/s
+ax, ay, az = accel_mag.read_accel_g()   # g
+mx, my, mz = accel_mag.read_mag_gauss() # gauss
 ```
 
-Treat the sensitivity constants as starting points — verify them against the
-`WHO_AM_I` result from Phase 1 (L3GD20 vs L3GD20H have slightly different specs), and
-be ready to adjust after Phase 3's raw-value sanity check.
+Two LSM303DLHC quirks the driver already handles: the magnetometer's output registers
+come out in X, Z, Y order, and X/Y and Z have different sensitivities at the ±1.3 gauss
+setting. Re-check the gyro sensitivity against the `WHO_AM_I` result from Phase 1
+(L3GD20 vs L3GD20H have slightly different specs), and be ready to adjust after
+Phase 3's raw-value sanity check.
 
 ### Phase 3 — Raw sensor read test (`03-read-accel-mag-raw.py`)
 
@@ -245,10 +222,18 @@ class HeadingFilter:
     def update(self, gyro_z_dps, mag_x, mag_y, dt):
         gyro_estimate = self.heading + gyro_z_dps * dt
         compass_estimate = self.mag_heading(mag_x, mag_y)
-        self.heading = (self.alpha * gyro_estimate
-                         + (1 - self.alpha) * compass_estimate) % 360
+        # Signed shortest-path difference, -180..+180, so 359 vs 1 blends near 0
+        diff = ((compass_estimate - gyro_estimate + 180) % 360) - 180
+        self.heading = (gyro_estimate + (1 - self.alpha) * diff) % 360
         return self.heading
 ```
+
+Blend the *signed shortest-path difference*, not the two raw 0–359° values.
+`alpha * gyro + (1 - alpha) * compass` is algebraically the same as
+`gyro + (1 - alpha) * (compass - gyro)`, but only the second form can be wrapped:
+blending raw values near north fails (359° and 1° at `alpha = 0.98` gives ~352°
+instead of ~359°), while the wrapped `diff` gives +2° and nudges the heading the short
+way. It's the same wrap trick `heading_error()` uses in Phase 9.
 
 Run the fusion loop at `LOOP_HZ` (50 Hz → `dt = 0.02`). `alpha = 0.98` is a reasonable
 starting point: mostly trust the gyro moment-to-moment, and let the (calibrated)

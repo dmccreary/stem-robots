@@ -1,12 +1,13 @@
 ---
-title: Robot Loop Pattern Explorer
-description: Step through a for loop, a while loop, and a nested loop that blink a robot's NeoPixels or drive it toward a wall, and predict how many times each loop body runs.
+title: "Robot Loop Pattern Explorer"
+description: "Step through a for loop, a while loop, and a nested loop that blink a robot's NeoPixels or drive it toward a wall, and predict how many times each loop body runs."
 image: /sims/robot-loop-pattern-explorer/robot-loop-pattern-explorer.png
 og:image: /sims/robot-loop-pattern-explorer/robot-loop-pattern-explorer.png
 twitter:image: /sims/robot-loop-pattern-explorer/robot-loop-pattern-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Robot Loop Pattern Explorer

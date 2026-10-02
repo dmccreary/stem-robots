@@ -1,12 +1,13 @@
 ---
-title: Fetch vs. Form Page Reload
-description: Two robot controller pages side by side, one with form buttons that reload the page and one with fetch(), so students can compare missed clicks, blank-page time, and robot response.
+title: "Fetch vs. Form Page Reload"
+description: "Two robot controller pages side by side, one with form buttons that reload the page and one with fetch(), so students can compare missed clicks, blank-page time, and robot response."
 image: /sims/fetch-async-control/fetch-async-control.png
 og:image: /sims/fetch-async-control/fetch-async-control.png
 twitter:image: /sims/fetch-async-control/fetch-async-control.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Fetch vs. Form Page Reload

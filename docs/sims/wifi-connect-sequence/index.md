@@ -1,12 +1,13 @@
 ---
-title: WiFi Connect Sequence
-description: A step-by-step sequence diagram of the Pico W WiFi connect code, with a running timeout clock and scenarios for success, a wrong password, a missing network, and a slow router.
+title: "WiFi Connect Sequence"
+description: "A step-by-step sequence diagram of the Pico W WiFi connect code, with a running timeout clock and scenarios for success, a wrong password, a missing network, and a slow router."
 image: /sims/wifi-connect-sequence/wifi-connect-sequence.png
 og:image: /sims/wifi-connect-sequence/wifi-connect-sequence.png
 twitter:image: /sims/wifi-connect-sequence/wifi-connect-sequence.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # WiFi Connect Sequence

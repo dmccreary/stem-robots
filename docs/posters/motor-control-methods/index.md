@@ -30,11 +30,11 @@ Compares the three ways to control a DC motor from a microcontroller: the **H-Br
 
     Layout: a three-column comparison table on a light off-white background (#F7F9FC). Each column is a rounded-corner card with a distinct accent color on its top edge and a simple circuit schematic illustration at the top. A vertical row-label strip on the far left lists the attributes. Generous white space, thin divider lines, friendly textbook feel.
 
-    Column 1 (teal blue #1389A6): Header "H-Bridge Circuit"; Illustration: a simple H-bridge schematic — four switches (S1–S4) arranged in the letter H with a motor (M) in the center crossbar, power (+) at top and GND (−) at bottom. Label S1 (top-left), S2 (bottom-left), S3 (top-right), S4 (bottom-right). Rows:
+    Column 1 (teal blue #1389A6): Header "H-Bridge Circuit"; Illustration: a simple H-bridge schematic — four switches (S1–S4) arranged in the letter H with a motor (M) in the center crossbar, power (+) at top and GND (−) at bottom. Label S1 (top-left), S2 (top-right), S3 (bottom-left), S4 (bottom-right). Rows:
     · Direction control: Yes — close S1+S4 for forward; S2+S3 for reverse
     · Speed control: Yes — PWM switches at high frequency to vary average voltage
     · Implementation: Four transistors (BJT or MOSFET) or mechanical switches
-    · Shoot-through risk: Yes — closing S1+S2 or S3+S4 shorts the power supply
+    · Shoot-through risk: Yes — closing S1+S3 or S2+S4 shorts the power supply
     · Protection diodes: Must be added externally (flyback/freewheeling diodes)
     · Complexity: Moderate — requires careful sequencing to avoid shoot-through
     · Cost: Low (discrete parts ~$0.50–$2) but higher design effort

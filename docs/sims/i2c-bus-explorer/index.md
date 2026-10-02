@@ -1,12 +1,13 @@
 ---
-title: I2C Bus Explorer
-description: Send a byte on a shared two-wire I2C bus and trace START, the 7-bit address, the ACK, the data bits, and STOP, then scan the bus to find which addresses answer.
+title: "I2C Bus Explorer"
+description: "Send a byte on a shared two-wire I2C bus and trace START, the 7-bit address, the ACK, the data bits, and STOP, then scan the bus to find which addresses answer."
 image: /sims/i2c-bus-explorer/i2c-bus-explorer.png
 og:image: /sims/i2c-bus-explorer/i2c-bus-explorer.png
 twitter:image: /sims/i2c-bus-explorer/i2c-bus-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # I2C Bus Explorer

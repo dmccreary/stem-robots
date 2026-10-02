@@ -17,7 +17,7 @@ All specifications below were verified against:
 - docs/lessons/16-h-bridge.md
 
 Key facts confirmed:
-- H-bridge shoot-through: caused by closing S1+S2 OR S3+S4 (same leg), not diagonals — confirmed
+- H-bridge shoot-through: caused by closing S1+S3 OR S2+S4 (same leg), not diagonals — confirmed
 - TB6612FNG: 1.2 A continuous, 3.2 A peak per channel — verified from Toshiba datasheet
 - MX1508 (Cytron board): 1 A continuous, 1.5 A peak (5 s) — from Cytron docs
 - TB6612FNG has built-in dead-time logic and flyback diodes — verified
@@ -41,17 +41,17 @@ Title: "H-Bridge Circuit"
 Subtitle in title bar: "Four switches — forward and reverse"
 Circuit schematic illustration: draw a clean H-bridge schematic in white line art on a slightly darker teal card background.
 - Power supply (+V) at the top center, GND (−) at the bottom center
-- Four switches arranged as an H: S1 (top-left), S2 (bottom-left), S3 (top-right), S4 (bottom-right)
+- Four switches arranged as an H: S1 (top-left), S2 (top-right), S3 (bottom-left), S4 (bottom-right)
 - A DC motor symbol (M in a circle) connected between the center-left and center-right nodes (the crossbar of the H)
 - Label each switch with its number: S1, S2, S3, S4
 - Small arrow showing forward current direction when S1+S4 closed
-- A small red warning badge near S1+S2 labeled "⚠ Short!" to show the danger of closing same-leg switches
+- A small red warning badge near S1+S3 labeled "⚠ Short!" to show the danger of closing same-leg switches
 Attribute rows:
 · Direction control: Yes — diagonal switch pairs
 · Forward: Close S1 + S4
 · Reverse: Close S2 + S3
-· Brake: Close S2 + S4 (both low-side)
-· Danger: S1+S2 or S3+S4 = shoot-through short
+· Brake: Close S3 + S4 (both low-side)
+· Danger: S1+S3 or S2+S4 = shoot-through short
 · Shoot-through protection: Must be designed in
 · Flyback diodes: Must be added externally
 · Complexity: Moderate — timing must be correct

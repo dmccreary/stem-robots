@@ -25,7 +25,7 @@
     "prerequisites": [
       "Coordinate planes and midpoints",
       "Reading I2C sensor data (Chapter 8)",
-      "The 9-DOF IMU and LSM303D magnetometer (Chapter 13)"
+      "The 9-DOF IMU and LSM303DLHC magnetometer (Chapter 13)"
     ],
     "standards": [
       "CCSS.MATH.CONTENT.HSG.GPE.B.6: Find the point on a directed line segment between two given points (midpoint).",

@@ -1,12 +1,13 @@
 ---
-title: Range Mapping Explorer
-description: Pick an input range and an output range, move the input, and see the linear mapping formula fill in with real numbers, including clamping and int() rounding.
+title: "Range Mapping Explorer"
+description: "Pick an input range and an output range, move the input, and see the linear mapping formula fill in with real numbers, including clamping and int() rounding."
 image: /sims/range-mapping-explorer/range-mapping-explorer.png
 og:image: /sims/range-mapping-explorer/range-mapping-explorer.png
 twitter:image: /sims/range-mapping-explorer/range-mapping-explorer.png
 social:
    cards: false
 quality_score: 100
+status: implemented
 ---
 
 # Range Mapping Explorer
