@@ -67,7 +67,7 @@
     ],
     "assumptions": [
       "The line is 4 cm wide and the sensors are 4 cm apart on the front edge",
-      "A sensor reads LOW when it is within 2 cm of the line center",
+      "A sensor reads HIGH (active LOW: no reflection) when it is within 2 cm of the line center, and LOW over the white floor",
       "Motors keep their last duty between updates"
     ],
     "limitations": [
@@ -79,10 +79,10 @@
     "teachingStrategy": "Guided inquiry with controlled experiments",
     "interactionPattern": "Running simulation with parameter sliders, live state table, and readouts",
     "keyQuestions": [
-      "When the left sensor reads LOW, which wheel slows down and which way does the robot turn?",
+      "When the left sensor reads HIGH, which wheel slows down and which way does the robot turn?",
       "Why does the robot lose the zigzag track with the default slow speed?",
       "How far does the robot travel between sensor readings at 10 Hz?",
-      "What should the robot do when both sensors read HIGH?"
+      "What should the robot do when both sensors read LOW?"
     ],
     "commonMisconceptions": [
       "Lowering the fast speed always helps (it can weaken the turn if the slow speed stays the same)",

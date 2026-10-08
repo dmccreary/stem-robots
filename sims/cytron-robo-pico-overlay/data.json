@@ -1,0 +1,899 @@
+{
+  "title": "Cytron Robo Pico Board Explorer",
+  "image": "../../img/cytron-robo-pico-pinout.png",
+  "alt": "Pinout diagram of the Cytron Robo Pico robotics board, with colored leader lines pointing from printed labels to each connector, button, LED, and socket on the purple circuit board.",
+  "prompt": "Hover over any part of the board, or over its printed label, to learn what it does. Or pick a part below.",
+  "quizLength": 10,
+  "zones": [
+    {
+      "id": "vin-terminal",
+      "label": "Vin Terminal",
+      "color": "#8B1E1E",
+      "summary": "This green screw terminal is one way to power your robot. Loosen the two screws, slide in the bare wires from a battery pack, and tighten them down.",
+      "facts": [
+        "It accepts any power source from 3.6 V to 6 V, such as a pack of four AA batteries (about 6 V).",
+        "Match your wires to the − and + marks printed on the board.",
+        "Your DC motors and servos run on this same voltage, so fresh batteries mean faster motors."
+      ],
+      "tip": "Never connect a 9 V battery here. Anything over 6 V can damage the board. Cytron also suggests using either Vin or a LiPo battery, not both at once.",
+      "rects": [
+        {
+          "x1": 38.12,
+          "y1": 22.41,
+          "x2": 42.71,
+          "y2": 30.74
+        },
+        {
+          "x1": 38.96,
+          "y1": 30.74,
+          "x2": 42.29,
+          "y2": 34.44
+        },
+        {
+          "x1": 14.58,
+          "y1": 13.7,
+          "x2": 24.17,
+          "y2": 17.22,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "lipo-connector",
+      "label": "LiPo Battery Connector",
+      "color": "#8B1E1E",
+      "summary": "This small white socket takes a single-cell LiPo or Li-ion battery. LiPo stands for lithium polymer, a light, flat, rechargeable battery that is perfect for robots.",
+      "facts": [
+        "A single-cell LiPo battery supplies about 3.7 V.",
+        "Plug a USB cable into the Pico to recharge the battery right on the board. The tiny CHARGE light beside the socket shows it is charging.",
+        "A built-in protection circuit keeps the battery from overcharging or draining too far."
+      ],
+      "tip": "Check that the battery's red wire lines up with the + mark before you plug it in. Some batteries are wired backward! If the board won't turn on with a new battery, charge it first to wake up the protection circuit.",
+      "rects": [
+        {
+          "x1": 30.83,
+          "y1": 22.59,
+          "x2": 37.92,
+          "y2": 30.74
+        },
+        {
+          "x1": 14.58,
+          "y1": 22.96,
+          "x2": 24.17,
+          "y2": 29.07,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "power-led",
+      "label": "Power LED",
+      "color": "#E0262B",
+      "summary": "This small light turns on whenever the board has power. It is the first thing to check when your robot seems dead.",
+      "facts": [
+        "LED stands for Light-Emitting Diode, a tiny part that glows when current flows through it.",
+        "It lights up no matter where the power comes from: USB, a LiPo battery, or the Vin terminal."
+      ],
+      "tip": "No light? Check the On/Off switch first, then your battery or USB cable.",
+      "rects": [
+        {
+          "x1": 36.56,
+          "y1": 32.41,
+          "x2": 38.85,
+          "y2": 36.3
+        },
+        {
+          "x1": 15.62,
+          "y1": 29.63,
+          "x2": 24.17,
+          "y2": 33.33,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "on-off-switch",
+      "label": "On/Off Switch",
+      "color": "#8B1E1E",
+      "summary": "Slide this switch to turn the whole board on or off, including the Pico plugged into it.",
+      "facts": [
+        "Switching off stops the motors right away, so it works as an emergency stop.",
+        "Your program is saved in the Pico's flash memory. It is still there when you switch back on."
+      ],
+      "tip": "Switch the board off before you plug in or unplug motors, servos, or sensors.",
+      "rects": [
+        {
+          "x1": 31.15,
+          "y1": 34.07,
+          "x2": 36.67,
+          "y2": 41.3
+        },
+        {
+          "x1": 36.67,
+          "y1": 36.3,
+          "x2": 38.54,
+          "y2": 41.3
+        },
+        {
+          "x1": 13.54,
+          "y1": 35.56,
+          "x2": 24.17,
+          "y2": 39.26,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "dc-motor-terminals",
+      "label": "DC Motor Terminals",
+      "color": "#3A3A3A",
+      "summary": "These two black screw terminals connect your robot's two DC (direct current) gear motors. Each motor has two wires, and each wire gets its own screw.",
+      "facts": [
+        "Motor 1 is controlled by GP8 (M1A) and GP9 (M1B).",
+        "Motor 2 is controlled by GP10 (M2A) and GP11 (M2B).",
+        "In most of our kits' config.py files, Motor 1 is the right wheel and Motor 2 is the left wheel.",
+        "Each motor can draw 1 A all the time, or up to 1.5 A for bursts shorter than 5 seconds."
+      ],
+      "tip": "Motor spinning the wrong way? Swap its two wires in the terminal. You don't need to change any code.",
+      "rects": [
+        {
+          "x1": 44.9,
+          "y1": 23.33,
+          "x2": 49.58,
+          "y2": 30.93,
+          "note": "Motor 2: M2B (GP11) and M2A (GP10)"
+        },
+        {
+          "x1": 51.67,
+          "y1": 23.33,
+          "x2": 56.25,
+          "y2": 30.93,
+          "note": "Motor 1: M1B (GP9) and M1A (GP8)"
+        },
+        {
+          "x1": 60.42,
+          "y1": 10.93,
+          "x2": 75.42,
+          "y2": 14.63,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "motor-status-leds",
+      "label": "Motor Status LEDs",
+      "color": "#E0262B",
+      "summary": "These four tiny lights show what the motor driver is doing. Each light turns on when its motor output is switched on.",
+      "facts": [
+        "An MxA light means that motor is being driven forward. An MxB light means backward.",
+        "The real direction depends on how you wired the motor, so \"forward\" is just a starting guess.",
+        "The lights work even when no motor is connected."
+      ],
+      "tip": "Debugging trick: lift your robot off the table and watch these lights while your code runs. You can see exactly what your program is telling each motor.",
+      "rects": [
+        {
+          "x1": 43.44,
+          "y1": 22.96,
+          "x2": 44.9,
+          "y2": 26.11,
+          "note": "M2B light: Motor 2 backward"
+        },
+        {
+          "x1": 49.58,
+          "y1": 22.96,
+          "x2": 51.67,
+          "y2": 26.11,
+          "note": "M2A light (Motor 2 forward) and M1B light (Motor 1 backward)"
+        },
+        {
+          "x1": 56.25,
+          "y1": 22.96,
+          "x2": 57.92,
+          "y2": 26.11,
+          "note": "M1A light: Motor 1 forward"
+        },
+        {
+          "x1": 60.42,
+          "y1": 15.74,
+          "x2": 74.69,
+          "y2": 19.26,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "motor-test-buttons",
+      "label": "Motor Test Buttons",
+      "color": "#1D3FD1",
+      "summary": "Press one of these four buttons to spin a motor at full speed. You don't need any code, so they are perfect for checking your wiring first.",
+      "facts": [
+        "M1A runs Motor 1 forward, and M1B runs it backward.",
+        "M2A runs Motor 2 forward, and M2B runs it backward.",
+        "The motor runs only while you hold the button down."
+      ],
+      "tip": "Hold your robot in the air before you press a test button. At full speed, it can zoom right off the table!",
+      "rects": [
+        {
+          "x1": 42.92,
+          "y1": 31.11,
+          "x2": 45.21,
+          "y2": 37.22,
+          "note": "M2B: Motor 2 backward"
+        },
+        {
+          "x1": 45.31,
+          "y1": 31.11,
+          "x2": 47.6,
+          "y2": 37.22,
+          "note": "M2A: Motor 2 forward"
+        },
+        {
+          "x1": 53.02,
+          "y1": 31.11,
+          "x2": 55.42,
+          "y2": 37.22,
+          "note": "M1B: Motor 1 backward"
+        },
+        {
+          "x1": 55.52,
+          "y1": 31.11,
+          "x2": 58.02,
+          "y2": 37.22,
+          "note": "M1A: Motor 1 forward"
+        },
+        {
+          "x1": 75.73,
+          "y1": 35.93,
+          "x2": 90.31,
+          "y2": 39.63,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "motor-driver-chip",
+      "label": "Motor Driver Chip",
+      "color": "#D9730D",
+      "summary": "This black chip is the motor driver. A Pico pin can only supply a tiny current, so this chip works like a set of heavy-duty switches that send real battery power to the motors.",
+      "facts": [
+        "Inside are two H-bridges. An H-bridge is four switches that can send current through a motor in either direction.",
+        "Your code controls it with GP8 and GP9 (Motor 1) and GP10 and GP11 (Motor 2).",
+        "PWM, or Pulse Width Modulation, flicks the power on and off very fast to set the speed. This chip handles PWM up to 20 kHz."
+      ],
+      "table": {
+        "caption": "What the motor does for each pair of input pins",
+        "headers": [
+          "Pin A (GP8 / GP10)",
+          "Pin B (GP9 / GP11)",
+          "Motor"
+        ],
+        "rows": [
+          [
+            "HIGH",
+            "LOW",
+            "Forward"
+          ],
+          [
+            "LOW",
+            "HIGH",
+            "Backward"
+          ],
+          [
+            "LOW",
+            "LOW",
+            "Brake (stops quickly)"
+          ],
+          [
+            "HIGH",
+            "HIGH",
+            "Coast (spins down freely)"
+          ]
+        ]
+      },
+      "tip": "Never wire a motor straight to a Pico pin. The pin can't supply enough current and could be damaged. Driving motors is this chip's job.",
+      "rects": [
+        {
+          "x1": 47.92,
+          "y1": 32.41,
+          "x2": 52.81,
+          "y2": 37.59
+        }
+      ]
+    },
+    {
+      "id": "servo-ports",
+      "label": "Servo Ports",
+      "color": "#3A3A3A",
+      "summary": "These pins connect up to four RC servo motors. A servo is a motor that turns to an exact angle, which is great for grippers, arms, or a sensor that looks left and right.",
+      "facts": [
+        "The four servo signal pins are GP12, GP13, GP14, and GP15, one for each column.",
+        "Each port has three pins: S (signal), + (power), and − (ground).",
+        "Servo power equals your power source voltage."
+      ],
+      "tip": "Plug the servo cable in with its signal wire (usually orange, yellow, or white) on the S row. The brown or black wire goes on the − row.",
+      "rects": [
+        {
+          "x1": 61.98,
+          "y1": 22.96,
+          "x2": 68.96,
+          "y2": 32.04
+        },
+        {
+          "x1": 75.73,
+          "y1": 27.04,
+          "x2": 85.0,
+          "y2": 30.74,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "pico-socket",
+      "label": "Pi Pico Socket",
+      "color": "#D726C9",
+      "summary": "This is where the brain of your robot plugs in. The socket fits a Raspberry Pi Pico, Pico W, Pico 2, or Pico 2 W, so you can pick the board that fits your project.",
+      "facts": [
+        "All four boards share the same size and 40-pin layout. Line up the Pico's USB port with the USB arrow on the socket, because a backward Pico can be damaged.",
+        "Your Pico needs male header pins. Boards sold \"with headers\" (like the Pico H or Pico WH) already have them.",
+        "Each board needs its own MicroPython firmware, so download the UF2 file made for your exact board."
+      ],
+      "table": {
+        "caption": "Which Pico should you use?",
+        "headers": [
+          "Board",
+          "Chip (RAM)",
+          "Wireless",
+          "Good for"
+        ],
+        "rows": [
+          [
+            "Pico",
+            "RP2040 (264 KB)",
+            "None",
+            "Low-cost basic robots"
+          ],
+          [
+            "Pico W",
+            "RP2040 (264 KB)",
+            "WiFi, Bluetooth",
+            "Remote control, web pages"
+          ],
+          [
+            "Pico 2",
+            "RP2350 (520 KB)",
+            "None",
+            "Bigger, faster programs"
+          ],
+          [
+            "Pico 2 W",
+            "RP2350 (520 KB)",
+            "WiFi, Bluetooth",
+            "Speed plus wireless"
+          ]
+        ]
+      },
+      "tip": "On a Pico W or Pico 2 W, the tiny onboard LED is wired to the wireless chip. In MicroPython, call it Pin(\"LED\") instead of Pin(25).",
+      "rects": [
+        {
+          "x1": 38.65,
+          "y1": 43.33,
+          "x2": 61.88,
+          "y2": 58.7
+        },
+        {
+          "x1": 13.02,
+          "y1": 48.7,
+          "x2": 24.17,
+          "y2": 52.41,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "gpio-breakout",
+      "label": "GPIO Breakout (Female Pin Headers)",
+      "color": "#0FA9C9",
+      "summary": "These two rows of sockets give you direct access to every Pico pin. GPIO stands for General-Purpose Input/Output: pins your code can use to read sensors or control parts.",
+      "facts": [
+        "Each socket connects to the Pico pin right beside it.",
+        "Push a jumper wire straight in. You don't need solder or a breadboard.",
+        "You can plug a display cable directly into these headers instead of using a Grove port."
+      ],
+      "tip": "Before you use a pin, make sure the board isn't already using it. For example, GP8 to GP11 run the motors and GP22 drives the buzzer.",
+      "rects": [
+        {
+          "x1": 38.65,
+          "y1": 40.74,
+          "x2": 61.88,
+          "y2": 43.33,
+          "note": "Top row of breakout sockets"
+        },
+        {
+          "x1": 38.65,
+          "y1": 58.7,
+          "x2": 61.88,
+          "y2": 61.3,
+          "note": "Bottom row of breakout sockets"
+        },
+        {
+          "x1": 8.33,
+          "y1": 57.59,
+          "x2": 24.17,
+          "y2": 63.89,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "gpio-status-leds",
+      "label": "GPIO Status Indicator LEDs",
+      "color": "#E0262B",
+      "summary": "These 13 tiny lights show the state of the GPIO pins wired to the Grove ports. A light turns on when its pin is HIGH (3.3 V) and off when the pin is LOW (0 V).",
+      "facts": [
+        "There is one light for each Grove signal pin: GP0 to GP7, GP16, GP17, and GP26 to GP28.",
+        "You can watch a digital output change without adding any parts.",
+        "I2C data lines rest HIGH, so their lights often glow when an I2C sensor is plugged in."
+      ],
+      "tip": "Quick test: turn a pin on and off from the REPL and watch its light blink.",
+      "rects": [
+        {
+          "x1": 36.46,
+          "y1": 56.3,
+          "x2": 38.65,
+          "y2": 60.56,
+          "note": "GP0 and GP1 (Grove 1)"
+        },
+        {
+          "x1": 39.17,
+          "y1": 63.52,
+          "x2": 41.46,
+          "y2": 67.96,
+          "note": "GP2 and GP3 (Grove 2 and the Maker Port)"
+        },
+        {
+          "x1": 45.31,
+          "y1": 63.52,
+          "x2": 47.6,
+          "y2": 67.96,
+          "note": "GP4 and GP5 (Grove 3)"
+        },
+        {
+          "x1": 51.77,
+          "y1": 63.52,
+          "x2": 54.06,
+          "y2": 67.96,
+          "note": "GP16 and GP17 (Grove 4)"
+        },
+        {
+          "x1": 58.23,
+          "y1": 63.52,
+          "x2": 60.52,
+          "y2": 67.96,
+          "note": "GP6 and GP26 (Grove 5)"
+        },
+        {
+          "x1": 64.58,
+          "y1": 63.52,
+          "x2": 66.56,
+          "y2": 67.96,
+          "note": "GP27 (Grove 6)"
+        },
+        {
+          "x1": 61.77,
+          "y1": 53.33,
+          "x2": 64.06,
+          "y2": 57.78,
+          "note": "GP28 and GP7 (Grove 7)"
+        },
+        {
+          "x1": 12.71,
+          "y1": 66.11,
+          "x2": 24.17,
+          "y2": 72.41,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "grove-ports",
+      "label": "Grove Ports",
+      "color": "#1FA83A",
+      "summary": "These seven white 4-pin connectors let you plug in Grove sensors and modules with a single cable. Each port has GND, 3.3 V power, and two signal pins.",
+      "facts": [
+        "Grove 4 (GP16 and GP17) is the I2C bus the Base Bot uses for its distance sensor. I2C is a two-wire bus that many sensors can share.",
+        "Grove 5, 6, and 7 have analog pins that read changing voltages, like a light sensor's output.",
+        "Grove 5 and Grove 6 share GP26, so don't plug two different sensors into both."
+      ],
+      "table": {
+        "caption": "Grove port pins",
+        "headers": [
+          "Grove",
+          "Pins",
+          "Also works as"
+        ],
+        "rows": [
+          [
+            "1",
+            "GP0, GP1",
+            "I2C0, UART0"
+          ],
+          [
+            "2",
+            "GP2, GP3",
+            "I2C1 (shared with Maker Port)"
+          ],
+          [
+            "3",
+            "GP4, GP5",
+            "I2C0, UART1"
+          ],
+          [
+            "4",
+            "GP16, GP17",
+            "I2C0, UART0"
+          ],
+          [
+            "5",
+            "GP6, GP26",
+            "Analog on GP26"
+          ],
+          [
+            "6",
+            "GP26, GP27",
+            "I2C1, analog"
+          ],
+          [
+            "7",
+            "GP7, GP28",
+            "Analog on GP28"
+          ]
+        ]
+      },
+      "tip": "All the Grove ports together can supply only 300 mA at 3.3 V. That's plenty for sensors, but never power a motor from a Grove port.",
+      "rects": [
+        {
+          "x1": 30.73,
+          "y1": 51.85,
+          "x2": 36.04,
+          "y2": 61.67,
+          "note": "Grove 1: GP0 and GP1"
+        },
+        {
+          "x1": 36.46,
+          "y1": 68.15,
+          "x2": 42.29,
+          "y2": 78.7,
+          "note": "Grove 2: GP2 and GP3"
+        },
+        {
+          "x1": 42.71,
+          "y1": 68.15,
+          "x2": 48.54,
+          "y2": 78.7,
+          "note": "Grove 3: GP4 and GP5"
+        },
+        {
+          "x1": 48.96,
+          "y1": 68.15,
+          "x2": 55.0,
+          "y2": 78.7,
+          "note": "Grove 4: GP16 and GP17"
+        },
+        {
+          "x1": 55.31,
+          "y1": 68.15,
+          "x2": 61.35,
+          "y2": 78.7,
+          "note": "Grove 5: GP6 and GP26"
+        },
+        {
+          "x1": 61.67,
+          "y1": 68.15,
+          "x2": 67.71,
+          "y2": 78.7,
+          "note": "Grove 6: GP26 and GP27"
+        },
+        {
+          "x1": 66.56,
+          "y1": 52.41,
+          "x2": 70.52,
+          "y2": 61.67,
+          "note": "Grove 7: GP7 and GP28"
+        },
+        {
+          "x1": 75.73,
+          "y1": 84.07,
+          "x2": 85.21,
+          "y2": 87.59,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "maker-port",
+      "label": "Maker Port",
+      "color": "#111111",
+      "summary": "This tiny 4-pin connector fits Qwiic and STEMMA QT sensors, which use a smaller plug than Grove. With a conversion cable, it can also connect Grove modules.",
+      "facts": [
+        "It carries I2C signals on GP2 (data, called SDA) and GP3 (clock, called SCL).",
+        "It shares GP2 and GP3 with Grove 2.",
+        "I2C lets several devices share the same two wires, as long as each one has a different address."
+      ],
+      "tip": "You can use Grove 2 and the Maker Port at the same time only if both devices are I2C devices with different addresses.",
+      "rects": [
+        {
+          "x1": 32.5,
+          "y1": 68.15,
+          "x2": 36.15,
+          "y2": 78.7
+        },
+        {
+          "x1": 15.73,
+          "y1": 87.41,
+          "x2": 24.27,
+          "y2": 90.93,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "piezo-buzzer",
+      "label": "Piezo Buzzer",
+      "color": "#8A2BE2",
+      "summary": "This round black part makes beeps, tones, and even simple songs. Inside is a thin crystal disk that bends when voltage is applied, pushing the air to make sound.",
+      "facts": [
+        "It is connected to GP22, which is SPEAKER_PIN in our config.py.",
+        "Your code picks the pitch by setting the PWM frequency. For example, 440 Hz plays the note A.",
+        "A higher frequency makes a higher-pitched sound."
+      ],
+      "tip": "Use beeps as signals: one beep when the robot starts, two beeps when it sees an obstacle.",
+      "rects": [
+        {
+          "x1": 62.29,
+          "y1": 43.89,
+          "x2": 66.77,
+          "y2": 52.22
+        },
+        {
+          "x1": 75.73,
+          "y1": 51.48,
+          "x2": 85.83,
+          "y2": 55.19,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "buzzer-mute-switch",
+      "label": "Buzzer Mute Switch",
+      "color": "#8A2BE2",
+      "summary": "Slide this switch to silence the piezo buzzer without changing your code. It is a lifesaver in a classroom full of beeping robots!",
+      "facts": [
+        "Muting only stops the sound. Your program keeps running normally.",
+        "The symbols printed beside the switch show the sound-on and mute positions."
+      ],
+      "tip": "If your code plays a tone but you hear nothing, check this switch first.",
+      "rects": [
+        {
+          "x1": 66.88,
+          "y1": 43.52,
+          "x2": 70.52,
+          "y2": 52.22
+        },
+        {
+          "x1": 75.73,
+          "y1": 45.74,
+          "x2": 90.83,
+          "y2": 49.44,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "rgb-leds",
+      "label": "RGB LEDs (NeoPixel WS2812)",
+      "color": "#3C7DD9",
+      "summary": "These two bright lights can glow in almost any color. Each one has a red, a green, and a blue LED inside, and your code mixes them.",
+      "facts": [
+        "Both lights share one pin, GP18, which is NEOPIXEL_PIN in our config.py.",
+        "They are chained together: LED 0 is first in line and LED 1 is second.",
+        "Each color goes from 0 (off) to 255 (full brightness). Red 255, green 0, blue 255 makes purple.",
+        "NeoPixel is a nickname for the WS2812 smart LED, which has a tiny controller chip built in."
+      ],
+      "tip": "Use colors to show what your robot is doing, such as green for driving and red for \"obstacle ahead!\"",
+      "rects": [
+        {
+          "x1": 30.83,
+          "y1": 61.67,
+          "x2": 35.31,
+          "y2": 67.41,
+          "note": "LED 0: first in the chain"
+        },
+        {
+          "x1": 66.67,
+          "y1": 61.67,
+          "x2": 70.52,
+          "y2": 67.41,
+          "note": "LED 1: second in the chain"
+        },
+        {
+          "x1": 75.73,
+          "y1": 59.63,
+          "x2": 90.21,
+          "y2": 65.93,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "programmable-buttons",
+      "label": "Programmable Buttons",
+      "color": "#1D3FD1",
+      "summary": "Your program can read these two push buttons. Use them to start a routine, switch modes, or pick a speed.",
+      "facts": [
+        "The buttons are connected to GP20 and GP21.",
+        "Your code checks whether each button is pressed. This is called a digital input because it has only two states."
+      ],
+      "tip": "Try this: make your robot wait until you press the GP20 button before it starts driving. No more robots racing off the moment you switch them on!",
+      "rects": [
+        {
+          "x1": 47.71,
+          "y1": 63.52,
+          "x2": 51.77,
+          "y2": 67.96,
+          "note": "Button on GP21"
+        },
+        {
+          "x1": 54.17,
+          "y1": 63.52,
+          "x2": 58.23,
+          "y2": 67.96,
+          "note": "Button on GP20"
+        },
+        {
+          "x1": 60.0,
+          "y1": 92.41,
+          "x2": 77.71,
+          "y2": 95.93,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    },
+    {
+      "id": "reset-button",
+      "label": "Reset Button",
+      "color": "#1D3FD1",
+      "summary": "Press this button to restart the Pico, just like switching it off and back on. Your program starts again from the beginning.",
+      "facts": [
+        "Resetting does not erase your code. The program saved on the Pico runs again.",
+        "It is handy when your program gets stuck or your robot acts strangely."
+      ],
+      "tip": "Reset is quicker than the power switch, and you don't have to unplug anything.",
+      "rects": [
+        {
+          "x1": 41.46,
+          "y1": 63.52,
+          "x2": 45.42,
+          "y2": 67.96
+        },
+        {
+          "x1": 27.4,
+          "y1": 92.41,
+          "x2": 37.71,
+          "y2": 95.93,
+          "kind": "label",
+          "note": "Printed label"
+        }
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "You want to test Motor 1's wiring by spinning it forward, without writing any code. What do you press?",
+      "correct_zone": "motor-test-buttons",
+      "explanation": "The M1A motor test button runs Motor 1 forward at full speed while you hold it."
+    },
+    {
+      "question": "Where do the two wires from a DC gear motor attach?",
+      "correct_zone": "dc-motor-terminals",
+      "explanation": "Each motor's two wires go into one of the black screw terminals."
+    },
+    {
+      "question": "Your robot is up on a block and your code sets GP8 HIGH. Which lights show you the driver is trying to spin Motor 1?",
+      "correct_zone": "motor-status-leds",
+      "explanation": "The M1A motor status light turns on when Motor 1 is being driven forward."
+    },
+    {
+      "question": "Where would you plug in a small, flat, rechargeable 3.7 V battery?",
+      "correct_zone": "lipo-connector",
+      "explanation": "A single-cell LiPo battery plugs into the LiPo connector and recharges over USB."
+    },
+    {
+      "question": "Your code plays a tone, but the room stays silent. Which part should you check first?",
+      "correct_zone": "buzzer-mute-switch",
+      "explanation": "The mute switch silences the buzzer even while your code keeps running."
+    },
+    {
+      "question": "Which part makes sound when your code sends a PWM signal on GP22?",
+      "correct_zone": "piezo-buzzer",
+      "explanation": "The piezo buzzer on GP22 turns PWM frequencies into tones."
+    },
+    {
+      "question": "Where do you plug in a Pico, Pico W, Pico 2, or Pico 2 W?",
+      "correct_zone": "pico-socket",
+      "explanation": "All four boards share the same size and pin layout, so any of them fits the socket."
+    },
+    {
+      "question": "The Base Bot's distance sensor uses I2C on GP16 and GP17. What kind of connector does its cable plug into?",
+      "correct_zone": "grove-ports",
+      "explanation": "GP16 and GP17 come out on Grove 4, one of the seven Grove ports."
+    },
+    {
+      "question": "You have a Qwiic sensor with a tiny 4-pin plug. Where does it connect?",
+      "correct_zone": "maker-port",
+      "explanation": "The Maker Port fits Qwiic and STEMMA QT cables."
+    },
+    {
+      "question": "Which part could you light up purple by setting red 255, green 0, and blue 255 on GP18?",
+      "correct_zone": "rgb-leds",
+      "explanation": "The two NeoPixel RGB LEDs on GP18 mix red, green, and blue."
+    },
+    {
+      "question": "Your program is stuck in an endless loop. Which button restarts the Pico?",
+      "correct_zone": "reset-button",
+      "explanation": "The reset button restarts the Pico without erasing your saved program."
+    },
+    {
+      "question": "Which part lets your program wait for a person to press GP20 before driving?",
+      "correct_zone": "programmable-buttons",
+      "explanation": "The programmable buttons on GP20 and GP21 are digital inputs your code can read."
+    },
+    {
+      "question": "Where can you connect up to four RC servo motors?",
+      "correct_zone": "servo-ports",
+      "explanation": "The servo ports use GP12 to GP15 for their signal pins."
+    },
+    {
+      "question": "You want to power the robot from a 4 x AA battery pack with bare wires. Where do the wires go?",
+      "correct_zone": "vin-terminal",
+      "explanation": "The green Vin screw terminal accepts 3.6 V to 6 V from bare wires."
+    },
+    {
+      "question": "Which tiny lights show whether a Grove pin is HIGH or LOW?",
+      "correct_zone": "gpio-status-leds",
+      "explanation": "The 13 GPIO status lights turn on when their Grove pins are HIGH."
+    },
+    {
+      "question": "Where can you push a jumper wire in to reach any Pico pin directly?",
+      "correct_zone": "gpio-breakout",
+      "explanation": "The female header rows beside the socket connect to every Pico pin."
+    },
+    {
+      "question": "Which light tells you the board is getting power?",
+      "correct_zone": "power-led",
+      "explanation": "The PWR light turns on whenever the board is powered."
+    },
+    {
+      "question": "Which chip holds the two H-bridges that let your robot drive in reverse?",
+      "correct_zone": "motor-driver-chip",
+      "explanation": "The motor driver chip contains two H-bridges, one for each motor."
+    }
+  ]
+}

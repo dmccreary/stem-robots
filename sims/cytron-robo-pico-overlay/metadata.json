@@ -1,0 +1,77 @@
+{
+  "title": "Cytron Robo Pico Board Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Robotics and Computational Thinking",
+  "description": "A hover-to-explore overlay on the Cytron Robo Pico pinout diagram. Every connector, button, LED, and socket on the board has a hotspot; hovering it describes the part, its GPIO pins, and a practical tip below the drawing. A quiz asks students to find each part by its job.",
+  "date": "2026-09-29",
+  "type": "Interactive Infographic",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "educational": {
+    "gradeLevel": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Engineering and Electronics",
+    "topic": "Parts of the Cytron Robo Pico robot controller board and their GPIO pins",
+    "learningObjectives": [
+      "Explain what each part of the Cytron Robo Pico board does in a robot.",
+      "Identify the GPIO pins used by the motors, servos, buzzer, RGB LEDs, buttons, and Grove ports.",
+      "Choose between the Pico, Pico W, Pico 2, and Pico 2 W for a given robot project.",
+      "Use the motor status LEDs, motor test buttons, and GPIO status LEDs as debugging tools."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "bloomVerb": "Explain",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "GPIO pins and config.py pin names",
+      "Digital inputs and outputs"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "Custom JavaScript (shared hover-overlay engine on a static image)",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 960
+    },
+    "responsive": true,
+    "dependencies": [
+      "../shared-libs/hover-overlay.js (shared hover-overlay engine)",
+      "../shared-libs/hover-overlay.css",
+      "data.json (zones, hotspot rectangles, quiz questions)",
+      "../../img/cytron-robo-pico-pinout.png"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Hover-to-explore labeled diagram followed by function-based retrieval practice",
+    "interactionPattern": "Students hover (or tap) any part of the board or its printed label to see its job, GPIO pins, and a tip below the drawing; multi-part groups such as the Grove ports light up together with a tag naming the exact instance. Quiz mode asks students to click the part that answers a job-based question and scores first-try answers.",
+    "keyQuestions": [
+      "Which parts let you test the motors before writing any code?",
+      "Which Grove port matches the I2C pins in your kit's config.py?",
+      "Why can a Pico pin not drive a motor directly?",
+      "When would you choose a Pico W or Pico 2 W instead of a plain Pico?"
+    ],
+    "commonMisconceptions": [
+      "The Pico pins can power a motor directly without the motor driver.",
+      "Any Pico model can use any MicroPython firmware file.",
+      "Grove 5 and Grove 6 have completely separate pins.",
+      "The mute switch stops the program that plays sounds."
+    ],
+    "assessmentOpportunities": [
+      "Quiz Me mode: find ten parts by their job and track the first-try score.",
+      "Exit ticket: list three parts to check, in order, when the wheels don't move.",
+      "Pick a Pico model for a phone-controlled robot and justify the choice."
+    ]
+  },
+  "canvasHeight": 960
+}

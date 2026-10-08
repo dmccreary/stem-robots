@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Extend leader/follower swarm robotics into collective behaviors and professional software patterns, then build a second swarm using a 9-DOF IMU (L3GD20 gyroscope + LSM303D accelerometer/magnetometer) for WiFi-based heading synchronization.">
+        <meta name="description" content="Extend leader/follower swarm robotics into collective behaviors and professional software patterns, then build a second swarm using a 9-DOF IMU (L3GD20 gyroscope + LSM303DLHC accelerometer/magnetometer) for WiFi-based heading synchronization.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -21,11 +21,8 @@
         <link rel="next" href="../../setup/">
       
       
-        
-      
-      
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
@@ -33,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -73,6 +70,7 @@
     <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
   
 
+    
     
     
   </head>
@@ -139,13 +137,11 @@
     
     
     
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -177,14 +173,13 @@
     </div>
   </div>
 </div>
-      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +224,7 @@
       <a href="https://github.com/dmccreary/stem-robots" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -249,16 +244,9 @@
       <a href="../.." class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Home
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -276,16 +264,9 @@
       <a href="../../about/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     About This Website
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -303,16 +284,9 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Course Description
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -330,16 +304,9 @@
       <a href="../../journey-map/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Journey Map
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -387,8 +354,9 @@
         
       
         
+          
+        
       
-    
     
     
     
@@ -401,20 +369,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
+          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
-  
   <span class="md-ellipsis">
-    
-  
     Chapters
-  
-
-    
   </span>
-  
   
 
             </a>
@@ -429,11 +391,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    Chapters
-  
-
+            Chapters
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -457,7 +415,6 @@
     
     
     
-    
       
         
         
@@ -466,22 +423,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../01-intro-computational-thinking/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     1. Computational Thinking
-  
-
-    
   </span>
-  
   
 
       
@@ -514,7 +463,6 @@
     
     
     
-    
       
         
         
@@ -523,22 +471,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../02-hardware-platform-assembly/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     2. Hardware and Assembly
-  
-
-    
   </span>
-  
   
 
       
@@ -571,7 +511,6 @@
     
     
     
-    
       
         
         
@@ -580,22 +519,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../03-micropython-dev-environment/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     3. MicroPython and Setup
-  
-
-    
   </span>
-  
   
 
       
@@ -628,7 +559,6 @@
     
     
     
-    
       
         
         
@@ -637,22 +567,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../04-control-flow-functions/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     4. Control Flow and Functions
-  
-
-    
   </span>
-  
   
 
       
@@ -685,7 +607,6 @@
     
     
     
-    
       
         
         
@@ -694,22 +615,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../05-data-structures-modular-code/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     5. Data Structures and Git
-  
-
-    
   </span>
-  
   
 
       
@@ -742,7 +655,6 @@
     
     
     
-    
       
         
         
@@ -751,22 +663,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../06-electronics-motors-protocols/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     6. Motors and Protocols
-  
-
-    
   </span>
-  
   
 
       
@@ -799,7 +703,6 @@
     
     
     
-    
       
         
         
@@ -808,22 +711,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../07-pwm-motor-speed-actuators/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     7. PWM and Actuators
-  
-
-    
   </span>
-  
   
 
       
@@ -856,7 +751,6 @@
     
     
     
-    
       
         
         
@@ -865,22 +759,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../08-sensors-data-input/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     8. Sensors and Input
-  
-
-    
   </span>
-  
   
 
       
@@ -913,7 +799,6 @@
     
     
     
-    
       
         
         
@@ -922,22 +807,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../09-display-systems-output/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     9. Displays and Output
-  
-
-    
   </span>
-  
   
 
       
@@ -970,7 +847,6 @@
     
     
     
-    
       
         
         
@@ -979,22 +855,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../10-robot-behaviors-navigation/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     10. Robot Behaviors
-  
-
-    
   </span>
-  
   
 
       
@@ -1027,7 +895,6 @@
     
     
     
-    
       
         
         
@@ -1036,22 +903,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../11-wireless-networking-web-servers/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     11. WiFi and Web Servers
-  
-
-    
   </span>
-  
   
 
       
@@ -1084,7 +943,6 @@
     
     
     
-    
       
         
         
@@ -1095,20 +953,12 @@
         
   
   
-  
     <a href="../12-bluetooth-low-energy/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     12. Bluetooth Low Energy
-  
-
-    
   </span>
-  
   
 
       
@@ -1142,16 +992,9 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
-  
   <span class="md-ellipsis">
-    
-  
     13. Swarm and Advanced
-  
-
-    
   </span>
-  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -1160,16 +1003,9 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     13. Swarm and Advanced
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1192,9 +1028,7 @@
         <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Summary
-      
+      Summary
     </span>
   </a>
   
@@ -1203,9 +1037,7 @@
         <li class="md-nav__item">
   <a href="#concepts-covered" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Concepts Covered
-      
+      Concepts Covered
     </span>
   </a>
   
@@ -1214,9 +1046,7 @@
         <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Prerequisites
-      
+      Prerequisites
     </span>
   </a>
   
@@ -1225,9 +1055,7 @@
         <li class="md-nav__item">
   <a href="#from-pairs-to-swarms" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        From Pairs to Swarms
-      
+      From Pairs to Swarms
     </span>
   </a>
   
@@ -1236,9 +1064,7 @@
         <li class="md-nav__item">
   <a href="#extending-leader-follower-into-collective-behaviors" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Extending Leader-Follower into Collective Behaviors
-      
+      Extending Leader-Follower into Collective Behaviors
     </span>
   </a>
   
@@ -1248,9 +1074,7 @@
           <li class="md-nav__item">
   <a href="#diagram-swarm-collective-behaviors" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Swarm Collective Behaviors
-      
+      Diagram: Swarm Collective Behaviors
     </span>
   </a>
   
@@ -1264,9 +1088,7 @@
         <li class="md-nav__item">
   <a href="#organizing-multi-behavior-code-with-a-state-machine" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Organizing Multi-Behavior Code with a State Machine
-      
+      Organizing Multi-Behavior Code with a State Machine
     </span>
   </a>
   
@@ -1276,9 +1098,7 @@
           <li class="md-nav__item">
   <a href="#diagram-swarm-robot-state-machine" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Swarm Robot State Machine
-      
+      Diagram: Swarm Robot State Machine
     </span>
   </a>
   
@@ -1292,9 +1112,7 @@
         <li class="md-nav__item">
   <a href="#planning-a-swarm-project-as-a-team" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Planning a Swarm Project as a Team
-      
+      Planning a Swarm Project as a Team
     </span>
   </a>
   
@@ -1303,9 +1121,7 @@
         <li class="md-nav__item">
   <a href="#doing-two-things-at-once-multithreading-and-asynchronous-programming" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Doing Two Things at Once: Multithreading and Asynchronous Programming
-      
+      Doing Two Things at Once: Multithreading and Asynchronous Programming
     </span>
   </a>
   
@@ -1315,9 +1131,7 @@
           <li class="md-nav__item">
   <a href="#diagram-cooperative-multitasking-timeline" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Cooperative Multitasking Timeline
-      
+      Diagram: Cooperative Multitasking Timeline
     </span>
   </a>
   
@@ -1331,9 +1145,7 @@
         <li class="md-nav__item">
   <a href="#smoother-control-pid-and-encoder-feedback" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Smoother Control: PID and Encoder Feedback
-      
+      Smoother Control: PID and Encoder Feedback
     </span>
   </a>
   
@@ -1343,9 +1155,7 @@
           <li class="md-nav__item">
   <a href="#diagram-pid-feedback-loop-tuner" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: PID Feedback Loop Tuner
-      
+      Diagram: PID Feedback Loop Tuner
     </span>
   </a>
   
@@ -1359,9 +1169,7 @@
         <li class="md-nav__item">
   <a href="#recording-what-happened-data-logging" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Recording What Happened: Data Logging
-      
+      Recording What Happened: Data Logging
     </span>
   </a>
   
@@ -1370,32 +1178,26 @@
         <li class="md-nav__item">
   <a href="#a-second-path-to-swarm-coordination" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        A Second Path to Swarm Coordination
-      
+      A Second Path to Swarm Coordination
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#meet-the-9-dof-imu-l3gd20-lsm303d" class="md-nav__link">
+  <a href="#meet-the-9-dof-imu-l3gd20-lsm303dlhc" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Meet the 9-DOF IMU: L3GD20 + LSM303D
-      
+      Meet the 9-DOF IMU: L3GD20 + LSM303DLHC
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Meet the 9-DOF IMU: L3GD20 + LSM303D">
+    <nav class="md-nav" aria-label="Meet the 9-DOF IMU: L3GD20 + LSM303DLHC">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#diagram-9-dof-imu-chip-layout" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: 9-DOF IMU Chip Layout
-      
+      Diagram: 9-DOF IMU Chip Layout
     </span>
   </a>
   
@@ -1409,9 +1211,7 @@
         <li class="md-nav__item">
   <a href="#calibrating-the-gyroscope-and-magnetometer" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Calibrating the Gyroscope and Magnetometer
-      
+      Calibrating the Gyroscope and Magnetometer
     </span>
   </a>
   
@@ -1421,9 +1221,7 @@
           <li class="md-nav__item">
   <a href="#diagram-magnetometer-calibration-explorer" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Magnetometer Calibration Explorer
-      
+      Diagram: Magnetometer Calibration Explorer
     </span>
   </a>
   
@@ -1437,9 +1235,7 @@
         <li class="md-nav__item">
   <a href="#fusing-sensors-the-complementary-filter-and-heading-estimation" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Fusing Sensors: The Complementary Filter and Heading Estimation
-      
+      Fusing Sensors: The Complementary Filter and Heading Estimation
     </span>
   </a>
   
@@ -1449,9 +1245,7 @@
           <li class="md-nav__item">
   <a href="#diagram-complementary-filter-heading-tuner" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Complementary Filter Heading Tuner
-      
+      Diagram: Complementary Filter Heading Tuner
     </span>
   </a>
   
@@ -1465,9 +1259,7 @@
         <li class="md-nav__item">
   <a href="#hosting-the-swarm-network-wifi-access-point-and-udp-broadcast" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Hosting the Swarm Network: WiFi Access Point and UDP Broadcast
-      
+      Hosting the Swarm Network: WiFi Access Point and UDP Broadcast
     </span>
   </a>
   
@@ -1477,9 +1269,7 @@
           <li class="md-nav__item">
   <a href="#diagram-heading-broadcast-network-topology" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Heading Broadcast Network Topology
-      
+      Diagram: Heading Broadcast Network Topology
     </span>
   </a>
   
@@ -1493,9 +1283,7 @@
         <li class="md-nav__item">
   <a href="#heading-synchronization-master-and-follower-code" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Heading Synchronization: Master and Follower Code
-      
+      Heading Synchronization: Master and Follower Code
     </span>
   </a>
   
@@ -1505,9 +1293,7 @@
           <li class="md-nav__item">
   <a href="#diagram-heading-error-and-steering-explorer" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Heading Error and Steering Explorer
-      
+      Diagram: Heading Error and Steering Explorer
     </span>
   </a>
   
@@ -1521,9 +1307,7 @@
         <li class="md-nav__item">
   <a href="#key-takeaways" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Key Takeaways
-      
+      Key Takeaways
     </span>
   </a>
   
@@ -1573,7 +1357,6 @@
     
     
     
-    
       
         
         
@@ -1582,22 +1365,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../setup/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Getting Started
-  
-
-    
   </span>
-  
   
 
       
@@ -1663,7 +1438,6 @@
     
     
     
-    
       
         
         
@@ -1672,22 +1446,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../lessons/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Lessons
-  
-
-    
   </span>
-  
   
 
       
@@ -1727,7 +1493,6 @@
     
     
     
-    
       
         
         
@@ -1736,22 +1501,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../teachers-guide/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Teacher's Guide
-  
-
-    
   </span>
-  
   
 
       
@@ -1779,164 +1536,329 @@
         
       
         
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
         
+          
+        
       
         
+          
+        
       
+        
+          
         
       
-    
     
     
     
@@ -1948,22 +1870,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     MicroSims
-  
-
-    
   </span>
-  
   
 
       
@@ -1991,18 +1905,29 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
-    
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -2014,22 +1939,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../posters/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Posters
-  
-
-    
   </span>
-  
   
 
       
@@ -2061,7 +1978,37 @@
         
       
         
+          
+        
       
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
         
@@ -2072,23 +2019,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
     
     
     
@@ -2100,22 +2030,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../kits/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Robot Kits
-  
-
-    
   </span>
-  
   
 
       
@@ -2157,7 +2079,6 @@
     
     
     
-    
       
         
         
@@ -2166,22 +2087,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../teachers-guide/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Teacher's Guide
-  
-
-    
   </span>
-  
   
 
       
@@ -2233,7 +2146,6 @@
     
     
     
-    
       
         
         
@@ -2244,20 +2156,12 @@
         
   
   
-  
     <a href="../../learning-graph/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Learning Graph
-  
-
-    
   </span>
-  
   
 
       
@@ -2281,16 +2185,9 @@
       <a href="../../faq/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     FAQ
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -2308,16 +2205,9 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Glossary
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -2335,16 +2225,9 @@
       <a href="../../references/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     References
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -2362,16 +2245,9 @@
       <a href="../../gallery/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Photo Gallery
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -2389,16 +2265,9 @@
       <a href="../../license/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     License
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -2416,16 +2285,9 @@
       <a href="../../contact/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Contact
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -2462,9 +2324,7 @@
         <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Summary
-      
+      Summary
     </span>
   </a>
   
@@ -2473,9 +2333,7 @@
         <li class="md-nav__item">
   <a href="#concepts-covered" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Concepts Covered
-      
+      Concepts Covered
     </span>
   </a>
   
@@ -2484,9 +2342,7 @@
         <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Prerequisites
-      
+      Prerequisites
     </span>
   </a>
   
@@ -2495,9 +2351,7 @@
         <li class="md-nav__item">
   <a href="#from-pairs-to-swarms" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        From Pairs to Swarms
-      
+      From Pairs to Swarms
     </span>
   </a>
   
@@ -2506,9 +2360,7 @@
         <li class="md-nav__item">
   <a href="#extending-leader-follower-into-collective-behaviors" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Extending Leader-Follower into Collective Behaviors
-      
+      Extending Leader-Follower into Collective Behaviors
     </span>
   </a>
   
@@ -2518,9 +2370,7 @@
           <li class="md-nav__item">
   <a href="#diagram-swarm-collective-behaviors" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Swarm Collective Behaviors
-      
+      Diagram: Swarm Collective Behaviors
     </span>
   </a>
   
@@ -2534,9 +2384,7 @@
         <li class="md-nav__item">
   <a href="#organizing-multi-behavior-code-with-a-state-machine" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Organizing Multi-Behavior Code with a State Machine
-      
+      Organizing Multi-Behavior Code with a State Machine
     </span>
   </a>
   
@@ -2546,9 +2394,7 @@
           <li class="md-nav__item">
   <a href="#diagram-swarm-robot-state-machine" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Swarm Robot State Machine
-      
+      Diagram: Swarm Robot State Machine
     </span>
   </a>
   
@@ -2562,9 +2408,7 @@
         <li class="md-nav__item">
   <a href="#planning-a-swarm-project-as-a-team" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Planning a Swarm Project as a Team
-      
+      Planning a Swarm Project as a Team
     </span>
   </a>
   
@@ -2573,9 +2417,7 @@
         <li class="md-nav__item">
   <a href="#doing-two-things-at-once-multithreading-and-asynchronous-programming" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Doing Two Things at Once: Multithreading and Asynchronous Programming
-      
+      Doing Two Things at Once: Multithreading and Asynchronous Programming
     </span>
   </a>
   
@@ -2585,9 +2427,7 @@
           <li class="md-nav__item">
   <a href="#diagram-cooperative-multitasking-timeline" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Cooperative Multitasking Timeline
-      
+      Diagram: Cooperative Multitasking Timeline
     </span>
   </a>
   
@@ -2601,9 +2441,7 @@
         <li class="md-nav__item">
   <a href="#smoother-control-pid-and-encoder-feedback" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Smoother Control: PID and Encoder Feedback
-      
+      Smoother Control: PID and Encoder Feedback
     </span>
   </a>
   
@@ -2613,9 +2451,7 @@
           <li class="md-nav__item">
   <a href="#diagram-pid-feedback-loop-tuner" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: PID Feedback Loop Tuner
-      
+      Diagram: PID Feedback Loop Tuner
     </span>
   </a>
   
@@ -2629,9 +2465,7 @@
         <li class="md-nav__item">
   <a href="#recording-what-happened-data-logging" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Recording What Happened: Data Logging
-      
+      Recording What Happened: Data Logging
     </span>
   </a>
   
@@ -2640,32 +2474,26 @@
         <li class="md-nav__item">
   <a href="#a-second-path-to-swarm-coordination" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        A Second Path to Swarm Coordination
-      
+      A Second Path to Swarm Coordination
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#meet-the-9-dof-imu-l3gd20-lsm303d" class="md-nav__link">
+  <a href="#meet-the-9-dof-imu-l3gd20-lsm303dlhc" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Meet the 9-DOF IMU: L3GD20 + LSM303D
-      
+      Meet the 9-DOF IMU: L3GD20 + LSM303DLHC
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Meet the 9-DOF IMU: L3GD20 + LSM303D">
+    <nav class="md-nav" aria-label="Meet the 9-DOF IMU: L3GD20 + LSM303DLHC">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#diagram-9-dof-imu-chip-layout" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: 9-DOF IMU Chip Layout
-      
+      Diagram: 9-DOF IMU Chip Layout
     </span>
   </a>
   
@@ -2679,9 +2507,7 @@
         <li class="md-nav__item">
   <a href="#calibrating-the-gyroscope-and-magnetometer" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Calibrating the Gyroscope and Magnetometer
-      
+      Calibrating the Gyroscope and Magnetometer
     </span>
   </a>
   
@@ -2691,9 +2517,7 @@
           <li class="md-nav__item">
   <a href="#diagram-magnetometer-calibration-explorer" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Magnetometer Calibration Explorer
-      
+      Diagram: Magnetometer Calibration Explorer
     </span>
   </a>
   
@@ -2707,9 +2531,7 @@
         <li class="md-nav__item">
   <a href="#fusing-sensors-the-complementary-filter-and-heading-estimation" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Fusing Sensors: The Complementary Filter and Heading Estimation
-      
+      Fusing Sensors: The Complementary Filter and Heading Estimation
     </span>
   </a>
   
@@ -2719,9 +2541,7 @@
           <li class="md-nav__item">
   <a href="#diagram-complementary-filter-heading-tuner" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Complementary Filter Heading Tuner
-      
+      Diagram: Complementary Filter Heading Tuner
     </span>
   </a>
   
@@ -2735,9 +2555,7 @@
         <li class="md-nav__item">
   <a href="#hosting-the-swarm-network-wifi-access-point-and-udp-broadcast" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Hosting the Swarm Network: WiFi Access Point and UDP Broadcast
-      
+      Hosting the Swarm Network: WiFi Access Point and UDP Broadcast
     </span>
   </a>
   
@@ -2747,9 +2565,7 @@
           <li class="md-nav__item">
   <a href="#diagram-heading-broadcast-network-topology" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Heading Broadcast Network Topology
-      
+      Diagram: Heading Broadcast Network Topology
     </span>
   </a>
   
@@ -2763,9 +2579,7 @@
         <li class="md-nav__item">
   <a href="#heading-synchronization-master-and-follower-code" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Heading Synchronization: Master and Follower Code
-      
+      Heading Synchronization: Master and Follower Code
     </span>
   </a>
   
@@ -2775,9 +2589,7 @@
           <li class="md-nav__item">
   <a href="#diagram-heading-error-and-steering-explorer" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Heading Error and Steering Explorer
-      
+      Diagram: Heading Error and Steering Explorer
     </span>
   </a>
   
@@ -2791,9 +2603,7 @@
         <li class="md-nav__item">
   <a href="#key-takeaways" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Key Takeaways
-      
+      Key Takeaways
     </span>
   </a>
   
@@ -2809,59 +2619,9 @@
           
           
             <div class="md-content" data-md-component="content">
-              
-                
-
-
-
-  
-
-
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Chapters
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
-              
               <article class="md-content__inner md-typeset">
                 
                   
-
 
   
   
@@ -2880,7 +2640,7 @@ dance routines, all organized with a state machine. Along the way, students lear
 software patterns professional robotics teams rely on — project planning, multithreading,
 asynchronous programming, PID control, encoder feedback, and data logging. The chapter
 then introduces a second, independent path to swarm coordination: a 9-DOF inertial
-measurement unit (the L3GD20 gyroscope and LSM303D accelerometer/magnetometer) that each
+measurement unit (the L3GD20 gyroscope and LSM303DLHC accelerometer/magnetometer) that each
 robot calibrates and fuses into a stable heading estimate, broadcast over a WiFi access
 point using UDP so every follower in the swarm can steer to match it — no pairing, no
 per-robot connection, and no limit on how many robots can listen in.</p>
@@ -2907,7 +2667,7 @@ per-robot connection, and no limit on how many robots can listen in.</p>
 <li>Data Logging</li>
 <li>9-DOF IMU Overview</li>
 <li>L3GD20 Gyroscope</li>
-<li>LSM303D Accelerometer Magnetometer</li>
+<li>LSM303DLHC Accelerometer Magnetometer</li>
 <li>Gyroscope Calibration</li>
 <li>Magnetometer Hard Iron Calibration</li>
 <li>Complementary Filter Sensor Fusion</li>
@@ -3373,7 +3133,7 @@ can listen in, at no extra cost to the master.</p>
 <p>Matching a heading needs a robot that can measure its own heading precisely, which is a
 harder sensing problem than anything earlier in this course.</p>
 <hr />
-<h2 id="meet-the-9-dof-imu-l3gd20-lsm303d">Meet the 9-DOF IMU: L3GD20 + LSM303D</h2>
+<h2 id="meet-the-9-dof-imu-l3gd20-lsm303dlhc">Meet the 9-DOF IMU: L3GD20 + LSM303DLHC</h2>
 <p>A <strong>9-DOF IMU overview</strong>: "9-DOF" stands for nine degrees of freedom — three axes each
 from a gyroscope, an accelerometer, and a magnetometer. A <strong>gyroscope</strong> measures
 <em>rotation rate</em> (how fast the robot is turning, in degrees per second). An
@@ -3383,9 +3143,13 @@ essentially, a built-in compass. Combined, these nine numbers are enough to esti
 which way a robot is facing and how it's moving, far more precisely than the single
 time-of-flight sensor from Chapter 8.</p>
 <p>The module used in this course packs these onto two separate chips on one small board:
-the <strong>L3GD20 gyroscope</strong> and the <strong>LSM303D accelerometer/magnetometer</strong>. Each chip has
-its own I2C address on the same I2C bus from Chapter 6 — so reading this module means
-writing two small drivers, one per chip, not one.</p>
+the <strong>L3GD20 gyroscope</strong> and the <strong>LSM303DLHC accelerometer/magnetometer</strong>. Both sit on
+the same I2C bus from Chapter 6. The gyroscope answers at address <code>0x6B</code>. The LSM303DLHC
+answers at <em>two</em> addresses — <code>0x19</code> for its accelerometer and <code>0x1E</code> for its
+magnetometer — because inside, it acts like two separate devices. The board also
+carries a bonus BMP180 temperature and pressure chip at <code>0x77</code> that we don't use. So a
+scan finds four addresses, and reading the module means writing two small drivers, one
+per chip, not one.</p>
 <h4 id="diagram-9-dof-imu-chip-layout">Diagram: 9-DOF IMU Chip Layout</h4>
 <iframe src="../../sims/imu-chip-layout-diagram/main.html" width="100%" height="422px" scrolling="no"></iframe>
 
@@ -3399,35 +3163,44 @@ writing two small drivers, one per chip, not one.</p>
 <p>Diagram Name: 9-DOF IMU Chip Layout</p>
 <p>Bloom Taxonomy: Understand</p>
 <p>Bloom Taxonomy Verb: explain</p>
-<p>Learning objective: Explain that a "9-DOF IMU module" is really two separate I2C sensor chips sharing one bus, each with its own address, rather than one combined chip.</p>
-<p>Create a Mermaid flowchart (graph LR). Node "Pico W GPIO16/17 (I2C0)" connects with two labeled edges to two chip nodes: "L3GD20 Gyroscope (addr 0x6B)" and "LSM303D Accel + Mag (addr 0x1D)". Each chip node has a smaller child node beneath it: L3GD20 connects down to "3-axis rotation rate (deg/s)"; LSM303D connects down to two children, "3-axis acceleration (g)" and "3-axis magnetic field (gauss)".</p>
+<p>Learning objective: Explain that a "9-DOF IMU module" is really two separate I2C sensor chips sharing one bus, each answering at its own address or addresses, rather than one combined chip.</p>
+<p>Create a Mermaid flowchart (graph LR). Node "Pico W GPIO16/17 (I2C0)" connects with labeled edges to two chip nodes: "L3GD20 Gyroscope (addr 0x6B)" and "LSM303DLHC Accel + Mag (0x19 + 0x1E)", plus a dashed edge to a muted "BMP180 bonus chip (not used)" node labeled "addr 0x77". Each sensor chip node has a smaller child node beneath it: L3GD20 connects down to "3-axis rotation rate (deg/s)"; LSM303DLHC connects down to two children, "3-axis acceleration (g)" on an edge labeled "0x19" and "3-axis magnetic field (gauss)" on an edge labeled "0x1E".</p>
 <p>Every node has a click directive with an infobox: the I2C bus node explains "one shared SDA/SCL pair, same as the ToF sensor and OLED display from earlier chapters — I2C allows multiple devices as long as addresses differ." The gyroscope node explains what a gyroscope measures and that it drifts slowly over time. The accel/mag node explains that acceleration senses gravity/tilt and magnetic field acts as a compass, and that motors nearby distort the magnetic reading. The three data-type leaf nodes each explain their unit and typical use.</p>
 <p>Color scheme: I2C bus node DodgerBlue (SENSOR taxonomy color), chip nodes white with black outline, data leaf nodes light gray. Canvas responsive to container width.</p>
 </details>
 <p>Reading either chip means talking to its registers over I2C — the same <code>readfrom_mem</code>
 pattern you used for the time-of-flight sensor in Chapter 8, just with different
-register addresses. Before the code: <code>WHO_AM_I</code> is a fixed register every ST sensor
-chip has, and reading it back confirms you're actually talking to the chip you think you
-are, before trusting any of its data.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+register addresses. Before the code: <code>WHO_AM_I</code> is a fixed register that many ST sensor
+chips have, including the L3GD20 gyroscope. Reading it back confirms you're actually
+talking to the chip you think you are, before trusting any of its data.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>
 
-<span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+<span class="c1"># SoftI2C, not machine.I2C: on this IMU board the hardware I2C block</span>
+<span class="c1"># could scan but failed on real reads (see the 9-DOF IMU Kit)</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">SoftI2C</span><span class="p">(</span><span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span>
+                      <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
 <span class="n">found</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Devices found:"</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">found</span><span class="p">])</span>   <span class="c1"># expect two addresses, not one</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Devices found:"</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">found</span><span class="p">])</span>   <span class="c1"># expect 0x19, 0x1e, 0x6b, 0x77</span>
 
 <span class="n">gyro_id</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="mh">0x6B</span><span class="p">,</span> <span class="mh">0x0F</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># WHO_AM_I register</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Gyro chip ID:"</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">gyro_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>     <span class="c1"># expect 0xD4 or 0xD7</span>
 </code></pre></div></td></tr></table></div>
-<p>The full driver code for both chips — with all the register constants — is in the
-<a href="../../kits/swarm-bot/plan/">Swarm Robot Build Plan</a>, written for the exact module
-this course uses.</p>
+<p>This code scans the bus, prints every address it finds, and then asks the gyroscope
+for its ID. The full driver code for both chips — with all the register constants — is
+in the shared <code>l3gd20.py</code> and <code>lsm303dlhc.py</code> drivers, tested on this exact module in
+the <a href="../../kits/9-dof-imu/">9-DOF IMU Kit</a>.</p>
 <hr />
 <h2 id="calibrating-the-gyroscope-and-magnetometer">Calibrating the Gyroscope and Magnetometer</h2>
 <p>Raw sensor numbers are rarely usable straight out of the box. Two calibration steps
@@ -3509,7 +3282,9 @@ number in degrees that the rest of the swarm code can rely on.</p>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">HeadingFilter</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.98</span><span class="p">):</span>
@@ -3519,10 +3294,18 @@ number in degrees that the rest of the swarm code can rely on.</p>
     <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gyro_z_dps</span><span class="p">,</span> <span class="n">mag_x</span><span class="p">,</span> <span class="n">mag_y</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
         <span class="n">gyro_estimate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">heading</span> <span class="o">+</span> <span class="n">gyro_z_dps</span> <span class="o">*</span> <span class="n">dt</span>
         <span class="n">compass_estimate</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">mag_y</span><span class="p">,</span> <span class="n">mag_x</span><span class="p">))</span> <span class="o">%</span> <span class="mi">360</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">heading</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">gyro_estimate</span>
-                         <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">compass_estimate</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span>
+        <span class="c1"># How far the compass is from the gyro, the short way around (-180 to +180)</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="p">((</span><span class="n">compass_estimate</span> <span class="o">-</span> <span class="n">gyro_estimate</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span><span class="p">)</span> <span class="o">-</span> <span class="mi">180</span>
+        <span class="c1"># Move a small step, (1 - alpha), of the way toward the compass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">heading</span> <span class="o">=</span> <span class="p">(</span><span class="n">gyro_estimate</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">diff</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">heading</span>
 </code></pre></div></td></tr></table></div>
+<p>Why the <code>diff</code> line? Headings wrap around like a clock face: 359° and 1° are only 2°
+apart, and both point almost exactly north. If we plugged those two raw numbers into the
+formula above, we would get about 352° — pointing the wrong way! So the code first finds
+how far the compass is from the gyro the <em>short way</em> around the circle. That gives a
+number from −180 to +180 (here, +2). Then it moves a small step toward the compass. It is
+the same blend as the formula, just measured the short way, so it works at every heading.</p>
 <h4 id="diagram-complementary-filter-heading-tuner">Diagram: Complementary Filter Heading Tuner</h4>
 <iframe src="../../sims/complementary-filter-heading-tuner/main.html" width="100%" height="507px" scrolling="no"></iframe>
 
@@ -3695,7 +3478,7 @@ off the most common problems:</p>
 </thead>
 <tbody>
 <tr>
-<td>I2C scan finds only one address</td>
+<td>I2C scan is missing an address (expect <code>0x19</code>, <code>0x1e</code>, <code>0x6b</code>, <code>0x77</code>)</td>
 <td>One chip's wiring or solder joint failed — check the side that's missing</td>
 </tr>
 <tr>
@@ -3733,7 +3516,7 @@ off the most common problems:</p>
 <li><strong>PID control</strong> generalizes closed-loop feedback into proportional, integral, and
   derivative terms; <strong>encoder motor feedback</strong> gives it a more precise input signal;
   <strong>data logging</strong> lets you review a tuning run after the fact</li>
-<li>A <strong>9-DOF IMU</strong> — here, the <strong>L3GD20 gyroscope</strong> and <strong>LSM303D accelerometer/
+<li>A <strong>9-DOF IMU</strong> — here, the <strong>L3GD20 gyroscope</strong> and <strong>LSM303DLHC accelerometer/
   magnetometer</strong> — needs <strong>gyroscope calibration</strong> and <strong>magnetometer hard-iron
   calibration</strong> before its readings mean anything</li>
 <li>A <strong>complementary filter</strong> fuses gyro and compass into a stable <strong>heading estimate</strong></li>
@@ -3842,13 +3625,10 @@ Look at everything you can do now: pair robots over BLE, organize their behavior
     </div>
     
     
-    
-      
-      
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

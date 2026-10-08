@@ -17,8 +17,8 @@ let defaultTextSize = 16;
 const MOVES = {
   forward: { label: 'Forward', short: 'Fwd', code: 'go_forward()', color: 'seagreen' },
   back: { label: 'Back', short: 'Back', code: 'back()', color: 'darkorange' },
-  spinL: { label: 'Spin left', short: 'Spin L', code: 'spin("left")', color: 'royalblue' },
-  spinR: { label: 'Spin right', short: 'Spin R', code: 'spin("right")', color: 'darkorchid' },
+  spinL: { label: 'Spin left', short: 'Spin L', code: 'spin_left()', color: 'royalblue' },
+  spinR: { label: 'Spin right', short: 'Spin R', code: 'spin_right()', color: 'darkorchid' },
   stop: { label: 'Stop motors', short: 'Stop', code: 'stop_motors()', color: 'gray' }
 };
 const MOVE_KEYS = ['forward', 'back', 'spinL', 'spinR', 'stop'];
@@ -359,14 +359,17 @@ function beatComment(seg) {
   return 'beats ' + fmtBeats(startBeat) + '-' + fmtBeats(endBeat - 0.5);
 }
 
+// Each move function only starts the motors; the sleep() on the same line sets
+// how long it lasts. Comments line up in one column, like the Chapter 10 code.
 function codeLines() {
   const spb = secondsPerBeat();
-  const lines = ['def dance():'];
   const seq = sequence();
-  for (const seg of seq) {
-    const sec = fmtSec(seg.len / 2 * spb);
-    lines.push('    ' + MOVES[seg.move].code + '; sleep(' + sec + ')  # ' + beatComment(seg) + (seg.auto ? ' rest' : ''));
-  }
+  const calls = seq.map(seg => MOVES[seg.move].code + '; sleep(' + fmtSec(seg.len / 2 * spb) + ')');
+  const width = max(calls.map(c => c.length));
+  const lines = ['def dance():'];
+  seq.forEach((seg, i) => {
+    lines.push('    ' + calls[i].padEnd(width) + '  # ' + beatComment(seg) + (seg.auto ? ' rest' : ''));
+  });
   return lines;
 }
 

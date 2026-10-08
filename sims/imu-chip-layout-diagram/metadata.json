@@ -2,7 +2,7 @@
   "title": "9-DOF IMU Chip Layout",
   "creator": "Dan McCreary",
   "subject": "Robotics and Computational Thinking",
-  "description": "Interactive Mermaid diagram of the swarm robot's 9-DOF IMU module: an L3GD20 gyroscope at I2C address 0x6B and an LSM303D accelerometer/magnetometer at 0x1D sharing I2C bus 0 on Pico W GPIO16/17. Scenario buttons show the i2c.scan() output when both chips answer or when one chip's wiring fails.",
+  "description": "Interactive Mermaid diagram of the swarm robot's 9-DOF IMU module: an L3GD20 gyroscope at I2C address 0x6B and an LSM303DLHC accelerometer (0x19) and magnetometer (0x1E), plus an unused BMP180 (0x77), sharing I2C bus 0 on Pico W GPIO16/17. Scenario buttons show the i2c.scan() output when every chip answers or when one chip's wiring fails.",
   "date": "2026-09-29",
   "type": "Interactive Diagram",
   "format": "text/html",
@@ -16,7 +16,7 @@
     "topic": "9-DOF IMU chips on a shared I2C bus",
     "learningObjectives": [
       "Explain that a 9-DOF IMU module is two separate I2C chips sharing one bus.",
-      "Identify the I2C address of the L3GD20 gyroscope (0x6B) and the LSM303D accelerometer/magnetometer (0x1D).",
+      "Identify the I2C addresses of the L3GD20 gyroscope (0x6B) and the LSM303DLHC accelerometer (0x19) and magnetometer (0x1E).",
       "Match each chip to the data it provides and its units (deg/s, g, gauss).",
       "Interpret an i2c.scan() result that lists only one address."
     ],
@@ -51,11 +51,11 @@
   },
   "userInterface": {
     "controls": [
-      {"type": "button", "label": "Both chips answer", "purpose": "Normal module: the scan lists 0x1d and 0x6b (default)."},
-      {"type": "button", "label": "Gyro not answering", "purpose": "The L3GD20 wiring has failed: the scan lists only 0x1d."},
-      {"type": "button", "label": "Accel/Mag not answering", "purpose": "The LSM303D wiring has failed: the scan lists only 0x6b."}
+      {"type": "button", "label": "All chips answer", "purpose": "Normal module: the scan lists 0x19, 0x1e, 0x6b, and 0x77 (default)."},
+      {"type": "button", "label": "Gyro not answering", "purpose": "The L3GD20 wiring has failed: 0x6b is missing from the scan."},
+      {"type": "button", "label": "Accel/Mag not answering", "purpose": "The LSM303DLHC wiring has failed: 0x19 and 0x1e are missing from the scan."}
     ],
-    "hoverTargets": "Every node and both address labels show an explanation in the Details card on hover or click."
+    "hoverTargets": "Every node and every address label shows an explanation in the Details card on hover or click."
   },
   "pedagogical": {
     "teachingStrategy": "Labeled structure diagram with concrete scan output",
@@ -63,16 +63,16 @@
     "keyQuestions": [
       "How many addresses does i2c.scan() print for a working 9-DOF module, and why?",
       "How does the Pico W choose which chip answers on a shared bus?",
-      "Which robot features are lost if the LSM303D stops answering?"
+      "Which robot features are lost if the LSM303DLHC stops answering?"
     ],
     "commonMisconceptions": [
       "A 9-DOF module is one chip with one address.",
       "Each sensor needs its own pair of I2C wires.",
-      "The accelerometer and magnetometer are separate chips on this module (they share the LSM303D)."
+      "The accelerometer and magnetometer are separate chips on this module (they share the LSM303DLHC, which answers at two addresses)."
     ],
     "assessmentOpportunities": [
-      "Label a blank diagram with both addresses and all data units.",
-      "Exit ticket: interpret an i2c.scan() result of ['0x6b'].",
+      "Label a blank diagram with all three sensor addresses and all data units.",
+      "Exit ticket: interpret an i2c.scan() result of ['0x6b', '0x77'].",
       "Compare the diagram with a real scan on the course hardware."
     ]
   },

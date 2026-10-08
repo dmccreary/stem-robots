@@ -28,12 +28,12 @@ const SUBSTEPS = 4;
 let trackName = 'Oval';
 let track = [];               // list of {x, y} points along the line center
 let robot = { x: 0, y: 0, h: 0 };
-let leftVal = 1, rightVal = 1;  // 0 = LOW (on line), 1 = HIGH (off line)
+let leftVal = 0, rightVal = 0;  // 1 = HIGH (over the black line), 0 = LOW (over white)
 let leftDuty = 0, rightDuty = 0;
 let updateTimer = 0;
 let simTime = 0;
 let framesTotal = 0, framesOnLine = 0;
-let bothHighTime = 0;
+let bothLowTime = 0;
 let lineLost = false;
 let running = false;
 let trail = [];
@@ -86,8 +86,9 @@ function setup() {
   resetRobot();
 
   describe('Top-down view of a black line track on a white floor with a small green robot. Two sensor circles on the ' +
-    'front of the robot turn black when they are over the line (LOW) and yellow when they are off it (HIGH). A table ' +
-    'highlights which of the four sensor states is active and what the motors do. Sliders set the fast and slow motor ' +
+    'front of the robot turn black when they are over the line (HIGH) and yellow when they are off it (LOW). A table ' +
+    'highlights which of the four sensor states is active, which way the robot turns, and which motor slows down. ' +
+    'Sliders set the fast and slow motor ' +
     'duty and the update rate. A dropdown picks an oval, figure-8, or zigzag track. Readouts show both sensor values, ' +
     'both motor duties, the tightest turn, and the percent of time on the line.', LABEL);
 }
@@ -230,8 +231,9 @@ function sensorPos(side) {
 
 function readSensors() {
   const L = sensorPos(-1), R = sensorPos(1);
-  leftVal = lineDistance(L.x, L.y) <= LINE_HALF ? 0 : 1;
-  rightVal = lineDistance(R.x, R.y) <= LINE_HALF ? 0 : 1;
+  // active LOW: white reflects the IR (0), the black line soaks it up (1)
+  leftVal = lineDistance(L.x, L.y) <= LINE_HALF ? 1 : 0;
+  rightVal = lineDistance(R.x, R.y) <= LINE_HALF ? 1 : 0;
 }
 
 function snapDuty(slider) {
@@ -246,10 +248,12 @@ function slowDuty() { return min(slowSlider.value(), fastSlider.value()); }
 
 // the same rules as adjust_motors(left_val, right_val) in Chapter 10
 function adjustMotors(lv, rv) {
-  if (lv === 0 && rv === 1) {
+  if (lv === 1 && rv === 0) {
+    // left sensor on line: robot drifted right, slow left to turn left
     rightDuty = fastDuty();
     leftDuty = slowDuty();
-  } else if (lv === 1 && rv === 0) {
+  } else if (lv === 0 && rv === 1) {
+    // right sensor on line: robot drifted left, slow right to turn right
     rightDuty = slowDuty();
     leftDuty = fastDuty();
   } else {
@@ -267,7 +271,7 @@ function resetRobot() {
   updateTimer = 0;
   simTime = 0;
   framesTotal = framesOnLine = 0;
-  bothHighTime = 0;
+  bothLowTime = 0;
   lineLost = false;
   trail = [];
   readSensors();
@@ -304,14 +308,14 @@ function frameUpdate() {
   framesTotal++;
   if (lNow || rNow) {
     framesOnLine++;
-    bothHighTime = 0;
+    bothLowTime = 0;
   } else {
-    bothHighTime += dt;
+    bothLowTime += dt;
   }
   trail.push({ x: robot.x, y: robot.y, t: simTime });
   while (trail.length && simTime - trail[0].t > TRAIL_S) trail.shift();
   const off = robot.x < -20 || robot.x > WORLD_W + 20 || robot.y < -20 || robot.y > WORLD_H + 20;
-  if (bothHighTime > 2 || off) {
+  if (bothLowTime > 2 || off) {
     lineLost = true;
     running = false;
     leftDuty = rightDuty = 0;
@@ -397,12 +401,12 @@ function drawRobot() {
   fill('white');
   triangle(4, 0, -3, -3, -3, 3);
   pop();
-  // sensors: black = LOW (over the line), light yellow = HIGH (over white)
+  // sensors: black = HIGH (over the line), light yellow = LOW (over white)
   for (const [side, val] of [[-1, leftVal], [1, rightVal]]) {
     const p = sensorPos(side);
     stroke(side < 0 ? 'blue' : 'red');
     strokeWeight(1.5);
-    fill(val === 0 ? 'black' : 'lightyellow');
+    fill(val === 1 ? 'black' : 'lightyellow');
     circle(view.x + p.x * view.s, view.y + p.y * view.s, max(9, 3 * view.s));
   }
   strokeWeight(1);
@@ -423,7 +427,7 @@ function drawBanner() {
     text(msg, cx, cy - 10);
     textSize(14);
     fill(120, 0, 0);
-    text('Both sensors HIGH for 2 s. Press Run to retry.', cx, cy + 14);
+    text('Both sensors LOW for 2 s. Press Run to retry.', cx, cy + 14);
   } else if (simTime === 0) {
     textSize(15);
     const msg = 'Press Run to start the robot.';
@@ -438,9 +442,9 @@ function drawBanner() {
 }
 
 function stateIndex() {
-  if (leftVal === 1 && rightVal === 1) return 0;
-  if (leftVal === 0 && rightVal === 1) return 1;
-  if (leftVal === 1 && rightVal === 0) return 2;
+  if (leftVal === 0 && rightVal === 0) return 0;
+  if (leftVal === 1 && rightVal === 0) return 1;
+  if (leftVal === 0 && rightVal === 1) return 2;
   return 3;
 }
 
@@ -453,7 +457,7 @@ function turnRadiusText() {
 function drawPanel() {
   const p = panel;
   const onLine = framesTotal ? round(100 * framesOnLine / framesTotal) : 100;
-  const valText = v => v + (v === 0 ? ' LOW (line)' : ' HIGH (white)');
+  const valText = v => v + (v === 1 ? ' HIGH (line)' : ' LOW (white)');
   const rows = [
     ['Left IR: ', valText(leftVal)],
     ['Right IR: ', valText(rightVal)],
@@ -500,10 +504,10 @@ function drawPanel() {
 }
 
 const STATES = [
-  { l: 'HIGH', r: 'HIGH', act: 'both fast (line lost?)' },
-  { l: 'LOW', r: 'HIGH', act: 'left slow: veers left' },
-  { l: 'HIGH', r: 'LOW', act: 'right slow: veers right' },
-  { l: 'LOW', r: 'LOW', act: 'both fast: straight' }
+  { l: 'LOW', r: 'LOW', act: 'line lost: both fast' },
+  { l: 'HIGH', r: 'LOW', act: 'turn left: left slow' },
+  { l: 'LOW', r: 'HIGH', act: 'turn right: right slow' },
+  { l: 'HIGH', r: 'HIGH', act: 'straight: both fast' }
 ];
 
 function drawStateTable(x, y, w) {
@@ -513,7 +517,7 @@ function drawStateTable(x, y, w) {
   textStyle(BOLD);
   text('Left', x + 2, y);
   text('Right', x + 48, y);
-  text('Motors do', x + 100, y);
+  text('Action', x + 100, y);
   textStyle(NORMAL);
   y += 20;
   const active = stateIndex();
@@ -530,10 +534,10 @@ function drawStateTable(x, y, w) {
     rect(x, y, w, rowH - 3, 5);
     for (const [bx, val] of [[x + 3, st.l], [x + 49, st.r]]) {
       stroke('gray');
-      fill(val === 'LOW' ? 'black' : 'lightyellow');
+      fill(val === 'HIGH' ? 'black' : 'lightyellow');
       rect(bx, y + 4, 42, rowH - 11, 3);
       noStroke();
-      fill(val === 'LOW' ? 'white' : 'black');
+      fill(val === 'HIGH' ? 'white' : 'black');
       textSize(12);
       textAlign(CENTER, CENTER);
       text(val, bx + 21, y + rowH / 2 - 1);

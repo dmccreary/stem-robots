@@ -241,7 +241,7 @@ ConceptID,ConceptLabel,Dependencies,TaxonomyID
 240,Data Logging,34|42|236,ENG
 241,9-DOF IMU Overview,108|211,SENSOR
 242,L3GD20 Gyroscope,241|211,SENSOR
-243,LSM303D Accelerometer Magnetometer,241|211,SENSOR
+243,LSM303DLHC Accelerometer Magnetometer,241|211,SENSOR
 244,Gyroscope Calibration,242|124,SENSOR
 245,Magnetometer Hard Iron Calibration,243|124,SENSOR
 246,Complementary Filter Sensor Fusion,244|245|126,SENSOR

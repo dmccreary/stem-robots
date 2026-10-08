@@ -1,7 +1,9 @@
 // H-Bridge Switch States
 // CANVAS_HEIGHT: 400
 // Bloom L4 (Analyze): trace current paths through the four switches to predict
-// motor direction. Forward closes SW1+SW4; Reverse closes SW2+SW3.
+// motor direction. Switches are numbered in reading order: SW1 top-left,
+// SW2 top-right, SW3 bottom-left, SW4 bottom-right.
+// Forward closes SW1+SW4; Reverse closes SW2+SW3.
 
 let canvasWidth = 700;
 let drawHeight = 350;
@@ -50,8 +52,8 @@ function computeGeometry() {
   topY = 80; midY = 195; botY = 300;
   sw = {
     SW1: { x: Lx, y: (topY + midY) / 2, label: 'SW1', info: 'SW1 — top-left switch. Closed = connects motor terminal A to V+.' },
-    SW2: { x: Lx, y: (midY + botY) / 2, label: 'SW2', info: 'SW2 — bottom-left switch. Closed = connects motor terminal A to GND.' },
-    SW3: { x: Rx, y: (topY + midY) / 2, label: 'SW3', info: 'SW3 — top-right switch. Closed = connects motor terminal B to V+.' },
+    SW2: { x: Rx, y: (topY + midY) / 2, label: 'SW2', info: 'SW2 — top-right switch. Closed = connects motor terminal B to V+.' },
+    SW3: { x: Lx, y: (midY + botY) / 2, label: 'SW3', info: 'SW3 — bottom-left switch. Closed = connects motor terminal A to GND.' },
     SW4: { x: Rx, y: (midY + botY) / 2, label: 'SW4', info: 'SW4 — bottom-right switch. Closed = connects motor terminal B to GND.' }
   };
 }

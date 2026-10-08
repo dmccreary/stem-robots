@@ -312,13 +312,13 @@ function drawWave() {
 function drawCode() {
   const narrow = canvasWidth < 560;
   const lines = [];
-  if (!narrow) lines.push('buzzer = PWM(Pin(config.BUZZER_PIN))');
+  if (!narrow) lines.push('buzzer = PWM(Pin(config.SPEAKER_PIN))');
   lines.push('buzzer.freq(' + freqSlider.value() + ')');
   lines.push('buzzer.duty_u16(' + dutyU16() + ')' + (narrow ? '' : '  # ' + dutySlider.value() + '%'));
   const fs = narrow ? 12 : 14, lh = fs + 5;
   textFont('monospace'); textSize(fs);
   // size the box for the widest possible line so it never jumps around
-  const widest = narrow ? 'buzzer.duty_u16(65535)' : 'buzzer = PWM(Pin(config.BUZZER_PIN))';
+  const widest = narrow ? 'buzzer.duty_u16(65535)' : 'buzzer = PWM(Pin(config.SPEAKER_PIN))';
   const w = textWidth(widest) + 18;
   const h = lines.length * lh + 14;
   const y = BOTTOM_TOP + (narrow ? 8 : 0);
